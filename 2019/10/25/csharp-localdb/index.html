@@ -1,0 +1,526 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="c#" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2019/10/25/csharp-localdb/">
+
+
+
+  <title>
+SqlServer LOCALDB 安装和连接 |
+Dew's World = 露の世</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">SqlServer LOCALDB 安装和连接
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2019-10-25 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2019-10-25T00:00:00+08:00">2019-10-25</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Dew's World</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicli3sbvtj20zk0m8x6p.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicitspjpbj20zk0m81ky.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclg5ms2rj20zk0m8u0x.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeyhsblkj20zk0m81kx.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giph4baakhj20zk0m8h5q.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicm0fdw5cj20zk0m8hdt.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2019/10/25/csharp-localdb/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <p>关于 LOCALDB 的详细<span class="exturl" data-url="aHR0cHM6Ly90ZWNobmV0Lm1pY3Jvc29mdC5jb20vemgtY24vaGg1MTAyMDI=">文档说明</span>，包含安装，连接，共享连接等操作 <strong><span class="exturl" data-url="aHR0cHM6Ly90ZWNobmV0Lm1pY3Jvc29mdC5jb20vemgtY24vaGg1MTAyMDI=">https://technet.microsoft.com/zh-cn/hh510202</span></strong></p>
+<blockquote>
+<p>目的</p>
+</blockquote>
+<p>调试程序没有安装 sql server 时，可以使用 localdb. 这是一个简易的 sql server 数据库，用于本地测试是很方便，省去安装 SQL SERVER 的工作</p>
+<blockquote>
+<p>安装 localdb</p>
+</blockquote>
+<p>安装 VS2015 之后，就有了 localdb2016 VS2013 大概是 2014 ,</p>
+<p>另外 localdb2014 有单独的安装包，而 2016 则没找到.VS2015 的安装包里有 LOCALDB2016 的 MSI 文件，但是安装之后却无法使用。使用命令查看版本，如下:</p>
+<img data-src="/2019/10/25/csharp-localdb/540771-20170314154618620-1044166666.jpg" class="" title="img">
+<blockquote>
+<p>sqllocaldb 使用</p>
+</blockquote>
+<p>打开 CMD, 使用 sqllocaldb.exe 这个命令</p>
+<p>sqllocaldb.exe i // 查看已经有的 localdb 的实例</p>
+<p>sqllocaldb.exe v // 电脑上安装的 localdb 的所有版本</p>
+<p>sqllocaldb.exe s [实例名] // 启动这个实例</p>
+<p>sqllocaldb.exe -? // 这个命令的帮助信息</p>
+<img data-src="/2019/10/25/csharp-localdb/540771-20161010173121446-1241040689.jpg" class="" title="img">
+<blockquote>
+<p>使用 MSSM 连接 sqllocaldb</p>
+</blockquote>
+<p>打开 MSSM, 服务器名称那里输入 <code>(localdb)\MSSQLLocalDB</code>  , 括号里面是 localdb 这个可能是固定的，<strong>反斜杠后面就是实例的名字</strong>.</p>
+<p>然后就连接上了，可以建库建数据了</p>
+<img data-src="/2019/10/25/csharp-localdb/540771-20161010180111305-661520541.jpg" class="" title="img">
+<blockquote>
+<p><span class="exturl" data-url="aHR0cDovL0FTUC5ORVQ=">ASP.NET</span> 程序中使用</p>
+</blockquote>
+<ul>
+<li>
+<p>指定连接到这个数据库文件 MDF</p>
+<p><code>Server=(LocalDB)\MSSQLLocalDB; Integrated Security=true;AttachDbFileName=D:\Data\MyDB1.mdf</code></p>
+</li>
+<li>
+<p>不指定到 MDF 文件路径，指定默认数据库名</p>
+<p><code>Server=(LocalDB)\MSSQLLocalDB; Integrated Security=true;Initial Catalog=MyDB1&quot;</code></p>
+</li>
+</ul>
+<ul>
+<li>
+<p>指定用户名和密码 (目前使用这是这种，简单明了</p>
+<p><code>Server=(localdb)\MSSQLLocalDB;uid=sa;pwd=123456;Initial Catalog=MyDB1</code></p>
+</li>
+</ul>
+<p><strong>使用这几种连接串在 VS 中使用 IISEXPRESS 调试时，没有问题，但是发布到 IIS 中，却连接不上数据库。因为访问权限的问题。细节请看文章第一行链接.</strong></p>
+<p>解决办法是:</p>
+<ol>
+<li>
+<p>将应用程序池的权限改为 localsystem 这个投机的办法，比较省事。但是问题还是很多.</p>
+</li>
+<li>
+<p>打开<strong> LocalDB</strong> 实例共享：(这个总结起来就是，给 LOCALDB 开共享实例，给 LOCALDB 设定连接帐号)</p>
+</li>
+</ol>
+<p><strong>给 LOCALDB 开共享实例</strong></p>
+<p>MSSQLLocalDB: 实例名 mylocaldb, 为实例名取的共享实例别名，其它帐户连接时通过这个别名 (命令窗口要使用管理员权限那种)</p>
+<p><code>sqllocaldb h &quot;MSSQLLocalDB&quot; &quot;mylocaldb&quot;</code></p>
+<p>使用 MSSM 连接工具连接时，也要使用管理员权限打开。实例名变成 <code>(localdb)\.\mylocaldb</code>  第一个 <code>\</code>  后面的 <code>.\mylocaldb</code>  就是共享实例别名</p>
+<p>为什么上面的 MSSM 要使用管理员工具打开，因为下面的验证方式是帐号密码形式的，如果使用 WINDOWS 验证，则不需要.</p>
+<img data-src="/2019/10/25/csharp-localdb/540771-20170124111204691-1671264676.jpg" class="" title="img">
+<p><strong>给 LOCALDB 设定连接帐号</strong></p>
+<p>到这步之后，将 WEB 程序的连接字符串写成指定帐号和密码的这种，结果依然不能访问，还是没有权限，</p>
+<p>server=(localdb).\mylocaldb;uid=sa;pwd=123456;AttachDbFileName=D:\Data\MyDB1.mdf</p>
+<p><strong>查看数据库帐号，发现 LOCALDB 并没有 SA 这个帐号</strong>，于是加上它，并且给予 DB_OWNER</p>
+<img data-src="/2019/10/25/csharp-localdb/540771-20170124112301300-1557512723.jpg" class="" title="img">
+<p>最后，在浏览器中打开程序，发现连接成功，网页打开了…</p>
+<blockquote>
+<p><span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vbWlycm9ydG9tL3AvNTk0NjgxNy5odG1s">LOCALDB 安装和连接 - mirrortom - 博客园</span></p>
+</blockquote>
+
+      <div class="tags">
+          <a href="/tags/c/" rel="tag"><i class="ic i-tag"></i> c#</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2020-04-18 12:40:05" itemprop="dateModified" datetime="2020-04-18T12:40:05+08:00">2020-04-18</time>
+  </span>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>著者:  </strong>江边鸟 <i class="ic i-at"><em>@</em></i>露の世
+  </li>
+  <li class="link">
+    <strong>記事へのリンク: </strong>
+    <a href="https://lhchen74.github.io/2019/10/25/csharp-localdb/" title="SqlServer LOCALDB 安装和连接">https://lhchen74.github.io/2019/10/25/csharp-localdb/</a>
+  </li>
+  <li class="license">
+    <strong>著作権表示:  </strong>このブログ内のすべての記事は、特別な記載がない限り <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> の下のライセンスで保護されています。
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2019/10/25/csharp-webservice/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclhfehz7j20zk0m8u0x.jpg" title="C#如何创建WebService">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>C#如何创建WebService</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2019/10/25/csharp-dotnetcore-iis/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclgrvbd6j20zk0m8qv5.jpg" title="在IIS上部署你的ASP.NET Core项目">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>在IIS上部署你的ASP.NET Core项目</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">223</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">26</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item twitter" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;twitter.com&#x2F;yourname"><i class="ic i-twitter"></i></span>
+      <span class="exturl item zhihu" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3Blb3BsZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;yourname"><i class="ic i-zhihu"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLyMvdXNlci9ob21lP2lkPXlvdXJpZA==" title="https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;yourid"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item weibo" data-url="aHR0cHM6Ly93ZWliby5jb20veW91cm5hbWU=" title="https:&#x2F;&#x2F;weibo.com&#x2F;yourname"><i class="ic i-weibo"></i></span>
+      <span class="exturl item about" data-url="aHR0cHM6Ly9hYm91dC5tZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;about.me&#x2F;yourname"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2019/10/25/csharp-webservice/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2019/10/25/csharp-dotnetcore-iis/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2021/03/04/python-java/" title="python vs java">python vs java</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/10/30/cplus/" title="c++ basic">c++ basic</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/10/29/php-array/" title="PHP数组的相关操作">PHP数组的相关操作</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2020/11/29/ruby-homework/" title="ruby homework">ruby homework</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/10/29/python-buliltin-global/" title="python内置全局变量">python内置全局变量</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/10/29/python-asyncio/" title="python asyncio">python asyncio</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/02/28/python-restful/" title="python flask restful">python flask restful</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/10/28/csharp-async/" title="C#中 Thread，Task，Async&#x2F;Await，IAsyncResult 的那些事儿！">C#中 Thread，Task，Async/Await，IAsyncResult 的那些事儿！</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2020/03/05/python-read-excel/" title="python read excel">python read excel</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/11/06/php-echo/" title="PHP：echo、print、print_r() 和 var_dump()">PHP：echo、print、print_r() 和 var_dump()</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2021</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ Dew's World</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2019/10/25/csharp-localdb/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,641 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="python" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2019/10/30/python-oop/">
+
+
+
+  <title>
+python oop |
+Dew's World = 露の世</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">python oop
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2019-10-30 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2019-10-30T00:00:00+08:00">2019-10-30</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Dew's World</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclhnx9glj20zk0m8npd.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipew8gmvyj20zk0m87wh.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclga70tsj20zk0m84mr.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclgrvbd6j20zk0m8qv5.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipevo9j1jj20zk0m8e81.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipexoj0moj20zk0m8kgu.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2019/10/30/python-oop/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>转载: <span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vd3VwZWlxaS9wLzQ3NjY4MDEuaHRtbA==">python 面向对象（进阶篇） - 武沛齐 - 博客园</span></p>
+</blockquote>
+<h3 id="类的成员"><a class="markdownIt-Anchor" href="#类的成员">#</a> 类的成员</h3>
+<p>类的成员可以分为三大类：字段、方法和属性</p>
+<img data-src="/2019/10/30/python-oop/425762-20150916222236164-249943282.png" class="" title="img">
+<p><em>注：所有成员中，只有普通字段的内容保存对象中，即：根据此类创建了多少对象，在内存中就有多少个普通字段。而其他的成员，则都是保存在类中，即：无论对象的多少，在内存中只创建一份。</em></p>
+<p><strong>一、字段</strong></p>
+<p>字段包括：普通字段和静态字段，他们在定义和使用中有所区别，而最本质的区别是内存中保存的位置不同，</p>
+<ul>
+<li>普通字段属于<strong>对象</strong></li>
+<li>静态字段属于<strong>类</strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Province</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 静态字段</span></span><br><span class="line">    country ＝ <span class="string">&#x27;中国&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, name</span>):</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 普通字段</span></span><br><span class="line">        self.name = name</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 直接访问普通字段</span></span><br><span class="line">obj = Province(<span class="string">&#x27;河北省&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span> obj.name</span><br><span class="line"></span><br><span class="line"><span class="comment"># 直接访问静态字段</span></span><br><span class="line">Province.country</span><br></pre></td></tr></table></figure>
+<p>由上述代码可以看出【普通字段需要通过对象来访问】【静态字段通过类访问】，在使用上可以看出普通字段和静态字段的归属是不同的。其在内容的存储方式类似如下图：</p>
+<img data-src="/2019/10/30/python-oop/425762-20150907094454965-329821364.jpg" class="" title="img">
+<p>由上图可是：</p>
+<ul>
+<li>静态字段在内存中只保存一份</li>
+<li>普通字段在每个对象中都要保存一份</li>
+</ul>
+<p>应用场景： 通过类创建对象时，如果每个对象都具有相同的字段，那么就使用静态字段</p>
+<p><strong>二、方法</strong></p>
+<p>方法包括：普通方法、静态方法和类方法，三种方法在<strong>内存中都归属于类</strong>，区别在于调用方式不同。</p>
+<ul>
+<li>普通方法：由<strong>对象</strong>调用；至少一个<strong> self</strong> 参数；执行普通方法时，自动将调用该方法的<strong>对象</strong>赋值给<strong> self</strong>；</li>
+<li>类方法：由<strong>类</strong>调用； 至少一个<strong> cls</strong> 参数；执行类方法时，自动将调用该方法的<strong>类</strong>复制给<strong> cls</strong>；</li>
+<li>静态方法：由<strong>类</strong>调用；无默认参数；</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, name</span>):</span></span><br><span class="line">        self.name = name</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">ord_func</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot; 定义普通方法，至少有一个self参数 &quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># print self.name</span></span><br><span class="line">        <span class="built_in">print</span> <span class="string">&#x27;普通方法&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @classmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">class_func</span>(<span class="params">cls</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot; 定义类方法，至少有一个cls参数 &quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">        <span class="built_in">print</span> <span class="string">&#x27;类方法&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">static_func</span>():</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot; 定义静态方法 ，无默认参数&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">        <span class="built_in">print</span> <span class="string">&#x27;静态方法&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 调用普通方法</span></span><br><span class="line">f = Foo()</span><br><span class="line">f.ord_func()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 调用类方法</span></span><br><span class="line">Foo.class_func()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 调用静态方法</span></span><br><span class="line">Foo.static_func()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><strong><img data-src="/2019/10/30/python-oop/425762-20151012145051507-726073921.jpg" class="" title="img"></strong></p>
+<p>** 相同点：** 对于所有的方法而言，均属于类（非对象）中，所以，在内存中也只保存一份。</p>
+<p>** 不同点：** 方法调用者不同、调用方法时自动传入的参数不同。</p>
+<p><strong>三、属性</strong></p>
+<p>如果你已经了解 Python 类中的方法，那么属性就非常简单了，因为 Python 中的属性其实是<strong>普通方法</strong>的变种。</p>
+<p>对于属性，有以下三个知识点：</p>
+<ul>
+<li>属性的基本使用</li>
+<li>属性的两种定义方式</li>
+</ul>
+<p><strong>1、属性的基本使用</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ############### 定义 ###############</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">func</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 定义属性</span></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">prop</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"><span class="comment"># ############### 调用 ###############</span></span><br><span class="line">foo_obj = Foo()</span><br><span class="line"></span><br><span class="line">foo_obj.func()</span><br><span class="line">foo_obj.prop   <span class="comment">#调用属性</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<img data-src="/2019/10/30/python-oop/425762-20151019151817833-1751535998.png" class="" title="img">
+<p>由属性的定义和调用要注意一下几点：</p>
+<ul>
+<li>定义时，在普通方法的基础上添加 <strong>@property</strong> 装饰器；</li>
+<li>定义时，属性<strong>仅有一个</strong> self 参数</li>
+<li>调用时，无需<strong>括号</strong><br>
+方法：foo_obj.func ()<br>
+ 属性：foo_obj.prop</li>
+</ul>
+<p>注意：属性存在意义是：访问属性时可以制造出和访问字段完全相同的假象，属性由方法变种而来，如果 Python 中没有属性，方法完全可以代替其功能。</p>
+<p>实例：对于主机列表页面，每次请求不可能把数据库中的所有内容都显示到页面上，而是通过分页的功能局部显示，所以在向数据库中请求数据时就要显示的指定获取从第 m 条到第 n 条的所有数据（即：limit m,n），这个分页的功能包括：</p>
+<ul>
+<li>根据用户请求的当前页和总数据条数计算出 m 和 n</li>
+<li>根据 m 和 n 去数据库中请求数据</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ############### 定义 ###############</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Pager</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, current_page</span>):</span></span><br><span class="line">        <span class="comment"># 用户当前请求的页码（第一页、第二页...）</span></span><br><span class="line">        self.current_page = current_page</span><br><span class="line">        <span class="comment"># 每页默认显示10条数据</span></span><br><span class="line">        self.per_items = <span class="number">10</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">start</span>(<span class="params">self</span>):</span></span><br><span class="line">        val = (self.current_page - <span class="number">1</span>) * self.per_items</span><br><span class="line">        <span class="keyword">return</span> val</span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">end</span>(<span class="params">self</span>):</span></span><br><span class="line">        val = self.current_page * self.per_items</span><br><span class="line">        <span class="keyword">return</span> val</span><br><span class="line"></span><br><span class="line"><span class="comment"># ############### 调用 ###############</span></span><br><span class="line"></span><br><span class="line">p = Pager(<span class="number">1</span>)</span><br><span class="line">p.start 就是起始值，即：m</span><br><span class="line">p.end   就是结束值，即：n</span><br></pre></td></tr></table></figure>
+<p>从上述可见，Python 的属性的功能是：属性内部进行一系列的逻辑计算，最终将计算结果返回。</p>
+<p><strong>2、属性的两种定义方式</strong></p>
+<p>属性的定义有两种方式：</p>
+<ul>
+<li>装饰器 即：在方法上应用装饰器</li>
+<li>静态字段 即：在类中定义值为 property 对象的静态字段</li>
+</ul>
+<p><strong>装饰器方式：在类的普通方法上应用 @property 装饰器</strong></p>
+<p>我们知道 Python 中的类有经典类和新式类，新式类的属性比经典类的属性丰富。（ 如果类继 object，那么该类是新式类 ）<br>
+<strong>经典类</strong>，具有一种 @property 装饰器（如上一步实例）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ############### 定义 ###############</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Goods</span>:</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">price</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;wupeiqi&quot;</span></span><br><span class="line"><span class="comment"># ############### 调用 ###############</span></span><br><span class="line">obj = Goods()</span><br><span class="line">result = obj.price  <span class="comment"># 自动执行 @property 修饰的 price 方法，并获取方法的返回值</span></span><br></pre></td></tr></table></figure>
+<p><strong>新式类</strong>，具有三种 @property 装饰器</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ############### 定义 ###############</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Goods</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">price</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span> <span class="string">&#x27;@property&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @price.setter</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">price</span>(<span class="params">self, value</span>):</span></span><br><span class="line">        <span class="built_in">print</span> <span class="string">&#x27;@price.setter&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @price.deleter</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">price</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span> <span class="string">&#x27;@price.deleter&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ############### 调用 ###############</span></span><br><span class="line">obj = Goods()</span><br><span class="line"></span><br><span class="line">obj.price          <span class="comment"># 自动执行 @property 修饰的 price 方法，并获取方法的返回值</span></span><br><span class="line"></span><br><span class="line">obj.price = <span class="number">123</span>    <span class="comment"># 自动执行 @price.setter 修饰的 price 方法，并将  123 赋值给方法的参数</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">del</span> obj.price      <span class="comment"># 自动执行 @price.deleter 修饰的 price 方法</span></span><br></pre></td></tr></table></figure>
+<p>注：经典类中的属性只有一种访问方式，其对应被 @property 修饰的方法<br>
+新式类中的属性有三种访问方式，并分别对应了三个被 @property、@方法名.setter、@方法名.deleter 修饰的方法</p>
+<p>由于新式类中具有三种访问方式，我们可以根据他们几个属性的访问特点，分别将三个方法定义为对同一个属性：获取、修改、删除</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Goods</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="comment"># 原价</span></span><br><span class="line">        self.original_price = <span class="number">100</span></span><br><span class="line">        <span class="comment"># 折扣</span></span><br><span class="line">        self.discount = <span class="number">0.8</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">price</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="comment"># 实际价格 = 原价 * 折扣</span></span><br><span class="line">        new_price = self.original_price * self.discount</span><br><span class="line">        <span class="keyword">return</span> new_price</span><br><span class="line"></span><br><span class="line"><span class="meta">    @price.setter</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">price</span>(<span class="params">self, value</span>):</span></span><br><span class="line">        self.original_price = value</span><br><span class="line"></span><br><span class="line"><span class="meta">    @price.deltter</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">price</span>(<span class="params">self, value</span>):</span></span><br><span class="line">        <span class="keyword">del</span> self.original_price</span><br><span class="line"></span><br><span class="line">obj = Goods()</span><br><span class="line">obj.price         <span class="comment"># 获取商品价格</span></span><br><span class="line">obj.price = <span class="number">200</span>   <span class="comment"># 修改商品原价</span></span><br><span class="line"><span class="keyword">del</span> obj.price     <span class="comment"># 删除商品原价</span></span><br></pre></td></tr></table></figure>
+<p><strong>静态字段方式，创建值为 property 对象的静态字段</strong></p>
+<p>当使用静态字段的方式创建属性时，经典类和新式类无区别</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span>:</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_bar</span>(<span class="params">self</span>):</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;wupeiqi&#x27;</span></span><br><span class="line"></span><br><span class="line">BAR = <span class="built_in">property</span>(get_bar)</span><br><span class="line"></span><br><span class="line">obj = Foo()</span><br><span class="line">reuslt = obj.BAR        <span class="comment"># 自动调用get_bar方法，并获取方法的返回值</span></span><br><span class="line"><span class="built_in">print</span> reuslt</span><br></pre></td></tr></table></figure>
+<p>property 的构造方法中有个四个参数</p>
+<ul>
+<li>第一个参数是<strong>方法名</strong>，调用  <code>对象.属性</code>  时自动触发执行方法</li>
+<li>第二个参数是<strong>方法名</strong>，调用  <code>对象.属性 ＝ XXX</code>  时自动触发执行方法</li>
+<li>第三个参数是<strong>方法名</strong>，调用  <code>del 对象.属性</code>  时自动触发执行方法</li>
+<li>第四个参数是<strong>字符串</strong>，调用  <code>对象.属性.__doc__</code>  ，此参数是该属性的描述信息</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span>：</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class">    <span class="title">def</span> <span class="title">get_bar</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;wupeiqi&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># *必须两个参数</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">set_bar</span>(<span class="params">self, value</span>):</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">return</span> <span class="string">&#x27;set value&#x27;</span> + value</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">del_bar</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;wupeiqi&#x27;</span></span><br><span class="line"></span><br><span class="line">    BAR ＝ <span class="built_in">property</span>(get_bar, set_bar, del_bar, <span class="string">&#x27;description...&#x27;</span>)</span><br><span class="line"></span><br><span class="line">obj = Foo()</span><br><span class="line"></span><br><span class="line">obj.BAR              <span class="comment"># 自动调用第一个参数中定义的方法：get_bar</span></span><br><span class="line">obj.BAR = <span class="string">&quot;alex&quot;</span>     <span class="comment"># 自动调用第二个参数中定义的方法：set_bar方法，并将“alex”当作参数传入</span></span><br><span class="line"><span class="keyword">del</span> Foo.BAR          <span class="comment"># 自动调用第三个参数中定义的方法：del_bar方法</span></span><br><span class="line">obj.BAE.__doc__      <span class="comment"># 自动获取第四个参数中设置的值：description...</span></span><br></pre></td></tr></table></figure>
+<p>由于静态字段方式创建属性具有三种访问方式，我们可以根据他们几个属性的访问特点，分别将三个方法定义为对同一个属性：获取、修改、删除</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Goods</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="comment"># 原价</span></span><br><span class="line">        self.original_price = <span class="number">100</span></span><br><span class="line">        <span class="comment"># 折扣</span></span><br><span class="line">        self.discount = <span class="number">0.8</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_price</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="comment"># 实际价格 = 原价 * 折扣</span></span><br><span class="line">        new_price = self.original_price * self.discount</span><br><span class="line">        <span class="keyword">return</span> new_price</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">set_price</span>(<span class="params">self, value</span>):</span></span><br><span class="line">        self.original_price = value</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">del_price</span>(<span class="params">self, value</span>):</span></span><br><span class="line">        <span class="keyword">del</span> self.original_price</span><br><span class="line"></span><br><span class="line">    PRICE = <span class="built_in">property</span>(get_price, set_price, del_price, <span class="string">&#x27;价格属性描述...&#x27;</span>)</span><br><span class="line"></span><br><span class="line">obj = Goods()</span><br><span class="line">obj.PRICE         <span class="comment"># 获取商品价格</span></span><br><span class="line">obj.PRICE = <span class="number">200</span>   <span class="comment"># 修改商品原价</span></span><br><span class="line"><span class="keyword">del</span> obj.PRICE     <span class="comment"># 删除商品原价</span></span><br></pre></td></tr></table></figure>
+<p>注意：Python WEB 框架 Django 的视图中 request.POST 就是使用的静态字段的方式创建的属性</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WSGIRequest</span>(<span class="params">http.HttpRequest</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, environ</span>):</span></span><br><span class="line">        script_name = get_script_name(environ)</span><br><span class="line">        path_info = get_path_info(environ)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> path_info:</span><br><span class="line">            <span class="comment"># Sometimes PATH_INFO exists, but is empty (e.g. accessing</span></span><br><span class="line">            <span class="comment"># the SCRIPT_NAME URL without a trailing slash). We really need to</span></span><br><span class="line">            <span class="comment"># operate as if they&#x27;d requested &#x27;/&#x27;. Not amazingly nice to force</span></span><br><span class="line">            <span class="comment"># the path like this, but should be harmless.</span></span><br><span class="line">            path_info = <span class="string">&#x27;/&#x27;</span></span><br><span class="line">        self.environ = environ</span><br><span class="line">        self.path_info = path_info</span><br><span class="line">        self.path = <span class="string">&#x27;%s/%s&#x27;</span> % (script_name.rstrip(<span class="string">&#x27;/&#x27;</span>), path_info.lstrip(<span class="string">&#x27;/&#x27;</span>))</span><br><span class="line">        self.META = environ</span><br><span class="line">        self.META[<span class="string">&#x27;PATH_INFO&#x27;</span>] = path_info</span><br><span class="line">        self.META[<span class="string">&#x27;SCRIPT_NAME&#x27;</span>] = script_name</span><br><span class="line">        self.method = environ[<span class="string">&#x27;REQUEST_METHOD&#x27;</span>].upper()</span><br><span class="line">        _, content_params = cgi.parse_header(environ.get(<span class="string">&#x27;CONTENT_TYPE&#x27;</span>, <span class="string">&#x27;&#x27;</span>))</span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;charset&#x27;</span> <span class="keyword">in</span> content_params:</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                codecs.lookup(content_params[<span class="string">&#x27;charset&#x27;</span>])</span><br><span class="line">            <span class="keyword">except</span> LookupError:</span><br><span class="line">                <span class="keyword">pass</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                self.encoding = content_params[<span class="string">&#x27;charset&#x27;</span>]</span><br><span class="line">        self._post_parse_error = <span class="literal">False</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            content_length = <span class="built_in">int</span>(environ.get(<span class="string">&#x27;CONTENT_LENGTH&#x27;</span>))</span><br><span class="line">        <span class="keyword">except</span> (ValueError, TypeError):</span><br><span class="line">            content_length = <span class="number">0</span></span><br><span class="line">        self._stream = LimitedStream(self.environ[<span class="string">&#x27;wsgi.input&#x27;</span>], content_length)</span><br><span class="line">        self._read_started = <span class="literal">False</span></span><br><span class="line">        self.resolver_match = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_get_scheme</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self.environ.get(<span class="string">&#x27;wsgi.url_scheme&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_get_request</span>(<span class="params">self</span>):</span></span><br><span class="line">        warnings.warn(<span class="string">&#x27;`request.REQUEST` is deprecated, use `request.GET` or &#x27;</span></span><br><span class="line">                      <span class="string">&#x27;`request.POST` instead.&#x27;</span>, RemovedInDjango19Warning, <span class="number">2</span>)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> <span class="built_in">hasattr</span>(self, <span class="string">&#x27;_request&#x27;</span>):</span><br><span class="line">            self._request = datastructures.MergeDict(self.POST, self.GET)</span><br><span class="line">        <span class="keyword">return</span> self._request</span><br><span class="line"></span><br><span class="line"><span class="meta">    @cached_property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">GET</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="comment"># The WSGI spec says &#x27;QUERY_STRING&#x27; may be absent.</span></span><br><span class="line">        raw_query_string = get_bytes_from_wsgi(self.environ, <span class="string">&#x27;QUERY_STRING&#x27;</span>, <span class="string">&#x27;&#x27;</span>)</span><br><span class="line">        <span class="keyword">return</span> http.QueryDict(raw_query_string, encoding=self._encoding)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># ############### 看这里看这里  ###############</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_get_post</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> <span class="built_in">hasattr</span>(self, <span class="string">&#x27;_post&#x27;</span>):</span><br><span class="line">            self._load_post_and_files()</span><br><span class="line">        <span class="keyword">return</span> self._post</span><br><span class="line"></span><br><span class="line">    <span class="comment"># ############### 看这里看这里  ###############</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_set_post</span>(<span class="params">self, post</span>):</span></span><br><span class="line">        self._post = post</span><br><span class="line"></span><br><span class="line"><span class="meta">    @cached_property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">COOKIES</span>(<span class="params">self</span>):</span></span><br><span class="line">        raw_cookie = get_str_from_wsgi(self.environ, <span class="string">&#x27;HTTP_COOKIE&#x27;</span>, <span class="string">&#x27;&#x27;</span>)</span><br><span class="line">        <span class="keyword">return</span> http.parse_cookie(raw_cookie)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_get_files</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> <span class="built_in">hasattr</span>(self, <span class="string">&#x27;_files&#x27;</span>):</span><br><span class="line">            self._load_post_and_files()</span><br><span class="line">        <span class="keyword">return</span> self._files</span><br><span class="line"></span><br><span class="line">    <span class="comment"># ############### 看这里看这里  ###############</span></span><br><span class="line">    POST = <span class="built_in">property</span>(_get_post, _set_post)</span><br><span class="line"></span><br><span class="line">    FILES = <span class="built_in">property</span>(_get_files)</span><br><span class="line">    REQUEST = <span class="built_in">property</span>(_get_request)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>所以，定义属性共有两种方式，分别是【装饰器】和【静态字段】，而【装饰器】方式针对经典类和新式类又有所不同。</p>
+<h3 id="类成员的修饰符"><a class="markdownIt-Anchor" href="#类成员的修饰符">#</a> 类成员的修饰符</h3>
+<p>类的所有成员在上一步骤中已经做了详细的介绍，对于每一个类的成员而言都有两种形式：</p>
+<ul>
+<li>公有成员，在任何地方都能访问</li>
+<li>私有成员，只有在类的内部才能方法</li>
+</ul>
+<p><strong>私有成员和公有成员的定义不同</strong>：私有成员命名时，前两个字符是下划线。（特殊成员除外，例如：<strong>init</strong>、<strong>call</strong>、<strong>dict</strong> 等）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.name = <span class="string">&#x27;公有字段&#x27;</span></span><br><span class="line">        self.__foo = <span class="string">&quot;私有字段&quot;</span></span><br></pre></td></tr></table></figure>
+<p><strong>私有成员和公有成员的访问限制不同</strong>：</p>
+<p>静态字段</p>
+<ul>
+<li>公有静态字段：类可以访问；类内部可以访问；派生类中可以访问</li>
+<li>私有静态字段：仅类内部可以访问；</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span>:</span></span><br><span class="line"></span><br><span class="line">    name = <span class="string">&quot;公有静态字段&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">func</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span> C.name</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">D</span>(<span class="params">C</span>):</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">show</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span> C.name</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">C.name         <span class="comment"># 类访问</span></span><br><span class="line"></span><br><span class="line">obj = C()</span><br><span class="line">obj.func()     <span class="comment"># 类内部可以访问</span></span><br><span class="line"></span><br><span class="line">obj_son = D()</span><br><span class="line">obj_son.show() <span class="comment"># 派生类中可以访问</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span>:</span></span><br><span class="line"></span><br><span class="line">    __name = <span class="string">&quot;私有静态字段&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">func</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span> C.__name</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">D</span>(<span class="params">C</span>):</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">show</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span> C.__name</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">C.__name       <span class="comment"># 类访问            ==&gt; 错误</span></span><br><span class="line"></span><br><span class="line">obj = C()</span><br><span class="line">obj.func()     <span class="comment"># 类内部可以访问     ==&gt; 正确</span></span><br><span class="line"></span><br><span class="line">obj_son = D()</span><br><span class="line">obj_son.show() <span class="comment"># 派生类中可以访问   ==&gt; 错误</span></span><br></pre></td></tr></table></figure>
+<p>普通字段</p>
+<ul>
+<li>公有普通字段：对象可以访问；类内部可以访问；派生类中可以访问</li>
+<li>私有普通字段：仅类内部可以访问；</li>
+</ul>
+<p>ps：如果想要强制访问私有字段，可以通过 【对象._类名<strong>私有字段明 】访问（如：obj._C</strong>foo），不建议强制访问私有成员。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.foo = <span class="string">&quot;公有字段&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">func</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span> self.foo 　<span class="comment">#　类内部访问</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">D</span>(<span class="params">C</span>):</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">show</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span> self.foo　＃　派生类中访问</span><br><span class="line"></span><br><span class="line">obj = C()</span><br><span class="line"></span><br><span class="line">obj.foo     <span class="comment"># 通过对象访问</span></span><br><span class="line">obj.func()  <span class="comment"># 类内部访问</span></span><br><span class="line"></span><br><span class="line">obj_son = D();</span><br><span class="line">obj_son.show()  <span class="comment"># 派生类中访问</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.__foo = <span class="string">&quot;私有字段&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">func</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span> self.foo 　<span class="comment">#　类内部访问</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">D</span>(<span class="params">C</span>):</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">show</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span> self.foo　＃　派生类中访问</span><br><span class="line"></span><br><span class="line">obj = C()</span><br><span class="line"></span><br><span class="line">obj.__foo     <span class="comment"># 通过对象访问    ==&gt; 错误</span></span><br><span class="line">obj.func()  <span class="comment"># 类内部访问        ==&gt; 正确</span></span><br><span class="line"></span><br><span class="line">obj_son = D();</span><br><span class="line">obj_son.show()  <span class="comment"># 派生类中访问  ==&gt; 错误</span></span><br></pre></td></tr></table></figure>
+<p>方法、属性的访问于上述方式相似，即：私有成员只能在类内部使用</p>
+<p><em>ps：非要访问私有属性的话，可以通过 对象._类__属性名</em></p>
+<h3 id="类的特殊成员"><a class="markdownIt-Anchor" href="#类的特殊成员">#</a> 类的特殊成员</h3>
+<p>上文介绍了 Python 的类成员以及成员修饰符，从而了解到类中有字段、方法和属性三大类成员，并且成员名前如果有两个下划线，则表示该成员是私有成员，私有成员只能由类内部调用。无论人或事物往往都有不按套路出牌的情况，Python 的类成员也是如此，存在着一些具有特殊含义的成员，详情如下：</p>
+<p><code>__doc__</code></p>
+<p>表示类的描述信息</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot; 描述类信息，这是用于看片的神奇 &quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">func</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span> Foo.__doc__</span><br><span class="line"><span class="comment">#输出：描述类信息，这是用于看片的神奇</span></span><br></pre></td></tr></table></figure>
+<p><code>__module__、__class__</code></p>
+<p><code>__module__</code>  表示当前操作的对象在那个模块</p>
+<p><code>__class__</code>  表示当前操作的对象的类是什么</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.name = <span class="string">&#x27;wupeiqi&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># lib/aa.py</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> lib.aa <span class="keyword">import</span> C</span><br><span class="line"></span><br><span class="line">obj = C()</span><br><span class="line"><span class="built_in">print</span> obj.__module__  <span class="comment"># 输出 lib.aa，即：输出模块</span></span><br><span class="line"><span class="built_in">print</span> obj.__class__   <span class="comment"># 输出 lib.aa.C，即：输出类</span></span><br></pre></td></tr></table></figure>
+<p><code>__init__</code></p>
+<p>构造方法，通过类创建对象时，自动触发执行。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, name</span>):</span></span><br><span class="line">        self.name = name</span><br><span class="line">        self.age = <span class="number">18</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">obj = Foo(<span class="string">&#x27;wupeiqi&#x27;</span>) <span class="comment"># 自动执行类中的 __init__ 方法</span></span><br></pre></td></tr></table></figure>
+<p><code>__del__</code></p>
+<p>析构方法，当对象在内存中被释放时，自动触发执行。</p>
+<p>注：此方法一般无须定义，因为 Python 是一门高级语言，程序员在使用时无需关心内存的分配和释放，因为此工作都是交给 Python 解释器来执行，所以，析构函数的调用是由解释器在进行垃圾回收时自动触发执行的。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__del__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<p><code>__call__</code></p>
+<p>对象后面加括号，触发执行。</p>
+<p>注：构造方法的执行是由创建对象触发的，即：对象 = 类名 () ；而对于 <strong>call</strong> 方法的执行是由对象后加括号触发的，即：对象 () 或者 类 ()()</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__call__</span>(<span class="params">self, *args, **kwargs</span>):</span></span><br><span class="line"></span><br><span class="line">        <span class="built_in">print</span> <span class="string">&#x27;__call__&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">obj = Foo() <span class="comment"># 执行 __init__</span></span><br><span class="line">obj()       <span class="comment"># 执行 __call__</span></span><br></pre></td></tr></table></figure>
+<p><code>__dict__</code></p>
+<p>类或对象中的所有成员</p>
+<p>上文中我们知道：类的普通字段属于对象；类中的静态字段和方法等属于类，即：</p>
+<img data-src="/2019/10/30/python-oop/425762-20150907094454965-329821364.jpg" class="" title="img">
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Province</span>:</span></span><br><span class="line"></span><br><span class="line">    country = <span class="string">&#x27;China&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, name, count</span>):</span></span><br><span class="line">        self.name = name</span><br><span class="line">        self.count = count</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">func</span>(<span class="params">self, *args, **kwargs</span>):</span></span><br><span class="line">        <span class="built_in">print</span> <span class="string">&#x27;func&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取类的成员，即：静态字段、方法、</span></span><br><span class="line"><span class="built_in">print</span> Province.__dict__</span><br><span class="line"><span class="comment"># 输出：&#123;&#x27;country&#x27;: &#x27;China&#x27;, &#x27;__module__&#x27;: &#x27;__main__&#x27;, &#x27;func&#x27;: &lt;function func at 0x10be30f50&gt;, &#x27;__init__&#x27;: &lt;function __init__ at 0x10be30ed8&gt;, &#x27;__doc__&#x27;: None&#125;</span></span><br><span class="line"></span><br><span class="line">obj1 = Province(<span class="string">&#x27;HeBei&#x27;</span>,<span class="number">10000</span>)</span><br><span class="line"><span class="built_in">print</span> obj1.__dict__</span><br><span class="line"><span class="comment"># 获取 对象obj1 的成员</span></span><br><span class="line"><span class="comment"># 输出：&#123;&#x27;count&#x27;: 10000, &#x27;name&#x27;: &#x27;HeBei&#x27;&#125;</span></span><br><span class="line"></span><br><span class="line">obj2 = Province(<span class="string">&#x27;HeNan&#x27;</span>, <span class="number">3888</span>)</span><br><span class="line"><span class="built_in">print</span> obj2.__dict__</span><br><span class="line"><span class="comment"># 获取 对象obj1 的成员</span></span><br><span class="line"><span class="comment"># 输出：&#123;&#x27;count&#x27;: 3888, &#x27;name&#x27;: &#x27;HeNan&#x27;&#125;</span></span><br></pre></td></tr></table></figure>
+<p><code>__str__</code></p>
+<p>如果一个类中定义了 <code>__str__</code> 方法，那么在打印 对象 时，默认输出该方法的返回值。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;wupeiqi&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">obj = Foo()</span><br><span class="line"><span class="built_in">print</span> obj</span><br><span class="line"><span class="comment"># 输出：wupeiqi</span></span><br></pre></td></tr></table></figure>
+<p><code>__getitem__、__setitem__、__delitem__</code></p>
+<p>用于索引操作，如字典。以上分别表示获取、设置、删除数据</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__getitem__</span>(<span class="params">self, key</span>):</span></span><br><span class="line">        <span class="built_in">print</span> <span class="string">&#x27;__getitem__&#x27;</span>,key</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__setitem__</span>(<span class="params">self, key, value</span>):</span></span><br><span class="line">        <span class="built_in">print</span> <span class="string">&#x27;__setitem__&#x27;</span>,key,value</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__delitem__</span>(<span class="params">self, key</span>):</span></span><br><span class="line">        <span class="built_in">print</span> <span class="string">&#x27;__delitem__&#x27;</span>,key</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">obj = Foo()</span><br><span class="line"></span><br><span class="line">result = obj[<span class="string">&#x27;k1&#x27;</span>]      <span class="comment"># 自动触发执行 __getitem__</span></span><br><span class="line">obj[<span class="string">&#x27;k2&#x27;</span>] = <span class="string">&#x27;wupeiqi&#x27;</span>   <span class="comment"># 自动触发执行 __setitem__</span></span><br><span class="line"><span class="keyword">del</span> obj[<span class="string">&#x27;k1&#x27;</span>]           <span class="comment"># 自动触发执行 __delitem__</span></span><br></pre></td></tr></table></figure>
+<p><code>__getslice__、__setslice__、__delslice__</code></p>
+<p>该三个方法用于分片操作，如：列表</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__getslice__</span>(<span class="params">self, i, j</span>):</span></span><br><span class="line">        <span class="built_in">print</span> <span class="string">&#x27;__getslice__&#x27;</span>,i,j</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__setslice__</span>(<span class="params">self, i, j, sequence</span>):</span></span><br><span class="line">        <span class="built_in">print</span> <span class="string">&#x27;__setslice__&#x27;</span>,i,j</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__delslice__</span>(<span class="params">self, i, j</span>):</span></span><br><span class="line">        <span class="built_in">print</span> <span class="string">&#x27;__delslice__&#x27;</span>,i,j</span><br><span class="line"></span><br><span class="line">obj = Foo()</span><br><span class="line"></span><br><span class="line">obj[-<span class="number">1</span>:<span class="number">1</span>]                   <span class="comment"># 自动触发执行 __getslice__</span></span><br><span class="line">obj[<span class="number">0</span>:<span class="number">1</span>] = [<span class="number">11</span>,<span class="number">22</span>,<span class="number">33</span>,<span class="number">44</span>]    <span class="comment"># 自动触发执行 __setslice__</span></span><br><span class="line"><span class="keyword">del</span> obj[<span class="number">0</span>:<span class="number">2</span>]                <span class="comment"># 自动触发执行 __delslice__</span></span><br></pre></td></tr></table></figure>
+<p><code>__iter__</code></p>
+<p>用于迭代器，之所以列表、字典、元组可以进行 for 循环，是因为类型内部定义了  <code>__iter__</code></p>
+<p>第一步</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">obj = Foo()</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> obj:</span><br><span class="line">    <span class="built_in">print</span> i</span><br><span class="line"></span><br><span class="line"><span class="comment"># 报错：TypeError: &#x27;Foo&#x27; object is not iterable</span></span><br></pre></td></tr></table></figure>
+<p>第二步</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__iter__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">obj = Foo()</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> obj:</span><br><span class="line">    <span class="built_in">print</span> i</span><br><span class="line"></span><br><span class="line"><span class="comment"># 报错：TypeError: iter() returned non-iterator of type &#x27;NoneType&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>第三步</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, sq</span>):</span></span><br><span class="line">        self.sq = sq</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__iter__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">iter</span>(self.sq)</span><br><span class="line"></span><br><span class="line">obj = Foo([<span class="number">11</span>,<span class="number">22</span>,<span class="number">33</span>,<span class="number">44</span>])</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> obj:</span><br><span class="line">    <span class="built_in">print</span> i</span><br></pre></td></tr></table></figure>
+<p>以上步骤可以看出，for 循环迭代的其实是 iter ([11,22,33,44]) ，所以执行流程可以变更为</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">obj = <span class="built_in">iter</span>([<span class="number">11</span>,<span class="number">22</span>,<span class="number">33</span>,<span class="number">44</span>])</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> obj:</span><br><span class="line">    <span class="built_in">print</span> i</span><br></pre></td></tr></table></figure>
+<p>for 循环内部</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">obj = <span class="built_in">iter</span>([<span class="number">11</span>,<span class="number">22</span>,<span class="number">33</span>,<span class="number">44</span>])</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    val = obj.<span class="built_in">next</span>()</span><br><span class="line">    <span class="built_in">print</span> val</span><br></pre></td></tr></table></figure>
+<p><code>__new__ 和 __metaclass__</code></p>
+<p>阅读以下代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">obj = Foo()   <span class="comment"># obj是通过Foo类实例化的对象</span></span><br></pre></td></tr></table></figure>
+<p>上述代码中，obj 是通过 Foo 类实例化的对象，其实，不仅 obj 是一个对象，Foo 类本身也是一个对象，因为在<strong> Python 中一切事物都是对象</strong>。</p>
+<p>如果按照一切事物都是对象的理论：obj 对象是通过执行 Foo 类的构造方法创建，那么 Foo 类对象应该也是通过执行某个类的 构造方法 创建。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span> <span class="built_in">type</span>(obj) <span class="comment"># 输出：&lt;class &#x27;__main__.Foo&#x27;&gt;     表示，obj 对象由Foo类创建</span></span><br><span class="line"><span class="built_in">print</span> <span class="built_in">type</span>(Foo) <span class="comment"># 输出：&lt;type &#x27;type&#x27;&gt;              表示，Foo类对象由 type 类创建</span></span><br></pre></td></tr></table></figure>
+<p>所以，<strong>obj 对象是 Foo 类的一个实例</strong>，<strong>Foo 类对象是 type 类的一个实例</strong>，即：Foo 类对象 是通过 type 类的构造方法创建。</p>
+<p>那么，创建类就可以有两种方式：</p>
+<p><strong>a). 普通方式</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">func</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span> <span class="string">&#x27;hello wupeiqi&#x27;</span></span><br></pre></td></tr></table></figure>
+<p><strong>b). 特殊方式（type 类的构造函数）</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span>(<span class="params">self</span>):</span></span><br><span class="line">    <span class="built_in">print</span> <span class="string">&#x27;hello wupeiqi&#x27;</span></span><br><span class="line"></span><br><span class="line">Foo = <span class="built_in">type</span>(<span class="string">&#x27;Foo&#x27;</span>,(<span class="built_in">object</span>,), &#123;<span class="string">&#x27;func&#x27;</span>: func&#125;)</span><br><span class="line"><span class="comment">#type第一个参数：类名</span></span><br><span class="line"><span class="comment">#type第二个参数：当前类的基类</span></span><br><span class="line"><span class="comment">#type第三个参数：类的成员</span></span><br></pre></td></tr></table></figure>
+<p>＝》 类 是由 type 类实例化产生</p>
+<p>那么问题来了，类默认是由 type 类实例化产生，type 类中如何实现的创建类？类又是如何创建对象？</p>
+<p>答：类中有一个属性  <code>__metaclass__</code> ，其用来表示该类由 谁 来实例化创建，所以，我们可以为  <code>__metaclass__</code>  设置一个 type 类的派生类，从而查看 类 创建的过程。</p>
+<img data-src="/2019/10/30/python-oop/425762-20151020005415755-634423846.png" class="" title="img">
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyType</span>(<span class="params"><span class="built_in">type</span></span>):</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, what, bases=<span class="literal">None</span>, <span class="built_in">dict</span>=<span class="literal">None</span></span>):</span></span><br><span class="line">        <span class="built_in">super</span>(MyType, self).__init__(what, bases, <span class="built_in">dict</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__call__</span>(<span class="params">self, *args, **kwargs</span>):</span></span><br><span class="line">        obj = self.__new__(self, *args, **kwargs)</span><br><span class="line"></span><br><span class="line">        self.__init__(obj)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line"></span><br><span class="line">    __metaclass__ = MyType</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, name</span>):</span></span><br><span class="line">        self.name = name</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__new__</span>(<span class="params">cls, *args, **kwargs</span>):</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">object</span>.__new__(cls, *args, **kwargs)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 第一阶段：解释器从上到下执行代码创建Foo类</span></span><br><span class="line"><span class="comment"># 第二阶段：通过Foo类创建obj对象</span></span><br><span class="line">obj = Foo()</span><br></pre></td></tr></table></figure>
+<p>作者：<span class="exturl" data-url="aHR0cDovL3d3dy5jbmJsb2dzLmNvbS93dXBlaXFpLw==">武沛齐</span><br>
+出处：<span class="exturl" data-url="aHR0cDovL3d3dy5jbmJsb2dzLmNvbS93dXBlaXFpLw==">http://www.cnblogs.com/wupeiqi/</span><br>
+ 本文版权归作者和博客园共有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接。</p>
+
+      <div class="tags">
+          <a href="/tags/python/" rel="tag"><i class="ic i-tag"></i> python</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2019-10-30 19:27:46" itemprop="dateModified" datetime="2019-10-30T19:27:46+08:00">2019-10-30</time>
+  </span>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>著者:  </strong>江边鸟 <i class="ic i-at"><em>@</em></i>露の世
+  </li>
+  <li class="link">
+    <strong>記事へのリンク: </strong>
+    <a href="https://lhchen74.github.io/2019/10/30/python-oop/" title="python oop">https://lhchen74.github.io/2019/10/30/python-oop/</a>
+  </li>
+  <li class="license">
+    <strong>著作権表示:  </strong>このブログ内のすべての記事は、特別な記載がない限り <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> の下のライセンスで保護されています。
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2019/10/29/calculate-time/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclh0m9pdj20zk0m8hdt.jpg" title="calulate cost time">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>calulate cost time</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2019/10/30/python-sqlalchemy/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipeun65urj20zk0m81ii.jpg" title="python sqlalchemy">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>python sqlalchemy</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E6%88%90%E5%91%98"><span class="toc-number">1.</span> <span class="toc-text"> 类的成员</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E6%88%90%E5%91%98%E7%9A%84%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="toc-number">2.</span> <span class="toc-text"> 类成员的修饰符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E7%89%B9%E6%AE%8A%E6%88%90%E5%91%98"><span class="toc-number">3.</span> <span class="toc-text"> 类的特殊成员</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">223</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">26</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item twitter" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;twitter.com&#x2F;yourname"><i class="ic i-twitter"></i></span>
+      <span class="exturl item zhihu" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3Blb3BsZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;yourname"><i class="ic i-zhihu"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLyMvdXNlci9ob21lP2lkPXlvdXJpZA==" title="https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;yourid"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item weibo" data-url="aHR0cHM6Ly93ZWliby5jb20veW91cm5hbWU=" title="https:&#x2F;&#x2F;weibo.com&#x2F;yourname"><i class="ic i-weibo"></i></span>
+      <span class="exturl item about" data-url="aHR0cHM6Ly9hYm91dC5tZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;about.me&#x2F;yourname"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2019/10/29/calculate-time/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2019/10/30/python-sqlalchemy/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2020/03/17/oracle-xml-parse/" title="oracle parse xml">oracle parse xml</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2021/03/04/javascript-es6/" title="es6">es6</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/10/28/base64/" title="Base64 encode">Base64 encode</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/10/05/csharp-webform/" title="C# WebForm">C# WebForm</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2021/03/04/python-trap/" title="python trap">python trap</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2020/04/18/css-example/" title="css example">css example</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2021/03/04/oracle-data-import/" title="oracle data import">oracle data import</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/10/11/python-celery/" title="python celery">python celery</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2021/03/04/html-content-type/" title="html content type">html content type</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/07/15/node-question/" title="node question">node question</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2021</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ Dew's World</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2019/10/30/python-oop/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

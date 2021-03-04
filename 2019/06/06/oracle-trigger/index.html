@@ -1,0 +1,530 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="db" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2019/06/06/oracle-trigger/">
+
+
+
+  <title>
+oracle trigger |
+Dew's World = 露の世</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">oracle trigger
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2019-06-06 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2019-06-06T00:00:00+08:00">2019-06-06</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Dew's World</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giciryrr3rj20zk0m8nhk.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicivghyooj20zk0m8dir.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeyhsblkj20zk0m81kx.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicm0n457cj20zk0m8e81.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicliierfjj20zk0m8npd.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipey0a334j20zk0m8qpt.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2019/06/06/oracle-trigger/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>十步杀一人，千里不留行；事了拂身去，深藏功与名。 - 李白</p>
+</blockquote>
+<h2 id="触发器类型及划分"><a class="markdownIt-Anchor" href="#触发器类型及划分">#</a> 触发器类型及划分</h2>
+<table>
+<thead>
+<tr>
+<th>按划分类型</th>
+<th>触发器的类型</th>
+<th>触发条件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>按照触发的时间</td>
+<td>BEFORE 触发器，指事前触发器</td>
+<td>在触发语句执行前触发器被触发</td>
+</tr>
+<tr>
+<td></td>
+<td>AFTER 触发器，指事后触发器</td>
+<td>在触发语句执行以后触发器被触发</td>
+</tr>
+<tr>
+<td></td>
+<td>INSTEAD OF 触发器，指替代触发器</td>
+<td>触发语句被触发器操作替代</td>
+</tr>
+<tr>
+<td>按照触发的事件</td>
+<td>DML 触发器</td>
+<td>对表或视图执行 DML 操作时触发的触发器</td>
+</tr>
+<tr>
+<td></td>
+<td>DDL 触发器</td>
+<td>在数据库中执行 DDL 操作时触发的触发器</td>
+</tr>
+<tr>
+<td></td>
+<td>用户事件触发器</td>
+<td>与用户执行的 DCL 操作或 LOGON/LOGOFF 操作相关的触发器</td>
+</tr>
+<tr>
+<td></td>
+<td>系统事件触发器</td>
+<td>是指由数据库系统事件触发的触发器</td>
+</tr>
+</tbody>
+</table>
+<p>其中，DML 触发器，按照触发时 DML 操作影响的记录多少，又可分为：</p>
+<ul>
+<li>行级触发器：DML 语句每操作一行，行级触发器就会被调用一次</li>
+<li>语句级触发器：DML 语句不论影响多少行数据，语句级触发器只被调用一次</li>
+</ul>
+<p>DDL 触发器又可以分为：</p>
+<ul>
+<li>数据库级 DDL 触发器：数据库中任何用户执行了相应的 DDL 操作该类触发器都被触发。</li>
+<li>用户级 DDL 触发器：只有在创建触发器时指定方案的用户执行相应的 DDL 操作时触发器才被触发，其他用户执行该 DDL 操作时触发器不会被触发。</li>
+</ul>
+<h2 id="触发器相关使用"><a class="markdownIt-Anchor" href="#触发器相关使用">#</a> 触发器相关使用</h2>
+<h3 id="安全性检查"><a class="markdownIt-Anchor" href="#安全性检查">#</a> 安全性检查</h3>
+<p>利用触发器对在 scott.emp 表上执行的 DML 操作进行安全性检查，只有 scott 用户登录数据库后才能向该表中执行 DML 操作，这是一个语句级触发器，DML 语句不论影响多少行数据，触发器只被调用一次。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">or</span> replace <span class="keyword">trigger</span> tri_dm1</span><br><span class="line"> before <span class="keyword">insert</span> <span class="keyword">or</span> update <span class="keyword">or</span> <span class="keyword">delete</span> <span class="keyword">on</span> scott.emp</span><br><span class="line"> <span class="keyword">begin</span></span><br><span class="line">   if <span class="keyword">user</span> <span class="operator">&lt;&gt;</span><span class="string">&#x27;SCOTT&#x27;</span> <span class="keyword">then</span></span><br><span class="line">     raise_application_error(<span class="number">-20001</span>,<span class="string">&#x27;You don&#x27;&#x27;t have access to modify this table.&#x27;</span>);</span><br><span class="line">   <span class="keyword">end</span> if;</span><br><span class="line"> <span class="keyword">end</span>;</span><br><span class="line"> <span class="operator">/</span></span><br></pre></td></tr></table></figure>
+<h3 id="数据复制"><a class="markdownIt-Anchor" href="#数据复制">#</a> 数据复制</h3>
+<p>在 scott 用户下创建能实现 scott.emp 和 employee 两表之间同步复制的 DML 触发器。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">or</span> replace <span class="keyword">trigger</span> duplicate_emp</span><br><span class="line"> after update <span class="keyword">or</span> <span class="keyword">insert</span> <span class="keyword">or</span> <span class="keyword">delete</span> <span class="keyword">on</span> scott.emp</span><br><span class="line"> <span class="keyword">for</span> <span class="keyword">each</span> <span class="type">row</span></span><br><span class="line"> <span class="keyword">begin</span></span><br><span class="line">   if inserting <span class="keyword">then</span></span><br><span class="line">     <span class="keyword">insert</span> <span class="keyword">into</span>  employee <span class="keyword">values</span> (:new.empno,:new.ename,:new.job,:new.mgr,</span><br><span class="line">                                   :new.hiredate,:new.sal,:new.comm,:new.deptno);</span><br><span class="line">   elsif deleting <span class="keyword">then</span></span><br><span class="line">     <span class="keyword">delete</span> <span class="keyword">from</span> employee <span class="keyword">where</span> empno<span class="operator">=</span>:old.empno;</span><br><span class="line">   <span class="keyword">else</span></span><br><span class="line">     update employee <span class="keyword">set</span> empno<span class="operator">=</span>:new.empno,ename<span class="operator">=</span>:new.ename,job<span class="operator">=</span>:new.job,</span><br><span class="line">                         mgr<span class="operator">=</span>:new.mgr,hiredate<span class="operator">=</span>:new.hiredate,sal<span class="operator">=</span>:new.sal,comm<span class="operator">=</span>:new.comm,</span><br><span class="line">                          deptno<span class="operator">=</span>:new.deptno</span><br><span class="line">     <span class="keyword">where</span> empno<span class="operator">=</span>:old.empno;</span><br><span class="line">   <span class="keyword">end</span> if;</span><br><span class="line">  <span class="keyword">end</span>;</span><br><span class="line"> <span class="operator">/</span></span><br></pre></td></tr></table></figure>
+<h3 id="日志记录"><a class="markdownIt-Anchor" href="#日志记录">#</a> 日志记录</h3>
+<p>在 emp 表上建立语句级触发器，将对 emp 表执行的操作记录到 emp_log 表中。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">or</span> replace <span class="keyword">trigger</span> dm1_log</span><br><span class="line">after <span class="keyword">insert</span> <span class="keyword">or</span> update <span class="keyword">or</span> <span class="keyword">delete</span> <span class="keyword">on</span> scott.emp</span><br><span class="line"><span class="keyword">declare</span></span><br><span class="line">  oper emp_log.oper<span class="operator">%</span>type;</span><br><span class="line"> <span class="keyword">begin</span></span><br><span class="line">   if inserting <span class="keyword">then</span></span><br><span class="line">      oper:<span class="operator">=</span><span class="string">&#x27;insert&#x27;</span>;</span><br><span class="line">   elsif deleting <span class="keyword">then</span></span><br><span class="line">      oper:<span class="operator">=</span><span class="string">&#x27;delete&#x27;</span>;</span><br><span class="line">   <span class="keyword">else</span></span><br><span class="line">      oper:<span class="operator">=</span><span class="string">&#x27;update&#x27;</span>;</span><br><span class="line">   <span class="keyword">end</span> if;</span><br><span class="line">   <span class="keyword">insert</span> <span class="keyword">into</span> emp_log  <span class="keyword">values</span>(<span class="keyword">user</span>,sysdate,oper);</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"><span class="operator">/</span></span><br></pre></td></tr></table></figure>
+<h3 id="表字段预处理"><a class="markdownIt-Anchor" href="#表字段预处理">#</a> 表字段预处理</h3>
+<p>在插入之前用 mtl_system_items_b 表字段更新 som_edi_temp_d 表的字段</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">or</span> replace <span class="keyword">trigger</span> update_som_edi_temp</span><br><span class="line">before <span class="keyword">insert</span> <span class="keyword">on</span> som_edi_temp_d</span><br><span class="line"><span class="keyword">for</span> <span class="keyword">each</span> <span class="type">row</span></span><br><span class="line"><span class="keyword">declare</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">select</span> msib.default_shipping_org <span class="keyword">into</span> :new.ship_from_org_id</span><br><span class="line">  <span class="keyword">from</span>   mtl_customer_items mci</span><br><span class="line">        ,mtl_customer_item_xrefs mcix</span><br><span class="line">        ,mtl_system_items_b msib</span><br><span class="line">  <span class="keyword">where</span> <span class="number">1</span><span class="operator">=</span> <span class="number">1</span></span><br><span class="line">  <span class="keyword">and</span>   mci.customer_item_id <span class="operator">=</span> mcix.customer_item_id</span><br><span class="line">  <span class="keyword">and</span>   mci.inactive_flag <span class="operator">=</span> <span class="string">&#x27;N&#x27;</span></span><br><span class="line">  <span class="keyword">and</span>   mcix.inventory_item_id <span class="operator">=</span> msib.inventory_item_id</span><br><span class="line">  <span class="keyword">and</span>   mcix.inactive_flag <span class="operator">=</span> <span class="string">&#x27;N&#x27;</span></span><br><span class="line">  <span class="keyword">and</span>   mci.customer_item_number <span class="operator">=</span> :new.customer_item_number</span><br><span class="line">  <span class="keyword">group</span> <span class="keyword">by</span> msib.default_shipping_org;</span><br><span class="line">exception</span><br><span class="line">   <span class="keyword">when</span> others <span class="keyword">then</span></span><br><span class="line">        <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">end</span>;</span><br></pre></td></tr></table></figure>
+
+      <div class="tags">
+          <a href="/tags/db/" rel="tag"><i class="ic i-tag"></i> db</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2020-08-11 19:54:09" itemprop="dateModified" datetime="2020-08-11T19:54:09+08:00">2020-08-11</time>
+  </span>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>著者:  </strong>江边鸟 <i class="ic i-at"><em>@</em></i>露の世
+  </li>
+  <li class="link">
+    <strong>記事へのリンク: </strong>
+    <a href="https://lhchen74.github.io/2019/06/06/oracle-trigger/" title="oracle trigger">https://lhchen74.github.io/2019/06/06/oracle-trigger/</a>
+  </li>
+  <li class="license">
+    <strong>著作権表示:  </strong>このブログ内のすべての記事は、特別な記載がない限り <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> の下のライセンスで保護されています。
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2019/06/06/python-fire/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipeuv80yoj20zk0m8kjl.jpg" title="python fire">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>python fire</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2019/06/06/excerpt/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclfdu6exj20zk0m87hw.jpg" title="article excerpt">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>article excerpt</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A6%E5%8F%91%E5%99%A8%E7%B1%BB%E5%9E%8B%E5%8F%8A%E5%88%92%E5%88%86"><span class="toc-number">1.</span> <span class="toc-text"> 触发器类型及划分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A6%E5%8F%91%E5%99%A8%E7%9B%B8%E5%85%B3%E4%BD%BF%E7%94%A8"><span class="toc-number">2.</span> <span class="toc-text"> 触发器相关使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E6%80%A7%E6%A3%80%E6%9F%A5"><span class="toc-number">2.1.</span> <span class="toc-text"> 安全性检查</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%A4%8D%E5%88%B6"><span class="toc-number">2.2.</span> <span class="toc-text"> 数据复制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95"><span class="toc-number">2.3.</span> <span class="toc-text"> 日志记录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8%E5%AD%97%E6%AE%B5%E9%A2%84%E5%A4%84%E7%90%86"><span class="toc-number">2.4.</span> <span class="toc-text"> 表字段预处理</span></a></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">223</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">26</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item twitter" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;twitter.com&#x2F;yourname"><i class="ic i-twitter"></i></span>
+      <span class="exturl item zhihu" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3Blb3BsZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;yourname"><i class="ic i-zhihu"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLyMvdXNlci9ob21lP2lkPXlvdXJpZA==" title="https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;yourid"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item weibo" data-url="aHR0cHM6Ly93ZWliby5jb20veW91cm5hbWU=" title="https:&#x2F;&#x2F;weibo.com&#x2F;yourname"><i class="ic i-weibo"></i></span>
+      <span class="exturl item about" data-url="aHR0cHM6Ly9hYm91dC5tZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;about.me&#x2F;yourname"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2019/06/06/python-fire/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2019/06/06/excerpt/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/03/01/javascript-d3/" title="d3">d3</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/12/20/java-httpclient/" title="Java 11 HttpClient Examples">Java 11 HttpClient Examples</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/04/17/jwt/" title="JSON Web Token 入门教程">JSON Web Token 入门教程</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/02/28/python-generator/" title="python yield">python yield</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2021/03/04/shell/" title="shell">shell</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2021/03/04/python-args/" title="python func args">python func args</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/11/18/complement-number/" title="原码, 反码, 补码">原码, 反码, 补码</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/10/29/python-buliltin-global/" title="python内置全局变量">python内置全局变量</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/10/25/php-command/" title="php command">php command</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/10/28/csharp-async/" title="C#中 Thread，Task，Async&#x2F;Await，IAsyncResult 的那些事儿！">C#中 Thread，Task，Async/Await，IAsyncResult 的那些事儿！</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2021</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ Dew's World</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2019/06/06/oracle-trigger/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

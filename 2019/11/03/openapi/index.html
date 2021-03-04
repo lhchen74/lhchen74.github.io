@@ -1,0 +1,518 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="other" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2019/11/03/openapi/">
+
+
+
+  <title>
+Swagger 2 与 OpenAPI 3 |
+Dew's World = 露の世</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">Swagger 2 与 OpenAPI 3
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2019-11-03 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2019-11-03T00:00:00+08:00">2019-11-03</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Dew's World</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipey0a334j20zk0m8qpt.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclfb3vzhj20zk0m8wny.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeubcbajj20zk0m8h1h.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipesx5fdwj20zk0m81kx.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicitht3xtj20zk0m8k5v.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipetlbztpj20zk0m84qp.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2019/11/03/openapi/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>转载：<span class="exturl" data-url="aHR0cHM6Ly93d3cuamlhbnNodS5jb20vcC84NzliYWYxY2ZmMDc=">Swagger 2 与 OpenAPI - miku 设定 - 简书</span></p>
+</blockquote>
+<h3 id="重命名"><a class="markdownIt-Anchor" href="#重命名">#</a> 重命名</h3>
+<p>swagger: 2.0<br>
+openAPI: 3.0.0</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">openapi:</span> <span class="number">3.0</span><span class="number">.0</span></span><br><span class="line"><span class="attr">info:</span></span><br><span class="line">  <span class="attr">title:</span> <span class="string">Sample</span> <span class="string">API</span></span><br><span class="line">  <span class="attr">description:</span> <span class="string">Optional</span> <span class="string">multiline</span> <span class="string">or</span> <span class="string">single-line</span> <span class="string">description.</span></span><br><span class="line">  <span class="attr">version:</span> <span class="number">0.1</span><span class="number">.9</span></span><br></pre></td></tr></table></figure>
+<img data-src="/2019/11/03/openapi/1.png" class="" title="img">
+<img data-src="/2019/11/03/openapi/2.png" class="" title="img">
+<hr>
+<h3 id="网址结构"><a class="markdownIt-Anchor" href="#网址结构">#</a> 网址结构</h3>
+<p>Swagger 2.0 基础 URL 结构</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">info:</span></span><br><span class="line">  <span class="attr">title:</span> <span class="string">Swagger</span> <span class="string">Sample</span> <span class="string">App</span></span><br><span class="line">  <span class="attr">host:</span> <span class="string">example.com</span></span><br><span class="line">  <span class="attr">basePath:</span> <span class="string">/v1</span></span><br><span class="line">  <span class="attr">schemes:</span> [<span class="string">&quot;http&quot;</span>, <span class="string">&quot;https&quot;</span>]</span><br></pre></td></tr></table></figure>
+<p>OpenAPI 3.0 基础 URL 结构</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">servers:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">url:</span> <span class="string">https://&#123;subdomain&#125;.site.com/&#123;version&#125;</span></span><br><span class="line">  <span class="attr">description:</span> <span class="string">The</span> <span class="string">main</span> <span class="string">prod</span> <span class="string">server</span></span><br><span class="line">    <span class="attr">variables:</span></span><br><span class="line">      <span class="attr">subdomain:</span></span><br><span class="line">        <span class="attr">default:</span> <span class="string">production</span></span><br><span class="line">      <span class="attr">version:</span></span><br><span class="line">        <span class="attr">enum:</span></span><br><span class="line">          <span class="bullet">-</span> <span class="string">v1</span></span><br><span class="line">          <span class="bullet">-</span> <span class="string">v2</span></span><br><span class="line">        <span class="attr">default:</span> <span class="string">v2</span></span><br></pre></td></tr></table></figure>
+<p>我们可以定义一个基础 url，通过 {} 里面装载变量值（类似于路径模版），在使用时，通过 variables 属性可以定义变量值，当然也可以给定默认值</p>
+<hr>
+<h3 id="组件"><a class="markdownIt-Anchor" href="#组件">#</a> 组件</h3>
+<p>Swagger 2 中的 definitions 概念在 OpenAPI 3 中标准化为【组件】，可以在多个地方重复使用且可定义，组件列表如下：</p>
+<ul>
+<li>响应 responses （已存在）</li>
+<li>参数 parameters （已存在）</li>
+<li>示例 examples （新）</li>
+<li>请求体 requestBodies（新）</li>
+<li>标题 headers （新）</li>
+<li>链接 links （新）</li>
+<li>回调 callbacks （新）</li>
+<li>模式 schemas （更新）</li>
+<li>安全体系 securitySchemes（更新）</li>
+</ul>
+<hr>
+<h3 id="请求格式"><a class="markdownIt-Anchor" href="#请求格式">#</a> 请求格式</h3>
+<p>Swagger 2</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">/pets/&#123;petId&#125;:</span></span><br><span class="line">  <span class="attr">post:</span></span><br><span class="line">    <span class="attr">parameters:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">petId</span></span><br><span class="line">        <span class="attr">in:</span> <span class="string">path</span></span><br><span class="line">        <span class="attr">description:</span> <span class="string">ID</span> <span class="string">of</span> <span class="string">pet</span> <span class="string">to</span> <span class="string">update</span></span><br><span class="line">        <span class="attr">required:</span> <span class="literal">true</span></span><br><span class="line">        <span class="attr">type:</span> <span class="string">string</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">user</span></span><br><span class="line">        <span class="attr">in:</span> <span class="string">body</span></span><br><span class="line">        <span class="attr">description:</span> <span class="string">user</span> <span class="string">to</span> <span class="string">add</span> <span class="string">to</span> <span class="string">the</span> <span class="string">system</span></span><br><span class="line">        <span class="attr">required:</span> <span class="literal">true</span></span><br><span class="line">        <span class="attr">schema:</span></span><br><span class="line">          <span class="attr">type:</span> <span class="string">array</span></span><br><span class="line">          <span class="attr">items:</span></span><br><span class="line">            <span class="attr">type:</span> <span class="string">string</span></span><br></pre></td></tr></table></figure>
+<p>Swagger 2 最容易混淆的方面之一是 body /formData。它们是参数的子集，只能有一个或另一个，如果你使用 body，格式与参数的其余部分不同（只能使用 body 参数，名称不相关，格式不同，等等） ???</p>
+<p>OpenAPI 3</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">/pets/&#123;petId&#125;:</span></span><br><span class="line">  <span class="attr">post:</span></span><br><span class="line">    <span class="attr">requestBody:</span></span><br><span class="line">      <span class="attr">description:</span> <span class="string">user</span> <span class="string">to</span> <span class="string">add</span> <span class="string">to</span> <span class="string">the</span> <span class="string">system</span></span><br><span class="line">      <span class="attr">required:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">content:</span></span><br><span class="line">        <span class="attr">application/json:</span></span><br><span class="line">          <span class="attr">schema:</span></span><br><span class="line">            <span class="attr">type:</span> <span class="string">array</span></span><br><span class="line">            <span class="attr">items:</span></span><br><span class="line">              <span class="string">$ref:</span> <span class="string">&quot;#/components/schemas/Pet&quot;</span></span><br><span class="line">          <span class="attr">examples:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Fluffy</span></span><br><span class="line">              <span class="attr">petType:</span> <span class="string">Cat</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">http://example.com/pet.json</span></span><br><span class="line">    <span class="attr">parameters:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">petId</span></span><br><span class="line">        <span class="attr">in:</span> <span class="string">path</span></span><br><span class="line">        <span class="attr">description:</span> <span class="string">ID</span> <span class="string">of</span> <span class="string">pet</span> <span class="string">to</span> <span class="string">update</span></span><br><span class="line">        <span class="attr">required:</span> <span class="literal">true</span></span><br><span class="line">        <span class="attr">type:</span> <span class="string">string</span></span><br></pre></td></tr></table></figure>
+<p>现在，body 已经被移入了它自己的叫做 requestBody 的部分，并且 formData 也已经被合并到里面。另外，cookies 已经被添加为参数类型（除了现有的标题，路径和查询选项之外）。</p>
+<p>requestBody 有很多新的功能。现在可以提供 example（或数组 examples）for requestBody。这是非常灵活的（你可以传入一个完整的例子，一个参考，甚至是一个 URL 的例子）。</p>
+<p>新的 requestBody 支持不同的媒体类型（content 是一个 MIME_Types 的数组，像 application/json 或者 text/plain，当然你也可以用 */* 捕捉所有）。</p>
+<p>对于参数，你有两个选择你想如何定义它们。你可以定义一个 “模式”（像原来 2.0 那样），可以尽情地描述项目。如果更复杂，可以使用 “requestBody” 中的 “content”。</p>
+<hr>
+<h3 id="响应格式"><a class="markdownIt-Anchor" href="#响应格式">#</a> 响应格式</h3>
+<p>通配符的出现，我们可以以 “4XX” 来定义响应，而不必单独定义每个响应码。<br>
+响应和响应头可以更复杂。可以使用 “content” 对象（如在请求中）的有效载荷。</p>
+<h3 id="回调概念"><a class="markdownIt-Anchor" href="#回调概念">#</a> 回调概念</h3>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">myWebhook:</span></span><br><span class="line">  <span class="string">&quot;$request.body#/url&quot;</span><span class="string">:</span></span><br><span class="line">    <span class="attr">post:</span></span><br><span class="line">      <span class="attr">requestBody:</span></span><br><span class="line">        <span class="attr">description:</span> <span class="string">Callback</span> <span class="string">payload</span></span><br><span class="line">      <span class="attr">content:</span></span><br><span class="line">        <span class="attr">&quot;application/json&quot;:</span></span><br><span class="line">          <span class="attr">schema:</span></span><br><span class="line">            <span class="string">$ref:</span> <span class="string">&quot;#/components/schemas/SomePayload&quot;</span></span><br><span class="line">          <span class="attr">responses:</span></span><br><span class="line">            <span class="attr">200:</span></span><br><span class="line">              <span class="attr">description:</span> <span class="string">webhook</span> <span class="string">processed!</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="链接"><a class="markdownIt-Anchor" href="#链接">#</a> 链接</h3>
+<p>链接是 OpenAPI 3 最有趣的补充之一。它有点复杂，但可能非常强大。这基本上是描述 “下一步是什么” 的一种方式。</p>
+<p>比方说，你得到一个用户，它有一个 addressId。这 addressId 本身是无用的。您可以使用链接来展示如何 “扩大”，并获得完整的地址。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">paths:</span></span><br><span class="line">  <span class="string">/users/&#123;userId&#125;:</span></span><br><span class="line">    <span class="attr">get:</span></span><br><span class="line">      <span class="attr">responses:</span></span><br><span class="line">        <span class="attr">200:</span></span><br><span class="line">          <span class="attr">links:</span></span><br><span class="line">            <span class="attr">address:</span></span><br><span class="line">              <span class="attr">operationId:</span> <span class="string">getAddressWithAddressId</span></span><br><span class="line">              <span class="attr">parameters:</span></span><br><span class="line">                <span class="attr">addressId:</span> <span class="string">&quot;$response.body#/addressId&quot;</span></span><br></pre></td></tr></table></figure>
+<p>在 “/users/ {userId}” 的响应中，我们找回了一个 addressId。“链接” 描述了如何通过引用 “$ response.body＃/addressId” 来获取地址。</p>
+<p>另一个用例是分页。如果要获取 100 个结果，links 可以显示如何获得结果 101-200。它是灵活的，这意味着它可以处理任何分页方案 limits 来 cursors。</p>
+<hr>
+<h3 id="安全"><a class="markdownIt-Anchor" href="#安全">#</a> 安全</h3>
+<p>Swagger 2</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">securityDefinitions:</span></span><br><span class="line">  <span class="attr">UserSecurity:</span></span><br><span class="line">    <span class="attr">type:</span> <span class="string">basic</span></span><br><span class="line">  <span class="attr">APIKey:</span></span><br><span class="line">    <span class="attr">type:</span> <span class="string">apiKey</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">Authorization</span></span><br><span class="line">    <span class="attr">in:</span> <span class="string">header</span></span><br><span class="line"><span class="attr">security:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">UserSecurity:</span> []</span><br><span class="line">  <span class="bullet">-</span> <span class="attr">APIKey:</span> []</span><br></pre></td></tr></table></figure>
+<p>OpeanAPI 3</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">components:</span></span><br><span class="line">  <span class="attr">securitySchemes:</span></span><br><span class="line">    <span class="attr">UserSecurity:</span></span><br><span class="line">      <span class="attr">type:</span> <span class="string">http</span></span><br><span class="line">      <span class="attr">scheme:</span> <span class="string">basic</span></span><br><span class="line">    <span class="attr">APIKey:</span></span><br><span class="line">      <span class="attr">type:</span> <span class="string">http</span></span><br><span class="line">      <span class="attr">scheme:</span> <span class="string">bearer</span></span><br><span class="line">      <span class="attr">bearerFormat:</span> <span class="string">TOKEN</span></span><br><span class="line"><span class="attr">security:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">UserSecurity:</span> []</span><br><span class="line">  <span class="bullet">-</span> <span class="attr">APIKey:</span> []</span><br></pre></td></tr></table></figure>
+<p>一堆安全性的变化！它已被重命名，OAuth2 流名已更新，您可以有多个流，并且支持 OpenID Connect。“基本” 类型已被重命名为 “http”，现在安全可以有一个 “方案” 和 “bearerFormat”。</p>
+
+      <div class="tags">
+          <a href="/tags/other/" rel="tag"><i class="ic i-tag"></i> other</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2020-03-30 09:36:47" itemprop="dateModified" datetime="2020-03-30T09:36:47+08:00">2020-03-30</time>
+  </span>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>著者:  </strong>江边鸟 <i class="ic i-at"><em>@</em></i>露の世
+  </li>
+  <li class="link">
+    <strong>記事へのリンク: </strong>
+    <a href="https://lhchen74.github.io/2019/11/03/openapi/" title="Swagger 2 与 OpenAPI 3">https://lhchen74.github.io/2019/11/03/openapi/</a>
+  </li>
+  <li class="license">
+    <strong>著作権表示:  </strong>このブログ内のすべての記事は、特別な記載がない限り <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> の下のライセンスで保護されています。
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2019/11/02/csharp-action/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclfw2t96j20zk0m8x6p.jpg" title="C# Action 和 Func 的使用">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>C# Action 和 Func 的使用</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2019/11/04/ioc/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipetv6p75j20zk0m8x6p.jpg" title="依赖注入的三种实现">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>依赖注入的三种实现</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E5%91%BD%E5%90%8D"><span class="toc-number">1.</span> <span class="toc-text"> 重命名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E5%9D%80%E7%BB%93%E6%9E%84"><span class="toc-number">2.</span> <span class="toc-text"> 网址结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6"><span class="toc-number">3.</span> <span class="toc-text"> 组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E6%A0%BC%E5%BC%8F"><span class="toc-number">4.</span> <span class="toc-text"> 请求格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%93%8D%E5%BA%94%E6%A0%BC%E5%BC%8F"><span class="toc-number">5.</span> <span class="toc-text"> 响应格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9E%E8%B0%83%E6%A6%82%E5%BF%B5"><span class="toc-number">6.</span> <span class="toc-text"> 回调概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%93%BE%E6%8E%A5"><span class="toc-number">7.</span> <span class="toc-text"> 链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E5%85%A8"><span class="toc-number">8.</span> <span class="toc-text"> 安全</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">223</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">26</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item twitter" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;twitter.com&#x2F;yourname"><i class="ic i-twitter"></i></span>
+      <span class="exturl item zhihu" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3Blb3BsZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;yourname"><i class="ic i-zhihu"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLyMvdXNlci9ob21lP2lkPXlvdXJpZA==" title="https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;yourid"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item weibo" data-url="aHR0cHM6Ly93ZWliby5jb20veW91cm5hbWU=" title="https:&#x2F;&#x2F;weibo.com&#x2F;yourname"><i class="ic i-weibo"></i></span>
+      <span class="exturl item about" data-url="aHR0cHM6Ly9hYm91dC5tZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;about.me&#x2F;yourname"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2019/11/02/csharp-action/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2019/11/04/ioc/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2020/08/17/python-setattr-dict/" title="python setattr and dict update">python setattr and dict update</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2021/03/04/python-call-c/" title="python call c">python call c</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/10/29/javascript-defineproperty/" title="神奇的 Object.defineProperty">神奇的 Object.defineProperty</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/07/14/nginx/" title="nginx simple">nginx simple</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/11/18/complement-number/" title="原码, 反码, 补码">原码, 反码, 补码</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/07/15/node-crawler/" title="node sample crawler">node sample crawler</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/07/10/node-cors/" title="node cors">node cors</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2020/07/03/webassembly/" title="webassembly test">webassembly test</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/07/15/node-third-module/" title="node third module">node third module</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2020/11/29/english/" title="english learning">english learning</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2021</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ Dew's World</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2019/11/03/openapi/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

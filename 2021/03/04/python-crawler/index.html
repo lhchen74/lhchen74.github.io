@@ -1,0 +1,800 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="python" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2021/03/04/python-crawler/">
+
+
+
+  <title>
+python crawler |
+Dew's World = 露の世</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">python crawler
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2021-03-04 15:41:14">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2021-03-04T15:41:14+08:00">2021-03-04</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Dew's World</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclh0m9pdj20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclip4jbpj20zk0m87cv.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giph4fomxoj20zk0m8axp.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclhpw3lwj20zk0m8gvw.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclffsa1cj20zk0m811l.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicm0fdw5cj20zk0m8hdt.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2021/03/04/python-crawler/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h2 id="文件操作"><a class="markdownIt-Anchor" href="#文件操作">#</a> 文件操作</h2>
+<p>文件访问模式</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>文件访问模式</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01</td>
+<td>r</td>
+<td>读</td>
+</tr>
+<tr>
+<td>02</td>
+<td>w</td>
+<td>写</td>
+</tr>
+<tr>
+<td>03</td>
+<td>a</td>
+<td>追加</td>
+</tr>
+<tr>
+<td>04</td>
+<td>r+</td>
+<td>读写模式</td>
+</tr>
+<tr>
+<td>05</td>
+<td>w+</td>
+<td>读写模式</td>
+</tr>
+<tr>
+<td>06</td>
+<td>a+</td>
+<td>读写模式</td>
+</tr>
+<tr>
+<td>07</td>
+<td>b</td>
+<td>二进制文件操作：图像，视频之类的</td>
+</tr>
+</tbody>
+</table>
+<p>文件对象方法</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>对象方法</th>
+<th>操作及解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01</td>
+<td>file.close()</td>
+<td>关闭文件</td>
+</tr>
+<tr>
+<td>02</td>
+<td>file.read()</td>
+<td>读取文件内容，一次加载所有内容至内存中</td>
+</tr>
+<tr>
+<td>03</td>
+<td>file.readline(size= num)</td>
+<td>读取从起始位置到 num 位置的所有内容</td>
+</tr>
+<tr>
+<td>04</td>
+<td>file.readlines()</td>
+<td>按行读取内容</td>
+</tr>
+<tr>
+<td>05</td>
+<td>file.write()</td>
+<td>向文件中写入内容</td>
+</tr>
+<tr>
+<td>06</td>
+<td>file.tell()</td>
+<td>返回当前在文件中的位置</td>
+</tr>
+<tr>
+<td>07</td>
+<td>file.seek()</td>
+<td>在文件中移动文件指针</td>
+</tr>
+</tbody>
+</table>
+<p>操作演示</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># read</span></span><br><span class="line"><span class="keyword">import</span> codecs</span><br><span class="line"></span><br><span class="line">filename = <span class="string">r&#x27;G:\Python\crawl\series\test.txt&#x27;</span></span><br><span class="line"><span class="keyword">with</span> codecs.<span class="built_in">open</span>(filename,<span class="string">&#x27;r&#x27;</span>,encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    line = f.readline(<span class="number">20</span>)</span><br><span class="line">    print(line)</span><br><span class="line"></span><br><span class="line"><span class="comment"># write binary</span></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line"><span class="keyword">import</span> codecs</span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;https://alpha.wallhaven.cc/random&quot;</span></span><br><span class="line">content = requests.get(url).content</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">html = etree.HTML(content)</span><br><span class="line">img_urls = html.xpath(<span class="string">&#x27;//figure//@data-src&#x27;</span>)</span><br><span class="line"></span><br><span class="line">i = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> img_url <span class="keyword">in</span> img_urls:</span><br><span class="line">    <span class="keyword">with</span> codecs.<span class="built_in">open</span>(<span class="string">&#x27;%s.jpg&#x27;</span>%i,<span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        img = requests.get(img_url)</span><br><span class="line">        f.write(img.content)</span><br><span class="line">        i += <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<h2 id="正则表达式"><a class="markdownIt-Anchor" href="#正则表达式">#</a> 正则表达式</h2>
+<p>语法</p>
+<table>
+<thead>
+<tr>
+<th>记号</th>
+<th>说明</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>literal</td>
+<td>匹配字符串的值</td>
+<td>wuxiaoshen</td>
+</tr>
+<tr>
+<td>.</td>
+<td>匹配任意字符 (除换行符之外)</td>
+<td>wu.iaoshen</td>
+</tr>
+<tr>
+<td>^</td>
+<td>匹配字符串的开始</td>
+<td>^wuxiaoshen</td>
+</tr>
+<tr>
+<td>$</td>
+<td>匹配字符串的结尾</td>
+<td>wuxiaoshen$</td>
+</tr>
+<tr>
+<td>*</td>
+<td>匹配前面出现 0 次或者多次的</td>
+<td>wu*xiaoshen</td>
+</tr>
+<tr>
+<td>+</td>
+<td>匹配前面出现 1 次或者多次</td>
+<td>wu+xiaoshen</td>
+</tr>
+<tr>
+<td>?</td>
+<td>匹配前面出现零次或者 1 次</td>
+<td>wu?xiaoshen</td>
+</tr>
+<tr>
+<td N=""></td>
+<td>匹配前面出现的正则表达式 N 次</td>
+<td><span 2="">0-9</span></td>
+</tr>
+<tr>
+<td M,N=""></td>
+<td>匹配前面出现的正则表达式 M 到 N 次之间</td>
+<td><span 3,8="">0-9</span></td>
+</tr>
+<tr>
+<td>[ ]</td>
+<td>匹配里面内容的任意一个字符</td>
+<td>wu[xyz]iaoshen</td>
+</tr>
+<tr>
+<td>[x-y]</td>
+<td>匹配任意之间的一个值</td>
+<td>[0-9]</td>
+</tr>
+<tr>
+<td>[^…]</td>
+<td>不匹配里面内容任意值</td>
+<td>[^0-9]</td>
+</tr>
+<tr>
+<td>()</td>
+<td>匹配封闭括号中正则表达式，并保存为子组</td>
+<td>（wuxiaoshen）</td>
+</tr>
+<tr>
+<td>特殊字符</td>
+<td>特殊字符</td>
+<td>特殊字符</td>
+</tr>
+<tr>
+<td>\d</td>
+<td>匹配数字</td>
+<td>data\d.txt</td>
+</tr>
+<tr>
+<td>\w</td>
+<td>匹配任何数字字母字符</td>
+<td>[wuxiao]\w+</td>
+</tr>
+<tr>
+<td>\s</td>
+<td>匹配空白符</td>
+<td>of\sthe</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>匹配单词的边界</td>
+<td>\bwuxiaoshen\b</td>
+</tr>
+<tr>
+<td>\D</td>
+<td>不匹配数字</td>
+<td></td>
+</tr>
+<tr>
+<td>\W</td>
+<td>不匹配数字字母字符</td>
+<td></td>
+</tr>
+<tr>
+<td>\S</td>
+<td>匹配任意不是空白符的字符</td>
+<td></td>
+</tr>
+<tr>
+<td>\B</td>
+<td>匹配不是单词开头或结束的位置</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>python 正则表达式模块</p>
+<table>
+<thead>
+<tr>
+<th>模块函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>match(pattern, string, flag)</td>
+<td>匹配以 pattern 开始的字符串</td>
+</tr>
+<tr>
+<td>search(pattern, string, flag)</td>
+<td>匹配第一符合要求的字符串，其他还符合，不管</td>
+</tr>
+<tr>
+<td>findall(pattern, string, flag)</td>
+<td>匹配全部符合要求的字符串</td>
+</tr>
+<tr>
+<td>split(pattern, string, flag)</td>
+<td>按格式进行切分</td>
+</tr>
+<tr>
+<td>sub(pattern, repl, string, flag)</td>
+<td>替换掉符合要求的字符串，常用来替换网址的组成</td>
+</tr>
+</tbody>
+</table>
+<p>操作演示</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> io</span><br><span class="line"></span><br><span class="line">sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding=<span class="string">&#x27;utf8&#x27;</span>) <span class="comment">#改变标准输出的默认编码</span></span><br><span class="line">url = <span class="string">&quot;http://www.imooc.com/course/list&quot;</span></span><br><span class="line">resp = requests.get(url).text</span><br><span class="line"><span class="comment"># &lt;img class=&quot;course-banner lazy&quot; data-original=&quot;//img3.mukewang.com/5a93aa610001eb2706000338-240-# # 135.jpg&quot; src=&quot;//img3.mukewang.com/5a93aa610001eb2706000338-240-135.jpg&quot; style=&quot;display: inline;&quot;&gt;</span></span><br><span class="line"><span class="comment"># image_urls = re.findall(r&#x27;src=&quot;(//img3.mukewang.com/[\w-]+.jpg)&quot;&#x27;,resp)</span></span><br><span class="line">image_urls = re.findall(<span class="string">r&#x27;src=&quot;(//.*?.jpg)&quot;&#x27;</span>,resp)</span><br><span class="line">image_urls = [<span class="string">&#x27;http:&#x27;</span> + <span class="built_in">str</span>(i) <span class="keyword">for</span> i <span class="keyword">in</span> image_urls]</span><br><span class="line">print(image_urls)</span><br><span class="line">i = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> image_url <span class="keyword">in</span> image_urls:</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;image\\&#x27;</span> + <span class="built_in">str</span>(i) + <span class="string">&#x27;.jpg&#x27;</span>,<span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        image = requests.get(image_url)</span><br><span class="line">        f.write(image.content)</span><br><span class="line">        i += <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<h2 id="网页下载"><a class="markdownIt-Anchor" href="#网页下载">#</a> 网页下载</h2>
+<p>urllib</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>常用方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01</td>
+<td>urllib.request.urlopen()</td>
+</tr>
+<tr>
+<td>02</td>
+<td>urllib.request.Request()</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;http://www.geekonomics10000.com/author/admin&quot;</span></span><br><span class="line">html = urllib.request.urlopen(url)</span><br><span class="line">response = html.read().decode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">print(response)</span><br></pre></td></tr></table></figure>
+<p>requests</p>
+<p>传递请求参数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;http://yanbao.stock.hexun.com/xgq/gsyj.aspx&quot;</span></span><br><span class="line">data = &#123;<span class="string">&quot;1&quot;</span>: <span class="number">1</span>, <span class="string">&quot;page&quot;</span>: <span class="number">4</span>&#125;</span><br><span class="line">html = requests.get(url, params=data)</span><br><span class="line">print(html.url)</span><br></pre></td></tr></table></figure>
+<p>请求头部</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;http://blog.csdn.net/pongba&quot;</span></span><br><span class="line">headers = &#123;<span class="string">&quot;User-Agent&quot;</span>: <span class="string">&#x27;Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36&#x27;</span>,</span><br><span class="line">           <span class="string">&quot;Referer&quot;</span>: <span class="string">&#x27;http://blog.csdn.net/pongba/article/details/7911997&#x27;</span>&#125;</span><br><span class="line">html = requests.get(url, headers=headers)</span><br><span class="line">print(html.status_code)</span><br></pre></td></tr></table></figure>
+<p>响应内容</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;http://www.geekonomics10000.com/author/admin&quot;</span></span><br><span class="line">html = requests.get(url)</span><br><span class="line">response_1 = html.text      <span class="comment"># 响应字符内容</span></span><br><span class="line">response_2 = html.content   <span class="comment"># 以字节的方式访问请求响应体，用于非文本请求</span></span><br><span class="line">response_3 = html.raw       <span class="comment"># 原始响应</span></span><br><span class="line">print(<span class="built_in">type</span>(response_1))</span><br><span class="line">print(<span class="built_in">type</span>(response_2))</span><br><span class="line">print(<span class="built_in">type</span>(response_3))</span><br><span class="line"><span class="comment"># output</span></span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">str</span>&#x27;&gt;</span></span><br><span class="line"><span class="class">&lt;<span class="title">class</span> &#x27;<span class="title">bytes</span>&#x27;&gt;</span></span><br><span class="line"><span class="class">&lt;<span class="title">class</span> &#x27;<span class="title">requests</span>.<span class="title">packages</span>.<span class="title">urllib3</span>.<span class="title">response</span>.<span class="title">HTTPResponse</span>&#x27;&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="beautifulsoup"><a class="markdownIt-Anchor" href="#beautifulsoup">#</a> BeautifulSoup</h2>
+<p>常见的概念：</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>概念</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01</td>
+<td>Tag</td>
+<td>标签</td>
+</tr>
+<tr>
+<td>02</td>
+<td>Name</td>
+<td>名字</td>
+</tr>
+<tr>
+<td>03</td>
+<td>Attributes</td>
+<td>属性</td>
+</tr>
+</tbody>
+</table>
+<p>常用的方法：</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>方法</th>
+<th>解释说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01</td>
+<td>find_all()</td>
+<td>搜索全部符合要求的信息</td>
+</tr>
+<tr>
+<td>02</td>
+<td>get_text()</td>
+<td>获取文本</td>
+</tr>
+<tr>
+<td>03</td>
+<td>find()</td>
+<td>返回第一个符合要求的信息</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line">html_doc = <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">&lt;html&gt;&lt;head&gt;&lt;title&gt;The Dormouse&#x27;s story&lt;/title&gt;&lt;/head&gt;</span></span><br><span class="line"><span class="string">cover: /img/post-cover/31.jpg</span></span><br><span class="line"><span class="string">&lt;body&gt;</span></span><br><span class="line"><span class="string">&lt;p class=&quot;title&quot;&gt;&lt;b&gt;The Dormouse&#x27;s story&lt;/b&gt;&lt;/p&gt;</span></span><br><span class="line"><span class="string">cover: /img/post-cover/31.jpg</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&lt;p class=&quot;story&quot;&gt;Once upon a time there were three little sisters; and their names were</span></span><br><span class="line"><span class="string">&lt;a href=&quot;http://example.com/elsie&quot; class=&quot;sister&quot; id=&quot;link1&quot;&gt;Elsie&lt;/a&gt;,</span></span><br><span class="line"><span class="string">&lt;a href=&quot;http://example.com/lacie&quot; class=&quot;sister&quot; id=&quot;link2&quot;&gt;Lacie&lt;/a&gt; and</span></span><br><span class="line"><span class="string">&lt;a href=&quot;http://example.com/tillie&quot; class=&quot;sister&quot; id=&quot;link3&quot;&gt;Tillie&lt;/a&gt;;</span></span><br><span class="line"><span class="string">and they lived at the bottom of a well.&lt;/p&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&lt;p class=&quot;story&quot;&gt;...&lt;/p&gt;</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">Soup = BeautifulSoup(html_doc,<span class="string">&#x27;lxml&#x27;</span>,form_encoding=<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line"><span class="comment"># print(Soup.prettify())</span></span><br><span class="line">print(Soup.title)         <span class="comment"># &lt;title&gt;The Dormouse&#x27;s story&lt;/title&gt;</span></span><br><span class="line">print(Soup.title.name)    <span class="comment"># title</span></span><br><span class="line">print(Soup.title.string)  <span class="comment"># The Dormouse&#x27;s story</span></span><br><span class="line"></span><br><span class="line">print(Soup.p[<span class="string">&#x27;class&#x27;</span>])    <span class="comment"># [&#x27;title&#x27;]</span></span><br><span class="line"></span><br><span class="line">print(Soup.a)   <span class="comment"># &lt;a class=&quot;sister&quot; href=&quot;http://example.com/elsie&quot; id=&quot;link1&quot;&gt;Elsie&lt;/a&gt;</span></span><br><span class="line">print(Soup.find(<span class="string">&#x27;a&#x27;</span>))  <span class="comment"># &lt;a class=&quot;sister&quot; href=&quot;http://example.com/elsie&quot; id=&quot;link1&quot;&gt;Elsie&lt;/a&gt;</span></span><br><span class="line">print(Soup.find_all(<span class="string">&#x27;a&#x27;</span>))</span><br><span class="line"><span class="comment"># [&lt;a class=&quot;sister&quot; href=&quot;http://example.com/elsie&quot; id=&quot;link1&quot;&gt;Elsie&lt;/a&gt;,</span></span><br><span class="line"><span class="comment">#  &lt;a class=&quot;sister&quot; href=&quot;http://example.com/lacie&quot; id=&quot;link2&quot;&gt;Lacie&lt;/a&gt;,</span></span><br><span class="line"><span class="comment">#  &lt;a class=&quot;sister&quot; href=&quot;http://example.com/tillie&quot; id=&quot;link3&quot;&gt;Tillie&lt;/a&gt;]</span></span><br><span class="line">print(Soup.get_text())    <span class="comment"># 获取所有文字内容</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">The Dormouse&#x27;s story</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">The Dormouse&#x27;s story</span></span><br><span class="line"><span class="string">Once upon a time there were three little sisters; and their names were</span></span><br><span class="line"><span class="string">Elsie,</span></span><br><span class="line"><span class="string">Lacie and</span></span><br><span class="line"><span class="string">Tillie;</span></span><br><span class="line"><span class="string">and they lived at the bottom of a well.</span></span><br><span class="line"><span class="string">...</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>作者：谢小路<br>
+链接：<span class="exturl" data-url="aHR0cHM6Ly93d3cuamlhbnNodS5jb20vcC9kMGE3YjU5ZjNjMjk=">https://www.jianshu.com/p/d0a7b59f3c29</span><br>
+ 來源：简书<br>
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+</blockquote>
+
+      <div class="tags">
+          <a href="/tags/python/" rel="tag"><i class="ic i-tag"></i> python</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2019-10-04 20:44:07" itemprop="dateModified" datetime="2019-10-04T20:44:07+08:00">2019-10-04</time>
+  </span>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>著者:  </strong>江边鸟 <i class="ic i-at"><em>@</em></i>露の世
+  </li>
+  <li class="link">
+    <strong>記事へのリンク: </strong>
+    <a href="https://lhchen74.github.io/2021/03/04/python-crawler/" title="python crawler">https://lhchen74.github.io/2021/03/04/python-crawler/</a>
+  </li>
+  <li class="license">
+    <strong>著作権表示:  </strong>このブログ内のすべての記事は、特別な記載がない限り <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> の下のライセンスで保護されています。
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2021/03/04/python-call-c/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclflwv2aj20zk0m84qp.jpg" title="python call c">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>python call c</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2021/03/04/python-cxoracle/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclj61ylzj20zk0m8b29.jpg" title="python cx_Oracle">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>python cx_Oracle</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C"><span class="toc-number">1.</span> <span class="toc-text"> 文件操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">2.</span> <span class="toc-text"> 正则表达式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E9%A1%B5%E4%B8%8B%E8%BD%BD"><span class="toc-number">3.</span> <span class="toc-text"> 网页下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#beautifulsoup"><span class="toc-number">4.</span> <span class="toc-text"> BeautifulSoup</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">223</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">26</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item twitter" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;twitter.com&#x2F;yourname"><i class="ic i-twitter"></i></span>
+      <span class="exturl item zhihu" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3Blb3BsZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;yourname"><i class="ic i-zhihu"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLyMvdXNlci9ob21lP2lkPXlvdXJpZA==" title="https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;yourid"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item weibo" data-url="aHR0cHM6Ly93ZWliby5jb20veW91cm5hbWU=" title="https:&#x2F;&#x2F;weibo.com&#x2F;yourname"><i class="ic i-weibo"></i></span>
+      <span class="exturl item about" data-url="aHR0cHM6Ly9hYm91dC5tZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;about.me&#x2F;yourname"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2021/03/04/python-call-c/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2021/03/04/python-cxoracle/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2020/07/24/oracle-connect-by/" title="Hierarchical Queries in Oracle">Hierarchical Queries in Oracle</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/10/29/python-jpython/" title="Jython的简单使用">Jython的简单使用</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2021/03/04/shell/" title="shell">shell</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2020/02/27/cheatsheet/" title="cheatsheet">cheatsheet</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/10/28/vscode-plugin/" title="vscode 编写插件详细过程">vscode 编写插件详细过程</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2018/10/17/oracle-erp/" title="oracle erp">oracle erp</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2020/09/01/sql/" title="sql">sql</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/01/20/english-that-which-who/" title="定语从句中 which 和 that 的区别">定语从句中 which 和 that 的区别</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/03/01/javascript-d3/" title="d3">d3</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2020/04/16/deno/" title="Forget NodeJS! Build native TypeScript applications with Deno">Forget NodeJS! Build native TypeScript applications with Deno</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2021</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ Dew's World</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2021/03/04/python-crawler/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,577 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="other" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2019/11/18/complement-number/">
+
+
+
+  <title>
+原码, 反码, 补码 |
+Dew's World = 露の世</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">原码, 反码, 补码
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2019-11-18 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2019-11-18T00:00:00+08:00">2019-11-18</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Dew's World</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclga70tsj20zk0m84mr.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclimtf7dj20zk0m8qav.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipesx5fdwj20zk0m81kx.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipexoj0moj20zk0m8kgu.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giph4lm9i7j20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giciryrr3rj20zk0m8nhk.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2019/11/18/complement-number/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p><span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vemhhbmd6aXFpdS9hcmNoaXZlLzIwMTEvMDMvMzAvQ29tcHV0ZXJDb2RlLmh0bWw=">原码，反码，补码 详解 - ziqiu.zhang - 博客园</span></p>
+</blockquote>
+<h2 id="一-机器数和真值"><a class="markdownIt-Anchor" href="#一-机器数和真值">#</a> 一。机器数和真值</h2>
+<p>在学习原码，反码和补码之前，需要先了解机器数和真值的概念.</p>
+<h3 id="1-机器数"><a class="markdownIt-Anchor" href="#1-机器数">#</a> 1、机器数</h3>
+<p>一个数在计算机中的二进制表示形式，叫做这个数的机器数。机器数是带符号的，在计算机用一个数的最高位存放符号，正数为 0, 负数为 1. 比如，十进制中的数 +3 ，计算机字长为 8 位，转换成二进制就是 00000011。如果是 -3 ，就是 10000011 。那么，这里的 00000011 和 10000011 就是机器数。</p>
+<h3 id="2-真值"><a class="markdownIt-Anchor" href="#2-真值">#</a> 2、真值</h3>
+<p>因为第一位是符号位，所以机器数的形式值就不等于真正的数值。例如上面的有符号数 10000011，其最高位 1 代表负，其真正数值是 -3 而不是形式值 131（10000011 转换成十进制等于 131）。所以，为区别起见，将带符号位的机器数对应的真正数值称为机器数的真值。</p>
+<p>例：0000 0001 的真值 = +000 0001 = +1，1000 0001 的真值 = –000 0001 = –1</p>
+<h2 id="二-原码-反码-补码的基础概念和计算方法"><a class="markdownIt-Anchor" href="#二-原码-反码-补码的基础概念和计算方法">#</a> 二。原码，反码，补码的基础概念和计算方法.</h2>
+<p>在探求为何机器要使用补码之前，让我们先了解原码，反码和补码的概念。对于一个数，计算机要使用一定的编码方式进行存储。原码，反码，补码是机器存储一个具体数字的编码方式.</p>
+<h3 id="1-原码"><a class="markdownIt-Anchor" href="#1-原码">#</a> 1. 原码</h3>
+<p>原码就是符号位加上真值的绝对值，即用第一位表示符号，其余位表示值。比如如果是 8 位二进制:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[+1]原 &#x3D; 0000 0001</span><br><span class="line">[-1]原 &#x3D; 1000 0001</span><br></pre></td></tr></table></figure>
+<p>第一位是符号位。因为第一位是符号位，所以 8 位二进制数的取值范围就是:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[1111 1111 , 0111 1111]</span><br><span class="line">即</span><br><span class="line">[-127 , 127]</span><br></pre></td></tr></table></figure>
+<p>原码是人脑最容易理解和计算的表示方式.</p>
+<h3 id="2-反码"><a class="markdownIt-Anchor" href="#2-反码">#</a> 2. 反码</h3>
+<p>反码的表示方法是:<br>
+ 正数的反码是其本身<br>
+负数的反码是在其原码的基础上，符号位不变，其余各个位取反.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[+1] &#x3D; [00000001]原 &#x3D; [00000001]反</span><br><span class="line">[-1] &#x3D; [10000001]原 &#x3D; [11111110]反</span><br></pre></td></tr></table></figure>
+<p>可见如果一个反码表示的是负数，人脑无法直观的看出来它的数值。通常要将其转换成原码再计算.</p>
+<h3 id="3-补码"><a class="markdownIt-Anchor" href="#3-补码">#</a> 3. 补码</h3>
+<p>补码的表示方法是:<br>
+ 正数的补码就是其本身<br>
+负数的补码是在其原码的基础上，符号位不变，其余各位取反，最后 + 1. (即在反码的基础上 + 1)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[+1] &#x3D; [00000001]原 &#x3D; [00000001]反 &#x3D; [00000001]补</span><br><span class="line">[-1] &#x3D; [10000001]原 &#x3D; [11111110]反 &#x3D; [11111111]补</span><br></pre></td></tr></table></figure>
+<p>对于负数，补码表示方式也是人脑无法直观看出其数值的。通常也需要转换成原码在计算其数值.</p>
+<h2 id="三-为何要使用原码-反码和补码"><a class="markdownIt-Anchor" href="#三-为何要使用原码-反码和补码">#</a> 三。为何要使用原码，反码和补码</h2>
+<p>在开始深入学习前，我的学习建议是先 &quot;死记硬背&quot; 上面的原码，反码和补码的表示方式以及计算方法.</p>
+<p>现在我们知道了计算机可以有三种编码方式表示一个数。对于正数因为三种编码方式的结果都相同:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[+1] &#x3D; [00000001]原 &#x3D; [00000001]反 &#x3D; [00000001]补</span><br></pre></td></tr></table></figure>
+<p>所以不需要过多解释。但是对于负数:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[-1] &#x3D; [10000001]原 &#x3D; [11111110]反 &#x3D; [11111111]补</span><br></pre></td></tr></table></figure>
+<p>可见原码，反码和补码是完全不同的。既然原码才是被人脑直接识别并用于计算表示方式，为何还会有反码和补码呢？</p>
+<p>首先，因为人脑可以知道第一位是符号位，在计算的时候我们会根据符号位，选择对真值区域的加减. (真值的概念在本文最开头). 但是对于计算机，加减乘数已经是最基础的运算，要设计的尽量简单。计算机辨别 &quot;符号位&quot; 显然会让计算机的基础电路设计变得十分复杂！于是人们想出了将符号位也参与运算的方法。我们知道，根据运算法则减去一个正数等于加上一个负数，即: 1-1 = 1 + (-1) = 0 , 所以机器可以只有加法而没有减法，这样计算机运算的设计就更简单了.</p>
+<p>于是人们开始探索 将符号位参与运算，并且只保留加法的方法。首先来看原码:</p>
+<p>计算十进制的表达式: 1-1=0</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 - 1 &#x3D; 1 + (-1) &#x3D; [00000001]原 + [10000001]原 &#x3D; [10000010]原 &#x3D; -2</span><br></pre></td></tr></table></figure>
+<p>如果用原码表示，让符号位也参与计算，显然对于减法来说，结果是不正确的。这也就是为何计算机内部不使用原码表示一个数.</p>
+<p>为了解决原码做减法的问题，出现了反码:</p>
+<p>计算十进制的表达式: 1-1=0</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 - 1 &#x3D; 1 + (-1) &#x3D; [0000 0001]原 + [1000 0001]原&#x3D; [0000 0001]反 + [1111 1110]反 &#x3D; [1111 1111]反 &#x3D; [1000 0000]原 &#x3D; -0</span><br></pre></td></tr></table></figure>
+<p>发现用反码计算减法，结果的真值部分是正确的。而唯一的问题其实就出现在 &quot;0&quot; 这个特殊的数值上。虽然人们理解上 + 0 和 - 0 是一样的，但是 0 带符号是没有任何意义的。而且会有 [0000 0000] 原和 [1000 0000] 原两个编码表示 0.</p>
+<p>于是补码的出现，解决了 0 的符号以及两个编码的问题:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1-1 &#x3D; 1 + (-1) &#x3D; [0000 0001]原 + [1000 0001]原 &#x3D; [0000 0001]补 + [1111 1111]补 &#x3D; [0000 0000]补&#x3D;[0000 0000]原</span><br></pre></td></tr></table></figure>
+<p>这样 0 用 [0000 0000] 表示，而以前出现问题的 - 0 则不存在了。而且可以用 [1000 0000] 表示 - 128:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(-1) + (-127) &#x3D; [1000 0001]原 + [1111 1111]原 &#x3D; [1111 1111]补 + [1000 0001]补 &#x3D; [1000 0000]补</span><br></pre></td></tr></table></figure>
+<p>-1-127 的结果应该是 - 128, 在用补码运算的结果中，[1000 0000] 补 就是 - 128. 但是注意因为实际上是使用以前的 - 0 的补码来表示 - 128, 所以 - 128 并没有原码和反码表示.(对 - 128 的补码表示 [1000 0000] 补算出来的原码是 [0000 0000] 原，这是不正确的)</p>
+<p>使用补码，不仅仅修复了 0 的符号以及存在两个编码的问题，而且还能够多表示一个最低数。这就是为什么 8 位二进制，使用原码或反码表示的范围为 [-127, +127], 而使用补码表示的范围为 [-128, 127].</p>
+<p>因为机器使用补码，所以对于编程中常用到的 32 位 int 类型，可以表示范围是: [-231, 231-1] 因为第一位表示的是符号位。而使用补码表示时又可以多保存一个最小值.</p>
+<h2 id="四-原码-反码-补码-再深入"><a class="markdownIt-Anchor" href="#四-原码-反码-补码-再深入">#</a> 四 原码，反码，补码 再深入</h2>
+<p>计算机巧妙地把符号位参与运算，并且将减法变成了加法，背后蕴含了怎样的数学原理呢？</p>
+<p>将钟表想象成是一个 1 位的 12 进制数。如果当前时间是 6 点，我希望将时间设置成 4 点，需要怎么做呢？我们可以:</p>
+<p>往回拨 2 个小时: 6 - 2 = 4<br>
+ 往前拨 10 个小时: (6 + 10) mod 12 = 4<br>
+ 往前拨 10+12=22 个小时: (6+22) mod 12 =4</p>
+<p>2,3 方法中的 mod 是指取模操作，16 mod 12 =4 即用 16 除以 12 后的余数是 4.</p>
+<p>所以钟表往回拨 (减法) 的结果可以用往前拨 (加法) 替代！</p>
+<p>现在的焦点就落在了如何用一个正数，来替代一个负数。上面的例子我们能感觉出来一些端倪，发现一些规律。但是数学是严谨的。不能靠感觉.</p>
+<p>首先介绍一个数学中相关的概念：同余</p>
+<h3 id="同余的概念"><a class="markdownIt-Anchor" href="#同余的概念">#</a> 同余的概念</h3>
+<p>两个整数 a，b，若它们除以整数 m 所得的余数相等，则称 a，b 对于模 m 同余</p>
+<p>记作 a ≡ b (mod m)</p>
+<p>读作 a 与 b 关于模 m 同余。</p>
+<p>举例说明:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">4 mod 12 &#x3D; 4</span><br><span class="line">16 mod 12 &#x3D; 4</span><br><span class="line">28 mod 12 &#x3D; 4</span><br></pre></td></tr></table></figure>
+<p>所以 4, 16, 28 关于模 12 同余.</p>
+<h3 id="负数取模"><a class="markdownIt-Anchor" href="#负数取模">#</a> 负数取模</h3>
+<p>正数进行 mod 运算是很简单的。但是负数呢？</p>
+<p>下面是关于 mod 运算的数学定义:</p>
+<p><a target="_blank" rel="noopener" href="http://images.cnblogs.com/cnblogs_com/zhangziqiu/201103/201103302155507894.jpg"><img data-src="D:%5Cstudy%5Cjbn%5Csource_posts%5Ccomplement-number%5C201103302155504514.jpg" alt="clip_image001"></a></p>
+<p>上面是截图，&quot;取下界&quot; 符号找不到如何输入 (word 中粘贴过来后乱码). 下面是使用 &quot;L&quot; 和 &quot;J&quot; 替换上图的 &quot;取下界&quot; 符号:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x mod y &#x3D; x - y L x &#x2F; y J</span><br></pre></td></tr></table></figure>
+<p>上面公式的意思是:</p>
+<p>x mod y 等于 x 减去 y 乘上 x 与 y 的商的下界.</p>
+<p>以 -3 mod 2 举例:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-3 mod 2</span><br><span class="line">&#x3D; -3 - 2xL -3&#x2F;2 J</span><br><span class="line">&#x3D; -3 - 2xL-1.5J</span><br><span class="line">&#x3D; -3 - 2x(-2)</span><br><span class="line">&#x3D; -3 + 4 &#x3D; 1</span><br></pre></td></tr></table></figure>
+<p>所以:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(-2) mod 12 &#x3D; 12-2&#x3D;10</span><br><span class="line">(-4) mod 12 &#x3D; 12-4 &#x3D; 8</span><br><span class="line">(-5) mod 12 &#x3D; 12 - 5 &#x3D; 7</span><br></pre></td></tr></table></figure>
+<h3 id="开始证明"><a class="markdownIt-Anchor" href="#开始证明">#</a> 开始证明</h3>
+<p>再回到时钟的问题上:</p>
+<p>回拨 2 小时 = 前拨 10 小时<br>
+回拨 4 小时 = 前拨 8 小时<br>
+回拨 5 小时 = 前拨 7 小时</p>
+<p>注意，这里发现的规律！</p>
+<p>结合上面学到的同余的概念。实际上:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(-2) mod 12 &#x3D; 10</span><br><span class="line">10 mod 12 &#x3D; 10</span><br><span class="line">-2 与 10 是同余的.</span><br><span class="line"></span><br><span class="line">(-4) mod 12 &#x3D; 8</span><br><span class="line">8 mod 12 &#x3D; 8</span><br><span class="line">-4 与 8 是同余的.</span><br></pre></td></tr></table></figure>
+<p>距离成功越来越近了。要实现用正数替代负数，只需要运用同余数的两个定理:</p>
+<p>反身性:</p>
+<p>a ≡ a (mod m)</p>
+<p>这个定理是很显而易见的.</p>
+<p>线性运算定理:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">如果 a ≡ b (mod m)，c ≡ d (mod m) 那么:</span><br><span class="line">(1)a ± c ≡ b ± d (mod m)</span><br><span class="line">(2)a _ c ≡ b _ d (mod m)</span><br></pre></td></tr></table></figure>
+<p>如果想看这个定理的证明，请看:<span class="exturl" data-url="aHR0cDovL2JhaWtlLmJhaWR1LmNvbS92aWV3Lzc5MjgyLmh0bQ==">http://baike.baidu.com/view/79282.htm</span></p>
+<p>所以:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">7 ≡ 7 (mod 12)</span><br><span class="line">(-2) ≡ 10 (mod 12)</span><br><span class="line">7 -2 ≡ 7 + 10 (mod 12)</span><br></pre></td></tr></table></figure>
+<p>现在我们为一个负数，找到了它的正数同余数。但是并不是 7-2 = 7+10, 而是 7 -2 ≡ 7 + 10 (mod 12) , 即计算结果的余数相等.</p>
+<p>接下来回到二进制的问题上，看一下: 2-1=1 的问题.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2-1&#x3D;2+(-1) &#x3D; [0000 0010]原 + [1000 0001]原&#x3D; [0000 0010]反 + [1111 1110]反</span><br></pre></td></tr></table></figure>
+<p>先到这一步，-1 的反码表示是 1111 1110. 如果这里将 [1111 1110] 认为是原码，则 [1111 1110] 原 = -126, 这里将符号位除去，即认为是 126.</p>
+<p>发现有如下规律:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(-1) mod 127 &#x3D; 126</span><br><span class="line">126 mod 127 &#x3D; 126</span><br><span class="line">即:</span><br><span class="line">(-1) ≡ 126 (mod 127)</span><br><span class="line">2-1 ≡ 2+126 (mod 127)</span><br></pre></td></tr></table></figure>
+<p>2-1 与 2+126 的余数结果是相同的！而这个余数，正式我们的期望的计算结果: 2-1=1</p>
+<p>所以说一个数的反码，实际上是这个数对于一个模的同余数。而这个模并不是我们的二进制，而是所能表示的最大值！这就和钟表一样，转了一圈后总能找到在可表示范围内的一个正确的数值！</p>
+<p>而 2+126 很显然相当于钟表转过了一轮，而因为符号位是参与计算的，正好和溢出的最高位形成正确的运算结果.</p>
+<p>既然反码可以将减法变成加法，那么现在计算机使用的补码呢？为什么在反码的基础上加 1, 还能得到正确的结果？</p>
+<p>2-1=2+(-1) = [0000 0010] 原 + [1000 0001] 原 = [0000 0010] 补 + [1111 1111] 补</p>
+<p>如果把 [1111 1111] 当成原码，去除符号位，则:</p>
+<p>[0111 1111] 原 = 127</p>
+<p>其实，在反码的基础上 + 1, 只是相当于增加了模的值:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(-1) mod 128 &#x3D; 127</span><br><span class="line">127 mod 128 &#x3D; 127</span><br><span class="line">2-1 ≡ 2+127 (mod 128)</span><br></pre></td></tr></table></figure>
+<p>此时，表盘相当于每 128 个刻度转一轮。所以用补码表示的运算结果最小值和最大值应该是 [-128, 128].</p>
+<p>但是由于 0 的特殊情况，没有办法表示 128, 所以补码的取值范围是 [-128, 127]</p>
+<blockquote>
+<p>作者：<span class="exturl" data-url="aHR0cDovL3d3dy5jbmJsb2dzLmNvbS96aGFuZ3ppcWl1Lw==">张子秋</span><br>
+出处：<span class="exturl" data-url="aHR0cDovL3d3dy5jbmJsb2dzLmNvbS96aGFuZ3ppcWl1Lw==">http://www.cnblogs.com/zhangziqiu/</span></p>
+</blockquote>
+
+      <div class="tags">
+          <a href="/tags/other/" rel="tag"><i class="ic i-tag"></i> other</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2019-11-18 13:52:27" itemprop="dateModified" datetime="2019-11-18T13:52:27+08:00">2019-11-18</time>
+  </span>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>著者:  </strong>江边鸟 <i class="ic i-at"><em>@</em></i>露の世
+  </li>
+  <li class="link">
+    <strong>記事へのリンク: </strong>
+    <a href="https://lhchen74.github.io/2019/11/18/complement-number/" title="原码, 反码, 补码">https://lhchen74.github.io/2019/11/18/complement-number/</a>
+  </li>
+  <li class="license">
+    <strong>著作権表示:  </strong>このブログ内のすべての記事は、特別な記載がない限り <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> の下のライセンスで保護されています。
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2019/11/11/docker/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipey0a334j20zk0m8qpt.jpg" title="docker">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>docker</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2019/11/26/elasticsearch/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipeu7txpzj20zk0m81kx.jpg" title="elasticsearch">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>elasticsearch</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E6%9C%BA%E5%99%A8%E6%95%B0%E5%92%8C%E7%9C%9F%E5%80%BC"><span class="toc-number">1.</span> <span class="toc-text"> 一。机器数和真值</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%9C%BA%E5%99%A8%E6%95%B0"><span class="toc-number">1.1.</span> <span class="toc-text"> 1、机器数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%9C%9F%E5%80%BC"><span class="toc-number">1.2.</span> <span class="toc-text"> 2、真值</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E5%8E%9F%E7%A0%81-%E5%8F%8D%E7%A0%81-%E8%A1%A5%E7%A0%81%E7%9A%84%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E5%92%8C%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text"> 二。原码，反码，补码的基础概念和计算方法.</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8E%9F%E7%A0%81"><span class="toc-number">2.1.</span> <span class="toc-text"> 1. 原码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%8F%8D%E7%A0%81"><span class="toc-number">2.2.</span> <span class="toc-text"> 2. 反码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E8%A1%A5%E7%A0%81"><span class="toc-number">2.3.</span> <span class="toc-text"> 3. 补码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E4%B8%BA%E4%BD%95%E8%A6%81%E4%BD%BF%E7%94%A8%E5%8E%9F%E7%A0%81-%E5%8F%8D%E7%A0%81%E5%92%8C%E8%A1%A5%E7%A0%81"><span class="toc-number">3.</span> <span class="toc-text"> 三。为何要使用原码，反码和补码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E5%8E%9F%E7%A0%81-%E5%8F%8D%E7%A0%81-%E8%A1%A5%E7%A0%81-%E5%86%8D%E6%B7%B1%E5%85%A5"><span class="toc-number">4.</span> <span class="toc-text"> 四 原码，反码，补码 再深入</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8C%E4%BD%99%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">4.1.</span> <span class="toc-text"> 同余的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%9F%E6%95%B0%E5%8F%96%E6%A8%A1"><span class="toc-number">4.2.</span> <span class="toc-text"> 负数取模</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B%E8%AF%81%E6%98%8E"><span class="toc-number">4.3.</span> <span class="toc-text"> 开始证明</span></a></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">223</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">26</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item twitter" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;twitter.com&#x2F;yourname"><i class="ic i-twitter"></i></span>
+      <span class="exturl item zhihu" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3Blb3BsZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;yourname"><i class="ic i-zhihu"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLyMvdXNlci9ob21lP2lkPXlvdXJpZA==" title="https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;yourid"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item weibo" data-url="aHR0cHM6Ly93ZWliby5jb20veW91cm5hbWU=" title="https:&#x2F;&#x2F;weibo.com&#x2F;yourname"><i class="ic i-weibo"></i></span>
+      <span class="exturl item about" data-url="aHR0cHM6Ly9hYm91dC5tZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;about.me&#x2F;yourname"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2019/11/11/docker/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2019/11/26/elasticsearch/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2018/08/08/oracle-kill-session/" title="oracle kill session">oracle kill session</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/02/28/configuration-file-format/" title="ini json yaml toml">ini json yaml toml</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/1970/01/01/json/" title="json">json</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2021/03/04/html-indexeddb/" title="html IndexedDB">html IndexedDB</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2021/03/04/python-call-c/" title="python call c">python call c</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2021/03/04/hexo/" title="hexo">hexo</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/12/20/java-httpclient/" title="Java 11 HttpClient Examples">Java 11 HttpClient Examples</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/02/28/python-log/" title="python logging">python logging</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/10/29/javascript-es6-lambda/" title="es6 lambda">es6 lambda</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2020/06/28/node-mail/" title="node mail">node mail</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2021</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ Dew's World</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2019/11/18/complement-number/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

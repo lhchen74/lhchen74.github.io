@@ -1,0 +1,550 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="other" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2019/10/28/vscode-plugin/">
+
+
+
+  <title>
+vscode 编写插件详细过程 |
+Dew's World = 露の世</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">vscode 编写插件详细过程
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2019-10-28 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2019-10-28T00:00:00+08:00">2019-10-28</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Dew's World</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeybxm1pj20zk0m8niv.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclfdu6exj20zk0m87hw.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipexj2jgzj20zk0m8b09.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclfw2t96j20zk0m8x6p.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giciukx8a7j20zk0m8aio.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicit31ffoj20zk0m8naf.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2019/10/28/vscode-plugin/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>转载: <span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vY2FpcGVpeXUvcC81NTA3MjUyLmh0bWw=">vscode 编写插件详细过程 - 蛀牙 - 博客园</span></p>
+</blockquote>
+<h3 id="前言"><a class="markdownIt-Anchor" href="#前言">#</a> 前言</h3>
+<p>之前编写了一个 vscode 插件<span class="exturl" data-url="aHR0cDovL3d3dy5jbmJsb2dzLmNvbS9jYWlwZWl5dS9wLzU0NzU3NjEuaHRtbA==">用 vscode 写博客和发布</span>，然后有园友要求写一篇来介绍如何开发一个 vscode 扩展插件，或者说介绍开发这个插件的过程。然而文章还没有写，园子里面已经有人发布一个文章，是园友上位者的怜悯的<span class="exturl" data-url="aHR0cDovL3d3dy5jbmJsb2dzLmNvbS9saWFubWluL3AvNTQ5OTI2Ni5odG1s"> VSCODE 插件初探</span>介绍了自己开发的一个插件与如何简单的开发一个插件。虽然已经有这么一个文章，但是我觉得还是可以更仔细的来介绍如何来开发一个 vscode 插件，也算之前说好要写这么一个文章的一个承诺吧，于是就有了还这么篇文章。</p>
+<h3 id="一-开发环境介绍与安装"><a class="markdownIt-Anchor" href="#一-开发环境介绍与安装">#</a> 一、开发环境介绍与安装</h3>
+<p>为了演示一个安装环境，我安装了一个干净的 win10 系统来操作截图。</p>
+<p>1. 首先我们需要安装一个最基本的<span class="exturl" data-url="aHR0cHM6Ly9jb2RlLnZpc3VhbHN0dWRpby5jb20v"> Visual Studio Code</span>，我们可以先到官网下载一最新版本的来进行安装，点击上面的连接，进去下载总是懂的吧。下载完后点击安装，然后一直下一步安装就可以。</p>
+<img data-src="/2019/10/28/vscode-plugin/248834-20160518004520185-1912395003.png" class="" title="img">
+<p>2. 安装完 vscode 后呢，我们就需要来看如何开发我们的自己的插件了，参考官方文档<span class="exturl" data-url="aHR0cHM6Ly9jb2RlLnZpc3VhbHN0dWRpby5jb20vZG9jcy9leHRlbnNpb25zL2V4YW1wbGUtaGVsbG8td29ybGQ="> Your First Extension (Example - Hello World)</span>。根据文档我们得知我们需要安装一个 <span class="exturl" data-url="aHR0cDovL25vZGVqcy5jbi9kb3dubG9hZC8=">node.js</span>, 同样的点击前面的连接，到 nodejs 的中文网站下载一个安装程序，下载完点击安装下一步就可以。</p>
+<img data-src="/2019/10/28/vscode-plugin/248834-20160518005850373-381381497.png" class="" title="img">
+<p>3. 在安装完上面两个工具后，我们还需要一个生产插件代码的东西，也就是 <span class="exturl" data-url="aHR0cDovL3llb21hbi5pby8=">Yeoman</span> 和 <span class="exturl" data-url="aHR0cHM6Ly9jb2RlLnZpc3VhbHN0dWRpby5jb20vZG9jcy90b29scy95b2NvZGU=">VS Code Extension generator</span>.Yeoman 的介绍不在本文章中，自己点击上面的连接去了解。我们可以打开 cmd 来执行下面的命令来安装这两个工具。<span class="exturl" data-url="aHR0cDovL3d3dy5ydW5vb2IuY29tL25vZGVqcy9ub2RlanMtbnBtLmh0bWw=">npm 使用介绍</span></p>
+<blockquote>
+<p>npm install -g yo generator-code</p>
+</blockquote>
+<img data-src="/2019/10/28/vscode-plugin/248834-20160518011337654-1772271062.png" class="" title="img">
+<p>在完成上面的安装后，可以通过输入命令</p>
+<blockquote>
+<p>yo code</p>
+</blockquote>
+<p>来生成我们要的基本代码。</p>
+<img data-src="/2019/10/28/vscode-plugin/248834-20160518011807904-1579129092.png" class="" title="img">
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在os系统上可以通过用上下键来选择要创建哪种类型的项目，在win可以通过输入1、2、3这样的数字然后按回车来选择。</span><br></pre></td></tr></table></figure>
+<h3 id="二-生成基本代码的讲解与简单的修改"><a class="markdownIt-Anchor" href="#二-生成基本代码的讲解与简单的修改">#</a> 二、生成基本代码的讲解与简单的修改</h3>
+<p>在几个项目类型中，我们选择了第一个 TypeScript 来作为我们编写扩展的语言，其他几个项目类型这里不做介绍。</p>
+<p><span class="exturl" data-url="aHR0cDovL3d3dy50eXBlc2NyaXB0bGFuZy5vcmcvZG9jcy90dXRvcmlhbC5odG1s">TypeScript 语法自行理解</span></p>
+<h4 id="项目结构介绍"><a class="markdownIt-Anchor" href="#项目结构介绍">#</a> 项目结构介绍</h4>
+<p>我们创建的一个项目结构如下：</p>
+<img data-src="/2019/10/28/vscode-plugin/248834-20160518230147779-1007092498.png" class="" title="img">
+<blockquote>
+<p>选择创建项目后有四个输入和一个选择</p>
+</blockquote>
+<ol>
+<li>输入你扩展的名称</li>
+<li>输入一个标志（项目创建的文件名称用这个）</li>
+<li>输入对这个扩展的描述</li>
+<li>输入以后要发布用到的一名称（和以后再发布时候有一个名字是对应上的）</li>
+<li>是问你要不要创建一个 git 仓库用于版本管理</li>
+</ol>
+<blockquote>
+<p>以上几个输入都会在 package.json 这个文件里面有对应的属性来表示。输入完之后就创建了如上图的一个目录结构。这里不要脸的复制了一下别人的目录说明，由于我这个项目没有让生成 git 仓库，所以没有.gitignore 这个文件。还有 node_modules 等其他多出来的目录结构是创建项目后运行  <code>npm install</code>  这个命令生成出来的。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── .gitignore                  &#x2F;&#x2F;配置不需要加入版本管理的文件</span><br><span class="line">├── .vscode                     &#x2F;&#x2F; VS Code的整合</span><br><span class="line">│   ├── launch.json</span><br><span class="line">│   ├── settings.json</span><br><span class="line">│   └── tasks.json</span><br><span class="line">├── .vscodeignore                &#x2F;&#x2F;配置不需要加入最终发布到拓展中的文件</span><br><span class="line">├── README.md</span><br><span class="line">├── src                         &#x2F;&#x2F; 源文件</span><br><span class="line">│   └── extension.ts            &#x2F;&#x2F; 如果我们使用js来开发拓展，则该文件的后缀为.js</span><br><span class="line">├── test                        &#x2F;&#x2F; test文件夹</span><br><span class="line">│   ├── extension.test.ts       &#x2F;&#x2F; 如果我们使用js来开发拓展，则该文件的后缀为.js</span><br><span class="line">│   └── index.ts                &#x2F;&#x2F; 如果我们使用js来开发拓展，则该文件的后缀为.js</span><br><span class="line">├── node_modules</span><br><span class="line">│   ├── vscode                  &#x2F;&#x2F; vscode对typescript的语言支持。</span><br><span class="line">│   └── typescript              &#x2F;&#x2F; TypeScript的编译器</span><br><span class="line">├── out                         &#x2F;&#x2F; 编译之后的输出文件夹(只有TypeScript需要，JS无需)</span><br><span class="line">│   ├── src</span><br><span class="line">│   |   ├── extension.js</span><br><span class="line">│   |   └── extension.js.map</span><br><span class="line">│   └── test</span><br><span class="line">│       ├── extension.test.js</span><br><span class="line">│       ├── extension.test.js.map</span><br><span class="line">│       ├── index.js</span><br><span class="line">│       └── index.js.map</span><br><span class="line">├── package.json                &#x2F;&#x2F; 该拓展的资源配置文件</span><br><span class="line">├── tsconfig.json               &#x2F;&#x2F;</span><br><span class="line">├── typings                     &#x2F;&#x2F; 类型定义文件夹</span><br><span class="line">│   ├── node.d.ts               &#x2F;&#x2F; 和Node.js关联的类型定义</span><br><span class="line">│   └── vscode-typings.d.ts     &#x2F;&#x2F; 和VS Code关联的类型定义</span><br><span class="line">└── vsc-extension-quickstart.md</span><br></pre></td></tr></table></figure>
+<h4 id="运行与简单修改"><a class="markdownIt-Anchor" href="#运行与简单修改">#</a> 运行与简单修改</h4>
+<p>介绍完目录结构后，我们可以来运行一下看看效果如果。我们打开一个 vscode 并把我们的 sample 目录自己拖拉到 vscode 的界面上，然后选择调试窗口，并点击开始调试 <code>或者直接按快捷键 F5</code></p>
+<img data-src="/2019/10/28/vscode-plugin/248834-20160518233429888-1226486552.png" class="" title="img">
+<p>项目运行起来后，会调用一个新的 vscode 窗口在标题栏的地方显示一个 [扩展开发主机] 的标题，然后这个窗口是支持我们刚才运行的插件项目的命令。</p>
+<img data-src="/2019/10/28/vscode-plugin/248834-20160518233841091-1239806735.gif" class="" title="img">
+<p>我们可以看到扩展插件已经正常的运行了，接下来我们可以来简单修改一下代码以实现不同的简单功能。在修改之前需要简单的认识两个文件</p>
+<blockquote>
+<p>package.json</p>
+</blockquote>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;sample&quot;</span>, <span class="comment">//插件扩展名称（对应创建项目时候的输入）</span></span><br><span class="line">  <span class="attr">&quot;displayName&quot;</span>: <span class="string">&quot;sample&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;description&quot;</span>: <span class="string">&quot;blog sample&quot;</span>, <span class="comment">//插件扩展的描述（对应创建项目时候的输入）</span></span><br><span class="line">  <span class="attr">&quot;version&quot;</span>: <span class="string">&quot;0.0.1&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;publisher&quot;</span>: <span class="string">&quot;caipeiyu&quot;</span>, <span class="comment">//发布时候的一个名称（对应创建项目时候的输入）</span></span><br><span class="line">  <span class="attr">&quot;engines&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;vscode&quot;</span>: <span class="string">&quot;^0.10.10&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">&quot;categories&quot;</span>: [<span class="string">&quot;Other&quot;</span>],</span><br><span class="line">  <span class="attr">&quot;activationEvents&quot;</span>: [</span><br><span class="line">    <span class="comment">//这是我们要理解的地方，是触发插件执行一些代码的配置</span></span><br><span class="line">    <span class="string">&quot;onCommand:extension.sayHello&quot;</span> <span class="comment">//这种是通过输入命令来触发执行的</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">&quot;main&quot;</span>: <span class="string">&quot;./out/src/extension&quot;</span>, <span class="comment">//这个是配置TypeScript编译成js的输出目录</span></span><br><span class="line">  <span class="attr">&quot;contributes&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;commands&quot;</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="comment">//title 和 command是一个对应关系的</span></span><br><span class="line">        <span class="attr">&quot;command&quot;</span>: <span class="string">&quot;extension.sayHello&quot;</span>, <span class="comment">//这个是对应上面那个命令触发的，在代码里面也要用到</span></span><br><span class="line">        <span class="attr">&quot;title&quot;</span>: <span class="string">&quot;Hello World&quot;</span> <span class="comment">//这个是我们在vscode里面输入的命令</span></span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    <span class="comment">//是在发布打包，或者其他运行时候，要执行的一些脚本命令</span></span><br><span class="line">    <span class="attr">&quot;vscode:prepublish&quot;</span>: <span class="string">&quot;node ./node_modules/vscode/bin/compile&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;compile&quot;</span>: <span class="string">&quot;node ./node_modules/vscode/bin/compile -watch -p ./&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;postinstall&quot;</span>: <span class="string">&quot;node ./node_modules/vscode/bin/install&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">&quot;devDependencies&quot;</span>: &#123;</span><br><span class="line">    <span class="comment">//这是开发的依赖包，如果有其他的依赖包，并要打包的话，需要把dev去掉</span></span><br><span class="line">    <span class="attr">&quot;typescript&quot;</span>: <span class="string">&quot;^1.8.5&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;vscode&quot;</span>: <span class="string">&quot;^0.11.0&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>extension.ts</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&#x27;use strict&#x27;</span></span><br><span class="line"><span class="comment">// The module &#x27;vscode&#x27; contains the VS Code extensibility API</span></span><br><span class="line"><span class="comment">// Import the module and reference it with the alias vscode in your code below</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> vscode <span class="keyword">from</span> <span class="string">&#x27;vscode&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// this method is called when your extension is activated</span></span><br><span class="line"><span class="comment">// your extension is activated the very first time the command is executed</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">activate</span>(<span class="params">context: vscode.ExtensionContext</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// Use the console to output diagnostic information (console.log) and errors (console.error)</span></span><br><span class="line">  <span class="comment">// This line of code will only be executed once when your extension is activated</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;Congratulations, your extension &quot;sample&quot; is now active!&#x27;</span>)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// The command has been defined in the package.json file</span></span><br><span class="line">  <span class="comment">// Now provide the implementation of the command with  registerCommand</span></span><br><span class="line">  <span class="comment">// The commandId parameter must match the command field in package.json</span></span><br><span class="line">  <span class="keyword">let</span> disposable = vscode.commands.registerCommand(<span class="string">&#x27;extension.sayHello&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">//只看这个地方&#x27;extension.sayHello&#x27;和 package.json 里面的 &quot;onCommand:extension.sayHello&quot; 是一个对应关系</span></span><br><span class="line">    <span class="comment">// The code you place here will be executed every time your command is executed</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// Display a message box to the user</span></span><br><span class="line">    vscode.window.showInformationMessage(<span class="string">&#x27;Hello World!&#x27;</span>)</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  context.subscriptions.push(disposable)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// this method is called when your extension is deactivated</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">deactivate</span>(<span class="params"></span>) </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>这两个文件是很重要的，基本整个插件编写都是围绕着这两个文件来修改的，例如我们现在要增加多一个命令叫做 Hello Sample 那么我们先在  <code>package.json</code>  里面添加两个配置</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">&quot;activationEvents&quot;: [</span><br><span class="line">    &quot;onCommand:extension.sayHello&quot;,</span><br><span class="line">    <span class="string">&quot;onCommand:extension.saySample&quot;</span></span><br><span class="line">],</span><br><span class="line">&quot;contributes&quot;: &#123;</span><br><span class="line">    &quot;commands&quot;: [&#123;</span><br><span class="line">        &quot;command&quot;: &quot;extension.sayHello&quot;,</span><br><span class="line">        &quot;title&quot;: &quot;Hello World&quot;</span><br><span class="line">    &#125;,&#123;</span><br><span class="line">        &quot;command&quot;: &quot;extension.saySample&quot;,</span><br><span class="line">        &quot;title&quot;: &quot;Hello Sample&quot;</span><br><span class="line">    &#125;]</span><br><span class="line">&#125;,</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>添加完这两个配置后，我们就需要在  <code>extension.ts</code>  里来注册这个命令事件</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> disposable = vscode.commands.registerCommand(<span class="string">&#x27;extension.sayHello&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  vscode.window.showInformationMessage(<span class="string">&#x27;Hello World!&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">context.subscriptions.push(disposable)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> saySample = vscode.commands.registerCommand(<span class="string">&#x27;extension.saySample&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  vscode.window.showInformationMessage(<span class="string">&#x27;This is a new sample command!&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line">context.subscriptions.push(saySample)</span><br></pre></td></tr></table></figure>
+<p>修改完代码后，再次运行效果如下图</p>
+<img data-src="/2019/10/28/vscode-plugin/248834-20160519001428841-1394889603.gif" class="" title="img">
+<h3 id="三-打包与发布"><a class="markdownIt-Anchor" href="#三-打包与发布">#</a> 三、 打包与发布</h3>
+<p>我们编写完一个插件，总不能要用的时候来运行代码然后来使用吧，而且要分享给别人也不方便啊。有个很 low 的办法，就是拷贝项目到插件目录，但是这不靠谱吧。所以我们需要一个打包工具叫 <span class="exturl" data-url="aHR0cHM6Ly9jb2RlLnZpc3VhbHN0dWRpby5jb20vZG9jcy90b29scy92c2NlY2xp">vsce</span> 同样的可以用 npm 来安装，打开 cmd 执行命令</p>
+<blockquote>
+<p>npm install -g vsce</p>
+</blockquote>
+<p>安装完成后可以用命令窗口 cd 到你的项目目录下去，然后执行命令</p>
+<blockquote>
+<p>vsce publish</p>
+</blockquote>
+<p>来发布到 <span class="exturl" data-url="aHR0cDovL21hcmtldHBsYWNlLnZpc3VhbHN0dWRpby5jb20=">marketplace.visualstudio.com</span> 上面去。发布成功后可以在 vscode 里面用  <code>ext install</code>  来按这个插件。这种做法我个人觉得特别的麻烦，还需要去配置一个 token，然后这个 token 还的找个地方记住，还会过期，而且在发布过程中还得祈祷网络好。所以这里不介绍，有兴趣的自己看<span class="exturl" data-url="aHR0cHM6Ly9jb2RlLnZpc3VhbHN0dWRpby5jb20vZG9jcy90b29scy92c2NlY2xp">这里</span>。那么这里来介绍一个打包成 .vsix 的插件，而且这个插件也可以通过<span class="exturl" data-url="aHR0cHM6Ly9tYXJrZXRwbGFjZS52aXN1YWxzdHVkaW8uY29tL21hbmFnZQ==">这个页面上传分享</span>。</p>
+<p>cd 到项目目录下，然后执行命令  <code>vsce package</code>  来打包一个</p>
+<blockquote>
+<p>vsce package</p>
+</blockquote>
+<blockquote>
+<p>Executing prepublish script ‘node ./node_modules/vscode/bin/compile’…</p>
+</blockquote>
+<blockquote>
+<p>Created: /sample/sample-0.0.1.vsix</p>
+</blockquote>
+<p>我们可以看到执行了这个命令后，再执行一个 script ‘node ./node_modules/vscode/bin/compile’ 这个命令是在  <code>package.json</code>  里面有配置</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;vscode:prepublish&quot;: &quot;node ./node_modules/vscode/bin/compile&quot;,</span><br><span class="line">    &quot;compile&quot;: &quot;node ./node_modules/vscode/bin/compile -watch -p ./&quot;,</span><br><span class="line">    &quot;postinstall&quot;: &quot;node ./node_modules/vscode/bin/install&quot;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<p>执行完之后再创建了一个 sample-0.0.1.vsix，这个就是我们打包好的插件安装包了，只要把这个直接拖到 vscode 的窗口上，就会提示你安装成功重启 vscode，我们重启完之后就使用相关的命令。而且在插件的目录下也多了对应 sample 的目录。</p>
+<img data-src="/2019/10/28/vscode-plugin/248834-20160519004838216-1398736502.gif" class="" title="img">
+<p>至于<span class="exturl" data-url="aHR0cHM6Ly9tYXJrZXRwbGFjZS52aXN1YWxzdHVkaW8uY29tL21hbmFnZQ==">上传分享</span>就自行研究咯。</p>
+<hr>
+<p>由于本人水平有限，知识有限，文章难免会有错误，欢迎大家指正。如果有什么问题也欢迎大家回复交流。要是你觉得本文还可以，那么点击一下推荐。</p>
+<p>作者：<span class="exturl" data-url="aHR0cDovL3d3dy5jbmJsb2dzLmNvbS9jYWlwZWl5dS8=">健康的蛀牙</span><br>
+出处：<span class="exturl" data-url="aHR0cDovL3d3dy5jbmJsb2dzLmNvbS9jYWlwZWl5dS8=">http://www.cnblogs.com/caipeiyu/</span><br>
+ 本文版权归作者和博客园共有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接。</p>
+
+      <div class="tags">
+          <a href="/tags/other/" rel="tag"><i class="ic i-tag"></i> other</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2019-10-28 19:04:36" itemprop="dateModified" datetime="2019-10-28T19:04:36+08:00">2019-10-28</time>
+  </span>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>著者:  </strong>江边鸟 <i class="ic i-at"><em>@</em></i>露の世
+  </li>
+  <li class="link">
+    <strong>記事へのリンク: </strong>
+    <a href="https://lhchen74.github.io/2019/10/28/vscode-plugin/" title="vscode 编写插件详细过程">https://lhchen74.github.io/2019/10/28/vscode-plugin/</a>
+  </li>
+  <li class="license">
+    <strong>著作権表示:  </strong>このブログ内のすべての記事は、特別な記載がない限り <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> の下のライセンスで保護されています。
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2019/10/28/x509-certificate/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicm0fdw5cj20zk0m8hdt.jpg" title="X.509数字证书的结构与解析">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>X.509数字证书的结构与解析</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2019/10/28/python-pipenv/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicm0n457cj20zk0m8e81.jpg" title="python pipenv">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>python pipenv</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text"> 前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E4%BB%8B%E7%BB%8D%E4%B8%8E%E5%AE%89%E8%A3%85"><span class="toc-number">2.</span> <span class="toc-text"> 一、开发环境介绍与安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C-%E7%94%9F%E6%88%90%E5%9F%BA%E6%9C%AC%E4%BB%A3%E7%A0%81%E7%9A%84%E8%AE%B2%E8%A7%A3%E4%B8%8E%E7%AE%80%E5%8D%95%E7%9A%84%E4%BF%AE%E6%94%B9"><span class="toc-number">3.</span> <span class="toc-text"> 二、生成基本代码的讲解与简单的修改</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84%E4%BB%8B%E7%BB%8D"><span class="toc-number">3.1.</span> <span class="toc-text"> 项目结构介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E4%B8%8E%E7%AE%80%E5%8D%95%E4%BF%AE%E6%94%B9"><span class="toc-number">3.2.</span> <span class="toc-text"> 运行与简单修改</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89-%E6%89%93%E5%8C%85%E4%B8%8E%E5%8F%91%E5%B8%83"><span class="toc-number">4.</span> <span class="toc-text"> 三、 打包与发布</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">223</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">26</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item twitter" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;twitter.com&#x2F;yourname"><i class="ic i-twitter"></i></span>
+      <span class="exturl item zhihu" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3Blb3BsZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;yourname"><i class="ic i-zhihu"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLyMvdXNlci9ob21lP2lkPXlvdXJpZA==" title="https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;yourid"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item weibo" data-url="aHR0cHM6Ly93ZWliby5jb20veW91cm5hbWU=" title="https:&#x2F;&#x2F;weibo.com&#x2F;yourname"><i class="ic i-weibo"></i></span>
+      <span class="exturl item about" data-url="aHR0cHM6Ly9hYm91dC5tZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;about.me&#x2F;yourname"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2019/10/28/x509-certificate/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2019/10/28/python-pipenv/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/01/20/english-that-which-who/" title="定语从句中 which 和 that 的区别">定语从句中 which 和 that 的区别</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/07/15/node-question/" title="node question">node question</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2018/08/08/oracle-common/" title="oracle common">oracle common</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/02/28/python-generator/" title="python yield">python yield</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/10/16/python-gooey/" title="Gooey Turn CLI into GUI">Gooey Turn CLI into GUI</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2020/03/17/go-question/" title="go question">go question</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2021/03/04/python-jieba/" title="python jieba">python jieba</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2020/11/29/javascript-this/" title="javascript this">javascript this</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2021/03/04/python-test/" title="python test">python test</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/07/15/python-binary/" title="python binary">python binary</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2021</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ Dew's World</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2019/10/28/vscode-plugin/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

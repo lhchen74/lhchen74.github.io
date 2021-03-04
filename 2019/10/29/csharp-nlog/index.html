@@ -1,0 +1,500 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="c#" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2019/10/29/csharp-nlog/">
+
+
+
+  <title>
+C# NLog |
+Dew's World = 露の世</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">C# NLog
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2019-10-29 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2019-10-29T00:00:00+08:00">2019-10-29</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Dew's World</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeun65urj20zk0m81ii.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclh5u05ej20zk0m87df.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclg5ms2rj20zk0m8u0x.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipevgoki5j20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giph4fomxoj20zk0m8axp.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipev1x5e4j20zk0m8b29.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2019/10/29/csharp-nlog/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>转载: <span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vemhhbmd4aWFveW9uZy9wLzk0NjM3OTEuaHRtbA==">.NET Core 使用 NLog 日志记录 - 潇十一郎 - 博客园</span></p>
+</blockquote>
+<h3 id="前言"><a class="markdownIt-Anchor" href="#前言">#</a> 前言</h3>
+<p>每个项目都会需要使用到日志功能，这对于项目上线后 出现的 bug 异常，能及时定位和便于后期错误分析。<span class="exturl" data-url="aHR0cDovL3huLS13bXF6Y3o5MmF2NWJ3dHM2eGhocjJhYTU3MDBkLk5FVA==">那我们今天来看看在.NET</span> Core 中如何使用 NLog 日志。</p>
+<h3 id="nlog"><a class="markdownIt-Anchor" href="#nlog">#</a> NLog</h3>
+<p>NLog <span class="exturl" data-url="aHR0cDovL3huLS00Z3F2ZG9ucjUzYXIwci5ORVQ=">是一个基于.NET</span> 平台编写的类库，我们可以使用 NLog 在应用程序中添加极为完善的跟踪调试代码。<br>
+NLog <span class="exturl" data-url="aHR0cDovL3huLS00Z3F2ZDUzcHF3eDI3aHUzZWl3bXQ0ai5ORVQ=">是一个简单灵活的.NET</span> 日志记录类库。通过使用 NLog，<span class="exturl" data-url="aHR0cDovL3huLS00Z3FxdnVhNWR6ejIxdWI0ZmtuenYwMmMuTkVU">我们可以在任何一种.NET</span> 语言中输出带有上下文的（contextual information）调试诊断信息，根据喜好配置其表现样式之后发送到一个或多个输出目标（target）中。<br>
+NLog 的 API 非常类似于 log4net，且配置方式非常简单。NLog 使用路由表（routing table）进行配置，这样就让 NLog 的配置文件非常容易阅读，并便于今后维护。<br>
+NLog 遵从 BSD license，即允许商业应用且完全开放源代码。任何人都可以免费使用并对其进行测试，然后通过邮件列表反馈问题以及建议。<br>
+NLog <span class="exturl" data-url="aHR0cDovL3huLS1ydXU4MWMuTkVU">支持.NET</span>、C/C<ins> 以及 COM interop API，因此我们的程序、组件、包括用 C</ins>/COM 编写的遗留模块都可以通过同一个路由引擎将信息发送至 NLog 中。<br>
+简单来说 Nlog 就是用来记录项目日志的组件</p>
+<h3 id="使用步骤"><a class="markdownIt-Anchor" href="#使用步骤">#</a> 使用步骤</h3>
+<p>已入 Nlog 包</p>
+<p>① 在 NuGet 中安装：Nlog 和 Nlog.Web.AspNetCore</p>
+<p>② 配置 Configure 如下</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Configure</span>(<span class="params">IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">     loggerFactory.AddNLog();<span class="comment">//添加NLog            //引入Nlog配置文件        env.ConfigureNLog(&quot;nlog.config&quot;);</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>③ 添加 nlog 配置文件 <strong>nlog.config</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">nlog</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://www.nlog-project.org/schemas/NLog.xsd&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">     <span class="attr">autoReload</span>=<span class="string">&quot;true&quot;</span></span></span><br><span class="line"><span class="tag">       <span class="attr">internalLogLevel</span>=<span class="string">&quot;Warn&quot;</span></span></span><br><span class="line"><span class="tag">       <span class="attr">internalLogFile</span>=<span class="string">&quot;internal-nlog.txt&quot;</span>&gt;</span></span><br><span class="line">     <span class="comment">&lt;!--define various log targets--&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">targets</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--write logs to file--&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">target</span> <span class="attr">xsi:type</span>=<span class="string">&quot;File&quot;</span> <span class="attr">name</span>=<span class="string">&quot;allfile&quot;</span> <span class="attr">fileName</span>=<span class="string">&quot;nlog-all-$&#123;shortdate&#125;.log&quot;</span></span></span><br><span class="line"><span class="tag">                  <span class="attr">layout</span>=<span class="string">&quot;$&#123;longdate&#125;|$&#123;logger&#125;|$&#123;uppercase:$&#123;level&#125;&#125;|$&#123;message&#125; $&#123;exception&#125;&quot;</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">         <span class="tag">&lt;<span class="name">target</span> <span class="attr">xsi:type</span>=<span class="string">&quot;File&quot;</span> <span class="attr">name</span>=<span class="string">&quot;ownFile-web&quot;</span> <span class="attr">fileName</span>=<span class="string">&quot;nlog-my-$&#123;shortdate&#125;.log&quot;</span></span></span><br><span class="line"><span class="tag">                  <span class="attr">layout</span>=<span class="string">&quot;$&#123;longdate&#125;|$&#123;logger&#125;|$&#123;uppercase:$&#123;level&#125;&#125;|$&#123;message&#125; $&#123;exception&#125;&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">target</span> <span class="attr">xsi:type</span>=<span class="string">&quot;Null&quot;</span> <span class="attr">name</span>=<span class="string">&quot;blackhole&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">targets</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">rules</span>&gt;</span></span><br><span class="line">         <span class="comment">&lt;!--All logs, including from Microsoft--&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">logger</span> <span class="attr">name</span>=<span class="string">&quot;*&quot;</span> <span class="attr">minlevel</span>=<span class="string">&quot;Trace&quot;</span> <span class="attr">writeTo</span>=<span class="string">&quot;allfile&quot;</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">       <span class="comment">&lt;!--Skip Microsoft logs and so log only own logs--&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">logger</span> <span class="attr">name</span>=<span class="string">&quot;Microsoft.*&quot;</span> <span class="attr">minlevel</span>=<span class="string">&quot;Trace&quot;</span> <span class="attr">writeTo</span>=<span class="string">&quot;blackhole&quot;</span> <span class="attr">final</span>=<span class="string">&quot;true&quot;</span> /&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">logger</span> <span class="attr">name</span>=<span class="string">&quot;*&quot;</span> <span class="attr">minlevel</span>=<span class="string">&quot;Trace&quot;</span> <span class="attr">writeTo</span>=<span class="string">&quot;ownFile-web&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">rules</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">nlog</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>⑤ 在 HomeController 中添加 DI 注入</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">readonly</span> ILogger&lt;HomeController&gt; _logger;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">HomeController</span>(<span class="params">ILogger&lt;HomeController&gt; logger</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    _logger = logger;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>⑥ 测试效果</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">_logger.LogError(<span class="string">&quot;我是错误显示&quot;</span>);</span><br><span class="line">_logger.LogDebug(<span class="string">&quot;我是调试信息&quot;</span>);</span><br><span class="line">_logger.LogInformation(<span class="string">&quot;我是提示信息&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>执行后，查看 bin/debug/netcoreapp2.0 下面的 nlog-my-2018-08-12.log 文件即可看到输出日志：</p>
+<img data-src="/2019/10/29/csharp-nlog/762349-20180812175110446-1765871307.png" class="" title="img">
+<h3 id="日志文件生成在指定目录下"><a class="markdownIt-Anchor" href="#日志文件生成在指定目录下">#</a> 日志文件生成在指定目录下</h3>
+<p>大家会发现文件是生成在项目目录下的，日志多的时候，会导致文件目录太乱</p>
+<p>此时，只需更改 nlog.config 中的内容如下即可生成在 logs 目录里</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">targets</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--write logs to file--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">target</span> <span class="attr">xsi:type</span>=<span class="string">&quot;File&quot;</span> <span class="attr">name</span>=<span class="string">&quot;allfile&quot;</span> <span class="attr">fileName</span>=<span class="string">&quot;logs/all/nlog-all-$&#123;shortdate&#125;.log&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">layout</span>=<span class="string">&quot;$&#123;longdate&#125;|$&#123;logger&#125;|$&#123;uppercase:$&#123;level&#125;&#125;|$&#123;message&#125; $&#123;exception&#125;&quot;</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">target</span> <span class="attr">xsi:type</span>=<span class="string">&quot;File&quot;</span> <span class="attr">name</span>=<span class="string">&quot;ownFile-web&quot;</span> <span class="attr">fileName</span>=<span class="string">&quot;logs/my/nlog-my-$&#123;shortdate&#125;.log&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">layout</span>=<span class="string">&quot;$&#123;longdate&#125;|$&#123;logger&#125;|$&#123;uppercase:$&#123;level&#125;&#125;|$&#123;message&#125; $&#123;exception&#125;&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">target</span> <span class="attr">xsi:type</span>=<span class="string">&quot;Null&quot;</span> <span class="attr">name</span>=<span class="string">&quot;blackhole&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">targets</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>关于 Nlog 日志的就先介绍到这儿，这只是一个基础入门讲解，更多内容可以参考：<span class="exturl" data-url="aHR0cDovL25sb2ctcHJvamVjdC5vcmcv">Nlog 官网</span></p>
+<h3 id="异常处理"><a class="markdownIt-Anchor" href="#异常处理">#</a> 异常处理</h3>
+<p>对于全局异常处理，通常有几种方式，我们这里介绍一个常见的做法：</p>
+<p>① 我们在 web 下新建一个文件夹 ErrorHand</p>
+<p>② 在此文件夹中新建一个 ErrorHandlingMiddleware 类如下</p>
+<img data-src="/2019/10/29/csharp-nlog/762349-20180814083725693-131166542.png" class="" title="img">
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ErrorHandlingMiddleware</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">readonly</span> RequestDelegate _next;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">readonly</span> ILogger&lt;ErrorHandlingMiddleware&gt; _logger;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">ErrorHandlingMiddleware</span>(<span class="params">RequestDelegate next,ILogger&lt;ErrorHandlingMiddleware&gt; logger</span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            <span class="keyword">this</span>._next = next;</span><br><span class="line">            _logger = logger;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">async</span> Task <span class="title">Invoke</span>(<span class="params">HttpContext context</span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            <span class="keyword">try</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">await</span> _next(context);</span><br><span class="line">            &#125;</span><br><span class="line">            catch (Exception e)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">var</span> statusCode = context.Response.StatusCode;</span><br><span class="line">                <span class="keyword">if</span> (e <span class="keyword">is</span> ArgumentException)</span><br><span class="line">                &#123;</span><br><span class="line">                    statusCode = <span class="number">200</span>;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">               <span class="keyword">await</span>  HandleExceptionAsync(context, statusCode, e.Message);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">finally</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">var</span> statusCode = context.Response.StatusCode;</span><br><span class="line">                <span class="keyword">var</span> msg = <span class="string">&quot;&quot;</span>;</span><br><span class="line">                <span class="keyword">if</span> (statusCode != <span class="number">200</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    _logger.LogError(context.Request.GetAbsoluteUri()+<span class="string">&quot;\r\n&quot;</span>+statusCode.ToString());</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (!<span class="built_in">string</span>.IsNullOrEmpty(msg))</span><br><span class="line">                &#123;</span><br><span class="line">                   <span class="keyword">await</span>  HandleExceptionAsync(context, statusCode, msg);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> Task <span class="title">HandleExceptionAsync</span>(<span class="params">HttpContext context, <span class="built_in">int</span> statusCode, <span class="built_in">string</span> msg</span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            <span class="keyword">var</span> data = <span class="keyword">new</span> &#123;code = statusCode.ToString(), is_success = <span class="literal">false</span>, msg = msg&#125;;</span><br><span class="line">            <span class="keyword">var</span> result = JsonConvert.SerializeObject(<span class="keyword">new</span> &#123;data = data&#125;);</span><br><span class="line">            context.Response.ContentType = <span class="string">&quot;application/json;charset=utf-8&quot;</span>;</span><br><span class="line">            <span class="keyword">return</span> context.Response.WriteAsync(result);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>这里类内容比较简单，就不多赘述了，此时，我们全局异常类已经编写好了，但是，还无法正常使用，我们需要在 Startup 中配置一下</p>
+<p>③ 我们需要在 Configure 方法中加入：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//全局错误</span></span><br><span class="line">app.UseMiddleware(<span class="keyword">typeof</span>(ErrorHandlingMiddleware));</span><br></pre></td></tr></table></figure>
+<p>这个地方就是绑定了我们自定义的错误类。</p>
+<p>注：.netCore 中 提供了两个我们可以跳转到错误页面，一个是 404 的，一个是 500 的，同样在 Configure 方法中加入：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">app.UseExceptionHandler(<span class="string">&quot;/Home/NothingFound&quot;</span>);</span><br><span class="line">app.UseStatusCodePagesWithReExecute(<span class="string">&quot;/Home/NothingFound&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>这样当有对应异常出现的时候，就可以跳转到自己的错误页。然后配合 NLog 可以查看到相应输出日志。</p>
+
+      <div class="tags">
+          <a href="/tags/c/" rel="tag"><i class="ic i-tag"></i> c#</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2020-10-11 15:48:38" itemprop="dateModified" datetime="2020-10-11T15:48:38+08:00">2020-10-11</time>
+  </span>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>著者:  </strong>江边鸟 <i class="ic i-at"><em>@</em></i>露の世
+  </li>
+  <li class="link">
+    <strong>記事へのリンク: </strong>
+    <a href="https://lhchen74.github.io/2019/10/29/csharp-nlog/" title="C# NLog">https://lhchen74.github.io/2019/10/29/csharp-nlog/</a>
+  </li>
+  <li class="license">
+    <strong>著作権表示:  </strong>このブログ内のすべての記事は、特別な記載がない限り <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> の下のライセンスで保護されています。
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2019/10/29/java-pojo/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicitspjpbj20zk0m81ky.jpg" title="Java中的PO、VO、DTO、BO、POJO、BO&#x2F;DO、DAO">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Java中的PO、VO、DTO、BO、POJO、BO/DO、DAO</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2019/10/29/coder-poem/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giph4lm9i7j20zk0m84qp.jpg" title="coder poem">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>coder poem</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text"> 前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nlog"><span class="toc-number">2.</span> <span class="toc-text"> NLog</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A4"><span class="toc-number">3.</span> <span class="toc-text"> 使用步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%E7%94%9F%E6%88%90%E5%9C%A8%E6%8C%87%E5%AE%9A%E7%9B%AE%E5%BD%95%E4%B8%8B"><span class="toc-number">4.</span> <span class="toc-text"> 日志文件生成在指定目录下</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86"><span class="toc-number">5.</span> <span class="toc-text"> 异常处理</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">223</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">26</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item twitter" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;twitter.com&#x2F;yourname"><i class="ic i-twitter"></i></span>
+      <span class="exturl item zhihu" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3Blb3BsZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;yourname"><i class="ic i-zhihu"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLyMvdXNlci9ob21lP2lkPXlvdXJpZA==" title="https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;yourid"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item weibo" data-url="aHR0cHM6Ly93ZWliby5jb20veW91cm5hbWU=" title="https:&#x2F;&#x2F;weibo.com&#x2F;yourname"><i class="ic i-weibo"></i></span>
+      <span class="exturl item about" data-url="aHR0cHM6Ly9hYm91dC5tZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;about.me&#x2F;yourname"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2019/10/29/java-pojo/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2019/10/29/coder-poem/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/07/15/node-record/" title="node record">node record</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/07/10/node-axios/" title="jquery fetch axios">jquery fetch axios</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2021/03/04/kotlin/" title="kotlin resources">kotlin resources</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/07/15/python-binary/" title="python binary">python binary</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/01/20/english-that-which-who/" title="定语从句中 which 和 that 的区别">定语从句中 which 和 that 的区别</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/10/25/csharp7/" title="30分钟掌握 C#7">30分钟掌握 C#7</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/10/25/csharp-webservice/" title="C#如何创建WebService">C#如何创建WebService</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/10/11/db-dialect/" title="db dialect">db dialect</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/02/28/python-ftp/" title="python ftp sftp">python ftp sftp</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/07/15/node/" title="node">node</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2021</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ Dew's World</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2019/10/29/csharp-nlog/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

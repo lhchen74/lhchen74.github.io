@@ -1,0 +1,776 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="other" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2019/10/29/sed/">
+
+
+
+  <title>
+sed入门详解教程 |
+Dew's World = 露の世</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">sed入门详解教程
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2019-10-29 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2019-10-29T00:00:00+08:00">2019-10-29</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Dew's World</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipesrnqv3j20zk0m8ava.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclffsa1cj20zk0m811l.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipevgoki5j20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclimtf7dj20zk0m8qav.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giciundwu5j20zk0m8n9e.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicitf0kl1j20zk0m87fe.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2019/10/29/sed/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>转载: <span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vbGl3ZWkwNTI2dmlwL3AvNTY0NDE2My5odG1s">sed 入门详解教程 - 肖邦 linux - 博客园</span></p>
+</blockquote>
+<p>sed 是一个比较古老的，功能十分强大的用于文本处理的流编辑器，加上正则表达式的支持，可以进行大量的复杂的文本编辑操作。sed 本身是一个非常复杂的工具，有专门的书籍讲解 sed 的具体用法，但是个人觉得没有必要去学习它的每个细节，那样没有特别大的实际意义。网上也有很多关于 sed 的教程，我也是抱着学习的心态来学习 sed 的常见的用法，并进行系统的总结，内容基本覆盖了 sed 的大部分的知识点。文中的内容比较简练，加以实际示例来帮助去理解 sed 的使用。</p>
+<h3 id="一-写在前边"><a class="markdownIt-Anchor" href="#一-写在前边">#</a> 一、写在前边</h3>
+<p>1、sed 介绍</p>
+<p>sed 全名为 stream editor，流编辑器，用程序的方式来编辑文本，功能相当的强大。是贝尔实验室的 Lee E.McMahon 在 1973 年到 1974 年之间开发完成，目前可以在大多数操作系统中使用，sed 的出现作为 grep 的继任者。与 vim 等编辑器不同，sed 是一种非交互式编辑器 (即用户不必参与编辑过程)，它使用预先设定好的编辑指令对输入的文本进行编辑，完成之后再输出编辑结构。sed 基本上就是在玩正则模式匹配，所以，玩 sed 的人，正则表达式一般都比较强。</p>
+<p>2、sed 工作原理</p>
+<p>sed 会一次处理一行内容。处理时，把当前处理的行存储在临时缓冲区中，成为 &quot;模式空间&quot;，接着用 sed 命令处理缓冲区中的内容，处理完成后，把缓冲区的内容送往屏幕。接着处理下一行，这样不断重复，直到文件末尾。文件内容并没有改变，除非你使用重定向存储输出。</p>
+<p>3、正则表达式概念</p>
+<p>在编写处理字符串的程序或网页时，经常会有查找符合某些复杂规则的字符串的需要。正则表达式就是用于描述这些规则的工具，换句话说，正则表达式就是记录文本规则的代码。许多程序设计语言都支持利用正则表达式进行字符串操作。在很多文本编辑器里，正则表达式通常被用来检索、替换那些符合某个模式的文本。</p>
+<p>4、正则表达式的匹配过程</p>
+<p>简单描述一下正则表达式的匹配过程，就是拿正则表达式所表示的字符串去和原文字符串内容去匹配，直到匹配到原文内容字符串中的一个完整子串就表示匹配成功。举个例子，有一行文件内容 &quot;this is better desk&quot;，这里用 &quot;esk&quot; 去匹配，匹配过程是这样的：首先拿 e 去匹配文件行内容，从 this 开始，直到 better 的 e，第一个字符匹配成功，接着 s 去匹配 better 字符 e 后边的 t 字符，没有匹配成功；然后重新拿 esk 中的 e 去和 better 的第二个 t 去匹配，没有成功，接着原始内容的下一个字符，直到 desk 中的 e 字符，逐个匹配 s，k 字符，到此为止，esk 成功匹配，正则表达式匹配完毕，整个过程就是这样，即使再复杂的正则表达式的匹配过程也是按照此过程来进行的。</p>
+<h3 id="二-基本正则表达式"><a class="markdownIt-Anchor" href="#二-基本正则表达式">#</a> 二、基本正则表达式</h3>
+<p>关于正则表达式的内容挺多的，掌握好下文中提及的内容就能满足正常工作中的需要，如果是专门做正则编程的，可以去买本正则表达式的书籍来看好了<sup>_</sup>。只有多动手多练习，才是学开发编程的最好姿势。</p>
+<p>1. 符号 &quot;.&quot;</p>
+<p>匹配任意一个字符，除了换行符，但是需要注意的是，在 sed 中不能匹配换行符，但是在 awk 中可以匹配换行符。类似 shell 通配符中的 &quot;?&quot;，匹配一个任意字符。</p>
+<p>2. 符号 &quot;*&quot;</p>
+<p>“<em>“表示前边字符有 0 个或多个。”.</em>“表示任意一个字符有 0 个或多个，也就是能匹配任意的字符。类似 shell 通配符中的”*”，可以匹配任意字符。</p>
+<p>3. 符号 &quot;[]&quot;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&quot;[ ]&quot;中括号中可以包含表示字符集的表达式。使用方法大概有如下几种。</span><br><span class="line">[a-z]：表示a-z字符中的一个，也就是小写字母。</span><br><span class="line">[0-9]：表示0-9字符中的一个，也就是表示数字。</span><br><span class="line">[A-Z]：表示大写字母。</span><br><span class="line">[a-zA-Z]：表示字符集为小写字母或者大写字母。</span><br><span class="line">[a-zA-Z0-9]：表示普通字符，包括大小写字母和数字。</span><br><span class="line">[abc]：表示字符a或者字符b或者字符c。</span><br><span class="line">[^0-9]：表示非数字类型的字符，^表示取反意思，只能放在中括号的开始处才有意义。</span><br><span class="line">[-cz]：表示字符-或者字符c或者字符z，注意与[c-z]的区别，因为-符号没有放在e和f之间。</span><br></pre></td></tr></table></figure>
+<p>4. 符号 &quot;^&quot;</p>
+<p>“<sup>&quot; 表示行首的意思，也就是每一行的开始位置。在这里并不是上边字符范围中取反的意思，</sup>符号只有在”[]&quot; 符号的开头处才能表示字符取反。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">^abc：表示以abc开头的字符串abc。</span><br><span class="line">^abc.*：表示以abc开头的字符串abcxxx。</span><br></pre></td></tr></table></figure>
+<p>5. 符号 &quot;$&quot;</p>
+<p>&quot;$“表示行尾的意思，也就是每一行的结尾位置，很好理解，和”^&quot; 正好相反。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">world$：表示以world结尾的字符串world，如果该行中间有world字符串是不符合匹配条件的。</span><br><span class="line">^$：表示空行。行首和行尾没有内容，可不就是空行嘛。</span><br></pre></td></tr></table></figure>
+<p>6. 符号 &quot;&quot;</p>
+<p>““表示是转义字符，和其它语言中用到的转义字符意义基本上是一样的。其实简单理解，就是把元字符转义为普通字符，比如”\“表示普通符号””，把普通字符转换为特殊意义符号，比如 &quot;\n&quot; 表示把普通字符 n 转义为换行符。</p>
+<p>7. 符号 &quot;{}&quot;</p>
+<p>“{}“表示前边字符的数量范围，大概有三种用法，其实容易理解，看例子就知道了，但是必须注意要加上转义字符””，否则不生效，表示为普通字符 &quot;{“或”}&quot;。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">\&#123;2\&#125;：表示前边字符的重复次数是2。</span><br><span class="line">\&#123;2,\&#125;：表示前边字符的重复次数至少是2，也就是大于等于2。</span><br><span class="line">\&#123;2,9\&#125;：表示前边字符的重复次数大于2但小于9。</span><br></pre></td></tr></table></figure>
+<p>8. 符号 &quot;&lt;“和”&gt;&quot;</p>
+<p>&quot;&lt;&quot; 表示匹配条件为词首的位置，理解上可以对比 “^” 行首。<br>
+举个例子，&quot;nihao 1hello 2hello3 hello4&quot; 有这么内容的一行内容。<br>
+“&lt;hello&quot;匹配结果&quot;nihao 1hello 2hello3 hello4”；<br>
+&quot;hello&gt;“匹配结果&quot;nihao 1hello 2hello3 hello4”，这种匹配方式用的不是太多，用到会用就 OK。</p>
+<h3 id="三-扩展正则表达式"><a class="markdownIt-Anchor" href="#三-扩展正则表达式">#</a> 三、扩展正则表达式</h3>
+<p>扩展正则表达式是在基本正则表达式中扩展出来的，内容不是很多，使用频率上可能没有基本正则表达式那么高，但是扩展正则依然很重要，很多情况下没有扩展正则是搞不定的。sed 命令使用扩展正则需要加上选项 - r。</p>
+<p>1. 符号 &quot;?&quot;</p>
+<p>“?”：表示前置字符有 0 个或 1 个。</p>
+<p>2. 符号 &quot;+&quot;</p>
+<p>“+”：表示前置字符有 1 个或多个。</p>
+<p>3. 符号 &quot;|&quot;</p>
+<p>“|”：表示指明两项之间的一个选择。<br>
+abc|ABC：表示可以匹配 abc 或者 ABC。</p>
+<p>4. 符号 &quot;()&quot;</p>
+<p>&quot;()“表示分组，类似算数表达式中的 ()。子命令表达式中可以通过 \1，\2，\3 等来表示分组匹配到的内容。其实”()&quot; 也可以在基本正则表达式中使用的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(a|b)b：表示可以匹配ab或者bb字串</span><br><span class="line">([0-9])|([0][0-9])|([1][0-9])：表示匹配0-9或者00-09或者10-19范围的字符。</span><br></pre></td></tr></table></figure>
+<p>5. 符号 &quot;{}&quot;</p>
+<p>这里的 &quot;{}“和基本正则表达式中的大括号意义是一样的，只不过在使用时不用加”&quot; 转义符号。</p>
+<h3 id="四-正则表达式的分类和应用"><a class="markdownIt-Anchor" href="#四-正则表达式的分类和应用">#</a> 四、正则表达式的分类和应用</h3>
+<p>字符类<br>
+ [Ww] hat .H [12345]</p>
+<p>字符的范围<br>
+ [a-z][0-9] [Cc] hapter [1-9][-+*/] [0-1][0-9][-/][0-3][0-9][-/][0-9][0-9]</p>
+<p>排除字符类<br>
+ [^0-9]</p>
+<p>重复出现的字符<br>
+ [15] 0* [15] 00</p>
+<p n,m="">字符的跨度 * 与</p>
+<p 7,8="">电话号码的匹配<br>
+ [0-9]{3}-[0-9]</p>
+<p>分组操作<br>
+ compan (y|ies)</p>
+<h3 id="五-sed-语法和常用选项"><a class="markdownIt-Anchor" href="#五-sed-语法和常用选项">#</a> 五、sed 语法和常用选项</h3>
+<p>1、语法</p>
+<p><strong>sed [选项] ‘command’ 文件名称</strong><br>
+选项部分，常见选项包括 - n，-e，-i，-f，-r 选项。<br>
+command 部分包括：[地址 1，地址 2][函数] [参数 (标记)]</p>
+<p>2、常用选项</p>
+<p><strong>选项 - n</strong></p>
+<p>sed 默认会把模式空间处理完毕后的内容输出到标准输出，也就是输出到屏幕上，加上 - n 选项后被设定为安静模式，也就是不会输出默认打印信息，除非子命令中特别指定打印选项，则只会把匹配修改的行进行打印。</p>
+<p>例子 1：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> -e <span class="string">&#x27;hello world\nnihao&#x27;</span> | sed <span class="string">&#x27;s/hello/A/&#x27;</span></span><br><span class="line">结果：</span><br><span class="line">A world</span><br><span class="line">nihao</span><br></pre></td></tr></table></figure>
+<p>例子 2：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> -e <span class="string">&#x27;hello world\nnihao&#x27;</span> | sed -n <span class="string">&#x27;s/hello/A/&#x27;</span></span><br><span class="line">结果：加-n选项后什么也没有显示。</span><br></pre></td></tr></table></figure>
+<p>例子 3：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> -e <span class="string">&#x27;hello world\nnihao&#x27;</span> | sed -n <span class="string">&#x27;s/hello/A/p&#x27;</span></span><br><span class="line">结果：A world/</span><br><span class="line">说明：-n选项后，再加p标记，只会把匹配并修改的内容打印了出来。</span><br></pre></td></tr></table></figure>
+<p><strong>选项 - e</strong></p>
+<p>如果需要用 sed 对文本内容进行多种操作，则需要执行多条子命令来进行操作。</p>
+<p>例子 1：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> -e <span class="string">&#x27;hello world&#x27;</span> | sed -e <span class="string">&#x27;s/hello/A/&#x27;</span> -e <span class="string">&#x27;s/world/B/&#x27;</span></span><br><span class="line">结果：A B</span><br></pre></td></tr></table></figure>
+<p>例子 2：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> -e <span class="string">&#x27;hello world&#x27;</span> | sed <span class="string">&#x27;s/hello/A/;s/world/B/&#x27;</span></span><br><span class="line">结果：A B</span><br></pre></td></tr></table></figure>
+<p>说明：例子 1 和例子 2 的写法的作用完全等同，可以根据喜好来选择，如果需要的子命令操作比较多的时候，无论是选择 - e 选项方式，还是选择分号的方式，都会使命令显得臃肿不堪，此时使用 - f 选项来指定脚本文件来执行各种操作会比较清晰明了。</p>
+<p><strong>选项 - i</strong></p>
+<p>sed 默认会把输入行读取到模式空间，简单理解就是一个内存缓冲区，sed 子命令处理的内容是模式空间中的内容，而非直接处理文件内容。因此在 sed 修改模式空间内容之后，并非直接写入修改输入文件，而是打印输出到标准输出。如果需要修改输入文件，那么就可以指定 - i 选项。</p>
+<p>例子 1：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cat file.txt</span><br><span class="line">hello world</span><br><span class="line">[root@localhost]<span class="comment"># sed &#x27;s/hello/A/&#x27; file.txt</span></span><br><span class="line">A world</span><br><span class="line">[root@localhost]<span class="comment"># cat file.txt</span></span><br><span class="line">hello world</span><br></pre></td></tr></table></figure>
+<p>例子 2：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost]# sed -i &#39;s&#x2F;hello&#x2F;A&#x2F;&#39; file.txt</span><br><span class="line">[root@localhost]# cat file.txt</span><br><span class="line">A world</span><br></pre></td></tr></table></figure>
+<p>例子 3：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost]# sed –i.bak &#39;s&#x2F;hello&#x2F;A&#x2F;&#39; file.txt</span><br></pre></td></tr></table></figure>
+<p>说明：最后一个例子会把修改内容保存到 file.txt，同时会以 file.txt.bak 文件备份原来未修改文件内容，以确保原始文件内容安全性，防止错误操作而无法恢复原来内容。</p>
+<p><strong>选项 - f</strong></p>
+<p>还记得 -e 选项可以来执行多个子命令操作，用分号分隔多个命令操作也是可以的，如果命令操作比较多的时候就会比较麻烦，这时候把多个子命令操作写入脚本文件，然后使用 -f 选项来指定该脚本。<br>
+例子 1：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;hello world&quot;</span> | sed -f sed.script</span><br><span class="line">结果：A B</span><br></pre></td></tr></table></figure>
+<p>sed.script 脚本内容：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s/hello/A/</span><br><span class="line">s/world/B/</span><br></pre></td></tr></table></figure>
+<p>说明：在脚本文件中的子命令串就不需要输入单引号了。</p>
+<p><strong>选项 - r</strong></p>
+<p>sed 命令的匹配模式支持正则表达式的，默认只能支持基本正则表达式，如果需要支持扩展正则表达式，那么需要添加 - r 选项。<br>
+例子 1：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;hello world&quot;</span> | sed -r <span class="string">&#x27;s/(hello)|(world)/A/g&#x27;</span></span><br><span class="line">A A</span><br></pre></td></tr></table></figure>
+<h3 id="六-数字定址和正则定址"><a class="markdownIt-Anchor" href="#六-数字定址和正则定址">#</a> 六、数字定址和正则定址</h3>
+<p>1、关于定址的概念</p>
+<p>默认情况下 sed 会对每一行内容进行匹配、处理、输出，某些情况不需要对处理的文本全部编辑，只需要其中的一部分，比如 1-10 行，偶数行，或者是包含 &quot;hello&quot; 字符串的行，这种情况下就需要我们去定位特定的行来处理，而不是全部内容，这里把这个定位指定的行叫做 &quot;定址&quot;。</p>
+<p>2、数字定址</p>
+<p>数字定址其实就是通过数字去指定具体要操作编辑的行，数字定址有几种方式，每种方式都有不同的应用场景，下边以举例的方式来描述每种数字定址的用法。</p>
+<p>例子 1：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed –n ‘4s/hello/A/’ message</span><br></pre></td></tr></table></figure>
+<p>说明：将第 4 行中 hello 字符串替换为 A，其它行如果有 hello 也不会被替换。</p>
+<p>例子 2：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed –n ‘2,4s/hello/A/’ message</span><br></pre></td></tr></table></figure>
+<p>说明：将第 2-4 行中 hello 字符串替换为 A，其它行如果有 hello 也不会被替换。</p>
+<p>例子 3：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed –n ‘2,+4s/hello/A/’ message</span><br></pre></td></tr></table></figure>
+<p>说明：从第 2 行开始，再接着往下数 4 行，也就是 2-6 行，这些行会把 hello 字符替换为 A。</p>
+<p>例子 4：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed –n ‘4,~3s/hello/A/’ message</span><br></pre></td></tr></table></figure>
+<p>说明：第 4 行开始，到第 6 行。解释 6 的由来，&quot;4,~3&quot; 表示从 4 行开始到下一个 3 的倍数，这里从 4 开始算，那就是 6 了，当然 9 就不是了，因为是要求 3 的第一个超过前边数字 4 的倍数，感觉这种适用场景不会太多。</p>
+<p>例子 5：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed –n ‘4~3s/hello/A/’ message</span><br></pre></td></tr></table></figure>
+<p>说明：从第 4 行开始，每隔 3 行就把 hello 替换为 A。比如从 4 行开始，7 行，10 行等依次 + 3 行。这个比较常用，比如 3 替换为 2 的时候，也就是每隔 2 行的步调，可以实现奇数和偶数行的操作。</p>
+<p>例子 6：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed –n ‘<span class="variable">$s</span>/hello/A/’ message</span><br></pre></td></tr></table></figure>
+<p>说明：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>符号表示最后一行，和正则中的</mtext></mrow><annotation encoding="application/x-tex">符号表示最后一行，和正则中的</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord cjk_fallback">符</span><span class="mord cjk_fallback">号</span><span class="mord cjk_fallback">表</span><span class="mord cjk_fallback">示</span><span class="mord cjk_fallback">最</span><span class="mord cjk_fallback">后</span><span class="mord cjk_fallback">一</span><span class="mord cjk_fallback">行</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">和</span><span class="mord cjk_fallback">正</span><span class="mord cjk_fallback">则</span><span class="mord cjk_fallback">中</span><span class="mord cjk_fallback">的</span></span></span></span>符号类似，但是第 1 行不用 ^ 表示，直接 1 就行了。</p>
+<p>例子 7：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -n ‘1!s/hello/A/’ message</span><br></pre></td></tr></table></figure>
+<p>说明：! 符号表示取反，该命令是将除了第 1 行，其它行 hello 替换为 A，上述定址方式也可以使用！符号。</p>
+<p>3、正则定址</p>
+<p>正则定址使用目的和数字定址完全一样，使用方式上有所不同，是通过正则表达式的匹配来确定需要处理编辑哪些行，其它行就不需要额外处理。</p>
+<p>例子 1：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed -n ‘/nihao/d’ message</span><br><span class="line">说明：将匹配到nihao的行执行删除操作。</span><br></pre></td></tr></table></figure>
+<p>例子 2：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed -n ‘/^$/d’ message</span><br><span class="line">说明：删除空行</span><br></pre></td></tr></table></figure>
+<p>例子 3：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed -n ‘/^TS/,/^TE/d’ message</span><br><span class="line">说明：匹配以TS开头的行到TE开头的行之间的行，把匹配到的这些行删除。</span><br></pre></td></tr></table></figure>
+<p>4、数字定址和正则定址混用</p>
+<p>其实数字定址和正则定址可以配合使用，参考下边的例子。</p>
+<p>例子 1：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed -n ‘1,/^TS/d’ message</span><br><span class="line">说明：匹配从第1行到TS开头的行，把匹配的行删除。</span><br></pre></td></tr></table></figure>
+<p>5、关于定址的分组命令</p>
+<p>例子 1：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;^TS&#x2F;,&#x2F;^TE&#x2F;&#123;</span><br><span class="line">s&#x2F;CN&#x2F;China&#x2F;</span><br><span class="line">s&#x2F;Beijing&#x2F;BJ&#x2F;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>说明：该命令表示将从 TS 开头的行到 TE 开头的行之间范围的行内容中 CN 替换为 China，并且把 Beijing 替换为 BJ，类似于多命令之间用分号的那种方式，不过这样定址代码只写了一遍，相当于执行了一条子命令。</p>
+<p>例子 2：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -n ‘2,3s&#123;/cn/china/;/a/b/&#125;’ message</span><br></pre></td></tr></table></figure>
+<p>说明：效果类似例子 1，有点数学上的乘法分配率的意思。</p>
+<p>6、sed 定址的总结</p>
+<p>sed 默认的命令执行范围是全局编辑的，如果不明确指定行的话，命令会在所有输入行上执行，如果想仅对其中部分行执行命令，可以使用地址限制。如果给了 2 个地址，即地址对 (地址范围)，则命令匹配的这个地址范围内执行，但是需要注意的是：对于像 “addr1，addr2” 这种形式的地址匹配，如果 addr1 匹配，则匹配成功，“开关 &quot;打开，在该行上执行命令，此时不管 addr2 是否匹配，即使 addr2 在 addr1 这一行之前；接下来读入下一行，如果 addr2 匹配，则执行命令，同样开关&quot; 关闭”；如果 addr2 在 addr1 之后，则一直处理到匹配为止，换句话说，如果 addr2 一直不匹配，则开关一直不关闭，因此会持续执行命令到最后一行。</p>
+<h3 id="七-基本子命令"><a class="markdownIt-Anchor" href="#七-基本子命令">#</a> 七、基本子命令</h3>
+<p>1、子命令 a</p>
+<p>子命令 a 表示在指定行下边插入指定行的内容。</p>
+<p>例子 1：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed ‘a A’ message</span><br><span class="line">说明：将message文件中每一行下边都插入添加一行内容是A。</span><br></pre></td></tr></table></figure>
+<p>例子 2：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed ‘1,2a A’ message</span><br><span class="line">说明：将message文件中1-2行的下边插入添加一行内容是A</span><br></pre></td></tr></table></figure>
+<p>例子 3：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed ‘1,2a A\nB\nC’ message</span><br><span class="line">说明：将message文件中1-2行的下边分别添加3行，3行内容分别是A、B、C，这里使用了\n，插入多行内容都可以按照这种方式来实现。</span><br></pre></td></tr></table></figure>
+<p>2、子命令 i</p>
+<p>子命令 i 和 a 使用上基本上一样，只不过是在指定行上边插入指定行的内容。</p>
+<p>例子 1：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed ‘i A’ message</span><br><span class="line">说明：将message文件中每一行上边都插入添加一行内容是A。</span><br></pre></td></tr></table></figure>
+<p>例子 2：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed ‘1,2i A’ message</span><br><span class="line">说明：将message文件中1-2行的上边插入添加一行内容是A</span><br></pre></td></tr></table></figure>
+<p>例子 3：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed ‘1,2i A\nB\nC’ message</span><br><span class="line">说明：将message文件中1-2行的上边分别添加3行，3行内容分别是A、B、C，这里使用了\n，插入多行内容都可以按照这种方式来实现。</span><br></pre></td></tr></table></figure>
+<p>3、子命令 c</p>
+<p>子命令 c 是表示把指定的行内容替换为自己需要的行内容。</p>
+<p>例子 1：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed ‘c A’ message</span><br><span class="line">说明：将message文件中所有的行内容都分别替换为A行内容。</span><br></pre></td></tr></table></figure>
+<p>例子 2：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed ‘1,2c A’ message</span><br></pre></td></tr></table></figure>
+<p>说明：将 message 文件中 1-2 行的内容替换为 A，注意这里说的是将 1-2 行所有的内容只替换为一个 A 内容，也就是 1-2 行内容编程了一行，定址如果连续就是这种情况。如果想把 1-2 行分别替换为 A，可以参考下个例子的方式。</p>
+<p>例子 3：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed ‘1,2c A\nA’ message</span><br><span class="line">说明：将message中1-2行内容分别替换为了A，需要在替换内容上手动加换行\n，这样当然也可以将一行内容替换为多行内容。</span><br></pre></td></tr></table></figure>
+<p>4、子命令 d</p>
+<p>子命令 d 表示删除指定的行内容，比较简单，更容易理解。</p>
+<p>例子 1：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed ‘d’ message</span><br><span class="line">说明：将message所有行全部删除，因为没有加定址表达式，所以平时如果需要删除指定行内容，需要在子命令前加定址表达式。</span><br></pre></td></tr></table></figure>
+<p>例子 2：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed ‘1,3d’ message</span><br><span class="line">说明：将message文件中1-3行内容删除。</span><br></pre></td></tr></table></figure>
+<p>5、子命令 y</p>
+<p>子命令 y 表示字符替换，可以替换多个字符，只能替换字符不能替换字符串，且不支持正则表达式，具体使用方法看例子。</p>
+<p>例子 1：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed ‘y/ab/AB/’ message</span><br><span class="line">说明：把message中所有a字符替换为A符号，所有b字符替换为B符号。</span><br></pre></td></tr></table></figure>
+<p>强调一下，这里的替换源字符个数和目的字符个数必须相等；字符不支持正则表达式；源字符和目标字符每个字符需要一一对应。</p>
+<p>6、子命令 =</p>
+<p>子命令 =，可以将行号打印出来。<br>
+例子：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed ‘1,2=’ message</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">nihao</span><br><span class="line">2</span><br><span class="line">hello world</span><br><span class="line">说明：将指定行的上边显示行号。</span><br></pre></td></tr></table></figure>
+<p>7、子命令 r</p>
+<p>子命令 r，类似于 a，也是将内容追加到指定行的后边，只不过 r 是将指定文件内容读取并追加到指定行下边。</p>
+<p>例子 1：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed ‘2r a.txt’ message</span><br><span class="line">说明：将a.txt文件内容读取并插入到message文件第2行的下边。</span><br></pre></td></tr></table></figure>
+<p>8、子命令 s</p>
+<p>子命令 s 为替换子命令，是平时 sed 使用的最多的子命令，没有之一。因为支持正则表达式，功能变得强大无比，下边来详细地说说子命令 s 的使用方法。</p>
+<p>基本语法：<br>
+<strong>[address]s/pattern/replacement/flags</strong></p>
+<p>s 字符串替换，替换的时候可以把 / 换成其它的符号，比如 =，replacement 部分用下列字符会有特殊含义：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;  &amp;：用正则表达式匹配的内容进行替换</span><br><span class="line">&gt;&gt;&gt;  \n：回调参数</span><br><span class="line">&gt;&gt;&gt;  \(\)：保存被匹配的字符以备反向引用\n时使用，最多9个标签，标签书序从左到右</span><br></pre></td></tr></table></figure>
+<p>Flags</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;  n：可以是1-512，表示第n次出现的情况进行替换</span><br><span class="line">&gt;&gt;&gt;  g：全局更改</span><br><span class="line">&gt;&gt;&gt;  p：打印模式空间的内容</span><br><span class="line">&gt;&gt;&gt;  w file：写入到一个文件file中</span><br></pre></td></tr></table></figure>
+<p>实例用法</p>
+<p>测试文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># cat message</span><br><span class="line">hello 123 world</span><br></pre></td></tr></table></figure>
+<p>例子 1：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed ‘s/hello/HELLO/’ message</span><br><span class="line">说明：将message每行包含的第一个hello的字符串替换为HELLO，这是最基本的用法。</span><br></pre></td></tr></table></figure>
+<p>例子 2：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sed -r ‘s/[a-z]+ [0-9]+ [a-z]+/A/’ message</span><br><span class="line">结果：A</span><br><span class="line">说明：使用了扩展正则表达式，需要加-r选项。</span><br></pre></td></tr></table></figure>
+<p>例子 3：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sed -r ‘s/([a-z]+)( [0-9]+ )([a-z]+)/\1\2\3/’ message</span><br><span class="line">结果：hello 123 world</span><br><span class="line">说明：再看下一个例子就明白了。</span><br></pre></td></tr></table></figure>
+<p>例子 4：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sed -r ‘s/([a-z]+)( [0-9]+ )([a-z]+)/\3\2\1/’ message</span><br><span class="line">结果：world 123 hello</span><br><span class="line">说明：\1表示正则第一个分组结果，\2表示正则匹配第二个分组结果，\3表示正则匹配第三个分组结果。</span><br></pre></td></tr></table></figure>
+<p>例子 5：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sed -r ‘s/([a-z]+)( [0-9]+ )([a-z]+)/&amp;/’ message</span><br><span class="line">结果：hello 123 world</span><br><span class="line">说明：&amp;表示正则表达式匹配的整个结果集。</span><br></pre></td></tr></table></figure>
+<p>例子 6：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sed -r ‘s/([a-z]+)( [0-9]+ )([a-z]+)/111&amp;222/’ message</span><br><span class="line">结果：111hello 123 world222</span><br><span class="line">说明：在匹配结果前后分别加了111、222。</span><br></pre></td></tr></table></figure>
+<p>例子 7：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed -r ‘s/.*/111&amp;222/’ message</span><br><span class="line">说明：在message文件中每行的首尾分别加上111、222。</span><br></pre></td></tr></table></figure>
+<p>例子 8：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed ‘s/i/A/g’ message</span><br><span class="line">说明：把message文件中每行的所有i字符替换为A，默认不加g标记时只替换每行的第一个字符。</span><br></pre></td></tr></table></figure>
+<p>例子 9：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed ‘s/i/A/2’ message</span><br><span class="line">说明：把message文件中每行的第2个i字符替换为A。</span><br></pre></td></tr></table></figure>
+<p>例子 10：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed -n ‘s/i/A/p’ message</span><br><span class="line">说明：加-p标记会把被替换的行打印出来，再加上-n选项会关闭模式空间打印模式，因此该命令的效果就是只显示被替换修改的行。</span><br></pre></td></tr></table></figure>
+<p>例子 11：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed -n ‘s/i/A/w b.txt’ message</span><br><span class="line">说明：把message文件中内容的每行第一个字符i替换为A，然后把修改内容另存为b.txt文件。</span><br></pre></td></tr></table></figure>
+<p>例子 12：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed -n ‘s/i/A/i’ message</span><br><span class="line">说明：把message文件中每一行的第一个i或I字符替换为A字符，也即是忽略大小写。</span><br></pre></td></tr></table></figure>
+<h3 id="八-sed-工作模式"><a class="markdownIt-Anchor" href="#八-sed-工作模式">#</a> 八、sed 工作模式</h3>
+<p>1、模式空间和保持空间</p>
+<p>模式空间初始化为空，处理完一行后会自动输出到屏幕并清除模式空间；保持空间初始化为一个空行，也就是默认带一个 \n，处理完后不会自动清除。模式空间和保持空间，从程序的角度去看，其实就是 sed 在工作的时候占用了一些内存空间和地址，sed 工作完毕就会把内存释放并归还给操作系统。</p>
+<p>2、sed 工作流程</p>
+<p>大概简单描述一下 sed 的工作流程，读取文件的一行，存入模式空间，然后进行所有子命令的处理，处理完后默认会将模式空间的内容输出打印到标准输出，也就是在屏幕上显示出来，接着清空模式空间的内存，继续读取下一行的内容到模式空间，继续处理，依次循环处理。</p>
+<p>3、模式空间和保持空间的置换</p>
+<p>h：把模式空间内容覆盖到保持空间中<br>
+ H：把模式空间内容追加到保持空间中<br>
+ g：把保持空间内容覆盖到模式空间中<br>
+ G：把保持空间内容追加到模式空间中<br>
+ x：交换模式空间与保持空间的内容</p>
+<p>4、实例用法</p>
+<p>测试文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># cat test.txt</span><br><span class="line">11111</span><br><span class="line">22222</span><br><span class="line">33333</span><br><span class="line">44444</span><br></pre></td></tr></table></figure>
+<p>例子 1：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sed ‘&#123;1h;2,3H;4G&#125;’ test.txt</span><br><span class="line">结果：</span><br><span class="line">11111</span><br><span class="line">22222</span><br><span class="line">33333</span><br><span class="line">44444</span><br><span class="line">11111</span><br><span class="line">22222</span><br><span class="line">33333</span><br><span class="line">解释说明：略。懒得写了。</span><br></pre></td></tr></table></figure>
+<p>例子 2：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sed ‘&#123;1h;2x;3g;<span class="variable">$G</span>&#125;’ test.txt</span><br><span class="line">结果：</span><br><span class="line">11111</span><br><span class="line">11111</span><br><span class="line">22222</span><br><span class="line">44444</span><br><span class="line">22222</span><br><span class="line">解释说明：略。</span><br></pre></td></tr></table></figure>
+<p>例子 3：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sed ‘&#123;1!G;h;$!d&#125;’ test.txt</span><br><span class="line">结果：</span><br><span class="line">44444</span><br><span class="line">33333</span><br><span class="line">22222</span><br><span class="line">11111</span><br></pre></td></tr></table></figure>
+<h3 id="九-高级子命令"><a class="markdownIt-Anchor" href="#九-高级子命令">#</a> 九、高级子命令</h3>
+<p>高级子命令比较少，但是比较复杂，平时用的也会相对少些，却也很重要，有的内容处理不用高级子命令是完成不了的。</p>
+<p>**n：** 读入下一行到模式空间，例：’4 {n;d}’ 删除第 5 行。<br>
+**N：** 追加下一行到模式空间，再把当前行和下一行同时应用后面的命令。<br>
+**P：** 输出多行模式空间的第一部分，直到第一个嵌入的换行符位置。在执行完脚本的最后一个命令之后，模式空间的内容自动输出。P 命令经常出现在 N 命令之后和 D 命令之前。<br>
+**D：** 删除模式空间中第一个换行符的内容。它不会导致读入新的输入行，相反，它返回到脚本的顶端，将这些指令应用与模式空间剩余的内容。这 3 个命令能建立一个输入、输出循环，用来维护两行模式空间，但是一次只输出一行。</p>
+<p>例子 1：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed ‘N;$!P;D’ a.txt</span><br><span class="line"><span class="comment">#说明：删除文件倒数第二行</span></span><br></pre></td></tr></table></figure>
+<p>例子 2：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed ‘N;$!P;$!D;<span class="variable">$d</span>’ a.txt</span><br><span class="line"><span class="comment"># 说明：删除文件最后两行</span></span><br></pre></td></tr></table></figure>
+<h3 id="十-分支和测试"><a class="markdownIt-Anchor" href="#十-分支和测试">#</a> 十、分支和测试</h3>
+<p>分支命令用于无条件转移，测试命令用于有条件转移。</p>
+<p>1、分支 branch<br>
+ 跳转的位置与标签相关联。<br>
+如果有标签则跳转到标签所在的后面行继续执行。<br>
+如果没有标签则跳转到脚本的结尾处。<br>
+标签：以冒号开始后接标签名，不要在标签名前后使用空格。</p>
+<p>2、跳转到标签指定位置<br>
+测试文件：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">grep seker /etc/passwd</span><br><span class="line">seker:x:500:500::/home/seker:/bin/bash</span><br></pre></td></tr></table></figure>
+<p>例子 1：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">grep seker /etc/passwd | sed ‘:top;s/seker/blues/;/seker/b top;s/5/555/’</span><br><span class="line">结果：blues:x:55500:500::/home/blues:/bin/bash</span><br></pre></td></tr></table></figure>
+<p>选择执行<br>
+例子 2：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">grep ‘seker’ /etc/passwd | sed ‘s/seker/blues/;/seker/b end;s/5/555/;:end;s/5/666/’</span><br><span class="line">结果：blues:x:66600:500::/home/seker:/bin/bash</span><br></pre></td></tr></table></figure>
+<p>测试命令，如果前一个替换命令执行成功则跳转到脚本末尾 (case 结构)<br>
+ 例子 3：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">grep ‘seker’ /etc/passwd | sed ‘s/seker/ABC;t;s/home/DEF/;t;s/bash/XYZ/’</span><br><span class="line">结果：ABC:x:500:500::/home/seker:/bin/bash</span><br></pre></td></tr></table></figure>
+<p>例子 4：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">grep ‘zorro’ /etc/passwd | sed ‘s/seker/ABC/;t;s/home/DEF/;t;s/bash/XYZ’</span><br><span class="line">结果：zorro:x:500:500::/DEF/zorro:/bin/bash</span><br></pre></td></tr></table></figure>
+<p>与标签关联，跳转到标签位置。<br>
+例子 5：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">grep ‘seker’ /etc/passwd | sed ‘s/seker/ABC/;t end;s/home/DEF/;t;end;s/bash/XYZ’</span><br><span class="line">结果：ABC:x:500:500::/home/seker:/bin/XYZ</span><br></pre></td></tr></table></figure>
+<h3 id="十一-sed-实战练习"><a class="markdownIt-Anchor" href="#十一-sed-实战练习">#</a> 十一、sed 实战练习</h3>
+<p>实例 1：删除文件每行的第二个字符。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -r <span class="string">&#x27;s/(.*)(.)$/\1/&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>实例 2：删除文件每行的最后一个字符。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -r <span class="string">&#x27;s/(.*)(.)$/\1/&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>实例 3：删除文件每行的倒数第 2 个单词。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -r ‘s/(.*)([^a-Z]+)([a-Z]+)([^a-Z]+)([a-Z]+)([^a-Z]*$)/\1\2\4\5/’ /etc/passwd</span><br></pre></td></tr></table></figure>
+<p>实例 4：交换每行的第一个字符和第二个字符。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -r ‘s/(.)(.)(.*)/\2\1\3/’ /etc/passwd</span><br></pre></td></tr></table></figure>
+<p>实例 5：交换每行的第一个单词和最后一个单词。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -r ‘s/([a-Z]+)([^a-Z]+)(.*)([^a-Z]+)([a-Z]+)([^a-Z]*$)/\5\2\3\4\1\6/’ /etc/passwd</span><br></pre></td></tr></table></figure>
+<p>实例 6：删除一个文件中所有的数字。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed ‘s/[0-9]//g’ /etc/passwd</span><br></pre></td></tr></table></figure>
+<p>实例 7：用制表符替换文件中出现的所有空格。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -r ‘s/ +/\t/g’ /etc/passwd</span><br></pre></td></tr></table></figure>
+<p>实例 8：把所有大写字母用括号 () 括起来。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -r ‘s/([A-Z])/(\1)/g’ /etc/passwd</span><br></pre></td></tr></table></figure>
+<p>实例 9：打印每行 3 次。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed ‘p;p’ /etc/passwd</span><br></pre></td></tr></table></figure>
+<p>实例 10：隔行删除</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed ‘0~2&#123;=;d&#125;’ /etc/passwd</span><br></pre></td></tr></table></figure>
+<p>实例 11：把文件从第 22 行到第 33 行复制到 56 行后面。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed ‘22h;23,33H;56G’ /etc/passwd</span><br></pre></td></tr></table></figure>
+<p>实例 12：把文件从第 22 行到第 33 行移动到第 56 行后面。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed ‘22&#123;h;d&#125;;23,33&#123;H;d&#125;;56g’ /etc/passwd</span><br></pre></td></tr></table></figure>
+<p>实例 13：只显示每行的第一个单词。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -r ‘s/([a-Z]+)([^a-Z]+)(.*)/\1/’ /etc/passwd</span><br></pre></td></tr></table></figure>
+<p>实例 14：打印每行的第一个单词和第三个单词。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -r ‘s/([a-Z]+)([^a-Z]+)([a-Z]+)([^a-Z]+)([a-Z]+)([^a-Z]+)(.*)/\1\t\5/’ /etc/passwd</span><br></pre></td></tr></table></figure>
+<p>实例 15：将格式为 mm/yy/dd 的日期格式换成 mm;yy;dd</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">date <span class="string">&#x27;+%m/%y/%d&#x27;</span> | sed <span class="string">&#x27;s/\//;/g&#x27;</span></span><br></pre></td></tr></table></figure>
+
+      <div class="tags">
+          <a href="/tags/other/" rel="tag"><i class="ic i-tag"></i> other</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2019-10-29 15:37:20" itemprop="dateModified" datetime="2019-10-29T15:37:20+08:00">2019-10-29</time>
+  </span>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>著者:  </strong>江边鸟 <i class="ic i-at"><em>@</em></i>露の世
+  </li>
+  <li class="link">
+    <strong>記事へのリンク: </strong>
+    <a href="https://lhchen74.github.io/2019/10/29/sed/" title="sed入门详解教程">https://lhchen74.github.io/2019/10/29/sed/</a>
+  </li>
+  <li class="license">
+    <strong>著作権表示:  </strong>このブログ内のすべての記事は、特別な記載がない限り <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> の下のライセンスで保護されています。
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2019/10/29/java8/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipeyonbf9j20zk0m8e81.jpg" title="java8">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>java8</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2019/10/29/python-quickstart/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giciryrr3rj20zk0m8nhk.jpg" title="python quickstart">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>python quickstart</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80-%E5%86%99%E5%9C%A8%E5%89%8D%E8%BE%B9"><span class="toc-number">1.</span> <span class="toc-text"> 一、写在前边</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C-%E5%9F%BA%E6%9C%AC%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">2.</span> <span class="toc-text"> 二、基本正则表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89-%E6%89%A9%E5%B1%95%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">3.</span> <span class="toc-text"> 三、扩展正则表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E5%88%86%E7%B1%BB%E5%92%8C%E5%BA%94%E7%94%A8"><span class="toc-number">4.</span> <span class="toc-text"> 四、正则表达式的分类和应用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94-sed-%E8%AF%AD%E6%B3%95%E5%92%8C%E5%B8%B8%E7%94%A8%E9%80%89%E9%A1%B9"><span class="toc-number">5.</span> <span class="toc-text"> 五、sed 语法和常用选项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AD-%E6%95%B0%E5%AD%97%E5%AE%9A%E5%9D%80%E5%92%8C%E6%AD%A3%E5%88%99%E5%AE%9A%E5%9D%80"><span class="toc-number">6.</span> <span class="toc-text"> 六、数字定址和正则定址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%83-%E5%9F%BA%E6%9C%AC%E5%AD%90%E5%91%BD%E4%BB%A4"><span class="toc-number">7.</span> <span class="toc-text"> 七、基本子命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AB-sed-%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F"><span class="toc-number">8.</span> <span class="toc-text"> 八、sed 工作模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B9%9D-%E9%AB%98%E7%BA%A7%E5%AD%90%E5%91%BD%E4%BB%A4"><span class="toc-number">9.</span> <span class="toc-text"> 九、高级子命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%81-%E5%88%86%E6%94%AF%E5%92%8C%E6%B5%8B%E8%AF%95"><span class="toc-number">10.</span> <span class="toc-text"> 十、分支和测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%81%E4%B8%80-sed-%E5%AE%9E%E6%88%98%E7%BB%83%E4%B9%A0"><span class="toc-number">11.</span> <span class="toc-text"> 十一、sed 实战练习</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">223</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">26</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item twitter" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;twitter.com&#x2F;yourname"><i class="ic i-twitter"></i></span>
+      <span class="exturl item zhihu" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3Blb3BsZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;yourname"><i class="ic i-zhihu"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLyMvdXNlci9ob21lP2lkPXlvdXJpZA==" title="https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;yourid"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item weibo" data-url="aHR0cHM6Ly93ZWliby5jb20veW91cm5hbWU=" title="https:&#x2F;&#x2F;weibo.com&#x2F;yourname"><i class="ic i-weibo"></i></span>
+      <span class="exturl item about" data-url="aHR0cHM6Ly9hYm91dC5tZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;about.me&#x2F;yourname"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2019/10/29/java8/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2019/10/29/python-quickstart/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/10/12/vim/" title="vim">vim</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/11/08/mysql/" title="mysql basic">mysql basic</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/10/28/go-json/" title="GO小知识之如何做JSON美化">GO小知识之如何做JSON美化</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2021/03/04/css-layout/" title="css layout">css layout</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/02/28/python-restful/" title="python flask restful">python flask restful</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/07/15/node-inner-module/" title="node inner module">node inner module</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/07/10/node-axios/" title="jquery fetch axios">jquery fetch axios</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2020/09/04/english-question/" title="英语疑问句：5 种句型构建指南">英语疑问句：5 种句型构建指南</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/06/06/python-fire/" title="python fire">python fire</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/10/29/java-pojo/" title="Java中的PO、VO、DTO、BO、POJO、BO&#x2F;DO、DAO">Java中的PO、VO、DTO、BO、POJO、BO/DO、DAO</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2021</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ Dew's World</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2019/10/29/sed/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
