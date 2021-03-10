@@ -1,0 +1,489 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="rust" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2020/09/07/rust-overview/">
+
+
+
+  <title>
+Rust for JavaScript Developers - Tooling Ecosystem Overview |
+Dew's World = 露の世</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">Rust for JavaScript Developers - Tooling Ecosystem Overview
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2020-09-07 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2020-09-07T00:00:00+08:00">2020-09-07</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Dew's World</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclwuom7cj20zk0m8dvn.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipewf5l51j20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipeyhsblkj20zk0m81kx.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipevo9j1jj20zk0m8e81.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipexbei4hj20zk0m8npd.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipew28b65j20zk0m8hdt.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2020/09/07/rust-overview/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>reproduce: <span class="exturl" data-url="aHR0cDovL3d3dy5zaGVzaGJhYnUuY29tL3Bvc3RzL3J1c3QtZm9yLWphdmFzY3JpcHQtZGV2ZWxvcGVycy10b29saW5nLWVjb3N5c3RlbS1vdmVydmlldy8=">Rust for JavaScript Developers - Tooling Ecosystem Overview</span></p>
+</blockquote>
+<h1 id="rust-for-javascript-developers-tooling-ecosystem-overview"><a class="markdownIt-Anchor" href="#rust-for-javascript-developers-tooling-ecosystem-overview">#</a> Rust for JavaScript Developers - Tooling Ecosystem Overview</h1>
+<p>This is the first part in a series about introducing the Rust language to JavaScript developers. Here are all the chapters:</p>
+<ol>
+<li><span class="exturl" data-url="aHR0cDovL3d3dy5zaGVzaGJhYnUuY29tL3Bvc3RzL3J1c3QtZm9yLWphdmFzY3JpcHQtZGV2ZWxvcGVycy10b29saW5nLWVjb3N5c3RlbS1vdmVydmlldy8=">Tooling Ecosystem Overview</span></li>
+<li><span class="exturl" data-url="aHR0cDovL3d3dy5zaGVzaGJhYnUuY29tL3Bvc3RzL3J1c3QtZm9yLWphdmFzY3JpcHQtZGV2ZWxvcGVycy12YXJpYWJsZXMtYW5kLWRhdGEtdHlwZXMv">Variables and Data Types</span></li>
+<li><span class="exturl" data-url="aHR0cDovL3d3dy5zaGVzaGJhYnUuY29tL3Bvc3RzL3J1c3QtZm9yLWphdmFzY3JpcHQtZGV2ZWxvcGVycy1mdW5jdGlvbnMtYW5kLWNvbnRyb2wtZmxvdy8=">Functions and Control Flow</span></li>
+<li><span class="exturl" data-url="aHR0cDovL3d3dy5zaGVzaGJhYnUuY29tL3Bvc3RzL3J1c3QtZm9yLWphdmFzY3JpcHQtZGV2ZWxvcGVycy1wYXR0ZXJuLW1hdGNoaW5nLWFuZC1lbnVtcy8=">Pattern Matching and Enums</span></li>
+</ol>
+<p>I find it easier to understand something new if it was explained in terms of something I already know - I thought there might be others like me 😃</p>
+<p>Here’s the tl;dr version:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Tool</th>
+<th style="text-align:left">JavaScript</th>
+<th style="text-align:left">Rust</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Version Manager</td>
+<td style="text-align:left">nvm</td>
+<td style="text-align:left">rustup</td>
+</tr>
+<tr>
+<td style="text-align:left">Package Manager</td>
+<td style="text-align:left">npm</td>
+<td style="text-align:left">Cargo</td>
+</tr>
+<tr>
+<td style="text-align:left">Package Registry</td>
+<td style="text-align:left"><span class="exturl" data-url="aHR0cDovL25wbWpzLmNvbQ==">npmjs.com</span></td>
+<td style="text-align:left"><span class="exturl" data-url="aHR0cDovL2NyYXRlcy5pbw==">crates.io</span></td>
+</tr>
+<tr>
+<td style="text-align:left">Package Manifest</td>
+<td style="text-align:left">package.json</td>
+<td style="text-align:left">Cargo.toml</td>
+</tr>
+<tr>
+<td style="text-align:left">Dependency Lockfile</td>
+<td style="text-align:left">package-lock.json</td>
+<td style="text-align:left">Cargo.lock</td>
+</tr>
+<tr>
+<td style="text-align:left">Task Runner</td>
+<td style="text-align:left">npm scripts, gulp etc</td>
+<td style="text-align:left">make, cargo-make</td>
+</tr>
+<tr>
+<td style="text-align:left">Live Reload</td>
+<td style="text-align:left">nodemon</td>
+<td style="text-align:left">cargo-watch</td>
+</tr>
+<tr>
+<td style="text-align:left">Linter</td>
+<td style="text-align:left">ESLint, TSLint, JSLint</td>
+<td style="text-align:left">Clippy</td>
+</tr>
+<tr>
+<td style="text-align:left">Formatter</td>
+<td style="text-align:left">Prettier</td>
+<td style="text-align:left">rustfmt</td>
+</tr>
+<tr>
+<td style="text-align:left">Dependency Vulnerability Checker</td>
+<td style="text-align:left">npm audit</td>
+<td style="text-align:left">cargo-audit</td>
+</tr>
+</tbody>
+</table>
+<h2 id="setup"><a class="markdownIt-Anchor" href="#setup">#</a> Setup</h2>
+<p>Rust is installed using the <span class="exturl" data-url="aHR0cHM6Ly9ydXN0dXAucnMv">rustup</span> command. rustup is similar to <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL252bS1zaC9udm0=">nvm</span> in Node.js. You can use it to install and manage multiple versions of Rust and more.</p>
+<h2 id="cargo"><a class="markdownIt-Anchor" href="#cargo">#</a> Cargo</h2>
+<p>Installing Rust using rustup also installs Cargo similar to how installing Node.js also installs NPM. Cargo is Rust’s package manager and would feel very familiar if you’ve used NPM before.</p>
+<p>Rust’s packages are called “crates”, and they’re downloaded from the <span class="exturl" data-url="aHR0cHM6Ly9jcmF0ZXMuaW8v">crates.io</span> registry similar to how NPM packages are downloaded from <span class="exturl" data-url="aHR0cHM6Ly93d3cubnBtanMuY29tLw==">npmjs.com</span>.</p>
+<p>NPM while primarily a package manager, is also used as a task runner using the <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm5wbWpzLmNvbS9taXNjL3NjcmlwdHM=">npm scripts</span> feature. Cargo has builtin support for common tasks like running code, building code etc. Cargo has features like <span class="exturl" data-url="aHR0cHM6Ly9kb2MucnVzdC1sYW5nLm9yZy9jYXJnby9yZWZlcmVuY2Uvd29ya3NwYWNlcy5odG1s">workspaces</span> (similar to <span class="exturl" data-url="aHR0cHM6Ly9sZXJuYS5qcy5vcmcv">lerna</span>), <span class="exturl" data-url="aHR0cHM6Ly9kb2MucnVzdC1sYW5nLm9yZy9jYXJnby9yZWZlcmVuY2Uvb3ZlcnJpZGluZy1kZXBlbmRlbmNpZXMuaHRtbA==">dependency overrides</span> (similar to <span class="exturl" data-url="aHR0cHM6Ly93d3cubnBtanMuY29tL3BhY2thZ2UvcGF0Y2gtcGFja2FnZQ==">patch-package</span>) out of the box. It is also a test runner (similar to mocha, jest etc), benchmark runner etc.</p>
+<p>So basically, Cargo is NPM on steroids!</p>
+<h2 id="project-setup"><a class="markdownIt-Anchor" href="#project-setup">#</a> Project Setup</h2>
+<p>Creating a new project is done by running</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> cargo new hello_rust</span></span><br></pre></td></tr></table></figure>
+<p>This is somewhat similar to  <code>npm init</code> . This creates a directory called “hello_rust” with the following files:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">hello_rust</span><br><span class="line">├── .git</span><br><span class="line">├── .gitignore</span><br><span class="line">├── Cargo.toml</span><br><span class="line">└─┬ src</span><br><span class="line">  └── main.rs</span><br></pre></td></tr></table></figure>
+<h2 id="cargotoml"><a class="markdownIt-Anchor" href="#cargotoml">#</a> Cargo.toml</h2>
+<p>This is the package manifest file similar to package.json. The lock file (package-lock.json equivalent) is named Cargo.lock. Opening the Cargo.toml, you’ll see a familiar layout:</p>
+<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[package]</span></span><br><span class="line"><span class="attr">name</span> = <span class="string">&quot;hello_rust&quot;</span></span><br><span class="line"><span class="attr">version</span> = <span class="string">&quot;0.1.0&quot;</span></span><br><span class="line"><span class="attr">authors</span> = [<span class="string">&quot;sheshbabu&quot;</span>]</span><br><span class="line"><span class="attr">edition</span> = <span class="string">&quot;2018&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="section">[dependencies]</span></span><br></pre></td></tr></table></figure>
+<p>The  <code>[package]</code>  <span class="exturl" data-url="aHR0cHM6Ly90b21sLmlvL2VuL3YwLjUuMCNzZWN0aW9uLTE2">table</span> contains metadata like the crate name, author, keywords etc. The  <code>[dependencies]</code>  table is similar to the <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm5wbWpzLmNvbS9maWxlcy9wYWNrYWdlLmpzb24jZGVwZW5kZW5jaWVz">dependencies object in package.json</span>. Cargo.toml also supports  <code>[dev-dependencies]</code>  similar to <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm5wbWpzLmNvbS9maWxlcy9wYWNrYWdlLmpzb24jZGV2ZGVwZW5kZW5jaWVz">devDependencies</span>.</p>
+<h2 id="dependency-management"><a class="markdownIt-Anchor" href="#dependency-management">#</a> Dependency Management</h2>
+<p>Installing a new dependency is done by manually editing the Cargo.toml file, adding the dependency under  <code>[dependencies]</code>  and running  <code>cargo build</code> . For example, if we want to install the “serde” crate, we need to edit the Cargo.toml file as follows:</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[package]</span><br><span class="line">name = &quot;hello_rust&quot;</span><br><span class="line">version = &quot;0.1.0&quot;</span><br><span class="line">authors = [&quot;sheshbabu&quot;]</span><br><span class="line">edition = &quot;2018&quot;</span><br><span class="line"></span><br><span class="line">[dependencies]</span><br><span class="line"><span class="addition">+ serde = &quot;1.0.106&quot;</span></span><br></pre></td></tr></table></figure>
+<p>and run</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> cargo build</span></span><br></pre></td></tr></table></figure>
+<p>Similarly, to remove or update a dependency, we need to manually edit the Cargo.toml file and run  <code>cargo build</code> . I was initially confused by the existence of the  <code>cargo install</code>  command but it turned out to be an equivalent of  <code>npm install -g</code> .</p>
+<p>If you want something similar to  <code>npm install</code> ,  <code>npm update</code>  or  <code>npm uninstall</code> , you can install <span class="exturl" data-url="aHR0cHM6Ly9jcmF0ZXMuaW8vY3JhdGVzL2NhcmdvLWVkaXQ=">cargo-edit</span> which enhances Cargo with  <code>cargo add</code> ,  <code>cargo rm</code>  and  <code>cargo upgrade</code>  subcommands.</p>
+<p>You can also specify the <span class="exturl" data-url="aHR0cHM6Ly9kb2MucnVzdC1sYW5nLm9yZy9jYXJnby9yZWZlcmVuY2Uvc3BlY2lmeWluZy1kZXBlbmRlbmNpZXMuaHRtbCNjYXJldC1yZXF1aXJlbWVudHM=">dependency version using patterns</span> similar to NPM.</p>
+<h2 id="development-tools"><a class="markdownIt-Anchor" href="#development-tools">#</a> Development tools</h2>
+<h3 id="task-runner"><a class="markdownIt-Anchor" href="#task-runner">#</a> Task Runner</h3>
+<p>Cargo supports running common tasks like build, run, test etc. But if you want something similar to NPM scripts, you can use make or <span class="exturl" data-url="aHR0cHM6Ly9jcmF0ZXMuaW8vY3JhdGVzL2NhcmdvLW1ha2U=">cargo-make</span></p>
+<h3 id="live-reload"><a class="markdownIt-Anchor" href="#live-reload">#</a> Live Reload</h3>
+<p>Nodemon is an essential tool for Node.js development - it watches for changes to files and automatically restarts the application. <span class="exturl" data-url="aHR0cHM6Ly9jcmF0ZXMuaW8vY3JhdGVzL2NhcmdvLXdhdGNo">cargo-watch</span> is the equivalent in Rust world.</p>
+<h3 id="linter-and-formatter"><a class="markdownIt-Anchor" href="#linter-and-formatter">#</a> Linter and Formatter</h3>
+<p>Rust has builtin linter called <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3J1c3QtbGFuZy9ydXN0LWNsaXBweQ==">Clippy</span> and formatter called <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3J1c3QtbGFuZy9ydXN0Zm10">rustfmt</span>. They’re equivalent to ESLint and Prettier in JS ecosystem. Precommit hooks can be managed using <span class="exturl" data-url="aHR0cHM6Ly9jcmF0ZXMuaW8vY3JhdGVzL2NhcmdvLWh1c2t5">cargo-husky</span>.</p>
+<h3 id="vulnerability-checking"><a class="markdownIt-Anchor" href="#vulnerability-checking">#</a> Vulnerability Checking</h3>
+<p>Scanning for vulnerabilities in dependencies is done using <span class="exturl" data-url="aHR0cHM6Ly9jcmF0ZXMuaW8vY3JhdGVzL2NhcmdvLWF1ZGl0">cargo-audit</span> and is very similar to <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm5wbWpzLmNvbS9jbGkvYXVkaXQ=">npm audit</span>.</p>
+<p>Thanks for reading! Feel free to follow me in <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS9zaGVzaGJhYnU=">Twitter</span> for more posts like this 😃</p>
+<p>Tagged under: <span class="exturl" data-url="aHR0cDovL3d3dy5zaGVzaGJhYnUuY29tL3RhZ3MvSmF2YVNjcmlwdC8=">JavaScript</span>, <span class="exturl" data-url="aHR0cDovL3d3dy5zaGVzaGJhYnUuY29tL3RhZ3MvUnVzdC8=">Rust</span>, <span class="exturl" data-url="aHR0cDovL3d3dy5zaGVzaGJhYnUuY29tL3RhZ3MvUnVzdC1CZWdpbm5lcnMv">Rust Beginners</span>, <span class="exturl" data-url="aHR0cDovL3d3dy5zaGVzaGJhYnUuY29tL3RhZ3MvUnVzdC1mb3ItSmF2YVNjcmlwdC1EZXZlbG9wZXJzLw==">Rust for JavaScript Developers</span></p>
+<p>Published on: 28 Jun 2020</p>
+
+      <div class="tags">
+          <a href="/tags/rust/" rel="tag"><i class="ic i-tag"></i> rust</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2021-03-10 21:12:14" itemprop="dateModified" datetime="2021-03-10T21:12:14+08:00">2021-03-10</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2020/09/07/rust-error/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipexe4oykj20zk0m87ji.jpg" title="Beginner&#39;s guide to Error Handling in Rust">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Beginner's guide to Error Handling in Rust</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2020/09/07/rust-function-controlflow/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclh0m9pdj20zk0m8hdt.jpg" title="Rust for JavaScript Developers - Functions and Control Flow">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Rust for JavaScript Developers - Functions and Control Flow</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#rust-for-javascript-developers-tooling-ecosystem-overview"><span class="toc-number">1.</span> <span class="toc-text"> Rust for JavaScript Developers - Tooling Ecosystem Overview</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#setup"><span class="toc-number">1.1.</span> <span class="toc-text"> Setup</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cargo"><span class="toc-number">1.2.</span> <span class="toc-text"> Cargo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#project-setup"><span class="toc-number">1.3.</span> <span class="toc-text"> Project Setup</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cargotoml"><span class="toc-number">1.4.</span> <span class="toc-text"> Cargo.toml</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dependency-management"><span class="toc-number">1.5.</span> <span class="toc-text"> Dependency Management</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#development-tools"><span class="toc-number">1.6.</span> <span class="toc-text"> Development tools</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#task-runner"><span class="toc-number">1.6.1.</span> <span class="toc-text"> Task Runner</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#live-reload"><span class="toc-number">1.6.2.</span> <span class="toc-text"> Live Reload</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#linter-and-formatter"><span class="toc-number">1.6.3.</span> <span class="toc-text"> Linter and Formatter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vulnerability-checking"><span class="toc-number">1.6.4.</span> <span class="toc-text"> Vulnerability Checking</span></a></li></ol></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">232</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">26</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item twitter" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;twitter.com&#x2F;yourname"><i class="ic i-twitter"></i></span>
+      <span class="exturl item zhihu" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3Blb3BsZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;yourname"><i class="ic i-zhihu"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLyMvdXNlci9ob21lP2lkPXlvdXJpZA==" title="https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;yourid"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item weibo" data-url="aHR0cHM6Ly93ZWliby5jb20veW91cm5hbWU=" title="https:&#x2F;&#x2F;weibo.com&#x2F;yourname"><i class="ic i-weibo"></i></span>
+      <span class="exturl item about" data-url="aHR0cHM6Ly9hYm91dC5tZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;about.me&#x2F;yourname"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/links/" rel="section"><i class="ic i-magic"></i>links</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2020/09/07/rust-error/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2020/09/07/rust-function-controlflow/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2021</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ Dew's World</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2020/09/07/rust-overview/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
