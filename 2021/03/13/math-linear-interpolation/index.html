@@ -1,0 +1,410 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="math" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2021/03/13/math-linear-interpolation/">
+
+
+
+  <title>
+双线性插值 |
+Dew's World = 露の世</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">双线性插值
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2021-03-13 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2021-03-13T00:00:00+08:00">2021-03-13</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Dew's World</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeubcbajj20zk0m8h1h.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giciryrr3rj20zk0m8nhk.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicitzannuj20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclimtf7dj20zk0m8qav.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipex2cdtbj20zk0m8x6p.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicliwyw55j20zk0m8hdt.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2021/03/13/math-linear-interpolation/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>转载：<span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vbGlua3IvcC8zNjMwOTAyLmh0bWw=">双线性插值 - 木 lin 木 - 博客园</span></p>
+</blockquote>
+<p>双线性插值 **，这个名字咋一听很高大上的样纸，再在维基百科上一查（见文末，我去，一堆的公式吓死人），像俺这种半文盲，看到公式脑子就懵的类型，真心给跪。虽然看着好复杂，但仔细一看道理再简单不过了，所以还是自己梳理一下好。</p>
+<p>双线性插值，顾名思义就是两个方向的线性插值加起来（这解释过于简单粗暴，哈哈）。所以只要了解什么是线性插值，分别在 x 轴和 y 轴都做一遍，就是双线性插值了。</p>
+<p>线性插值的概念也非常简单粗暴，就是两个点 A，B，要在 AB 中间插入一个点 C（点 C 坐标在 AB 连线上），就直接让 C 的值落在 AB 的值的连线上就可以了。</p>
+<p>如 A 点坐标 (0,0), 值为 3，B 点坐标 (0,2)，值为 5，那要对坐标为 (0,1) 的点 C 进行插值，就让 C 落在 AB 线上，值为 4 就可以了。</p>
+<p>但是如果 C 不在 AB 的线上肿么办捏，所以就有了双线性插值。如图，已知 Q12，Q22，Q11，Q21，但是要插值的点为 P 点，这就要用双线性插值了，首先在 x 轴方向上，对 R1 和 R2 两个点进行插值，这个很简单，然后根据 R1 和 R2 对 P 点进行插值，这就是所谓的双线性插值。</p>
+<img data-src="/2021/03/13/math-linear-interpolation/281607508919268.png" class="">
+<p>附：维基百科–双线性插值：</p>
+<p><strong>双线性插值</strong>，又称为<strong>双线性内插</strong>。在<span class="exturl" data-url="aHR0cDovL3poLndpa2lwZWRpYS5vcmcvd2lraS8lRTYlOTUlQjAlRTUlQUQlQTY=">数学</span>上，<strong>双线性插值</strong>是有两个变量的<span class="exturl" data-url="aHR0cDovL3poLndpa2lwZWRpYS5vcmcvd2lraS8lRTYlOEYlOTIlRTUlODAlQkM=">插值</span>函数的<span class="exturl" data-url="aHR0cDovL3poLndpa2lwZWRpYS5vcmcvd2lraS8lRTclQkElQkYlRTYlODAlQTclRTYlOEYlOTIlRTUlODAlQkM=">线性插值</span>扩展，其核心思想是在两个方向分别进行一次线性插值。</p>
+<p>假如我们想得到未知函数 <img data-src="/2021/03/13/math-linear-interpolation/8fa14cdd754f91cc6554c9e71929cce7.png" class=""> 在点 <img data-src="/2021/03/13/math-linear-interpolation/0506a08cb42636e5b8d212adf5c434db.png" class=""> 的值，假设我们已知函数 <img data-src="/2021/03/13/math-linear-interpolation/8fa14cdd754f91cc6554c9e71929cce7.png" class=""> 在 <img data-src="/2021/03/13/math-linear-interpolation/bc8f0dc01985190cd254a183461bd65e.png" class="">, <img data-src="/2021/03/13/math-linear-interpolation/b8ec98846a7d0e35f30c147de66f1a34.png" class="">, <img data-src="/2021/03/13/math-linear-interpolation/db8a8cb1b575e228dfdea51cbc1bb75c.png" class="">, 及 <img data-src="/2021/03/13/math-linear-interpolation/ff8e7258cb51b54837c6e1aaf4b7e25f.png" class=""> 四个点的值。</p>
+<p>首先在 <em>x</em> 方向进行线性插值，得到</p>
+<img data-src="/2021/03/13/math-linear-interpolation/0014695061f06ae99b2a88885448f7fb.png" class="">
+<img data-src="/2021/03/13/math-linear-interpolation/6ccb0faa10648961b7bc26f2656c3cf6.png" class="">
+<p>然后在 <em>y</em> 方向进行线性插值，得到</p>
+<img data-src="/2021/03/13/math-linear-interpolation/48efbc5513d6b06bf0a02780cacf35a3.png" class="">
+<p>这样就得到所要的结果 <img data-src="/2021/03/13/math-linear-interpolation/d1d5f9036a25bed99ceaae9d63a20750.png" class="">,</p>
+<img data-src="/2021/03/13/math-linear-interpolation/3e71fff610681c8e4932669a2076009c.png" class="">
+<img data-src="/2021/03/13/math-linear-interpolation/67e587b52822e9ac2714395548ce7024.png" class="">
+<p>如果选择一个坐标系统使得 <img data-src="/2021/03/13/math-linear-interpolation/8fa14cdd754f91cc6554c9e71929cce7.png" class=""> 的四个已知点坐标分别为 (0, 0)、(0, 1)、(1, 0) 和 (1, 1)，那么插值公式就可以化简为</p>
+<img data-src="/2021/03/13/math-linear-interpolation/1831a0c3c97e1a3deaa44f68cc752f6d.png" class="">
+<p>或者用<span class="exturl" data-url="aHR0cDovL3poLndpa2lwZWRpYS5vcmcvd2lraS8lRTclOUYlQTklRTklOTglQjU=">矩阵</span>运算表示为</p>
+<img data-src="/2021/03/13/math-linear-interpolation/fc2e1aee4d7434cc6c90fd34e0b2cbd4.png" class="">
+<p>与这种插值方法名称不同的是，这种插值方法的结果通常不是线性的，它的形式是</p>
+<p><img data-src="math-linear-interpolation//354506ed47c0513268e319bddb12a7c3.png" alt=""></p>
+<p>常数的数目都对应于给定的 <em>f</em> 的数据点数目</p>
+<img data-src="/2021/03/13/math-linear-interpolation/bb57247ee546847ac73941455c43aee4.png" class="">
+<img data-src="/2021/03/13/math-linear-interpolation/189328b02b979a42a045eee9afdfe9bf.png" class="">
+<img data-src="/2021/03/13/math-linear-interpolation/35cc19c91f5378cf0df431f4b7823bec.png" class="">
+<img data-src="/2021/03/13/math-linear-interpolation/3f923d2632e09c9b9470122bf179a9ba.png" class="">
+<p>线性插值的结果与插值的顺序无关。首先进行 <em>y</em> 方向的插值，然后进行 <em>x</em> 方向的插值，所得到的结果是一样的。</p>
+
+      <div class="tags">
+          <a href="/tags/math/" rel="tag"><i class="ic i-tag"></i> math</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2021-03-13 16:21:30" itemprop="dateModified" datetime="2021-03-13T16:21:30+08:00">2021-03-13</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2021/03/13/python-pathlib/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipeun65urj20zk0m81ii.jpg" title="Discovering Python 3’s pathlib">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Discovering Python 3’s pathlib</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2021/03/13/c-static/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giciuja1j1j20zk0m8kjl.jpg" title="c 语言中 static 用法">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>c 语言中 static 用法</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">236</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">27</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item twitter" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;twitter.com&#x2F;yourname"><i class="ic i-twitter"></i></span>
+      <span class="exturl item zhihu" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3Blb3BsZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;yourname"><i class="ic i-zhihu"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLyMvdXNlci9ob21lP2lkPXlvdXJpZA==" title="https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;yourid"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item weibo" data-url="aHR0cHM6Ly93ZWliby5jb20veW91cm5hbWU=" title="https:&#x2F;&#x2F;weibo.com&#x2F;yourname"><i class="ic i-weibo"></i></span>
+      <span class="exturl item about" data-url="aHR0cHM6Ly9hYm91dC5tZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;about.me&#x2F;yourname"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/links/" rel="section"><i class="ic i-magic"></i>links</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2021/03/13/python-pathlib/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2021/03/13/c-static/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2021</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ Dew's World</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2021/03/13/math-linear-interpolation/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
