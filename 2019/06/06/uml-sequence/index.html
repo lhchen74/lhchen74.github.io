@@ -1,0 +1,422 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="other" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2019/06/06/uml-sequence/">
+
+
+
+  <title>
+UML 使用循序圖傳達各物件互動及時序關係 |
+Dew's World = 露の世</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">UML 使用循序圖傳達各物件互動及時序關係
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2019-06-06 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2019-06-06T00:00:00+08:00">2019-06-06</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Dew's World</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giph4fomxoj20zk0m8axp.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicit4jrvuj20zk0m8785.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicitcxhpij20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giciryrr3rj20zk0m8nhk.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giciub8ja1j20zk0m81ky.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicis3attqj20zk0m8k7l.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2019/06/06/uml-sequence/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>转载：<span class="exturl" data-url="aHR0cHM6Ly9kb3RibG9ncy5jb20udHcvd2FzaWNocmlzLzIwMTYvMDMvMTcvMjMyMzQx">UML 使用循序圖傳達各物件互動及時序關係 | 搞搞就懂 - 點部落</span></p>
+</blockquote>
+<p>使用 UML 循序圖 (Sequence Diagram) 來傳達物件互動及時序關係</p>
+<h2 id="前言"><a class="markdownIt-Anchor" href="#前言">#</a> 前言</h2>
+<p>在程式開發的過程中，難免需要跟 IT 客戶溝通一些較為細節的流程設計，此時如果空口說白話是很難以了解彼此的想法是否在同一平面上，因此需要一些輔助圖來協助知識的傳遞；另外，在 SD 設計告一段落進入開發時，有些比較複雜的流程其實是很難用文字快速傳達給開發人員了解，此時圖的使用就會扮演很重要的角色。說了這麼多就是要來說說循序圖 (Sequence Diagram)，以及要如何繪製一張大家都明瞭的圖。</p>
+<h2 id="循序圖說明"><a class="markdownIt-Anchor" href="#循序圖說明">#</a> 循序圖說明</h2>
+<p>使用循序圖就是要清楚地傳遞各物件在時間軸上的互動情境，因此會透過以下這張圖來標示參與的所有物件有哪些，以及在各時間點彼此互動的情況，幫助閱讀的人可以快速及清晰地掌握細節。以下分別就各組成說明。</p>
+<img data-src="/2019/06/06/uml-sequence/1458229824_64272.png" class="" title="img">
+<ol>
+<li><strong>參與者 (Participants)</strong>：參與互動的物件，內文格式為  <code>名稱 : 類別名稱</code></li>
+<li><strong>生命線 (Lifeline)</strong>：表示互動發生的時間軸</li>
+<li><strong>執行發起 (Execution Occurrence)</strong>：描繪生命線內某個執行單元</li>
+<li><strong>訊息 (Message)</strong>：呼叫目標物件的實際作為</li>
+<li><strong>合併片段 (Combined Fragment)</strong>：描述不同情況下可能發生的變化 (opt=option)</li>
+<li><strong>回傳訊息 (Reply Message)</strong>：非必須符號，因為執行發起的結束點就隱含此意了</li>
+</ol>
+<h2 id="範例"><a class="markdownIt-Anchor" href="#範例">#</a> 範例</h2>
+<p>光說不練是假把戲，所以筆者使用比較貼近生活的預約掛號情境來實際演練一下。我想每個人都有預約掛號的經驗，最直接就是跟助理約時間，而助理通常都會問病患是否初診，如果初診就會要求病患填寫基本資料，並且透過醫院系統註冊新病患資料。</p>
+<p>接著就會詢問要掛哪位醫生的門診，所以就需要透過醫院系統來查詢門診是否額滿，此時就只會有兩種情況產生了，因此透過 alt 片段來區隔不同情況下所發生的變化。當滿診的情況下，助理會將病患列入候補清單，若有其他病患退掛會主動通知 (此流程於此不詳述)；當該醫生門診尚未額滿時，助理會透過醫院系統建立一張預約單，並且執行預約作業 (輸入病患及醫生門診資訊)，完成後會取得一組預約序號。最後整個流程結束後為由助理回應病患此次預約掛號的處理結果。</p>
+<p>說了這麼多我們來試想一下，如果今天是直接口述此流程，我想可能很難讓一個沒有經歷過此生活體驗的人快速掌握各別物件的互動及時序關係吧？因此若是有以下循序圖來加以輔助，搞不好直接看圖就可以掌握個 8 成細節流程，而剩下的只需要再口述引導一次就搞定了，是不是很節省彼此寶貴的時間呢？</p>
+<img data-src="/2019/06/06/uml-sequence/1458231413_20568.png" class="" title="img">
+<h2 id="片段型態"><a class="markdownIt-Anchor" href="#片段型態">#</a> 片段型態</h2>
+<p>在繪製循序圖時會經常使用到片段，且會因應各種情境存在許多種型態，以下整理比較常見的片段進行說明。</p>
+<p>alt (Alternatives) : 任何情況只有一個序列發生，是互斥的條件。</p>
+<p>ex. 工程師有工作就用電腦寫程式，不然就用電腦聽音樂</p>
+<img data-src="/2019/06/06/uml-sequence/1458294755_27527.png" class="" title="img">
+<p>par (Parallel) : 平行處理，片段中的事件可以交錯執行。</p>
+<p>ex. 工程師用電腦邊寫程式邊聽音樂，先後順序是可以交錯</p>
+<img data-src="/2019/06/06/uml-sequence/1458295145_63953.png" class="" title="img">
+<p>opt (Option) : 選擇項，不一定會發生的序列 (要符合條件)。</p>
+<p>ex. 工程師卡關的時候會查詢點部落求解答</p>
+<img data-src="/2019/06/06/uml-sequence/1458295643_97571.png" class="" title="img">
+<p>loop : 重複片段。可以設立重複的條件，若未設定最小級最大重複次數，預設表示無限制。</p>
+<p>ex. 工程師只要卡關，直接無窮盡地使用電腦進行 Google 搜尋，直到找到解決方案才會罷休。</p>
+<img data-src="/2019/06/06/uml-sequence/1458461556_06102.png" class="" title="img">
+<p>ref (Reference) : 表示參考另一個互動循序圖，屬於 Interaction Use 範疇。</p>
+<p>ex. 顧客在使用網站時都需要登入，而登入細節於此不贅述 (直接參考到登入循序圖即可)。</p>
+<img data-src="/2019/06/06/uml-sequence/1458463758_71725.png" class="" title="img">
+<p>以下是被參考到的 Login 互動循序圖，所有登入細節統一由此進行細節說明。</p>
+<img data-src="/2019/06/06/uml-sequence/1458463817_89239.png" class="" title="img">
+<h2 id="參考資訊"><a class="markdownIt-Anchor" href="#參考資訊">#</a> 參考資訊</h2>
+<p><span class="exturl" data-url="aHR0cDovL3d3dy51bWwtZGlhZ3JhbXMub3JnL3NlcXVlbmNlLWRpYWdyYW1zLWNvbWJpbmVkLWZyYWdtZW50Lmh0bWw=">http://www.uml-diagrams.org/sequence-diagrams-combined-fragment.html</span></p>
+
+      <div class="tags">
+          <a href="/tags/other/" rel="tag"><i class="ic i-tag"></i> other</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2021-03-16 15:09:14" itemprop="dateModified" datetime="2021-03-16T15:09:14+08:00">2021-03-16</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2019/06/06/vue-struct/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclize41wj20zk0m87gk.jpg" title="vue struct">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>vue struct</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2019/06/06/unicode-utf8/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclfb3vzhj20zk0m8wny.jpg" title="unicode and utf8">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>unicode and utf8</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text"> 前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%AA%E5%BA%8F%E5%9C%96%E8%AA%AA%E6%98%8E"><span class="toc-number">2.</span> <span class="toc-text"> 循序圖說明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AF%84%E4%BE%8B"><span class="toc-number">3.</span> <span class="toc-text"> 範例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%87%E6%AE%B5%E5%9E%8B%E6%85%8B"><span class="toc-number">4.</span> <span class="toc-text"> 片段型態</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E8%A8%8A"><span class="toc-number">5.</span> <span class="toc-text"> 參考資訊</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">239</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">29</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item twitter" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;twitter.com&#x2F;yourname"><i class="ic i-twitter"></i></span>
+      <span class="exturl item zhihu" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3Blb3BsZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;yourname"><i class="ic i-zhihu"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLyMvdXNlci9ob21lP2lkPXlvdXJpZA==" title="https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;yourid"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item weibo" data-url="aHR0cHM6Ly93ZWliby5jb20veW91cm5hbWU=" title="https:&#x2F;&#x2F;weibo.com&#x2F;yourname"><i class="ic i-weibo"></i></span>
+      <span class="exturl item about" data-url="aHR0cHM6Ly9hYm91dC5tZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;about.me&#x2F;yourname"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/links/" rel="section"><i class="ic i-magic"></i>links</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2019/06/06/vue-struct/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2019/06/06/unicode-utf8/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2021</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ Dew's World</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2019/06/06/uml-sequence/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

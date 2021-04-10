@@ -102,12 +102,12 @@ Dew's World = 露の世</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclhnx9glj20zk0m8npd.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipex2cdtbj20zk0m8x6p.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giph4wqtg4j20zk0m8x6p.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipexe4oykj20zk0m87ji.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclga70tsj20zk0m84mr.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclh3brzpj20zk0m8ann.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipeubcbajj20zk0m8h1h.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipet4bz0yj20zk0m8e81.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giciundwu5j20zk0m8n9e.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicis081o9j20zk0m8dmr.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipey0a334j20zk0m8qpt.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipevarprfj20zk0m8npd.jpg"></li>
         </ul>
       </div>
     </header>
@@ -269,24 +269,11 @@ Dew's World = 露の世</title>
 <p>FILENAME: 正在处理的文件名</p>
 <p>例如：  <code>awk -F ':' '&#123;print FILENAME,NR,NF&#125;' /etc/passwd</code></p>
 <p>显示 /etc/passwd 每行的行号，每行的列数，对应的用户名（prrint, printf）</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> awk -F <span class="string">&#x27;:&#x27;</span> <span class="string">&#x27;&#123;print &quot;Line: &quot;NR, &quot;Col: &quot;NF, &quot;User: &quot;$1&#125;&#x27;</span> passwd</span></span><br><span class="line">Line: 1 Col: 7 User: root</span><br><span class="line">Line: 2 Col: 7 User: daemon</span><br><span class="line">Line: 3 Col: 7 User: bin</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> awk -F <span class="string">&#x27;:&#x27;</span> <span class="string">&#x27;&#123;print &quot;Line: &quot;NR, &quot;Col: &quot;NF, &quot;User: &quot;$1&#125;&#x27;</span> passwd</span></span><br><span class="line">Line: 1 Col: 7 User: root</span><br><span class="line">Line: 2 Col: 7 User: daemon</span><br><span class="line">Line: 3 Col: 7 User: bin</span><br><span class="line">......</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> awk -F <span class="string">&#x27;:&#x27;</span> <span class="string">&#x27;&#123;printf(&quot;Line: %s Col: %s User: %s\n&quot;,NR,NF,$1)&#125;&#x27;</span> passwd</span></span><br><span class="line">Line: 1 Col: 7 User: root</span><br><span class="line">Line: 2 Col: 7 User: daemon</span><br><span class="line">Line: 3 Col: 7 User: bin</span><br><span class="line">......</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> awk -F <span class="string">&#x27;:&#x27;</span> <span class="string">&#x27;&#123;printf(&quot;Line: %3s Col: %s User: %s\n&quot;,NR,NF,$1)&#125;&#x27;</span> passwd</span></span><br><span class="line">Line: 1 Col: 7 User: root</span><br><span class="line">Line: 2 Col: 7 User: daemon</span><br><span class="line">Line: 3 Col: 7 User: bin</span><br><span class="line">......</span><br><span class="line">Line: 9 Col: 7 User: mail</span><br><span class="line">Line: 10 Col: 7 User: news</span><br><span class="line">Line: 11 Col: 7 User: uucp</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>$ awk -F ‘:’ ‘{printf(“Line: %s Col: %s User: %s\n”,NR,NF,$1)}’ passwd<br>
-Line: 1 Col: 7 User: root<br>
-Line: 2 Col: 7 User: daemon<br>
-Line: 3 Col: 7 User: bin<br>
-…</p>
-<p>$ awk -F ‘:’ ‘{printf(“Line: %3s Col: %s User: %s\n”,NR,NF,$1)}’ passwd<br>
-Line: 1 Col: 7 User: root<br>
-Line: 2 Col: 7 User: daemon<br>
-Line: 3 Col: 7 User: bin<br>
-…<br>
-Line: 9 Col: 7 User: mail<br>
-Line: 10 Col: 7 User: news<br>
-Line: 11 Col: 7 User: uucp<br>
-…</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">显示 &#x2F;etc&#x2F;passwd中用户ID大于100 的行号和用户名（if ... else ...）</span><br><span class="line"></span><br><span class="line">​&#96;&#96;&#96;shell</span><br><span class="line">$ awk -F &#39;:&#39; &#39;&#123;if ($3&gt;100) print &quot;Line: &quot;NR, &quot;User: &quot;$1&#125;&#39; passwd</span><br><span class="line">Line: 18 User: nobody</span><br><span class="line">Line: 20 User: syslog</span><br><span class="line">Line: 21 User: messagebus</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+<p>显示 /etc/passwd 中用户 ID 大于 100 的行号和用户名（if … else …）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> awk -F <span class="string">&#x27;:&#x27;</span> <span class="string">&#x27;&#123;if ($3&gt;100) print &quot;Line: &quot;NR, &quot;User: &quot;$1&#125;&#x27;</span> passwd</span></span><br><span class="line">Line: 18 User: nobody</span><br><span class="line">Line: 20 User: syslog</span><br><span class="line">Line: 21 User: messagebus</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
 <p>在服务器 log 中找出 ‘Error’ 的发生日期</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sed -n <span class="string">&#x27;/Error/p&#x27;</span> fresh.log | awk <span class="string">&#x27;&#123;print $1&#125;&#x27;</span></span></span><br><span class="line">2016-11-01T10:39:04.09558300+08:00</span><br><span class="line">2016-11-02T10:39:04.09558300+08:00</span><br><span class="line">2016-11-03T08:39:04.09558300+08:00</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> awk <span class="string">&#x27;/Error/&#123;print $1&#125;&#x27;</span> fresh.log</span></span><br><span class="line">2016-11-01T10:39:04.09558300+08:00</span><br><span class="line">2016-11-02T10:39:04.09558300+08:00</span><br><span class="line">2016-11-03T08:39:04.09558300+08:00</span><br></pre></td></tr></table></figure>
 <h3 id="awk-逻辑判断式"><a class="markdownIt-Anchor" href="#awk-逻辑判断式">#</a> awk 逻辑判断式</h3>
@@ -326,7 +313,7 @@ Line: 11 Col: 7 User: uucp<br>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2021-03-16 15:05:44" itemprop="dateModified" datetime="2021-03-16T15:05:44+08:00">2021-03-16</time>
+    <time title="Modified: 2021-03-22 17:51:25" itemprop="dateModified" datetime="2021-03-22T17:51:25+08:00">2021-03-22</time>
   </span>
 </div>
 
@@ -343,7 +330,7 @@ Line: 11 Col: 7 User: uucp<br>
     <div class="item left">
       
 
-  <a href="/2021/03/13/c-static/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicljgocqbj20zk0m8e81.jpg" title="c 语言中 static 用法">
+  <a href="/2021/03/13/c-static/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipewkhf1zj20zk0m81kx.jpg" title="c 语言中 static 用法">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>c 语言中 static 用法</h3>
@@ -351,6 +338,14 @@ Line: 11 Col: 7 User: uucp<br>
 
     </div>
     <div class="item right">
+      
+
+  <a href="/2021/04/08/cpp-vscode/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclfw2t96j20zk0m8x6p.jpg" title="Untitled">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Untitled</h3>
+  </a>
+
     </div>
 </div>
 
@@ -382,7 +377,7 @@ Line: 11 Col: 7 User: uucp<br>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">237</span>
+        <span class="count">239</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -455,10 +450,12 @@ Line: 11 Col: 7 User: uucp<br>
 
   <ul id="quick">
     <li class="prev pjax">
+        <a href="/2021/03/13/c-static/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
     </li>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
     <li class="next pjax">
+        <a href="/2021/04/08/cpp-vscode/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
     </li>
     <li class="percent"></li>
   </ul>
