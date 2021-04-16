@@ -102,12 +102,12 @@ Dew's World = 露の世</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclg5ms2rj20zk0m8u0x.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicliwyw55j20zk0m8hdt.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclxfdlttj20zk0m8npd.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipevgoki5j20zk0m84qp.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicitht3xtj20zk0m8k5v.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giciszlczyj20zk0m816d.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclhnx9glj20zk0m8npd.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giph4wqtg4j20zk0m8x6p.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicljgocqbj20zk0m8e81.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclfb3vzhj20zk0m8wny.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclh5u05ej20zk0m87df.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipevuctzzj20zk0m84qp.jpg"></li>
         </ul>
       </div>
     </header>
@@ -223,6 +223,26 @@ Dew's World = 露の世</title>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">echo</span> -e <span class="string">&#x27;123\n456\n789&#x27;</span> &gt; 123.txt</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">echo</span> -e <span class="string">&#x27;abc\ndef\nghk&#x27;</span> &gt; abc.txt</span></span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> sed <span class="string">&#x27;1r 123.txt&#x27;</span> abc.txt</span></span><br><span class="line">abc</span><br><span class="line">123</span><br><span class="line">456</span><br><span class="line">789</span><br><span class="line">def</span><br><span class="line">ghk</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> sed <span class="string">&#x27;1w abc.txt&#x27;</span> 123.txt</span></span><br><span class="line">123</span><br><span class="line">456</span><br><span class="line">789</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> cat abc.txt</span></span><br><span class="line">123</span><br></pre></td></tr></table></figure>
 <h3 id="q-退出-sed"><a class="markdownIt-Anchor" href="#q-退出-sed">#</a> q 退出 sed</h3>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> nl passwd | sed <span class="string">&#x27;3q&#x27;</span></span></span><br><span class="line">     1  root:x:0:0:root:/root:/bin/bash</span><br><span class="line">     2  daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin</span><br><span class="line">     3  bin:x:2:2:bin:/bin:/usr/sbin/nologin</span><br></pre></td></tr></table></figure>
+<h3 id="批量替换文件名"><a class="markdownIt-Anchor" href="#批量替换文件名">#</a> 批量替换文件名</h3>
+<table>
+<thead>
+<tr>
+<th>src</th>
+<th>dest</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AAA-o60807012@76027.xml</td>
+<td>o60807012.out</td>
+</tr>
+<tr>
+<td>BBB-o60466251@75842.xml</td>
+<td>o60466251.out</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ls *.xml | sed <span class="string">&#x27;s/.*\?-\(.*\?\)@.*\?/mv &amp; \1.out/&#x27;</span></span></span><br><span class="line">mv AAA-o60807012@76027.xml o60807012.out</span><br><span class="line">mv BBB-o60466251@75842.xml o60466251.out</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 需要添加 sh 才会执行 shell 命令</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ls *.xml | sed <span class="string">&#x27;s/.*\?-\(.*\?\)@.*\?/mv &amp; \1.out/&#x27;</span> | sh</span></span><br></pre></td></tr></table></figure>
 <h2 id="awk"><a class="markdownIt-Anchor" href="#awk">#</a> awk</h2>
 <p>文本与数据处理工具，与 sed 相比可以编程，处理灵活，功能强大。更侧重于复杂逻辑处理。</p>
 <h3 id="awk-处理方式与格式"><a class="markdownIt-Anchor" href="#awk-处理方式与格式">#</a> awk 处理方式与格式</h3>
@@ -313,7 +333,7 @@ Dew's World = 露の世</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2021-03-22 17:51:25" itemprop="dateModified" datetime="2021-03-22T17:51:25+08:00">2021-03-22</time>
+    <time title="Modified: 2021-04-16 17:32:12" itemprop="dateModified" datetime="2021-04-16T17:32:12+08:00">2021-04-16</time>
   </span>
 </div>
 
@@ -330,7 +350,7 @@ Dew's World = 露の世</title>
     <div class="item left">
       
 
-  <a href="/2021/03/13/c-static/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclgi503lj20zk0m8hdt.jpg" title="c 语言中 static 用法">
+  <a href="/2021/03/13/c-static/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipev1x5e4j20zk0m8b29.jpg" title="c 语言中 static 用法">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>c 语言中 static 用法</h3>
@@ -340,7 +360,7 @@ Dew's World = 露の世</title>
     <div class="item right">
       
 
-  <a href="/2021/04/01/cpp-vscode/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giph4wqtg4j20zk0m8x6p.jpg" title="VSCode C++ Compile Multi Files">
+  <a href="/2021/04/01/cpp-vscode/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipevuctzzj20zk0m84qp.jpg" title="VSCode C++ Compile Multi Files">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>VSCode C++ Compile Multi Files</h3>
@@ -362,7 +382,7 @@ Dew's World = 露の世</title>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="Contents">
-          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#grep"><span class="toc-number">1.</span> <span class="toc-text"> grep</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sed"><span class="toc-number">2.</span> <span class="toc-text"> sed</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#sed-%E6%A0%BC%E5%BC%8F"><span class="toc-number">2.1.</span> <span class="toc-text"> sed 格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#p-%E6%89%93%E5%8D%B0"><span class="toc-number">2.2.</span> <span class="toc-text"> p 打印</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#a-i-c-d-%E8%A1%8C%E5%A4%84%E7%90%86"><span class="toc-number">2.3.</span> <span class="toc-text"> a、i、c、d 行处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#s-%E6%9B%BF%E6%8D%A2%E5%91%BD%E4%BB%A4"><span class="toc-number">2.4.</span> <span class="toc-text"> s 替换命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E4%B8%AA-sed-%E5%91%BD%E4%BB%A4%E7%94%A8-%E5%88%86%E5%BC%80"><span class="toc-number">2.5.</span> <span class="toc-text"> {} 多个 sed 命令，用；分开</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#n-%E8%AF%BB%E5%8F%96%E4%B8%8B%E4%B8%80%E4%B8%AA%E8%BE%93%E5%85%A5%E8%A1%8C%E7%94%A8%E4%B8%8B%E4%B8%80%E4%B8%AA%E5%91%BD%E4%BB%A4%E5%A4%84%E7%90%86"><span class="toc-number">2.6.</span> <span class="toc-text"> n 读取下一个输入行（用下一个命令处理）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%BF%E6%8D%A2%E5%9B%BA%E5%AE%9A%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">2.7.</span> <span class="toc-text"> &amp; 替换固定字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%B9%E9%85%8D%E7%BB%84"><span class="toc-number">2.8.</span> <span class="toc-text"> () 匹配组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rw-%E8%AF%BB%E5%86%99"><span class="toc-number">2.9.</span> <span class="toc-text"> rw 读写</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#q-%E9%80%80%E5%87%BA-sed"><span class="toc-number">2.10.</span> <span class="toc-text"> q 退出 sed</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#awk"><span class="toc-number">3.</span> <span class="toc-text"> awk</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#awk-%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F%E4%B8%8E%E6%A0%BC%E5%BC%8F"><span class="toc-number">3.1.</span> <span class="toc-text"> awk 处理方式与格式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#awk-%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F"><span class="toc-number">3.1.1.</span> <span class="toc-text"> awk 处理方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#awk-%E6%A0%BC%E5%BC%8F"><span class="toc-number">3.1.2.</span> <span class="toc-text"> awk 格式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#awk-%E5%86%85%E7%BD%AE%E5%8F%82%E6%95%B0"><span class="toc-number">3.2.</span> <span class="toc-text"> awk 内置参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#awk-%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD%E5%BC%8F"><span class="toc-number">3.3.</span> <span class="toc-text"> awk 逻辑判断式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#awk-%E6%89%A9%E5%B1%95%E6%A0%BC%E5%BC%8F"><span class="toc-number">3.4.</span> <span class="toc-text"> awk 扩展格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#etcpasswd-%E6%96%87%E4%BB%B6%E6%A0%B7%E4%BE%8B"><span class="toc-number">3.5.</span> <span class="toc-text"> etc&#x2F;passwd 文件样例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#freshlog-%E6%96%87%E4%BB%B6%E6%A0%B7%E4%BE%8B"><span class="toc-number">3.6.</span> <span class="toc-text"> fresh.log 文件样例</span></a></li></ol></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#grep"><span class="toc-number">1.</span> <span class="toc-text"> grep</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sed"><span class="toc-number">2.</span> <span class="toc-text"> sed</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#sed-%E6%A0%BC%E5%BC%8F"><span class="toc-number">2.1.</span> <span class="toc-text"> sed 格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#p-%E6%89%93%E5%8D%B0"><span class="toc-number">2.2.</span> <span class="toc-text"> p 打印</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#a-i-c-d-%E8%A1%8C%E5%A4%84%E7%90%86"><span class="toc-number">2.3.</span> <span class="toc-text"> a、i、c、d 行处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#s-%E6%9B%BF%E6%8D%A2%E5%91%BD%E4%BB%A4"><span class="toc-number">2.4.</span> <span class="toc-text"> s 替换命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E4%B8%AA-sed-%E5%91%BD%E4%BB%A4%E7%94%A8-%E5%88%86%E5%BC%80"><span class="toc-number">2.5.</span> <span class="toc-text"> {} 多个 sed 命令，用；分开</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#n-%E8%AF%BB%E5%8F%96%E4%B8%8B%E4%B8%80%E4%B8%AA%E8%BE%93%E5%85%A5%E8%A1%8C%E7%94%A8%E4%B8%8B%E4%B8%80%E4%B8%AA%E5%91%BD%E4%BB%A4%E5%A4%84%E7%90%86"><span class="toc-number">2.6.</span> <span class="toc-text"> n 读取下一个输入行（用下一个命令处理）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%BF%E6%8D%A2%E5%9B%BA%E5%AE%9A%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">2.7.</span> <span class="toc-text"> &amp; 替换固定字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%B9%E9%85%8D%E7%BB%84"><span class="toc-number">2.8.</span> <span class="toc-text"> () 匹配组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rw-%E8%AF%BB%E5%86%99"><span class="toc-number">2.9.</span> <span class="toc-text"> rw 读写</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#q-%E9%80%80%E5%87%BA-sed"><span class="toc-number">2.10.</span> <span class="toc-text"> q 退出 sed</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%B9%E9%87%8F%E6%9B%BF%E6%8D%A2%E6%96%87%E4%BB%B6%E5%90%8D"><span class="toc-number">2.11.</span> <span class="toc-text"> 批量替换文件名</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#awk"><span class="toc-number">3.</span> <span class="toc-text"> awk</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#awk-%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F%E4%B8%8E%E6%A0%BC%E5%BC%8F"><span class="toc-number">3.1.</span> <span class="toc-text"> awk 处理方式与格式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#awk-%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F"><span class="toc-number">3.1.1.</span> <span class="toc-text"> awk 处理方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#awk-%E6%A0%BC%E5%BC%8F"><span class="toc-number">3.1.2.</span> <span class="toc-text"> awk 格式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#awk-%E5%86%85%E7%BD%AE%E5%8F%82%E6%95%B0"><span class="toc-number">3.2.</span> <span class="toc-text"> awk 内置参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#awk-%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD%E5%BC%8F"><span class="toc-number">3.3.</span> <span class="toc-text"> awk 逻辑判断式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#awk-%E6%89%A9%E5%B1%95%E6%A0%BC%E5%BC%8F"><span class="toc-number">3.4.</span> <span class="toc-text"> awk 扩展格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#etcpasswd-%E6%96%87%E4%BB%B6%E6%A0%B7%E4%BE%8B"><span class="toc-number">3.5.</span> <span class="toc-text"> etc&#x2F;passwd 文件样例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#freshlog-%E6%96%87%E4%BB%B6%E6%A0%B7%E4%BE%8B"><span class="toc-number">3.6.</span> <span class="toc-text"> fresh.log 文件样例</span></a></li></ol></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
       </div>
