@@ -102,12 +102,12 @@ Dew's World = 露の世</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclwuom7cj20zk0m8dvn.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipevuctzzj20zk0m84qp.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclil3m4ej20zk0m8tn8.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicm07ih54j20zk0m84qp.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclimtf7dj20zk0m8qav.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclfw2t96j20zk0m8x6p.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicitcxhpij20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicli3sbvtj20zk0m8x6p.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclgi503lj20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicliwyw55j20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicitzannuj20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclx6phq6j20zk0m8e36.jpg"></li>
         </ul>
       </div>
     </header>
@@ -185,96 +185,7 @@ TCP 127.0.0.1:9050 0.0.0.0:0 LISTENING 2016<br>
 <h3 id="service-start"><a class="markdownIt-Anchor" href="#service-start">#</a> service start</h3>
 <p>以管理员权限启动 cmd,  执行相关服务的开启，停止，删除</p>
 <figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">net</span> <span class="built_in">start</span> servicename</span><br><span class="line"><span class="built_in">net</span> <span class="built_in">start</span> mysql</span><br><span class="line"><span class="built_in">net</span> stop  servicename</span><br><span class="line"><span class="built_in">net</span> stop  mysql</span><br><span class="line">sc delete servicename</span><br></pre></td></tr></table></figure>
-<h2 id="excel"><a class="markdownIt-Anchor" href="#excel">#</a> Excel</h2>
-<h3 id="csv-to-xlsx"><a class="markdownIt-Anchor" href="#csv-to-xlsx">#</a> csv to xlsx</h3>
-<p>csv 可以直接使用 excel 开启，不过对一些特殊的符号需要进行简单的处理，例如  <code>=&quot;007&quot;, =007, 007</code>  在 excel 中的显示分別是  <code>007, =007, 7</code></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">reason</th>
-<th>csv</th>
-<th>xlsx</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">显示逗号</td>
-<td>“Taipei, Taiwan”</td>
-<td>Taipei, Taiwan</td>
-</tr>
-<tr>
-<td style="text-align:left">显示双引号</td>
-<td>“12’30&quot;”&quot;</td>
-<td>12’30&quot;</td>
-</tr>
-<tr>
-<td style="text-align:left">显示数字或字符串前面的 00</td>
-<td>=“007”</td>
-<td>=“007” （显示 007）</td>
-</tr>
-<tr>
-<td style="text-align:left">使用 excel 公式</td>
-<td>=SUM(B2:B5)/&quot;=SUM(B2:B5)&quot;</td>
-<td>=SUM (B2:B5) （显示和）</td>
-</tr>
-<tr>
-<td style="text-align:left">双引号前后有空格</td>
-<td><code>A, &quot;B,C&quot;,D</code> <br /> <code>A,&quot;B,C&quot; ,D</code></td>
-<td><img data-src="/2019/02/10/skill/1575011576909.png" class="" width="1575011841095"></td>
-</tr>
-</tbody>
-</table>
-<h3 id="keymap"><a class="markdownIt-Anchor" href="#keymap">#</a> keymap</h3>
-<table>
-<thead>
-<tr>
-<th>keymap</th>
-<th>function</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ctrl + up/down</td>
-<td>跳到上一个 / 下一个有内容的单元格</td>
-</tr>
-<tr>
-<td>ctrl + shift + up/down</td>
-<td>选到上一个 / 下一个有内容的单元格</td>
-</tr>
-<tr>
-<td>ctrl + d</td>
-<td>重复填充</td>
-</tr>
-<tr>
-<td>单元格右下角点</td>
-<td>重复填充 / 序列填充</td>
-</tr>
-<tr>
-<td>ctrl + ；</td>
-<td>生成当前日期</td>
-</tr>
-<tr>
-<td>ctrl + ‘’</td>
-<td>生成当前时间</td>
-</tr>
-</tbody>
-</table>
-<h3 id="vlookup"><a class="markdownIt-Anchor" href="#vlookup">#</a> vlookup</h3>
-<p><code>vlookup(查找条件，查找的区域，符合条件区域第几列的值)</code></p>
-<img data-src="/2019/02/10/skill/vlookup.jpg" class="">
-<h3 id="跨行复制"><a class="markdownIt-Anchor" href="#跨行复制">#</a> 跨行复制</h3>
-<p>如下复制第一行和第三行，按住 Ctrl，鼠标选择第一行和第三行，然后 Ctrl + C 复制</p>
-<p><img data-src="skill/1600238092330.png" alt="1600238092330"><img data-src="skill/1600238240870.png" alt="1600238296046"></p>
-<h3 id="行列转换"><a class="markdownIt-Anchor" href="#行列转换">#</a> 行列转换</h3>
-<p>Ctrl + C 复制待转换行列，移动到转换位置 <code>选择性粘贴</code> ，在弹出框中勾选 <code>转置</code></p>
-<img data-src="/2019/02/10/skill/1600252312154.png" class="" width="1600252476772">
-<img data-src="/2019/02/10/skill/1600252584396.png" class="" width="1600252584396">
-<img data-src="/2019/02/10/skill/1600252635864.png" class="" width="1600252635864">
-<h3 id="open-csv-with-delimiter"><a class="markdownIt-Anchor" href="#open-csv-with-delimiter">#</a> open csv with delimiter</h3>
-<p>数据 -&gt; 分列 -&gt; 分隔符号</p>
-<img data-src="/2019/02/10/skill/1600737999195.png" class="" width="1600737999195">
-<img data-src="/2019/02/10/skill/1600738080255.png" class="" width="1600738080255">
-<h2 id="chrome"><a class="markdownIt-Anchor" href="#chrome">#</a> chrome</h2>
+<h3 id="chrome"><a class="markdownIt-Anchor" href="#chrome">#</a> Chrome</h3>
 <h4 id="disable-javascript"><a class="markdownIt-Anchor" href="#disable-javascript">#</a> Disable Javascript</h4>
 <ol>
 <li>打开开发者工具</li>
@@ -304,7 +215,7 @@ TCP 127.0.0.1:9050 0.0.0.0:0 LISTENING 2016<br>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2021-02-07 17:48:19" itemprop="dateModified" datetime="2021-02-07T17:48:19+08:00">2021-02-07</time>
+    <time title="Modified: 2021-04-25 17:16:18" itemprop="dateModified" datetime="2021-04-25T17:16:18+08:00">2021-04-25</time>
   </span>
 </div>
 
@@ -321,7 +232,7 @@ TCP 127.0.0.1:9050 0.0.0.0:0 LISTENING 2016<br>
     <div class="item left">
       
 
-  <a href="/2019/01/20/english-that-which-who/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclxp31goj20zk0m8qv5.jpg" title="定语从句中 which 和 that 的区别">
+  <a href="/2019/01/20/english-that-which-who/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipesrnqv3j20zk0m8ava.jpg" title="定语从句中 which 和 that 的区别">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>定语从句中 which 和 that 的区别</h3>
@@ -331,7 +242,7 @@ TCP 127.0.0.1:9050 0.0.0.0:0 LISTENING 2016<br>
     <div class="item right">
       
 
-  <a href="/2019/02/28/typescript-sample/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclxxcb6rj20zk0m8b29.jpg" title="typescript sample">
+  <a href="/2019/02/28/typescript-sample/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicljitigmj20zk0m87fp.jpg" title="typescript sample">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>typescript sample</h3>
@@ -353,7 +264,7 @@ TCP 127.0.0.1:9050 0.0.0.0:0 LISTENING 2016<br>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="Contents">
-          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#window"><span class="toc-number">1.</span> <span class="toc-text"> window</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#keyboard-shortcuts"><span class="toc-number">1.1.</span> <span class="toc-text"> keyboard shortcuts</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#run-cmd-as-admin"><span class="toc-number">1.2.</span> <span class="toc-text"> run cmd as admin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#netstart-ano"><span class="toc-number">1.3.</span> <span class="toc-text"> netstart -ano</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#service-start"><span class="toc-number">1.4.</span> <span class="toc-text"> service start</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#excel"><span class="toc-number">2.</span> <span class="toc-text"> Excel</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#csv-to-xlsx"><span class="toc-number">2.1.</span> <span class="toc-text"> csv to xlsx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#keymap"><span class="toc-number">2.2.</span> <span class="toc-text"> keymap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vlookup"><span class="toc-number">2.3.</span> <span class="toc-text"> vlookup</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%A8%E8%A1%8C%E5%A4%8D%E5%88%B6"><span class="toc-number">2.4.</span> <span class="toc-text"> 跨行复制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%8C%E5%88%97%E8%BD%AC%E6%8D%A2"><span class="toc-number">2.5.</span> <span class="toc-text"> 行列转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#open-csv-with-delimiter"><span class="toc-number">2.6.</span> <span class="toc-text"> open csv with delimiter</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#chrome"><span class="toc-number">3.</span> <span class="toc-text"> chrome</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#disable-javascript"><span class="toc-number">3.0.1.</span> <span class="toc-text"> Disable Javascript</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#other"><span class="toc-number">4.</span> <span class="toc-text"> Other</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#sed-delete-rows"><span class="toc-number">4.1.</span> <span class="toc-text"> sed delete rows</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#iconv"><span class="toc-number">4.2.</span> <span class="toc-text"> iconv</span></a></li></ol></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#window"><span class="toc-number">1.</span> <span class="toc-text"> window</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#keyboard-shortcuts"><span class="toc-number">1.1.</span> <span class="toc-text"> keyboard shortcuts</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#run-cmd-as-admin"><span class="toc-number">1.2.</span> <span class="toc-text"> run cmd as admin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#netstart-ano"><span class="toc-number">1.3.</span> <span class="toc-text"> netstart -ano</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#service-start"><span class="toc-number">1.4.</span> <span class="toc-text"> service start</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#chrome"><span class="toc-number">1.5.</span> <span class="toc-text"> Chrome</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#disable-javascript"><span class="toc-number">1.5.1.</span> <span class="toc-text"> Disable Javascript</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#other"><span class="toc-number">2.</span> <span class="toc-text"> Other</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#sed-delete-rows"><span class="toc-number">2.1.</span> <span class="toc-text"> sed delete rows</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#iconv"><span class="toc-number">2.2.</span> <span class="toc-text"> iconv</span></a></li></ol></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
       </div>
@@ -368,13 +279,13 @@ TCP 127.0.0.1:9050 0.0.0.0:0 LISTENING 2016<br>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">241</span>
+        <span class="count">242</span>
         <span class="name">posts</span>
       </a>
     </div>
     <div class="item tags">
       <a href="/tags/">
-        <span class="count">29</span>
+        <span class="count">30</span>
         <span class="name">tags</span>
       </a>
     </div>
