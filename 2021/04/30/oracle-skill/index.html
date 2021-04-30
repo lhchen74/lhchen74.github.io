@@ -1,0 +1,403 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="db" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2021/04/30/oracle-skill/">
+
+
+
+  <title>
+Oracle PL/SQL Code Fragments |
+Dew's World = 露の世</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">Oracle PL/SQL Code Fragments
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2021-04-30 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2021-04-30T00:00:00+08:00">2021-04-30</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Dew's World</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclhfehz7j20zk0m8u0x.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giph47e9vtj20zk0m8x6l.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclfb3vzhj20zk0m8wny.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeudstjqj20zk0m8k3r.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclx6phq6j20zk0m8e36.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giph4baakhj20zk0m8h5q.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2021/04/30/oracle-skill/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h3 id="for-loop-mock-seq-pallet-carton"><a class="markdownIt-Anchor" href="#for-loop-mock-seq-pallet-carton">#</a> for loop mock seq, pallet, carton</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span>  <span class="number">0.</span><span class="number">.99</span>  loop</span><br><span class="line"></span><br><span class="line">    if <span class="built_in">mod</span>(i, <span class="number">10</span>) <span class="operator">=</span> <span class="number">0</span> <span class="keyword">then</span></span><br><span class="line">        l_carton_seq :<span class="operator">=</span> l_carton_seq <span class="operator">+</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">end</span> if;</span><br><span class="line"></span><br><span class="line">    if <span class="built_in">mod</span>(i, <span class="number">50</span>) <span class="operator">=</span> <span class="number">0</span> <span class="keyword">then</span></span><br><span class="line">        l_pallet_seq :<span class="operator">=</span> l_pallet_seq <span class="operator">+</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">end</span> if;</span><br><span class="line"></span><br><span class="line">    l_sn_seq :<span class="operator">=</span> l_sn_seq <span class="operator">+</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">end</span> loop;</span><br></pre></td></tr></table></figure>
+<h3 id="put-format-json"><a class="markdownIt-Anchor" href="#put-format-json">#</a> put format json</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* put_json_line(&#x27;name&#x27;, &#x27;babb&#x27;)</span></span><br><span class="line"><span class="comment">*     &quot;name&quot;: &quot;babb&quot;,</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">procedure</span> put_json_line(p_field <span class="keyword">in</span> varchar2, p_value <span class="keyword">in</span> varchar2, p_tab_num <span class="keyword">in</span> number <span class="keyword">default</span> <span class="number">1</span>) <span class="keyword">is</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  <span class="keyword">for</span> k <span class="keyword">in</span> <span class="number">1.</span>.p_tab_num loop</span><br><span class="line">    dbms_output.put(chr(<span class="number">9</span>));  <span class="comment">--char(9) tab</span></span><br><span class="line">  <span class="keyword">end</span> loop;</span><br><span class="line"></span><br><span class="line">  dbms_output.put_line(<span class="string">&#x27;&quot;&#x27;</span> <span class="operator">||</span> p_field <span class="operator">||</span> <span class="string">&#x27;&quot;&#x27;</span> <span class="operator">||</span>  <span class="string">&#x27;: &#x27;</span> <span class="operator">||</span> <span class="string">&#x27;&quot;&#x27;</span> <span class="operator">||</span> p_value <span class="operator">||</span> <span class="string">&#x27;&quot;&#x27;</span> <span class="operator">||</span> <span class="string">&#x27;,&#x27;</span>);</span><br><span class="line">exception</span><br><span class="line">  <span class="keyword">when</span> others <span class="keyword">then</span></span><br><span class="line">    raise;</span><br><span class="line"><span class="keyword">end</span> put_json_line;</span><br></pre></td></tr></table></figure>
+<h3 id="string-clean"><a class="markdownIt-Anchor" href="#string-clean">#</a> string clean</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--Remove all CR/LF, trim the left and right spaces, tabs</span></span><br><span class="line"><span class="keyword">function</span> str_clean(p_str <span class="keyword">in</span> varchar2) <span class="keyword">return</span> varchar2</span><br><span class="line"><span class="keyword">is</span></span><br><span class="line">  l_return varchar2(<span class="number">1000</span>);</span><br><span class="line">  l_tab_space varchar2(<span class="number">10</span>) :<span class="operator">=</span> chr(<span class="number">9</span>) <span class="operator">||</span> <span class="string">&#x27; &#x27;</span>;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * Standard ASCII Characters</span></span><br><span class="line"><span class="comment">    * Decimal    Description</span></span><br><span class="line"><span class="comment">    * 9    	    Horizontal tab (HT)</span></span><br><span class="line"><span class="comment">    * 10         Line feed (LF)</span></span><br><span class="line"><span class="comment">    * 13         Carriage return (CR)</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">  <span class="keyword">begin</span></span><br><span class="line">    <span class="comment">--translate(p_str, &#x27;a&#x27; || chr(10) || chr(13), &#x27;a&#x27;): a translate to a, chr(10) &amp; chr(13) replace to empty</span></span><br><span class="line">    <span class="comment">--ltrim(str, l_tab_space): trim left tab and space behavior like translate, such as &#x27;chr(9) chr(9) a&#x27; will trim to &#x27;a&#x27;</span></span><br><span class="line">    <span class="comment">--if use trim twice select trim(trim(chr(9) from chr(9) || &#x27; &#x27; || chr(9) ||  &#x27;a&#x27;)) from dual; will got &#x27;chr(9) a&#x27;</span></span><br><span class="line">    <span class="keyword">select</span> rtrim(ltrim(<span class="built_in">translate</span>(p_str, <span class="string">&#x27;a&#x27;</span> <span class="operator">||</span> chr(<span class="number">10</span>) <span class="operator">||</span> chr(<span class="number">13</span>), <span class="string">&#x27;a&#x27;</span>), l_tab_space), l_tab_space)</span><br><span class="line">      <span class="keyword">into</span> l_return</span><br><span class="line">      <span class="keyword">from</span> dual;</span><br><span class="line">  <span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> l_return;</span><br><span class="line"></span><br><span class="line"><span class="keyword">end</span> str_clean;</span><br></pre></td></tr></table></figure>
+<h3 id="string-split"><a class="markdownIt-Anchor" href="#string-split">#</a> string split</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">type table_str <span class="keyword">is</span> <span class="keyword">table</span> <span class="keyword">of</span> varchar2(<span class="number">4000</span>);</span><br><span class="line"><span class="comment">--select trim(column_value) from table(som_edi_custom_utils_pkg.str_split_to_table(&#x27;a, b, c&#x27;)); =&gt; a b c</span></span><br><span class="line"><span class="keyword">function</span> str_split_to_table(p_str <span class="keyword">in</span> varchar2, p_separator <span class="keyword">in</span> varchar2 <span class="keyword">default</span> <span class="string">&#x27;,&#x27;</span>) <span class="keyword">return</span> table_str 		pipelined</span><br><span class="line"><span class="keyword">is</span></span><br><span class="line">  l_src    varchar2(<span class="number">4000</span>);</span><br><span class="line">  l_index  pls_integer;</span><br><span class="line">  l_start  pls_integer;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  <span class="keyword">begin</span></span><br><span class="line">    l_src :<span class="operator">=</span> p_str;</span><br><span class="line">    l_start :<span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    loop</span><br><span class="line">        l_index :<span class="operator">=</span> instr(l_src, p_separator, l_start);</span><br><span class="line">        if nvl(l_index, <span class="number">0</span>) <span class="operator">=</span> <span class="number">0</span> <span class="keyword">then</span></span><br><span class="line">            pipe <span class="type">row</span> (substr(l_src, l_start));</span><br><span class="line">            exit;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            pipe <span class="type">row</span> (substr(l_src, l_start, l_index <span class="operator">-</span> l_start));</span><br><span class="line">            l_start :<span class="operator">=</span> l_index <span class="operator">+</span> length(p_separator);</span><br><span class="line">        <span class="keyword">end</span> if;</span><br><span class="line">    <span class="keyword">end</span> loop;</span><br><span class="line"></span><br><span class="line">  exception</span><br><span class="line">    <span class="keyword">when</span> others <span class="keyword">then</span></span><br><span class="line">        debug(dbms_utility.format_error_backtrace<span class="operator">||</span>sqlerrm);</span><br><span class="line">        debug(<span class="string">&#x27;String: &quot;&#x27;</span> <span class="operator">||</span> l_src <span class="operator">||</span><span class="string">&#x27;&quot;, l_start: &#x27;</span> <span class="operator">||</span> l_start <span class="operator">||</span> <span class="string">&#x27;, l_index: &#x27;</span><span class="operator">||</span> l_index);</span><br><span class="line">  <span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">end</span> str_split_to_table;</span><br></pre></td></tr></table></figure>
+<h3 id="date-string-change-delimiter"><a class="markdownIt-Anchor" href="#date-string-change-delimiter">#</a> date string change delimiter</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--select som_edi_custom_utils_pkg.date_str_change_delimiter(&#x27;20201012&#x27;, &#x27;-&#x27;) from dual;</span></span><br><span class="line"><span class="comment">--select som_edi_custom_utils_pkg.date_str_change_delimiter(&#x27;2020/10/12&#x27;, &#x27;-&#x27;) from dual;</span></span><br><span class="line"><span class="comment">--select som_edi_custom_utils_pkg.date_str_change_delimiter(&#x27;2020-10-12&#x27;, &#x27;/&#x27;) from dual;</span></span><br><span class="line"><span class="keyword">function</span> date_str_change_delimiter(p_date_str <span class="keyword">in</span> varchar2, p_delimiter <span class="keyword">in</span> varchar2 <span class="keyword">default</span> <span class="string">&#x27;/&#x27;</span>) <span class="keyword">return</span> varchar2</span><br><span class="line"><span class="keyword">is</span></span><br><span class="line">  l_dest_date_format varchar2(<span class="number">100</span>);</span><br><span class="line">  l_dest_date_str    varchar2(<span class="number">100</span>);</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">begin</span></span><br><span class="line">      l_dest_date_format :<span class="operator">=</span> <span class="string">&#x27;yyyy&#x27;</span> <span class="operator">||</span> p_delimiter <span class="operator">||</span> <span class="string">&#x27;mm&#x27;</span> <span class="operator">||</span> p_delimiter <span class="operator">||</span> <span class="string">&#x27;dd&#x27;</span>;</span><br><span class="line"></span><br><span class="line">      <span class="comment">/**</span></span><br><span class="line"><span class="comment">      * to_date(date_str, date_format) don&#x27;t care what delimiter in date_str.</span></span><br><span class="line"><span class="comment">      * such as to_date(&#x27;2020/10/12&#x27;, &#x27;yyyy#mm#dd&#x27;), to_date(&#x27;20201012&#x27;, &#x27;yyyy#mm#dd&#x27;) is right.</span></span><br><span class="line"><span class="comment">      * but to_date(&#x27;2020/10/12&#x27;, &#x27;yyyymmdd&#x27;) occurs error as below.</span></span><br><span class="line"><span class="comment">      * ORA-01858: a non-numeric character was found where a numeric was expected</span></span><br><span class="line"><span class="comment">      */</span></span><br><span class="line">      <span class="keyword">select</span> to_char(to_date(p_date_str, <span class="string">&#x27;yyyy#mm#dd&#x27;</span>), l_dest_date_format)</span><br><span class="line">        <span class="keyword">into</span> l_dest_date_str</span><br><span class="line">        <span class="keyword">from</span> dual;</span><br><span class="line"></span><br><span class="line">    exception</span><br><span class="line">      <span class="keyword">when</span> others <span class="keyword">then</span></span><br><span class="line">        debug(<span class="string">&#x27;date_str_change_delimiter error: &#x27;</span> <span class="operator">||</span> sqlerrm);</span><br><span class="line">        raise;</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> l_dest_date_str;</span><br><span class="line"><span class="keyword">end</span> date_str_change_delimiter;</span><br></pre></td></tr></table></figure>
+<h3 id="number-to-string-with-decimal"><a class="markdownIt-Anchor" href="#number-to-string-with-decimal">#</a> number to string with decimal</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--11.256 =&gt; 11.26  11 =&gt; 11.00  11.2 =&gt; 11.20</span></span><br><span class="line"><span class="keyword">function</span> num_to_str_with_decimal(p_number <span class="keyword">in</span> number, p_decimal <span class="keyword">in</span> number <span class="keyword">default</span> <span class="number">2</span>) <span class="keyword">return</span> varchar2</span><br><span class="line"><span class="keyword">is</span></span><br><span class="line">    l_str           varchar2(<span class="number">100</span>);</span><br><span class="line">    l_dot_index     number;</span><br><span class="line">    l_zero_count    number;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">begin</span></span><br><span class="line">      <span class="comment">--11.256 =&gt; 11.26  11 =&gt; 11  11.2 =&gt; 11.2</span></span><br><span class="line">      l_str :<span class="operator">=</span> to_char(round(p_number, p_decimal));</span><br><span class="line"></span><br><span class="line">      if p_decimal <span class="operator">=</span> <span class="number">0</span> <span class="keyword">then</span></span><br><span class="line">        <span class="keyword">return</span> l_str;</span><br><span class="line">      <span class="keyword">end</span> if;</span><br><span class="line"></span><br><span class="line">      l_dot_index :<span class="operator">=</span> instr(l_str, <span class="string">&#x27;.&#x27;</span>);</span><br><span class="line"></span><br><span class="line">      if l_dot_index <span class="operator">=</span> <span class="number">0</span> <span class="keyword">then</span></span><br><span class="line">        l_str :<span class="operator">=</span> l_str <span class="operator">||</span> <span class="string">&#x27;.&#x27;</span>;</span><br><span class="line">        l_zero_count :<span class="operator">=</span> p_decimal;</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">        l_zero_count :<span class="operator">=</span> p_decimal <span class="operator">-</span> (length(l_str) <span class="operator">-</span> l_dot_index);</span><br><span class="line">      <span class="keyword">end</span> if;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">1.</span>.l_zero_count loop</span><br><span class="line">        l_str :<span class="operator">=</span> l_str <span class="operator">||</span> <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">      <span class="keyword">end</span> loop;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">--other way: keep two decimals</span></span><br><span class="line">    <span class="comment">--select trim(to_char(11.256, &#x27;99999990.00&#x27;)) from dual;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> l_str;</span><br><span class="line"><span class="keyword">end</span> num_to_str_with_decimal;</span><br></pre></td></tr></table></figure>
+<h3 id="get-table-columns"><a class="markdownIt-Anchor" href="#get-table-columns">#</a> get table columns</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--select som_edi_custom_utils_pkg.get_table_columns(&#x27;som_edi_temp_h&#x27;) from dual;</span></span><br><span class="line"><span class="comment">--select som_edi_custom_utils_pkg.get_table_columns(&#x27;som_edi_temp_h&#x27;, &#x27;|&#x27;, &#x27;SSIS_ID|EDI_DATE&#x27;) from dual;</span></span><br><span class="line"><span class="keyword">function</span> get_table_columns(p_table_name      <span class="keyword">in</span> varchar2,</span><br><span class="line">                            p_delimiter       <span class="keyword">in</span> varchar2 <span class="keyword">default</span> <span class="string">&#x27;,&#x27;</span>,</span><br><span class="line">                            p_exclude_columns <span class="keyword">in</span> varchar2 <span class="keyword">default</span> <span class="keyword">null</span>) <span class="keyword">return</span> varchar2</span><br><span class="line"><span class="keyword">is</span></span><br><span class="line">  l_count   number;</span><br><span class="line">  l_columns varchar2(<span class="number">1000</span>);</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  <span class="keyword">begin</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">select</span> <span class="built_in">count</span>(<span class="operator">*</span>)</span><br><span class="line">      <span class="keyword">into</span> l_count</span><br><span class="line">      <span class="keyword">from</span> dba_tables</span><br><span class="line">      <span class="keyword">where</span> owner <span class="keyword">in</span> (<span class="string">&#x27;YSC&#x27;</span>, <span class="string">&#x27;APPS&#x27;</span>)</span><br><span class="line">        <span class="keyword">and</span> table_name <span class="operator">=</span> <span class="built_in">upper</span>(p_table_name);</span><br><span class="line"></span><br><span class="line">    if l_count <span class="operator">=</span> <span class="number">0</span> <span class="keyword">then</span></span><br><span class="line">      <span class="keyword">return</span> <span class="string">&#x27;ERROR: Table not exists in YSC or APPS.&#x27;</span>;</span><br><span class="line">    <span class="keyword">end</span> if;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">select</span> <span class="built_in">listagg</span>(t.column_name, p_delimiter) <span class="keyword">within</span> <span class="keyword">group</span>(<span class="keyword">order</span> <span class="keyword">by</span> t.segment_column_id)</span><br><span class="line">      <span class="keyword">into</span> l_columns</span><br><span class="line">      <span class="keyword">from</span> all_tab_cols t</span><br><span class="line">      <span class="keyword">where</span> t.table_name <span class="operator">=</span> <span class="built_in">upper</span>(p_table_name)</span><br><span class="line">        <span class="keyword">and</span> (t.column_name <span class="keyword">not</span> <span class="keyword">in</span> (</span><br><span class="line">              <span class="keyword">select</span> <span class="built_in">trim</span>(column_value)</span><br><span class="line">                <span class="keyword">from</span> <span class="keyword">table</span>(str_split_to_table(p_exclude_columns, p_delimiter))</span><br><span class="line">              ) <span class="keyword">or</span> p_exclude_columns <span class="keyword">is</span> <span class="keyword">null</span></span><br><span class="line">        );</span><br><span class="line"></span><br><span class="line">  <span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> l_columns;</span><br><span class="line"><span class="keyword">end</span> get_table_columns;</span><br></pre></td></tr></table></figure>
+<h3 id="seq-add"><a class="markdownIt-Anchor" href="#seq-add">#</a> seq add</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--After manual mock data, update db seq avoid conflict with erp generate data</span></span><br><span class="line"><span class="comment">--select som_edi_custom_utils_pkg.seq_add(&#x27;seq_name&#x27;, 2) from dual;</span></span><br><span class="line"><span class="keyword">function</span> seq_add(p_seq_name <span class="keyword">in</span> varchar2, p_count <span class="keyword">in</span> number) <span class="keyword">return</span> number</span><br><span class="line"><span class="keyword">is</span></span><br><span class="line">  l_last_seq number;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">1</span> .. p_count loop</span><br><span class="line">      <span class="comment">--ORA-01722: invalid number</span></span><br><span class="line">      <span class="comment">--object_name can&#x27;t use bind variable</span></span><br><span class="line">      <span class="comment">--execute immediate &#x27;select :1.nextval from dual&#x27; into l_last_seq using p_seq_name;</span></span><br><span class="line">      <span class="keyword">execute</span> immediate <span class="string">&#x27;select &#x27;</span> <span class="operator">||</span> p_seq_name <span class="operator">||</span> <span class="string">&#x27;.nextval from dual&#x27;</span> <span class="keyword">into</span> l_last_seq;</span><br><span class="line">    <span class="keyword">end</span> loop;</span><br><span class="line">  <span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> l_last_seq;</span><br><span class="line"></span><br><span class="line"><span class="keyword">end</span> seq_add;</span><br></pre></td></tr></table></figure>
+<h3 id="debug"><a class="markdownIt-Anchor" href="#debug">#</a> debug</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">procedure</span> debug(p_str <span class="keyword">in</span> varchar2) <span class="keyword">is</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  dbms_output.put_line(p_str); <span class="comment">--client PL/SQL output</span></span><br><span class="line">  fnd_file.put_line(fnd_file.log, p_str); <span class="comment">--application ERP log</span></span><br><span class="line">exception</span><br><span class="line">  <span class="keyword">when</span> others <span class="keyword">then</span></span><br><span class="line">    dbms_output.put_line(<span class="string">&#x27;debug = &#x27;</span> <span class="operator">||</span> sqlerrm);</span><br><span class="line"><span class="keyword">end</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="test-regexp"><a class="markdownIt-Anchor" href="#test-regexp">#</a> test regexp</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">procedure</span> str_regexp_test</span><br><span class="line"><span class="keyword">is</span></span><br><span class="line">  l_index number;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line"></span><br><span class="line">  l_index :<span class="operator">=</span> regexp_instr(<span class="string">&#x27;H850 PO001&#x27;</span>, <span class="string">&#x27;^H\d&#123;3&#125;&#x27;</span>);</span><br><span class="line"></span><br><span class="line">  if l_index <span class="operator">=</span> <span class="number">1</span> <span class="keyword">then</span></span><br><span class="line">    debug(<span class="string">&#x27;New po line.&#x27;</span>);</span><br><span class="line">  <span class="keyword">end</span> if;</span><br><span class="line"></span><br><span class="line"><span class="keyword">end</span> str_regexp_test;</span><br></pre></td></tr></table></figure>
+<h3 id="test-pivot"><a class="markdownIt-Anchor" href="#test-pivot">#</a> test pivot</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">procedure pivot_test</span></span><br><span class="line"><span class="comment">is</span></span><br><span class="line"><span class="comment">begin</span></span><br><span class="line"><span class="comment">  begin</span></span><br><span class="line"><span class="comment">    with employee(id, firstname, lastname, hobbies) as</span></span><br><span class="line"><span class="comment">    (</span></span><br><span class="line"><span class="comment">      select 1, &#x27;a&#x27;, &#x27;b&#x27;, &#x27;1&#x27; from dual union</span></span><br><span class="line"><span class="comment">      select 2, &#x27;a&#x27;, &#x27;b&#x27;, &#x27;2&#x27; from dual union</span></span><br><span class="line"><span class="comment">      select 3, &#x27;a&#x27;, &#x27;b&#x27;, &#x27;3&#x27; from dual union</span></span><br><span class="line"><span class="comment">      select 4, &#x27;c&#x27;, &#x27;d&#x27;, &#x27;3&#x27; from dual union</span></span><br><span class="line"><span class="comment">      select 5, &#x27;e&#x27;, &#x27;f&#x27;, &#x27;2&#x27; from dual</span></span><br><span class="line"><span class="comment">    )</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    select *</span></span><br><span class="line"><span class="comment">      from employee</span></span><br><span class="line"><span class="comment">      pivot</span></span><br><span class="line"><span class="comment">      (</span></span><br><span class="line"><span class="comment">        max(id) foo,</span></span><br><span class="line"><span class="comment">        max(1)  bar</span></span><br><span class="line"><span class="comment">        for(hobbies)</span></span><br><span class="line"><span class="comment">          in(&#x27;2&#x27; as two, &#x27;3&#x27; as three)</span></span><br><span class="line"><span class="comment">      );</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    select</span></span><br><span class="line"><span class="comment">      firstname,</span></span><br><span class="line"><span class="comment">      lastname,</span></span><br><span class="line"><span class="comment">      max(case when hobbies = &#x27;2&#x27; then id end) two_foo,</span></span><br><span class="line"><span class="comment">      max(case when hobbies = &#x27;2&#x27; then 1  end) two_bar,</span></span><br><span class="line"><span class="comment">      max(case when hobbies = &#x27;3&#x27; then id end) three_foo,</span></span><br><span class="line"><span class="comment">      max(case when hobbies = &#x27;3&#x27; then 1  end) three_bar</span></span><br><span class="line"><span class="comment">    from employee</span></span><br><span class="line"><span class="comment">    group by</span></span><br><span class="line"><span class="comment">      firstname,</span></span><br><span class="line"><span class="comment">      lastname;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    --the pivot generates N * M new columns, where N = number of values of the IN clause and M = number of aggregations specified,</span></span><br><span class="line"><span class="comment">    --so having no filters and that single harmless aggregation will produce 0 * 1 = 0 new columns and will remove the ones specified in the PIVOT clause, which is just the hobbies.</span></span><br><span class="line"><span class="comment">    select *</span></span><br><span class="line"><span class="comment">      from employee</span></span><br><span class="line"><span class="comment">      pivot(</span></span><br><span class="line"><span class="comment">        max(1) -- fake  m</span></span><br><span class="line"><span class="comment">        for(hobbies)  -- put the undesired columns here</span></span><br><span class="line"><span class="comment">        in ()  -- no values here</span></span><br><span class="line"><span class="comment">      )</span></span><br><span class="line"><span class="comment">      where 1=1 -- and your filters here</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">  end;</span></span><br><span class="line"><span class="comment">end pivot_test;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<h3 id="test-array"><a class="markdownIt-Anchor" href="#test-array">#</a> test array</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">procedure</span> array_test</span><br><span class="line"><span class="keyword">is</span></span><br><span class="line">  type var_array_type <span class="keyword">is</span> varray(<span class="number">10</span>) <span class="keyword">of</span> varchar2(<span class="number">20</span>);</span><br><span class="line">  var_array var_array_type :<span class="operator">=</span> var_array_type(<span class="string">&#x27;Oracle&#x27;</span>, <span class="string">&#x27;MySQL&#x27;</span>, <span class="string">&#x27;SQLServer&#x27;</span>);</span><br><span class="line"></span><br><span class="line">  type table_array_type <span class="keyword">is</span> <span class="keyword">table</span> <span class="keyword">of</span> varchar2(<span class="number">20</span>) index <span class="keyword">by</span> binary_integer;</span><br><span class="line">  table_array table_array_type;</span><br><span class="line"></span><br><span class="line">  type table_rows_type <span class="keyword">is</span> <span class="keyword">table</span> <span class="keyword">of</span> scott.emp<span class="operator">%</span>rowtype index <span class="keyword">by</span> binary_integer;</span><br><span class="line">  table_rows table_rows_type;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  <span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">1</span> .. var_array.count loop</span><br><span class="line">    debug(var_array(i));</span><br><span class="line">  <span class="keyword">end</span> loop;</span><br><span class="line"></span><br><span class="line">  table_array(<span class="number">1</span>) :<span class="operator">=</span> <span class="string">&#x27;MongoDB&#x27;</span>;</span><br><span class="line">  table_array(<span class="number">2</span>) :<span class="operator">=</span> <span class="string">&#x27;Redis&#x27;</span>;</span><br><span class="line">  table_array(<span class="number">3</span>) :<span class="operator">=</span> <span class="string">&#x27;Memcache&#x27;</span>;</span><br><span class="line">  <span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">1</span> .. table_array.count loop</span><br><span class="line">    debug(table_array(i));</span><br><span class="line">  <span class="keyword">end</span> loop;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">select</span> <span class="operator">*</span> bulk <span class="keyword">collect</span> <span class="keyword">into</span> table_rows <span class="keyword">from</span> scott.emp;</span><br><span class="line">  <span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">1.</span><span class="number">.3</span> loop</span><br><span class="line">    debug(table_rows(i).empno <span class="operator">||</span> <span class="string">&#x27;: &#x27;</span> <span class="operator">||</span> table_rows(i).ename);</span><br><span class="line">  <span class="keyword">end</span> loop;</span><br><span class="line"></span><br><span class="line"><span class="keyword">end</span> array_test;</span><br></pre></td></tr></table></figure>
+
+      <div class="tags">
+          <a href="/tags/db/" rel="tag"><i class="ic i-tag"></i> db</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2021-04-30 17:15:49" itemprop="dateModified" datetime="2021-04-30T17:15:49+08:00">2021-04-30</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2021/04/26/cpp-stl/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipewf5l51j20zk0m8b29.jpg" title="C++提高编程">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>C++提高编程</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2021/04/30/oracle-mutating-not-see/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicitzannuj20zk0m8b29.jpg" title="Oracle PL&#x2F;SQL mutating not see">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Oracle PL/SQL mutating not see</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#for-loop-mock-seq-pallet-carton"><span class="toc-number">1.</span> <span class="toc-text"> for loop mock seq, pallet, carton</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#put-format-json"><span class="toc-number">2.</span> <span class="toc-text"> put format json</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#string-clean"><span class="toc-number">3.</span> <span class="toc-text"> string clean</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#string-split"><span class="toc-number">4.</span> <span class="toc-text"> string split</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#date-string-change-delimiter"><span class="toc-number">5.</span> <span class="toc-text"> date string change delimiter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#number-to-string-with-decimal"><span class="toc-number">6.</span> <span class="toc-text"> number to string with decimal</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#get-table-columns"><span class="toc-number">7.</span> <span class="toc-text"> get table columns</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#seq-add"><span class="toc-number">8.</span> <span class="toc-text"> seq add</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#debug"><span class="toc-number">9.</span> <span class="toc-text"> debug</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#test-regexp"><span class="toc-number">10.</span> <span class="toc-text"> test regexp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#test-pivot"><span class="toc-number">11.</span> <span class="toc-text"> test pivot</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#test-array"><span class="toc-number">12.</span> <span class="toc-text"> test array</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">246</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">30</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item twitter" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;twitter.com&#x2F;yourname"><i class="ic i-twitter"></i></span>
+      <span class="exturl item zhihu" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3Blb3BsZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;yourname"><i class="ic i-zhihu"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLyMvdXNlci9ob21lP2lkPXlvdXJpZA==" title="https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;yourid"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item weibo" data-url="aHR0cHM6Ly93ZWliby5jb20veW91cm5hbWU=" title="https:&#x2F;&#x2F;weibo.com&#x2F;yourname"><i class="ic i-weibo"></i></span>
+      <span class="exturl item about" data-url="aHR0cHM6Ly9hYm91dC5tZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;about.me&#x2F;yourname"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/links/" rel="section"><i class="ic i-magic"></i>links</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2021/04/26/cpp-stl/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2021/04/30/oracle-mutating-not-see/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2021</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ Dew's World</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2021/04/30/oracle-skill/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
