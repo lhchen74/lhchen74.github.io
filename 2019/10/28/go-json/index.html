@@ -102,12 +102,12 @@ Dew's World = 露の世</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicljgocqbj20zk0m8e81.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclwrdwyaj20zk0m8are.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicitht3xtj20zk0m8k5v.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipevuctzzj20zk0m84qp.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicis3attqj20zk0m8k7l.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipexoj0moj20zk0m8kgu.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclfdu6exj20zk0m87hw.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipet4bz0yj20zk0m8e81.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeudstjqj20zk0m8k3r.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclxxcb6rj20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeubcbajj20zk0m8h1h.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipewf5l51j20zk0m8b29.jpg"></li>
         </ul>
       </div>
     </header>
@@ -162,12 +162,12 @@ Dew's World = 露の世</title>
 <p>如果用 json.Marshal 转化，代码如下：</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">uglyBody, err := json.Marshal(u)</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">	<span class="built_in">panic</span>(err)</span><br><span class="line">&#125;</span><br><span class="line">fmt.Printf(<span class="string">&quot;%s\n&quot;</span>, uglyBody)</span><br></pre></td></tr></table></figure>
 <p>打印结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;id&quot;:1,&quot;name&quot;:&quot;poloxue&quot;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="attr">&quot;id&quot;</span>:<span class="number">1</span>,<span class="attr">&quot;name&quot;</span>:<span class="string">&quot;poloxue&quot;</span>&#125;</span><br></pre></td></tr></table></figure>
 <p>效果并不友好，如果是复杂的 map，结果将非常乱。</p>
 <p>可以使用 json.MarchalIndent，代码如下：</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">body, err := json.MarshalIndent(u, <span class="string">&quot;&quot;</span>, <span class="string">&quot;\t&quot;</span>)</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">	<span class="built_in">panic</span>(err)</span><br><span class="line">&#125;</span><br><span class="line">fmt.Printf(<span class="string">&quot;%s\n&quot;</span>, body)</span><br></pre></td></tr></table></figure>
 <p>\t 表示缩进效果。最终的结果如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	&quot;id&quot;: 1,</span><br><span class="line">	&quot;name&quot;: &quot;poloxue&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="attr">&quot;id&quot;</span>: <span class="number">1</span>,</span><br><span class="line">	<span class="attr">&quot;name&quot;</span>: <span class="string">&quot;poloxue&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>看着舒服了很多。</p>
 <h3 id="json-的-string-如何美化"><a class="markdownIt-Anchor" href="#json-的-string-如何美化">#</a> JSON 的 string 如何美化</h3>
 <p>如果是一个 JSON 字符串怎么办？比如 上面示例中的 uglyBody 的结果。</p>
@@ -176,14 +176,14 @@ Dew's World = 露の世</title>
 <p>代码如下：</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> out bytes.Buffer</span><br><span class="line">err = json.Indent(&amp;out, uglyBody, <span class="string">&quot;&quot;</span>, <span class="string">&quot;\t&quot;</span>)</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">	<span class="built_in">panic</span>(err)</span><br><span class="line">&#125;</span><br><span class="line">fmt.Printf(<span class="string">&quot;%s\n&quot;</span>, out.String())</span><br></pre></td></tr></table></figure>
 <p>结果如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	&quot;id&quot;: 1,</span><br><span class="line">	&quot;name&quot;: &quot;poloxue&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="attr">&quot;id&quot;</span>: <span class="number">1</span>,</span><br><span class="line">	<span class="attr">&quot;name&quot;</span>: <span class="string">&quot;poloxue&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>方法二</strong></p>
 <p>github 上面有人实现了一个 JSON pretty 的包。</p>
 <p>地址在：<span class="exturl" data-url="aHR0cHM6Ly9saW5rLnpoaWh1LmNvbS8/dGFyZ2V0PWh0dHBzJTNBLy9naXRodWIuY29tL3RpZHdhbGwvcHJldHR5">https://github.com/tidwall/pretty</span></p>
 <p>使用非常简单，代码如下：</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fmt.Printf(<span class="string">&quot;%s\n&quot;</span>, pretty.Pretty(uglyBody))</span><br></pre></td></tr></table></figure>
 <p>结果如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;id&quot;: 1,</span><br><span class="line">  &quot;name&quot;: &quot;poloxue&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;id&quot;</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;poloxue&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这个库没有依赖 encoding/json，纯代码解析字符串。而且还可以做 color 美化。</p>
 <p>color 美化的示例代码：</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fmt.Printf(<span class="string">&quot;%s\n&quot;</span>, pretty.Color(uglyBody, pretty.TerminalStyle))</span><br><span class="line">fmt.Printf(<span class="string">&quot;%s\n&quot;</span>, pretty.Color(pretty.Pretty(uglyBody), pretty.TerminalStyle))</span><br></pre></td></tr></table></figure>
@@ -211,7 +211,7 @@ Dew's World = 露の世</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2020-04-18 14:29:40" itemprop="dateModified" datetime="2020-04-18T14:29:40+08:00">2020-04-18</time>
+    <time title="Modified: 2021-05-16 22:18:58" itemprop="dateModified" datetime="2021-05-16T22:18:58+08:00">2021-05-16</time>
   </span>
 </div>
 
@@ -228,7 +228,7 @@ Dew's World = 露の世</title>
     <div class="item left">
       
 
-  <a href="/2019/10/28/html-emmet/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclxfdlttj20zk0m8npd.jpg" title="html emmet">
+  <a href="/2019/10/28/html-emmet/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclil3m4ej20zk0m8tn8.jpg" title="html emmet">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>html emmet</h3>
@@ -238,7 +238,7 @@ Dew's World = 露の世</title>
     <div class="item right">
       
 
-  <a href="/2019/10/28/curl/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipexbei4hj20zk0m8npd.jpg" title="curl">
+  <a href="/2019/10/28/curl/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giciszlczyj20zk0m816d.jpg" title="curl">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>curl</h3>
@@ -275,7 +275,7 @@ Dew's World = 露の世</title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">254</span>
+        <span class="count">250</span>
         <span class="name">posts</span>
       </a>
     </div>

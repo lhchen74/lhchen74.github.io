@@ -27,7 +27,7 @@
   <meta name="keywords" content="db" />
 
 
-<link rel="canonical" href="https://lhchen74.github.io/2020/09/16/sql-mysql/">
+<link rel="canonical" href="https://lhchen74.github.io/2020/09/16/mysql-tutorial/">
 
 
 
@@ -102,12 +102,12 @@ Dew's World = 露の世</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipesng5oej20zk0m87d4.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giciszlczyj20zk0m816d.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicitcxhpij20zk0m8hdt.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipexw3o58j20zk0m8e81.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipeuibk9fj20zk0m8ay2.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclfdu6exj20zk0m87hw.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicljitigmj20zk0m87fp.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicitht3xtj20zk0m8k5v.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipexoj0moj20zk0m8kgu.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeudstjqj20zk0m8k3r.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclj61ylzj20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipexe4oykj20zk0m87ji.jpg"></li>
         </ul>
       </div>
     </header>
@@ -136,7 +136,7 @@ Dew's World = 露の世</title>
 </div>
 
     <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
-  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2020/09/16/sql-mysql/">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2020/09/16/mysql-tutorial/">
 
   <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="image" content="/images/avatar.jpg">
@@ -153,9 +153,9 @@ Dew's World = 露の世</title>
 
     <h3 id="er-digram"><a class="markdownIt-Anchor" href="#er-digram">#</a> ER Digram</h3>
 <p>MySQL Workbench 菜单 Database -&gt; Reverse Engineer 选择相关 Database 生成 Model Digram</p>
-<img data-src="/2020/09/16/sql-mysql/1599881828375.png" class="" width="1599881828375">
+
 <p>如下是 sql_store 的 ER Digram (Entity RelationShip)</p>
-<img data-src="/2020/09/16/sql-mysql/1599881916173.png" class="" width="1599882027278">
+
 <p>Identifying relationships exist when the primary key of the parent entity is included in the primary key of the child entity. On the other hand, a non-identifying relationship exists when the primary key of the parent entity is included in the child entity but not as part of the child entity’s primary key.</p>
 <p>当父实体的主键包含在子实体的主键中时，存在标识关系。另一方面，如果父实体的主键包含在子实体中，但不作为子实体的主键的一部分，则存在非标识关系。</p>
 <h3 id="notes"><a class="markdownIt-Anchor" href="#notes">#</a> Notes</h3>
@@ -199,7 +199,7 @@ Dew's World = 露の世</title>
 <p><strong>default</strong></p>
 <p>default 表示让 mysql 生成这个值，可以用于主键自增栏位和有默认值的栏位</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">insert into customers values(default, &#39;babb&#39;, &#39;chen&#39;, default, default, &#39;18896763538&#39;, &#39;henan&#39;, &#39;xy&#39;, default);</span><br><span class="line">update customers set points &#x3D; default where customer_id &#x3D; 1;</span><br></pre></td></tr></table></figure>
-<img data-src="/2020/09/16/sql-mysql/1599879896052.png" class="" width="1599879896052">
+
 <p><strong>insert multi row</strong></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> shippers (name)</span><br><span class="line"><span class="keyword">values</span> (<span class="string">&#x27;Shipper1&#x27;</span>),</span><br><span class="line">       (<span class="string">&#x27;Shipper2&#x27;</span>),</span><br><span class="line">       (<span class="string">&#x27;Shipper3&#x27;</span>);</span><br></pre></td></tr></table></figure>
 <p><strong>insert multi table</strong></p>
@@ -823,7 +823,7 @@ Dew's World = 露の世</title>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">start</span> transaction; <span class="comment">-- 1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> orders(customer_id, order_date, status)</span><br><span class="line"><span class="keyword">values</span> (<span class="number">1</span>, <span class="string">&#x27;2020-01-01&#x27;</span>, <span class="number">1</span>); <span class="comment">-- 2</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> order_items</span><br><span class="line"><span class="keyword">values</span> (last_insert_id(), <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>); <span class="comment">-- 3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">commit</span>;</span><br></pre></td></tr></table></figure>
 <p>模拟执行到 insert into  order_items 时断开 server 连接</p>
 <p>Workbench 菜单 Query -&gt; Excute Current Statement (Ctrl + Enter)  执行 1， 2， 关闭连接，重新连接查询 orders 数据没有被插入</p>
-<img data-src="/2020/09/16/sql-mysql/1599966590930.png" class="" width="1599966590930">
+
 <p><strong>concurrency and locking</strong></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> customers <span class="keyword">where</span> customer_id <span class="operator">=</span> <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
 <table>
@@ -888,22 +888,22 @@ Dew's World = 露の世</title>
 <p><strong>Lost Updates</strong></p>
 <p>当两个事务尝试更新相同的数据并且没有上锁时，就会发生这种情况，较晚提交的事务会覆盖较早事务做的更改。</p>
 <p>如下事务  A 和事务 B 对同一数据修改，如果事务 B 更晚提交就会覆盖事务 A 的提交，事务 A 的更新就会丢失。解决方法是使用锁。默认情况下 MySQL 会使用锁定机制。防止两个事务同时更新同样的数据。它们会一个一个按照顺序执行，这样连个更新都能完成。</p>
-<img data-src="/2020/09/16/sql-mysql/1599975511382.png" class="" width="1599975511382">
+
 <p><strong>Dirty Reads</strong></p>
 <p>脏读就是一个事务读取了尚未被提交的数据。事务 B 读取了事务 A 尚未提交的数据，并基于数据做了决策（每点积分给予 1% 折扣），但是之后事务 A 又进行了回滚，实际客人没有 20 积分，事务 B 却给了 20 % 折扣。解决此问题需要为事务建立隔离级别 READ COMMITTED，这样事务就只能读取已经提交的数据。</p>
-<img data-src="/2020/09/16/sql-mysql/1599976093618.png" class="" width="1599976093618">
+
 <p><img data-src="sql-mysql/1599979563440.png" alt="1599979563440"><img data-src="sql-mysql/1599979576117.png" alt="1599982673739"></p>
 <p>使用隔离级别 READ COMMITTED  <code>set transaction isolation level read uncommitted;</code></p>
 <p><img data-src="sql-mysql/1599980424630.png" alt="1599980424630"><img data-src="sql-mysql/1599980437231.png" alt="1599982908635"></p>
 <p><strong>Non-repeating Reads</strong></p>
 <p>不可重复读就是在事务过程中读取了某个数据两次，得到了不同结果。解决此问题需要为事务建立隔离级别 REPEATABLE READ, 将它与其他事务隔离，确保数据更改对事务不可见，读取的数据是可重复和一致的，即使其它事务更改了数据，我们会看到首次读取就创建的快照。</p>
-<img data-src="/2020/09/16/sql-mysql/1599976915131.png" class="" width="1599976915131">
-<img data-src="/2020/09/16/sql-mysql/1599981497342.png" class=""> <img data-src="/2020/09/16/sql-mysql/1599981512930.png" class="" width="1599981512930"> 
+
+  
 <p>使用隔离级别 REPEATABLE READ  <code>set transaction isolation level repeatable read</code></p>
 <p><img data-src="sql-mysql/1599981497342.png" alt=""><img data-src="sql-mysql/1599982382709.png" alt="1599982382709"></p>
 <p><strong>Phantom Reads</strong></p>
 <p>幻读是指在事务执行查询之后进行了添加，更新或删除，实际读取的是添加，更新或删除之前的数据，事务执行完成之后仍然有符合条件的数据，这种突然出现的数据就像幽灵👻一样。解决此问题需要为事务建立隔离级别 SERIALIZABLE, 它能保证当有别的事务在更新数据时，我们的事务能够知晓变动，如果有其它事务修改了可能影响查询结果的数据，我们的事务必须等待它们完成。这是事务的最高隔离级别，保证最大的确定性，但是会影响性能。</p>
-<img data-src="/2020/09/16/sql-mysql/1599977856273.png" class="" width="1599977856273">
+
 <p><img data-src="sql-mysql/1599983805136.png" alt="1599983805136"><img data-src="sql-mysql/1599983817294.png" alt="1599984031786"></p>
 <p>使用隔离级别 SERIALIZABLE  <code>set transaction isolation level serializable</code></p>
 <p><img data-src="sql-mysql/1599984872155.png" alt="1599984872155"><img data-src="sql-mysql/1599984896771.png" alt="1599984896771"></p>
@@ -911,10 +911,10 @@ Dew's World = 露の世</title>
 <p>更高的隔离级别意味着更低的并发问题，但同时也意味着更多的锁和过呢更低的并发性能。</p>
 <p>MySQL 的默认隔离级别时 REPEATABLE READ</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> variables <span class="keyword">like</span> <span class="string">&#x27;transaction_isolation&#x27;</span>;</span><br><span class="line"></span><br><span class="line">Variable_name            <span class="keyword">Value</span></span><br><span class="line"><span class="comment">--------------           ------------</span></span><br><span class="line">transaction_isolation    REPEATABLE<span class="operator">-</span>READ</span><br><span class="line"></span><br><span class="line"><span class="keyword">set</span> session transaction isolation level serializable;</span><br><span class="line"><span class="keyword">set</span> <span class="keyword">global</span> transaction isolation level serializable;</span><br></pre></td></tr></table></figure>
-<img data-src="/2020/09/16/sql-mysql/1599978323604.png" class="" width="1599978323604">
+
 <h3 id="datatype"><a class="markdownIt-Anchor" href="#datatype">#</a> Datatype</h3>
 <h4 id="json"><a class="markdownIt-Anchor" href="#json">#</a> json</h4>
-<img data-src="/2020/09/16/sql-mysql/1600224943235.png" class="" width="1600224943235">
+
 <p>json raw string</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">update products <span class="keyword">set</span> properties  <span class="operator">=</span> <span class="string">&#x27;</span></span><br><span class="line"><span class="string">&#123;</span></span><br><span class="line"><span class="string">	&quot;dimensions&quot;: [1, 2, 3],</span></span><br><span class="line"><span class="string">    &quot;weight&quot;: 10,</span></span><br><span class="line"><span class="string">    &quot;manufactor&quot;: &#123; &quot;name&quot;: &quot;sony&quot; &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">&#x27;</span></span><br><span class="line"><span class="keyword">where</span> product_id <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> </span><br><span class="line">  <span class="keyword">from</span> products</span><br><span class="line"> <span class="keyword">where</span> product_id <span class="operator">=</span> <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
 <table>
@@ -974,21 +974,21 @@ Dew's World = 露の世</title>
 <h3 id="data-modelling"><a class="markdownIt-Anchor" href="#data-modelling">#</a> Data Modelling</h3>
 <h4 id="conceptual-model"><a class="markdownIt-Anchor" href="#conceptual-model">#</a> conceptual model</h4>
 <p>Represents the entities and their relationships. Generally use ER(Entity Relationship) Digram or UML</p>
-<img data-src="/2020/09/16/sql-mysql/1600227670454.png" class="" width="1600227670454">
+
 <h4 id="logic-model"><a class="markdownIt-Anchor" href="#logic-model">#</a> logic model</h4>
 <p>Logic model is independent of database technologics. It’s just an abstract data model that clearly shows our entities. But there’s something more detailed than the conceptual model.</p>
-<img data-src="/2020/09/16/sql-mysql/1600228847888.png" class="" width="1600229196642">
+
 <h4 id="physic-model"><a class="markdownIt-Anchor" href="#physic-model">#</a> physic model</h4>
 <p>File -&gt; New Model</p>
-<img data-src="/2020/09/16/sql-mysql/1600229278592.png" class="" width="1600229303979">
+
 <p>Add Diagram</p>
-<img data-src="/2020/09/16/sql-mysql/1600229403034.png" class="" width="1600229403034">
+
 <p>Add Tables and Columns</p>
-<img data-src="/2020/09/16/sql-mysql/1600229764919.png" class="" width="1600229764919">
+
 <p>Add Primary Key, Foreign Key and Relationship</p>
-<img data-src="/2020/09/16/sql-mysql/1600235085319.png" class="" width="1600235085319">
+
 <p>Setting Foreign Key，CASCADE on update, NO ACTION(RESTRICT) on delete (reject delete)</p>
-<img data-src="/2020/09/16/sql-mysql/1600235161619.png" class="" width="1600235244523">
+
       <div class="tags">
           <a href="/tags/db/" rel="tag"><i class="ic i-tag"></i> db</a>
       </div>
@@ -1002,7 +1002,7 @@ Dew's World = 露の世</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2020-09-16 16:47:30" itemprop="dateModified" datetime="2020-09-16T16:47:30+08:00">2020-09-16</time>
+    <time title="Modified: 2021-05-16 22:31:43" itemprop="dateModified" datetime="2021-05-16T22:31:43+08:00">2021-05-16</time>
   </span>
 </div>
 
@@ -1019,7 +1019,7 @@ Dew's World = 露の世</title>
     <div class="item left">
       
 
-  <a href="/2020/09/07/rust-modules/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclwuom7cj20zk0m8dvn.jpg" title="Clear explanation of Rust’s module system">
+  <a href="/2020/09/07/rust-modules/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipeu1usa7j20zk0m8b29.jpg" title="Clear explanation of Rust’s module system">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Clear explanation of Rust’s module system</h3>
@@ -1029,7 +1029,7 @@ Dew's World = 露の世</title>
     <div class="item right">
       
 
-  <a href="/2020/10/25/edi-mdn/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipeun65urj20zk0m81ii.jpg" title="What is an AS2 MDN?">
+  <a href="/2020/10/25/edi-mdn/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipeun65urj20zk0m81ii.jpg" title="What is an AS2 MDN?">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>What is an AS2 MDN?</h3>
@@ -1066,7 +1066,7 @@ Dew's World = 露の世</title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">254</span>
+        <span class="count">250</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -1181,7 +1181,7 @@ Dew's World = 露の世</title>
   </div>
 <script data-config type="text/javascript">
   var LOCAL = {
-    path: '2020/09/16/sql-mysql/',
+    path: '2020/09/16/mysql-tutorial/',
     favicon: {
       show: "（●´3｀●）Goooood",
       hide: "(´Д｀)Booooom"
