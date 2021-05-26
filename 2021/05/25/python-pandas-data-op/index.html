@@ -1,0 +1,505 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="python" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2021/05/25/python-pandas-data-op/">
+
+
+
+  <title>
+A Visual Intro to NumPy and Data Representation |
+Dew's World = 露の世</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">A Visual Intro to NumPy and Data Representation
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2021-05-25 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2021-05-25T00:00:00+08:00">2021-05-25</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Dew's World</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipesng5oej20zk0m87d4.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giciusoyjnj219g0u0x56.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipexj2jgzj20zk0m8b09.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giph4fomxoj20zk0m8axp.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giph4lm9i7j20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicljitigmj20zk0m87fp.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2021/05/25/python-pandas-data-op/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>转载：<span class="exturl" data-url="aHR0cHM6Ly9qYWxhbW1hci5naXRodWIuaW8vdmlzdWFsLW51bXB5Lw==">A Visual Intro to NumPy and Data Representation – Jay Alammar – Visualizing machine learning one concept at a time.</span></p>
+</blockquote>
+<img data-src="/2021/05/25/python-pandas-data-op/numpy-array.png" class="" title="img">
+<p>The <span class="exturl" data-url="aHR0cHM6Ly93d3cubnVtcHkub3JnLw==">NumPy</span> package is the workhorse of data analysis, machine learning, and scientific computing in the python ecosystem. It vastly simplifies manipulating and crunching vectors and matrices. Some of python’s leading package rely on NumPy as a fundamental piece of their infrastructure (examples include scikit-learn, SciPy, pandas, and tensorflow). Beyond the ability to slice and dice numeric data, mastering numpy will give you an edge when dealing and debugging with advanced usecases in these libraries.</p>
+<p>In this post, we’ll look at some of the main ways to use NumPy and how it can represent different types of data (tables, images, text…etc) before we can serve them to machine learning models.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure>
+<h2 id="creating-arrays"><a class="markdownIt-Anchor" href="#creating-arrays">#</a> Creating Arrays</h2>
+<p>We can create a NumPy array (a.k.a. the mighty <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLnNjaXB5Lm9yZy9kb2MvbnVtcHkvcmVmZXJlbmNlL2FycmF5cy5uZGFycmF5Lmh0bWw=">ndarray</span>) by passing a python list to it and using  <code> np.array()</code> . In this case, python creates the array we can see on the right here:</p>
+<img data-src="/2021/05/25/python-pandas-data-op/create-numpy-array-1.png" class="" title="img">
+<p>There are often cases when we want NumPy to initialize the values of the array for us. NumPy provides methods like ones(), zeros(), and random.random() for these cases. We just pass them the number of elements we want it to generate:</p>
+<img data-src="/2021/05/25/python-pandas-data-op/create-numpy-array-ones-zeros-random.png" class="" title="img">
+<p>Once we’ve created our arrays, we can start to manipulate them in interesting ways.</p>
+<h2 id="array-arithmetic"><a class="markdownIt-Anchor" href="#array-arithmetic">#</a> Array Arithmetic</h2>
+<p>Let’s create two NumPy arrays to showcase their usefulness. We’ll call them  <code>data</code>  and  <code>ones</code> :</p>
+<img data-src="/2021/05/25/python-pandas-data-op/numpy-arrays-example-1.png" class="" title="img">
+<p>Adding them up position-wise (i.e. adding the values of each row) is as simple as typing  <code>data + ones</code> :</p>
+<img data-src="/2021/05/25/python-pandas-data-op/numpy-arrays-adding-1.png" class="" title="img">
+<p>When I started learning such tools, I found it refreshing that an abstraction like this makes me not have to program such a calculation in loops. It’s a wonderful abstraction that allows you to think about problems at a higher level.</p>
+<p>And it’s not only addition that we can do this way:</p>
+<img data-src="/2021/05/25/python-pandas-data-op/numpy-array-subtract-multiply-divide.png" class="" title="img">
+<p>There are often cases when we want to carry out an operation between an array and a single number (we can also call this an operation between a vector and a scalar). Say, for example, our array represents distance in miles, and we want to convert it to kilometers. We simply say  <code>data * 1.6</code> :</p>
+<img data-src="/2021/05/25/python-pandas-data-op/numpy-array-broadcast.png" class="" title="img">
+<p>See how NumPy understood that operation to mean that the multiplication should happen with each cell? That concept is called <em>broadcasting</em>, and it’s very useful.</p>
+<h2 id="indexing"><a class="markdownIt-Anchor" href="#indexing">#</a> Indexing</h2>
+<p>We can index and slice NumPy arrays in all the ways we can slice python lists:</p>
+<img data-src="/2021/05/25/python-pandas-data-op/numpy-array-slice.png" class="" title="img">
+<h2 id="aggregation"><a class="markdownIt-Anchor" href="#aggregation">#</a> Aggregation</h2>
+<p>Additional benefits NumPy gives us are aggregation functions:</p>
+<img data-src="/2021/05/25/python-pandas-data-op/numpy-array-aggregation.png" class="" title="img">
+<p>In addition to  <code>min</code> ,  <code>max</code> , and  <code>sum</code> , you get all the greats like  <code>mean</code>  to get the average,  <code>prod</code>  to get the result of multiplying all the elements together,  <code>std</code>  to get standard deviation, and <span class="exturl" data-url="aHR0cHM6Ly9qYWtldmRwLmdpdGh1Yi5pby9QeXRob25EYXRhU2NpZW5jZUhhbmRib29rLzAyLjA0LWNvbXB1dGF0aW9uLW9uLWFycmF5cy1hZ2dyZWdhdGVzLmh0bWw=">plenty of others</span>.</p>
+<h2 id="in-more-dimensions"><a class="markdownIt-Anchor" href="#in-more-dimensions">#</a> In more dimensions</h2>
+<p>All the examples we’ve looked at deal with vectors in one dimension. A key part of the beauty of NumPy is its ability to apply everything we’ve looked at so far to any number of dimensions.</p>
+<h3 id="creating-matrices"><a class="markdownIt-Anchor" href="#creating-matrices">#</a> Creating Matrices</h3>
+<p>We can pass python lists of lists in the following shape to have NumPy create a matrix to represent them:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.array([[<span class="number">1</span>,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">4</span>]])</span><br></pre></td></tr></table></figure>
+<img data-src="/2021/05/25/python-pandas-data-op/numpy-array-create-2d.png" class="" title="img">
+<p>We can also use the same methods we mentioned above ( <code>ones()</code> ,  <code>zeros()</code> , and  <code>random.random()</code> ) as long as we give them a tuple describing the dimensions of the matrix we are creating:</p>
+<img data-src="/2021/05/25/python-pandas-data-op/numpy-matrix-ones-zeros-random.png" class="" title="img">
+<h3 id="matrix-arithmetic"><a class="markdownIt-Anchor" href="#matrix-arithmetic">#</a> Matrix Arithmetic</h3>
+<p>We can add and multiply matrices using arithmetic operators ( <code>+-*/</code> ) if the two matrices are the same size. NumPy handles those as position-wise operations:</p>
+<img data-src="/2021/05/25/python-pandas-data-op/numpy-matrix-arithmetic.png" class="" title="img">
+<p>We can get away with doing these arithmetic operations on matrices of different size only if the different dimension is one (e.g. the matrix has only one column or one row), in which case NumPy uses its broadcast rules for that operation:</p>
+<img data-src="/2021/05/25/python-pandas-data-op/numpy-matrix-broadcast.png" class="" title="img">
+<h3 id="dot-product"><a class="markdownIt-Anchor" href="#dot-product">#</a> Dot Product</h3>
+<p>A key distinction to make with arithmetic is the case of <span class="exturl" data-url="aHR0cHM6Ly93d3cubWF0aHNpc2Z1bi5jb20vYWxnZWJyYS9tYXRyaXgtbXVsdGlwbHlpbmcuaHRtbA==">matrix multiplication</span> using the dot product. NumPy gives every matrix a  <code>dot()</code>  method we can use to carry-out dot product operations with other matrices:</p>
+<img data-src="/2021/05/25/python-pandas-data-op/numpy-matrix-dot-product-1.png" class="" title="img">
+<p>I’ve added matrix dimensions at the bottom of this figure to stress that the two matrices have to have the same dimension on the side they face each other with. You can visualize this operation as looking like this:</p>
+<img data-src="/2021/05/25/python-pandas-data-op/numpy-matrix-dot-product-2.png" class="" title="img">
+<h3 id="matrix-indexing"><a class="markdownIt-Anchor" href="#matrix-indexing">#</a> Matrix Indexing</h3>
+<p>Indexing and slicing operations become even more useful when we’re manipulating matrices:</p>
+<img data-src="/2021/05/25/python-pandas-data-op/numpy-matrix-indexing.png" class="" title="img">
+<h3 id="matrix-aggregation"><a class="markdownIt-Anchor" href="#matrix-aggregation">#</a> Matrix Aggregation</h3>
+<p>We can aggregate matrices the same way we aggregated vectors:</p>
+<img data-src="/2021/05/25/python-pandas-data-op/numpy-matrix-aggregation-1.png" class="" title="img">
+<p>Not only can we aggregate all the values in a matrix, but we can also aggregate across the rows or columns by using the  <code>axis</code>  parameter:</p>
+<img data-src="/2021/05/25/python-pandas-data-op/numpy-matrix-aggregation-4.png" class="" title="img">
+<h2 id="transposing-and-reshaping"><a class="markdownIt-Anchor" href="#transposing-and-reshaping">#</a> Transposing and Reshaping</h2>
+<p>A common need when dealing with matrices is the need to rotate them. This is often the case when we need to take the dot product of two matrices and need to align the dimension they share. NumPy arrays have a convenient property called  <code>T</code>  to get the transpose of a matrix:</p>
+<img data-src="/2021/05/25/python-pandas-data-op/numpy-transpose.png" class="" title="img">
+<p>In more advanced use case, you may find yourself needing to switch the dimensions of a certain matrix. This is often the case in machine learning applications where a certain model expects a certain shape for the inputs that is different from your dataset. NumPy’s  <code>reshape()</code>  method is useful in these cases. You just pass it the new dimensions you want for the matrix. You can pass -1 for a dimension and NumPy can infer the correct dimension based on your matrix:</p>
+<img data-src="/2021/05/25/python-pandas-data-op/numpy-reshape.png" class="" title="img">
+<h2 id="yet-more-dimensions"><a class="markdownIt-Anchor" href="#yet-more-dimensions">#</a> Yet More Dimensions</h2>
+<p>NumPy can do everything we’ve mentioned in any number of dimensions. Its central data structure is called ndarray (N-Dimensional Array) for a reason.</p>
+<img data-src="/2021/05/25/python-pandas-data-op/numpy-3d-array.png" class="" title="img">
+<p>In a lot of ways, dealing with a new dimension is just adding a comma to the parameters of a NumPy function:</p>
+<img data-src="/2021/05/25/python-pandas-data-op/numpy-3d-array-creation.png" class="" title="img">
+<p>Note: Keep in mind that when you print a 3-dimensional NumPy array, the text output visualizes the array differently than shown here. NumPy’s order for printing n-dimensional arrays is that the last axis is looped over the fastest, while the first is the slowest. Which means that  <code>np.ones((4,3,2))</code>  would be printed as:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">array([[[<span class="number">1.</span>, <span class="number">1.</span>],</span><br><span class="line">        [<span class="number">1.</span>, <span class="number">1.</span>],</span><br><span class="line">        [<span class="number">1.</span>, <span class="number">1.</span>]],</span><br><span class="line"></span><br><span class="line">       [[<span class="number">1.</span>, <span class="number">1.</span>],</span><br><span class="line">        [<span class="number">1.</span>, <span class="number">1.</span>],</span><br><span class="line">        [<span class="number">1.</span>, <span class="number">1.</span>]],</span><br><span class="line"></span><br><span class="line">       [[<span class="number">1.</span>, <span class="number">1.</span>],</span><br><span class="line">        [<span class="number">1.</span>, <span class="number">1.</span>],</span><br><span class="line">        [<span class="number">1.</span>, <span class="number">1.</span>]],</span><br><span class="line"></span><br><span class="line">       [[<span class="number">1.</span>, <span class="number">1.</span>],</span><br><span class="line">        [<span class="number">1.</span>, <span class="number">1.</span>],</span><br><span class="line">        [<span class="number">1.</span>, <span class="number">1.</span>]]])</span><br></pre></td></tr></table></figure>
+<h2 id="practical-usage"><a class="markdownIt-Anchor" href="#practical-usage">#</a> Practical Usage</h2>
+<p>And now for the payoff. Here are some examples of the useful things NumPy will help you through.</p>
+<h3 id="formulas"><a class="markdownIt-Anchor" href="#formulas">#</a> Formulas</h3>
+<p>Implementing mathematical formulas that work on matrices and vectors is a key use case to consider NumPy for. It’s why NumPy is the darling of the scientific python community. For example, consider the mean square error formula that is central to supervised machine learning models tackling regression problems:</p>
+<img data-src="/2021/05/25/python-pandas-data-op/mean-square-error-formula.png" class="" title="img">
+<p>Implementing this is a breeze in NumPy:</p>
+<img data-src="/2021/05/25/python-pandas-data-op/numpy-mean-square-error-formula.png" class="" title="img">
+<p>The beauty of this is that numpy does not care if  <code>predictions</code>  and  <code>labels</code>  contain one or a thousand values (as long as they’re both the same size). We can walk through an example stepping sequentially through the four operations in that line of code:</p>
+<img data-src="/2021/05/25/python-pandas-data-op/numpy-mse-1.png" class="" title="img">
+<p>Both the predictions and labels vectors contain three values. Which means n has a value of three. After we carry out the subtraction, we end up with the values looking like this:</p>
+<img data-src="/2021/05/25/python-pandas-data-op/numpy-mse-2.png" class="" title="img">
+<p>Then we can square the values in the vector:</p>
+<img data-src="/2021/05/25/python-pandas-data-op/numpy-mse-3.png" class="" title="img">
+<p>Now we sum these values:</p>
+<img data-src="/2021/05/25/python-pandas-data-op/numpy-mse-4.png" class="" title="img">
+<p>Which results in the error value for that prediction and a score for the quality of the model.</p>
+<h3 id="data-representation"><a class="markdownIt-Anchor" href="#data-representation">#</a> Data Representation</h3>
+<p>Think of all the data types you’ll need to crunch and build models around (spreadsheets, images, audio…etc). So many of them are perfectly suited for representation in an n-dimensional array:</p>
+<h4 id="tables-and-spreadsheets"><a class="markdownIt-Anchor" href="#tables-and-spreadsheets">#</a> Tables and Spreadsheets</h4>
+<ul>
+<li>A spreadsheet or a table of values is a two dimensional matrix. Each sheet in a spreadsheet can be its own variable. The most popular abstraction in python for those is the <span class="exturl" data-url="aHR0cHM6Ly9qYWxhbW1hci5naXRodWIuaW8vZ2VudGxlLXZpc3VhbC1pbnRyby10by1kYXRhLWFuYWx5c2lzLXB5dGhvbi1wYW5kYXMv">pandas dataframe</span>, which actually uses NumPy and builds on top of it.</li>
+</ul>
+<img data-src="/2021/05/25/python-pandas-data-op/excel-to-pandas.png" class="" title="img">
+<h4 id="audio-and-timeseries"><a class="markdownIt-Anchor" href="#audio-and-timeseries">#</a> Audio and Timeseries</h4>
+<ul>
+<li>An audio file is a one-dimensional array of samples. Each sample is a number representing a tiny chunk of the audio signal. CD-quality audio may have 44,100 samples per second and each sample is an integer between -32767 and 32768. Meaning if you have a ten-seconds WAVE file of CD-quality, you can load it in a NumPy array with length 10 * 44,100 = 441,000 samples. Want to extract the first second of audio? simply load the file into a NumPy array that we’ll call  <code>audio</code> , and get  <code>audio[:44100]</code> .</li>
+</ul>
+<p>Here’s a look at a slice of an audio file:</p>
+<img data-src="/2021/05/25/python-pandas-data-op/numpy-audio.png" class="" title="img">
+<p>The same goes for time-series data (for example, the price of a stock over time).</p>
+<h4 id="images"><a class="markdownIt-Anchor" href="#images">#</a> Images</h4>
+<ul>
+<li>An image is a matrix of pixels of size (height x width).
+<ul>
+<li>If the image is black and white (a.k.a. grayscale), each pixel can be represented by a single number (commonly between 0 (black) and 255 (white)). Want to crop the top left 10 x 10 pixel part of the image? Just tell NumPy to get you  <code>image[:10,:10]</code> .</li>
+</ul>
+</li>
+</ul>
+<p>Here’s a look at a slice of an image file:</p>
+<img data-src="/2021/05/25/python-pandas-data-op/numpy-grayscale-image.png" class="" title="img">
+<ul>
+<li>
+<p>If the image is colored, then each pixel is represented by three numbers - a value for each of red, green, and blue. In that case we need a 3rd dimension (because each cell can only contain one number). So a colored image is represented by an ndarray of dimensions: (height x width x 3).</p>
+<img data-src="/2021/05/25/python-pandas-data-op/numpy-color-image-1621924817177.png" class="" title="img">
+</li>
+</ul>
+<h4 id="language"><a class="markdownIt-Anchor" href="#language">#</a> Language</h4>
+<p>If we’re dealing with text, the story is a little different. The numeric representation of text requires a step of building a vocabulary (an inventory of all the unique words the model knows) and an <span class="exturl" data-url="aHR0cHM6Ly9qYWxhbW1hci5naXRodWIuaW8vaWxsdXN0cmF0ZWQtd29yZDJ2ZWMv">embedding step</span>. Let us see the steps of numerically representing this (translated) quote by an ancient spirit:</p>
+<p>“Have the bards who preceded me left any theme unsung?”</p>
+<p>A model needs to look at a large amount of text before it can numerically represent the anxious words of this warrior poet. We can proceed to have it process a <span class="exturl" data-url="aHR0cDovL21hdHRtYWhvbmV5Lm5ldC9kYy90ZXh0ZGF0YS5odG1s">small dataset</span> and use it to build a vocabulary (of 71,290 words):</p>
+<img data-src="/2021/05/25/python-pandas-data-op/numpy-nlp-vocabulary.png" class="" title="img">
+<p>The sentence can then be broken into an array of tokens (words or parts of words based on common rules):</p>
+<img data-src="/2021/05/25/python-pandas-data-op/numpy-nlp-tokenization.png" class="" title="img">
+<p>We then replace each word by its id in the vocabulary table:</p>
+<img data-src="/2021/05/25/python-pandas-data-op/numpy-nlp-ids.png" class="" title="img">
+<p>These ids still don’t provide much information value to a model. So before feeding a sequence of words to a model, the tokens/words need to be replaced with their embeddings (50 dimension <span class="exturl" data-url="aHR0cHM6Ly9qYWxhbW1hci5naXRodWIuaW8vaWxsdXN0cmF0ZWQtd29yZDJ2ZWMv">word2vec embedding</span> in this case):</p>
+<img data-src="/2021/05/25/python-pandas-data-op/numpy-nlp-embeddings.png" class="" title="img">
+<p>You can see that this NumPy array has the dimensions [embedding_dimension x sequence_length]. In practice these would be the other way around, but I’m presenting it this way for visual consistency. For performance reasons, deep learning models tend to preserve the first dimension for batch size (because the model can be trained faster if multiple examples are trained in parallel). This is a clear case where  <code>reshape()</code>  becomes super useful. A model like <span class="exturl" data-url="aHR0cHM6Ly9qYWxhbW1hci5naXRodWIuaW8vaWxsdXN0cmF0ZWQtYmVydC8=">BERT</span>, for example, would expect its inputs in the shape: [batch_size, sequence_length, embedding_size].</p>
+<img data-src="/2021/05/25/python-pandas-data-op/numpy-nlp-bert-shape.png" class="" title="img">
+<p>This is now a numeric volume that a model can crunch and do useful things with. I left the other rows empty, but they’d be filled with other examples for the model to train on (or predict).</p>
+<p>(It turned out the <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpc291cmNlLm9yZy93aWtpL1RoZV9Qb2VtX29mX0FudGFyYQ==">poet’s words</span> in our example were immortalized more so than those of the other poets which trigger his anxieties. Born a slave owned by his father, <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvQW50YXJhaF9pYm5fU2hhZGRhZA==">Antarah’s</span> valor and command of language gained him his freedom and the mythical status of having his poem as one of <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvTXUnYWxsYXFhdA==">seven poems suspended in the kaaba</span> in pre-Islamic Arabia).</p>
+
+      <div class="tags">
+          <a href="/tags/python/" rel="tag"><i class="ic i-tag"></i> python</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2021-05-25 14:45:13" itemprop="dateModified" datetime="2021-05-25T14:45:13+08:00">2021-05-25</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2021/05/20/etl/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giciusoyjnj219g0u0x56.jpg" title="ETL">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>ETL</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#creating-arrays"><span class="toc-number">1.</span> <span class="toc-text"> Creating Arrays</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#array-arithmetic"><span class="toc-number">2.</span> <span class="toc-text"> Array Arithmetic</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#indexing"><span class="toc-number">3.</span> <span class="toc-text"> Indexing</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#aggregation"><span class="toc-number">4.</span> <span class="toc-text"> Aggregation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#in-more-dimensions"><span class="toc-number">5.</span> <span class="toc-text"> In more dimensions</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#creating-matrices"><span class="toc-number">5.1.</span> <span class="toc-text"> Creating Matrices</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#matrix-arithmetic"><span class="toc-number">5.2.</span> <span class="toc-text"> Matrix Arithmetic</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dot-product"><span class="toc-number">5.3.</span> <span class="toc-text"> Dot Product</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#matrix-indexing"><span class="toc-number">5.4.</span> <span class="toc-text"> Matrix Indexing</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#matrix-aggregation"><span class="toc-number">5.5.</span> <span class="toc-text"> Matrix Aggregation</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#transposing-and-reshaping"><span class="toc-number">6.</span> <span class="toc-text"> Transposing and Reshaping</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#yet-more-dimensions"><span class="toc-number">7.</span> <span class="toc-text"> Yet More Dimensions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#practical-usage"><span class="toc-number">8.</span> <span class="toc-text"> Practical Usage</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#formulas"><span class="toc-number">8.1.</span> <span class="toc-text"> Formulas</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#data-representation"><span class="toc-number">8.2.</span> <span class="toc-text"> Data Representation</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#tables-and-spreadsheets"><span class="toc-number">8.2.1.</span> <span class="toc-text"> Tables and Spreadsheets</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#audio-and-timeseries"><span class="toc-number">8.2.2.</span> <span class="toc-text"> Audio and Timeseries</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#images"><span class="toc-number">8.2.3.</span> <span class="toc-text"> Images</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#language"><span class="toc-number">8.2.4.</span> <span class="toc-text"> Language</span></a></li></ol></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">235</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">1</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">39</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item twitter" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;twitter.com&#x2F;yourname"><i class="ic i-twitter"></i></span>
+      <span class="exturl item zhihu" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3Blb3BsZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;yourname"><i class="ic i-zhihu"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLyMvdXNlci9ob21lP2lkPXlvdXJpZA==" title="https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;yourid"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item weibo" data-url="aHR0cHM6Ly93ZWliby5jb20veW91cm5hbWU=" title="https:&#x2F;&#x2F;weibo.com&#x2F;yourname"><i class="ic i-weibo"></i></span>
+      <span class="exturl item about" data-url="aHR0cHM6Ly9hYm91dC5tZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;about.me&#x2F;yourname"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/links/" rel="section"><i class="ic i-magic"></i>links</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2021</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ Dew's World</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2021/05/25/python-pandas-data-op/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

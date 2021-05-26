@@ -24,7 +24,7 @@
 <link rel="stylesheet" href="/css/app.css?v=0.2.5">
 
   
-  <meta name="keywords" content="R" />
+  <meta name="keywords" content="r" />
 
 
 <link rel="canonical" href="https://lhchen74.github.io/2021/05/12/r-subset/">
@@ -102,12 +102,12 @@ Dew's World = 露の世</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicitzannuj20zk0m8b29.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicli3sbvtj20zk0m8x6p.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipexw3o58j20zk0m8e81.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipew8gmvyj20zk0m87wh.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipesx5fdwj20zk0m81kx.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclgrvbd6j20zk0m8qv5.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipey84bjtj20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipey0a334j20zk0m8qpt.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipew8gmvyj20zk0m87wh.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclgi503lj20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclx6phq6j20zk0m8e36.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclwrdwyaj20zk0m8are.jpg"></li>
         </ul>
       </div>
     </header>
@@ -252,7 +252,7 @@ Dew's World = 露の世</title>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">friends_data %&gt;% filter(!<span class="built_in">is.na</span>(height))</span><br><span class="line"><span class="comment">## # A tibble: 2 x 4</span></span><br><span class="line"><span class="comment">##   name    age height married</span></span><br><span class="line"><span class="comment">##   &lt;chr&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;</span></span><br><span class="line"><span class="comment">## 1 A        27    180 yes</span></span><br><span class="line"><span class="comment">## 2 D        26    169 no</span></span><br></pre></td></tr></table></figure>
 <p>In the R code above, <strong>!<span class="exturl" data-url="aHR0cDovL2lzLm5h">is.na</span>()</strong> means that “we don’t want” NAs.</p>
 <h2 id="select-random-rows-from-a-data-frame"><a class="markdownIt-Anchor" href="#select-random-rows-from-a-data-frame">#</a> Select random rows from a data frame</h2>
-<p>It’s possible to select either n random rows with the function  <code>sample_n()</code>  or a random fraction of rows with  <code>sample_frac()</code> . We first use the function  <code>set.seed()</code>  to initiate random number generator engine. This important for users to reproduce the analysis.</p>
+<p>It’s possible to select either n random rows with the function  <code>sample_n()</code>  or a random fraction of rows with  <code>sample_frac()</code> . We first use the function  <code>set.seed()</code>  to initiate random number generator engine. This important for users to 转载 the analysis.</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">set.seed(<span class="number">1234</span>)</span><br><span class="line"><span class="comment"># Extract 5 random rows without replacement</span></span><br><span class="line">my_data %&gt;% sample_n(<span class="number">5</span>, replace = <span class="literal">FALSE</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Extract 5% of rows, randomly without replacement</span></span><br><span class="line">my_data %&gt;% sample_frac(<span class="number">0.05</span>, replace = <span class="literal">FALSE</span>)</span><br></pre></td></tr></table></figure>
 <h2 id="select-top-n-rows-ordered-by-a-variable"><a class="markdownIt-Anchor" href="#select-top-n-rows-ordered-by-a-variable">#</a> Select top n rows ordered by a variable</h2>
 <p>Select the top 5 rows ordered by Sepal.Length</p>
@@ -269,7 +269,7 @@ Dew's World = 露の世</title>
 </ul>
 
       <div class="tags">
-          <a href="/tags/R/" rel="tag"><i class="ic i-tag"></i> R</a>
+          <a href="/tags/r/" rel="tag"><i class="ic i-tag"></i> r</a>
       </div>
   </div>
 
@@ -281,7 +281,7 @@ Dew's World = 露の世</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2021-05-12 11:13:44" itemprop="dateModified" datetime="2021-05-12T11:13:44+08:00">2021-05-12</time>
+    <time title="Modified: 2021-05-26 16:39:10" itemprop="dateModified" datetime="2021-05-26T16:39:10+08:00">2021-05-26</time>
   </span>
 </div>
 
@@ -298,7 +298,7 @@ Dew's World = 露の世</title>
     <div class="item left">
       
 
-  <a href="/2021/05/11/r-datastructure/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipetv6p75j20zk0m8x6p.jpg" title="R Data structure">
+  <a href="/2021/05/11/r-datastructure/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipewkhf1zj20zk0m81kx.jpg" title="R Data structure">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>R Data structure</h3>
@@ -308,9 +308,9 @@ Dew's World = 露の世</title>
     <div class="item right">
       
 
-  <a href="/2021/05/13/r-tutorial/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipevarprfj20zk0m8npd.jpg" title="R tutorial">
+  <a href="/2021/05/13/r-tutorial/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclhpw3lwj20zk0m8gvw.jpg" title="R tutorial">
   <span class="type">Next Post</span>
-  <span class="category"><i class="ic i-flag"></i> </span>
+  <span class="category"><i class="ic i-flag"></i> manual</span>
   <h3>R tutorial</h3>
   </a>
 
@@ -345,13 +345,19 @@ Dew's World = 露の世</title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">248</span>
+        <span class="count">235</span>
         <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">1</span>
+        <span class="name">categories</span>
       </a>
     </div>
     <div class="item tags">
       <a href="/tags/">
-        <span class="count">32</span>
+        <span class="count">39</span>
         <span class="name">tags</span>
       </a>
     </div>

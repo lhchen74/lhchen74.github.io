@@ -1,0 +1,430 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="rust" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2020/09/10/rust-question/">
+
+
+
+  <title>
+Rust Question |
+Dew's World = 露の世</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">Rust Question
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2020-09-10 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2020-09-10T00:00:00+08:00">2020-09-10</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Dew's World</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeudstjqj20zk0m8k3r.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipexw3o58j20zk0m8e81.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclx6phq6j20zk0m8e36.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeubcbajj20zk0m8h1h.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeu7txpzj20zk0m81kx.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giciukx8a7j20zk0m8aio.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2020/09/10/rust-question/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h3 id="what-is-the-syntax-instancemethodsomething"><a class="markdownIt-Anchor" href="#what-is-the-syntax-instancemethodsomething">#</a> What is the syntax:  <code>instance.method::&lt;SomeThing&gt;()</code> ?</h3>
+<p>This construct is called turbofish (tuna fish 金枪鱼). If you search for this statement, you will discover its definition and its usage.</p>
+<p>path::&lt;…&gt;, method::&lt;…&gt; Specifies parameters to generic type, function, or method in an expression; often referred to as turbofish (e.g., “42”.parse::<i32>())</p>
+<p>You can use it in any kind of situation where the compiler is not able to deduce([dɪˈduːs]<br>
+ vt. 推论，推断；演绎出) the type parameter, e.g.</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span> </span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> a = (<span class="number">0</span>..<span class="number">255</span>).sum();</span><br><span class="line">    <span class="keyword">let</span> b = (<span class="number">0</span>..<span class="number">255</span>).sum::&lt;<span class="built_in">u32</span>&gt;();</span><br><span class="line">    <span class="keyword">let</span> c: <span class="built_in">u32</span> = (<span class="number">0</span>..<span class="number">255</span>).sum();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>a does not work because it cannot deduce the variable type.<br>
+b does work because we specify the type parameter directly with the turbofish syntax.<br>
+c does work because we specify the type of c directly.</p>
+<h3 id="why-the-size-for-values-of-type-u8-cannot-be-known-at-compilation-time"><a class="markdownIt-Anchor" href="#why-the-size-for-values-of-type-u8-cannot-be-known-at-compilation-time">#</a> Why the size for values of type  <code>[u8]</code>  cannot be known at compilation time?</h3>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// @ the size for values of type `[u8]` cannot be known at compilation time, the trait `std::marker::Sized` is not implemented for `[u8]`</span></span><br><span class="line"><span class="comment">// const CHARSET: [u8] = b&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ\</span></span><br><span class="line"><span class="comment">//                 abcdefghijklmnopqrstuvwxyz\</span></span><br><span class="line"><span class="comment">//                 0123456789)(*&amp;^%$#@!~&quot;;</span></span><br><span class="line"><span class="keyword">const</span> CHARSET: &amp;[<span class="built_in">u8</span>] = <span class="string">b&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ\</span></span><br><span class="line"><span class="string">                abcdefghijklmnopqrstuvwxyz\</span></span><br><span class="line"><span class="string">                0123456789)(*&amp;^%$#@!~&quot;</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="how-to-open-file-with-open-and-write-mode"><a class="markdownIt-Anchor" href="#how-to-open-file-with-open-and-write-mode">#</a> How to open file with open and write mode ?</h3>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// File::open open file only read mode, so write content will PermissionDenied</span></span><br><span class="line"><span class="comment">// let mut f = std::fs::File::open(&quot;foo.txt&quot;)</span></span><br><span class="line"><span class="comment">//     .ok()</span></span><br><span class="line"><span class="comment">//     .expect(&quot;Couldn’t open foo.txt&quot;);</span></span><br><span class="line"><span class="comment">// let buf = b&quot;hello&quot;;</span></span><br><span class="line"><span class="comment">// f.write(buf).expect(&quot;Couldn’t write to foo.txt&quot;); // thread &#x27;main&#x27; panicked at &#x27;Couldn’t write to foo.txt: Os &#123; code: 5, kind: PermissionDenied, message: &quot;拒绝访问。&quot; &#125;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> <span class="keyword">mut</span> f = std::fs::OpenOptions::new()</span><br><span class="line">    .read(<span class="literal">true</span>)</span><br><span class="line">    .write(<span class="literal">true</span>)</span><br><span class="line">    .open(<span class="string">&quot;foo.txt&quot;</span>)</span><br><span class="line">    .ok()</span><br><span class="line">    .expect(<span class="string">&quot;Couldn’t open foo.txt&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> buf = <span class="string">b&quot;hello&quot;</span>;</span><br><span class="line">f.write(buf).expect(<span class="string">&quot;Couldn’t write to foo.txt&quot;</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="what-mean-of-ref-ref-mut-below"><a class="markdownIt-Anchor" href="#what-mean-of-ref-ref-mut-below">#</a> What mean of ref &amp; ref mut below?</h3>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="keyword">mut</span> x = <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">match</span> x &#123;</span><br><span class="line">    <span class="keyword">ref</span> <span class="keyword">mut</span> mr =&gt; <span class="built_in">println!</span>(<span class="string">&quot;mut ref &#123;&#125;&quot;</span>, mr),</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>When doing pattern matching or destructuring via the let binding, the ref keyword can be used to take references to the fields of a struct/tuple. The example below shows a few instances where this can be useful:</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#[derive(Clone, Copy)]</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Point</span></span> &#123; x: <span class="built_in">i32</span>, y: <span class="built_in">i32</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> c = <span class="string">&#x27;Q&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// A `ref` borrow on the left side of an assignment is equivalent to</span></span><br><span class="line">    <span class="comment">// an `&amp;` borrow on the right side.</span></span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">ref</span> ref_c1 = c;</span><br><span class="line">    <span class="keyword">let</span> ref_c2 = &amp;c;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;ref_c1 equals ref_c2: &#123;&#125;&quot;</span>, *ref_c1 == *ref_c2);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> point = Point &#123; x: <span class="number">0</span>, y: <span class="number">0</span> &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// `ref` is also valid when destructuring a struct.</span></span><br><span class="line">    <span class="keyword">let</span> _copy_of_x = &#123;</span><br><span class="line">        <span class="comment">// `ref_to_x` is a reference to the `x` field of `point`.</span></span><br><span class="line">        <span class="keyword">let</span> Point &#123; x: <span class="keyword">ref</span> ref_to_x, y: _ &#125; = point;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Return a copy of the `x` field of `point`.</span></span><br><span class="line">        *ref_to_x</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// A mutable copy of `point`</span></span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut</span> mutable_point = point;</span><br><span class="line"></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// `ref` can be paired with `mut` to take mutable references.</span></span><br><span class="line">        <span class="keyword">let</span> Point &#123; x: _, y: <span class="keyword">ref</span> <span class="keyword">mut</span> mut_ref_to_y &#125; = mutable_point;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Mutate the `y` field of `mutable_point` via a mutable reference.</span></span><br><span class="line">        *mut_ref_to_y = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;point is (&#123;&#125;, &#123;&#125;)&quot;</span>, point.x, point.y);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;mutable_point is (&#123;&#125;, &#123;&#125;)&quot;</span>, mutable_point.x, mutable_point.y);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// A mutable tuple that includes a pointer</span></span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut</span> mutable_tuple = (<span class="built_in">Box</span>::new(<span class="number">5u32</span>), <span class="number">3u32</span>);</span><br><span class="line"></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// Destructure `mutable_tuple` to change the value of `last`.</span></span><br><span class="line">        <span class="keyword">let</span> (_, <span class="keyword">ref</span> <span class="keyword">mut</span> last) = mutable_tuple;</span><br><span class="line">        *last = <span class="number">2u32</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;tuple is &#123;:?&#125;&quot;</span>, mutable_tuple);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="what-is-the-difference-between-immutable-and-const-variables-in-rust"><a class="markdownIt-Anchor" href="#what-is-the-difference-between-immutable-and-const-variables-in-rust">#</a> What is the difference between immutable and const variables in Rust?</h3>
+<p>const, in Rust, is short for constant and is related to compile-time evaluation. It shows up:</p>
+<ul>
+<li>when declaring constants: const FOO: usize = 3;</li>
+<li>when declaring compile-time evaluable functions: const fn foo() -&gt; &amp;'static str</li>
+</ul>
+<p>These kinds of values can be used as generic parameters: [u8; FOO]. For now this is limited to array size, but there is talk, plans, and hope to extend it further in the future.</p>
+<p>By contrast, a let binding is about a run-time computed value.</p>
+<p>Note that despite mut being used because the concept of mutability is well-known, Rust actually lies here. &amp;T and &amp;mut T are about aliasing, not mutability:</p>
+<ul>
+<li>&amp;T: shared reference</li>
+<li>&amp;mut T: unique reference</li>
+</ul>
+<p>Most notably, some types feature interior mutability and can be mutated via &amp;T (shared references): Cell, RefCell, Mutex, etc.</p>
+<h3 id="what-is-the-different-stack-and-heap-in-rust"><a class="markdownIt-Anchor" href="#what-is-the-different-stack-and-heap-in-rust">#</a> What is the different Stack and Heap in Rust?</h3>
+<ul>
+<li>
+<p>Stack</p>
+<p>栈 stack 是一种后进先出容器。就像我们的存储罐子，后面放进去的只能先拿出来。<br>
+栈 stack 上存储的元素大小必须是已知的，也就是说如果一个变量或数据要放到栈上，那么它的大小在编译是就必须是明确的。例如，对于一个数据类型为 i32 的变量，它的大小是可预知的，只占用 4 个字节。<br>
+Rust 语言中所有的标量类型都可以存储到栈上，因为它们的大小都是固定的。而对于字符串这种复合类型，它们在运行时才会赋值，那么在编译时的大小就是未知的。那么它们就不能存储在栈上，而只能存储在堆上。</p>
+</li>
+<li>
+<p>Heap</p>
+<p>堆 heap 用于存储那些在编译时大小未知的数据，也就是那些只有在运行时才能确定大小的数据。<br>
+我们一般在堆 heap 上存储那些动态类型的数据。简而言之，我们一般在堆上存储那些可能在程序的整个生命周期中发生变化的数据。堆是不受系统管理的，由用户自己管理，因此，使用不当，内存溢出的可能性就大大增加了。</p>
+</li>
+</ul>
+
+      <div class="tags">
+          <a href="/tags/rust/" rel="tag"><i class="ic i-tag"></i> rust</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2021-05-26 15:00:56" itemprop="dateModified" datetime="2021-05-26T15:00:56+08:00">2021-05-26</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2020/09/04/english-question/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipewkhf1zj20zk0m81kx.jpg" title="英语疑问句：5 种句型构建指南">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>英语疑问句：5 种句型构建指南</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2020/09/16/mysql-tutorial/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclg5ms2rj20zk0m8u0x.jpg" title="mysql basic">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>mysql basic</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#what-is-the-syntax-instancemethodsomething"><span class="toc-number">1.</span> <span class="toc-text"> What is the syntax:  instance.method::&lt;SomeThing&gt;() ?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#why-the-size-for-values-of-type-u8-cannot-be-known-at-compilation-time"><span class="toc-number">2.</span> <span class="toc-text"> Why the size for values of type  [u8]  cannot be known at compilation time?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#how-to-open-file-with-open-and-write-mode"><span class="toc-number">3.</span> <span class="toc-text"> How to open file with open and write mode ?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#what-mean-of-ref-ref-mut-below"><span class="toc-number">4.</span> <span class="toc-text"> What mean of ref &amp; ref mut below?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#what-is-the-difference-between-immutable-and-const-variables-in-rust"><span class="toc-number">5.</span> <span class="toc-text"> What is the difference between immutable and const variables in Rust?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#what-is-the-different-stack-and-heap-in-rust"><span class="toc-number">6.</span> <span class="toc-text"> What is the different Stack and Heap in Rust?</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">235</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">1</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">39</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item twitter" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;twitter.com&#x2F;yourname"><i class="ic i-twitter"></i></span>
+      <span class="exturl item zhihu" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3Blb3BsZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;yourname"><i class="ic i-zhihu"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLyMvdXNlci9ob21lP2lkPXlvdXJpZA==" title="https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;yourid"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item weibo" data-url="aHR0cHM6Ly93ZWliby5jb20veW91cm5hbWU=" title="https:&#x2F;&#x2F;weibo.com&#x2F;yourname"><i class="ic i-weibo"></i></span>
+      <span class="exturl item about" data-url="aHR0cHM6Ly9hYm91dC5tZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;about.me&#x2F;yourname"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/links/" rel="section"><i class="ic i-magic"></i>links</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2020/09/04/english-question/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2020/09/16/mysql-tutorial/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2021</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ Dew's World</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2020/09/10/rust-question/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
