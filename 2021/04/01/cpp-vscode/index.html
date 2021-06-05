@@ -102,12 +102,12 @@ Dew's World = 露の世</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclhtuo6nj20zk0m8ttm.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipesrnqv3j20zk0m8ava.jpg"></li>
           <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipexj2jgzj20zk0m8b09.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicis3attqj20zk0m8k7l.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclhnx9glj20zk0m8npd.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicitf0kl1j20zk0m87fe.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipey0a334j20zk0m8qpt.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclfw2t96j20zk0m8x6p.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclxp31goj20zk0m8qv5.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicit4jrvuj20zk0m8785.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicitzannuj20zk0m8b29.jpg"></li>
         </ul>
       </div>
     </header>
@@ -166,12 +166,12 @@ Dew's World = 露の世</title>
 <p>F5 启动调试</p>
 <p>Enviroment 选择 C++ (GDB/LLDB)。</p>
 <p>编译器配置选择 g++。</p>
-<img data-src="/2021/04/01/cpp-vscode/1617853184511.png" class="" width="1617853184511">
-<img data-src="/2021/04/01/cpp-vscode/1617853260622.png" class="" width="1617853260622">
+<img data-src="/2021/04/01/cpp-vscode/1617853184511.png" class="">
+<img data-src="/2021/04/01/cpp-vscode/1617853260622.png" class="">
 <p>修改 launch.json 的 program 指向 g++ compile 生成的 main.exe。</p>
 <p>注释 preLaunchTask（在 lanuch 之前运行 tasks 中定义的任务), 默认生成的 task 只能编译单文件。</p>
 <p>重新按 F5 或者左侧 Debug 按钮启动调试。</p>
-<img data-src="/2021/04/01/cpp-vscode/1617853766643.png" class="" width="1617853766643">
+<img data-src="/2021/04/01/cpp-vscode/1617853766643.png" class="">
 <h3 id="tasksjson-setting-g-compile"><a class="markdownIt-Anchor" href="#tasksjson-setting-g-compile">#</a> tasks.json setting g++ compile</h3>
 <p>配置 launch.json 和 tasks.json , 按 F5 或者左侧 Debug 按钮启动调试。</p>
 <img data-src="/2021/04/01/cpp-vscode/1617858735040.png" class="">
@@ -189,13 +189,13 @@ Dew's World = 露の世</title>
 <p>安装 VSCode  CMake 插件， Ctrl + Shift + P 选择 CMake Configure 配置 MinGW 编译。</p>
 <p>Ctrl + S 保存  CMakeLists.txt 会配置项目生成 build 目录和内容，cd 到 build 目录执行 mingw32-make.exe 。</p>
 <p>之后文件变动点击左侧 Buid 按钮，然后执行  mingw32-make.exe  即可。</p>
-<img data-src="/2021/04/01/cpp-vscode/1617950576516.png" class="" width="1617950576516">
+<img data-src="/2021/04/01/cpp-vscode/1617950576516.png" class="">
 <h3 id="tasksjson-setting-cmake-compile"><a class="markdownIt-Anchor" href="#tasksjson-setting-cmake-compile">#</a> tasks.json setting CMake compile</h3>
-<img data-src="/2021/04/01/cpp-vscode/1618307824234.png" class="" width="1618307824234">
+<img data-src="/2021/04/01/cpp-vscode/1618307824234.png" class="">
 <p>tasks.json</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;version&quot;</span>: <span class="string">&quot;2.0.0&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;options&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;cwd&quot;</span>: <span class="string">&quot;$&#123;workspaceFolder&#125;/build&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">&quot;tasks&quot;</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">&quot;type&quot;</span>: <span class="string">&quot;shell&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;label&quot;</span>: <span class="string">&quot;cmake&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;command&quot;</span>: <span class="string">&quot;cmake&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;args&quot;</span>: [</span><br><span class="line">                <span class="string">&quot;-G&quot;</span>,</span><br><span class="line">                <span class="string">&quot;&#x27;MinGW Makefiles&#x27;&quot;</span>,</span><br><span class="line">                <span class="string">&quot;-DCMAKE_BUILD_TYPE=Debug&quot;</span>,</span><br><span class="line">                <span class="string">&quot;..&quot;</span></span><br><span class="line">            ],</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">&quot;label&quot;</span>: <span class="string">&quot;make&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;group&quot;</span>: &#123;</span><br><span class="line">                <span class="attr">&quot;kind&quot;</span>: <span class="string">&quot;build&quot;</span>,</span><br><span class="line">                <span class="attr">&quot;isDefault&quot;</span>: <span class="literal">true</span></span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">&quot;command&quot;</span>: <span class="string">&quot;mingw32-make.exe&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;args&quot;</span>: []</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">&quot;label&quot;</span>: <span class="string">&quot;CMake Build&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;dependsOn&quot;</span>:[</span><br><span class="line">                <span class="string">&quot;cmake&quot;</span>,</span><br><span class="line">                <span class="string">&quot;make&quot;</span></span><br><span class="line">            ],  </span><br><span class="line">            <span class="attr">&quot;dependsOrder&quot;</span>:<span class="string">&quot;sequence&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>按 F5 调试</p>
-<img data-src="/2021/04/01/cpp-vscode/1618307976834.png" class="" width="1618307976834">
+<img data-src="/2021/04/01/cpp-vscode/1618307976834.png" class="">
 
       <div class="tags">
           <a href="/tags/c/" rel="tag"><i class="ic i-tag"></i> c</a>
@@ -210,7 +210,7 @@ Dew's World = 露の世</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2021-04-15 11:35:50" itemprop="dateModified" datetime="2021-04-15T11:35:50+08:00">2021-04-15</time>
+    <time title="Modified: 2021-05-28 09:11:07" itemprop="dateModified" datetime="2021-05-28T09:11:07+08:00">2021-05-28</time>
   </span>
 </div>
 
@@ -227,17 +227,17 @@ Dew's World = 露の世</title>
     <div class="item left">
       
 
-  <a href="/2021/03/14/linux-sed-awk/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclga70tsj20zk0m84mr.jpg" title="linux grep sed and awk">
+  <a href="/2021/03/19/iso8601-date/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipevo9j1jj20zk0m8e81.jpg" title="ISO 8601 the better date format">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
-  <h3>linux grep sed and awk</h3>
+  <h3>ISO 8601 the better date format</h3>
   </a>
 
     </div>
     <div class="item right">
       
 
-  <a href="/2021/04/06/japanese/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclh5u05ej20zk0m87df.jpg" title="japanese">
+  <a href="/2021/04/06/japanese/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclh0m9pdj20zk0m8hdt.jpg" title="japanese">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> manual</span>
   <h3>japanese</h3>
@@ -274,7 +274,7 @@ Dew's World = 露の世</title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">235</span>
+        <span class="count">239</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -353,7 +353,7 @@ Dew's World = 露の世</title>
 
   <ul id="quick">
     <li class="prev pjax">
-        <a href="/2021/03/14/linux-sed-awk/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+        <a href="/2021/03/19/iso8601-date/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
     </li>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>

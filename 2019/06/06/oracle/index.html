@@ -102,12 +102,12 @@ Dew's World = 露の世</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipevo9j1jj20zk0m8e81.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicis081o9j20zk0m8dmr.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giph4baakhj20zk0m8h5q.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicm07ih54j20zk0m84qp.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipexj2jgzj20zk0m8b09.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclgrvbd6j20zk0m8qv5.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclfw2t96j20zk0m8x6p.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclflwv2aj20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclfb3vzhj20zk0m8wny.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipet4bz0yj20zk0m8e81.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipetv6p75j20zk0m8x6p.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeuv80yoj20zk0m8kjl.jpg"></li>
         </ul>
       </div>
     </header>
@@ -455,7 +455,7 @@ q’’ 内的内容会原样输出<br>
 <p>example: 返回不包含目录的文件名</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> substr(<span class="string">&#x27;c:\test\test.xlsx&#x27;</span>,</span><br><span class="line">              instr(<span class="string">&#x27;c:\test\test.xlsx&#x27;</span>, <span class="string">&#x27;\&#x27;</span>, <span class="number">-1</span>, <span class="number">1</span>) <span class="operator">+</span> <span class="number">1</span>,</span><br><span class="line">              length(<span class="string">&#x27;c:\test\test.xlsx&#x27;</span>) <span class="operator">-</span> instr(<span class="string">&#x27;c:\test\test.xlsx&#x27;</span>, <span class="string">&#x27;\&#x27;</span>, <span class="number">-1</span>, <span class="number">1</span>))</span><br><span class="line">  <span class="keyword">from</span> dual;</span><br><span class="line"><span class="comment">--test.xlsx</span></span><br></pre></td></tr></table></figure>
 <h3 id="option-filter"><a class="markdownIt-Anchor" href="#option-filter">#</a> Option Filter</h3>
-<p>edi_id 是一个栏位并不是一个变量，如果没有传入 p_edi_id 则 edi_id = edi_id 恒成立</p>
+<p>edi_id 是一个栏位并不是一个变量，如果没有传入 p_edi_id 则 edi_id 栏位不为空的情况下 edi_id = edi_id 恒成立 (null=null 不成立)</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cursor</span> c_edi_id <span class="keyword">is</span></span><br><span class="line">  <span class="keyword">select</span> edi_id</span><br><span class="line">  <span class="keyword">from</span>   som_edi_temp_h</span><br><span class="line">  <span class="keyword">where</span>  transfer <span class="keyword">in</span> (<span class="string">&#x27;N&#x27;</span>, <span class="string">&#x27;Q&#x27;</span>)</span><br><span class="line">  <span class="keyword">and</span>    edi_id <span class="operator">=</span> nvl(p_edi_id, edi_id)</span><br><span class="line">  <span class="keyword">and</span>    customer_id <span class="operator">=</span> nvl(p_customer_id, customer_id)</span><br><span class="line">  <span class="keyword">and</span>    <span class="built_in">trim</span>(cust_po_number) <span class="operator">=</span> nvl(<span class="built_in">trim</span>(p_customer_po),cust_po_number)</span><br><span class="line">  <span class="keyword">and</span>    edi_type <span class="operator">=</span> nvl(p_edi_type, edi_type)</span><br><span class="line">  <span class="keyword">order</span> <span class="keyword">by</span> edi_id;</span><br></pre></td></tr></table></figure>
 <h3 id="to_char"><a class="markdownIt-Anchor" href="#to_char">#</a> TO_CHAR</h3>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--获取系统当前的分钟数mi,获取月份是mm</span></span><br><span class="line"><span class="keyword">select</span> to_char(sysdate,<span class="string">&#x27;mi&#x27;</span>)  <span class="keyword">as</span> nowMinute <span class="keyword">from</span> dual</span><br><span class="line"></span><br><span class="line"><span class="comment">--数字转换为字符串，并保留小数位数</span></span><br><span class="line"><span class="keyword">select</span> to_char(<span class="number">3.145</span>, <span class="string">&#x27;9999990.00&#x27;</span>), length(to_char(<span class="number">3.145</span>, <span class="string">&#x27;9999990.00&#x27;</span>))  <span class="keyword">from</span> dual; <span class="comment">--       3.15 11</span></span><br><span class="line"><span class="keyword">select</span> <span class="built_in">trim</span>(to_char(<span class="number">3.145</span>, <span class="string">&#x27;9999990.00&#x27;</span>)), length(<span class="built_in">trim</span>(to_char(<span class="number">3.145</span>, <span class="string">&#x27;9999990.00&#x27;</span>)))  <span class="keyword">from</span> dual; <span class="comment">--3.15 4</span></span><br></pre></td></tr></table></figure>
@@ -530,7 +530,7 @@ dbms_output.put 只会输出内容到缓存<br>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2021-05-26 16:40:57" itemprop="dateModified" datetime="2021-05-26T16:40:57+08:00">2021-05-26</time>
+    <time title="Modified: 2021-06-04 13:59:52" itemprop="dateModified" datetime="2021-06-04T13:59:52+08:00">2021-06-04</time>
   </span>
 </div>
 
@@ -547,7 +547,7 @@ dbms_output.put 只会输出内容到缓存<br>
     <div class="item left">
       
 
-  <a href="/2019/06/06/python/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipeu1usa7j20zk0m8b29.jpg" title="python">
+  <a href="/2019/06/06/python/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclx6phq6j20zk0m8e36.jpg" title="python">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> manual</span>
   <h3>python</h3>
@@ -557,10 +557,10 @@ dbms_output.put 只会输出内容到缓存<br>
     <div class="item right">
       
 
-  <a href="/2019/06/06/uml-sequence/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicm07ih54j20zk0m84qp.jpg" title="UML 使用循序圖傳達各物件互動及時序關係">
+  <a href="/2019/06/06/unicode-utf8/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicljgocqbj20zk0m8e81.jpg" title="unicode and utf8">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
-  <h3>UML 使用循序圖傳達各物件互動及時序關係</h3>
+  <h3>unicode and utf8</h3>
   </a>
 
     </div>
@@ -597,7 +597,7 @@ dbms_output.put 只会输出内容到缓存<br>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">235</span>
+        <span class="count">239</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -681,7 +681,7 @@ dbms_output.put 只会输出内容到缓存<br>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
     <li class="next pjax">
-        <a href="/2019/06/06/uml-sequence/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+        <a href="/2019/06/06/unicode-utf8/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
     </li>
     <li class="percent"></li>
   </ul>

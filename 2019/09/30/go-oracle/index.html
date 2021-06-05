@@ -102,12 +102,12 @@ Dew's World = 露の世</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipet4bz0yj20zk0m8e81.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclfb3vzhj20zk0m8wny.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeudstjqj20zk0m8k3r.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipexbei4hj20zk0m8npd.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeyonbf9j20zk0m8e81.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclffsa1cj20zk0m811l.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclh0m9pdj20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giciub8ja1j20zk0m81ky.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclgi503lj20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeuv80yoj20zk0m8kjl.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclj61ylzj20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicm0n457cj20zk0m8e81.jpg"></li>
         </ul>
       </div>
     </header>
@@ -155,7 +155,7 @@ Dew's World = 露の世</title>
 <p>下载地址: <span class="exturl" data-url="aHR0cHM6Ly93d3cub3JhY2xlLmNvbS9kYXRhYmFzZS90ZWNobm9sb2dpZXMvaW5zdGFudC1jbGllbnQvd2lueDY0LTY0LWRvd25sb2Fkcy5odG1s">https://www.oracle.com/database/technologies/instant-client/winx64-64-downloads.html</span></p>
 <p>下载之后先解压 basic 压缩包，然后将 sdk 解压到 basic 目录下，添加  <code>C:\instantclient_11_2</code>  到系统 PATH 变量</p>
 <p>注意：不要将解压缩的文件放到有空格的目录中，例如  <code>C:\Program Files\instantclient_11_2</code>  否则后续会找不到 oci.h</p>
-<img data-src="/2019/09/30/go-oracle/1569836319598.png" class="" width="1569836319598">
+<img data-src="/2019/09/30/go-oracle/1569836319598.png" class="">
 <h3 id="下载安装-mingw64"><a class="markdownIt-Anchor" href="#下载安装-mingw64">#</a> 下载安装 MINGW64</h3>
 <p>解决 WIN 中没有 GCC 的问题，如果不安装后期会出现问题：（exec: “gcc”: executable file not found in % PATH%），因为之前下载的 ORACLE INSTANCCLIENT 是 64 位的所以我们也需要下载 MINGW64 才能编译 (如果版本不对应会出现编译错误)。安装完成后添加  <code>C:\mingw64\bin</code>  到 PATH 环境变量。</p>
 <h3 id="获取-go-oci8-驱动"><a class="markdownIt-Anchor" href="#获取-go-oci8-驱动">#</a> 获取 GO-OCI8 驱动</h3>
@@ -164,7 +164,7 @@ Dew's World = 露の世</title>
 <p>先忽略，后面解决</p>
 <h3 id="修改-oci8pc"><a class="markdownIt-Anchor" href="#修改-oci8pc">#</a> 修改 OCI8.PC</h3>
 <p>进入 GOPATH 目录  <code>%GoPath%\src\github.com\wendal\go-oci8\windows</code> ，找到 OCI8.PC 文件，修改  <code>prefix</code>  和  <code>exec_prefix</code></p>
-<img data-src="/2019/09/30/go-oracle/1569837019951.png" class="" width="1569837019951">
+<img data-src="/2019/09/30/go-oracle/1569837019951.png" class="">
 <p>然后</p>
 <ol>
 <li>
@@ -172,7 +172,7 @@ Dew's World = 露の世</title>
 </li>
 <li>
 <p>复制此目录下 oci8.pc 到 mingw64 下的 lib/pkg-config 目录（pkg-config 目录需要自己建), 添加  <code>PKG_CONFIG_PATH</code>  环境变量，值为 oci8.pc 所在位置  <code>C:\mingw64\lib\pkg-config</code></p>
-<img data-src="/2019/09/30/go-oracle/1569837340983.png" class="" width="1569837340983">
+<img data-src="/2019/09/30/go-oracle/1569837340983.png" class="">
 </li>
 </ol>
 <h3 id="继续安装-go-oci8"><a class="markdownIt-Anchor" href="#继续安装-go-oci8">#</a> 继续安装 go-oci8</h3>
@@ -206,7 +206,7 @@ typedef unsigned _int64 ubig_ora;</p>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2019-10-05 20:46:47" itemprop="dateModified" datetime="2019-10-05T20:46:47+08:00">2019-10-05</time>
+    <time title="Modified: 2021-05-28 09:11:07" itemprop="dateModified" datetime="2021-05-28T09:11:07+08:00">2021-05-28</time>
   </span>
 </div>
 
@@ -223,7 +223,7 @@ typedef unsigned _int64 ubig_ora;</p>
     <div class="item left">
       
 
-  <a href="/2019/07/18/python-descriptor/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giciukx8a7j20zk0m8aio.jpg" title="python property descriptor">
+  <a href="/2019/07/18/python-descriptor/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicitht3xtj20zk0m8k5v.jpg" title="python property descriptor">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>python property descriptor</h3>
@@ -233,7 +233,7 @@ typedef unsigned _int64 ubig_ora;</p>
     <div class="item right">
       
 
-  <a href="/2019/10/05/csharp-webform/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicis3attqj20zk0m8k7l.jpg" title="C# WebForm">
+  <a href="/2019/10/05/csharp-webform/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipesng5oej20zk0m87d4.jpg" title="C# WebForm">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>C# WebForm</h3>
@@ -270,7 +270,7 @@ typedef unsigned _int64 ubig_ora;</p>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">235</span>
+        <span class="count">239</span>
         <span class="name">posts</span>
       </a>
     </div>

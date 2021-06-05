@@ -102,11 +102,11 @@ Dew's World = 露の世</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclhpw3lwj20zk0m8gvw.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipevuctzzj20zk0m84qp.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclhfehz7j20zk0m8u0x.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giph47e9vtj20zk0m8x6l.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclj61ylzj20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclxfdlttj20zk0m8npd.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeu1usa7j20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclga70tsj20zk0m84mr.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicit31ffoj20zk0m8naf.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giph4baakhj20zk0m8h5q.jpg"></li>
           <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclfb3vzhj20zk0m8wny.jpg"></li>
         </ul>
       </div>
@@ -182,7 +182,7 @@ Dew's World = 露の世</title>
 <blockquote>
 <p>In a block formatting context, each box’s left outer edge touches the left edge of the containing block (for right-to-left formatting, right edges touch). This is true even in the presence of floats (although a box’s line boxes may shrink due to the floats), unless the box establishes a new block formatting context (in which case the box itself may become narrower due to the floats).bfcbfc.jpg</p>
 </blockquote>
-<img data-src="/2020/04/22/css-bfc/bfc.jpg" class="" title="img">
+<img data-src="/2020/04/22/css-bfc/bfc.jpg" class="">
 <p>简单的说：上图中所有属于 BFC 的 box 都默认左对齐，并且它们的左边距可以触及到容器 container 的左边。最后一个 box，尽管它是浮动的，但它依然遵循这个原则。（BFC 中的浮动下面会介绍）</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">－那么，BFC到底有什么卵用呢？</span><br><span class="line">－实际上，真的特别有用</span><br></pre></td></tr></table></figure>
 <h4 id="1利用-bfc-可以消除-margin-collapse"><a class="markdownIt-Anchor" href="#1利用-bfc-可以消除-margin-collapse">#</a> 1. 利用 BFC 可以消除 Margin Collapse</h4>
@@ -194,14 +194,14 @@ Dew's World = 露の世</title>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: red;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden; <span class="comment">/* creates a block formatting context */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: lightgreen;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">10px</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>理想情况下，我们会认为 p 标签之间的 margin 应该是它们的和 (20px), 但实际上却是 10px. 这其实是<span class="exturl" data-url="aHR0cDovL3d3dy5zaXRlcG9pbnQuY29tL3dlYi1mb3VuZGF0aW9ucy9jb2xsYXBzaW5nLW1hcmdpbnMv"> collapsing margins</span>。</p>
 <p>结果如下：</p>
-<img data-src="/2020/04/22/css-bfc/demo1-1.jpg" class="" title="img">
+<img data-src="/2020/04/22/css-bfc/demo1-1.jpg" class="">
 <p>这似乎让人有点困惑，BFC 导致了 margin collapse，而现在又要用它来解决 margin cllapse. 但是始终要记住一点：只有当元素在同一个 BFC 中时，垂直方向上的 margin 才会 clollpase. 如果它们属于不同的 BFC，则不会有 margin collapse. 因此我们可以再建立一个 BFC 去阻止 margin collpase 的发生。</p>
 <p>现在 HTML 变成：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>Sibling 1<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>Sibling 2<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;newBFC&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>Sibling 3<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>CSS 也有改变：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: red;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden; <span class="comment">/* creates a block formatting context */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">10px</span> <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: lightgreen;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.newBFC</span> &#123;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden; <span class="comment">/* creates new block formatting context */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>现在的结果为：</p>
-<img data-src="/2020/04/22/css-bfc/demo1-2.jpg" class="" title="img">
+<img data-src="/2020/04/22/css-bfc/demo1-2.jpg" class="">
 <p>由于第二个 p 元素和第三个 p 元素属于不同的 BFC，因此避免了 margin collapse.</p>
 <p>####2. 利用 BFC 去容纳浮动元素</p>
 <p>我相信大家经常会遇到一个容器里有浮动元素，但是这个容器的高度却是 0 的场景，如下图：</p>
@@ -211,27 +211,27 @@ Dew's World = 露の世</title>
 <p>CSS:</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: green;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.container</span> <span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="attribute">float</span>: left;</span><br><span class="line">    <span class="attribute">background-color</span>: lightgreen;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">10px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>结果：</p>
-<img data-src="/2020/04/22/css-bfc/demo2-2.jpg" class="" title="img">
+<img data-src="/2020/04/22/css-bfc/demo2-2.jpg" class="">
 <p>在上边的情形中，container 是不会有高度的，因为它包含了浮动元素。通常我们解决这个问题的办法是利用一个伪元素去实现<span class="exturl" data-url="aHR0cDovL3d3dy5zaXRlcG9pbnQuY29tL2NsZWFyaW5nLWZsb2F0cy1vdmVydmlldy1kaWZmZXJlbnQtY2xlYXJmaXgtbWV0aG9kcy8="> clear fix</span>，但是现在我们有了更好的解决办法，即利用 BFC，因为它够容纳浮动元素的。 我们现在让 container 形成 BFC 规则，结果如下：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden; <span class="comment">/* creates block formatting context */</span></span><br><span class="line">    <span class="attribute">background-color</span>: green;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.container</span> <span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="attribute">float</span>: left;</span><br><span class="line">    <span class="attribute">background-color</span>: lightgreen;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">10px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>结果：</p>
-<img data-src="/2020/04/22/css-bfc/demo2-3.jpg" class="" title="img">
+<img data-src="/2020/04/22/css-bfc/demo2-3.jpg" class="">
 <h4 id="3利用-bfc-阻止文本换行"><a class="markdownIt-Anchor" href="#3利用-bfc-阻止文本换行">#</a> 3. 利用 BFC 阻止文本换行</h4>
 <p>有时候，确切的说大多数情况 (若没有特殊设置)，文本将会环绕浮动元素 (如 Figure 1), 但有时候这并不是我们期望的，我们想要的是 Figure2。</p>
-<img data-src="/2020/04/22/css-bfc/demo3-1.jpg" class="" title="img">
+<img data-src="/2020/04/22/css-bfc/demo3-1.jpg" class="">
 <p>往往可能大家都会选择利用 margin－left 来强行让 p 的容器有一个左边距，而距离恰好为 Floated div 的宽度，但现在我们可以利用 BFC 更好的解决这个问题。</p>
 <p>首先让我们了解一下文本换行的原理吧：</p>
-<img data-src="/2020/04/22/css-bfc/demo3-2.jpg" class="" title="img">
+<img data-src="/2020/04/22/css-bfc/demo3-2.jpg" class="">
 <p>在 Figure1 中，整个 p 元素实际上是处于上图中的黑色区域，p 元素没有移动是因为它在浮动元素的下方。但实际上 p 作为行块级别的元素（相对于行内文本）却发生了移动，因为要给 float 元素’腾’位置，而随着文本的增加，文本高度超过浮动元素的部分则不会在水平方向上收缩内部距离，因此看起来像是环绕。</p>
 <p>如图：</p>
-<img data-src="/2020/04/22/css-bfc/demo3-3.jpg" class="" title="img">
+<img data-src="/2020/04/22/css-bfc/demo3-3.jpg" class="">
 <p>在解决这个问题之前，我们先来看一下 W3C 的规范在这方面的描述：</p>
 <blockquote>
 <p>In a block formatting context, each box’s left outer edge touches the left edge of the containing block (for right-to-left formatting, right edges touch). This is true even in the presence of floats (although a box’s line boxes may shrink due to the floats), unless the box establishes a new block formatting context (in which case the box itself may become narrower due to the floats).</p>
 </blockquote>
 <p>W3C 为这种情况提供了一个解决方案： <code>unless the box establishes a new block formatting context</code> ，即为 p 建立 BFC。</p>
 <p>结果：</p>
-<img data-src="/2020/04/22/css-bfc/demo3-4.jpg" class="" title="img">
+<img data-src="/2020/04/22/css-bfc/demo3-4.jpg" class="">
 <p>注：此文为译文 <span class="exturl" data-url="aHR0cDovL3d3dy5zaXRlcG9pbnQuY29tL3VuZGVyc3RhbmRpbmctYmxvY2stZm9ybWF0dGluZy1jb250ZXh0cy1pbi1jc3Mv">原文请戳</span></p>
 
       <div class="tags">
@@ -247,7 +247,7 @@ Dew's World = 露の世</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2020-06-28 13:32:24" itemprop="dateModified" datetime="2020-06-28T13:32:24+08:00">2020-06-28</time>
+    <time title="Modified: 2021-05-29 17:37:56" itemprop="dateModified" datetime="2021-05-29T17:37:56+08:00">2021-05-29</time>
   </span>
 </div>
 
@@ -264,7 +264,7 @@ Dew's World = 露の世</title>
     <div class="item left">
       
 
-  <a href="/2020/04/18/css-example/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclx6phq6j20zk0m8e36.jpg" title="css example">
+  <a href="/2020/04/18/css-example/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giciub8ja1j20zk0m81ky.jpg" title="css example">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>css example</h3>
@@ -274,7 +274,7 @@ Dew's World = 露の世</title>
     <div class="item right">
       
 
-  <a href="/2020/04/30/oracle-update/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipevo9j1jj20zk0m8e81.jpg" title="Update a table with data from another table">
+  <a href="/2020/04/30/oracle-update/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giph4lm9i7j20zk0m84qp.jpg" title="Update a table with data from another table">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Update a table with data from another table</h3>
@@ -311,7 +311,7 @@ Dew's World = 露の世</title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">235</span>
+        <span class="count">239</span>
         <span class="name">posts</span>
       </a>
     </div>

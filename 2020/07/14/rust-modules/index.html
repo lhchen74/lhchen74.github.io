@@ -102,12 +102,12 @@ Dew's World = 露の世</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicm0n457cj20zk0m8e81.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclimtf7dj20zk0m8qav.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeyonbf9j20zk0m8e81.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipevo9j1jj20zk0m8e81.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclxxcb6rj20zk0m8b29.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicljgocqbj20zk0m8e81.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclffsa1cj20zk0m811l.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicit31ffoj20zk0m8naf.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicitzannuj20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclga70tsj20zk0m84mr.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclhfehz7j20zk0m8u0x.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeudstjqj20zk0m8k3r.jpg"></li>
         </ul>
       </div>
     </header>
@@ -160,14 +160,14 @@ Dew's World = 露の世</title>
 <p>Let’s use this file structure to simulate a real world project:</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">my_project</span><br><span class="line">├── Cargo.toml</span><br><span class="line">└─┬ src</span><br><span class="line">  ├── main.rs</span><br><span class="line">  ├── config.rs</span><br><span class="line">  ├─┬ routes</span><br><span class="line">  │ ├── health_route.rs</span><br><span class="line">  │ └── user_route.rs</span><br><span class="line">  └─┬ models</span><br><span class="line">    └── user_model.rs</span><br></pre></td></tr></table></figure>
 <p>These are the different ways we should be able to consume our modules:</p>
-<img data-src="/2020/07/14/rust-modules/rust-module-system-1.png" class="" title="img">
+<img data-src="/2020/07/14/rust-modules/rust-module-system-1.png" class="">
 <p>These 3 examples should be sufficient to explain how Rust’s module system works.</p>
 <h2 id="example-1"><a class="markdownIt-Anchor" href="#example-1">#</a> Example 1</h2>
 <p>Let’s start with the first example - importing  <code>config.rs</code>  in  <code>main.rs</code> .</p>
 <figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.rs</span></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">  <span class="built_in">println!</span>(<span class="string">&quot;main&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// config.rs</span></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">print_config</span></span>() &#123;</span><br><span class="line">  <span class="built_in">println!</span>(<span class="string">&quot;config&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>The first mistake that everyone makes is just because we have files like  <code>config.rs</code> ,  <code>health_route.rs</code>  etc, we think that these files are  <code>modules</code>  and we can import them from other files.</p>
 <p>Here’s what we see (file system tree) and what the compiler sees (module tree):</p>
-<img data-src="/2020/07/14/rust-modules/rust-module-system-2.png" class="" title="img">
+<img data-src="/2020/07/14/rust-modules/rust-module-system-2.png" class="">
 <p>Surprisingly, the compiler only sees the  <code>crate</code>  module which is our  <code>main.rs</code>  file. This is because we need to explicitly build the module tree in Rust - there’s no implicit mapping between file system tree to module tree.</p>
 <blockquote>
 <p>We need to explicitly build the module tree in Rust, there’s no implicit mapping to file system</p>
@@ -184,7 +184,7 @@ Dew's World = 露の世</title>
 <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// main.rs</span><br><span class="line"><span class="addition">+ mod config;</span></span><br><span class="line"></span><br><span class="line">fn main() &#123;</span><br><span class="line"><span class="addition">+ config::print_config();</span></span><br><span class="line">  println!(&quot;main&quot;);</span><br><span class="line">&#125;</span><br><span class="line">// config.rs</span><br><span class="line">fn print_config() &#123;</span><br><span class="line">  println!(&quot;config&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>We’re accessing the  <code>print_config</code>  function using the  <code>::</code>  syntax.</p>
 <p>Here’s how the module tree looks like:</p>
-<img data-src="/2020/07/14/rust-modules/rust-module-system-3.png" class="" title="img">
+<img data-src="/2020/07/14/rust-modules/rust-module-system-3.png" class="">
 <p>We’ve successfully declared the  <code>config</code>  module! But this is not sufficient to be able to call the  <code>print_config</code>  function inside  <code>config.rs</code> . Almost everything in Rust is private by default, we need to make the function public using the  <code>pub</code>  keyword:</p>
 <blockquote>
 <p>The pub keyword makes things public</p>
@@ -203,7 +203,7 @@ Dew's World = 露の世</title>
 </ul>
 <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">my_project</span><br><span class="line">├── Cargo.toml</span><br><span class="line">└─┬ src</span><br><span class="line">  ├── main.rs</span><br><span class="line">  ├── config.rs</span><br><span class="line">  ├─┬ routes</span><br><span class="line"><span class="addition">+ │ ├── mod.rs</span></span><br><span class="line">  │ ├── health_route.rs</span><br><span class="line">  │ └── user_route.rs</span><br><span class="line">  └─┬ models</span><br><span class="line">    └── user_model.rs</span><br><span class="line">// main.rs</span><br><span class="line">mod config;</span><br><span class="line"><span class="addition">+ mod routes;</span></span><br><span class="line"></span><br><span class="line">fn main() &#123;</span><br><span class="line"><span class="addition">+ routes::health_route::print_health_route();</span></span><br><span class="line">  config::print_config();</span><br><span class="line">  println!(&quot;main&quot;);</span><br><span class="line">&#125;</span><br><span class="line">// routes/mod.rs</span><br><span class="line"><span class="addition">+ pub mod health_route;</span></span><br><span class="line">// routes/health_route.rs</span><br><span class="line"><span class="deletion">- fn print_health_route() &#123;</span></span><br><span class="line"><span class="addition">+ pub fn print_health_route() &#123;</span></span><br><span class="line">  println!(&quot;health_route&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Here’s how the module tree looks like:</p>
-<img data-src="/2020/07/14/rust-modules/rust-module-system-4.png" class="" title="img">
+<img data-src="/2020/07/14/rust-modules/rust-module-system-4.png" class="">
 <p>We can now call a function defined in a file inside a folder.</p>
 <h2 id="example-3"><a class="markdownIt-Anchor" href="#example-3">#</a> Example 3</h2>
 <p>Let’s try calling from  <code>main.rs =&gt; routes/user_route.rs =&gt; models/user_model.rs</code></p>
@@ -212,7 +212,7 @@ Dew's World = 露の世</title>
 <p>Let’s make the same changes as before - declaring submodules, making functions public and adding the  <code>mod.rs</code>  file.</p>
 <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">my_project</span><br><span class="line">├── Cargo.toml</span><br><span class="line">└─┬ src</span><br><span class="line">  ├── main.rs</span><br><span class="line">  ├── config.rs</span><br><span class="line">  ├─┬ routes</span><br><span class="line">  │ ├── mod.rs</span><br><span class="line">  │ ├── health_route.rs</span><br><span class="line">  │ └── user_route.rs</span><br><span class="line">  └─┬ models</span><br><span class="line"><span class="addition">+   ├── mod.rs</span></span><br><span class="line">    └── user_model.rs</span><br><span class="line">// main.rs</span><br><span class="line">mod config;</span><br><span class="line">mod routes;</span><br><span class="line"><span class="addition">+ mod models;</span></span><br><span class="line"></span><br><span class="line">fn main() &#123;</span><br><span class="line">  routes::health_route::print_health_route();</span><br><span class="line"><span class="addition">+ routes::user_route::print_user_route();</span></span><br><span class="line">  config::print_config();</span><br><span class="line">  println!(&quot;main&quot;);</span><br><span class="line">&#125;</span><br><span class="line">// routes/mod.rs</span><br><span class="line">pub mod health_route;</span><br><span class="line"><span class="addition">+ pub mod user_route;</span></span><br><span class="line">// routes/user_route.rs</span><br><span class="line"><span class="deletion">- fn print_user_route() &#123;</span></span><br><span class="line"><span class="addition">+ pub fn print_user_route() &#123;</span></span><br><span class="line">  println!(&quot;user_route&quot;);</span><br><span class="line">&#125;</span><br><span class="line">// models/mod.rs</span><br><span class="line"><span class="addition">+ pub mod user_model;</span></span><br><span class="line">// models/user_model.rs</span><br><span class="line"><span class="deletion">- fn print_user_model() &#123;</span></span><br><span class="line"><span class="addition">+ pub fn print_user_model() &#123;</span></span><br><span class="line">  println!(&quot;user_model&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Here’s how the module tree looks like:</p>
-<img data-src="/2020/07/14/rust-modules/rust-module-system-5.png" class="" title="img">
+<img data-src="/2020/07/14/rust-modules/rust-module-system-5.png" class="">
 <p>Wait, we haven’t actually called  <code>print_user_model</code>  from  <code>print_user_route</code> ! So far, we’ve only called the functions defined in other modules from  <code>main.rs</code> , how do we do that from other files?</p>
 <p>If we look at our module tree, the  <code>print_user_model</code>  function sits in the  <code>crate::models::user_model</code>  path. So in order to use a module in files that are not  <code>main.rs</code> , we should think in terms of the path necessary to reach that module in the module tree.</p>
 <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// routes/user_route.rs</span><br><span class="line">pub fn print_user_route() &#123;</span><br><span class="line"><span class="addition">+ crate::models::user_model::print_user_model();</span></span><br><span class="line">  println!(&quot;user_route&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -267,7 +267,7 @@ Dew's World = 露の世</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2021-05-26 14:48:42" itemprop="dateModified" datetime="2021-05-26T14:48:42+08:00">2021-05-26</time>
+    <time title="Modified: 2021-05-29 17:37:56" itemprop="dateModified" datetime="2021-05-29T17:37:56+08:00">2021-05-29</time>
   </span>
 </div>
 
@@ -284,7 +284,7 @@ Dew's World = 露の世</title>
     <div class="item left">
       
 
-  <a href="/2020/07/12/rust-pattern-enum/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclx29mstj20zk0m8hdt.jpg" title="Rust for JavaScript Developers - Pattern Matching and Enums">
+  <a href="/2020/07/12/rust-pattern-enum/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipew28b65j20zk0m8hdt.jpg" title="Rust for JavaScript Developers - Pattern Matching and Enums">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Rust for JavaScript Developers - Pattern Matching and Enums</h3>
@@ -294,7 +294,7 @@ Dew's World = 露の世</title>
     <div class="item right">
       
 
-  <a href="/2020/07/16/excerpt-poem/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipey0a334j20zk0m8qpt.jpg" title="古诗词">
+  <a href="/2020/07/16/excerpt-poem/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicitf0kl1j20zk0m87fe.jpg" title="古诗词">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>古诗词</h3>
@@ -331,7 +331,7 @@ Dew's World = 露の世</title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">235</span>
+        <span class="count">239</span>
         <span class="name">posts</span>
       </a>
     </div>

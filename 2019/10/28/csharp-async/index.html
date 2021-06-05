@@ -24,7 +24,7 @@
 <link rel="stylesheet" href="/css/app.css?v=0.2.5">
 
   
-  <meta name="keywords" content="c#" />
+  <meta name="keywords" content="csharp" />
 
 
 <link rel="canonical" href="https://lhchen74.github.io/2019/10/28/csharp-async/">
@@ -102,12 +102,12 @@ Dew's World = 露の世</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclize41wj20zk0m87gk.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicli9lfebj20zk0m84qp.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicivghyooj20zk0m8dir.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclx6phq6j20zk0m8e36.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclimtf7dj20zk0m8qav.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclwrdwyaj20zk0m8are.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicljgocqbj20zk0m8e81.jpg"></li>
           <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclh5u05ej20zk0m87df.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipesrnqv3j20zk0m8ava.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipew28b65j20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeudstjqj20zk0m8k3r.jpg"></li>
         </ul>
       </div>
     </header>
@@ -160,40 +160,40 @@ Dew's World = 露の世</title>
 <p>在 C# 中开启新线程比较简单</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;主线程开始&quot;</span>);</span><br><span class="line">    <span class="comment">//IsBackground=true，将其设置为后台线程</span></span><br><span class="line">    Thread t = <span class="keyword">new</span> Thread(Run) &#123; IsBackground = <span class="literal">true</span> &#125;;</span><br><span class="line">    t.Start();　　 Console.WriteLine(<span class="string">&quot;主线程在做其他的事！&quot;</span>);</span><br><span class="line">    <span class="comment">//主线程结束，后台线程会自动结束，不管有没有执行完成</span></span><br><span class="line">    <span class="comment">//Thread.Sleep(300);</span></span><br><span class="line">    Thread.Sleep(<span class="number">1500</span>);</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;主线程结束&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Run</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Thread.Sleep(<span class="number">700</span>);</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;这是后台线程调用&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>执行结果如下图，</p>
-<img data-src="/2019/10/28/csharp-async/961949-20170117195306349-1589524780.png" class="" title="img">
+<img data-src="/2019/10/28/csharp-async/961949-20170117195306349-1589524780.png" class="">
 <p>可以看到在启动后台线程之后，主线程继续往下执行了，并没有等到后台线程执行完之后。</p>
 <h4 id="11-线程池"><a class="markdownIt-Anchor" href="#11-线程池">#</a> 1.1 线程池</h4>
 <p>试想一下，如果有大量的任务需要处理，例如网站后台对于 HTTP 请求的处理，那是不是要对每一个请求创建一个后台线程呢？显然不合适，这会占用大量内存，而且频繁地创建的过程也会严重影响速度，那怎么办呢？线程池就是为了解决这一问题，把创建的线程存起来，形成一个线程池 (里面有多个线程)，当要处理任务时，若线程池中有空闲线程 (前一个任务执行完成后，线程不会被回收，会被设置为空闲状态)，则直接调用线程池中的线程执行 (例 <span class="exturl" data-url="aHR0cDovL2FzcC5uZXQ=">asp.net</span> 处理机制中的 Application 对象)，</p>
 <p>使用事例：</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)</span><br><span class="line">&#123;</span><br><span class="line">    ThreadPool.QueueUserWorkItem(m =&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(Thread.CurrentThread.ManagedThreadId.ToString());</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line">Console.Read();</span><br></pre></td></tr></table></figure>
 <p>运行结果：</p>
-<img data-src="/2019/10/28/csharp-async/961949-20170117201545927-996676824.png" class="" title="img">
+<img data-src="/2019/10/28/csharp-async/961949-20170117201545927-996676824.png" class="">
 <p>可以看到，虽然执行了 10 次，但并没有创建 10 个线程。</p>
 <h4 id="12-信号量semaphore"><a class="markdownIt-Anchor" href="#12-信号量semaphore">#</a> 1.2 信号量 (Semaphore)</h4>
 <p>Semaphore 负责协调线程，可以限制对某一资源访问的线程数量</p>
 <p>这里对 SemaphoreSlim 类的用法做一个简单的事例：</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> SemaphoreSlim semLim = <span class="keyword">new</span> SemaphoreSlim(<span class="number">3</span>); <span class="comment">//3表示最多只能有三个线程同时访问</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">new</span> Thread(SemaphoreTest).Start();</span><br><span class="line">    &#125;</span><br><span class="line">    Console.Read();</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">SemaphoreTest</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    semLim.Wait();</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;线程&quot;</span> + Thread.CurrentThread.ManagedThreadId.ToString() + <span class="string">&quot;开始执行&quot;</span>);</span><br><span class="line">    Thread.Sleep(<span class="number">2000</span>);</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;线程&quot;</span> + Thread.CurrentThread.ManagedThreadId.ToString() + <span class="string">&quot;执行完毕&quot;</span>);</span><br><span class="line">    semLim.Release();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>执行结果如下：</p>
-<p><img data-src="csharp-async/961949-20170117203646958-1977296136.png" alt="img"><img data-src="csharp-async/961949-20170117203659896-1181181789.png" alt="img"></p>
+<p><img data-src="csharp-async/961949-20170117203646958-1977296136.png" alt=""><img data-src="csharp-async/961949-20170117203659896-1181181789.png" alt=""></p>
 <p>可以看到，刚开始只有三个线程在执行，当一个线程执行完毕并释放之后，才会有新的线程来执行方法！</p>
 <p>除了 SemaphoreSlim 类，还可以使用 Semaphore 类，感觉更加灵活，感兴趣的话可以搜一下，这里就不做演示了！</p>
 <h3 id="2task"><a class="markdownIt-Anchor" href="#2task">#</a> 2.Task</h3>
 <p>Task 是.NET4.0 加入的，跟线程池 ThreadPool 的功能类似，用 Task 开启新任务时，会从线程池中调用线程，而 Thread 每次实例化都会创建一个新的线程。</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Console.WriteLine(<span class="string">&quot;主线程启动&quot;</span>);</span><br><span class="line"><span class="comment">//Task.Run启动一个线程</span></span><br><span class="line"><span class="comment">//Task启动的是后台线程，要在主线程中等待后台线程执行完毕，可以调用Wait方法</span></span><br><span class="line"><span class="comment">//Task task = Task.Factory.StartNew(() =&gt; &#123; Thread.Sleep(1500); Console.WriteLine(&quot;task启动&quot;); &#125;);</span></span><br><span class="line">Task task = Task.Run(() =&gt; &#123;</span><br><span class="line">    Thread.Sleep(<span class="number">1500</span>);</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;task启动&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line">Thread.Sleep(<span class="number">300</span>);</span><br><span class="line">task.Wait();</span><br><span class="line">Console.WriteLine(<span class="string">&quot;主线程结束&quot;</span>);</span><br></pre></td></tr></table></figure>
 <p>执行结果如下：</p>
-<img data-src="/2019/10/28/csharp-async/961949-20170118085009734-1482384411.png" class="" title="img">
+<img data-src="/2019/10/28/csharp-async/961949-20170118085009734-1482384411.png" class="">
 <p>开启新任务的方法：Task.Run () 或者 Task.Factory.StartNew ()，开启的是后台线程</p>
 <p>要在主线程中等待后台线程执行完毕，可以使用 Wait 方法 (会以同步的方式来执行)。不用 Wait 则会以异步的方式来执行。</p>
 <p>比较一下 Task 和 Thread：</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">new</span> Thread(Run1).Start();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        Task.Run(() =&gt; &#123; Run2(); &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Run1</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;Thread Id =&quot;</span> + Thread.CurrentThread.ManagedThreadId);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Run2</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;Task调用的Thread Id =&quot;</span> + Thread.CurrentThread.ManagedThreadId);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>执行结果：</p>
-<img data-src="/2019/10/28/csharp-async/961949-20170118090705000-522306854.png" class="" title="img">
+<img data-src="/2019/10/28/csharp-async/961949-20170118090705000-522306854.png" class="">
 <p>可以看出来，直接用 Thread 会开启 5 个线程，用 Task (用了线程池) 开启了 3 个！</p>
 <h4 id="21-tasktresult"><a class="markdownIt-Anchor" href="#21-tasktresult">#</a> 2.1 Task&lt;TResult&gt;</h4>
 <p>Task<TResult>就是有返回值的 Task，TResult 就是返回值类型。</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Console.WriteLine(<span class="string">&quot;主线程开始&quot;</span>);</span><br><span class="line"><span class="comment">//返回值类型为string</span></span><br><span class="line">Task&lt;<span class="built_in">string</span>&gt; task = Task&lt;<span class="built_in">string</span>&gt;.Run(() =&gt; &#123;</span><br><span class="line">    Thread.Sleep(<span class="number">2000</span>);</span><br><span class="line">    <span class="keyword">return</span> Thread.CurrentThread.ManagedThreadId.ToString();</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//会等到task执行完毕才会输出;</span></span><br><span class="line">Console.WriteLine(task.Result);</span><br><span class="line">Console.WriteLine(<span class="string">&quot;主线程结束&quot;</span>);</span><br></pre></td></tr></table></figure>
 <p>运行结果：</p>
-<img data-src="/2019/10/28/csharp-async/961949-20170118091731015-299922614.png" class="" title="img">
+<img data-src="/2019/10/28/csharp-async/961949-20170118091731015-299922614.png" class="">
 <p>通过 task.Result 可以取到返回值，若取值的时候，后台线程还没执行完，则会等待其执行完毕！</p>
 <p>简单提一下：</p>
 <p>Task 任务可以通过 CancellationTokenSource 类来取消，感觉用得不多，用法比较简单，感兴趣的话可以搜一下！</p>
@@ -203,30 +203,30 @@ Dew's World = 露の世</title>
 <p>async 用来修饰方法，表明这个方法是异步的，声明的方法的返回类型必须为：void，Task 或 Task<TResult>。</p>
 <p>await 必须用来修饰 Task 或 Task<TResult>，而且只能出现在已经用 async 关键字修饰的异步方法中。通常情况下，async/await 成对出现才有意义，</p>
 <p>看看运行结果：</p>
-<img data-src="/2019/10/28/csharp-async/961949-20170118105225406-295296622.png" class="" title="img">
+<img data-src="/2019/10/28/csharp-async/961949-20170118105225406-295296622.png" class="">
 <p>可以看出来，main 函数调用 GetStrLengthAsync 方法后，在 await 之前，都是同步执行的，直到遇到 await 关键字，main 函数才返回继续执行。</p>
 <p>那么是否是在遇到 await 关键字的时候程序自动开启了一个后台线程去执行 GetString 方法呢？</p>
 <p>现在把 GetString 方法中的那行注释加上，运行的结果是：</p>
-<img data-src="/2019/10/28/csharp-async/961949-20170118154317578-1834160773.png" class="" title="img">
+<img data-src="/2019/10/28/csharp-async/961949-20170118154317578-1834160773.png" class="">
 <p>大家可以看到，在遇到 await 关键字后，没有继续执行 GetStrLengthAsync 方法后面的操作，也没有马上反回到 main 函数中，而是执行了 GetString 的第一行，以此可以判断 await 这里并没有开启新的线程去执行 GetString 方法，而是以同步的方式让 GetString 方法执行，等到执行到 GetString 方法中的 Task<string>.Run () 的时候才由 Task 开启了后台线程！</p>
 <p>那么 await 的作用是什么呢？</p>
 <p>可以从字面上理解，上面提到 task.wait 可以让主线程等待后台线程执行完毕，await 和 wait 类似，同样是等待，等待 Task<string>.Run () 开始的后台线程执行完毕，不同的是 await 不会阻塞主线程，只会让 GetStrLengthAsync 方法暂停执行。</p>
 <p>那么 await 是怎么做到的呢？有没有开启新线程去等待？</p>
-<img data-src="/2019/10/28/csharp-async/961949-20170118110648281-1989485250.png" class="" title="img">
+<img data-src="/2019/10/28/csharp-async/961949-20170118110648281-1989485250.png" class="">
 <p>只有两个线程 (主线程和 Task 开启的线程)！至于怎么做到的 (我也不知道…&gt;_&lt;)，大家有兴趣的话研究下吧！</p>
 <h3 id="4iasyncresult"><a class="markdownIt-Anchor" href="#4iasyncresult">#</a> 4.IAsyncResult</h3>
 <p>IAsyncResult 自.NET1.1 起就有了，包含可异步操作的方法的类需要实现它，Task 类就实现了该接口</p>
-<img data-src="/2019/10/28/csharp-async/961949-20170118112245406-1795624419.png" class="" title="img">
+<img data-src="/2019/10/28/csharp-async/961949-20170118112245406-1795624419.png" class="">
 <p>在不借助于 Task 的情况下怎么实现异步呢？</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        Console.WriteLine(<span class="string">&quot;主程序开始--------------------&quot;</span>);</span><br><span class="line">        <span class="built_in">int</span> threadId;</span><br><span class="line">        AsyncDemo ad = <span class="keyword">new</span> AsyncDemo();</span><br><span class="line">        AsyncMethodCaller caller = <span class="keyword">new</span> AsyncMethodCaller(ad.TestMethod);</span><br><span class="line"></span><br><span class="line">        IAsyncResult result = caller.BeginInvoke(<span class="number">3000</span>,<span class="keyword">out</span> threadId, <span class="literal">null</span>, <span class="literal">null</span>);</span><br><span class="line">        Thread.Sleep(<span class="number">0</span>);</span><br><span class="line">        Console.WriteLine(<span class="string">&quot;主线程线程 &#123;0&#125; 正在运行.&quot;</span>,Thread.CurrentThread.ManagedThreadId)</span><br><span class="line">        <span class="comment">//会阻塞线程，直到后台线程执行完毕之后，才会往下执行</span></span><br><span class="line">        result.AsyncWaitHandle.WaitOne();</span><br><span class="line">        Console.WriteLine(<span class="string">&quot;主程序在做一些事情！！！&quot;</span>);</span><br><span class="line">        <span class="comment">//获取异步执行的结果</span></span><br><span class="line">        <span class="built_in">string</span> returnValue = caller.EndInvoke(<span class="keyword">out</span> threadId, result);</span><br><span class="line">        <span class="comment">//释放资源</span></span><br><span class="line">        result.AsyncWaitHandle.Close();</span><br><span class="line">        Console.WriteLine(<span class="string">&quot;主程序结束--------------------&quot;</span>);</span><br><span class="line">        Console.Read();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">AsyncDemo</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//供后台线程执行的方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="built_in">string</span> <span class="title">TestMethod</span>(<span class="params"><span class="built_in">int</span> callDuration, <span class="keyword">out</span> <span class="built_in">int</span> threadId</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        Console.WriteLine(<span class="string">&quot;测试方法开始执行.&quot;</span>);</span><br><span class="line">        Thread.Sleep(callDuration);</span><br><span class="line">        threadId = Thread.CurrentThread.ManagedThreadId;</span><br><span class="line">        <span class="keyword">return</span> String.Format(<span class="string">&quot;测试方法执行的时间 &#123;0&#125;.&quot;</span>, callDuration.ToString());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">delegate</span> <span class="built_in">string</span> <span class="title">AsyncMethodCaller</span>(<span class="params"><span class="built_in">int</span> callDuration, <span class="keyword">out</span> <span class="built_in">int</span> threadId</span>)</span>;</span><br></pre></td></tr></table></figure>
 <p>关键步骤就是红色字体的部分，运行结果：</p>
-<img data-src="/2019/10/28/csharp-async/961949-20170118113612765-2137493432.png" class="" title="img">
+<img data-src="/2019/10/28/csharp-async/961949-20170118113612765-2137493432.png" class="">
 <p>和 Task 的用法差异不是很大！result.AsyncWaitHandle.WaitOne () 就类似 Task 的 Wait。</p>
 <h3 id="5parallel"><a class="markdownIt-Anchor" href="#5parallel">#</a> 5.Parallel</h3>
 <p>最后说一下在循环中开启多线程的简单方法：</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">Stopwatch watch1 = <span class="keyword">new</span> Stopwatch();</span><br><span class="line">watch1.Start();</span><br><span class="line"><span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">10</span>; i++)</span><br><span class="line">&#123;</span><br><span class="line">    Console.Write(i + <span class="string">&quot;,&quot;</span>);</span><br><span class="line">    Thread.Sleep(<span class="number">1000</span>);</span><br><span class="line">&#125;</span><br><span class="line">watch1.Stop();</span><br><span class="line">Console.WriteLine(watch1.Elapsed);</span><br><span class="line"></span><br><span class="line">Stopwatch watch2 = <span class="keyword">new</span> Stopwatch();</span><br><span class="line">watch2.Start();</span><br><span class="line"></span><br><span class="line"><span class="comment">//会调用线程池中的线程</span></span><br><span class="line">Parallel.For(<span class="number">1</span>, <span class="number">11</span>, i =&gt;</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(i + <span class="string">&quot;,线程ID:&quot;</span> + Thread.CurrentThread.ManagedThreadId);</span><br><span class="line">    Thread.Sleep(<span class="number">1000</span>);</span><br><span class="line">&#125;);</span><br><span class="line">watch2.Stop();</span><br><span class="line">Console.WriteLine(watch2.Elapsed);</span><br></pre></td></tr></table></figure>
 <p>运行结果：</p>
-<img data-src="/2019/10/28/csharp-async/961949-20170118120638546-1060840155.png" class="" title="img">
+<img data-src="/2019/10/28/csharp-async/961949-20170118120638546-1060840155.png" class="">
 <p>循环 List<T>：</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">List&lt;<span class="built_in">int</span>&gt; list = <span class="keyword">new</span> List&lt;<span class="built_in">int</span>&gt;() &#123; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span> &#125;;Parallel.ForEach&lt;<span class="built_in">int</span>&gt;(list, n =&gt;</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(n);</span><br><span class="line">    Thread.Sleep(<span class="number">1000</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p>执行 Action [] 数组里面的方法：</p>
@@ -235,17 +235,17 @@ Dew's World = 露の世</title>
 <p>文中所有 Task<TResult>的返回值都是直接用 task.result 获取，这样如果后台任务没有执行完毕的话，主线程会等待其执行完毕，这样的话就和同步一样了（看上去一样，但其实 await 的时候并不会造成线程的阻塞，web 程序感觉不到，但是 wpf，winform 这样的桌面程序若不使用异步，会造成 UI 线程的阻塞）。简单演示一下 Task 回调函数的使用：</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Console.WriteLine(<span class="string">&quot;主线程开始&quot;</span>);</span><br><span class="line">Task&lt;<span class="built_in">string</span>&gt; task = Task&lt;<span class="built_in">string</span>&gt;.Run(() =&gt; &#123;</span><br><span class="line">    Thread.Sleep(<span class="number">2000</span>);</span><br><span class="line">    <span class="keyword">return</span> Thread.CurrentThread.ManagedThreadId.ToString();</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//会等到任务执行完之后执行</span></span><br><span class="line">task.GetAwaiter().OnCompleted(() =&gt;</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(task.Result);</span><br><span class="line">&#125;);</span><br><span class="line">Console.WriteLine(<span class="string">&quot;主线程结束&quot;</span>);</span><br><span class="line">Console.Read();</span><br></pre></td></tr></table></figure>
 <p>执行结果：</p>
-<img data-src="/2019/10/28/csharp-async/961949-20170118161613750-1153439412.png" class="" title="img">
+<img data-src="/2019/10/28/csharp-async/961949-20170118161613750-1153439412.png" class="">
 <p>OnCompleted 中的代码会在任务执行完成之后执行！</p>
 <p>另外 task.ContinueWith () 也是一个重要的方法：</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Console.WriteLine(<span class="string">&quot;主线程开始&quot;</span>);</span><br><span class="line">Task&lt;<span class="built_in">string</span>&gt; task = Task&lt;<span class="built_in">string</span>&gt;.Run(() =&gt; &#123;</span><br><span class="line">    Thread.Sleep(<span class="number">2000</span>);</span><br><span class="line">    <span class="keyword">return</span> Thread.CurrentThread.ManagedThreadId.ToString();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">task.GetAwaiter().OnCompleted(() =&gt;</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(task.Result);</span><br><span class="line">&#125;);</span><br><span class="line">task.ContinueWith(m=&gt;&#123;Console.WriteLine(<span class="string">&quot;第一个任务结束啦！我是第二个任务&quot;</span>);&#125;);</span><br><span class="line">Console.WriteLine(<span class="string">&quot;主线程结束&quot;</span>);</span><br><span class="line">Console.Read();</span><br></pre></td></tr></table></figure>
 <p>执行结果：</p>
-<img data-src="/2019/10/28/csharp-async/961949-20170118162851046-569728154.png" class="" title="img">
+<img data-src="/2019/10/28/csharp-async/961949-20170118162851046-569728154.png" class="">
 <p>ContinueWith () 方法可以让该后台线程继续执行新的任务。</p>
 <p>Task 的使用还是比较灵活的，大家可以研究下，好了，以上就是全部内容了，篇幅和能力都有限，希望对大家有用！</p>
 
       <div class="tags">
-          <a href="/tags/c/" rel="tag"><i class="ic i-tag"></i> c#</a>
+          <a href="/tags/csharp/" rel="tag"><i class="ic i-tag"></i> csharp</a>
       </div>
   </div>
 
@@ -257,7 +257,7 @@ Dew's World = 露の世</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2020-04-18 12:40:05" itemprop="dateModified" datetime="2020-04-18T12:40:05+08:00">2020-04-18</time>
+    <time title="Modified: 2021-06-05 16:25:17" itemprop="dateModified" datetime="2021-06-05T16:25:17+08:00">2021-06-05</time>
   </span>
 </div>
 
@@ -274,7 +274,7 @@ Dew's World = 露の世</title>
     <div class="item left">
       
 
-  <a href="/2019/10/28/go-json/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicis3attqj20zk0m8k7l.jpg" title="GO小知识之如何做JSON美化">
+  <a href="/2019/10/28/go-json/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclfdu6exj20zk0m87hw.jpg" title="GO小知识之如何做JSON美化">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>GO小知识之如何做JSON美化</h3>
@@ -284,10 +284,10 @@ Dew's World = 露の世</title>
     <div class="item right">
       
 
-  <a href="/2019/10/28/concept-base64/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclxp31goj20zk0m8qv5.jpg" title="Base64">
+  <a href="/2019/10/28/concept-x509-certificate/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclh5u05ej20zk0m87df.jpg" title="X.509数字证书的结构与解析">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
-  <h3>Base64</h3>
+  <h3>X.509数字证书的结构与解析</h3>
   </a>
 
     </div>
@@ -321,7 +321,7 @@ Dew's World = 露の世</title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">235</span>
+        <span class="count">239</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -405,7 +405,7 @@ Dew's World = 露の世</title>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
     <li class="next pjax">
-        <a href="/2019/10/28/concept-base64/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+        <a href="/2019/10/28/concept-x509-certificate/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
     </li>
     <li class="percent"></li>
   </ul>

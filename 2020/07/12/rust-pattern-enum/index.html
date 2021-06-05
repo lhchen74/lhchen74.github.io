@@ -103,11 +103,11 @@ Dew's World = 露の世</title>
       <div id="imgs" class="pjax">
         <ul>
           <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giph47e9vtj20zk0m8x6l.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclxxcb6rj20zk0m8b29.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipevo9j1jj20zk0m8e81.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclflwv2aj20zk0m84qp.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicit4jrvuj20zk0m8785.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeu1usa7j20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeyhsblkj20zk0m81kx.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipexoj0moj20zk0m8kgu.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicis3attqj20zk0m8k7l.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclize41wj20zk0m87gk.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipetfk5zwj20zk0m8e81.jpg"></li>
         </ul>
       </div>
     </header>
@@ -183,8 +183,8 @@ Dew's World = 露の世</title>
 <figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Point</span></span> &#123;</span><br><span class="line">  x: <span class="built_in">i32</span>,</span><br><span class="line">  y: <span class="built_in">i32</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">  <span class="keyword">let</span> point = Point &#123; x: <span class="number">10</span>, y: <span class="number">0</span> &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">match</span> point &#123;</span><br><span class="line">    Point &#123; x: <span class="number">0</span>, y: <span class="number">0</span> &#125; =&gt; <span class="built_in">println!</span>(<span class="string">&quot;both are zero&quot;</span>),</span><br><span class="line">    Point &#123; x: <span class="number">0</span>, y &#125; =&gt; <span class="built_in">println!</span>(<span class="string">&quot;x is zero and y is &#123;&#125;&quot;</span>, y),</span><br><span class="line">    Point &#123; x, y: <span class="number">0</span> &#125; =&gt; <span class="built_in">println!</span>(<span class="string">&quot;x is &#123;&#125; and y is zero&quot;</span>, x),</span><br><span class="line">    Point &#123; x, y &#125; =&gt; <span class="built_in">println!</span>(<span class="string">&quot;x is &#123;&#125; and y is &#123;&#125;&quot;</span>, x, y),</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>It’s a bit concise compared to the  <code>if else</code>  logic but also might be confusing as we’re performing comparison, destructuring and variable binding at the same time.</p>
 <p>This is how it looks like visually:</p>
-<p><img data-src="http://www.sheshbabu.com/images/2020-rust-for-javascript-developers-4/pattern-matching-rust-1.png" alt="img"><br>
-<img data-src="http://www.sheshbabu.com/images/2020-rust-for-javascript-developers-4/pattern-matching-rust-2.png" alt="img"></p>
+<p><img data-src="http://www.sheshbabu.com/images/2020-rust-for-javascript-developers-4/pattern-matching-rust-1.png" alt=""><br>
+<img data-src="http://www.sheshbabu.com/images/2020-rust-for-javascript-developers-4/pattern-matching-rust-2.png" alt=""></p>
 <p>We begin to see why it’s named as “pattern matching” - we take an input and see which pattern in the match arms “fits” better - It’s like the <span class="exturl" data-url="aHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS9zZWFyY2g/cT1zaGFwZStzb3J0ZXI=">shape sorter</span> toys that kids play with. Apart from comparison, we also do variable binding in the 2nd, 3rd and 4th match arms. We pass variables x or y or both to their respective expressions.</p>
 <p>Pattern matching is also  <code>exhaustive</code>  - that is, it forces you to handle all the possible cases. Try removing the last match arm and Rust won’t let you compile the code.</p>
 <h2 id="enum"><a class="markdownIt-Anchor" href="#enum">#</a> Enum</h2>
@@ -236,7 +236,7 @@ Dew's World = 露の世</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2021-05-26 14:49:49" itemprop="dateModified" datetime="2021-05-26T14:49:49+08:00">2021-05-26</time>
+    <time title="Modified: 2021-05-29 17:37:56" itemprop="dateModified" datetime="2021-05-29T17:37:56+08:00">2021-05-29</time>
   </span>
 </div>
 
@@ -253,7 +253,7 @@ Dew's World = 露の世</title>
     <div class="item left">
       
 
-  <a href="/2020/07/09/java-robot/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclh0m9pdj20zk0m8hdt.jpg" title="java robot">
+  <a href="/2020/07/09/java-robot/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicitzannuj20zk0m8b29.jpg" title="java robot">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>java robot</h3>
@@ -263,7 +263,7 @@ Dew's World = 露の世</title>
     <div class="item right">
       
 
-  <a href="/2020/07/14/rust-modules/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicljgocqbj20zk0m8e81.jpg" title="Clear explanation of Rust’s module system">
+  <a href="/2020/07/14/rust-modules/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipeu7txpzj20zk0m81kx.jpg" title="Clear explanation of Rust’s module system">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Clear explanation of Rust’s module system</h3>
@@ -300,7 +300,7 @@ Dew's World = 露の世</title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">235</span>
+        <span class="count">239</span>
         <span class="name">posts</span>
       </a>
     </div>

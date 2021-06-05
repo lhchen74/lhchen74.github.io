@@ -102,12 +102,12 @@ Dew's World = 露の世</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicitcxhpij20zk0m8hdt.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipew8gmvyj20zk0m87wh.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giph47e9vtj20zk0m8x6l.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipevgoki5j20zk0m84qp.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclgrvbd6j20zk0m8qv5.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclflwv2aj20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipewkhf1zj20zk0m81kx.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeyvx1d4j20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipetv6p75j20zk0m8x6p.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipexoj0moj20zk0m8kgu.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicmnywqgpj20zk0m8dwx.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipey84bjtj20zk0m8hdt.jpg"></li>
         </ul>
       </div>
     </header>
@@ -152,23 +152,23 @@ Dew's World = 露の世</title>
     
 
     <h2 id="基本流程"><a class="markdownIt-Anchor" href="#基本流程">#</a> 基本流程</h2>
-<img data-src="/2018/10/18/oracle-om/1362105573_3288.jpg" class="" title="img">
+<img data-src="/2018/10/18/oracle-om/1362105573_3288.jpg" class="">
 <h2 id="创建订单"><a class="markdownIt-Anchor" href="#创建订单">#</a> 创建订单</h2>
 <p>路径：Order Management &gt; Orders, Returns &gt; Sales Orders</p>
 <p>填写订单头信息，客户，订单类型，销售人员</p>
-<img data-src="/2018/10/18/oracle-om/1340699459_4815.jpg" class="" title="img">
+<img data-src="/2018/10/18/oracle-om/1340699459_4815.jpg" class="">
 <p>填写订单体信息，输入物料，数量…</p>
-<img data-src="/2018/10/18/oracle-om/1340699486_2792.jpg" class="" title="img">
+<img data-src="/2018/10/18/oracle-om/1340699486_2792.jpg" class="">
 <p>然后 Book Order，订单 Book 之后，你会发现订单头的 Status 的状态变成了 <code>&quot;Booked&quot;</code> ，订单行的状态为  <code>&quot;Awaiting Shipping&quot;</code> ，记录下来你的订单号，后边的每一步都需要这个订单号。</p>
 <p>状态：订单 Book 之后，这个时候发运单也就产生了，如果你去 Shipping Transactions Form, 查找订单，你就会发现发运单的  <code>Line Status 为 Ready to Release，Next Step 为 Pick Release</code></p>
 <h2 id="pick-release"><a class="markdownIt-Anchor" href="#pick-release">#</a> Pick Release</h2>
 <p>路径：Order Management &gt; Shipping &gt; Release Sales Orders &gt; Release Sales Orders</p>
 <p>Pick Release 俗称挑库（即从仓库中挑选货物），在 Order Number 中输入待挑库的订单号</p>
-<img data-src="/2018/10/18/oracle-om/1340700540_3071.jpg" class="" title="img">
+<img data-src="/2018/10/18/oracle-om/1340700540_3071.jpg" class="">
 <p>Auto Pick Confirm 设置为 No</p>
-<img data-src="/2018/10/18/oracle-om/1340700742_5739.jpg" class="" title="img">
+<img data-src="/2018/10/18/oracle-om/1340700742_5739.jpg" class="">
 <p>Auto Allocate 设置为 N</p>
-<img data-src="/2018/10/18/oracle-om/1340700697_4677.jpg" class="" title="img">
+<img data-src="/2018/10/18/oracle-om/1340700697_4677.jpg" class="">
 <p>Auto Allocate 和 Auto Pick Confirm 都可以设置为 Yes，只不过为了讲的更加详细，这里都设置为 No，设置为 Yes 的话，那么后边的 Allocate 和 Pick Confirm 两步，系统就会自动帮你完成。</p>
 <p>这里有两个按钮来执行 Pick Release，”Concurrent“是把 Pick Release 的任务发给 Concurrent Request 来执行，&quot;Execute Now&quot; 是系统再前段执行 Pick Release，直到执行结束才把控制权返还给 User，这里我们点击 Concurrent 按钮。</p>
 <p>Pick Release 后台做了什么事情？Pick Release 会创建一个 Pick Wave 类型 Move Order， <code>这个Move Order就是用来把库存中的货物搬到一个临时发货区(Staging)</code> , 如果打开 INV 日志就能看到系统是调用 INV_MOVE_ORDER_PUB.CREATE_MOVE_ORDER_HEADER 来创建 Move Order 的。(对于 Pick Release 的后台流程可以参见我的总结：<span class="exturl" data-url="aHR0cDovL3ZkaXNrLndlaWJvLmNvbS9zLzdENXJx">Pick Release Process</span>)</p>
@@ -178,37 +178,37 @@ Dew's World = 露の世</title>
 <p>路径：Inventory &gt; Move Orders &gt; Transact Move Orders</p>
 <p>Pick Confirm（挑库确认）的动作实际上是在 Transact Move Order 中完成的，先 Allocate 挑选货物，再 Transact Move Order.</p>
 <p>查询页面，Pick Wave 那个 Tab，输入订单号</p>
-<p><img data-src="https://img-my.csdn.net/uploads/201206/26/1340702406_9193.jpg" alt="img"></p>
+<p><img data-src="https://img-my.csdn.net/uploads/201206/26/1340702406_9193.jpg" alt=""></p>
 <p>进入 TMO 主界面后，点击 Allocate，Allocate 会根据你系统默认的 Picking Rule 来挑选货物，然后给你一个 Suggestion 的挑库项，Suggestion 记录会保存在 MTL_MATERIAL_TRANSACTIONS_TEMP 表（即 Pending Transactions）。</p>
 <p>另外完成 Allocate 之后，你会看到界面 Allocation 项会出现 Single,Multiple 或者 None 的标识，Single 表示，系统给你了产生了一条 Suggestion 的 Transaction 记录，Multiple 表示产生了多条；None 表示没有产生 Suggestion 记录（很可能是因为你系统中库存数量不足）</p>
-<p><img data-src="https://img-my.csdn.net/uploads/201206/26/1340702545_4311.jpg" alt="img"></p>
+<p><img data-src="https://img-my.csdn.net/uploads/201206/26/1340702545_4311.jpg" alt=""></p>
 <p>接下来一步就是去 Transact 这个 Move Order</p>
-<p><img data-src="https://img-my.csdn.net/uploads/201206/26/1340704044_4532.jpg" alt="img"></p>
+<p><img data-src="https://img-my.csdn.net/uploads/201206/26/1340704044_4532.jpg" alt=""></p>
 <p>按 Transact 之后，Inventory Transaction Manager 会处理 Suggestion Transactions（MMTT），然后物料转移的动作就真实发生了， <code>物料就从正式Subinventory到临时存货区(Staging)</code> 。这个 Transction 可以从 Material Transaction 的 Form 中查询到。</p>
-<p><img data-src="https://img-my.csdn.net/uploads/201206/26/1340710485_9329.jpg" alt="img"></p>
+<p><img data-src="https://img-my.csdn.net/uploads/201206/26/1340710485_9329.jpg" alt=""></p>
 <p>另外对于 Reservation 来说，在 Transact 之后，因为库存明确了，Reservation 就会变得更加明确，是对哪个 Sub，locator 做保留。</p>
-<p><img data-src="https://img-my.csdn.net/uploads/201206/26/1340704743_5278.jpg" alt="img"></p>
+<p><img data-src="https://img-my.csdn.net/uploads/201206/26/1340704743_5278.jpg" alt=""></p>
 <p>状态：这个时候，Shipping Transaction 的 Line Status 为 &quot;Staged/Pick Confirmed&quot;,Next Step 为 &quot;Ship Confirm/Close Trip Stop&quot;；订单头的状态仍为 Booked, 行状态变为了”Picked“。</p>
 <h2 id="ship-confirm-deliveries"><a class="markdownIt-Anchor" href="#ship-confirm-deliveries">#</a> Ship Confirm Deliveries</h2>
 <p>路径：Order Management &gt; Shipping &gt; Transactions</p>
-<p><img data-src="https://img-my.csdn.net/uploads/201206/26/1340704823_5002.jpg" alt="img"></p>
+<p><img data-src="https://img-my.csdn.net/uploads/201206/26/1340704823_5002.jpg" alt=""></p>
 <p>切换到 Delivery 页签，准备 Ship Confirm (发货确认)，如果你在 Pick Release 的时候，没有选择 Autocreate Delivery，那么系统会检查 Define Shipping Parameters 里边这两个的设置，如果 shipping parameters 里边也没有选择，那么你需要手工的在 Ship Confirm 的时候选择 Action-&gt;Auto-create Deliveries.</p>
 <p>Delivery 信息实际上包含你要投递货物到哪里，使用哪家物流公司…</p>
-<p><img data-src="https://img-my.csdn.net/uploads/201206/26/1340704935_6991.jpg" alt="img"></p>
+<p><img data-src="https://img-my.csdn.net/uploads/201206/26/1340704935_6991.jpg" alt=""></p>
 <p>Delivery 页签，点击 Ship Confirm 按钮后，会弹出一个窗口，&quot;Defer Interface&quot; 如果被勾上，说明你要手动的运行 Interface Trip Stop SRS，我们勾上 Defer Interface，点 OK。</p>
-<p><img data-src="https://img-my.csdn.net/uploads/201206/26/1340705223_3614.jpg" alt="img"></p>
+<p><img data-src="https://img-my.csdn.net/uploads/201206/26/1340705223_3614.jpg" alt=""></p>
 <p>Delivery was successfully confirmed!!!</p>
-<p><img data-src="https://img-my.csdn.net/uploads/201206/26/1340705397_7573.jpg" alt="img"></p>
+<p><img data-src="https://img-my.csdn.net/uploads/201206/26/1340705397_7573.jpg" alt=""></p>
 <p>Ship Confirm 这个动作会插入一条记录到 MTL_TRANSACTIONS_INTERFACE 表中，这个 MTI 记录的类型为 Sales Order Issue，这条记录会被接下来的 Interface Trip Stop 来处理，最终从 MTI 转到 MMT 表中。</p>
 <p>状态：这个时候，Shipping Transaction 的 Line Status 为 &quot;Shipped&quot;,Next Step 为 &quot;Run Interfaces&quot;；订单头的状态仍为 Booked, 行状态变为了”Shipped“。</p>
 <h2 id="interface-trip-stop-srs"><a class="markdownIt-Anchor" href="#interface-trip-stop-srs">#</a> Interface Trip Stop - SRS</h2>
 <p>因为我们在 Ship Confirm 的时候设置了 Defer Interface, 所以这里我们还需要手动的运行 Interface Trip Stop - SRS。</p>
 <p>路径：Order Management &gt; Shipping &gt; Interface &gt; Run &gt; Request:Interface Trip Stop - SRS</p>
-<p><img data-src="https://img-my.csdn.net/uploads/201206/26/1340706303_7309.jpg" alt="img"><br>
+<p><img data-src="https://img-my.csdn.net/uploads/201206/26/1340706303_7309.jpg" alt=""><br>
 Interface Trip Stop 实际上包含两部分：Order Management Interface SRS（更新发运行状态、以准备生成 AR 发票）和 Inventory Interface SRS（产生库存出货事务）</p>
 <p>Order Management Interface - SRS 是在 Inventory Interface SRS 之前运行的，这个 Request 更新发运行状态、以准备生成 AR 发票，OM Interface 运行结束后会更新 WSH_DELIVERY_DETAILS 表的 OE_INTERFACED_FLAG 为 Y。</p>
 <p>Inventory Interface SRS 会根据 Shipping Transaction 来插入记录到 MTI, 进而 INV Manager 会把这条 MTI 记录转到 MMT 表中，一条 Sales Order Issue 的 transaction 记录就产生了，并完成库存数量的扣减和 Reservation 的删除。Inventory Interface SRS 运行完之后，会更新 WSH_DELIVERY_DETAILS 表的 INV_INTERFACED_FLAG 字段为 Y。<br>
-<img data-src="https://img-my.csdn.net/uploads/201206/26/1340710397_7626.jpg" alt="img"></p>
+<img data-src="https://img-my.csdn.net/uploads/201206/26/1340710397_7626.jpg" alt=""></p>
 <p>状态：这个时候，Shipping Transaction 的 Line Status 为 &quot;Interfaced&quot;,Next Step 为 &quot;Not Applicable&quot;；订单头的状态仍为 Booked, 行状态变为了”Shipped“。</p>
 <p>关于 ITS，还可以参见我的另一篇文章：<span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcGFuX3RpYW4vYXJ0aWNsZS9kZXRhaWxzLzg2MjQ5MzY=">http://blog.csdn.net/pan_tian/article/details/8624936</span></p>
 <h2 id="workflow-background-process"><a class="markdownIt-Anchor" href="#workflow-background-process">#</a> Workflow background Process</h2>
@@ -217,7 +217,7 @@ Interface Trip Stop 实际上包含两部分：Order Management Interface SRS（
 <p>Process Deferred:Yes</p>
 <p>Process Timeout:No</p>
 <p>这个 program 用于处理 Deffered 状态的 workflow,Workflow Background Process 运行后，相关数据就会从 Order 表导入到 RA Interface 表中去 (RA_INTERFACE_LINES_ALL,RA_INTERFACE_SALESCREDITS_ALL,RA_Interface_distribution)</p>
-<p><img data-src="https://img-my.csdn.net/uploads/201206/27/1340776215_6650.jpg" alt="img"></p>
+<p><img data-src="https://img-my.csdn.net/uploads/201206/27/1340776215_6650.jpg" alt=""></p>
 <p>你可以通过下边的 SQL 来查看 RA Interface 信息：</p>
 <p>1.SELECT * FROM RA_INTERFACE_LINES_ALL WHERE sales_order = ‘65961’;</p>
 <p>2.SELECT * FROM RA_INTERFACE_SALESCREDITS_ALL</p>
@@ -231,10 +231,10 @@ Interface Trip Stop 实际上包含两部分：Order Management Interface SRS（
 <p>Name:Autoinvoice Master Program</p>
 <p>Invoice Source:Order Entry</p>
 <p>Default Day: 当前日期</p>
-<p><img data-src="https://img-my.csdn.net/uploads/201206/26/1340711687_2188.jpg" alt="img"></p>
+<p><img data-src="https://img-my.csdn.net/uploads/201206/26/1340711687_2188.jpg" alt=""></p>
 <p>提交后，在 request 里能看到”Autoinvoice Import Program“在运行。</p>
-<p><img data-src="https://img-my.csdn.net/uploads/201206/26/1340712268_1890.jpg" alt="img"></p>
-<p><img data-src="https://img-my.csdn.net/uploads/201206/26/1340722156_4927.jpg" alt="img"></p>
+<p><img data-src="https://img-my.csdn.net/uploads/201206/26/1340712268_1890.jpg" alt=""></p>
+<p><img data-src="https://img-my.csdn.net/uploads/201206/26/1340722156_4927.jpg" alt=""></p>
 <p>从上图，可以看出 Auto Invoice Program 用于处理 RA 的 interface 表，然后生成真正的营收发票信息，最终数据会插入 AR 正式表中（RA_CUSTOMER_TRX_ALL,RA_CUSTOMER_TRX_LINES,AR_PAYMENT_SCHEDULES）.</p>
 <p>可以到订单里 Order &gt; Action &gt; Additional Information &gt; Invoices/Credit Memos 中能看到发票信息，也可以通过下边 SQL 查看订单和 AR 信息，</p>
 <p>SELECT ooha.order_number , oola.line_number so_line_number , oola.ordered_item ,<br>
@@ -316,9 +316,9 @@ AND order_number = :p_order_number;</p>
 </table>
 <p>关于订单，shipping txn 的状态，可以参见另外一篇文章：<span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcGFuX3RpYW4vYXJ0aWNsZS9kZXRhaWxzLzc2OTY1Mjg=">http://blog.csdn.net/pan_tian/article/details/7696528</span></p>
 <p>Oracle Order Management Flow(<span class="exturl" data-url="aHR0cDovL29yYWNsZWFwcHM4OC5ibG9nc3BvdC5jb20vMjAxNS8wNy9vcmFjbGUtb3JkZXItbWFuYWdlbWVudC1mbG93Lmh0bWw=">Source Link</span>)</p>
-<p><img data-src="https://img-blog.csdn.net/20150714001754372" alt="img"></p>
-<p><img data-src="https://img-blog.csdn.net/20150714001803242" alt="img"></p>
-<p><img data-src="https://img-blog.csdn.net/20150714001813822" alt="img"></p>
+<p><img data-src="https://img-blog.csdn.net/20150714001754372" alt=""></p>
+<p><img data-src="https://img-blog.csdn.net/20150714001803242" alt=""></p>
+<p><img data-src="https://img-blog.csdn.net/20150714001813822" alt=""></p>
 <blockquote>
 <p><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3h4Y193ZWlsL2FydGljbGUvZGV0YWlscy83ODc0MDU2OQ==">Oracle EBS 订单的流程 (Order-&gt;AR) - xxc_weil 的博客 - CSDN 博客</span></p>
 </blockquote>
@@ -336,7 +336,7 @@ AND order_number = :p_order_number;</p>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2020-08-11 19:54:09" itemprop="dateModified" datetime="2020-08-11T19:54:09+08:00">2020-08-11</time>
+    <time title="Modified: 2021-05-29 17:37:56" itemprop="dateModified" datetime="2021-05-29T17:37:56+08:00">2021-05-29</time>
   </span>
 </div>
 
@@ -353,7 +353,7 @@ AND order_number = :p_order_number;</p>
     <div class="item left">
       
 
-  <a href="/2018/10/17/oracle-erp/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipesrnqv3j20zk0m8ava.jpg" title="oracle erp">
+  <a href="/2018/10/17/oracle-erp/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipevgoki5j20zk0m84qp.jpg" title="oracle erp">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>oracle erp</h3>
@@ -363,7 +363,7 @@ AND order_number = :p_order_number;</p>
     <div class="item right">
       
 
-  <a href="/2018/10/25/oracle-mail/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipewf5l51j20zk0m8b29.jpg" title="oracle plsql mail">
+  <a href="/2018/10/25/oracle-mail/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicis081o9j20zk0m8dmr.jpg" title="oracle plsql mail">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>oracle plsql mail</h3>
@@ -400,7 +400,7 @@ AND order_number = :p_order_number;</p>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">235</span>
+        <span class="count">239</span>
         <span class="name">posts</span>
       </a>
     </div>

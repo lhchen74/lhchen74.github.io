@@ -24,7 +24,7 @@
 <link rel="stylesheet" href="/css/app.css?v=0.2.5">
 
   
-  <meta name="keywords" content="c#" />
+  <meta name="keywords" content="csharp" />
 
 
 <link rel="canonical" href="https://lhchen74.github.io/2019/10/25/csharp-dotnetcore-iis/">
@@ -102,12 +102,12 @@ Dew's World = 露の世</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giciukx8a7j20zk0m8aio.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giph4fomxoj20zk0m8axp.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclfb3vzhj20zk0m8wny.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclwuom7cj20zk0m8dvn.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipetv6p75j20zk0m8x6p.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclhfehz7j20zk0m8u0x.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclxxcb6rj20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeudstjqj20zk0m8k3r.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipesng5oej20zk0m87d4.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipev1x5e4j20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipexbei4hj20zk0m8npd.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipesx5fdwj20zk0m81kx.jpg"></li>
         </ul>
       </div>
     </header>
@@ -154,43 +154,43 @@ Dew's World = 露の世</title>
     <h3 id="概述"><a class="markdownIt-Anchor" href="#概述">#</a> 概述</h3>
 <p>与 <span class="exturl" data-url="aHR0cDovL0FTUC5ORVQ=">ASP.NET</span> 时代不同，<span class="exturl" data-url="aHR0cDovL0FTUC5ORVQ=">ASP.NET</span> Core 不再是由 IIS 工作进程（w3wp.exe）托管，而是使用自托管 Web 服务器（Kestrel）运行，IIS 则是作为反向代理的角色转发请求到 Kestrel 不同端口的 <span class="exturl" data-url="aHR0cDovL0FTUC5ORVQ=">ASP.NET</span> Core 程序中，随后就将接收到的请求推送至中间件管道中去，处理完你的请求和相关业务逻辑之后再将 HTTP 响应数据重新回写到 IIS 中，最终转达到不同的客户端（浏览器，APP，客户端等）。而配置文件和过程都会由些许调整，中间最重要的角色便是 AspNetCoreModule，它是其中一个的 IIS 模块，请求进入到 IIS 之后便立即由它转发，并迅速重定向到 <span class="exturl" data-url="aHR0cDovL0FTUC5ORVQ=">ASP.NET</span> Core 项目中，所以这时候我们无需设置应用程序池来托管我们的代码，它只负责转发请求而已。</p>
 <p>部署之前要确保你的 IIS 上已经安装了 AspNetCoreModule 托管模块，如果没有的话，点击<span class="exturl" data-url="aHR0cHM6Ly9nby5taWNyb3NvZnQuY29tL2Z3bGluay8/bGlua2lkPTg0NDQ2MQ==">这里</span>进行下载并安装</p>
-<img data-src="/2019/10/25/csharp-dotnetcore-iis/646372-20170403233424488-765402641.png" class="" title="img">
+<img data-src="/2019/10/25/csharp-dotnetcore-iis/646372-20170403233424488-765402641.png" class="">
 <h3 id="一-安装-iis"><a class="markdownIt-Anchor" href="#一-安装-iis">#</a> 一、安装 IIS</h3>
 <p>1、在控制面板 → 程序 → 启用或关闭 Windows 功能 → 勾选 Internet Information Services 以及 Web 管理工具下的 IIS 管理控制台</p>
-<img data-src="/2019/10/25/csharp-dotnetcore-iis/646372-20170403091242519-1710416629.png" class="" title="img">
+<img data-src="/2019/10/25/csharp-dotnetcore-iis/646372-20170403091242519-1710416629.png" class="">
 <h3 id="二-发布项目"><a class="markdownIt-Anchor" href="#二-发布项目">#</a> 二、发布项目</h3>
 <p>1、发布我们上一篇建好的 <span class="exturl" data-url="aHR0cDovL0FTUC5ORVQ=">ASP.NET</span> Core API 项目，然后选择 IIS，新建一项发布配置</p>
-<img data-src="/2019/10/25/csharp-dotnetcore-iis/646372-20170403092448050-986649917.png" class="" title="img">
+<img data-src="/2019/10/25/csharp-dotnetcore-iis/646372-20170403092448050-986649917.png" class="">
 <p>2、发布方法选择文件系统，然后设置一个发布路径</p>
-<img data-src="/2019/10/25/csharp-dotnetcore-iis/646372-20170403092657800-2104084150.png" class="" title="img">
+<img data-src="/2019/10/25/csharp-dotnetcore-iis/646372-20170403092657800-2104084150.png" class="">
 <p>3、配置文件可以根据你线上、线下的环境进行选择，<span class="exturl" data-url="aHR0cDovL3huLS1zaXF2aHEwdmo2YXQxNWIuTkVU">因为是基于.NET</span> Core，所以目标框架为 netcoreapp1.1，然后保存发布即可</p>
-<img data-src="/2019/10/25/csharp-dotnetcore-iis/646372-20170403093334253-1748056703.png" class="" title="img">
+<img data-src="/2019/10/25/csharp-dotnetcore-iis/646372-20170403093334253-1748056703.png" class="">
 <p>4、当然了，你还可以基于 CLI 的 Publish 命令进行发布，只需切换到 Light.API 根目录下，输入以下命令即可</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dotnet publish --framework netcoreapp1.1 --output &quot;E:\Publish&quot; --configuration Release</span><br></pre></td></tr></table></figure>
 <p>framework 表示目标框架，output 表示要发布到的目录文件夹，configuration 表示配置文件，等同于和上面我们通过管理器来发布的操作，如图：</p>
-<img data-src="/2019/10/25/csharp-dotnetcore-iis/646372-20170403235024566-699255267.png" class="" title="img">
+<img data-src="/2019/10/25/csharp-dotnetcore-iis/646372-20170403235024566-699255267.png" class="">
 <h3 id="三-在-iis-中添加网站"><a class="markdownIt-Anchor" href="#三-在-iis-中添加网站">#</a> 三、在 IIS 中添加网站</h3>
 <p>1、添加一个网站，设置一下名称，并将路径指向你刚才发布的文件夹，然后启动网站即可</p>
-<img data-src="/2019/10/25/csharp-dotnetcore-iis/646372-20170404205827691-1090819485.png" class="" title="img">
+<img data-src="/2019/10/25/csharp-dotnetcore-iis/646372-20170404205827691-1090819485.png" class="">
 <p>2、<span class="exturl" data-url="aHR0cDovL3huLS04d3RqMTE3aDRxaTF1Yno4aXp6a3B1ei5ORVQ=">设置应用程序池的.NET</span> CLR 版本为 “无托管代码”，因为刚才也说了，IIS 是作为一个反向代理的角色，并不需要它来托管代码</p>
-<img data-src="/2019/10/25/csharp-dotnetcore-iis/646372-20170404210211957-350663298.png" class="" title="img">
+<img data-src="/2019/10/25/csharp-dotnetcore-iis/646372-20170404210211957-350663298.png" class="">
 <p>3、OK，大功告成，浏览一下我们的网站。</p>
-<img data-src="/2019/10/25/csharp-dotnetcore-iis/646372-20170405223711082-382461767.png" class="" title="img">
+<img data-src="/2019/10/25/csharp-dotnetcore-iis/646372-20170405223711082-382461767.png" class="">
 <p>此时我的内心是崩溃的，没有任何有用的提示信息，看来只能自己动手查看应用程序的运行日志了</p>
 <p>4、设置 IIS 的日志记录方式为日志文件和 ETW 事件</p>
-<img data-src="/2019/10/25/csharp-dotnetcore-iis/646372-20170405224126644-207425139.png" class="" title="img">
+<img data-src="/2019/10/25/csharp-dotnetcore-iis/646372-20170405224126644-207425139.png" class="">
 <p>5、重新访问网站，然后打开 Windows 应用程序日志，你会看到这样一条信息。意思是说你的应用程序已经由 PID 为 3236 的进程启动，并且在 25636 的端口上监听着。</p>
-<img data-src="/2019/10/25/csharp-dotnetcore-iis/646372-20170405230753753-1882100365.png" class="" title="img">
+<img data-src="/2019/10/25/csharp-dotnetcore-iis/646372-20170405230753753-1882100365.png" class="">
 <p>我打开任务管理器查看了一下，说的很对。应该是一切正常才对啊，那为啥访问网站是 404 呢。</p>
-<p><img data-src="https://images2015.cnblogs.com/blog/646372/201704/646372-20170405231139316-1009486684.png" alt="img"></p>
+<p><img data-src="https://images2015.cnblogs.com/blog/646372/201704/646372-20170405231139316-1009486684.png" alt=""></p>
 <p>纠结了半天，原来是因为网站没有自动重定向到 /swagger/ui 页面，重新访问：<span class="exturl" data-url="aHR0cDovLzE5Mi4xNjguMS4xMDUvc3dhZ2dlci91aSVFRiVCQyU4QyVFNCVCRCVBMCVFNCVCQyU5QSVFNyU5QyU4QiVFNSU4OCVCMCVFNyU4NiU5RiVFNiU4MiU4OSVFNyU5QSU4NCVFNyU5NCVCQiVFOSU5RCVBMg==">http://192.168.1.105/swagger/ui，你会看到熟悉的画面</span></p>
-<img data-src="/2019/10/25/csharp-dotnetcore-iis/646372-20170405233033238-1688076616.png" class="" title="img">
+<img data-src="/2019/10/25/csharp-dotnetcore-iis/646372-20170405233033238-1688076616.png" class="">
 <p>6、最后一点，其实你还可以通过 CLI 来运行你发布的程序，切换到你发布文件夹下，输入以下命令：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dotnet Light.API.dll</span><br></pre></td></tr></table></figure>
 <p>看到这个提示，那么说明你成功了。试着访问一下：<span class="exturl" data-url="aHR0cDovL2xvY2FsaG9zdDo1MDAwL3N3YWdnZXIvdWk=">http://localhost:5000/swagger/ui</span></p>
-<img data-src="/2019/10/25/csharp-dotnetcore-iis/646372-20170405233429675-2083378691.png" class="" title="img">
+<img data-src="/2019/10/25/csharp-dotnetcore-iis/646372-20170405233429675-2083378691.png" class="">
 <p>而此时你再回过头来看任务管理器，那么就会又多了一个 dotnet 的进程</p>
-<img data-src="/2019/10/25/csharp-dotnetcore-iis/646372-20170405233725972-1825428767.png" class="" title="img">
+<img data-src="/2019/10/25/csharp-dotnetcore-iis/646372-20170405233725972-1825428767.png" class="">
 <h3 id="写在最后"><a class="markdownIt-Anchor" href="#写在最后">#</a> 写在最后</h3>
 <p>至此，整个 IIS 的搭建已经完成，不知道你是否有所收获。接下来不知道把它发布到 Linux 上，会有什么样的坑。不管怎样，你的每一步，回过头来看，都是值得的！</p>
 <blockquote>
@@ -198,7 +198,7 @@ Dew's World = 露の世</title>
 </blockquote>
 
       <div class="tags">
-          <a href="/tags/c/" rel="tag"><i class="ic i-tag"></i> c#</a>
+          <a href="/tags/csharp/" rel="tag"><i class="ic i-tag"></i> csharp</a>
       </div>
   </div>
 
@@ -210,7 +210,7 @@ Dew's World = 露の世</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2020-04-18 12:40:06" itemprop="dateModified" datetime="2020-04-18T12:40:06+08:00">2020-04-18</time>
+    <time title="Modified: 2021-06-05 16:25:17" itemprop="dateModified" datetime="2021-06-05T16:25:17+08:00">2021-06-05</time>
   </span>
 </div>
 
@@ -227,17 +227,17 @@ Dew's World = 露の世</title>
     <div class="item left">
       
 
-  <a href="/2019/10/25/csharp-localdb/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicli9lfebj20zk0m84qp.jpg" title="SqlServer LOCALDB 安装和连接">
+  <a href="/2019/10/25/csharp-webservice/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicmnywqgpj20zk0m8dwx.jpg" title="C#如何创建WebService">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
-  <h3>SqlServer LOCALDB 安装和连接</h3>
+  <h3>C#如何创建WebService</h3>
   </a>
 
     </div>
     <div class="item right">
       
 
-  <a href="/2019/10/26/node-jsonserver/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giph4lm9i7j20zk0m84qp.jpg" title="json-server 详解">
+  <a href="/2019/10/26/node-jsonserver/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giph4fomxoj20zk0m8axp.jpg" title="json-server 详解">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>json-server 详解</h3>
@@ -274,7 +274,7 @@ Dew's World = 露の世</title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">235</span>
+        <span class="count">239</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -353,7 +353,7 @@ Dew's World = 露の世</title>
 
   <ul id="quick">
     <li class="prev pjax">
-        <a href="/2019/10/25/csharp-localdb/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+        <a href="/2019/10/25/csharp-webservice/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
     </li>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>

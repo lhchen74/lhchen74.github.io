@@ -102,12 +102,12 @@ Dew's World = 露の世</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicm0n457cj20zk0m8e81.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipewf5l51j20zk0m8b29.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclwuom7cj20zk0m8dvn.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclh3brzpj20zk0m8ann.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipev1x5e4j20zk0m8b29.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclwrdwyaj20zk0m8are.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclj61ylzj20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclgrvbd6j20zk0m8qv5.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeybxm1pj20zk0m8niv.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclfdu6exj20zk0m87hw.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipewr8iypj20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicljitigmj20zk0m87fp.jpg"></li>
         </ul>
       </div>
     </header>
@@ -163,18 +163,18 @@ Dew's World = 露の世</title>
 <img data-src="/2021/03/04/python-flask-iis/1565145973712.png" class="">
 <p>2 安裝 IIS 管理工具和 CGI</p>
 <p>IIS 管理工具</p>
-<img data-src="/2021/03/04/python-flask-iis/1565146695079.png" class="" width="1565146695079">
+<img data-src="/2021/03/04/python-flask-iis/1565146695079.png" class="">
 <p>CGI 如果沒有安裝 CGI, <strong>後續處理常式對應 會找不到 FastCgiModule</strong></p>
-<img data-src="/2021/03/04/python-flask-iis/1565149653704.png" class="" width="1565149653704">
+<img data-src="/2021/03/04/python-flask-iis/1565149653704.png" class="">
 <h3 id="添加站臺"><a class="markdownIt-Anchor" href="#添加站臺">#</a> 添加站臺</h3>
 <p>打開 IIS 服務 -&gt; 站台 -&gt; 新增網站，在弹出的窗口输入  <code>站台名稱</code>   <code>實體路徑</code>   <code>連接埠</code></p>
-<img data-src="/2021/03/04/python-flask-iis/1565155471556.png" class="" width="1565155471556">
+<img data-src="/2021/03/04/python-flask-iis/1565155471556.png" class="">
 <h3 id="flask-项目添加插件"><a class="markdownIt-Anchor" href="#flask-项目添加插件">#</a> Flask 项目添加插件</h3>
 <h4 id="安裝-wfastcgi"><a class="markdownIt-Anchor" href="#安裝-wfastcgi">#</a> 安裝 wfastcgi</h4>
 <p><code>pip install wfastcgi</code></p>
 <h4 id="啓動-wfastcgi"><a class="markdownIt-Anchor" href="#啓動-wfastcgi">#</a> 啓動 wfastcgi</h4>
 <p>進入 Python Scripts 目錄  <code>C:\Program Files\Python36\Scripts</code>  執行  <code>wfastcgi-enable.exe</code></p>
-<img data-src="/2021/03/04/python-flask-iis/1565147818362.png" class="" width="1565147818362">
+<img data-src="/2021/03/04/python-flask-iis/1565147818362.png" class="">
 <p>複製 FastCGI script processor</p>
 <p><code>&quot;c:\program files\python36\python.exe&quot;|&quot;c:\program files\python36\lib\site-packages\wfastcgi.py&quot;</code></p>
 <p>注意: program files 包含空格，需要用引號引起來，複製時需要注意，如果設置錯誤會出現</p>
@@ -187,20 +187,20 @@ Dew's World = 露の世</title>
 <h3 id="配置-fastcgi"><a class="markdownIt-Anchor" href="#配置-fastcgi">#</a> 配置 FastCGI</h3>
 <h4 id="處理常式對應"><a class="markdownIt-Anchor" href="#處理常式對應">#</a> 處理常式對應</h4>
 <p>處理常式對應 -&gt; 新增模組對應</p>
-<img data-src="/2021/03/04/python-flask-iis/1565148545865.png" class="" width="1565148545865">
-<img data-src="/2021/03/04/python-flask-iis/1565148667449.png" class="" width="1565148667449">
+<img data-src="/2021/03/04/python-flask-iis/1565148545865.png" class="">
+<img data-src="/2021/03/04/python-flask-iis/1565148667449.png" class="">
 <p>執行檔案填寫之前複製的 FastCGI script processor，program files 包含空格，需要用引號引起來</p>
 <p><code>&quot;c:\program files\python36\python.exe&quot;|&quot;c:\program files\python36\lib\site-packges\wfastcgi.py&quot;</code></p>
-<img data-src="/2021/03/04/python-flask-iis/1565149860744.png" class="" width="1565149860744">
+<img data-src="/2021/03/04/python-flask-iis/1565149860744.png" class="">
 <p>點擊要求限制：不要勾選方框</p>
-<img data-src="/2021/03/04/python-flask-iis/1565150015464.png" class="" width="1565150015464">
+<img data-src="/2021/03/04/python-flask-iis/1565150015464.png" class="">
 <h4 id="主頁-fastcgi-設置"><a class="markdownIt-Anchor" href="#主頁-fastcgi-設置">#</a> 主頁 FastCGI 設置</h4>
 <p><code>PYTHONPATH(項目根路徑，不是 app 路徑)</code></p>
 <p><code>WSGI_HANDLER(flask 啓動程序,例如項目啓動程序是 hello.py, 那麽此處需要填寫 hello.app)</code></p>
-<img data-src="/2021/03/04/python-flask-iis/1565156907201.png" class="" width="1565156907201">
-<img data-src="/2021/03/04/python-flask-iis/1565156984282.png" class="" width="1565156984282">
-<img data-src="/2021/03/04/python-flask-iis/1565157431919.png" class="" width="1565157431919">
-<img data-src="/2021/03/04/python-flask-iis/1565157521446.png" class="" width="1565157521446">
+<img data-src="/2021/03/04/python-flask-iis/1565156907201.png" class="">
+<img data-src="/2021/03/04/python-flask-iis/1565156984282.png" class="">
+<img data-src="/2021/03/04/python-flask-iis/1565157431919.png" class="">
+<img data-src="/2021/03/04/python-flask-iis/1565157521446.png" class="">
 <blockquote>
 <p>引用: <span class="exturl" data-url="aHR0cHM6Ly9nZWxvbWVuLmdpdGh1Yi5pby9GbGFzay8lRTQlQkQlQkYlRTclOTQlQTgtSUlTLSVFNSU5QyVBOC1XaW5kb3dzLSVFOSU4MyVBOCVFNyVCRCVCMi1GbGFzay0lRTclQkQlOTElRTclQUIlOTkuaHRtbA==">https://gelomen.github.io/Flask/%E4%BD%BF%E7%94%A8-IIS-%E5%9C%A8-Windows-%E9%83%A8%E7%BD%B2-Flask-%E7%BD%91%E7%AB%99.html</span></p>
 </blockquote>
@@ -218,7 +218,7 @@ Dew's World = 露の世</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2019-09-30 16:13:46" itemprop="dateModified" datetime="2019-09-30T16:13:46+08:00">2019-09-30</time>
+    <time title="Modified: 2021-05-28 09:11:07" itemprop="dateModified" datetime="2021-05-28T09:11:07+08:00">2021-05-28</time>
   </span>
 </div>
 
@@ -235,7 +235,7 @@ Dew's World = 露の世</title>
     <div class="item left">
       
 
-  <a href="/2021/03/04/python-cxoracle/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclflwv2aj20zk0m84qp.jpg" title="python cx_Oracle">
+  <a href="/2021/03/04/python-cxoracle/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipey84bjtj20zk0m8hdt.jpg" title="python cx_Oracle">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>python cx_Oracle</h3>
@@ -245,7 +245,7 @@ Dew's World = 露の世</title>
     <div class="item right">
       
 
-  <a href="/2021/03/04/python-getopt/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giciuja1j1j20zk0m8kjl.jpg" title="python getopt">
+  <a href="/2021/03/04/python-getopt/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giciusoyjnj219g0u0x56.jpg" title="python getopt">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>python getopt</h3>
@@ -282,7 +282,7 @@ Dew's World = 露の世</title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">235</span>
+        <span class="count">239</span>
         <span class="name">posts</span>
       </a>
     </div>

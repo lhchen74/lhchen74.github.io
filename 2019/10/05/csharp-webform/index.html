@@ -24,7 +24,7 @@
 <link rel="stylesheet" href="/css/app.css?v=0.2.5">
 
   
-  <meta name="keywords" content="c#" />
+  <meta name="keywords" content="csharp" />
 
 
 <link rel="canonical" href="https://lhchen74.github.io/2019/10/05/csharp-webform/">
@@ -102,12 +102,12 @@ Dew's World = 露の世</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeuv80yoj20zk0m8kjl.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giciuja1j1j20zk0m8kjl.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclj9410cj20zk0m8h12.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclffsa1cj20zk0m811l.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclh5u05ej20zk0m87df.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicli9lfebj20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipet4bz0yj20zk0m8e81.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicit4jrvuj20zk0m8785.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipesng5oej20zk0m87d4.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giciuv0socj20zk0m8qes.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeyonbf9j20zk0m8e81.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicitht3xtj20zk0m8k5v.jpg"></li>
         </ul>
       </div>
     </header>
@@ -152,22 +152,22 @@ Dew's World = 露の世</title>
     
 
     <h3 id="新建-webform-窗体程序"><a class="markdownIt-Anchor" href="#新建-webform-窗体程序">#</a> 新建 webform 窗体程序</h3>
-<img data-src="/2019/10/05/csharp-webform/1570241518556.png" class="" width="1570241518556">
+<img data-src="/2019/10/05/csharp-webform/1570241518556.png" class="">
 <h3 id="实现按钮点击事件"><a class="markdownIt-Anchor" href="#实现按钮点击事件">#</a> 实现按钮点击事件</h3>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> System.ComponentModel;</span><br><span class="line"><span class="keyword">using</span> System.Data;</span><br><span class="line"><span class="keyword">using</span> System.Drawing;</span><br><span class="line"><span class="keyword">using</span> System.IO;</span><br><span class="line"><span class="keyword">using</span> System.Linq;</span><br><span class="line"><span class="keyword">using</span> System.Net;</span><br><span class="line"><span class="keyword">using</span> System.Text;</span><br><span class="line"><span class="keyword">using</span> System.Threading.Tasks;</span><br><span class="line"><span class="keyword">using</span> System.Web.Script.Serialization;</span><br><span class="line"><span class="keyword">using</span> System.Windows.Forms;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">WindowsFormsApp1</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">partial</span> <span class="keyword">class</span> <span class="title">Form1</span> : <span class="title">Form</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Form1</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            InitializeComponent();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Button1_Click</span>(<span class="params"><span class="built_in">object</span> sender, EventArgs e</span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            <span class="comment">// 获取数据</span></span><br><span class="line">            <span class="keyword">var</span> url = <span class="string">&quot;https://jsonplaceholder.typicode.com/users&quot;</span>;</span><br><span class="line">            HttpWebRequest req = (HttpWebRequest)WebRequest.Create(url);</span><br><span class="line">            Stream stream = req.GetResponse().GetResponseStream();</span><br><span class="line">            StreamReader reader = <span class="keyword">new</span> StreamReader(stream);</span><br><span class="line">            String content = reader.ReadToEnd();</span><br><span class="line">            JavaScriptSerializer jss = <span class="keyword">new</span> JavaScriptSerializer();</span><br><span class="line">            List&lt;User&gt; list = jss.Deserialize&lt;List&lt;User&gt;&gt;(content);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 填充页面</span></span><br><span class="line">            DataTable dt = <span class="keyword">new</span> DataTable();</span><br><span class="line">            dt.Columns.Add(<span class="string">&quot;id&quot;</span>);</span><br><span class="line">            dt.Columns.Add(<span class="string">&quot;name&quot;</span>);</span><br><span class="line">            dt.Columns.Add(<span class="string">&quot;email&quot;</span>);</span><br><span class="line">            list.ForEach(u =&gt;</span><br><span class="line">            &#123;</span><br><span class="line">                DataRow row = dt.NewRow();</span><br><span class="line">                row[<span class="string">&quot;id&quot;</span>] = u.id;</span><br><span class="line">                row[<span class="string">&quot;name&quot;</span>] = u.name;</span><br><span class="line">                row[<span class="string">&quot;email&quot;</span>] = u.email;</span><br><span class="line">                dt.Rows.Add(row);</span><br><span class="line">            &#125;);</span><br><span class="line">            dataGridView1.DataSource = dt;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><code>JavaScriptSerializer</code>  类需要添加  <code>System.Web.Extensions</code>  引用，因为此程序不是 web 程序</p>
-<img data-src="/2019/10/05/csharp-webform/1570241718390.png" class="" width="1570241718390">
+<img data-src="/2019/10/05/csharp-webform/1570241718390.png" class="">
 <p>User.cs</p>
 <p>需要将 User 属性设置为 public, 否则 json 序列化数据都是默认空值</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> System.Linq;</span><br><span class="line"><span class="keyword">using</span> System.Text;</span><br><span class="line"><span class="keyword">using</span> System.Threading.Tasks;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">WindowsFormsApp1</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title">User</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="built_in">int</span> id;</span><br><span class="line">        <span class="keyword">public</span> String name;</span><br><span class="line">        <span class="keyword">public</span> String email;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h3 id="运行效果"><a class="markdownIt-Anchor" href="#运行效果">#</a> 运行效果</h3>
-<img data-src="/2019/10/05/csharp-webform/1570241940875.png" class="" width="1570241940875">
+<img data-src="/2019/10/05/csharp-webform/1570241940875.png" class="">
 <blockquote>
-<p>来源:  <span class="exturl" data-url="aHR0cHM6Ly93d3cuYmlsaWJpbGkuY29tL3ZpZGVvL2F2Njc3MTgyMTc=">https://www.bilibili.com/video/av67718217</span></p>
+<p>来源: <span class="exturl" data-url="aHR0cHM6Ly93d3cuYmlsaWJpbGkuY29tL3ZpZGVvL2F2Njc3MTgyMTc=">https://www.bilibili.com/video/av67718217</span></p>
 </blockquote>
 
       <div class="tags">
-          <a href="/tags/c/" rel="tag"><i class="ic i-tag"></i> c#</a>
+          <a href="/tags/csharp/" rel="tag"><i class="ic i-tag"></i> csharp</a>
       </div>
   </div>
 
@@ -179,7 +179,7 @@ Dew's World = 露の世</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2021-04-16 11:43:21" itemprop="dateModified" datetime="2021-04-16T11:43:21+08:00">2021-04-16</time>
+    <time title="Modified: 2021-06-05 16:25:17" itemprop="dateModified" datetime="2021-06-05T16:25:17+08:00">2021-06-05</time>
   </span>
 </div>
 
@@ -196,7 +196,7 @@ Dew's World = 露の世</title>
     <div class="item left">
       
 
-  <a href="/2019/09/30/go-oracle/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicit31ffoj20zk0m8naf.jpg" title="go oracle">
+  <a href="/2019/09/30/go-oracle/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclfw2t96j20zk0m8x6p.jpg" title="go oracle">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>go oracle</h3>
@@ -206,7 +206,7 @@ Dew's World = 露の世</title>
     <div class="item right">
       
 
-  <a href="/2019/10/10/python-new/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclj61ylzj20zk0m8b29.jpg" title="python __new__, __init__, __call__">
+  <a href="/2019/10/10/python-new/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipet8c1a2j20zk0m8kct.jpg" title="python __new__, __init__, __call__">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>python __new__, __init__, __call__</h3>
@@ -243,7 +243,7 @@ Dew's World = 露の世</title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">235</span>
+        <span class="count">239</span>
         <span class="name">posts</span>
       </a>
     </div>

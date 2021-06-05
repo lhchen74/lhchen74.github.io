@@ -24,7 +24,7 @@
 <link rel="stylesheet" href="/css/app.css?v=0.2.5">
 
   
-  <meta name="keywords" content="c#" />
+  <meta name="keywords" content="csharp" />
 
 
 <link rel="canonical" href="https://lhchen74.github.io/2019/10/25/csharp-localdb/">
@@ -102,12 +102,12 @@ Dew's World = 露の世</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicm07ih54j20zk0m84qp.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipewr8iypj20zk0m8b29.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicitcxhpij20zk0m8hdt.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giph4wqtg4j20zk0m8x6p.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipey84bjtj20zk0m8hdt.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giciszlczyj20zk0m816d.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicljgocqbj20zk0m8e81.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicitzannuj20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclx6phq6j20zk0m8e36.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipexbei4hj20zk0m8npd.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicljitigmj20zk0m87fp.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeyhsblkj20zk0m81kx.jpg"></li>
         </ul>
       </div>
     </header>
@@ -161,7 +161,7 @@ Dew's World = 露の世</title>
 </blockquote>
 <p>安装 VS2015 之后，就有了 localdb2016 VS2013 大概是 2014 ,</p>
 <p>另外 localdb2014 有单独的安装包，而 2016 则没找到.VS2015 的安装包里有 LOCALDB2016 的 MSI 文件，但是安装之后却无法使用。使用命令查看版本，如下:</p>
-<img data-src="/2019/10/25/csharp-localdb/540771-20170314154618620-1044166666.jpg" class="" title="img">
+<img data-src="/2019/10/25/csharp-localdb/540771-20170314154618620-1044166666.jpg" class="">
 <blockquote>
 <p>sqllocaldb 使用</p>
 </blockquote>
@@ -170,13 +170,13 @@ Dew's World = 露の世</title>
 <p>sqllocaldb.exe v // 电脑上安装的 localdb 的所有版本</p>
 <p>sqllocaldb.exe s [实例名] // 启动这个实例</p>
 <p>sqllocaldb.exe -? // 这个命令的帮助信息</p>
-<img data-src="/2019/10/25/csharp-localdb/540771-20161010173121446-1241040689.jpg" class="" title="img">
+<img data-src="/2019/10/25/csharp-localdb/540771-20161010173121446-1241040689.jpg" class="">
 <blockquote>
 <p>使用 MSSM 连接 sqllocaldb</p>
 </blockquote>
 <p>打开 MSSM, 服务器名称那里输入 <code>(localdb)\MSSQLLocalDB</code>  , 括号里面是 localdb 这个可能是固定的，<strong>反斜杠后面就是实例的名字</strong>.</p>
 <p>然后就连接上了，可以建库建数据了</p>
-<img data-src="/2019/10/25/csharp-localdb/540771-20161010180111305-661520541.jpg" class="" title="img">
+<img data-src="/2019/10/25/csharp-localdb/540771-20161010180111305-661520541.jpg" class="">
 <blockquote>
 <p><span class="exturl" data-url="aHR0cDovL0FTUC5ORVQ=">ASP.NET</span> 程序中使用</p>
 </blockquote>
@@ -211,19 +211,19 @@ Dew's World = 露の世</title>
 <p><code>sqllocaldb h &quot;MSSQLLocalDB&quot; &quot;mylocaldb&quot;</code></p>
 <p>使用 MSSM 连接工具连接时，也要使用管理员权限打开。实例名变成 <code>(localdb)\.\mylocaldb</code>  第一个 <code>\</code>  后面的 <code>.\mylocaldb</code>  就是共享实例别名</p>
 <p>为什么上面的 MSSM 要使用管理员工具打开，因为下面的验证方式是帐号密码形式的，如果使用 WINDOWS 验证，则不需要.</p>
-<img data-src="/2019/10/25/csharp-localdb/540771-20170124111204691-1671264676.jpg" class="" title="img">
+<img data-src="/2019/10/25/csharp-localdb/540771-20170124111204691-1671264676.jpg" class="">
 <p><strong>给 LOCALDB 设定连接帐号</strong></p>
 <p>到这步之后，将 WEB 程序的连接字符串写成指定帐号和密码的这种，结果依然不能访问，还是没有权限，</p>
 <p>server=(localdb).\mylocaldb;uid=sa;pwd=123456;AttachDbFileName=D:\Data\MyDB1.mdf</p>
 <p><strong>查看数据库帐号，发现 LOCALDB 并没有 SA 这个帐号</strong>，于是加上它，并且给予 DB_OWNER</p>
-<img data-src="/2019/10/25/csharp-localdb/540771-20170124112301300-1557512723.jpg" class="" title="img">
+<img data-src="/2019/10/25/csharp-localdb/540771-20170124112301300-1557512723.jpg" class="">
 <p>最后，在浏览器中打开程序，发现连接成功，网页打开了…</p>
 <blockquote>
 <p><span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vbWlycm9ydG9tL3AvNTk0NjgxNy5odG1s">LOCALDB 安装和连接 - mirrortom - 博客园</span></p>
 </blockquote>
 
       <div class="tags">
-          <a href="/tags/c/" rel="tag"><i class="ic i-tag"></i> c#</a>
+          <a href="/tags/csharp/" rel="tag"><i class="ic i-tag"></i> csharp</a>
       </div>
   </div>
 
@@ -235,7 +235,7 @@ Dew's World = 露の世</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2020-04-18 12:40:05" itemprop="dateModified" datetime="2020-04-18T12:40:05+08:00">2020-04-18</time>
+    <time title="Modified: 2021-06-05 16:25:18" itemprop="dateModified" datetime="2021-06-05T16:25:18+08:00">2021-06-05</time>
   </span>
 </div>
 
@@ -252,20 +252,20 @@ Dew's World = 露の世</title>
     <div class="item left">
       
 
-  <a href="/2019/10/25/csharp-webservice/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipet4bz0yj20zk0m8e81.jpg" title="C#如何创建WebService">
+  <a href="/2019/10/25/csharp7/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclxfdlttj20zk0m8npd.jpg" title="30分钟掌握 C#7">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
-  <h3>C#如何创建WebService</h3>
+  <h3>30分钟掌握 C#7</h3>
   </a>
 
     </div>
     <div class="item right">
       
 
-  <a href="/2019/10/25/csharp-dotnetcore-iis/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipew28b65j20zk0m8hdt.jpg" title="在IIS上部署你的ASP.NET Core项目">
+  <a href="/2019/10/25/csharp-webservice/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclwuom7cj20zk0m8dvn.jpg" title="C#如何创建WebService">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
-  <h3>在IIS上部署你的ASP.NET Core项目</h3>
+  <h3>C#如何创建WebService</h3>
   </a>
 
     </div>
@@ -298,7 +298,7 @@ Dew's World = 露の世</title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">235</span>
+        <span class="count">239</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -377,12 +377,12 @@ Dew's World = 露の世</title>
 
   <ul id="quick">
     <li class="prev pjax">
-        <a href="/2019/10/25/csharp-webservice/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+        <a href="/2019/10/25/csharp7/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
     </li>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
     <li class="next pjax">
-        <a href="/2019/10/25/csharp-dotnetcore-iis/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+        <a href="/2019/10/25/csharp-webservice/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
     </li>
     <li class="percent"></li>
   </ul>

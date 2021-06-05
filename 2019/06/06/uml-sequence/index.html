@@ -102,12 +102,12 @@ Dew's World = 露の世</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclwrdwyaj20zk0m8are.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicis3attqj20zk0m8k7l.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipew28b65j20zk0m8hdt.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicmnywqgpj20zk0m8dwx.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclfdu6exj20zk0m87hw.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclize41wj20zk0m87gk.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeudstjqj20zk0m8k3r.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipexbei4hj20zk0m8npd.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicliierfjj20zk0m8npd.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giph4baakhj20zk0m8h5q.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicitcxhpij20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicljgocqbj20zk0m8e81.jpg"></li>
         </ul>
       </div>
     </header>
@@ -159,7 +159,7 @@ Dew's World = 露の世</title>
 <p>在程式開發的過程中，難免需要跟 IT 客戶溝通一些較為細節的流程設計，此時如果空口說白話是很難以了解彼此的想法是否在同一平面上，因此需要一些輔助圖來協助知識的傳遞；另外，在 SD 設計告一段落進入開發時，有些比較複雜的流程其實是很難用文字快速傳達給開發人員了解，此時圖的使用就會扮演很重要的角色。說了這麼多就是要來說說循序圖 (Sequence Diagram)，以及要如何繪製一張大家都明瞭的圖。</p>
 <h2 id="循序圖說明"><a class="markdownIt-Anchor" href="#循序圖說明">#</a> 循序圖說明</h2>
 <p>使用循序圖就是要清楚地傳遞各物件在時間軸上的互動情境，因此會透過以下這張圖來標示參與的所有物件有哪些，以及在各時間點彼此互動的情況，幫助閱讀的人可以快速及清晰地掌握細節。以下分別就各組成說明。</p>
-<img data-src="/2019/06/06/uml-sequence/1458229824_64272.png" class="" title="img">
+<img data-src="/2019/06/06/uml-sequence/1458229824_64272.png" class="">
 <ol>
 <li><strong>參與者 (Participants)</strong>：參與互動的物件，內文格式為  <code>名稱 : 類別名稱</code></li>
 <li><strong>生命線 (Lifeline)</strong>：表示互動發生的時間軸</li>
@@ -172,26 +172,26 @@ Dew's World = 露の世</title>
 <p>光說不練是假把戲，所以筆者使用比較貼近生活的預約掛號情境來實際演練一下。我想每個人都有預約掛號的經驗，最直接就是跟助理約時間，而助理通常都會問病患是否初診，如果初診就會要求病患填寫基本資料，並且透過醫院系統註冊新病患資料。</p>
 <p>接著就會詢問要掛哪位醫生的門診，所以就需要透過醫院系統來查詢門診是否額滿，此時就只會有兩種情況產生了，因此透過 alt 片段來區隔不同情況下所發生的變化。當滿診的情況下，助理會將病患列入候補清單，若有其他病患退掛會主動通知 (此流程於此不詳述)；當該醫生門診尚未額滿時，助理會透過醫院系統建立一張預約單，並且執行預約作業 (輸入病患及醫生門診資訊)，完成後會取得一組預約序號。最後整個流程結束後為由助理回應病患此次預約掛號的處理結果。</p>
 <p>說了這麼多我們來試想一下，如果今天是直接口述此流程，我想可能很難讓一個沒有經歷過此生活體驗的人快速掌握各別物件的互動及時序關係吧？因此若是有以下循序圖來加以輔助，搞不好直接看圖就可以掌握個 8 成細節流程，而剩下的只需要再口述引導一次就搞定了，是不是很節省彼此寶貴的時間呢？</p>
-<img data-src="/2019/06/06/uml-sequence/1458231413_20568.png" class="" title="img">
+<img data-src="/2019/06/06/uml-sequence/1458231413_20568.png" class="">
 <h2 id="片段型態"><a class="markdownIt-Anchor" href="#片段型態">#</a> 片段型態</h2>
 <p>在繪製循序圖時會經常使用到片段，且會因應各種情境存在許多種型態，以下整理比較常見的片段進行說明。</p>
 <p>alt (Alternatives) : 任何情況只有一個序列發生，是互斥的條件。</p>
 <p>ex. 工程師有工作就用電腦寫程式，不然就用電腦聽音樂</p>
-<img data-src="/2019/06/06/uml-sequence/1458294755_27527.png" class="" title="img">
+<img data-src="/2019/06/06/uml-sequence/1458294755_27527.png" class="">
 <p>par (Parallel) : 平行處理，片段中的事件可以交錯執行。</p>
 <p>ex. 工程師用電腦邊寫程式邊聽音樂，先後順序是可以交錯</p>
-<img data-src="/2019/06/06/uml-sequence/1458295145_63953.png" class="" title="img">
+<img data-src="/2019/06/06/uml-sequence/1458295145_63953.png" class="">
 <p>opt (Option) : 選擇項，不一定會發生的序列 (要符合條件)。</p>
 <p>ex. 工程師卡關的時候會查詢點部落求解答</p>
-<img data-src="/2019/06/06/uml-sequence/1458295643_97571.png" class="" title="img">
+<img data-src="/2019/06/06/uml-sequence/1458295643_97571.png" class="">
 <p>loop : 重複片段。可以設立重複的條件，若未設定最小級最大重複次數，預設表示無限制。</p>
 <p>ex. 工程師只要卡關，直接無窮盡地使用電腦進行 Google 搜尋，直到找到解決方案才會罷休。</p>
-<img data-src="/2019/06/06/uml-sequence/1458461556_06102.png" class="" title="img">
+<img data-src="/2019/06/06/uml-sequence/1458461556_06102.png" class="">
 <p>ref (Reference) : 表示參考另一個互動循序圖，屬於 Interaction Use 範疇。</p>
 <p>ex. 顧客在使用網站時都需要登入，而登入細節於此不贅述 (直接參考到登入循序圖即可)。</p>
-<img data-src="/2019/06/06/uml-sequence/1458463758_71725.png" class="" title="img">
+<img data-src="/2019/06/06/uml-sequence/1458463758_71725.png" class="">
 <p>以下是被參考到的 Login 互動循序圖，所有登入細節統一由此進行細節說明。</p>
-<img data-src="/2019/06/06/uml-sequence/1458463817_89239.png" class="" title="img">
+<img data-src="/2019/06/06/uml-sequence/1458463817_89239.png" class="">
 <h2 id="參考資訊"><a class="markdownIt-Anchor" href="#參考資訊">#</a> 參考資訊</h2>
 <p><span class="exturl" data-url="aHR0cDovL3d3dy51bWwtZGlhZ3JhbXMub3JnL3NlcXVlbmNlLWRpYWdyYW1zLWNvbWJpbmVkLWZyYWdtZW50Lmh0bWw=">http://www.uml-diagrams.org/sequence-diagrams-combined-fragment.html</span></p>
 
@@ -208,7 +208,7 @@ Dew's World = 露の世</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2021-05-26 16:14:51" itemprop="dateModified" datetime="2021-05-26T16:14:51+08:00">2021-05-26</time>
+    <time title="Modified: 2021-05-29 17:37:56" itemprop="dateModified" datetime="2021-05-29T17:37:56+08:00">2021-05-29</time>
   </span>
 </div>
 
@@ -225,20 +225,20 @@ Dew's World = 露の世</title>
     <div class="item left">
       
 
-  <a href="/2019/06/06/oracle/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giciryrr3rj20zk0m8nhk.jpg" title="oracle">
+  <a href="/2019/06/06/bat/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclxfdlttj20zk0m8npd.jpg" title="Window Bat">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> manual</span>
-  <h3>oracle</h3>
+  <h3>Window Bat</h3>
   </a>
 
     </div>
     <div class="item right">
       
 
-  <a href="/2019/06/06/bat/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicit31ffoj20zk0m8naf.jpg" title="Window Bat">
+  <a href="/2019/06/06/python-fire/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicm0fdw5cj20zk0m8hdt.jpg" title="python fire">
   <span class="type">Next Post</span>
-  <span class="category"><i class="ic i-flag"></i> manual</span>
-  <h3>Window Bat</h3>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>python fire</h3>
   </a>
 
     </div>
@@ -272,7 +272,7 @@ Dew's World = 露の世</title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">235</span>
+        <span class="count">239</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -351,12 +351,12 @@ Dew's World = 露の世</title>
 
   <ul id="quick">
     <li class="prev pjax">
-        <a href="/2019/06/06/oracle/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+        <a href="/2019/06/06/bat/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
     </li>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
     <li class="next pjax">
-        <a href="/2019/06/06/bat/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+        <a href="/2019/06/06/python-fire/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
     </li>
     <li class="percent"></li>
   </ul>

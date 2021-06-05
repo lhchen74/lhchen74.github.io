@@ -102,12 +102,12 @@ Dew's World = 露の世</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclfb3vzhj20zk0m8wny.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeyhsblkj20zk0m81kx.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicis3attqj20zk0m8k7l.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giph4baakhj20zk0m8h5q.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclhpw3lwj20zk0m8gvw.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclhtuo6nj20zk0m8ttm.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeuibk9fj20zk0m8ay2.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipesx5fdwj20zk0m81kx.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclip4jbpj20zk0m87cv.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giciukx8a7j20zk0m8aio.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclx6phq6j20zk0m8e36.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicitht3xtj20zk0m8k5v.jpg"></li>
         </ul>
       </div>
     </header>
@@ -855,7 +855,7 @@ Dew's World = 露の世</title>
 </tbody>
 </table>
 <p>如下在第一个连接中将客户的积分加 10 但是没有提交。在第二个连接中同样执行将客户的积分加 10 的操作，此时会等待第一个连接操作的 commit 或 rollback</p>
-<p><img data-src="sql-mysql/1599968017795.png" alt="1599968017795"><img data-src="sql-mysql/1599968189973.png" alt="1599968189973"></p>
+<p><img data-src="sql-mysql/1599968017795.png" alt=""><img data-src="sql-mysql/1599968189973.png" alt=""></p>
 <p>将第一个操作 commit 之后，第二个也进行 commit, 如下客户 customer_id 为 1 的积分会增加 20。</p>
 <table>
 <thead>
@@ -892,22 +892,22 @@ Dew's World = 露の世</title>
 <p><strong>Dirty Reads</strong></p>
 <p>脏读就是一个事务读取了尚未被提交的数据。事务 B 读取了事务 A 尚未提交的数据，并基于数据做了决策（每点积分给予 1% 折扣），但是之后事务 A 又进行了回滚，实际客人没有 20 积分，事务 B 却给了 20 % 折扣。解决此问题需要为事务建立隔离级别 READ COMMITTED，这样事务就只能读取已经提交的数据。</p>
 
-<p><img data-src="sql-mysql/1599979563440.png" alt="1599979563440"><img data-src="sql-mysql/1599979576117.png" alt="1599982673739"></p>
+<p><img data-src="sql-mysql/1599979563440.png" alt=""><img data-src="sql-mysql/1599979576117.png" alt=""></p>
 <p>使用隔离级别 READ COMMITTED  <code>set transaction isolation level read uncommitted;</code></p>
-<p><img data-src="sql-mysql/1599980424630.png" alt="1599980424630"><img data-src="sql-mysql/1599980437231.png" alt="1599982908635"></p>
+<p><img data-src="sql-mysql/1599980424630.png" alt=""><img data-src="sql-mysql/1599980437231.png" alt=""></p>
 <p><strong>Non-repeating Reads</strong></p>
 <p>不可重复读就是在事务过程中读取了某个数据两次，得到了不同结果。解决此问题需要为事务建立隔离级别 REPEATABLE READ, 将它与其他事务隔离，确保数据更改对事务不可见，读取的数据是可重复和一致的，即使其它事务更改了数据，我们会看到首次读取就创建的快照。</p>
 
   
 <p>使用隔离级别 REPEATABLE READ  <code>set transaction isolation level repeatable read</code></p>
-<p><img data-src="sql-mysql/1599981497342.png" alt=""><img data-src="sql-mysql/1599982382709.png" alt="1599982382709"></p>
+<p><img data-src="sql-mysql/1599981497342.png" alt=""><img data-src="sql-mysql/1599982382709.png" alt=""></p>
 <p><strong>Phantom Reads</strong></p>
 <p>幻读是指在事务执行查询之后进行了添加，更新或删除，实际读取的是添加，更新或删除之前的数据，事务执行完成之后仍然有符合条件的数据，这种突然出现的数据就像幽灵👻一样。解决此问题需要为事务建立隔离级别 SERIALIZABLE, 它能保证当有别的事务在更新数据时，我们的事务能够知晓变动，如果有其它事务修改了可能影响查询结果的数据，我们的事务必须等待它们完成。这是事务的最高隔离级别，保证最大的确定性，但是会影响性能。</p>
 
-<p><img data-src="sql-mysql/1599983805136.png" alt="1599983805136"><img data-src="sql-mysql/1599983817294.png" alt="1599984031786"></p>
+<p><img data-src="sql-mysql/1599983805136.png" alt=""><img data-src="sql-mysql/1599983817294.png" alt=""></p>
 <p>使用隔离级别 SERIALIZABLE  <code>set transaction isolation level serializable</code></p>
-<p><img data-src="sql-mysql/1599984872155.png" alt="1599984872155"><img data-src="sql-mysql/1599984896771.png" alt="1599984896771"></p>
-<p><img data-src="sql-mysql/1599985352139.png" alt="1599985352139"><img data-src="sql-mysql/1599985372026.png" alt="1599985372026"></p>
+<p><img data-src="sql-mysql/1599984872155.png" alt=""><img data-src="sql-mysql/1599984896771.png" alt=""></p>
+<p><img data-src="sql-mysql/1599985352139.png" alt=""><img data-src="sql-mysql/1599985372026.png" alt=""></p>
 <p>更高的隔离级别意味着更低的并发问题，但同时也意味着更多的锁和过呢更低的并发性能。</p>
 <p>MySQL 的默认隔离级别时 REPEATABLE READ</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> variables <span class="keyword">like</span> <span class="string">&#x27;transaction_isolation&#x27;</span>;</span><br><span class="line"></span><br><span class="line">Variable_name            <span class="keyword">Value</span></span><br><span class="line"><span class="comment">--------------           ------------</span></span><br><span class="line">transaction_isolation    REPEATABLE<span class="operator">-</span>READ</span><br><span class="line"></span><br><span class="line"><span class="keyword">set</span> session transaction isolation level serializable;</span><br><span class="line"><span class="keyword">set</span> <span class="keyword">global</span> transaction isolation level serializable;</span><br></pre></td></tr></table></figure>
@@ -1002,7 +1002,7 @@ Dew's World = 露の世</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2021-05-16 22:31:43" itemprop="dateModified" datetime="2021-05-16T22:31:43+08:00">2021-05-16</time>
+    <time title="Modified: 2021-05-28 09:11:07" itemprop="dateModified" datetime="2021-05-28T09:11:07+08:00">2021-05-28</time>
   </span>
 </div>
 
@@ -1019,7 +1019,7 @@ Dew's World = 露の世</title>
     <div class="item left">
       
 
-  <a href="/2020/09/10/rust-question/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipexoj0moj20zk0m8kgu.jpg" title="Rust Question">
+  <a href="/2020/09/10/rust-question/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipey0a334j20zk0m8qpt.jpg" title="Rust Question">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Rust Question</h3>
@@ -1029,7 +1029,7 @@ Dew's World = 露の世</title>
     <div class="item right">
       
 
-  <a href="/2020/10/25/edi-mdn/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipesx5fdwj20zk0m81kx.jpg" title="What is an AS2 MDN?">
+  <a href="/2020/10/25/edi-mdn/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipeuv80yoj20zk0m8kjl.jpg" title="What is an AS2 MDN?">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>What is an AS2 MDN?</h3>
@@ -1066,7 +1066,7 @@ Dew's World = 露の世</title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">235</span>
+        <span class="count">239</span>
         <span class="name">posts</span>
       </a>
     </div>
