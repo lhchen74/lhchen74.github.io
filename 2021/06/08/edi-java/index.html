@@ -1,0 +1,418 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="edi" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2021/06/08/edi-java/">
+
+
+
+  <title>
+Reading EDI Data in Java |
+Dew's World = 露の世</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">Reading EDI Data in Java
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2021-06-08 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2021-06-08T00:00:00+08:00">2021-06-08</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Dew's World</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicm07ih54j20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipexoj0moj20zk0m8kgu.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclgrvbd6j20zk0m8qv5.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipey84bjtj20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclxxcb6rj20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giciusoyjnj219g0u0x56.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2021/06/08/edi-java/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>转载: <span class="exturl" data-url="aHR0cHM6Ly9kem9uZS5jb20vYXJ0aWNsZXMvcmVhZGluZy1lZGktZGF0YS1pbi1qYXZh">Reading EDI Data in Java - DZone Java</span></p>
+</blockquote>
+<p>These days, most Java developers expect to deal with JSON to exchange data with other systems and businesses. However, what happens when JSON is not an option? It’s easy to forget that there are other formats for data exchange, some of which are more difficult to handle. One such format is known as EDI. EDI itself comes in several flavors — for example, X12 and EDIFACT — so code to read it may not always be “one size fits all.”</p>
+<p>On the surface, reading EDI data seems to be a simple endeavor. A developer may see a sample file and attempt to read it using the basic string parsing APIs available in his or her programming language’s standard library. Unfortunately, this may not always work and it becomes difficult to do data validation and handle the structure of the document effectively.</p>
+<h2 id="what-is-edi-an-introduction"><a class="markdownIt-Anchor" href="#what-is-edi-an-introduction">#</a> What Is EDI? An Introduction</h2>
+<p>EDI is a general term that covers several standard data formats for exchanging data between businesses (or any two parties). Two of the most commonly used standards are X12 and EDIFACT. Both of these standards represent data in a sequence of named segments (which are basically records containing individual fields). For example, a simple segment might look like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SEG*SMITH*JOHN*20190101~</span><br></pre></td></tr></table></figure>
+<p>EDI also has a structure similar to XML or JSON where segments are nested within begin/end boundaries known as loops. In the example, the X12 acknowledgment exchange is shown below; the indentation is added to emphasize the structure. However, in practice, the structure is not apparent by looking at an unformatted EDI file.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ISA*00*          *00*          *ZZ*Receiver       *ZZ*Sender         *191031*1301*^*00501*000000001*0*P*:~</span><br><span class="line">  GS*FA*ReceiverDept*SenderDept*20191031*130123*000001*X*005010X230~</span><br><span class="line">    ST*997*0001~</span><br><span class="line">      AK1*HC*000001~</span><br><span class="line">        AK2*837*0001~</span><br><span class="line">          AK3*NM1*8**8~</span><br><span class="line">          AK4*8*66*7*MI~</span><br><span class="line">        AK5*R*5~</span><br><span class="line">      AK9*R*1*1*0~</span><br><span class="line">    SE*8*0001~</span><br><span class="line">  GE*1*000001~</span><br><span class="line">IEA*1*000000001~</span><br></pre></td></tr></table></figure>
+<h2 id="reading-edi-as-a-stream-of-events"><a class="markdownIt-Anchor" href="#reading-edi-as-a-stream-of-events">#</a> Reading EDI as a Stream of Events</h2>
+<p>One option for reading EDI is to process the data as a stream of events. The <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3hsYXRlL3N0YWVkaQ==">StAEDI</span> (pronounced “steady”) Java library takes the same approach for EDI that the standard Java StAX API takes for processing XML — a stream of events. A simple program that only lists the names of the segments could look something like this:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">EDIInputFactory factory = EDIInputFactory.newFactory();</span><br><span class="line">InputStream stream = <span class="keyword">new</span> FileInputStream(<span class="string">&quot;my_edi_file.txt&quot;</span>);</span><br><span class="line">EDIStreamReader reader = factory.createEDIStreamReader(stream);</span><br><span class="line">EDIStreamEvent event;</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> (reader.hasNext()) &#123;</span><br><span class="line">  event = reader.next();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (event == EDIStreamEvent.START_SEGMENT) &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;Segment: &quot;</span> + reader.getText());</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>If you are familiar with the StAX API for XML, this should look familiar. The  <code>EDIStreamReader</code>  is used in a loop similar to an iterator or a database result set. Each call to the  <code>next</code>  method will return the next data event from the EDI file. In addition to events for the start of a segment, there are events for handling:</p>
+<ul>
+<li>Beginning and end of an interchange (  <code>ISA</code>  /  <code>IEA</code>   in X12,   <code>UNB</code>  /  <code>UNZ</code>   for EDIFACT)</li>
+<li>Beginning and end of a message group (  <code>GS</code>  /  <code>GE</code>   in X12,   <code>UNG</code>  /  <code>UNE</code>   for EDIFACT)</li>
+<li>Beginning and end of a transaction (  <code>ST</code>  /  <code>SE</code>   in X12,   <code>UNH</code>  /  <code>UNT</code>   for EDIFACT)</li>
+<li>Beginning and end of a loop (depending on configuration)</li>
+<li>Beginning and end of a segment</li>
+<li>Beginning and end of a composite element</li>
+<li>Individual data elements</li>
+<li>Segment errors</li>
+<li>Data element errors</li>
+</ul>
+<h2 id="what-about-structure-and-validation"><a class="markdownIt-Anchor" href="#what-about-structure-and-validation">#</a> What About Structure and Validation?</h2>
+<p>Processing EDI using <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3hsYXRlL3N0YWVkaQ==">StAEDI</span> will give you only basic structure and validation (interchange, group, and transaction envelop structures). If you need to handle the structure and validation of the data within a transaction (and you probably do), a <em>schema</em> must be provided. A schema is loosely based on standard XML schema syntax and provides details on the order of segments and elements in your transaction. Additionally, constraints may be placed on the length and data type of elements.</p>
+<p>An EDI schema for the example X12  <code>997</code>   transaction above could be defined using the following XML. The  <code>transaction</code>   element and its sub-elements define the structure of the transaction. Each segment references  <code>segmentType</code>   elements defined below, and each  <code>segmentType</code>   references   <code>elementType</code>  s and   <code>compositeType</code>  s as necessary. Enumerated values for  <code>identifier</code>   element types have been mostly omitted for brevity.</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">schema</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://xlate.io/EDISchema/v2&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">transaction</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">sequence</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">segment</span> <span class="attr">ref</span>=<span class="string">&quot;AK1&quot;</span> <span class="attr">minOccurs</span>=<span class="string">&quot;1&quot;</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">loop</span> <span class="attr">code</span>=<span class="string">&quot;2000&quot;</span> <span class="attr">maxOccurs</span>=<span class="string">&quot;999999&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">sequence</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">segment</span> <span class="attr">ref</span>=<span class="string">&quot;AK2&quot;</span> /&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">loop</span> <span class="attr">code</span>=<span class="string">&quot;2100&quot;</span> <span class="attr">maxOccurs</span>=<span class="string">&quot;999999&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">sequence</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">segment</span> <span class="attr">ref</span>=<span class="string">&quot;AK3&quot;</span> /&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">segment</span> <span class="attr">ref</span>=<span class="string">&quot;AK4&quot;</span> <span class="attr">maxOccurs</span>=<span class="string">&quot;99&quot;</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">sequence</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">loop</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">segment</span> <span class="attr">ref</span>=<span class="string">&quot;AK5&quot;</span> <span class="attr">minOccurs</span>=<span class="string">&quot;1&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">sequence</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">loop</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">segment</span> <span class="attr">ref</span>=<span class="string">&quot;AK9&quot;</span> <span class="attr">minOccurs</span>=<span class="string">&quot;1&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">sequence</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">transaction</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">elementType</span> <span class="attr">name</span>=<span class="string">&quot;E0002&quot;</span> <span class="attr">number</span>=<span class="string">&quot;2&quot;</span> <span class="attr">base</span>=<span class="string">&quot;numeric&quot;</span> <span class="attr">maxLength</span>=<span class="string">&quot;6&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">elementType</span> <span class="attr">name</span>=<span class="string">&quot;E0028&quot;</span> <span class="attr">number</span>=<span class="string">&quot;28&quot;</span> <span class="attr">base</span>=<span class="string">&quot;numeric&quot;</span> <span class="attr">maxLength</span>=<span class="string">&quot;9&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">elementType</span> <span class="attr">name</span>=<span class="string">&quot;E0097&quot;</span> <span class="attr">number</span>=<span class="string">&quot;97&quot;</span> <span class="attr">base</span>=<span class="string">&quot;numeric&quot;</span> <span class="attr">maxLength</span>=<span class="string">&quot;6&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">elementType</span> <span class="attr">name</span>=<span class="string">&quot;E0123&quot;</span> <span class="attr">number</span>=<span class="string">&quot;123&quot;</span> <span class="attr">base</span>=<span class="string">&quot;numeric&quot;</span> <span class="attr">maxLength</span>=<span class="string">&quot;6&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">elementType</span> <span class="attr">name</span>=<span class="string">&quot;E0143&quot;</span> <span class="attr">number</span>=<span class="string">&quot;143&quot;</span> <span class="attr">base</span>=<span class="string">&quot;identifier&quot;</span> <span class="attr">minLength</span>=<span class="string">&quot;3&quot;</span> <span class="attr">maxLength</span>=<span class="string">&quot;3&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">elementType</span> <span class="attr">name</span>=<span class="string">&quot;E0329&quot;</span> <span class="attr">number</span>=<span class="string">&quot;329&quot;</span> <span class="attr">base</span>=<span class="string">&quot;string&quot;</span> <span class="attr">minLength</span>=<span class="string">&quot;4&quot;</span> <span class="attr">maxLength</span>=<span class="string">&quot;9&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">elementType</span> <span class="attr">name</span>=<span class="string">&quot;E0447&quot;</span> <span class="attr">number</span>=<span class="string">&quot;447&quot;</span> <span class="attr">base</span>=<span class="string">&quot;string&quot;</span> <span class="attr">maxLength</span>=<span class="string">&quot;4&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">elementType</span> <span class="attr">name</span>=<span class="string">&quot;E0479&quot;</span> <span class="attr">number</span>=<span class="string">&quot;479&quot;</span> <span class="attr">base</span>=<span class="string">&quot;identifier&quot;</span> <span class="attr">minLength</span>=<span class="string">&quot;2&quot;</span> <span class="attr">maxLength</span>=<span class="string">&quot;2&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">elementType</span> <span class="attr">name</span>=<span class="string">&quot;E0480&quot;</span> <span class="attr">number</span>=<span class="string">&quot;480&quot;</span> <span class="attr">base</span>=<span class="string">&quot;string&quot;</span> <span class="attr">maxLength</span>=<span class="string">&quot;12&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">elementType</span> <span class="attr">name</span>=<span class="string">&quot;E0715&quot;</span> <span class="attr">number</span>=<span class="string">&quot;715&quot;</span> <span class="attr">base</span>=<span class="string">&quot;identifier&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">enumeration</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">value</span>&gt;</span>A<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">value</span>&gt;</span>E<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">value</span>&gt;</span>M<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">value</span>&gt;</span>P<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">value</span>&gt;</span>R<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">value</span>&gt;</span>W<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">value</span>&gt;</span>X<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">enumeration</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">elementType</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">elementType</span> <span class="attr">name</span>=<span class="string">&quot;E0716&quot;</span> <span class="attr">number</span>=<span class="string">&quot;716&quot;</span> <span class="attr">base</span>=<span class="string">&quot;identifier&quot;</span> <span class="attr">maxLength</span>=<span class="string">&quot;3&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">elementType</span> <span class="attr">name</span>=<span class="string">&quot;E0717&quot;</span> <span class="attr">number</span>=<span class="string">&quot;717&quot;</span> <span class="attr">base</span>=<span class="string">&quot;identifier&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">enumeration</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">value</span>&gt;</span>A<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">value</span>&gt;</span>E<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">value</span>&gt;</span>M<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">value</span>&gt;</span>R<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">value</span>&gt;</span>W<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">value</span>&gt;</span>X<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">enumeration</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">elementType</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">elementType</span> <span class="attr">name</span>=<span class="string">&quot;E0718&quot;</span> <span class="attr">number</span>=<span class="string">&quot;718&quot;</span> <span class="attr">base</span>=<span class="string">&quot;identifier&quot;</span> <span class="attr">maxLength</span>=<span class="string">&quot;3&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">elementType</span> <span class="attr">name</span>=<span class="string">&quot;E0719&quot;</span> <span class="attr">number</span>=<span class="string">&quot;719&quot;</span> <span class="attr">base</span>=<span class="string">&quot;numeric&quot;</span> <span class="attr">maxLength</span>=<span class="string">&quot;10&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">elementType</span> <span class="attr">name</span>=<span class="string">&quot;E0720&quot;</span> <span class="attr">number</span>=<span class="string">&quot;720&quot;</span> <span class="attr">base</span>=<span class="string">&quot;identifier&quot;</span> <span class="attr">maxLength</span>=<span class="string">&quot;3&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">elementType</span> <span class="attr">name</span>=<span class="string">&quot;E0721&quot;</span> <span class="attr">number</span>=<span class="string">&quot;721&quot;</span> <span class="attr">base</span>=<span class="string">&quot;string&quot;</span> <span class="attr">minLength</span>=<span class="string">&quot;2&quot;</span> <span class="attr">maxLength</span>=<span class="string">&quot;3&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">elementType</span> <span class="attr">name</span>=<span class="string">&quot;E0722&quot;</span> <span class="attr">number</span>=<span class="string">&quot;722&quot;</span> <span class="attr">base</span>=<span class="string">&quot;numeric&quot;</span> <span class="attr">maxLength</span>=<span class="string">&quot;2&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">elementType</span> <span class="attr">name</span>=<span class="string">&quot;E0723&quot;</span> <span class="attr">number</span>=<span class="string">&quot;723&quot;</span> <span class="attr">base</span>=<span class="string">&quot;identifier&quot;</span> <span class="attr">maxLength</span>=<span class="string">&quot;3&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">elementType</span> <span class="attr">name</span>=<span class="string">&quot;E0724&quot;</span> <span class="attr">number</span>=<span class="string">&quot;724&quot;</span> <span class="attr">base</span>=<span class="string">&quot;string&quot;</span> <span class="attr">maxLength</span>=<span class="string">&quot;99&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">elementType</span> <span class="attr">name</span>=<span class="string">&quot;E0725&quot;</span> <span class="attr">number</span>=<span class="string">&quot;725&quot;</span> <span class="attr">base</span>=<span class="string">&quot;numeric&quot;</span> <span class="attr">maxLength</span>=<span class="string">&quot;4&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">elementType</span> <span class="attr">name</span>=<span class="string">&quot;E1528&quot;</span> <span class="attr">number</span>=<span class="string">&quot;1528&quot;</span> <span class="attr">base</span>=<span class="string">&quot;numeric&quot;</span> <span class="attr">maxLength</span>=<span class="string">&quot;2&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">elementType</span> <span class="attr">name</span>=<span class="string">&quot;E1686&quot;</span> <span class="attr">number</span>=<span class="string">&quot;1686&quot;</span> <span class="attr">base</span>=<span class="string">&quot;numeric&quot;</span> <span class="attr">maxLength</span>=<span class="string">&quot;4&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">elementType</span> <span class="attr">name</span>=<span class="string">&quot;E1705&quot;</span> <span class="attr">number</span>=<span class="string">&quot;1705&quot;</span> <span class="attr">base</span>=<span class="string">&quot;string&quot;</span> <span class="attr">maxLength</span>=<span class="string">&quot;35&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">compositeType</span> <span class="attr">name</span>=<span class="string">&quot;C030&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">sequence</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">element</span> <span class="attr">ref</span>=<span class="string">&quot;E0722&quot;</span> <span class="attr">minOccurs</span>=<span class="string">&quot;1&quot;</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">element</span> <span class="attr">ref</span>=<span class="string">&quot;E1528&quot;</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">element</span> <span class="attr">ref</span>=<span class="string">&quot;E1686&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">sequence</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">compositeType</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">segmentType</span> <span class="attr">name</span>=<span class="string">&quot;AK1&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">sequence</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">element</span> <span class="attr">ref</span>=<span class="string">&quot;E0479&quot;</span> <span class="attr">minOccurs</span>=<span class="string">&quot;1&quot;</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">element</span> <span class="attr">ref</span>=<span class="string">&quot;E0028&quot;</span> <span class="attr">minOccurs</span>=<span class="string">&quot;1&quot;</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">element</span> <span class="attr">ref</span>=<span class="string">&quot;E0480&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">sequence</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">segmentType</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">segmentType</span> <span class="attr">name</span>=<span class="string">&quot;AK2&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">sequence</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">element</span> <span class="attr">ref</span>=<span class="string">&quot;E0143&quot;</span> <span class="attr">minOccurs</span>=<span class="string">&quot;1&quot;</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">element</span> <span class="attr">ref</span>=<span class="string">&quot;E0329&quot;</span> <span class="attr">minOccurs</span>=<span class="string">&quot;1&quot;</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">element</span> <span class="attr">ref</span>=<span class="string">&quot;E1705&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">sequence</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">segmentType</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">segmentType</span> <span class="attr">name</span>=<span class="string">&quot;AK3&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">sequence</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">element</span> <span class="attr">ref</span>=<span class="string">&quot;E0721&quot;</span> <span class="attr">minOccurs</span>=<span class="string">&quot;1&quot;</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">element</span> <span class="attr">ref</span>=<span class="string">&quot;E0719&quot;</span> <span class="attr">minOccurs</span>=<span class="string">&quot;1&quot;</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">element</span> <span class="attr">ref</span>=<span class="string">&quot;E0447&quot;</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">element</span> <span class="attr">ref</span>=<span class="string">&quot;E0720&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">sequence</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">segmentType</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">segmentType</span> <span class="attr">name</span>=<span class="string">&quot;AK4&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">sequence</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">composite</span> <span class="attr">ref</span>=<span class="string">&quot;C030&quot;</span> <span class="attr">minOccurs</span>=<span class="string">&quot;1&quot;</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">element</span> <span class="attr">ref</span>=<span class="string">&quot;E0725&quot;</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">element</span> <span class="attr">ref</span>=<span class="string">&quot;E0723&quot;</span> <span class="attr">minOccurs</span>=<span class="string">&quot;1&quot;</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">element</span> <span class="attr">ref</span>=<span class="string">&quot;E0724&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">sequence</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">segmentType</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">segmentType</span> <span class="attr">name</span>=<span class="string">&quot;AK5&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">sequence</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">element</span> <span class="attr">ref</span>=<span class="string">&quot;E0717&quot;</span> <span class="attr">minOccurs</span>=<span class="string">&quot;1&quot;</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">element</span> <span class="attr">ref</span>=<span class="string">&quot;E0718&quot;</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">element</span> <span class="attr">ref</span>=<span class="string">&quot;E0718&quot;</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">element</span> <span class="attr">ref</span>=<span class="string">&quot;E0718&quot;</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">element</span> <span class="attr">ref</span>=<span class="string">&quot;E0718&quot;</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">element</span> <span class="attr">ref</span>=<span class="string">&quot;E0718&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">sequence</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">segmentType</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">segmentType</span> <span class="attr">name</span>=<span class="string">&quot;AK9&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">sequence</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">element</span> <span class="attr">ref</span>=<span class="string">&quot;E0715&quot;</span> <span class="attr">minOccurs</span>=<span class="string">&quot;1&quot;</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">element</span> <span class="attr">ref</span>=<span class="string">&quot;E0097&quot;</span> <span class="attr">minOccurs</span>=<span class="string">&quot;1&quot;</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">element</span> <span class="attr">ref</span>=<span class="string">&quot;E0123&quot;</span> <span class="attr">minOccurs</span>=<span class="string">&quot;1&quot;</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">element</span> <span class="attr">ref</span>=<span class="string">&quot;E0002&quot;</span> <span class="attr">minOccurs</span>=<span class="string">&quot;1&quot;</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">element</span> <span class="attr">ref</span>=<span class="string">&quot;E0716&quot;</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">element</span> <span class="attr">ref</span>=<span class="string">&quot;E0716&quot;</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">element</span> <span class="attr">ref</span>=<span class="string">&quot;E0716&quot;</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">element</span> <span class="attr">ref</span>=<span class="string">&quot;E0716&quot;</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">element</span> <span class="attr">ref</span>=<span class="string">&quot;E0716&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">sequence</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">segmentType</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">schema</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Using a schema while parsing an EDI file is straight-forward. As the program iterates over the event stream, the application code must provide a Schema object at the start of a transaction. <strong>(before end of segment)</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">EDIInputFactory factory = EDIInputFactory.newFactory();</span><br><span class="line">InputStream stream = <span class="keyword">new</span> FileInputStream(<span class="string">&quot;my_edi_file.txt&quot;</span>);</span><br><span class="line">EDIStreamReader reader = factory.createEDIStreamReader(stream);</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> (reader.hasNext()) &#123;</span><br><span class="line">  EDIStreamEvent event = reader.next();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (event == EDIStreamEvent.START_TRANSACTION) &#123;</span><br><span class="line">    SchemaFactory schemaFactory = SchemaFactory.newFactory();</span><br><span class="line">    Schema txSchema = schemaFactory.createSchema(<span class="keyword">new</span> FileInputStream(<span class="string">&quot;my_edi_schema.xml&quot;</span>));</span><br><span class="line">    reader.setTransactionSchema(txSchema);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// Do something else with the event</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="summary"><a class="markdownIt-Anchor" href="#summary">#</a> Summary</h2>
+<p>Are you writing custom code to process EDI data in Java? Have you tried <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3hsYXRlL3N0YWVkaQ==">StAEDI</span> and encountered an issue? Give your feedback in the comments, or open an issue on the <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3hsYXRlL3N0YWVkaQ==">StAEDI</span> GitHub repository.</p>
+
+      <div class="tags">
+          <a href="/tags/edi/" rel="tag"><i class="ic i-tag"></i> edi</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2021-06-08 09:28:21" itemprop="dateModified" datetime="2021-06-08T09:28:21+08:00">2021-06-08</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2021/06/08/xml-namespace/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclh3brzpj20zk0m8ann.jpg" title="XML Namespaces">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>XML Namespaces</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2021/06/25/oracle-read-file/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giciusoyjnj219g0u0x56.jpg" title="UTL_FILE - Random Access of Files">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>UTL_FILE - Random Access of Files</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#what-is-edi-an-introduction"><span class="toc-number">1.</span> <span class="toc-text"> What Is EDI? An Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#reading-edi-as-a-stream-of-events"><span class="toc-number">2.</span> <span class="toc-text"> Reading EDI as a Stream of Events</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#what-about-structure-and-validation"><span class="toc-number">3.</span> <span class="toc-text"> What About Structure and Validation?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#summary"><span class="toc-number">4.</span> <span class="toc-text"> Summary</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">242</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">1</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">40</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item twitter" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;twitter.com&#x2F;yourname"><i class="ic i-twitter"></i></span>
+      <span class="exturl item zhihu" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3Blb3BsZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;yourname"><i class="ic i-zhihu"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLyMvdXNlci9ob21lP2lkPXlvdXJpZA==" title="https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;yourid"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item weibo" data-url="aHR0cHM6Ly93ZWliby5jb20veW91cm5hbWU=" title="https:&#x2F;&#x2F;weibo.com&#x2F;yourname"><i class="ic i-weibo"></i></span>
+      <span class="exturl item about" data-url="aHR0cHM6Ly9hYm91dC5tZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;about.me&#x2F;yourname"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/links/" rel="section"><i class="ic i-magic"></i>links</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2021/06/08/xml-namespace/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2021/06/25/oracle-read-file/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2021</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ Dew's World</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2021/06/08/edi-java/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
