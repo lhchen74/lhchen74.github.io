@@ -102,12 +102,12 @@ Dew's World = 露の世</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipeu1usa7j20zk0m8b29.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipexw3o58j20zk0m8e81.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclgi503lj20zk0m8hdt.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipeun65urj20zk0m81ii.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipeyvx1d4j20zk0m8hdt.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipew8gmvyj20zk0m87wh.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclffsa1cj20zk0m811l.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giciuja1j1j20zk0m8kjl.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicit4jrvuj20zk0m8785.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipetv6p75j20zk0m8x6p.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipevarprfj20zk0m8npd.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giciszlczyj20zk0m816d.jpg"></li>
         </ul>
       </div>
     </header>
@@ -151,7 +151,7 @@ Dew's World = 露の世</title>
   <div class="body md" itemprop="articleBody">
     
 
-    <h3 id="namespace"><a class="markdownIt-Anchor" href="#namespace">#</a> namespace</h3>
+    <h2 id="namespace"><a class="markdownIt-Anchor" href="#namespace">#</a> namespace</h2>
 <p>1. 使用 xmltable 解析 xml, 如果 xml 包含 namespace, 会解析不到数据</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> item.<span class="operator">*</span></span><br><span class="line">  <span class="keyword">from</span> som_edi_customer_source ses,</span><br><span class="line">      xmltable(</span><br><span class="line">        <span class="string">&#x27;/Pip3A4PurchaseOrderRequest/PurchaseOrder/ProductLineItem&#x27;</span></span><br><span class="line">        passing xmltype(ses.memo)  <span class="comment">--memo type is clob, if memo is xmltype can direct use passing ses.memo</span></span><br><span class="line">        columns</span><br><span class="line">          cust_name varchar2(<span class="number">1000</span>) path<span class="string">&#x27;CustomerInformation/businessName&#x27;</span>,</span><br><span class="line">          cust_po_number varchar2(<span class="number">1000</span>) path <span class="string">&#x27;PartnerBusiness/BusinessIdentifier&#x27;</span></span><br><span class="line">      ) item</span><br><span class="line"><span class="keyword">where</span> ses.seq_id <span class="operator">=</span> p_seq_id;</span><br></pre></td></tr></table></figure>
 <p>解决方法 1：添加 xmlnamespace</p>
@@ -164,6 +164,22 @@ Dew's World = 露の世</title>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> (</span><br><span class="line">    xmlelement(&quot;Pip3A4PurchaseOrderConfirmation&quot;,</span><br><span class="line">      <span class="comment">--Add default namespace</span></span><br><span class="line">      xmlattributes(<span class="string">&#x27;microsoft.com&#x27;</span> <span class="keyword">as</span> &quot;xmlns:prx&quot;),</span><br><span class="line">      xmlelement(&quot;PurchaseOrder&quot;,</span><br><span class="line">        (</span><br><span class="line">          <span class="keyword">select</span> (</span><br><span class="line">            xmlelement(&quot;ProductLineItem&quot;,</span><br><span class="line">              xmlelement(&quot;buyerLineItem&quot;,</span><br><span class="line">                xmlelement(&quot;LineNumber&quot;, sel.line_number)</span><br><span class="line">              )</span><br><span class="line">              xmlelement(&quot;OrderQuantity&quot;,</span><br><span class="line">                xmlelement(&quot;requestedQuantity&quot;,</span><br><span class="line">                  xmlelement(&quot;ProductQuantity&quot;, order_line.ordered_quantity)</span><br><span class="line">                )</span><br><span class="line">              )</span><br><span class="line">            )</span><br><span class="line">          )</span><br><span class="line">          <span class="keyword">from</span> oe_order_lines_all order_line,</span><br><span class="line">                som_edi_customer_3a4_line sel</span><br><span class="line">          <span class="keyword">where</span> order_line.header_id <span class="operator">=</span> order_header.header_id</span><br><span class="line">            <span class="keyword">and</span> order_line.customer_line_number <span class="operator">=</span> sel.po_line_number</span><br><span class="line">            <span class="keyword">and</span> sel.header_id <span class="operator">=</span> seh.header_id</span><br><span class="line">        ) <span class="keyword">as</span> &quot;line&quot;</span><br><span class="line">      ),</span><br><span class="line">      xmlelement(&quot;requestingDocumentDateTime&quot;,</span><br><span class="line">        xmlelement(&quot;DateTimeStamp&quot;, som_edi_customer_pkg.get_customer_format_date(sysdate))</span><br><span class="line">      )</span><br><span class="line">    )</span><br><span class="line">  ).getClobVal() <span class="keyword">as</span> &quot;header&quot; <span class="keyword">into</span> l_clob_xml</span><br><span class="line"><span class="keyword">from</span> oe_order_headers_all          order_header,</span><br><span class="line">     som_edi_customer_3a4_header   seh,</span><br><span class="line">     som_edi_sercomm_information   sei</span><br><span class="line"><span class="keyword">where</span> <span class="number">1</span> <span class="operator">=</span> <span class="number">1</span></span><br><span class="line">  <span class="keyword">and</span> order_header.cust_po_number <span class="operator">=</span> seh.po_number</span><br><span class="line">  <span class="keyword">and</span> sei.customer_name <span class="operator">=</span> <span class="string">&#x27;customer&#x27;</span></span><br><span class="line">  <span class="keyword">and</span> seh.po_number <span class="operator">=</span> p_customer_po;</span><br></pre></td></tr></table></figure>
 <p>输出的 xml root element 如下</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Pip3A4PurchaseOrderConfirmation</span> <span class="attr">xmlns:prx</span>=<span class="string">&quot;microsoft.com&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Pip3A4PurchaseOrderConfirmation</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="xmltype"><a class="markdownIt-Anchor" href="#xmltype">#</a> xmltype</h2>
+<blockquote>
+<p><span class="exturl" data-url="aHR0cHM6Ly9jeC1vcmFjbGUucmVhZHRoZWRvY3MuaW8vZW4vbGF0ZXN0L3VzZXJfZ3VpZGUveG1sX2RhdGFfdHlwZS5odG1s">Working with XMLTYPE — cx_Oracle 8.3.0-dev documentation</span></p>
+</blockquote>
+<p>Oracle XMLType columns are fetched as strings by default. This is currently limited to the maximum length of a  <code>VARCHAR2</code>  column. To return longer XML values, they must be queried as LOB values instead.</p>
+<p>The examples below demonstrate using XMLType data with cx_Oracle. The following table will be used in these examples:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> xml_table (</span><br><span class="line">    id NUMBER,</span><br><span class="line">    xml_data SYS.XMLTYPE</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>Inserting into the table can be done by simply binding a string as shown:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">xml_data = <span class="string">&quot;&quot;&quot;&lt;?xml version=&quot;1.0&quot;?&gt;</span></span><br><span class="line"><span class="string">        &lt;customer&gt;</span></span><br><span class="line"><span class="string">            &lt;name&gt;John Smith&lt;/name&gt;</span></span><br><span class="line"><span class="string">            &lt;Age&gt;43&lt;/Age&gt;</span></span><br><span class="line"><span class="string">            &lt;Designation&gt;Professor&lt;/Designation&gt;</span></span><br><span class="line"><span class="string">            &lt;Subject&gt;Mathematics&lt;/Subject&gt;</span></span><br><span class="line"><span class="string">        &lt;/customer&gt;&quot;&quot;&quot;</span></span><br><span class="line">cursor.execute(<span class="string">&quot;insert into xml_table values (:id, :xml)&quot;</span>,</span><br><span class="line">               <span class="built_in">id</span>=<span class="number">1</span>, xml=xml_data)</span><br></pre></td></tr></table></figure>
+<p>This approach works with XML strings up to 1 GB in size. For longer strings, a temporary CLOB must be created using <a target="_blank" rel="noopener" href="https://cx-oracle.readthedocs.io/en/latest/api_manual/connection.html#Connection.createlob"> <code>Connection.createlob()</code> </a> and bound as shown:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">clob = connection.createlob(cx_Oracle.DB_TYPE_CLOB)</span><br><span class="line">clob.write(xml_data)</span><br><span class="line">cursor.execute(<span class="string">&quot;insert into xml_table values (:id, sys.xmltype(:xml))&quot;</span>,</span><br><span class="line">               <span class="built_in">id</span>=<span class="number">2</span>, xml=clob)</span><br></pre></td></tr></table></figure>
+<p>Fetching XML data can be done simply for values that are shorter than the length of a VARCHAR2 column, as shown:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cursor.execute(<span class="string">&quot;select xml_data from xml_table where id = :id&quot;</span>, <span class="built_in">id</span>=<span class="number">1</span>)</span><br><span class="line">xml_data, = cursor.fetchone()</span><br><span class="line">print(xml_data)          <span class="comment"># will print the string that was originally stored</span></span><br></pre></td></tr></table></figure>
+<p>For values that exceed the length of a VARCHAR2 column, a CLOB must be returned instead by using the function  <code>XMLTYPE.GETCLOBVAL()</code>  as shown:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cursor.execute(<span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        select xmltype.getclobval(xml_data)</span></span><br><span class="line"><span class="string">        from xml_table</span></span><br><span class="line"><span class="string">        where id = :id&quot;&quot;&quot;</span>, <span class="built_in">id</span>=<span class="number">1</span>)</span><br><span class="line">clob, = cursor.fetchone()</span><br><span class="line">print(clob.read())</span><br></pre></td></tr></table></figure>
+<p>The LOB that is returned can be streamed or a string can be returned instead of a CLOB. See <span class="exturl" data-url="aHR0cHM6Ly9jeC1vcmFjbGUucmVhZHRoZWRvY3MuaW8vZW4vbGF0ZXN0L3VzZXJfZ3VpZGUvbG9iX2RhdGEuaHRtbCNsb2JkYXRh">Using CLOB and BLOB Data</span> for more information about processing LOBs.</p>
 
       <div class="tags">
           <a href="/tags/db/" rel="tag"><i class="ic i-tag"></i> db</a>
@@ -178,7 +194,7 @@ Dew's World = 露の世</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2020-08-11 19:54:09" itemprop="dateModified" datetime="2020-08-11T19:54:09+08:00">2020-08-11</time>
+    <time title="Modified: 2021-06-12 16:31:16" itemprop="dateModified" datetime="2021-06-12T16:31:16+08:00">2021-06-12</time>
   </span>
 </div>
 
@@ -195,20 +211,20 @@ Dew's World = 露の世</title>
     <div class="item left">
       
 
-  <a href="/2020/04/30/oracle-update/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipewkhf1zj20zk0m81kx.jpg" title="Update a table with data from another table">
+  <a href="/2020/04/22/css-bfc/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giciuja1j1j20zk0m8kjl.jpg" title="css bfc">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
-  <h3>Update a table with data from another table</h3>
+  <h3>css bfc</h3>
   </a>
 
     </div>
     <div class="item right">
       
 
-  <a href="/2020/05/23/excerpt-no-longer-man/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipetv6p75j20zk0m8x6p.jpg" title="人间失格">
+  <a href="/2020/04/30/oracle-update/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipeu1usa7j20zk0m8b29.jpg" title="Update a table with data from another table">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
-  <h3>人间失格</h3>
+  <h3>Update a table with data from another table</h3>
   </a>
 
     </div>
@@ -227,7 +243,7 @@ Dew's World = 露の世</title>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="Contents">
-          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#namespace"><span class="toc-number">1.</span> <span class="toc-text"> namespace</span></a></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#namespace"><span class="toc-number">1.</span> <span class="toc-text"> namespace</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#xmltype"><span class="toc-number">2.</span> <span class="toc-text"> xmltype</span></a></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
       </div>
@@ -242,7 +258,7 @@ Dew's World = 露の世</title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">242</span>
+        <span class="count">247</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -254,7 +270,7 @@ Dew's World = 露の世</title>
     </div>
     <div class="item tags">
       <a href="/tags/">
-        <span class="count">40</span>
+        <span class="count">41</span>
         <span class="name">tags</span>
       </a>
     </div>
@@ -321,12 +337,12 @@ Dew's World = 露の世</title>
 
   <ul id="quick">
     <li class="prev pjax">
-        <a href="/2020/04/30/oracle-update/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+        <a href="/2020/04/22/css-bfc/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
     </li>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
     <li class="next pjax">
-        <a href="/2020/05/23/excerpt-no-longer-man/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+        <a href="/2020/04/30/oracle-update/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
     </li>
     <li class="percent"></li>
   </ul>
