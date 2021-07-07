@@ -1,4 +1,4 @@
-var CONFIG = {"version":"0.2.5","hostname":"https://lhchen74.github.io","root":"/","statics":"/","favicon":{"normal":"images/favicon.ico","hidden":"images/failure.ico"},"darkmode":false,"auto_scroll":true,"js":{"valine":"gh/amehime/MiniValine@4.2.2-beta10/dist/MiniValine.min.js","chart":"npm/frappe-charts@1.5.0/dist/frappe-charts.min.iife.min.js","copy_tex":"npm/katex@0.12.0/dist/contrib/copy-tex.min.js","fancybox":"combine/npm/jquery@3.5.1/dist/jquery.min.js,npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js,npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"},"css":{"valine":"css/comment.css","katex":"npm/katex@0.12.0/dist/katex.min.css","mermaid":"css/mermaid.css","fancybox":"combine/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"},"loader":{"start":true,"switch":false},"search":null,"valine":{"appId":null,"appKey":null,"placeholder":"ヽ(○´∀`)ﾉ♪","avatar":"mp","pageSize":10,"lang":"en","visitor":true,"NoRecordIP":false,"serverURLs":null,"powerMode":true,"tagMeta":{"visitor":"新朋友","master":"主人","friend":"小伙伴","investor":"金主粑粑"},"tagColor":{"master":"var(--color-orange)","friend":"var(--color-aqua)","investor":"var(--color-pink)"},"tagMember":{"master":null,"friend":null,"investor":null}},"quicklink":{"timeout":3000,"priority":true},"fireworks":["rgba(255,182,185,.9)","rgba(250,227,217,.9)","rgba(187,222,214,.9)","rgba(138,198,209,.9)"]};const getRndInteger = function (min, max) {
+var CONFIG = {"version":"0.2.5","hostname":"https://lhchen74.github.io","root":"/","statics":"/","favicon":{"normal":"images/favicon.ico","hidden":"images/failure.ico"},"darkmode":false,"auto_scroll":true,"js":{"valine":"gh/amehime/MiniValine@4.2.2-beta10/dist/MiniValine.min.js","chart":"npm/frappe-charts@1.5.0/dist/frappe-charts.min.iife.min.js","copy_tex":"npm/katex@0.12.0/dist/contrib/copy-tex.min.js","fancybox":"combine/npm/jquery@3.5.1/dist/jquery.min.js,npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js,npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"},"css":{"valine":"css/comment.css","katex":"npm/katex@0.12.0/dist/katex.min.css","mermaid":"css/mermaid.css","fancybox":"combine/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"},"loader":{"start":true,"switch":false},"search":null,"quicklink":{"timeout":3000,"priority":true},"audio":[{"title":"纯音乐","list":["https://music.163.com/#/playlist?id=2153740332"]},{"title":"华语","list":["https://music.163.com/#/playlist?id=3082898405"]},{"title":"英语","list":["https://music.163.com/#/playlist?id=2300591867"]},{"title":"日语","list":["https://music.163.com/#/playlist?id=2156138863"]},{"title":"动漫","list":["https://music.163.com/#/playlist?id=2096019982"]}],"fireworks":["rgba(255,182,185,.9)","rgba(250,227,217,.9)","rgba(187,222,214,.9)","rgba(138,198,209,.9)"]};const getRndInteger = function (min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
@@ -2171,8 +2171,8 @@ const algoliaSearch = function (pjax) {
     }
   });
 }
-const domInit = function() {
-  $.each('.overview .menu > .item', function(el) {
+const domInit = function () {
+  $.each('.overview .menu > .item', function (el) {
     siteNav.child('.menu').appendChild(el.cloneNode(true));
   })
 
@@ -2183,7 +2183,7 @@ const domInit = function() {
   quickBtn.child('.down').addEventListener('click', goToBottomHandle);
   quickBtn.child('.up').addEventListener('click', backToTopHandle);
 
-  if(!toolBtn) {
+  if (!toolBtn) {
     toolBtn = siteHeader.createChild('div', {
       id: 'tool',
       innerHTML: '<div class="item player"></div><div class="item contents"><i class="ic i-list-ol"></i></div><div class="item chat"><i class="ic i-comments"></i></div><div class="item back-to-top"><i class="ic i-arrow-up"></i><span>0%</span></div>'
@@ -2200,7 +2200,7 @@ const domInit = function() {
   showContents.addEventListener('click', sideBarToggleHandle);
 
   mediaPlayer(toolPlayer)
-  $('main').addEventListener('click', function() {
+  $('main').addEventListener('click', function () {
     toolPlayer.player.mini()
   })
 }
@@ -2208,11 +2208,11 @@ const domInit = function() {
 const pjaxReload = function () {
   pagePosition()
 
-  if(sideBar.hasClass('on')) {
+  if (sideBar.hasClass('on')) {
     transition(sideBar, function () {
-        sideBar.removeClass('on');
-        menuToggle.removeClass('close');
-      }); // 'transition.slideRightOut'
+      sideBar.removeClass('on');
+      menuToggle.removeClass('close');
+    }); // 'transition.slideRightOut'
   }
 
   $('#main').innerHTML = ''
@@ -2228,23 +2228,23 @@ const siteRefresh = function (reload) {
   vendorJs('copy_tex');
   vendorCss('mermaid');
   vendorJs('chart');
-  vendorJs('valine', function() {
-    var options = Object.assign({}, CONFIG.valine);
-    options = Object.assign(options, LOCAL.valine||{});
-    options.el = '#comments';
-    options.pathname = LOCAL.path;
-    options.pjax = pjax;
-    options.lazyload = lazyload;
+  // vendorJs('valine', function () {
+  //   var options = Object.assign({}, CONFIG.valine);
+  //   options = Object.assign(options, LOCAL.valine || {});
+  //   options.el = '#comments';
+  //   options.pathname = LOCAL.path;
+  //   options.pjax = pjax;
+  //   options.lazyload = lazyload;
 
-    new MiniValine(options);
+  //   new MiniValine(options);
 
-    setTimeout(function(){
-      positionInit(1);
-      postFancybox('.v');
-    }, 1000);
-  }, window.MiniValine);
+  //   setTimeout(function () {
+  //     positionInit(1);
+  //     postFancybox('.v');
+  //   }, 1000);
+  // }, window.MiniValine);
 
-  if(!reload) {
+  if (!reload) {
     $.each('script[data-pjax]', pjaxScript);
   }
 
@@ -2265,7 +2265,7 @@ const siteRefresh = function (reload) {
 
   Loader.hide()
 
-  setTimeout(function(){
+  setTimeout(function () {
     positionInit()
   }, 500);
 
@@ -2279,15 +2279,15 @@ const siteInit = function () {
   domInit()
 
   pjax = new Pjax({
-            selectors: [
-              'head title',
-              '.languages',
-              '.pjax',
-              'script[data-config]'
-            ],
-            analytics: false,
-            cacheBust: false
-          })
+    selectors: [
+      'head title',
+      '.languages',
+      '.pjax',
+      'script[data-config]'
+    ],
+    analytics: false,
+    cacheBust: false
+  })
 
   CONFIG.quicklink.ignores = LOCAL.ignores
   quicklink.listen(CONFIG.quicklink)
@@ -2305,7 +2305,7 @@ const siteInit = function () {
 
   window.addEventListener('pjax:success', siteRefresh)
 
-  window.addEventListener('beforeunload', function() {
+  window.addEventListener('beforeunload', function () {
     pagePosition()
   })
 
@@ -2314,7 +2314,7 @@ const siteInit = function () {
 
 window.addEventListener('DOMContentLoaded', siteInit);
 
-console.log('%c Theme.Shoka v' + CONFIG.version + ' %c https://shoka.lostyu.me/ ', 'color: white; background: #e9546b; padding:5px 0;', 'padding:4px;border:1px solid #e9546b;')
+// console.log('%c Theme.Shoka v' + CONFIG.version + ' %c https://shoka.lostyu.me/ ', 'color: white; background: #e9546b; padding:5px 0;', 'padding:4px;border:1px solid #e9546b;')
 var canvasEl = document.createElement('canvas');
 canvasEl.style.cssText = 'position:fixed;top:0;left:0;pointer-events:none;z-index:9999999';
 document.body.appendChild(canvasEl);
