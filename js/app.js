@@ -1815,7 +1815,8 @@ const postBeauty = function () {
     copyBtn.addEventListener('click', function (event) {
       var target = event.currentTarget;
       var comma = '', code = '';
-      code_container.find('pre').forEach(function (line) {
+      // 'pre' to '.code pre' - babb modify 2021/07/14
+      code_container.find('.code pre').forEach(function (line) {
         code += comma + line.innerText;
         comma = '\n'
       })
