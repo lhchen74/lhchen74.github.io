@@ -1,0 +1,440 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="我知这世界本如露水般短暂 然而 然而" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="我知这世界本如露水般短暂 然而 然而" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="我知这世界本如露水般短暂 然而 然而" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="python" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2021/07/26/python-watchdog/">
+
+
+
+  <title>
+How to Create a Watchdog in Python |
+露の世 = 我知这世界本如露水般短暂 然而 然而</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">How to Create a Watchdog in Python
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2021-07-26 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2021-07-26T00:00:00+08:00">2021-07-26</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">露の世</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclxxcb6rj20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giph4wqtg4j20zk0m8x6p.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giciryrr3rj20zk0m8nhk.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicit31ffoj20zk0m8naf.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicitzannuj20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclgrvbd6j20zk0m8qv5.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2021/07/26/python-watchdog/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="我知这世界本如露水般短暂 然而 然而">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>转载：<span class="exturl" data-url="aHR0cHM6Ly93d3cudGhlcHl0aG9uY29kZS5jb20vYXJ0aWNsZS9jcmVhdGUtYS13YXRjaGRvZy1pbi1weXRob24=">How to Create a Watchdog in Python - Python Code</span></p>
+</blockquote>
+<p>Within software development, application logging plays a key role. As much as we’d like our software to be perfect, issues will always arise therefore it’s important to have a robust monitoring and logging in place to control and manage the inevitable chaos.</p>
+<p>Nowadays, application support engineers need to be able to easily access and analyze the huge volumes of log data their applications and infrastructure are generating. When an issue occurs, they cannot afford to wait for a minute or two until a query returns results. They need speed, regardless of the amount of data they are collecting and querying.</p>
+<p>In this tutorial, you will learn how to create a watchdog in Python; we will explain how to detect changes in a particular directory (Let’s suppose the directory hosting the logs of your application(s)). Whenever a change occurs, the modified or newly created files of predefined types will be processed in a timely manner to retrieve the lines meeting specified patterns.</p>
+<p>On the other hand, all the lines within these files that don’t match the specified patterns are considered outliers and are abandoned in our analysis.</p>
+<p>We will be using <span class="exturl" data-url="aHR0cHM6Ly9weXBpLm9yZy9wcm9qZWN0L3dhdGNoZG9nLw==">watchdog</span> and <span class="exturl" data-url="aHR0cHM6Ly9weXBpLm9yZy9wcm9qZWN0L3B5Z3RhaWwv">pygtail </span>libraries to detect the changes occurring, there is also a Flask, Redis, and SocketIO version where a GUI web app is created for the same purpose, you can always refer to it <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2Jhc3NlbW1hcmppL0ZsYXNrX0xvZ19JbnNwZWN0b3I=">here</span>.</p>
+<h2 id="process-flowchart"><a class="markdownIt-Anchor" href="#process-flowchart">#</a> Process Flowchart</h2>
+<img data-src="/2021/07/26/python-watchdog/watchdog-tutorial-flowchart.png" class="" title="process-flowchart-of-watchdog-tutorial-in-python">
+<p>To get started, let’s install the requirements:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pip3 install Pygtail==<span class="number">0.11</span><span class="number">.1</span> watchdog==<span class="number">2.1</span><span class="number">.1</span></span><br></pre></td></tr></table></figure>
+<p>First, let’s define the configuration parameters for our application within  <code>config.py</code> :</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Application configuration File</span></span><br><span class="line"><span class="comment">################################</span></span><br><span class="line"><span class="comment"># Directory To Watch, If not specified, the following value will be considered explicitly.</span></span><br><span class="line">WATCH_DIRECTORY = <span class="string">&quot;C:\\SCRIPTS&quot;</span></span><br><span class="line"><span class="comment"># Delay Between Watch Cycles In Seconds</span></span><br><span class="line">WATCH_DELAY = <span class="number">1</span></span><br><span class="line"><span class="comment"># Check The WATCH_DIRECTORY and its children</span></span><br><span class="line">WATCH_RECURSIVELY = <span class="literal">False</span></span><br><span class="line"><span class="comment"># whether to watch for directory events</span></span><br><span class="line">DO_WATCH_DIRECTORIES = <span class="literal">True</span></span><br><span class="line"><span class="comment"># Patterns of the files to watch</span></span><br><span class="line">WATCH_PATTERN = <span class="string">&#x27;.txt,.trc,.log&#x27;</span></span><br><span class="line">LOG_FILES_EXTENSIONS = (<span class="string">&#x27;.txt&#x27;</span>, <span class="string">&#x27;.log&#x27;</span>, <span class="string">&#x27;.trc&#x27;</span>)</span><br><span class="line"><span class="comment"># Patterns for observations</span></span><br><span class="line">EXCEPTION_PATTERN = [<span class="string">&#x27;EXCEPTION&#x27;</span>, <span class="string">&#x27;FATAL&#x27;</span>, <span class="string">&#x27;ERROR&#x27;</span>]</span><br></pre></td></tr></table></figure>
+<p>The parameters in  <code>config.py</code>  will be the default ones, later on, in the script, we can override them if we want.</p>
+<p>Next, let’s create  <code>checker.py</code>  for defining a checking mechanism, this mechanism will leverage the modules pygtail and re in order to pinpoint the observations based on the parameter  <code>EXCEPTION_PATTERN</code>  we just defined in  <code>config.py</code> :</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"><span class="keyword">from</span> pygtail <span class="keyword">import</span> Pygtail</span><br><span class="line"></span><br><span class="line"><span class="comment"># Loading the package called re from the RegEx Module in order to work with Regular Expressions</span></span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FileChecker</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, exceptionPattern</span>):</span></span><br><span class="line">        self.exceptionPattern = exceptionPattern</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">checkForException</span>(<span class="params">self, event, path</span>):</span></span><br><span class="line">        <span class="comment"># Get current date and time according to the specified format.</span></span><br><span class="line">        now = (datetime.datetime.now()).strftime(<span class="string">&quot;%Y-%m-%d %H:%M:%S&quot;</span>)</span><br><span class="line">        <span class="comment"># Read the lines of the file (specified in the path) that have not been read yet</span></span><br><span class="line">        <span class="comment"># Meaning by that it will start from the point where it was last stopped.</span></span><br><span class="line">        <span class="keyword">for</span> num, line <span class="keyword">in</span> <span class="built_in">enumerate</span>(Pygtail(path), <span class="number">1</span>):</span><br><span class="line">            <span class="comment"># Remove leading and trailing whitespaces including newlines.</span></span><br><span class="line">            line = line.strip()</span><br><span class="line">            <span class="comment"># Return all non-overlapping matches of the values specified in the Exception Pattern.</span></span><br><span class="line">            <span class="comment"># The line is scanned from left to right and matches are returned in the oder found.</span></span><br><span class="line">            <span class="keyword">if</span> line <span class="keyword">and</span> <span class="built_in">any</span>(re.findall(<span class="string">&#x27;|&#x27;</span>.join(self.exceptionPattern), line, flags=re.I | re.X)):</span><br><span class="line">                <span class="comment"># Observation Detected</span></span><br><span class="line">                <span class="built_in">type</span> = <span class="string">&#x27;observation&#x27;</span></span><br><span class="line">                msg = <span class="string">f&quot;<span class="subst">&#123;now&#125;</span> -- <span class="subst">&#123;event.event_type&#125;</span> -- File = <span class="subst">&#123;path&#125;</span> -- Observation: <span class="subst">&#123;line&#125;</span>&quot;</span></span><br><span class="line">                <span class="keyword">yield</span> <span class="built_in">type</span>, msg</span><br><span class="line">            <span class="keyword">elif</span> line:</span><br><span class="line">                <span class="comment"># No Observation Detected</span></span><br><span class="line">                <span class="built_in">type</span> = <span class="string">&#x27;msg&#x27;</span></span><br><span class="line">                msg = <span class="string">f&quot;<span class="subst">&#123;now&#125;</span> -- <span class="subst">&#123;event.event_type&#125;</span> -- File = <span class="subst">&#123;path&#125;</span>&quot;</span></span><br><span class="line">                <span class="keyword">yield</span> <span class="built_in">type</span>, msg</span><br></pre></td></tr></table></figure>
+<p>The method  <code>checkForException()</code>  defined in the above code will ingest the events dispatched by the observer class of the watchdog module (to be seen later on).</p>
+<p>These events will be triggered for any file change in the given directory, an event object has 3 attributes:</p>
+<ul>
+<li><code>event_type</code> : The type of the event as a string (modified, created, moved, or deleted).</li>
+<li><code>is_directory</code> : a boolean indicating whether the event was emitted for a directory.</li>
+<li><code>src_path</code> : The source path of the file system object that triggered the event.</li>
+</ul>
+<p>Now let’s define our  <code>controller.py</code> , first, let’s import the libraries:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># The Observer watches for any file change and then dispatches the respective events to an event handler.</span></span><br><span class="line"><span class="keyword">from</span> watchdog.observers <span class="keyword">import</span> Observer</span><br><span class="line"><span class="comment"># The event handler will be notified when an event occurs.</span></span><br><span class="line"><span class="keyword">from</span> watchdog.events <span class="keyword">import</span> FileSystemEventHandler</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> config</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">from</span> checker <span class="keyword">import</span> FileChecker</span><br><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"><span class="keyword">from</span> colorama <span class="keyword">import</span> Fore, init, Style</span><br><span class="line"></span><br><span class="line">init()</span><br><span class="line"></span><br><span class="line">GREEN = Fore.GREEN</span><br><span class="line">BLUE = Fore.BLUE</span><br><span class="line">RESET = Fore.RESET</span><br><span class="line">RED = Fore.RED</span><br><span class="line">YELLOW = Fore.YELLOW</span><br><span class="line"></span><br><span class="line">event2color = &#123;</span><br><span class="line">    <span class="string">&quot;created&quot;</span>: GREEN,</span><br><span class="line">    <span class="string">&quot;modified&quot;</span>: BLUE,</span><br><span class="line">    <span class="string">&quot;deleted&quot;</span>: RED,</span><br><span class="line">    <span class="string">&quot;moved&quot;</span>: YELLOW,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">print_with_color</span>(<span class="params">s, color=Fore.WHITE, brightness=Style.NORMAL, **kwargs</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Utility function wrapping the regular `print()` function </span></span><br><span class="line"><span class="string">    but with colors and brightness&quot;&quot;&quot;</span></span><br><span class="line">    print(<span class="string">f&quot;<span class="subst">&#123;brightness&#125;</span><span class="subst">&#123;color&#125;</span><span class="subst">&#123;s&#125;</span><span class="subst">&#123;Style.RESET_ALL&#125;</span>&quot;</span>, **kwargs)</span><br></pre></td></tr></table></figure>
+<p>Copy</p>
+<p>We’ll be <a target="_blank" rel="noopener" href="https://www.thepythoncode.com/article/change-text-color-in-python">using  <code>colorama</code> </a> to distinguish between different events with text colors, for more about colorama, check <span class="exturl" data-url="aHR0cHM6Ly93d3cudGhlcHl0aG9uY29kZS5jb20vYXJ0aWNsZS9jaGFuZ2UtdGV4dC1jb2xvci1pbi1weXRob24=">this tutorial</span>.</p>
+<p>Next, let’s define our event handler:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Class that inherits from FileSystemEventHandler for handling the events sent by the Observer</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LogHandler</span>(<span class="params">FileSystemEventHandler</span>):</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, watchPattern, exceptionPattern, doWatchDirectories</span>):</span></span><br><span class="line">        self.watchPattern = watchPattern</span><br><span class="line">        self.exceptionPattern = exceptionPattern</span><br><span class="line">        self.doWatchDirectories = doWatchDirectories</span><br><span class="line">        <span class="comment"># Instantiate the checker</span></span><br><span class="line">        self.fc = FileChecker(self.exceptionPattern)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">on_any_event</span>(<span class="params">self, event</span>):</span></span><br><span class="line">        now = (datetime.datetime.now()).strftime(<span class="string">&quot;%Y-%m-%d %H:%M:%S&quot;</span>)</span><br><span class="line">        <span class="comment"># print(&quot;event happened:&quot;, event)</span></span><br><span class="line">        <span class="comment"># To Observe files only not directories</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> event.is_directory:</span><br><span class="line">            <span class="comment"># To cater for the on_move event</span></span><br><span class="line">            path = event.src_path</span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">hasattr</span>(event, <span class="string">&#x27;dest_path&#x27;</span>):</span><br><span class="line">                path = event.dest_path</span><br><span class="line">            <span class="comment"># Ensure that the file extension is among the pre-defined ones.</span></span><br><span class="line">            <span class="keyword">if</span> path.endswith(self.watchPattern):</span><br><span class="line">                msg = <span class="string">f&quot;<span class="subst">&#123;now&#125;</span> -- <span class="subst">&#123;event.event_type&#125;</span> -- File: <span class="subst">&#123;path&#125;</span>&quot;</span></span><br><span class="line">                <span class="keyword">if</span> event.event_type <span class="keyword">in</span> (<span class="string">&#x27;modified&#x27;</span>, <span class="string">&#x27;created&#x27;</span>, <span class="string">&#x27;moved&#x27;</span>):</span><br><span class="line">                    <span class="comment"># check for exceptions in log files</span></span><br><span class="line">                    <span class="keyword">if</span> path.endswith(config.LOG_FILES_EXTENSIONS):</span><br><span class="line">                        <span class="keyword">for</span> <span class="built_in">type</span>, msg <span class="keyword">in</span> self.fc.checkForException(event=event, path=path):</span><br><span class="line">                            print_with_color(msg, color=event2color[event.event_type])</span><br><span class="line">                    <span class="keyword">else</span>:</span><br><span class="line">                        print_with_color(msg, color=event2color[event.event_type])</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    print_with_color(msg, color=event2color[event.event_type])</span><br><span class="line">        <span class="keyword">elif</span> self.doWatchDirectories:</span><br><span class="line">            msg = <span class="string">f&quot;<span class="subst">&#123;now&#125;</span> -- <span class="subst">&#123;event.event_type&#125;</span> -- Folder: <span class="subst">&#123;event.src_path&#125;</span>&quot;</span></span><br><span class="line">            print_with_color(msg, color=event2color[event.event_type])</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">on_modified</span>(<span class="params">self, event</span>):</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">on_deleted</span>(<span class="params">self, event</span>):</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">on_created</span>(<span class="params">self, event</span>):</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">on_moved</span>(<span class="params">self, event</span>):</span></span><br><span class="line">        <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<p>Copy</p>
+<p>The  <code>LogHandler</code>  class inherits from the class named <a target="_blank" rel="noopener" href="https://pythonhosted.org/watchdog/api.html#watchdog.events.FileSystemEventHandler"> <code>FileSystemEventHandler</code> </a> of the watchdog library, and mainly overwrites its  <code>on_any_event()</code>  method.</p>
+<p>Below are some useful methods if this class:</p>
+<ul>
+<li><code>on_any_event()</code> : Called for any event.</li>
+<li><code>on_created()</code> : Called when a file or a directory is created.</li>
+<li><code>on_modified()</code> : Called when a file is modified or when a directory is renamed.</li>
+<li><code>on_deleted()</code> : Called when a file or directory is deleted.</li>
+<li><code>on_moved()</code> : Called when a file or directory is moved.</li>
+</ul>
+<p>The code alloted for the  <code>on_any_event()</code>  method will:</p>
+<ul>
+<li>Observe files and directories.</li>
+<li>Verify that the extension of the file subject to the event is among the ones pre-defined in the variable  <code>WATCH_PATTERN</code>  within  <code>config.py</code></li>
+<li>Produce a message illustrating the event or the observation if detected.</li>
+</ul>
+<p>Now let’s write our  <code>LogWatcher</code>  class:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LogWatcher</span>:</span></span><br><span class="line">    <span class="comment"># Initialize the observer</span></span><br><span class="line">    observer = <span class="literal">None</span></span><br><span class="line">    <span class="comment"># Initialize the stop signal variable</span></span><br><span class="line">    stop_signal = <span class="number">0</span></span><br><span class="line">    <span class="comment"># The observer is the class that watches for any file system change and then dispatches the event to the event handler.</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, watchDirectory, watchDelay, watchRecursively, watchPattern, doWatchDirectories, exceptionPattern, sessionid = <span class="literal">None</span>, namespace = <span class="literal">None</span></span>):</span></span><br><span class="line">        <span class="comment"># Initialize variables in relation</span></span><br><span class="line">        self.watchDirectory = watchDirectory</span><br><span class="line">        self.watchDelay = watchDelay</span><br><span class="line">        self.watchRecursively = watchRecursively</span><br><span class="line">        self.watchPattern = watchPattern</span><br><span class="line">        self.doWatchDirectories = doWatchDirectories</span><br><span class="line">        self.exceptionPattern = exceptionPattern</span><br><span class="line">        self.namespace = namespace</span><br><span class="line">        self.sessionid = sessionid</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Create an instance of watchdog.observer</span></span><br><span class="line">        self.observer = Observer()</span><br><span class="line">        <span class="comment"># The event handler is an object that will be notified when something happens to the file system.</span></span><br><span class="line">        self.event_handler = LogHandler(watchPattern, exceptionPattern, self.doWatchDirectories)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">schedule</span>(<span class="params">self</span>):</span></span><br><span class="line">        print(<span class="string">&quot;Observer Scheduled:&quot;</span>, self.observer.name)</span><br><span class="line">        <span class="comment"># Call the schedule function via the Observer instance attaching the event</span></span><br><span class="line">        self.observer.schedule(</span><br><span class="line">            self.event_handler, self.watchDirectory, recursive=self.watchRecursively)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">start</span>(<span class="params">self</span>):</span></span><br><span class="line">        print(<span class="string">&quot;Observer Started:&quot;</span>, self.observer.name)</span><br><span class="line">        self.schedule()</span><br><span class="line">        <span class="comment"># Start the observer thread and wait for it to generate events</span></span><br><span class="line">        now = (datetime.datetime.now()).strftime(<span class="string">&quot;%Y-%m-%d %H:%M:%S&quot;</span>)</span><br><span class="line">        msg = <span class="string">f&quot;Observer: <span class="subst">&#123;self.observer.name&#125;</span> - Started On: <span class="subst">&#123;now&#125;</span> - Related To Session: <span class="subst">&#123;self.sessionid&#125;</span>&quot;</span></span><br><span class="line">        print(msg)</span><br><span class="line"></span><br><span class="line">        msg = (</span><br><span class="line">            <span class="string">f&quot;Watching <span class="subst">&#123;<span class="string">&#x27;Recursively&#x27;</span> <span class="keyword">if</span> self.watchRecursively <span class="keyword">else</span> <span class="string">&#x27;Non-Recursively&#x27;</span>&#125;</span>: <span class="subst">&#123;self.watchPattern&#125;</span>&quot;</span></span><br><span class="line">            <span class="string">f&quot; -- Folder: <span class="subst">&#123;self.watchDirectory&#125;</span> -- Every: <span class="subst">&#123;self.watchDelay&#125;</span>(sec) -- For Patterns: <span class="subst">&#123;self.exceptionPattern&#125;</span>&quot;</span></span><br><span class="line">        )</span><br><span class="line">        print(msg)</span><br><span class="line">        self.observer.start()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span>(<span class="params">self</span>):</span></span><br><span class="line">        print(<span class="string">&quot;Observer is running:&quot;</span>, self.observer.name)</span><br><span class="line">        self.start()</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">                time.sleep(self.watchDelay)</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> self.stop_signal == <span class="number">1</span>:</span><br><span class="line">                    print(</span><br><span class="line">                        <span class="string">f&quot;Observer stopped: <span class="subst">&#123;self.observer.name&#125;</span>  stop signal:<span class="subst">&#123;self.stop_signal&#125;</span>&quot;</span>)</span><br><span class="line">                    self.stop()</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            self.stop()</span><br><span class="line">        self.observer.join()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">stop</span>(<span class="params">self</span>):</span></span><br><span class="line">        print(<span class="string">&quot;Observer Stopped:&quot;</span>, self.observer.name)</span><br><span class="line"></span><br><span class="line">        now = (datetime.datetime.now()).strftime(<span class="string">&quot;%Y-%m-%d %H:%M:%S&quot;</span>)</span><br><span class="line">        msg = <span class="string">f&quot;Observer: <span class="subst">&#123;self.observer.name&#125;</span> - Stopped On: <span class="subst">&#123;now&#125;</span> - Related To Session: <span class="subst">&#123;self.sessionid&#125;</span>&quot;</span></span><br><span class="line">        print(msg)</span><br><span class="line">        self.observer.stop()</span><br><span class="line">        self.observer.join()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">info</span>(<span class="params">self</span>):</span></span><br><span class="line">        info = &#123;</span><br><span class="line">            <span class="string">&#x27;observerName&#x27;</span>: self.observer.name,</span><br><span class="line">            <span class="string">&#x27;watchDirectory&#x27;</span>: self.watchDirectory,</span><br><span class="line">            <span class="string">&#x27;watchDelay&#x27;</span>: self.watchDelay,</span><br><span class="line">            <span class="string">&#x27;watchRecursively&#x27;</span>: self.watchRecursively,</span><br><span class="line">            <span class="string">&#x27;watchPattern&#x27;</span>: self.watchPattern,</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> info</span><br></pre></td></tr></table></figure>
+<p>Here is what we did on  <code>LogWatcher</code>  class:</p>
+<ul>
+<li>Create an instance of the <a target="_blank" rel="noopener" href="https://pythonhosted.org/watchdog/api.html#module-watchdog.observers"> <code>watchdog.observer</code> </a> thread class, the observer watches for any file system change and then dispatches the corresponding event to the event handler.</li>
+<li>Create an instance of the event handler  <code>LogHandler</code> , that inherits from the  <code>FileSystemEventHandler</code> . The event handler is notified when any change occurs.</li>
+<li>Assign a schedule to our observer and define other input parameters like the directory to watch, watching mode, and others. Beware that when setting the  <code>recursive</code>  parameter to  <code>True</code> , you must ensure that you have sufficient access rights on the subfolders.</li>
+</ul>
+<p>Finally, let’s make command line arguments around the code using <a target="_blank" rel="noopener" href="https://docs.python.org/3/library/argparse.html"> <code>argparse</code> </a>:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">is_dir_path</span>(<span class="params">path</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Utility function to check whether a path is an actual directory&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">if</span> os.path.isdir(path):</span><br><span class="line">        <span class="keyword">return</span> path</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">raise</span> NotADirectoryError(path)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    <span class="keyword">import</span> argparse</span><br><span class="line">    parser = argparse.ArgumentParser(</span><br><span class="line">        description=<span class="string">&quot;Watchdog script for watching for files &amp; directories&#x27; changes&quot;</span>)</span><br><span class="line">    parser.add_argument(<span class="string">&quot;path&quot;</span>,  --position arguments</span><br><span class="line">                        default=config.WATCH_DIRECTORY,</span><br><span class="line">                        <span class="built_in">type</span>=is_dir_path,</span><br><span class="line">                        )</span><br><span class="line">    parser.add_argument(<span class="string">&quot;-d&quot;</span>, <span class="string">&quot;--watch-delay&quot;</span>,</span><br><span class="line">                        <span class="built_in">help</span>=<span class="string">f&quot;Watch delay, default is <span class="subst">&#123;config.WATCH_DELAY&#125;</span>&quot;</span>,</span><br><span class="line">                        default=config.WATCH_DELAY,</span><br><span class="line">                        <span class="built_in">type</span>=<span class="built_in">int</span>,</span><br><span class="line">                        )</span><br><span class="line">    parser.add_argument(<span class="string">&quot;-r&quot;</span>, <span class="string">&quot;--recursive&quot;</span>,</span><br><span class="line">                        action=<span class="string">&quot;store_true&quot;</span>,</span><br><span class="line">                        <span class="built_in">help</span>=<span class="string">f&quot;Whether to recursively watch for the path&#x27;s children, default is <span class="subst">&#123;config.WATCH_RECURSIVELY&#125;</span>&quot;</span>,</span><br><span class="line">                        default=config.WATCH_RECURSIVELY,</span><br><span class="line">                        )</span><br><span class="line">    parser.add_argument(<span class="string">&quot;-p&quot;</span>, <span class="string">&quot;--pattern&quot;</span>,</span><br><span class="line">                        <span class="built_in">help</span>=<span class="string">f&quot;Pattern of files to watch, default is <span class="subst">&#123;config.WATCH_PATTERN&#125;</span>&quot;</span>,</span><br><span class="line">                        default=config.WATCH_PATTERN,</span><br><span class="line">                        )</span><br><span class="line">    parser.add_argument(<span class="string">&quot;--watch-directories&quot;</span>,</span><br><span class="line">                        action=<span class="string">&quot;store_true&quot;</span>,</span><br><span class="line">                        <span class="built_in">help</span>=<span class="string">f&quot;Whether to watch directories, default is <span class="subst">&#123;config.DO_WATCH_DIRECTORIES&#125;</span>&quot;</span>,</span><br><span class="line">                        default=config.DO_WATCH_DIRECTORIES,</span><br><span class="line">                        )</span><br><span class="line">    <span class="comment"># parse the arguments</span></span><br><span class="line">    args = parser.parse_args()</span><br><span class="line">    <span class="comment"># define &amp; launch the log watcher</span></span><br><span class="line">    log_watcher = LogWatcher(</span><br><span class="line">        watchDirectory=args.path,</span><br><span class="line">        watchDelay=args.watch_delay,</span><br><span class="line">        watchRecursively=args.recursive,</span><br><span class="line">        watchPattern=<span class="built_in">tuple</span>(args.pattern.split(<span class="string">&quot;,&quot;</span>)),</span><br><span class="line">        doWatchDirectories=args.watch_directories,</span><br><span class="line">        exceptionPattern=config.EXCEPTION_PATTERN,</span><br><span class="line">    )</span><br><span class="line">    log_watcher.run()</span><br></pre></td></tr></table></figure>
+<p>We defined  <code>is_dir_path()</code>  in order to ensure that the path entered is a valid directory. Let’s use the script:</p>
+<img data-src="/2021/07/26/python-watchdog/running-watchdog-script-with-python.jpg" class="" title="Running Watchdog Script with Python">
+<p>I’ve passed  <code>--recursive</code>  to watch everything is happening on  <code>E:\watchdog</code>  directory including the sub-folders, I also specified a pattern of  <code>.txt,.log,.jpg,.png</code> , for watching text and image files.</p>
+<p>Then I created a folder and started writing on a text file, then moved an image and deleted it, the watchdog is catching everything!</p>
+<p>Note that you can have the option to either override parameters in  <code>config.py</code>  or pass the parameters here.</p>
+<h2 id="conclusion"><a class="markdownIt-Anchor" href="#conclusion">#</a> Conclusion</h2>
+<p>I hope this article helped you after we explored in depth the available features of <span class="exturl" data-url="aHR0cHM6Ly9weXRob25ob3N0ZWQub3JnL3dhdGNoZG9nLw==">watchdog</span> and <span class="exturl" data-url="aHR0cHM6Ly9weXBpLm9yZy9wcm9qZWN0L3B5Z3RhaWwv">pygtail</span> libraries.</p>
+<p>It is worthy to note that by extending the described functionalities, you may associate an alerting mechanism or play a sound whenever a fatal error occurred in one of your log files. By doing so, when an observation is pinpointed, the configured workflow or alert will be triggered automatically.</p>
+
+      <div class="tags">
+          <a href="/tags/python/" rel="tag"><i class="ic i-tag"></i> python</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2021-07-26 16:00:03" itemprop="dateModified" datetime="2021-07-26T16:00:03+08:00">2021-07-26</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2021/07/20/python-daily-tool/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclgi503lj20zk0m8hdt.jpg" title="Daily Tool">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> manual</span>
+  <h3>Daily Tool</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2021/07/27/python-process-monitor/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclip4jbpj20zk0m87cv.jpg" title="How to Make a Process Monitor in Python">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>How to Make a Process Monitor in Python</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#process-flowchart"><span class="toc-number">1.</span> <span class="toc-text"> Process Flowchart</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#conclusion"><span class="toc-number">2.</span> <span class="toc-text"> Conclusion</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">262</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">42</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2021/07/20/python-daily-tool/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2021/07/27/python-process-monitor/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2021</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ 露の世</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2021/07/26/python-watchdog/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

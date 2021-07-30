@@ -102,12 +102,12 @@ css |
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclh5u05ej20zk0m87df.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicliwyw55j20zk0m8hdt.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclhfehz7j20zk0m8u0x.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipewkhf1zj20zk0m81kx.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipexbei4hj20zk0m8npd.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeyhsblkj20zk0m81kx.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipewkhf1zj20zk0m81kx.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclh3brzpj20zk0m8ann.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipetlbztpj20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giciusoyjnj219g0u0x56.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipex2cdtbj20zk0m8x6p.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipev1x5e4j20zk0m8b29.jpg"></li>
         </ul>
       </div>
     </header>
@@ -276,6 +276,35 @@ css |
 <p>2 图片需要保持原来的模样</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.querySelectorAll(<span class="string">&quot;img&quot;</span>).forEach(<span class="function">(<span class="params">item</span>) =&gt;</span> &#123;</span><br><span class="line">    item.style.filter = <span class="string">&quot;invert(1) hue-rotate(189deg)&quot;</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <img data-src="/2020/04/18/css/1593833238141.png" class="">
+<h3 id="css-image-resize-percentage-of-itself"><a class="markdownIt-Anchor" href="#css-image-resize-percentage-of-itself">#</a> CSS image resize percentage of itself</h3>
+<blockquote>
+<p>引用：<span class="exturl" data-url="aHR0cHM6Ly9zdGFja292ZXJmbG93LmNvbS9xdWVzdGlvbnMvODM5NzA0OS9jc3MtaW1hZ2UtcmVzaXplLXBlcmNlbnRhZ2Utb2YtaXRzZWxm">html - CSS image resize percentage of itself? - Stack Overflow</span></p>
+</blockquote>
+<p>I am trying to resize an img with a percentage of itself. For example, I just want to shrink the image by half by resizing it to 50%. But applying  <code>width: 50%;</code>  will resize the image to be 50% of the container element (the parent element which maybe the  <code>&lt;body&gt;</code>  for example).</p>
+<p>Question is, can I resize the image with a percentage of itself without using javascript or server side? (I have no direct information of the image size)</p>
+<ol>
+<li>
+<p>This method resize image only visual not it actual dimensions in DOM, and visual state after resize centered in middle of original size. you can use  <code>transform-origin: top left</code>  adjust scale origin.</p>
+<p><strong>html:</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;example.png&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>css:</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.fake</span> &#123;</span><br><span class="line">   <span class="attribute">transform-origin</span>: top left;</span><br><span class="line">  -webkit-<span class="attribute">transform</span>: <span class="built_in">scale</span>(<span class="number">0.5</span>); <span class="comment">/* Saf3.1+, Chrome */</span></span><br><span class="line">     -moz-<span class="attribute">transform</span>: <span class="built_in">scale</span>(<span class="number">0.5</span>); <span class="comment">/* FF3.5+ */</span></span><br><span class="line">      -ms-<span class="attribute">transform</span>: <span class="built_in">scale</span>(<span class="number">0.5</span>); <span class="comment">/* IE9 */</span></span><br><span class="line">       -o-<span class="attribute">transform</span>: <span class="built_in">scale</span>(<span class="number">0.5</span>); <span class="comment">/* Opera 10.5+ */</span></span><br><span class="line">          <span class="attribute">transform</span>: <span class="built_in">scale</span>(<span class="number">0.5</span>);</span><br><span class="line">            <span class="comment">/* IE6–IE9 */</span></span><br><span class="line">            <span class="attribute">filter</span>: progid:DXImageTransform.Microsoft.<span class="built_in">Matrix</span>(M11=<span class="number">0.9999619230641713</span>, M12=-<span class="number">0.008726535498373935</span>, M21=<span class="number">0.008726535498373935</span>, M22=<span class="number">0.9999619230641713</span>,SizingMethod=<span class="string">&#x27;auto expand&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>The trick is to let the container element shrinkwrap the child image, so it will have a size equal to that of the unsized image. Thus, when setting  <code>width</code>  property of the image as a percentage value, the image is scaled relative to its original scale.</p>
+<p><strong>html:</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;example.png&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>css:</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">span</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: inline-block;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">img</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">50%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>you can also take advantage of the newly introduced CSS3  <code>fit-content</code> . However, not all popular browser versions support it at the time of writing.</p>
+<p><strong>html:</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">figure</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;example.png&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">figure</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>css:</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">figure</span> &#123;</span><br><span class="line">    <span class="attribute">height</span>: fit-content;</span><br><span class="line">    <span class="attribute">width</span>: fit-content;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">img</span> &#123;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">50%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 
       <div class="tags">
           <a href="/tags/css/" rel="tag"><i class="ic i-tag"></i> css</a>
@@ -290,7 +319,7 @@ css |
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2021-07-07 16:27:07" itemprop="dateModified" datetime="2021-07-07T16:27:07+08:00">2021-07-07</time>
+    <time title="Modified: 2021-07-21 10:38:06" itemprop="dateModified" datetime="2021-07-21T10:38:06+08:00">2021-07-21</time>
   </span>
 </div>
 
@@ -307,7 +336,7 @@ css |
     <div class="item left">
       
 
-  <a href="/2020/04/17/ajax/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclfw2t96j20zk0m8x6p.jpg" title="ajax">
+  <a href="/2020/04/17/ajax/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclil3m4ej20zk0m8tn8.jpg" title="ajax">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>ajax</h3>
@@ -317,7 +346,7 @@ css |
     <div class="item right">
       
 
-  <a href="/2020/04/18/css-example/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipey0a334j20zk0m8qpt.jpg" title="css example">
+  <a href="/2020/04/18/css-example/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipevuctzzj20zk0m84qp.jpg" title="css example">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>css example</h3>
@@ -339,7 +368,7 @@ css |
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="Contents">
-          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#css-%E5%B8%B8%E7%94%A8%E5%8D%95%E4%BD%8D"><span class="toc-number">1.</span> <span class="toc-text"> css 常用单位</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#shadow"><span class="toc-number">2.</span> <span class="toc-text"> shadow</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B1%85%E4%B8%AD%E5%AF%B9%E9%BD%90"><span class="toc-number">3.</span> <span class="toc-text"> 居中对齐</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#table"><span class="toc-number">4.</span> <span class="toc-text"> table</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#float-overflow"><span class="toc-number">5.</span> <span class="toc-text"> float + overflow</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#css-%E9%80%89%E6%8B%A9%E5%99%A8%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-number">6.</span> <span class="toc-text"> css 选择器优先级</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#inline-block-inline-block"><span class="toc-number">7.</span> <span class="toc-text"> inline, block, inline-block</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#offsetwidth-clientwidth-scrollwidth"><span class="toc-number">8.</span> <span class="toc-text"> offsetWidth, clientWidth, scrollWidth</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#grayscale"><span class="toc-number">9.</span> <span class="toc-text"> grayscale</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#getcomputedstyle"><span class="toc-number">10.</span> <span class="toc-text"> getComputedStyle</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#requestanimationframe"><span class="toc-number">11.</span> <span class="toc-text"> requestAnimationFrame</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#change-theme-schema"><span class="toc-number">12.</span> <span class="toc-text"> Change Theme Schema</span></a></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#css-%E5%B8%B8%E7%94%A8%E5%8D%95%E4%BD%8D"><span class="toc-number">1.</span> <span class="toc-text"> css 常用单位</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#shadow"><span class="toc-number">2.</span> <span class="toc-text"> shadow</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B1%85%E4%B8%AD%E5%AF%B9%E9%BD%90"><span class="toc-number">3.</span> <span class="toc-text"> 居中对齐</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#table"><span class="toc-number">4.</span> <span class="toc-text"> table</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#float-overflow"><span class="toc-number">5.</span> <span class="toc-text"> float + overflow</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#css-%E9%80%89%E6%8B%A9%E5%99%A8%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-number">6.</span> <span class="toc-text"> css 选择器优先级</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#inline-block-inline-block"><span class="toc-number">7.</span> <span class="toc-text"> inline, block, inline-block</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#offsetwidth-clientwidth-scrollwidth"><span class="toc-number">8.</span> <span class="toc-text"> offsetWidth, clientWidth, scrollWidth</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#grayscale"><span class="toc-number">9.</span> <span class="toc-text"> grayscale</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#getcomputedstyle"><span class="toc-number">10.</span> <span class="toc-text"> getComputedStyle</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#requestanimationframe"><span class="toc-number">11.</span> <span class="toc-text"> requestAnimationFrame</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#change-theme-schema"><span class="toc-number">12.</span> <span class="toc-text"> Change Theme Schema</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#css-image-resize-percentage-of-itself"><span class="toc-number">13.</span> <span class="toc-text"> CSS image resize percentage of itself</span></a></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
       </div>
@@ -354,7 +383,7 @@ css |
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">259</span>
+        <span class="count">262</span>
         <span class="name">posts</span>
       </a>
     </div>

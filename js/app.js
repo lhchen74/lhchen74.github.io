@@ -2145,6 +2145,7 @@ const algoliaSearch = function (pjax) {
 
   // Handle and trigger popup window
   $.each('.search', function (element) {
+    console.log("test");
     element.addEventListener('click', function () {
       document.body.style.overflow = 'hidden';
       transition(siteSearch, 'shrinkIn', function () {
