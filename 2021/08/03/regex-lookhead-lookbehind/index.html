@@ -102,12 +102,12 @@
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipesrnqv3j20zk0m8ava.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclhpw3lwj20zk0m8gvw.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipey84bjtj20zk0m8hdt.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicliwyw55j20zk0m8hdt.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclimtf7dj20zk0m8qav.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipeuv80yoj20zk0m8kjl.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giciryrr3rj20zk0m8nhk.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicm0n457cj20zk0m8e81.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipeybxm1pj20zk0m8niv.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipetfk5zwj20zk0m8e81.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giph47e9vtj20zk0m8x6l.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipeuv80yoj20zk0m8kjl.jpg"></li>
         </ul>
       </div>
     </header>
@@ -164,33 +164,30 @@
 <h2 id="pattern-正向先行断言"><a class="markdownIt-Anchor" href="#pattern-正向先行断言">#</a> (?=pattern) 正向先行断言</h2>
 <p>代表字符串中的一个位置，紧接该位置之后的字符序列能够匹配 pattern。</p>
 <p>例如对 <strong>“a regular expression”</strong> 这个字符串，要想匹配 regular 中的 re，但不能匹配 expression 中的 re，可以用 <strong>re(?=gular)</strong>，该表达式限定了 re 右边的位置，这个位置之后是 gular，但并不消耗 gular 这些字符。</p>
-<img data-src="/2021/08/03/regex-lookhead-lookbehind/B7F44A41-BC1A-4088-8ED4-7CB0F3984991.jpg" class="" title="img">
+<img data-src="/2021/08/03/regex-lookhead-lookbehind/B7F44A41-BC1A-4088-8ED4-7CB0F3984991.jpg" class="">
 <p>将表达式改为 <strong>re(?=gular).</strong> ，将会匹配 reg，元字符 <strong>.</strong> 匹配了<strong> g</strong></p>
-<img data-src="/2021/08/03/regex-lookhead-lookbehind/BD357AC2-7BFC-4FDE-A1B2-2FCE1B17E641.jpg" class="" title="img">
+<img data-src="/2021/08/03/regex-lookhead-lookbehind/BD357AC2-7BFC-4FDE-A1B2-2FCE1B17E641.jpg" class="">
 <h2 id="pattern-负向先行断言"><a class="markdownIt-Anchor" href="#pattern-负向先行断言">#</a> (?!pattern) 负向先行断言</h2>
 <p>代表字符串中的一个位置，紧接该位置之后的字符序列不能匹配 pattern。</p>
 <p>例如对 <strong>“regex represents regular expression”</strong> 这个字符串，要想匹配除 regex 和 regular 之外的 re，可以用 <strong>re(?!g)</strong>，该表达式限定了 <strong>re</strong> 右边的位置，这个位置后面不是字符 <strong>g</strong>。</p>
 <p>负向和正向的区别，就在于该位置之后的字符能否匹配括号中的表达式。</p>
-<img data-src="/2021/08/03/regex-lookhead-lookbehind/92C72B08-2122-408E-97A2-6274417A3C16.jpg" class="" title="img">
+<img data-src="/2021/08/03/regex-lookhead-lookbehind/92C72B08-2122-408E-97A2-6274417A3C16.jpg" class="">
 <h2 id="pattern-正向后行断言"><a class="markdownIt-Anchor" href="#pattern-正向后行断言">#</a> (?&lt;=pattern) 正向后行断言</h2>
 <p>代表字符串中的一个位置，紧接该位置之前的字符序列能够匹配 pattern。</p>
 <p>例如对 <strong>regex represents regular expression</strong> 这个字符串，有 4 个单词，要想匹配单词内部的 re，但不匹配单词开头的 re，可以用 <strong>(?&lt;=\w)re</strong>，单词内部的 re，在 re 前面应该是一个单词字符。</p>
 <p>之所以叫后行断言，是因为正则表达式引擎在匹配字符串和表达式时，是从前向后逐个扫描字符串中的字符，并判断是否与表达式符合，当在表达式中遇到该断言时，正则表达式引擎需要往字符串前端检测已扫描过的字符，相对于扫描方向是向后的。</p>
-<img data-src="/2021/08/03/regex-lookhead-lookbehind/94F6A0A8-CB0F-4EE6-A537-0FA309EF64AE.jpg" class="" title="img">
+<img data-src="/2021/08/03/regex-lookhead-lookbehind/94F6A0A8-CB0F-4EE6-A537-0FA309EF64AE.jpg" class="">
 <h2 id="pattern-负向后行断言"><a class="markdownIt-Anchor" href="#pattern-负向后行断言">#</a> (?&lt;!pattern) 负向后行断言</h2>
 <p>代表字符串中的一个位置，紧接该位置之前的字符序列不能匹配 pattern。</p>
 <p>例如对 <strong>“regex represents regular expression”</strong> 这个字符串，要想匹配单词开头的 re，可以用 <strong>(?&lt;!\w)re</strong>。单词开头的 <strong>re</strong>，在本例中，也就是指不在单词内部的 <strong>re</strong>，即 <strong>re</strong> 前面不是单词字符。当然也可以用 <strong>\bre</strong> 来匹配。</p>
-<img data-src="/2021/08/03/regex-lookhead-lookbehind/5226CEE8-0B90-4E89-9EE2-DFD7E45DA6B2.jpg" class="" title="img">
+<img data-src="/2021/08/03/regex-lookhead-lookbehind/5226CEE8-0B90-4E89-9EE2-DFD7E45DA6B2.jpg" class="">
 <p>对于这 4 个断言的理解，可以从两个方面入手：</p>
-<ul>
-<li>**1、关于先行 (lookahead) 和后行 (lookbehind)：** 正则表达式引擎在执行字符串和表达式匹配时，会从头到尾（从前到后）连续扫描字符串中的字符，设想有一个扫描指针指向字符边界处并随匹配过程移动。先行断言，是当扫描指针位于某处时，引擎会尝试匹配指针还未扫过的字符，先于指针到达该字符，故称为先行。后行断言，引擎会尝试匹配指针已扫过的字符，后于指针到达该字符，故称为后行。</li>
-<li>**2、关于正向 (positive) 和负向 (negative)：** 正向就表示匹配括号中的表达式，负向表示不匹配。</li>
-</ul>
-<p>对这 4 个断言形式的记忆：</p>
-<ul>
-<li>**1、先行和后行：** 后行断言 <strong>(?&lt;=pattern)、(?&lt;!pattern)</strong> 中，有个小于号，同时也是箭头，对于自左至右的文本方向，这个箭头是指向后的，这也比较符合我们的习惯。把小于号去掉，就是先行断言。</li>
-<li>**2、正向和负向：** 不等于 <strong>(!=)</strong>、逻辑非 <strong>(!)</strong> 都是用 **!** 号来表示，所以有 <strong>!</strong> 号的形式表示不匹配、负向；将 <strong>!</strong> 号换成 <strong>=</strong> 号，就表示匹配、正向。</li>
-</ul>
+<ol>
+<li><strong>关于先行 (lookahead) 和后行 (lookbehind)</strong> 正则表达式引擎在执行字符串和表达式匹配时，会从头到尾（从前到后）连续扫描字符串中的字符，设想有一个扫描指针指向字符边界处并随匹配过程移动。先行断言，是当扫描指针位于某处时，引擎会尝试匹配指针还未扫过的字符，先于指针到达该字符，故称为先行。后行断言，引擎会尝试匹配指针已扫过的字符，后于指针到达该字符，故称为后行。</li>
+<li><strong>关于正向 (positive) 和负向 (negative)</strong> 正向就表示匹配括号中的表达式，负向表示不匹配。</li>
+<li><strong>先行和后行</strong> 后行断言 <strong>(?&lt;=pattern)、(?&lt;!pattern)</strong> 中，有个小于号，同时也是箭头，对于自左至右的文本方向，这个箭头是指向后的，这也比较符合我们的习惯。把小于号去掉，就是先行断言。</li>
+<li><strong>正向和负向</strong> 不等于 <strong>(!=)</strong>、逻辑非 <strong>(!)</strong> 都是用 **!** 号来表示，所以有 <strong>!</strong> 号的形式表示不匹配、负向；将 <strong>!</strong> 号换成 <strong>=</strong> 号，就表示匹配、正向。</li>
+</ol>
 <p>我们经常用正则表达式来检测一个字符串中包含某个子串，要表示一个字符串中不包含某个字符或某些字符也很容易，用 <strong>[^…]</strong> 形式就可以了。要表示一个字符串中不包含某个子串（由字符序列构成）呢？</p>
 <p>用 <strong>[^…]</strong> 这种形式就不行了，这时就要用到（负向）先行断言或后行断言、或同时使用。</p>
 <p>例如判断一句话中包含 <strong>this</strong>，但不包含 <strong>that</strong>。</p>
@@ -198,23 +195,24 @@
 <p>每个字符前都不是 <strong>that</strong>:  <code>^((?&lt;!that).)*this((?&lt;!that).)*$</code></p>
 <p>每个字符后都不是 <strong>that</strong>:  <code>^(.(?!that))*this(.(?!that))*$</code></p>
 <p>对于 <strong>this is runoob test</strong> 这句话，两个表达式都能够匹配成功，而 <strong>this and that is runoob test</strong> 都匹配失败。</p>
-<img data-src="/2021/08/03/regex-lookhead-lookbehind/0F108023-F4EF-409A-A63C-18334D4A0F3B.jpg" class="" title="img">
-<img data-src="/2021/08/03/regex-lookhead-lookbehind/DA61F6F1-4247-4E52-9EB8-198E3A90393D.jpg" class="" title="img">
+<img data-src="/2021/08/03/regex-lookhead-lookbehind/0F108023-F4EF-409A-A63C-18334D4A0F3B.jpg" class="">
+<img data-src="/2021/08/03/regex-lookhead-lookbehind/DA61F6F1-4247-4E52-9EB8-198E3A90393D.jpg" class="">
 <p>在一般情况下，这两个表达式基本上都能够满足要求了。考虑极端情况，如一句话以 <strong>that</strong> 开头、以 <strong>that</strong> 结尾、<strong>that</strong> 和 <strong>this</strong> 连在一起时，上述表达式就可能不胜任了。 如 <strong>runoob thatthis is the case</strong> 或者 <strong>this is the case, not that</strong> 等。</p>
 <p>只要灵活运用这几个断言，就很容易解决：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">^(.(?&lt;!that))*this(.(?&lt;!that))*$</span><br><span class="line">^(.(?&lt;!that))*this((?!that).)*$</span><br><span class="line">^((?!that).)*this(.(?&lt;!that))*$</span><br><span class="line">^((?!that).)*this((?!that).)*$</span><br></pre></td></tr></table></figure>
 <p>这 4 个正则表达式测试上述的几句话，结果都能够满足要求。</p>
-<p>上述 4 种断言，括号里的 pattern 本身是一个正则表达式。但对 2 种后行断言有所限制，在 Perl 和 Python 中，这个表达式必须是定长 (fixed length) 的，即不能使用 *<strong>、+、?</strong> 等元字符，如 <strong>(?&lt;=abc)</strong> 没有问题，但 <strong>(?&lt;=a*bc)</strong> 是不被支持的，特别是当表达式中含有 **|** 连接的分支时，各个分支的长度必须相同。之所以不支持变长表达式，是因为当引擎检查后行断言时，无法确定要回溯多少步。Java 支持 <strong>?、{m}、{n,m}</strong> 等符号，但同样不支持 *<strong>、+</strong> 字符。Javascript 干脆不支持后行断言，不过一般来说，这不是太大的问题。</p>
+<p>上述 4 种断言，括号里的 pattern 本身是一个正则表达式。但对 2 种后行断言有所限制，在 Perl 和 Python 中，这个表达式必须是定长 (fixed length) 的，即不能使用 <strong>*、+、?</strong> 等元字符，如 <strong>(?&lt;=abc)</strong> 没有问题，但 <strong>(?&lt;=a*bc)</strong> 是不被支持的，特别是当表达式中含有 **|** 连接的分支时，各个分支的长度必须相同。之所以不支持变长表达式，是因为当引擎检查后行断言时，无法确定要回溯多少步。Java 支持 <strong>?、{m}、{n,m}</strong> 等符号，但同样不支持 <strong>*、+</strong> 字符。Javascript 干脆不支持后行断言，不过一般来说，这不是太大的问题。</p>
 <p>先行断言和后行断言某种程度上就好比使用 <strong>if</strong> 语句对匹配的字符前后做判断验证。</p>
 <h2 id="总结-的使用"><a class="markdownIt-Anchor" href="#总结-的使用">#</a> 总结？=、?&lt;=、?!、?&lt;!= 的使用</h2>
 <p><strong>exp1(?=exp2)</strong>：查找 exp2 前面的 exp1。</p>
-<img data-src="/2021/08/03/regex-lookhead-lookbehind/reg-111.jpg" class="" title="img">
+<img data-src="/2021/08/03/regex-lookhead-lookbehind/reg-111.jpg" class="">
 <p><strong>(?&lt;=exp2)exp1</strong>：查找 exp2 后面的 exp1。</p>
-<img data-src="/2021/08/03/regex-lookhead-lookbehind/reg-222.jpg" class="" title="img">
+<img data-src="/2021/08/03/regex-lookhead-lookbehind/reg-222.jpg" class="">
 <p><strong>exp1(?!exp2)</strong>：查找后面不是 exp2 的 exp1。</p>
-<img data-src="/2021/08/03/regex-lookhead-lookbehind/reg-333.jpg" class="" title="img">
+<img data-src="/2021/08/03/regex-lookhead-lookbehind/reg-333.jpg" class="">
 <p><strong>(?&lt;!=exp2)exp1</strong>：查找前面不是 exp2 的 exp1。</p>
-<img data-src="/2021/08/03/regex-lookhead-lookbehind/reg-444.jpg" class="" title="img">
+<img data-src="/2021/08/03/regex-lookhead-lookbehind/reg-444.jpg" class="">
+
       <div class="tags">
           <a href="/tags/regex/" rel="tag"><i class="ic i-tag"></i> regex</a>
       </div>
@@ -228,7 +226,7 @@
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2021-08-03 15:35:07" itemprop="dateModified" datetime="2021-08-03T15:35:07+08:00">2021-08-03</time>
+    <time title="Modified: 2021-08-05 14:05:55" itemprop="dateModified" datetime="2021-08-05T14:05:55+08:00">2021-08-05</time>
   </span>
 </div>
 
@@ -245,7 +243,7 @@
     <div class="item left">
       
 
-  <a href="/2021/07/27/python-upload-download/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclx6phq6j20zk0m8e36.jpg" title="Python Upload &amp; Download File">
+  <a href="/2021/07/27/python-upload-download/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicitcxhpij20zk0m8hdt.jpg" title="Python Upload &amp; Download File">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Python Upload & Download File</h3>
@@ -255,7 +253,7 @@
     <div class="item right">
       
 
-  <a href="/2021/08/03/oracle-form-download-file/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giph4lm9i7j20zk0m84qp.jpg" title="Download File by Form Personalization">
+  <a href="/2021/08/03/oracle-form-download-file/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclxfdlttj20zk0m8npd.jpg" title="Download File by Form Personalization">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Download File by Form Personalization</h3>
@@ -292,7 +290,7 @@
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">265</span>
+        <span class="count">267</span>
         <span class="name">posts</span>
       </a>
     </div>
