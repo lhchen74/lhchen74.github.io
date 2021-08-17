@@ -1,0 +1,476 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="我知这世界本如露水般短暂 然而 然而" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="我知这世界本如露水般短暂 然而 然而" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="我知这世界本如露水般短暂 然而 然而" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="css" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2021/08/07/css-variables/">
+
+
+
+  <title>
+CSS Variables |
+露の世 = 我知这世界本如露水般短暂 然而 然而</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">CSS Variables
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2021-08-07 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2021-08-07T00:00:00+08:00">2021-08-07</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">露の世</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclflwv2aj20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giciuja1j1j20zk0m8kjl.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giph4fomxoj20zk0m8axp.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipevuctzzj20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipexoj0moj20zk0m8kgu.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclimtf7dj20zk0m8qav.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2021/08/07/css-variables/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="我知这世界本如露水般短暂 然而 然而">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>转载: <span class="exturl" data-url="aHR0cHM6Ly93d3cuc2FtYW50aGFtaW5nLmNvbS90aWRiaXRzLzQtZGVjbGFyaW5nLWNzcy12YXJpYWJsZXMv">CSS Variables | SamanthaMing.com</span></p>
+</blockquote>
+<p>Move over Sass, we have #CSS variables! I still love Sass of course. But it’s great native CSS supports this. No need for a preprocessor &amp; no more compiling 🥳</p>
+<p>Global scope will allow you to access the variable everywhere. Local scope will just be within your specific selector 👍</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span> &#123;</span><br><span class="line">    <span class="comment">/* 1. Defining in Global Scope */</span></span><br><span class="line">    --<span class="attribute">color</span>: red;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* 2. Available in all selector*/</span></span><br><span class="line">    <span class="attribute">color</span>: <span class="built_in">var</span>(--color); <span class="comment">/* red */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.local</span> &#123;</span><br><span class="line">    <span class="comment">/* 1. Defining in Local Scope */</span></span><br><span class="line">    --<span class="attribute">color</span>: blue;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* 2. Scoped to the .local class only */</span></span><br><span class="line">    <span class="attribute">color</span>: <span class="built_in">var</span>(--color); <span class="comment">/* blue */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="story-time"><a class="markdownIt-Anchor" href="#story-time">#</a> Story time…</h2>
+<p>It’s been awhile since I had story time, so let’s me share the journey of a discontent css developer who finally stopped being so angry 😂</p>
+<h3 id="yucky-duplicated-css-code"><a class="markdownIt-Anchor" href="#yucky-duplicated-css-code">#</a> Yucky Duplicated CSS Code</h3>
+<p>Back in the days, I remember having to make a lot of duplicate styling…</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.subtitle</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#999</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.subtext</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#999</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>This was always annoying to me! Because I knew the concept of  <code>variables</code>  from other programming language. So I always cringe when I see this duplication.</p>
+<h3 id="sass-to-the-rescue"><a class="markdownIt-Anchor" href="#sass-to-the-rescue">#</a> Sass to the rescue 🦸</h3>
+<p>And then I discovered <span class="exturl" data-url="aHR0cHM6Ly9zYXNzLWxhbmcuY29tL2RvY3VtZW50YXRpb24vdmFyaWFibGVz">Sass</span>. Yay, I can finally utilize variables!</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$secondary-color</span>: <span class="number">#999</span>;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.subtitle</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="variable">$secondary-color</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.subtext</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="variable">$secondary-color</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>This was all great. But then you have to deal with installing Sass to your project and the overhead of dealing with a preprocessor and compiling. And for a tiny a project, the effort of setting up Sass just doesn’t make sense. So back to being a complain-y developer and tweeting a firestorm of how CSS is annoying…cause that’s why Twitter was created right, it’s a place for angry developers to vent 😅</p>
+<h3 id="out-of-the-way-sass-css-is-my-hero"><a class="markdownIt-Anchor" href="#out-of-the-way-sass-css-is-my-hero">#</a> Out of the way Sass, CSS is my hero 💪</h3>
+<p>CSS finally had enough of me sending it bad energy. So it introduced CSS variables. Now I can set a variable natively. No preprocessor, no extra installation, just plain CSS out of the box. Beautiful isn’t it 😍</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span> &#123;</span><br><span class="line">    --secondary-<span class="attribute">color</span>: <span class="number">#999</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.subtitle</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="built_in">var</span>(--secondary-color);</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.subtext</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="built_in">var</span>(--secondary-color);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Can I complain about the awkward syntax 🤔 Sure…but gratitude is the way to happiness. So I’m going to soak in this variable heaven for a bit…until the next story time 😂</p>
+<h2 id="css-variable-syntax"><a class="markdownIt-Anchor" href="#css-variable-syntax">#</a> CSS Variable Syntax</h2>
+<p><strong>1. Declaring a CSS variable</strong></p>
+<p>You prefix your variable name with 2 dashes,  <code>--</code> .</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--variable-name: some-value;</span><br></pre></td></tr></table></figure>
+<p><strong>2. Using the CSS variable</strong></p>
+<p>And to use it. You use pass your variable name into  <code>var()</code> .</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">css-property: <span class="built_in">var</span>(--variable-name);</span><br></pre></td></tr></table></figure>
+<h2 id="scopes-in-css-variable"><a class="markdownIt-Anchor" href="#scopes-in-css-variable">#</a> Scopes in CSS Variable</h2>
+<p>You can declare your CSS variable in the global scope, meaning it can be available throughout your entire app. Or you can just set the CSS variable in the local scope, where it’s only available in the specific selector.</p>
+<h3 id="global-scope"><a class="markdownIt-Anchor" href="#global-scope">#</a> Global Scope</h3>
+<p>To declare it in the global scope, you first set your definition inside  <code>:root &#123;&#125;</code> .</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span> &#123;</span><br><span class="line">    --primary-<span class="attribute">color</span>: <span class="number">#000</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="built_in">var</span>(--primary-color);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="local-scope"><a class="markdownIt-Anchor" href="#local-scope">#</a> Local Scope</h3>
+<p>To declare it in the local scope, you just define your variable inside your element block. And that variable is only available within that selector. If you tried to use is somewhere, it won’t have any effect.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h2</span> &#123;</span><br><span class="line">    --<span class="selector-tag">h2</span>-<span class="attribute">color</span>: <span class="number">#999</span>;</span><br><span class="line">    <span class="attribute">color</span>: <span class="built_in">var</span>(--h2-color);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">h3</span> &#123;</span><br><span class="line">    <span class="comment">/* No Effect */</span></span><br><span class="line">    <span class="attribute">color</span>: <span class="built_in">var</span>(--h2-color);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="examples"><a class="markdownIt-Anchor" href="#examples">#</a> Examples</h3>
+<p>Let’s go over some different ways you can have some fun defining CSS variables ✅</p>
+<h4 id="you-can-set-multiple-value"><a class="markdownIt-Anchor" href="#you-can-set-multiple-value">#</a> You can set multiple value</h4>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span> &#123;</span><br><span class="line">    --<span class="attribute">margin</span>: <span class="number">10px</span> <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="built_in">var</span>(--margin);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="you-can-build-up-values"><a class="markdownIt-Anchor" href="#you-can-build-up-values">#</a> You can build up values</h4>
+<p>This is handy when used it with  <code>calc()</code> . Are you sensing some cool dynamic sizing application with this. Ya, my spidy senses are tingling too! 🕷</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span> &#123;</span><br><span class="line">    --value: <span class="number">5</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="built_in">calc</span>(<span class="built_in">var</span>(--value) * <span class="number">1px</span>); <span class="comment">/* 5px */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>⚠️Note: You can not concatenate a unitless value with a unit. So this won’t work:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span> &#123;</span><br><span class="line">    --value: <span class="number">5</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="built_in">var</span>(--value) px; <span class="comment">/* ❌ will not give you 5px */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>☝️If you’re trying to build up values, you need to use css  <code>calc()</code>  ✅</p>
+<h4 id="you-can-reference-variable-in-another-definition"><a class="markdownIt-Anchor" href="#you-can-reference-variable-in-another-definition">#</a> You can reference variable in another definition</h4>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span> &#123;</span><br><span class="line">    --<span class="attribute">border-width</span>: <span class="number">10px</span>;</span><br><span class="line">    --<span class="attribute">border</span>: <span class="built_in">var</span>(--border-width) solid <span class="number">#000</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="attribute">border</span>: <span class="built_in">var</span>(--border);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>After some testing, I found the order doesn’t matter. You can reference a latter variable in an earlier definition. But coming from JavaScript where you should always use the variable after it’s been defined, this seems a bit off to me 😅</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* This also works */</span></span><br><span class="line"><span class="selector-pseudo">:root</span> &#123;</span><br><span class="line">    --<span class="attribute">border</span>: <span class="built_in">var</span>(--border-width) solid <span class="number">#000</span>;</span><br><span class="line">    --<span class="attribute">border-width</span>: <span class="number">10px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="overriding-css-variable-values"><a class="markdownIt-Anchor" href="#overriding-css-variable-values">#</a> Overriding CSS Variable Values</h2>
+<p>The great thing is you can override the global value, so can set something unique to a specific context.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span> &#123;</span><br><span class="line">  --default-<span class="attribute">color</span>: pink;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.content</span> &#123;</span><br><span class="line">  <span class="comment">/* Override the global css variable */</span></span><br><span class="line">  --default-<span class="attribute">color</span>: green;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: <span class="built_in">var</span>(--default-color);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;<span class="selector-tag">p</span>&gt;Default &quot;Pink&quot; <span class="attribute">color</span>&lt;/<span class="selector-tag">p</span>&gt;</span><br><span class="line"></span><br><span class="line">&lt;div class=&quot;content&quot;&gt;</span><br><span class="line">  &lt;<span class="selector-tag">p</span>&gt;Overridden &quot;Green&quot; <span class="attribute">color</span>&lt;/<span class="selector-tag">p</span>&gt;</span><br><span class="line">&lt;/<span class="selector-tag">div</span>&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="setting-fallback-value"><a class="markdownIt-Anchor" href="#setting-fallback-value">#</a> Setting Fallback Value</h2>
+<p>What happens when you use a variable that has never been assigned 🤔</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="built_in">var</span>(--color);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The answer is NOTHING. Your app doesn’t break. I guess that’s nice. But if that seems a bit risque, you can set a <strong>Fallback Value</strong>.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="built_in">var</span>(--color, pink);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Pink color<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>And if you do define it, the defined color will just take over.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">    --<span class="attribute">color</span>: black;</span><br><span class="line">    <span class="attribute">color</span>: <span class="built_in">var</span>(--color, pink);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Black color<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="using-css-variable-in-javascript"><a class="markdownIt-Anchor" href="#using-css-variable-in-javascript">#</a> Using CSS Variable in JavaScript</h2>
+<p>The best thing about using CSS variable instead of Sass variable, is that you can access it in JavaScript! And you know when JS joins the party, it’s going to get crazy 😆</p>
+<p>Let’s go over the basics usage and see how we can retrieve and set our CSS variables.</p>
+<h3 id="retrieve-from-inline-style"><a class="markdownIt-Anchor" href="#retrieve-from-inline-style">#</a> Retrieve from inline style</h3>
+<p>If you set your CSS variable via inline style.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">&quot;--color: red&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Then you retrieve your value with  <code>getPropertyValue()</code> :</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Get our &lt;p&gt; element</span></span><br><span class="line"><span class="keyword">const</span> element = <span class="built_in">document</span>.querySelector(<span class="string">&quot;p&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Retrieve our CSS variable &quot;--color&quot;</span></span><br><span class="line">element.style.getPropertyValue(<span class="string">&quot;--color&quot;</span>); <span class="comment">// &#x27;red&#x27;</span></span><br></pre></td></tr></table></figure>
+<h3 id="retrieve-from-inline-or-css-file"><a class="markdownIt-Anchor" href="#retrieve-from-inline-or-css-file">#</a> Retrieve from inline or css file</h3>
+<p>If you set your CSS variable in your style tag or an external CSS file.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">p</span> &#123;</span></span><br><span class="line"><span class="css">        --<span class="attribute">color</span>: red;</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Then you need to use this first  <code>getComputedStyle()</code> :</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Get our &lt;p&gt; element</span></span><br><span class="line"><span class="keyword">const</span> element = <span class="built_in">document</span>.querySelector(<span class="string">&quot;p&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Retrieve our CSS variable &quot;--color&quot;</span></span><br><span class="line">getComputedStyle(element).getPropertyValue(<span class="string">&quot;--color&quot;</span>); <span class="comment">// &#x27;red&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>And yes, you can also use this way to retrieve your inline style as well:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">&quot;--color: red&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Get our &lt;p&gt; element</span></span><br><span class="line"><span class="keyword">const</span> element = <span class="built_in">document</span>.querySelector(<span class="string">&quot;p&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Retrieve our CSS variable &quot;--color&quot;</span></span><br><span class="line">getComputedStyle(element).getPropertyValue(<span class="string">&quot;--color&quot;</span>); <span class="comment">// &#x27;red&#x27;</span></span><br></pre></td></tr></table></figure>
+<h3 id="setting-a-css-variable-with-js"><a class="markdownIt-Anchor" href="#setting-a-css-variable-with-js">#</a> Setting a CSS Variable with JS</h3>
+<p>And to adjust your CSS variable, you just use  <code>setProperty</code> .</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Get our &lt;p&gt; element</span></span><br><span class="line"><span class="keyword">const</span> element = <span class="built_in">document</span>.querySelector(<span class="string">&quot;p&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Set our &quot;--color&quot; variable to be &quot;blue&quot;</span></span><br><span class="line">element.style.setProperty(<span class="string">&quot;--color&quot;</span>, <span class="string">&quot;blue&quot;</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="simple-example"><a class="markdownIt-Anchor" href="#simple-example">#</a> Simple Example</h3>
+<p>Let’s put everything together and look at a simple example. Here we want to check our text color when the text is clicked.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">&quot;--color:red; color: var(--color)&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Get our &lt;p&gt; element</span></span><br><span class="line"><span class="keyword">const</span> element = <span class="built_in">document</span>.querySelector(<span class="string">&quot;p&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// On click, change text from &quot;red&quot; to &quot;blue&quot;</span></span><br><span class="line">element.addEventListener(<span class="string">&quot;click&quot;</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    element.style.setProperty(<span class="string">&quot;--color&quot;</span>, <span class="string">&quot;blue&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="retrieve-global-css-variable-from-javascript"><a class="markdownIt-Anchor" href="#retrieve-global-css-variable-from-javascript">#</a> Retrieve Global CSS Variable from JavaScript</h3>
+<p>If you set your CSS variable in the global scope. To retrieve the value in JavaScript, you will have to go with the  <code>getComputedStyle</code>  route, but instead of passing the <strong>element</strong>, you just pass in  <code>document.documentElement</code> . So something like this:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span> &#123;</span><br><span class="line">    --<span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">getComputedStyle(<span class="built_in">document</span>.documentElement).getPropertyValue(<span class="string">&quot;--color&quot;</span>); <span class="comment">// &quot;red&quot;</span></span><br></pre></td></tr></table></figure>
+<h2 id="example"><a class="markdownIt-Anchor" href="#example">#</a> Example</h2>
+<h3 id="facebook-css-variables-for-theming-dark-mode"><a class="markdownIt-Anchor" href="#facebook-css-variables-for-theming-dark-mode">#</a> Facebook: CSS variables for theming (dark mode)</h3>
+<p>Here’s an example I found from <span class="exturl" data-url="aHR0cHM6Ly9lbmdpbmVlcmluZy5mYi5jb20vd2ViL2ZhY2Vib29rLXJlZGVzaWduLw==">Facebook</span> regarding how they rebuild their tech stack using CSS variables for theming.</p>
+<blockquote>
+<p>CSS variables are defined under a class, and when that class is applied to a DOM element, its values are applied to the styles within its DOM subtree. This lets us combine the themes into a single stylesheet, meaning toggling different themes doesn’t require reloading the page, different pages can have different themes without downloading additional CSS, and different products can use different themes side by side on the same page.</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.light-theme</span> &#123;</span><br><span class="line">    --card-bg: <span class="number">#eee</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.dark-theme</span> &#123;</span><br><span class="line">    --card-bg: <span class="number">#111</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.card</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="built_in">var</span>(--card-bg);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="browser-support"><a class="markdownIt-Anchor" href="#browser-support">#</a> Browser Support</h2>
+<p>Beside party 💩 Internet Explorer, the rest of the browsers are all game!</p>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvQ1NTL1VzaW5nX0NTU19jdXN0b21fcHJvcGVydGllcyNCcm93c2VyX2NvbXBhdGliaWxpdHk=">Browser Support: CSS Variables</span></li>
+</ul>
+
+      <div class="tags">
+          <a href="/tags/css/" rel="tag"><i class="ic i-tag"></i> css</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2021-08-09 15:55:24" itemprop="dateModified" datetime="2021-08-09T15:55:24+08:00">2021-08-09</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2021/08/07/rust-webassembly/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclil3m4ej20zk0m8tn8.jpg" title="Compiling from Rust to WebAssembly">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Compiling from Rust to WebAssembly</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2021/08/07/css-counter/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giph4fomxoj20zk0m8axp.jpg" title="A Guide to CSS counter">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>A Guide to CSS counter</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#story-time"><span class="toc-number">1.</span> <span class="toc-text"> Story time…</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#yucky-duplicated-css-code"><span class="toc-number">1.1.</span> <span class="toc-text"> Yucky Duplicated CSS Code</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sass-to-the-rescue"><span class="toc-number">1.2.</span> <span class="toc-text"> Sass to the rescue 🦸</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#out-of-the-way-sass-css-is-my-hero"><span class="toc-number">1.3.</span> <span class="toc-text"> Out of the way Sass, CSS is my hero 💪</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#css-variable-syntax"><span class="toc-number">2.</span> <span class="toc-text"> CSS Variable Syntax</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#scopes-in-css-variable"><span class="toc-number">3.</span> <span class="toc-text"> Scopes in CSS Variable</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#global-scope"><span class="toc-number">3.1.</span> <span class="toc-text"> Global Scope</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#local-scope"><span class="toc-number">3.2.</span> <span class="toc-text"> Local Scope</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#examples"><span class="toc-number">3.3.</span> <span class="toc-text"> Examples</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#you-can-set-multiple-value"><span class="toc-number">3.3.1.</span> <span class="toc-text"> You can set multiple value</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#you-can-build-up-values"><span class="toc-number">3.3.2.</span> <span class="toc-text"> You can build up values</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#you-can-reference-variable-in-another-definition"><span class="toc-number">3.3.3.</span> <span class="toc-text"> You can reference variable in another definition</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#overriding-css-variable-values"><span class="toc-number">4.</span> <span class="toc-text"> Overriding CSS Variable Values</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#setting-fallback-value"><span class="toc-number">5.</span> <span class="toc-text"> Setting Fallback Value</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#using-css-variable-in-javascript"><span class="toc-number">6.</span> <span class="toc-text"> Using CSS Variable in JavaScript</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#retrieve-from-inline-style"><span class="toc-number">6.1.</span> <span class="toc-text"> Retrieve from inline style</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#retrieve-from-inline-or-css-file"><span class="toc-number">6.2.</span> <span class="toc-text"> Retrieve from inline or css file</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#setting-a-css-variable-with-js"><span class="toc-number">6.3.</span> <span class="toc-text"> Setting a CSS Variable with JS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#simple-example"><span class="toc-number">6.4.</span> <span class="toc-text"> Simple Example</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#retrieve-global-css-variable-from-javascript"><span class="toc-number">6.5.</span> <span class="toc-text"> Retrieve Global CSS Variable from JavaScript</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#example"><span class="toc-number">7.</span> <span class="toc-text"> Example</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#facebook-css-variables-for-theming-dark-mode"><span class="toc-number">7.1.</span> <span class="toc-text"> Facebook: CSS variables for theming (dark mode)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#browser-support"><span class="toc-number">8.</span> <span class="toc-text"> Browser Support</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">269</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">44</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2021/08/07/rust-webassembly/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2021/08/07/css-counter/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2021</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ 露の世</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2021/08/07/css-variables/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

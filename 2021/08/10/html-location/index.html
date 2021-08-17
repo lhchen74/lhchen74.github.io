@@ -1,0 +1,507 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="我知这世界本如露水般短暂 然而 然而" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="我知这世界本如露水般短暂 然而 然而" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="我知这世界本如露水般短暂 然而 然而" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="html" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2021/08/10/html-location/">
+
+
+
+  <title>
+window.location Cheatsheet |
+露の世 = 我知这世界本如露水般短暂 然而 然而</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">window.location Cheatsheet
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2021-08-10 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2021-08-10T00:00:00+08:00">2021-08-10</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">露の世</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicit31ffoj20zk0m8naf.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclhnx9glj20zk0m8npd.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipexj2jgzj20zk0m8b09.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giciuv0socj20zk0m8qes.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giph4fomxoj20zk0m8axp.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclxfdlttj20zk0m8npd.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2021/08/10/html-location/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="我知这世界本如露水般短暂 然而 然而">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>转载：<span class="exturl" data-url="aHR0cHM6Ly93d3cuc2FtYW50aGFtaW5nLmNvbS90aWRiaXRzLzg2LXdpbmRvdy1sb2NhdGlvbi1jaGVhdHNoZWV0Lw==">window.location Cheatsheet | SamanthaMing.com</span></p>
+</blockquote>
+<p>Looking for a site’s URL information, then the  <code>window.location</code>  object is for you! Use its properties to get information on the current page address or use its methods to do some page redirect or refresh 💫</p>
+<blockquote>
+<p><strong><span class="exturl" data-url="aHR0cHM6Ly93d3cuc2FtYW50aGFtaW5nLmNvbS90aWRiaXRzLz9maWx0ZXI9SlMjMg==">https://www.samanthaming.com/tidbits/?filter=JS#2</span></strong></p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.location.origin   → <span class="string">&#x27;https://www.samanthaming.com&#x27;</span></span><br><span class="line">               .protocol → <span class="string">&#x27;https:&#x27;</span></span><br><span class="line">               .host     → <span class="string">&#x27;www.samanthaming.com&#x27;</span></span><br><span class="line">               .hostname → <span class="string">&#x27;www.samanthaming.com&#x27;</span></span><br><span class="line">               .port     → <span class="string">&#x27;&#x27;</span></span><br><span class="line">               .pathname → <span class="string">&#x27;/tidbits/&#x27;</span></span><br><span class="line">               .search   → <span class="string">&#x27;?filter=JS&#x27;</span></span><br><span class="line">               .hash     → <span class="string">&#x27;#2&#x27;</span></span><br><span class="line">               .href     → <span class="string">&#x27;https://www.samanthaming.com/tidbits/?filter=JS#2&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.location.assign(<span class="string">&#x27;url&#x27;</span>)</span><br><span class="line">               .replace(<span class="string">&#x27;url&#x27;</span>)</span><br><span class="line">               .reload()</span><br><span class="line">               .toString()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="windowlocation-properties"><a class="markdownIt-Anchor" href="#windowlocation-properties">#</a> window.location Properties</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:right"><code>window.location</code></th>
+<th style="text-align:left">Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right"><code>.origin</code></td>
+<td style="text-align:left">Base URL (Protocol + hostname + port number)</td>
+</tr>
+<tr>
+<td style="text-align:right"><code>.protocol</code></td>
+<td style="text-align:left">Protocol Schema ( <code>http</code> : or  <code>https</code> )</td>
+</tr>
+<tr>
+<td style="text-align:right"><code>.host</code></td>
+<td style="text-align:left">Domain name + port</td>
+</tr>
+<tr>
+<td style="text-align:right"><code>.hostname</code></td>
+<td style="text-align:left">Domain name</td>
+</tr>
+<tr>
+<td style="text-align:right"><code>.port</code></td>
+<td style="text-align:left">Port Number</td>
+</tr>
+<tr>
+<td style="text-align:right"><code>.pathname</code></td>
+<td style="text-align:left">The initial ‘/’ followed by the Path</td>
+</tr>
+<tr>
+<td style="text-align:right"><code>.search</code></td>
+<td style="text-align:left"><code>?</code>  followed by Query String</td>
+</tr>
+<tr>
+<td style="text-align:right"><code>.hash</code></td>
+<td style="text-align:left"><code>#</code>  followed by the Anchor or Fragment identifier</td>
+</tr>
+<tr>
+<td style="text-align:right"><code>.href</code></td>
+<td style="text-align:left">Full URL</td>
+</tr>
+</tbody>
+</table>
+<h3 id="difference-between-host-vs-hostname"><a class="markdownIt-Anchor" href="#difference-between-host-vs-hostname">#</a> Difference between  <code>host</code>  vs  <code>hostname</code></h3>
+<p>In my above example, you will notice that  <code>host</code>  and  <code>hostname</code>  returns the value. So why do these properties. Well, it has do with the port number. Let’s take a look.</p>
+<p><strong>URL without Port</strong></p>
+<blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;www.samanthaming.com</span><br></pre></td></tr></table></figure>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.location.host; <span class="comment">// &#x27;www.samanthaming.com&#x27;</span></span><br><span class="line"><span class="built_in">window</span>.location.hostname; <span class="comment">// &#x27;www.samanthaming.com&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.location.port; <span class="comment">// &#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+<p><strong>URL with Port</strong></p>
+<blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;www.samanthaming.com:8080</span><br></pre></td></tr></table></figure>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.location.host; <span class="comment">// &#x27;www.samanthaming.com:8080&#x27;</span></span><br><span class="line"><span class="built_in">window</span>.location.hostname; <span class="comment">// &#x27;www.samanthaming.com&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.location.port; <span class="comment">// &#x27;8080&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>So  <code>host</code>  will include the port number, whereas  <code>hostname</code>  will only return the host name.</p>
+<h3 id="how-to-change-url-properties"><a class="markdownIt-Anchor" href="#how-to-change-url-properties">#</a> How to change URL properties</h3>
+<p>Not only can you call these location properties to retrieve the URL information. You can use it to set new properties and change the URL. Let’s see what I mean.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// START &#x27;www.samanthaming.com&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.location.pathname = <span class="string">&quot;/tidbits&quot;</span>; <span class="comment">// Set the pathname</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// RESULT &#x27;www.samanthaming.com/tidbits&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>Here’s the complete list of properties that you can change:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Example</span></span><br><span class="line"><span class="built_in">window</span>.location.protocol = <span class="string">&#x27;https&#x27;</span></span><br><span class="line">               .host     = <span class="string">&#x27;localhost:8080&#x27;</span></span><br><span class="line">               .hostname = <span class="string">&#x27;localhost&#x27;</span></span><br><span class="line">               .port     = <span class="string">&#x27;8080&#x27;</span></span><br><span class="line">               .pathname = <span class="string">&#x27;path&#x27;</span></span><br><span class="line">               .search   = <span class="string">&#x27;query string&#x27;</span> <span class="comment">// (you don&#x27;t need to pass ?)</span></span><br><span class="line">               .hash     = <span class="string">&#x27;hash&#x27;</span> <span class="comment">// (you don&#x27;t need to pass #)</span></span><br><span class="line">               .href     = <span class="string">&#x27;url&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>The only property you can’t set is  <code>window.location.origin</code> . This property is read-only.</p>
+<h2 id="location-object"><a class="markdownIt-Anchor" href="#location-object">#</a> Location Object</h2>
+<p>The  <code>window.location</code>  returns a  <code>Location</code>  object. Which gives you information about the current location of the page. But you can also access the  <code>Location</code>  object in several ways.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.location          → Location</span><br><span class="line"><span class="built_in">window</span>.document.location → Location</span><br><span class="line"><span class="built_in">document</span>.location        → Location</span><br><span class="line">location                 → Location</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>The reason we can do this is because these are global variables in our browser.</p>
+<img data-src="/2021/08/10/html-location/86-window-location-cheatsheet-browser-global-variable.jfif" class="" title="img">
+<h3 id="windowlocation-vs-location"><a class="markdownIt-Anchor" href="#windowlocation-vs-location">#</a> window.location vs location</h3>
+<p>All 4 of these properties point at the same  <code>Location</code>  object. I personally prefer  <code>window.location</code>  and would actually avoid using  <code>location</code> . Mainly because  <code>location</code>  reads more like a generic term and someone might accidentally name their variable that, which would override the global variable. Take for example:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// https://www.samanthaming.com</span></span><br><span class="line"></span><br><span class="line">location.protocol; <span class="comment">// &#x27;https&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">localFile</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> location = <span class="string">&quot;/sam&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> location.protocol;</span><br><span class="line">    <span class="comment">// ❌ undefined</span></span><br><span class="line">    <span class="comment">//    b/c local &quot;location&quot; has override the global variable</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>I think that most developer is aware that  <code>window</code>  is a global variable. So you’re less likely to cause confusion. To be honest, I had no idea  <code>location</code>  was a global variable until I wrote this post 😅. So my recommendation is to be more explicit and use  <code>window.location</code>  instead 👍</p>
+<p>Here’s my personal order of preference:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ✅</span></span><br><span class="line"><span class="number">1.</span> <span class="built_in">window</span>.location   <span class="comment">// 🏆</span></span><br><span class="line"><span class="number">2.</span> <span class="built_in">document</span>.location</span><br><span class="line"></span><br><span class="line"><span class="comment">// ❌</span></span><br><span class="line"><span class="number">3.</span> <span class="built_in">window</span>.document.location <span class="comment">//  why not just use #1 or #2 😅</span></span><br><span class="line"><span class="number">4.</span> location <span class="comment">// feels too ambiguous 😵</span></span><br></pre></td></tr></table></figure>
+<p>Of course, this is just my preference. You’re the expert of your codebase, there is no best way, the best way is always the one that works best for you and your team 🤓</p>
+<h2 id="windowlocation-methods"><a class="markdownIt-Anchor" href="#windowlocation-methods">#</a> window.location Methods</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:right"><code>window.location</code></th>
+<th style="text-align:left"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right"><code>.assign()</code></td>
+<td style="text-align:left">Navigates to the given URL</td>
+</tr>
+<tr>
+<td style="text-align:right"><code>.replace()</code></td>
+<td style="text-align:left">Navigates to given URL &amp; removes current page from the session history</td>
+</tr>
+<tr>
+<td style="text-align:right"><code>.reload()</code></td>
+<td style="text-align:left">Reload the current page</td>
+</tr>
+<tr>
+<td style="text-align:right"><code>.toString()</code></td>
+<td style="text-align:left">Returns the URL</td>
+</tr>
+</tbody>
+</table>
+<h3 id="windowlocationtostring"><a class="markdownIt-Anchor" href="#windowlocationtostring">#</a> window.location.toString</h3>
+<p>Here’s the definition from <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvQVBJL0xvY2F0aW9uL3RvU3RyaW5n">MDN</span></p>
+<blockquote>
+<p>This method returns the <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvQVBJL1VTVlN0cmluZw==">USVString</span> of the URL. It is a read-only version of Location.href</p>
+</blockquote>
+<p>In other words, you can use it to get the  <code>href</code>  value from the</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// https://www.samanthaming.com</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.location.href; <span class="comment">// https://www.samanthaming.com</span></span><br><span class="line"><span class="built_in">window</span>.location.toString(); <span class="comment">// https://www.samanthaming.com</span></span><br></pre></td></tr></table></figure>
+<p>As to which to use, I couldn’t find much information as to which is better; but if you do, please <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3NhbWFudGhhbWluZy9zYW1wbGUtc3JjL2Jsb2IvbWFzdGVyL2FydGljbGVzL3RpZGJpdHMvODYtd2luZG93LWxvY2F0aW9uLWNoZWF0c2hlZXQubWQ=">submit a PR</span> on this 😊. But I did find a performance test on the difference.</p>
+<blockquote>
+<p><span class="exturl" data-url="aHR0cHM6Ly9qc3BlcmYuY29tL2xvY2F0aW9uLXRvc3RyaW5nLXZzLWxvY2F0aW9uLWhyZWY=">JSPerf: Location toString vs Location href</span></p>
+</blockquote>
+<p>One thing I want to note about these speed tests is that it is browser specific. Different browser and versions will render different outcome. I’m using Chrome, so the  <code>href</code>  came out faster then the rest. So that’s one I’ll use. Also I think it reads more explicit then  <code>toString()</code> . It is very obvious that  <code>href</code>  will provide the URL whereas  <code>toString</code>  seems like something it being converted to a string 😅</p>
+<h3 id="assign-vs-replace"><a class="markdownIt-Anchor" href="#assign-vs-replace">#</a> assign vs replace</h3>
+<p>Both of these methods will help you redirect or navigate to another URL. The difference is  <code>assign</code>  will save your <strong>current page</strong> in history, so your user can use the “back” button to navigate to it. Whereas with  <code>replace</code>  method, it doesn’t save it. Confused? No problem, I was too. Let’s walk through an example.</p>
+<p><strong>Assign</strong></p>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">1.</span>  Open a new blank page</span><br><span class="line"><span class="bullet">2.</span>  Go to www.samanthaming.com (current page)</span><br><span class="line"></span><br><span class="line"><span class="bullet">3.</span>  Load new page 👉 <span class="code">`window.location.assign(&#x27;https://www.w3schools.com&#x27;)`</span></span><br><span class="line"><span class="bullet">4.</span>  Press &quot;Back&quot;</span><br><span class="line"><span class="bullet">5.</span>  Returns to 👉 www.samanthaming.com</span><br></pre></td></tr></table></figure>
+<p><strong>Replace</strong></p>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">1.</span>  Open a new blank place</span><br><span class="line"><span class="bullet">2.</span>  Go to www.samanthaming.com (current Page)</span><br><span class="line"></span><br><span class="line"><span class="bullet">3.</span>  Load new page 👉 <span class="code">`window.location.replace(&#x27;https://www.w3schools.com&#x27;)`</span></span><br><span class="line"><span class="bullet">4.</span>  Press &quot;Back&quot;</span><br><span class="line"><span class="bullet">5.</span>  Return to 👉 blank page</span><br></pre></td></tr></table></figure>
+<p><strong>Current Page</strong></p>
+<p>I just need to emphasize the “current page” in the definition. It is the page right before you call  <code>assign</code>  or  <code>replace</code> .</p>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">1.</span>  Open a new blank place</span><br><span class="line"><span class="bullet">2.</span>  Go to www.developer.mozilla.org</span><br><span class="line"><span class="bullet">3.</span>  Go to www.samanthaming.com 👈 this is the current Page</span><br><span class="line"></span><br><span class="line"><span class="bullet">4.</span>  window.location.assign(&#x27;https://www.w3schools.com&#x27;); // Will go to #3</span><br><span class="line"><span class="bullet">5.</span>  window.location.replace(&#x27;https://www.w3schools.com&#x27;); // Will go to #2</span><br></pre></td></tr></table></figure>
+<h2 id="how-to-do-a-page-redirect"><a class="markdownIt-Anchor" href="#how-to-do-a-page-redirect">#</a> How to Do a Page Redirect</h2>
+<p>By now, you know we can change the properties of the  <code>window.location</code>  by assigning a value using  <code>=</code> . Similarly, there are methods we can access to do some actions. So in regards to “how to redirect to another page”, well there are 3 ways.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Setting href properties</span></span><br><span class="line"><span class="built_in">window</span>.location.href = <span class="string">&quot;https://www.samanthaming.com&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Using Assign</span></span><br><span class="line"><span class="built_in">window</span>.location.assign(<span class="string">&quot;https://www.samanthaming.com&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Using Replace</span></span><br><span class="line"><span class="built_in">window</span>.location.replace(<span class="string">&quot;https://www.samanthaming.com&quot;</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="replace-vs-assign-vs-href"><a class="markdownIt-Anchor" href="#replace-vs-assign-vs-href">#</a> replace vs assign vs href</h3>
+<p>All three does redirect, the difference has to do with browser history.  <code>href</code>  and  <code>assign</code>  are the same here. It will save your <strong>current page</strong> in history, whereas  <code>replace</code>  won’t. So if you prefer creating an experience where the navigation can’t press back to the originating page, then use  <code>replace</code>  👍</p>
+<p>So the question now is  <code>href</code>  vs  <code>assign</code> . I guess this will come to personal preference. I like the  <code>assign</code>  better because it’s a method so it feels like I’m performing some action. Also there’s an added bonus of it being easier to test. I’ve been writing a lot of Jest tests, so by using a method, it makes it way easier to mock.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.location.assign = jest.fn();</span><br><span class="line"></span><br><span class="line">myUrlUpdateFunction();</span><br><span class="line"></span><br><span class="line">expect(<span class="built_in">window</span>.location.assign).toBeCalledWith(<span class="string">&quot;http://my.url&quot;</span>);</span><br></pre></td></tr></table></figure>
+<img data-src="/2021/08/10/html-location/86-window-location-cheatsheet.jfif" class="">
+      <div class="tags">
+          <a href="/tags/html/" rel="tag"><i class="ic i-tag"></i> html</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2021-08-10 17:23:08" itemprop="dateModified" datetime="2021-08-10T17:23:08+08:00">2021-08-10</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2021/08/07/css-counter/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giciuja1j1j20zk0m8kjl.jpg" title="A Guide to CSS counter">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>A Guide to CSS counter</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#windowlocation-properties"><span class="toc-number">1.</span> <span class="toc-text"> window.location Properties</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#difference-between-host-vs-hostname"><span class="toc-number">1.1.</span> <span class="toc-text"> Difference between  host  vs  hostname</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#how-to-change-url-properties"><span class="toc-number">1.2.</span> <span class="toc-text"> How to change URL properties</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#location-object"><span class="toc-number">2.</span> <span class="toc-text"> Location Object</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#windowlocation-vs-location"><span class="toc-number">2.1.</span> <span class="toc-text"> window.location vs location</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#windowlocation-methods"><span class="toc-number">3.</span> <span class="toc-text"> window.location Methods</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#windowlocationtostring"><span class="toc-number">3.1.</span> <span class="toc-text"> window.location.toString</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#assign-vs-replace"><span class="toc-number">3.2.</span> <span class="toc-text"> assign vs replace</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#how-to-do-a-page-redirect"><span class="toc-number">4.</span> <span class="toc-text"> How to Do a Page Redirect</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#replace-vs-assign-vs-href"><span class="toc-number">4.1.</span> <span class="toc-text"> replace vs assign vs href</span></a></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">269</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">44</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2021</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ 露の世</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2021/08/10/html-location/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
