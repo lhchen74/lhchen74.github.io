@@ -1,0 +1,610 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="我知这世界本如露水般短暂 然而 然而" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="我知这世界本如露水般短暂 然而 然而" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="我知这世界本如露水般短暂 然而 然而" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="json" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2021/09/15/json-path/">
+
+
+
+  <title>
+JSONPath - XPath for JSON |
+露の世 = 我知这世界本如露水般短暂 然而 然而</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">JSONPath - XPath for JSON
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2021-09-15 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2021-09-15T00:00:00+08:00">2021-09-15</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">露の世</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclfdu6exj20zk0m87hw.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclgrvbd6j20zk0m8qv5.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclx6phq6j20zk0m8e36.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipex2cdtbj20zk0m8x6p.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giciuv0socj20zk0m8qes.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclj9410cj20zk0m8h12.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2021/09/15/json-path/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="我知这世界本如露水般短暂 然而 然而">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>转载：<span class="exturl" data-url="aHR0cHM6Ly9nb2Vzc25lci5uZXQvYXJ0aWNsZXMvSnNvblBhdGgv">JSONPath - XPath for JSON</span></p>
+</blockquote>
+<p>A frequently emphasized advantage of XML is the availability of plenty tools to analyse, transform and selectively extract data out of XML documents. <span class="exturl" data-url="aHR0cDovL2VuLndpa2lwZWRpYS5vcmcvd2lraS9YUGF0aA==">XPath</span> is one of these powerful tools.</p>
+<p>It’s time to wonder, if there is a need for something like XPath4JSON and what are the problems it can solve.</p>
+<ul>
+<li>Data may be interactively found and extracted out of <span class="exturl" data-url="aHR0cDovL2pzb24ub3JnLw==">JSON</span> structures on the client without special scripting.</li>
+<li>JSON data requested by the client can be reduced to the relevant parts on the server, such minimizing the bandwidth usage of the server response.</li>
+</ul>
+<p>If we agree, that a tool for picking parts out of a JSON structure at hand does make sense, some questions come up. How should it do its job? How do JSONPath expressions look like?</p>
+<p>Due to the fact, that JSON is a natural representation of data for the C family of programming languages, the chances are high, that the particular language has native syntax elements to access a JSON structure.</p>
+<p>The following XPath expression</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/store/book[<span class="number">1</span>]/title</span><br></pre></td></tr></table></figure>
+<p>would look like</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x.store.book[<span class="number">0</span>].title;</span><br></pre></td></tr></table></figure>
+<p>or</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x[<span class="string">&quot;store&quot;</span>][<span class="string">&quot;book&quot;</span>][<span class="number">0</span>][<span class="string">&quot;title&quot;</span>];</span><br></pre></td></tr></table></figure>
+<p>In Javascript, Python and PHP with a variable  <code>x</code>  holding the JSON structure. Here we observe, that the particular language usually has a fundamental XPath feature already built in.</p>
+<p>The JSONPath tool in question should</p>
+<ul>
+<li>be naturally based on those language characteristics.</li>
+<li>cover only essential parts of XPath 1.0.</li>
+<li>be lightweight in code size and memory consumption.</li>
+<li>be runtime efficient.</li>
+</ul>
+<h2 id="jsonpath-expressions"><a class="markdownIt-Anchor" href="#jsonpath-expressions">#</a> JSONPath expressions</h2>
+<p>JSONPath expressions always refer to a JSON structure in the same way as XPath expression are used in combination with an XML document. Since a JSON structure is usually anonymous and doesn’t necessarily have a “root member object” JSONPath assumes the abstract name  <code>$</code>  assigned to the outer level object.</p>
+<p>JSONPath expressions can use the <em>dot</em> - notation</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$.store.book[<span class="number">0</span>].title;</span><br></pre></td></tr></table></figure>
+<p>or the <em>bracket</em> - notation</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$[<span class="string">&quot;store&quot;</span>][<span class="string">&quot;book&quot;</span>][<span class="number">0</span>][<span class="string">&quot;title&quot;</span>];</span><br></pre></td></tr></table></figure>
+<p>for input pathes. Internal or output pathes will always be converted to the more general <em>bracket</em>-notation.</p>
+<p>JSONPath allows the <em>wildcard</em> symbol * for member names and array indices. It borrows the <em>descendant</em> operator ‘…’ from <span class="exturl" data-url="aHR0cDovL2VuLndpa2lwZWRpYS5vcmcvd2lraS9FNFg=">E4X</span> and the *array slice syntax* proposal  <code>[start:end:step]</code>  from <span class="exturl" data-url="aHR0cDovL3d3dy5lY21hc2NyaXB0Lm9yZy8=">ECMASCRIPT 4</span>.</p>
+<p>Expressions of the underlying scripting language  <code>(&lt;expr&gt;)</code>  can be used as an alternative to explicit names or indices as in</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$.store.book[(@.length-<span class="number">1</span>)].title</span><br></pre></td></tr></table></figure>
+<p>using the symbol ‘@’ for the current object. Filter expressions are supported via the syntax  <code>?(&lt;boolean expr&gt;)</code>  as in</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$.store.book[?(@.price &lt; <span class="number">10</span>)].title</span><br></pre></td></tr></table></figure>
+<p>Here is a complete overview and a side by side comparison of the JSONPath syntax elements with its XPath counterparts.</p>
+<table>
+<thead>
+<tr>
+<th><strong>XPath</strong></th>
+<th><strong>JSONPath</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/</td>
+<td>$</td>
+<td>the root object/element</td>
+</tr>
+<tr>
+<td>.</td>
+<td>@</td>
+<td>the current object/element</td>
+</tr>
+<tr>
+<td>/</td>
+<td>. or []</td>
+<td>child operator</td>
+</tr>
+<tr>
+<td>…</td>
+<td>n/a</td>
+<td>parent operator</td>
+</tr>
+<tr>
+<td>//</td>
+<td>…</td>
+<td>recursive descent. JSONPath borrows this syntax from E4X.</td>
+</tr>
+<tr>
+<td>*</td>
+<td>*</td>
+<td>wildcard. All objects/elements regardless their names.</td>
+</tr>
+<tr>
+<td>@</td>
+<td>n/a</td>
+<td>attribute access. JSON structures don’t have attributes.</td>
+</tr>
+<tr>
+<td>[]</td>
+<td>[]</td>
+<td>subscript operator. XPath uses it to iterate over element collections and for <span class="exturl" data-url="aHR0cDovL3d3dy53My5vcmcvVFIveHBhdGgjcHJlZGljYXRlcw==">predicates</span>. In Javascript and JSON it is the native array operator.</td>
+</tr>
+<tr>
+<td>|</td>
+<td>[,]</td>
+<td>Union operator in XPath results in a combination of node sets. JSONPath allows alternate names or array indices as a set.</td>
+</tr>
+<tr>
+<td>n/a</td>
+<td><code>[start:end:step]</code></td>
+<td>array slice operator borrowed from ES4.</td>
+</tr>
+<tr>
+<td>[]</td>
+<td>?()</td>
+<td>applies a filter (script) expression.</td>
+</tr>
+<tr>
+<td>n/a</td>
+<td>()</td>
+<td>script expression, using the underlying script engine.</td>
+</tr>
+<tr>
+<td>()</td>
+<td>n/a</td>
+<td>grouping in Xpath</td>
+</tr>
+</tbody>
+</table>
+<p>XPath has a lot more to offer (Location pathes in not abbreviated syntax, operators and functions) than listed here. Moreover there is a remarkable difference how the subscript operator works in Xpath and JSONPath.</p>
+<ul>
+<li>Square brackets in XPath expressions always operate on the <em>node set</em> resulting from the previous path fragment. Indices always start by 1.</li>
+<li>With JSONPath square brackets operate on the <em>object</em> or <em>array</em> addressed by the previous path fragment. Indices always start by 0.</li>
+</ul>
+<h2 id="jsonpath-examples"><a class="markdownIt-Anchor" href="#jsonpath-examples">#</a> JSONPath examples</h2>
+<p>Let’s practice JSONPath expressions by some more examples. We start with a simple JSON structure built after an XML example representing a bookstore (original <span class="exturl" data-url="aHR0cDovL2NvbGkubGlsaS51bmktYmllbGVmZWxkLmRlL35hbmRyZWFzL1NlbWluYXJlL3NvbW1lcjAyL2Jvb2tzLnhtbA==">XML file</span>).</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;store&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;book&quot;</span>: [</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">&quot;category&quot;</span>: <span class="string">&quot;reference&quot;</span>,</span><br><span class="line">                <span class="attr">&quot;author&quot;</span>: <span class="string">&quot;Nigel Rees&quot;</span>,</span><br><span class="line">                <span class="attr">&quot;title&quot;</span>: <span class="string">&quot;Sayings of the Century&quot;</span>,</span><br><span class="line">                <span class="attr">&quot;price&quot;</span>: <span class="number">8.95</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">&quot;category&quot;</span>: <span class="string">&quot;fiction&quot;</span>,</span><br><span class="line">                <span class="attr">&quot;author&quot;</span>: <span class="string">&quot;Evelyn Waugh&quot;</span>,</span><br><span class="line">                <span class="attr">&quot;title&quot;</span>: <span class="string">&quot;Sword of Honour&quot;</span>,</span><br><span class="line">                <span class="attr">&quot;price&quot;</span>: <span class="number">12.99</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">&quot;category&quot;</span>: <span class="string">&quot;fiction&quot;</span>,</span><br><span class="line">                <span class="attr">&quot;author&quot;</span>: <span class="string">&quot;Herman Melville&quot;</span>,</span><br><span class="line">                <span class="attr">&quot;title&quot;</span>: <span class="string">&quot;Moby Dick&quot;</span>,</span><br><span class="line">                <span class="attr">&quot;isbn&quot;</span>: <span class="string">&quot;0-553-21311-3&quot;</span>,</span><br><span class="line">                <span class="attr">&quot;price&quot;</span>: <span class="number">8.99</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">&quot;category&quot;</span>: <span class="string">&quot;fiction&quot;</span>,</span><br><span class="line">                <span class="attr">&quot;author&quot;</span>: <span class="string">&quot;J. R. R. Tolkien&quot;</span>,</span><br><span class="line">                <span class="attr">&quot;title&quot;</span>: <span class="string">&quot;The Lord of the Rings&quot;</span>,</span><br><span class="line">                <span class="attr">&quot;isbn&quot;</span>: <span class="string">&quot;0-395-19395-8&quot;</span>,</span><br><span class="line">                <span class="attr">&quot;price&quot;</span>: <span class="number">22.99</span></span><br><span class="line">            &#125;</span><br><span class="line">        ],</span><br><span class="line">        <span class="attr">&quot;bicycle&quot;</span>: &#123;</span><br><span class="line">            <span class="attr">&quot;color&quot;</span>: <span class="string">&quot;red&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;price&quot;</span>: <span class="number">19.95</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>XPath</strong></th>
+<th><strong>JSONPath</strong></th>
+<th><strong>Result</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/store/book/author</code></td>
+<td><code>$.store.book[*].author</code></td>
+<td>the authors of all books in the store</td>
+</tr>
+<tr>
+<td><code>//author</code></td>
+<td><code>$..author</code></td>
+<td>all authors</td>
+</tr>
+<tr>
+<td><code>/store/*</code></td>
+<td><code>$.store.*</code></td>
+<td>all things in store, which are some books and a red bicycle.</td>
+</tr>
+<tr>
+<td><code>/store//price</code></td>
+<td><code>$.store..price</code></td>
+<td>the price of everything in the store.</td>
+</tr>
+<tr>
+<td><code>//book[3]</code></td>
+<td><code>$..book[2]</code></td>
+<td>the third book</td>
+</tr>
+<tr>
+<td><code>//book[last()]</code></td>
+<td><code>$..book[(@.length-1)]</code>   <code>$..book[-1:]</code></td>
+<td>the last book in order.</td>
+</tr>
+<tr>
+<td><code>//book[position()&lt;3]</code></td>
+<td><code>$..book[0,1]</code>   <code>$..book[:2]</code></td>
+<td>the first two books</td>
+</tr>
+<tr>
+<td><code>//book[isbn]</code></td>
+<td><code>$..book[?(@.isbn)]</code></td>
+<td>filter all books with isbn number</td>
+</tr>
+<tr>
+<td><code>//book[price&lt;10]</code></td>
+<td><code>$..book[?(@.price&lt;10)]</code></td>
+<td>filter all books cheapier than 10</td>
+</tr>
+<tr>
+<td><code>//*</code></td>
+<td><code>$..*</code></td>
+<td>all Elements in XML document. All members of JSON structure.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="jsonpath-implementation"><a class="markdownIt-Anchor" href="#jsonpath-implementation">#</a> JSONPath implementation</h2>
+<p>JSONPath is implemented in Javascript for clientside usage and ported over to PHP for use on the server.</p>
+<h3 id="usage"><a class="markdownIt-Anchor" href="#usage">#</a> Usage</h3>
+<p>All you need to do is downloading either of the files</p>
+<ul>
+<li><span class="exturl" data-url="aHR0cDovL2NvZGUuZ29vZ2xlLmNvbS9wL2pzb25wYXRoLw==">jsonpath.js</span></li>
+<li><span class="exturl" data-url="aHR0cDovL2NvZGUuZ29vZ2xlLmNvbS9wL2pzb25wYXRoLw==">jsonpath.php</span></li>
+</ul>
+<p>include it in your program and use the simple API consisting of one single function.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jsonPath(obj, expr [, args])</span><br></pre></td></tr></table></figure>
+<p><strong>parameters:</strong></p>
+<ul>
+<li>
+<p><code>obj (object|array)</code> :</p>
+<p>Object representing the JSON structure.</p>
+</li>
+<li>
+<p><code>expr (string)</code> :</p>
+<p>JSONPath expression string.</p>
+</li>
+<li>
+<p><code>args (object|undefined)</code> :</p>
+<p>Object controlling path evaluation and output. Currently only one member is supported.</p>
+</li>
+<li>
+<p><code>args.resultType (&quot;VALUE&quot;|&quot;PATH&quot;)</code> :</p>
+<p>causes the result to be either matching values <em>(default)</em> or normalized path expressions.</p>
+</li>
+</ul>
+<p><strong>return value:</strong></p>
+<ul>
+<li>
+<p><code>(array|false)</code> :</p>
+<p>Array holding either values or normalized path expressions matching the input path expression, which can be used for lazy evaluation.  <code>false</code>  in case of no match.</p>
+</li>
+</ul>
+<p><strong>Javascript Example</strong>:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o = &#123;</span><br><span class="line">        <span class="comment">/*...*/</span></span><br><span class="line">    &#125;, <span class="comment">// the &#x27;store&#x27; JSON object from above</span></span><br><span class="line">    res1 = jsonPath(o, <span class="string">&quot;$..author&quot;</span>).toJSONString(),</span><br><span class="line">    res2 = jsonPath(o, <span class="string">&quot;$..author&quot;</span>, &#123; <span class="attr">resultType</span>: <span class="string">&quot;PATH&quot;</span> &#125;).toJSONString();</span><br></pre></td></tr></table></figure>
+<p><strong>PHP Example</strong>:</p>
+<p>We need here to convert the JSON string to a PHP array first. I am using <span class="exturl" data-url="aHR0cDovL21pa2UudGVjem5vLmNvbS8=">Michal Migurski</span>’s <span class="exturl" data-url="aHR0cDovL21pa2UudGVjem5vLmNvbS9qc29uLmh0bWw=">JSON parser</span> for that.</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">require_once</span>(<span class="string">&#x27;json.php&#x27;</span>);      <span class="comment">// JSON parser</span></span><br><span class="line"><span class="keyword">require_once</span>(<span class="string">&#x27;jsonpath.php&#x27;</span>);  <span class="comment">// JSONPath evaluator</span></span><br><span class="line"></span><br><span class="line"><span class="variable">$json</span> = <span class="string">&#x27;&#123; ... &#125;&#x27;</span>;  <span class="comment">// JSON structure from above</span></span><br><span class="line"></span><br><span class="line"><span class="variable">$parser</span> = <span class="keyword">new</span> Services_JSON(SERVICES_JSON_LOOSE_TYPE);</span><br><span class="line"><span class="variable">$o</span> = <span class="variable">$parser</span>-&gt;decode(<span class="variable">$json</span>);</span><br><span class="line"><span class="variable">$match1</span> = jsonPath(<span class="variable">$o</span>, <span class="string">&quot;$..author&quot;</span>);</span><br><span class="line"><span class="variable">$match2</span> = jsonPath(<span class="variable">$o</span>, <span class="string">&quot;$..author&quot;</span>, <span class="keyword">array</span>(<span class="string">&quot;resultType&quot;</span> =&gt; <span class="string">&quot;PATH&quot;</span>));</span><br><span class="line"><span class="variable">$res1</span> = <span class="variable">$parser</span>-&gt;encode(<span class="variable">$match1</span>);</span><br><span class="line"><span class="variable">$res2</span> = <span class="variable">$parser</span>-&gt;encode(<span class="variable">$match2</span>);</span><br></pre></td></tr></table></figure>
+<p><strong>results</strong></p>
+<p>Both <em>Javascript</em> and <em>PHP</em> example result in the following JSON arrays (as strings):</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">res1:</span><br><span class="line">[ <span class="string">&quot;Nigel Rees&quot;</span>,</span><br><span class="line">  <span class="string">&quot;Evelyn Waugh&quot;</span>,</span><br><span class="line">  <span class="string">&quot;Herman Melville&quot;</span>,</span><br><span class="line">  <span class="string">&quot;J. R. R. Tolkien&quot;</span></span><br><span class="line">]</span><br><span class="line">res2:</span><br><span class="line">[ <span class="string">&quot;$[&#x27;store&#x27;][&#x27;book&#x27;][0][&#x27;author&#x27;]&quot;</span>,</span><br><span class="line">  <span class="string">&quot;$[&#x27;store&#x27;][&#x27;book&#x27;][1][&#x27;author&#x27;]&quot;</span>,</span><br><span class="line">  <span class="string">&quot;$[&#x27;store&#x27;][&#x27;book&#x27;][2][&#x27;author&#x27;]&quot;</span>,</span><br><span class="line">  <span class="string">&quot;$[&#x27;store&#x27;][&#x27;book&#x27;][3][&#x27;author&#x27;]&quot;</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>Please note, that the return value of  <code>jsonPath</code>  is an array, which is also a valid JSON structure. So you might want to apply  <code>jsonPath</code>  to the resulting structure again or use one of your favorite array methods as  <code>sort</code>  with it.</p>
+<h2 id="issues"><a class="markdownIt-Anchor" href="#issues">#</a> Issues</h2>
+<ul>
+<li>Currently only single quotes allowed inside of JSONPath expressions.</li>
+<li>Script expressions inside of JSONPath locations are currently not recursively evaluated by  <code>jsonPath</code> . Only the global  <code>$</code>  and local  <code>@</code>  symbols are expanded by a simple regular expression.</li>
+<li>An alternative for  <code>jsonPath</code>  to return  <code>false</code>  in case of <em>no match</em> may be to return an empty array in future.</li>
+</ul>
+
+      <div class="tags">
+          <a href="/tags/json/" rel="tag"><i class="ic i-tag"></i> json</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2021-10-02 14:01:41" itemprop="dateModified" datetime="2021-10-02T14:01:41+08:00">2021-10-02</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2021/08/31/javascript-drag-drop/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipewr8iypj20zk0m8b29.jpg" title="使用原生 JS Drag &amp; Drop API 实现元素拖拽和文件拖放">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>使用原生 JS Drag & Drop API 实现元素拖拽和文件拖放</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2021/09/28/latex/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipewkhf1zj20zk0m81kx.jpg" title="Latex">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Latex</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#jsonpath-expressions"><span class="toc-number">1.</span> <span class="toc-text"> JSONPath expressions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jsonpath-examples"><span class="toc-number">2.</span> <span class="toc-text"> JSONPath examples</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jsonpath-implementation"><span class="toc-number">3.</span> <span class="toc-text"> JSONPath implementation</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#usage"><span class="toc-number">3.1.</span> <span class="toc-text"> Usage</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#issues"><span class="toc-number">4.</span> <span class="toc-text"> Issues</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">272</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">39</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2021/08/31/javascript-drag-drop/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2021/09/28/latex/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2021</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ 露の世</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2021/09/15/json-path/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

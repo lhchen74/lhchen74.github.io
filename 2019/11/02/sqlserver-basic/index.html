@@ -32,7 +32,7 @@
 
 
   <title>
-SqlServer 基本语法 |
+SQLServer 基本语法 |
 露の世 = 我知这世界本如露水般短暂 然而 然而</title>
 <meta name="generator" content="Hexo 5.4.0"></head>
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -60,7 +60,7 @@ SqlServer 基本语法 |
         <div id="brand">
           <div class="pjax">
           
-  <h1 itemprop="name headline">SqlServer 基本语法
+  <h1 itemprop="name headline">SQLServer 基本语法
   </h1>
   
 <div class="meta">
@@ -102,12 +102,12 @@ SqlServer 基本语法 |
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclxp31goj20zk0m8qv5.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicitf0kl1j20zk0m87fe.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipexbei4hj20zk0m8npd.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicli3sbvtj20zk0m8x6p.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipexe4oykj20zk0m87ji.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipewf5l51j20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeuibk9fj20zk0m8ay2.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclga70tsj20zk0m84mr.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicljgocqbj20zk0m8e81.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicitspjpbj20zk0m81ky.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicis081o9j20zk0m8dmr.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipesng5oej20zk0m87d4.jpg"></li>
         </ul>
       </div>
     </header>
@@ -152,7 +152,7 @@ SqlServer 基本语法 |
     
 
     <blockquote>
-<p>转载：<span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vbGlwYW4vYXJjaGl2ZS8yMDEwLzEyLzA5LzE4OTI1MTYuaHRtbA==">SqlServer 编程基本语法 - lipan - 博客园</span></p>
+<p>转载：<span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vbGlwYW4vYXJjaGl2ZS8yMDEwLzEyLzA5LzE4OTI1MTYuaHRtbA==">SqlServer 编程基本语法 - lipan</span></p>
 </blockquote>
 <h3 id="一-定义变量"><a class="markdownIt-Anchor" href="#一-定义变量">#</a> 一、定义变量</h3>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">--简单赋值</span><br><span class="line">declare @a int</span><br><span class="line">set @a&#x3D;5</span><br><span class="line">print @a</span><br><span class="line"></span><br><span class="line">--使用select语句赋值</span><br><span class="line">declare @user1 nvarchar(50)</span><br><span class="line">select @user1&#x3D;&#39;张三&#39;</span><br><span class="line">print @user1</span><br><span class="line">declare @user2 nvarchar(50)</span><br><span class="line">select @user2 &#x3D; Name from ST_User where ID&#x3D;1</span><br><span class="line">print @user2</span><br><span class="line"></span><br><span class="line">--使用update语句赋值</span><br><span class="line">declare @user3 nvarchar(50)</span><br><span class="line">update ST_User set @user3 &#x3D; Name where ID&#x3D;1</span><br><span class="line">print @user3</span><br></pre></td></tr></table></figure>
@@ -170,9 +170,9 @@ SqlServer 基本语法 |
 <h3 id="六-触发器"><a class="markdownIt-Anchor" href="#六-触发器">#</a> 六、触发器</h3>
 <p>触发器中的临时表：</p>
 <p>Inserted<br>
-　　存放进行 insert 和 update 操作后的数据<br>
-　　 Deleted<br>
-　　存放进行 delete 和 update 操作前的数据</p>
+ 存放进行 insert 和 update 操作后的数据<br>
+ Deleted<br>
+ 存放进行 delete 和 update 操作前的数据</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">--创建触发器</span><br><span class="line">Create trigger User_OnUpdate</span><br><span class="line">    On ST_User</span><br><span class="line">    for Update</span><br><span class="line">As</span><br><span class="line">    declare @msg nvarchar(50)</span><br><span class="line">    --@msg记录修改情况</span><br><span class="line">    select @msg &#x3D; N&#39;姓名从“&#39; + Deleted.Name + N&#39;”修改为“&#39; + Inserted.Name + &#39;”&#39; from Inserted,Deleted</span><br><span class="line">    --插入日志表</span><br><span class="line">    insert into [LOG](MSG)values(@msg)</span><br><span class="line"></span><br><span class="line">--删除触发器</span><br><span class="line">drop trigger User_OnUpdate</span><br></pre></td></tr></table></figure>
 <h3 id="七-存储过程"><a class="markdownIt-Anchor" href="#七-存储过程">#</a> 七、存储过程</h3>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">--创建带output参数的存储过程</span><br><span class="line">CREATE PROCEDURE PR_Sum</span><br><span class="line">    @a int,</span><br><span class="line">    @b int,</span><br><span class="line">    @sum int output</span><br><span class="line">AS</span><br><span class="line">BEGIN</span><br><span class="line">    set @sum&#x3D;@a+@b</span><br><span class="line">END</span><br><span class="line"></span><br><span class="line">--创建Return返回值存储过程</span><br><span class="line">CREATE PROCEDURE PR_Sum2</span><br><span class="line">    @a int,</span><br><span class="line">    @b int</span><br><span class="line">AS</span><br><span class="line">BEGIN</span><br><span class="line">    Return @a+@b</span><br><span class="line">END</span><br><span class="line"></span><br><span class="line">--执行存储过程获取output型返回值</span><br><span class="line">declare @mysum int</span><br><span class="line">execute PR_Sum 1,2,@mysum output</span><br><span class="line">print @mysum</span><br><span class="line"></span><br><span class="line">--执行存储过程获取Return型返回值</span><br><span class="line">declare @mysum2 int</span><br><span class="line">execute @mysum2&#x3D; PR_Sum2 1,2</span><br><span class="line">print @mysum2</span><br></pre></td></tr></table></figure>
@@ -230,7 +230,7 @@ SqlServer 基本语法 |
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2021-07-02 16:08:49" itemprop="dateModified" datetime="2021-07-02T16:08:49+08:00">2021-07-02</time>
+    <time title="Modified: 2021-10-02 13:55:53" itemprop="dateModified" datetime="2021-10-02T13:55:53+08:00">2021-10-02</time>
   </span>
 </div>
 
@@ -247,7 +247,7 @@ SqlServer 基本语法 |
     <div class="item left">
       
 
-  <a href="/2019/10/31/php-oracle/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giciub8ja1j20zk0m81ky.jpg" title="PHP connect Oracle">
+  <a href="/2019/10/31/php-oracle/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclhfehz7j20zk0m8u0x.jpg" title="PHP connect Oracle">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>PHP connect Oracle</h3>
@@ -257,7 +257,7 @@ SqlServer 基本语法 |
     <div class="item right">
       
 
-  <a href="/2019/11/02/java-jpa/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipeuibk9fj20zk0m8ay2.jpg" title="java jpa">
+  <a href="/2019/11/02/java-jpa/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicliierfjj20zk0m8npd.jpg" title="java jpa">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>java jpa</h3>
@@ -294,7 +294,7 @@ SqlServer 基本语法 |
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">273</span>
+        <span class="count">272</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -306,7 +306,7 @@ SqlServer 基本语法 |
     </div>
     <div class="item tags">
       <a href="/tags/">
-        <span class="count">44</span>
+        <span class="count">39</span>
         <span class="name">tags</span>
       </a>
     </div>

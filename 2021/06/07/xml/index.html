@@ -102,12 +102,12 @@ XML Quick Guide |
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclfw2t96j20zk0m8x6p.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giph4baakhj20zk0m8h5q.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giph4wqtg4j20zk0m8x6p.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicli9lfebj20zk0m84qp.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclflwv2aj20zk0m84qp.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeybxm1pj20zk0m8niv.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giciundwu5j20zk0m8n9e.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclhpw3lwj20zk0m8gvw.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclga70tsj20zk0m84mr.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipetfk5zwj20zk0m8e81.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipexbei4hj20zk0m8npd.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeu1usa7j20zk0m8b29.jpg"></li>
         </ul>
       </div>
     </header>
@@ -224,7 +224,7 @@ XML Quick Guide |
 <li>XML 中的元素属性也会变成 Excel 中的一列。</li>
 <li>HTML 中不应该有 header 标签否则样式不生效。</li>
 </ul>
-<p>扩展：在 ERP 中使用 RTF 开发报表时生成的 xls 文件实际就是包含样式的 HTML 文件，所以可以考虑不借助 RTF template 而是直接输出 HTML 并将文件后缀修改为 xls（可以用 Excel 直接打开，并进行公式计算等）. 这种做法的好处是比较灵活，例如可以为每个客户编写不同的样式文件，也可以定义多套样式，每次报表输出随机选择其中一个样式等。</p>
+<p>扩展：在 ERP 中使用 RTF 开发报表时生成的 xls 文件实际就是包含样式的 HTML 文件，所以可以考虑不借助 RTF Template 而是直接输出 HTML 并将文件后缀修改为 xls（可以用 Excel 直接打开，并进行公式计算等）. 这种做法的好处是比较灵活，例如可以为不同客户编写不同的样式文件，也可以定义多套样式，每次报表输出随机选择其中一个样式等。</p>
 <h2 id="xml-parser"><a class="markdownIt-Anchor" href="#xml-parser">#</a> XML Parser</h2>
 <p>不同的解析器对 xml 的表现可能存在差异，如下 xml 中包含中文  <code>学习</code> ，但是 encoding 使用  <code>ASCII</code> , 分別在 IE 和 Chrome 中打开。</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;ASCII&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">books</span>&gt;</span></span><br><span class="line"></span><br><span class="line">   <span class="tag">&lt;<span class="name">book</span> <span class="attr">category</span>=<span class="string">&quot;JAVA&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">title</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span>Learn Java in 24 Hours<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">author</span>&gt;</span>Robert<span class="tag">&lt;/<span class="name">author</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">year</span>&gt;</span>2005<span class="tag">&lt;/<span class="name">year</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">price</span>&gt;</span>30.00<span class="tag">&lt;/<span class="name">price</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">book</span>&gt;</span></span><br><span class="line"></span><br><span class="line">   <span class="tag">&lt;<span class="name">book</span> <span class="attr">category</span>=<span class="string">&quot;DOTNET&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">title</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span>Learn .Net in 24 hours<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">author</span>&gt;</span>Peter<span class="tag">&lt;/<span class="name">author</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">year</span>&gt;</span>2011<span class="tag">&lt;/<span class="name">year</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">price</span>&gt;</span>40.50<span class="tag">&lt;/<span class="name">price</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">book</span>&gt;</span></span><br><span class="line"></span><br><span class="line">   <span class="tag">&lt;<span class="name">book</span> <span class="attr">category</span>=<span class="string">&quot;XML&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">title</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span>学习 XQuery<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">author</span>&gt;</span>Robert<span class="tag">&lt;/<span class="name">author</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">author</span>&gt;</span>Peter<span class="tag">&lt;/<span class="name">author</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">year</span>&gt;</span>2013<span class="tag">&lt;/<span class="name">year</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">price</span>&gt;</span>50.00<span class="tag">&lt;/<span class="name">price</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">book</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">books</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -243,7 +243,7 @@ XML Quick Guide |
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2021-08-25 14:33:15" itemprop="dateModified" datetime="2021-08-25T14:33:15+08:00">2021-08-25</time>
+    <time title="Modified: 2021-10-02 13:04:09" itemprop="dateModified" datetime="2021-10-02T13:04:09+08:00">2021-10-02</time>
   </span>
 </div>
 
@@ -260,7 +260,7 @@ XML Quick Guide |
     <div class="item left">
       
 
-  <a href="/2021/05/25/oracle-read-file/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipet8c1a2j20zk0m8kct.jpg" title="UTL_FILE - Random Access of Files">
+  <a href="/2021/05/25/oracle-read-file/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclfdu6exj20zk0m87hw.jpg" title="UTL_FILE - Random Access of Files">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>UTL_FILE - Random Access of Files</h3>
@@ -270,7 +270,7 @@ XML Quick Guide |
     <div class="item right">
       
 
-  <a href="/2021/06/08/xml-namespace/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicm0fdw5cj20zk0m8hdt.jpg" title="XML Namespaces">
+  <a href="/2021/06/08/xml-namespace/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicivghyooj20zk0m8dir.jpg" title="XML Namespaces">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>XML Namespaces</h3>
@@ -307,7 +307,7 @@ XML Quick Guide |
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">273</span>
+        <span class="count">272</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -319,7 +319,7 @@ XML Quick Guide |
     </div>
     <div class="item tags">
       <a href="/tags/">
-        <span class="count">44</span>
+        <span class="count">39</span>
         <span class="name">tags</span>
       </a>
     </div>

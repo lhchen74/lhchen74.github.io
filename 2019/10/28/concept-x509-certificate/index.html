@@ -102,12 +102,12 @@ X.509数字证书的结构与解析 |
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeybxm1pj20zk0m8niv.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclfw2t96j20zk0m8x6p.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclj61ylzj20zk0m8b29.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giciundwu5j20zk0m8n9e.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclhnx9glj20zk0m8npd.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclx6phq6j20zk0m8e36.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicm07ih54j20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicliwyw55j20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicliierfjj20zk0m8npd.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeybxm1pj20zk0m8niv.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeyonbf9j20zk0m8e81.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipew8gmvyj20zk0m87wh.jpg"></li>
         </ul>
       </div>
     </header>
@@ -217,6 +217,7 @@ CN=Java Duke，OU=Java Software Division，O=Sun Microsystems Inc，C=US<br>
 <p>在 SSL/TLS 协议中需要是用公钥算法，来进行对称密钥的交换。最常见的算法是 RSA 和 DH，而 RSA 算法和 DH 算法的公钥、私钥的数据格式是不同的。</p>
 <h3 id="x509-证书数据结构"><a class="markdownIt-Anchor" href="#x509-证书数据结构">#</a> X.509 证书数据结构</h3>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br></pre></td><td class="code"><pre><span class="line">Certificate ::&#x3D; SEQUENCE &#123;</span><br><span class="line"></span><br><span class="line">        tbsCertificate       TBSCertificate, -- 证书主体</span><br><span class="line"></span><br><span class="line">        signatureAlgorithm   AlgorithmIdentifier, -- 证书签名算法标识</span><br><span class="line"></span><br><span class="line">        signatureValue       BIT STRING --证书签名值,是使用signatureAlgorithm部分指定的签名算法对tbsCertificate证书主题部分签名后的值.</span><br><span class="line"></span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line">TBSCertificate ::&#x3D; SEQUENCE &#123;</span><br><span class="line"></span><br><span class="line">        version         [] EXPLICIT Version DEFAULT v1, -- 证书版本号</span><br><span class="line"></span><br><span class="line">        serialNumber         CertificateSerialNumber, -- 证书序列号，对同一CA所颁发的证书，序列号唯一标识证书</span><br><span class="line"></span><br><span class="line">        signature            AlgorithmIdentifier, --证书签名算法标识</span><br><span class="line"></span><br><span class="line">        issuer               Name,                --证书发行者名称</span><br><span class="line"></span><br><span class="line">        validity             Validity,            --证书有效期</span><br><span class="line"></span><br><span class="line">        subject              Name,                --证书主体名称</span><br><span class="line"></span><br><span class="line">        subjectPublicKeyInfo SubjectPublicKeyInfo,--证书公钥</span><br><span class="line"></span><br><span class="line">        issuerUniqueID [] IMPLICIT UniqueIdentifier OPTIONAL,</span><br><span class="line"></span><br><span class="line">                             -- 证书发行者ID(可选)，只在证书版本2、3中才有</span><br><span class="line"></span><br><span class="line">        subjectUniqueID [] IMPLICIT UniqueIdentifier OPTIONAL,</span><br><span class="line"></span><br><span class="line">                             -- 证书主体ID(可选)，只在证书版本2、3中才有</span><br><span class="line"></span><br><span class="line">        extensions      [] EXPLICIT Extensions OPTIONAL</span><br><span class="line"></span><br><span class="line">                             -- 证书扩展段（可选），只在证书版本3中才有</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">Version ::&#x3D; INTEGER &#123; v1(0), v2(1), v3(2) &#125;</span><br><span class="line"></span><br><span class="line">CertificateSerialNumber ::&#x3D; INTEGER</span><br><span class="line"></span><br><span class="line">AlgorithmIdentifier ::&#x3D; SEQUENCE &#123;</span><br><span class="line"></span><br><span class="line">        algorithm               OBJECT IDENTIFIER,</span><br><span class="line"></span><br><span class="line">        parameters              ANY DEFINED BY algorithm OPTIONAL &#125;</span><br><span class="line"></span><br><span class="line">parameters:</span><br><span class="line"></span><br><span class="line">Dss-Parms ::&#x3D; SEQUENCE &#123; -- parameters ，DSA(DSS)算法时的 parameters,</span><br><span class="line"></span><br><span class="line">RSA 算法没有此参数</span><br><span class="line"></span><br><span class="line">        p             INTEGER,</span><br><span class="line"></span><br><span class="line">        q             INTEGER,</span><br><span class="line"></span><br><span class="line">        g             INTEGER &#125;</span><br><span class="line"></span><br><span class="line">signatureValue：</span><br><span class="line"></span><br><span class="line">Dss-Sig-Value ::&#x3D; SEQUENCE &#123; -- sha1DSA 签名算法时,签名值</span><br><span class="line"></span><br><span class="line">                   r       INTEGER,</span><br><span class="line"></span><br><span class="line">                      s       INTEGER &#125;</span><br><span class="line"></span><br><span class="line">Name ::&#x3D; CHOICE &#123;</span><br><span class="line"></span><br><span class="line">     RDNSequence &#125;</span><br><span class="line"></span><br><span class="line">RDNSequence ::&#x3D; SEQUENCE OF RelativeDistinguishedName</span><br><span class="line"></span><br><span class="line">RelativeDistinguishedName ::&#x3D;</span><br><span class="line"></span><br><span class="line">     SET OF AttributeTypeAndValue</span><br><span class="line"></span><br><span class="line">AttributeTypeAndValue ::&#x3D; SEQUENCE &#123;</span><br><span class="line"></span><br><span class="line">     type     AttributeType,</span><br><span class="line"></span><br><span class="line">     value    AttributeValue &#125;</span><br><span class="line"></span><br><span class="line">AttributeType ::&#x3D; OBJECT IDENTIFIER</span><br><span class="line"></span><br><span class="line">AttributeValue ::&#x3D; ANY DEFINED BY AttributeType</span><br><span class="line"></span><br><span class="line">Validity ::&#x3D; SEQUENCE &#123;</span><br><span class="line"></span><br><span class="line">        notBefore      Time,  -- 证书有效期起始时间</span><br><span class="line"></span><br><span class="line">        notAfter       Time  -- 证书有效期终止时间</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">Time ::&#x3D; CHOICE &#123;</span><br><span class="line"></span><br><span class="line">        utcTime        UTCTime,</span><br><span class="line"></span><br><span class="line">        generalTime    GeneralizedTime &#125;</span><br><span class="line"></span><br><span class="line">UniqueIdentifier ::&#x3D; BIT STRING</span><br><span class="line"></span><br><span class="line">SubjectPublicKeyInfo ::&#x3D; SEQUENCE &#123;</span><br><span class="line"></span><br><span class="line">        algorithm            AlgorithmIdentifier, -- 公钥算法</span><br><span class="line"></span><br><span class="line">        subjectPublicKey     BIT STRING            -- 公钥值</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">subjectPublicKey:</span><br><span class="line"></span><br><span class="line">RSAPublicKey ::&#x3D; SEQUENCE &#123; -- RSA 算法时的公钥值</span><br><span class="line"></span><br><span class="line">         modulus            INTEGER, -- n</span><br><span class="line"></span><br><span class="line">         publicExponent     INTEGER -- e -- &#125;</span><br><span class="line"></span><br><span class="line">Extensions ::&#x3D; SEQUENCE SIZE (1..MAX) OF Extension</span><br><span class="line"></span><br><span class="line">Extension ::&#x3D; SEQUENCE &#123;</span><br><span class="line"></span><br><span class="line">        extnID      OBJECT IDENTIFIER,</span><br><span class="line"></span><br><span class="line">        critical    BOOLEAN DEFAULT FALSE,</span><br><span class="line"></span><br><span class="line">        extnValue   OCTET STRING &#125;</span><br></pre></td></tr></table></figure>
+
       <div class="tags">
           <a href="/tags/concept/" rel="tag"><i class="ic i-tag"></i> concept</a>
       </div>
@@ -230,7 +231,7 @@ CN=Java Duke，OU=Java Software Division，O=Sun Microsystems Inc，C=US<br>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2021-05-26 16:55:42" itemprop="dateModified" datetime="2021-05-26T16:55:42+08:00">2021-05-26</time>
+    <time title="Modified: 2021-10-02 13:49:36" itemprop="dateModified" datetime="2021-10-02T13:49:36+08:00">2021-10-02</time>
   </span>
 </div>
 
@@ -247,20 +248,20 @@ CN=Java Duke，OU=Java Software Division，O=Sun Microsystems Inc，C=US<br>
     <div class="item left">
       
 
-  <a href="/2019/10/28/concept-base64/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipet4bz0yj20zk0m8e81.jpg" title="Base64">
+  <a href="/2019/10/28/csharp-async/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclhfehz7j20zk0m8u0x.jpg" title="C#中 Thread，Task，Async&#x2F;Await，IAsyncResult 的那些事儿！">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
-  <h3>Base64</h3>
+  <h3>C#中 Thread，Task，Async/Await，IAsyncResult 的那些事儿！</h3>
   </a>
 
     </div>
     <div class="item right">
       
 
-  <a href="/2019/10/28/c-freopen/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipetv6p75j20zk0m8x6p.jpg" title="freopen">
+  <a href="/2019/10/28/concept-base64/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giciukx8a7j20zk0m8aio.jpg" title="Base64 原理解析">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
-  <h3>freopen</h3>
+  <h3>Base64 原理解析</h3>
   </a>
 
     </div>
@@ -294,7 +295,7 @@ CN=Java Duke，OU=Java Software Division，O=Sun Microsystems Inc，C=US<br>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">273</span>
+        <span class="count">272</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -306,7 +307,7 @@ CN=Java Duke，OU=Java Software Division，O=Sun Microsystems Inc，C=US<br>
     </div>
     <div class="item tags">
       <a href="/tags/">
-        <span class="count">44</span>
+        <span class="count">39</span>
         <span class="name">tags</span>
       </a>
     </div>
@@ -364,12 +365,12 @@ CN=Java Duke，OU=Java Software Division，O=Sun Microsystems Inc，C=US<br>
 
   <ul id="quick">
     <li class="prev pjax">
-        <a href="/2019/10/28/concept-base64/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+        <a href="/2019/10/28/csharp-async/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
     </li>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
     <li class="next pjax">
-        <a href="/2019/10/28/c-freopen/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+        <a href="/2019/10/28/concept-base64/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
     </li>
     <li class="percent"></li>
   </ul>
