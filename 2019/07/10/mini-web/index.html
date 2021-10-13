@@ -24,7 +24,7 @@
 <link rel="stylesheet" href="/css/app.css?v=0.2.5">
 
   
-  <meta name="keywords" content="go,python,node" />
+  <meta name="keywords" content="node,go,python" />
 
 
 <link rel="canonical" href="https://lhchen74.github.io/2019/07/10/mini-web/">
@@ -102,12 +102,12 @@ mini web |
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicitspjpbj20zk0m81ky.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicljitigmj20zk0m87fp.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicis3attqj20zk0m8k7l.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipexj2jgzj20zk0m8b09.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclhfehz7j20zk0m8u0x.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclgi503lj20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giciuja1j1j20zk0m8kjl.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicitzannuj20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipesx5fdwj20zk0m81kx.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giph4fomxoj20zk0m8axp.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipesrnqv3j20zk0m8ava.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicm0n457cj20zk0m8e81.jpg"></li>
         </ul>
       </div>
     </header>
@@ -169,9 +169,9 @@ mini web |
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;github.com/gin-gonic/gin&quot;</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	r := gin.Default()</span><br><span class="line">    <span class="comment">// static 前缀访问，对应到当前目录下的 static 目录下文件</span></span><br><span class="line">	r.Static(<span class="string">&quot;/static&quot;</span>,<span class="string">&quot;./static&quot;</span>)</span><br><span class="line"></span><br><span class="line">	r.GET(<span class="string">&quot;/&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">		fmt.Println(c.GetHeader(<span class="string">&quot;a&quot;</span>)) <span class="comment">// get header</span></span><br><span class="line">		c.Header(<span class="string">&quot;k&quot;</span>,<span class="string">&quot;l&quot;</span>) <span class="comment">// set header</span></span><br><span class="line">		c.String(<span class="number">200</span>,<span class="string">&quot;hello gin&quot;</span>)</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 路径参数</span></span><br><span class="line">	r.GET(<span class="string">&quot;/path/:id&quot;</span>,<span class="function"><span class="keyword">func</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">		c.String(<span class="number">200</span>,c.Param(<span class="string">&quot;id&quot;</span>))</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 查询字符串</span></span><br><span class="line">	r.GET(<span class="string">&quot;/querystring&quot;</span>,<span class="function"><span class="keyword">func</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">		c.String(<span class="number">200</span>,c.Query(<span class="string">&quot;username&quot;</span>))</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// form 表单</span></span><br><span class="line">	r.POST(<span class="string">&quot;/form&quot;</span>,<span class="function"><span class="keyword">func</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">		c.String(<span class="number">200</span>,c.PostForm(<span class="string">&quot;username&quot;</span>))</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// json</span></span><br><span class="line">	r.POST(<span class="string">&quot;/json&quot;</span>,<span class="function"><span class="keyword">func</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">		<span class="keyword">var</span> amap <span class="keyword">interface</span>&#123;&#125;</span><br><span class="line">		c.BindJSON(&amp;amap)</span><br><span class="line">		c.JSON(<span class="number">200</span>,amap) <span class="comment">// return json</span></span><br><span class="line">	&#125;)</span><br><span class="line">	r.Run(<span class="string">&quot;:3003&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       <div class="tags">
+          <a href="/tags/node/" rel="tag"><i class="ic i-tag"></i> node</a>
           <a href="/tags/go/" rel="tag"><i class="ic i-tag"></i> go</a>
           <a href="/tags/python/" rel="tag"><i class="ic i-tag"></i> python</a>
-          <a href="/tags/node/" rel="tag"><i class="ic i-tag"></i> node</a>
       </div>
   </div>
 
@@ -200,17 +200,17 @@ mini web |
     <div class="item left">
       
 
-  <a href="/2019/07/10/node-axios/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclhnx9glj20zk0m8npd.jpg" title="jquery fetch axios">
+  <a href="/2019/07/10/node-async/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipevgoki5j20zk0m84qp.jpg" title="node async">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
-  <h3>jquery fetch axios</h3>
+  <h3>node async</h3>
   </a>
 
     </div>
     <div class="item right">
       
 
-  <a href="/2019/07/10/mac/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giciukx8a7j20zk0m8aio.jpg" title="Mac Tools &amp; Commands">
+  <a href="/2019/07/10/mac/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipeyhsblkj20zk0m81kx.jpg" title="Mac Tools &amp; Commands">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Mac Tools & Commands</h3>
@@ -247,7 +247,7 @@ mini web |
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">272</span>
+        <span class="count">275</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -317,7 +317,7 @@ mini web |
 
   <ul id="quick">
     <li class="prev pjax">
-        <a href="/2019/07/10/node-axios/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+        <a href="/2019/07/10/node-async/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
     </li>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
