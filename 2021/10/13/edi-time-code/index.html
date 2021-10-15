@@ -102,12 +102,12 @@ EDI Time with Zone |
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicli9lfebj20zk0m84qp.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclj61ylzj20zk0m8b29.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclga70tsj20zk0m84mr.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipevuctzzj20zk0m84qp.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giciusoyjnj219g0u0x56.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclwuom7cj20zk0m8dvn.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipew28b65j20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipew8gmvyj20zk0m87wh.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipey0a334j20zk0m8qpt.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclx29mstj20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipevarprfj20zk0m8npd.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclh5u05ej20zk0m87df.jpg"></li>
         </ul>
       </div>
     </header>
@@ -413,7 +413,7 @@ EDI Time with Zone |
 <p>定义计算函数，传入日期和 EDI Time Code, 输出对应的 Local 时间 (这里是 China Local Time UTC+8)</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> get_local_time(p_datetime <span class="keyword">in</span> <span class="type">date</span>, p_time_code <span class="keyword">in</span> varchar2) <span class="keyword">return</span> <span class="type">date</span></span><br><span class="line">   <span class="keyword">is</span></span><br><span class="line">     l_return <span class="type">date</span>;</span><br><span class="line">     l_local_offset  number :<span class="operator">=</span> <span class="number">8</span>;</span><br><span class="line">     l_one_day_hours number :<span class="operator">=</span> <span class="number">24</span>;</span><br><span class="line">   <span class="keyword">begin</span></span><br><span class="line">     <span class="keyword">begin</span></span><br><span class="line">       <span class="keyword">select</span> p_datetime <span class="operator">+</span> (l_local_offset <span class="operator">-</span> tc.utc_offset) <span class="operator">/</span> l_one_day_hours</span><br><span class="line">         <span class="keyword">into</span> l_return</span><br><span class="line">         <span class="keyword">from</span> som_edi_time_code tc</span><br><span class="line">        <span class="keyword">where</span> tc.code <span class="operator">=</span> p_time_code;</span><br><span class="line">     exception</span><br><span class="line">       <span class="keyword">when</span> others <span class="keyword">then</span></span><br><span class="line">         raise;</span><br><span class="line">     <span class="keyword">end</span>;</span><br><span class="line">     </span><br><span class="line">     <span class="keyword">return</span> l_return;</span><br><span class="line"> <span class="keyword">end</span> get_local_time;</span><br></pre></td></tr></table></figure>
 <p>以  <code>DTM*002*20200331*121010*20</code>  为例  get_local_time 输出  <code>4/1/2020 1:10:10 AM</code></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> get_local_time(to_date(<span class="string">&#x27;20200331 121010&#x27;</span>, <span class="string">&#x27;yyyymmdd hh24miss&#x27;</span>), <span class="number">20</span>) </span><br><span class="line">  <span class="keyword">from</span> dual;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> get_local_time(</span><br><span class="line">        to_date(<span class="string">&#x27;20200331 121010&#x27;</span>, <span class="string">&#x27;yyyymmdd hh24miss&#x27;</span>), </span><br><span class="line">        <span class="number">20</span>)</span><br><span class="line">  <span class="keyword">from</span> dual;</span><br></pre></td></tr></table></figure>
 
       <div class="tags">
           <a href="/tags/edi/" rel="tag"><i class="ic i-tag"></i> edi</a>
@@ -428,7 +428,7 @@ EDI Time with Zone |
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2021-10-13 14:18:36" itemprop="dateModified" datetime="2021-10-13T14:18:36+08:00">2021-10-13</time>
+    <time title="Modified: 2021-10-14 11:30:45" itemprop="dateModified" datetime="2021-10-14T11:30:45+08:00">2021-10-14</time>
   </span>
 </div>
 
@@ -445,7 +445,7 @@ EDI Time with Zone |
     <div class="item left">
       
 
-  <a href="/2021/10/11/time-zone/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclfb3vzhj20zk0m8wny.jpg" title="How to Write Time Zones Correctly">
+  <a href="/2021/10/11/time-zone/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclg5ms2rj20zk0m8u0x.jpg" title="How to Write Time Zones Correctly">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>How to Write Time Zones Correctly</h3>
@@ -455,7 +455,7 @@ EDI Time with Zone |
     <div class="item right">
       
 
-  <a href="/2021/10/14/edi-as2-connection/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclh3brzpj20zk0m8ann.jpg" title="EDI AS2 Connection">
+  <a href="/2021/10/14/edi-as2-connection/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giciukx8a7j20zk0m8aio.jpg" title="EDI AS2 Connection">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>EDI AS2 Connection</h3>
@@ -491,7 +491,7 @@ EDI Time with Zone |
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">276</span>
+        <span class="count">277</span>
         <span class="name">posts</span>
       </a>
     </div>
