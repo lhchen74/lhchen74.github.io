@@ -102,12 +102,12 @@ JSONPath - XPath for JSON |
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipet8c1a2j20zk0m8kct.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclffsa1cj20zk0m811l.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeyhsblkj20zk0m81kx.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclx6phq6j20zk0m8e36.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicitspjpbj20zk0m81ky.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclj9410cj20zk0m8h12.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicit31ffoj20zk0m8naf.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipewkhf1zj20zk0m81kx.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclflwv2aj20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclip4jbpj20zk0m87cv.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicitspjpbj20zk0m81ky.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclj61ylzj20zk0m8b29.jpg"></li>
         </ul>
       </div>
     </header>
@@ -183,7 +183,7 @@ JSONPath - XPath for JSON |
 <p>or the <em>bracket</em> - notation</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$[<span class="string">&quot;store&quot;</span>][<span class="string">&quot;book&quot;</span>][<span class="number">0</span>][<span class="string">&quot;title&quot;</span>];</span><br></pre></td></tr></table></figure>
 <p>for input pathes. Internal or output pathes will always be converted to the more general <em>bracket</em>-notation.</p>
-<p>JSONPath allows the <em>wildcard</em> symbol * for member names and array indices. It borrows the <em>descendant</em> operator ‘…’ from <span class="exturl" data-url="aHR0cDovL2VuLndpa2lwZWRpYS5vcmcvd2lraS9FNFg=">E4X</span> and the *array slice syntax* proposal  <code>[start:end:step]</code>  from <span class="exturl" data-url="aHR0cDovL3d3dy5lY21hc2NyaXB0Lm9yZy8=">ECMASCRIPT 4</span>.</p>
+<p>JSONPath allows the <em>wildcard</em> symbol  <code>*</code>  for member names and array indices. It borrows the <em>descendant</em> operator  <code>..</code>  from <span class="exturl" data-url="aHR0cDovL2VuLndpa2lwZWRpYS5vcmcvd2lraS9FNFg=">E4X</span> and the <em>array slice syntax</em> proposal  <code>[start:end:step]</code>  from <span class="exturl" data-url="aHR0cDovL3d3dy5lY21hc2NyaXB0Lm9yZy8=">ECMASCRIPT 4</span>.</p>
 <p>Expressions of the underlying scripting language  <code>(&lt;expr&gt;)</code>  can be used as an alternative to explicit names or indices as in</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$.store.book[(@.length-<span class="number">1</span>)].title</span><br></pre></td></tr></table></figure>
 <p>using the symbol ‘@’ for the current object. Filter expressions are supported via the syntax  <code>?(&lt;boolean expr&gt;)</code>  as in</p>
@@ -199,68 +199,68 @@ JSONPath - XPath for JSON |
 </thead>
 <tbody>
 <tr>
-<td>/</td>
-<td>$</td>
+<td><code>/</code></td>
+<td><code>$</code></td>
 <td>the root object/element</td>
 </tr>
 <tr>
-<td>.</td>
-<td>@</td>
+<td><code>.</code></td>
+<td><code>@</code></td>
 <td>the current object/element</td>
 </tr>
 <tr>
-<td>/</td>
-<td>. or []</td>
+<td><code>/</code></td>
+<td><code>. or []</code></td>
 <td>child operator</td>
 </tr>
 <tr>
-<td>…</td>
-<td>n/a</td>
+<td><code>..</code></td>
+<td><code>n/a</code></td>
 <td>parent operator</td>
 </tr>
 <tr>
-<td>//</td>
-<td>…</td>
+<td><code>//</code></td>
+<td><code>..</code></td>
 <td>recursive descent. JSONPath borrows this syntax from E4X.</td>
 </tr>
 <tr>
-<td>*</td>
-<td>*</td>
+<td><code>*</code></td>
+<td><code>*</code></td>
 <td>wildcard. All objects/elements regardless their names.</td>
 </tr>
 <tr>
-<td>@</td>
-<td>n/a</td>
+<td><code>@</code></td>
+<td><code>n/a</code></td>
 <td>attribute access. JSON structures don’t have attributes.</td>
 </tr>
 <tr>
-<td>[]</td>
-<td>[]</td>
+<td><code>[]</code></td>
+<td><code>[]</code></td>
 <td>subscript operator. XPath uses it to iterate over element collections and for <span class="exturl" data-url="aHR0cDovL3d3dy53My5vcmcvVFIveHBhdGgjcHJlZGljYXRlcw==">predicates</span>. In Javascript and JSON it is the native array operator.</td>
 </tr>
 <tr>
-<td>|</td>
-<td>[,]</td>
+<td><code>|</code></td>
+<td><code>[,]</code></td>
 <td>Union operator in XPath results in a combination of node sets. JSONPath allows alternate names or array indices as a set.</td>
 </tr>
 <tr>
-<td>n/a</td>
+<td><code>n/a</code></td>
 <td><code>[start:end:step]</code></td>
 <td>array slice operator borrowed from ES4.</td>
 </tr>
 <tr>
-<td>[]</td>
-<td>?()</td>
+<td><code>[]</code></td>
+<td><code>?()</code></td>
 <td>applies a filter (script) expression.</td>
 </tr>
 <tr>
-<td>n/a</td>
-<td>()</td>
+<td><code>n/a</code></td>
+<td><code>()</code></td>
 <td>script expression, using the underlying script engine.</td>
 </tr>
 <tr>
-<td>()</td>
-<td>n/a</td>
+<td><code>()</code></td>
+<td><code>n/a</code></td>
 <td>grouping in Xpath</td>
 </tr>
 </tbody>
@@ -385,6 +385,12 @@ JSONPath - XPath for JSON |
 <li>Script expressions inside of JSONPath locations are currently not recursively evaluated by  <code>jsonPath</code> . Only the global  <code>$</code>  and local  <code>@</code>  symbols are expanded by a simple regular expression.</li>
 <li>An alternative for  <code>jsonPath</code>  to return  <code>false</code>  in case of <em>no match</em> may be to return an empty array in future.</li>
 </ul>
+<h2 id="annex"><a class="markdownIt-Anchor" href="#annex">#</a> Annex</h2>
+<p>Python implements of XPath and JSONPath.</p>
+<p><em>XPath</em></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line"></span><br><span class="line">xml_data = <span class="built_in">open</span>(<span class="string">&#x27;./store.xml&#x27;</span>, encoding=<span class="string">&quot;utf-8&quot;</span>).read()</span><br><span class="line">xml = etree.XML(xml_data)</span><br><span class="line"></span><br><span class="line">authors = xml.xpath(<span class="string">&#x27;/store/book/author/text()&#x27;</span>)</span><br><span class="line">print(authors)</span><br><span class="line"></span><br><span class="line">authors = xml.xpath(<span class="string">&#x27;//author/text()&#x27;</span>)</span><br><span class="line">print(authors)</span><br><span class="line"></span><br><span class="line">store = xml.xpath(<span class="string">&#x27;/store/*&#x27;</span>)</span><br><span class="line">print(store)</span><br><span class="line"></span><br><span class="line">prices = xml.xpath(<span class="string">&#x27;/store//price/text()&#x27;</span>)</span><br><span class="line">print(prices)</span><br><span class="line"></span><br><span class="line">third_book = xml.xpath(<span class="string">&#x27;//book[3]/title/text()&#x27;</span>)</span><br><span class="line">print(third_book)</span><br><span class="line"></span><br><span class="line">last_book = xml.xpath(<span class="string">&#x27;//book[last()]/title/text()&#x27;</span>)</span><br><span class="line">print(last_book)</span><br><span class="line"></span><br><span class="line">the_first_two_books = xml.xpath(<span class="string">&#x27;//book[position() &lt; 3]/title/text()&#x27;</span>)</span><br><span class="line">print(the_first_two_books)</span><br><span class="line"></span><br><span class="line">with_isbn_books = xml.xpath(<span class="string">&#x27;//book[isbn]/title/text()&#x27;</span>)</span><br><span class="line">print(with_isbn_books)</span><br><span class="line"></span><br><span class="line">price_lesss_ten_books = xml.xpath(<span class="string">&#x27;//book[price &lt; 10]/title/text()&#x27;</span>)</span><br><span class="line">print(price_lesss_ten_books)</span><br><span class="line"></span><br><span class="line">all_elements = xml.xpath(<span class="string">&#x27;//*&#x27;</span>)</span><br><span class="line">print(all_elements)</span><br></pre></td></tr></table></figure>
+<p><em>JSONPath</em></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> jsonpath <span class="keyword">import</span> jsonpath</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">json_data = json.load(<span class="built_in">open</span>(<span class="string">&#x27;./store.json&#x27;</span>, encoding=<span class="string">&quot;utf-8&quot;</span>))</span><br><span class="line">authors = jsonpath(json_data, <span class="string">&#x27;$.store.book[*].author&#x27;</span>)</span><br><span class="line">print(authors)</span><br><span class="line"></span><br><span class="line">authors = jsonpath(json_data, <span class="string">&#x27;$..author&#x27;</span>)</span><br><span class="line">print(authors)</span><br><span class="line"></span><br><span class="line">store = jsonpath(json_data, <span class="string">&#x27;$.store.*&#x27;</span>)</span><br><span class="line">print(store)</span><br><span class="line"></span><br><span class="line">prices = jsonpath(json_data, <span class="string">&#x27;$.store..price&#x27;</span>)</span><br><span class="line">print(prices)</span><br><span class="line"></span><br><span class="line">third_book = jsonpath(json_data, <span class="string">&quot;$..book[2]&quot;</span>)</span><br><span class="line">print(third_book)</span><br><span class="line"></span><br><span class="line">last_book = jsonpath(json_data, <span class="string">&#x27;$..book[(@.length - 1)]&#x27;</span>)</span><br><span class="line">print(last_book)</span><br><span class="line"></span><br><span class="line">the_first_two_books = jsonpath(json_data, <span class="string">&#x27;$..book[0,1]&#x27;</span>)</span><br><span class="line">print(the_first_two_books)</span><br><span class="line"></span><br><span class="line">the_first_two_books = jsonpath(json_data, <span class="string">&#x27;$..book[:2]&#x27;</span>)</span><br><span class="line">print(the_first_two_books)</span><br><span class="line"></span><br><span class="line">with_isbn_books = jsonpath(json_data, <span class="string">&#x27;$..book[?(@.isbn)]&#x27;</span>)</span><br><span class="line">print(with_isbn_books)</span><br><span class="line"></span><br><span class="line">price_less_ten_books = jsonpath(json_data, <span class="string">&#x27;$..book[?(@.price &lt; 10)]&#x27;</span>)</span><br><span class="line">print(price_less_ten_books)</span><br><span class="line"></span><br><span class="line">all_elements = jsonpath(json_data, <span class="string">&#x27;$..*&#x27;</span>)</span><br><span class="line">print(all_elements)</span><br></pre></td></tr></table></figure>
 
       <div class="tags">
           <a href="/tags/json/" rel="tag"><i class="ic i-tag"></i> json</a>
@@ -399,7 +405,7 @@ JSONPath - XPath for JSON |
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2021-10-18 13:27:12" itemprop="dateModified" datetime="2021-10-18T13:27:12+08:00">2021-10-18</time>
+    <time title="Modified: 2021-10-20 10:59:14" itemprop="dateModified" datetime="2021-10-20T10:59:14+08:00">2021-10-20</time>
   </span>
 </div>
 
@@ -416,17 +422,17 @@ JSONPath - XPath for JSON |
     <div class="item left">
       
 
-  <a href="/2021/08/31/javascript-drag-drop/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giph4wqtg4j20zk0m8x6p.jpg" title="使用原生 JS Drag &amp; Drop API 实现元素拖拽和文件拖放">
+  <a href="/2021/08/31/javascript-web-components/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipeu1usa7j20zk0m8b29.jpg" title="Web Components 入门实例教程">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
-  <h3>使用原生 JS Drag & Drop API 实现元素拖拽和文件拖放</h3>
+  <h3>Web Components 入门实例教程</h3>
   </a>
 
     </div>
     <div class="item right">
       
 
-  <a href="/2021/09/28/latex/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicit31ffoj20zk0m8naf.jpg" title="Latex">
+  <a href="/2021/09/28/latex/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicitf0kl1j20zk0m87fe.jpg" title="Latex">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Latex</h3>
@@ -448,7 +454,7 @@ JSONPath - XPath for JSON |
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="Contents">
-          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#jsonpath-expressions"><span class="toc-number">1.</span> <span class="toc-text"> JSONPath expressions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jsonpath-examples"><span class="toc-number">2.</span> <span class="toc-text"> JSONPath examples</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jsonpath-implementation"><span class="toc-number">3.</span> <span class="toc-text"> JSONPath implementation</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#usage"><span class="toc-number">3.1.</span> <span class="toc-text"> Usage</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#issues"><span class="toc-number">4.</span> <span class="toc-text"> Issues</span></a></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#jsonpath-expressions"><span class="toc-number">1.</span> <span class="toc-text"> JSONPath expressions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jsonpath-examples"><span class="toc-number">2.</span> <span class="toc-text"> JSONPath examples</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jsonpath-implementation"><span class="toc-number">3.</span> <span class="toc-text"> JSONPath implementation</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#usage"><span class="toc-number">3.1.</span> <span class="toc-text"> Usage</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#issues"><span class="toc-number">4.</span> <span class="toc-text"> Issues</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#annex"><span class="toc-number">5.</span> <span class="toc-text"> Annex</span></a></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
       </div>
@@ -463,7 +469,7 @@ JSONPath - XPath for JSON |
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">277</span>
+        <span class="count">273</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -533,7 +539,7 @@ JSONPath - XPath for JSON |
 
   <ul id="quick">
     <li class="prev pjax">
-        <a href="/2021/08/31/javascript-drag-drop/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+        <a href="/2021/08/31/javascript-web-components/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
     </li>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>

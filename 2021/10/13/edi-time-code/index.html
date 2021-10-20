@@ -102,12 +102,12 @@ EDI Time with Zone |
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipev1x5e4j20zk0m8b29.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclhtuo6nj20zk0m8ttm.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipewf5l51j20zk0m8b29.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipexbei4hj20zk0m8npd.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicmnywqgpj20zk0m8dwx.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclflwv2aj20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipevarprfj20zk0m8npd.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicli3sbvtj20zk0m8x6p.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipeuibk9fj20zk0m8ay2.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipesx5fdwj20zk0m81kx.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclga70tsj20zk0m84mr.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclj61ylzj20zk0m8b29.jpg"></li>
         </ul>
       </div>
     </header>
@@ -151,9 +151,9 @@ EDI Time with Zone |
   <div class="body md" itemprop="articleBody">
     
 
-    <p>跨区域跨国贸易中，因为有时区的差异，在发送 EDI 时关于时间的讯息一般会包含时区的讯息，例如  <code>DTM*002*20200331*121010*20</code>  这里的  <code>20</code>  就是 timezone，在转入订单等情况下需要将 EDI 中的时间转换为本地时间。</p>
-<p>首先需要定义 EDI Time Code 所对应的 UTC offset.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> SOM_EDI_TIME_CODE</span><br><span class="line">(</span><br><span class="line">  code        VARCHAR2(<span class="number">2</span>),</span><br><span class="line">  meaning     VARCHAR2(<span class="number">100</span>),</span><br><span class="line">  utc_offset  NUMBER</span><br><span class="line">) </span><br></pre></td></tr></table></figure>
+    <p>跨区域跨国贸易中，因为有时区的差异，EDI 时关于时间的讯息一般会包含时区，例如  <code>DTM*002*20200331*121010*20</code>  这里的  <code>20</code>  就是 timezone 对应 UTC-5，在转入订单等情况下需要将 EDI 中的时间转换为本地时间。</p>
+<p>首先定义 EDI Time Code 所对应的 UTC offset.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> SOM_EDI_TIME_CODE</span><br><span class="line">(</span><br><span class="line">  code        VARCHAR2(<span class="number">2</span>),</span><br><span class="line">  meaning     VARCHAR2(<span class="number">100</span>),</span><br><span class="line">  utc_offset  NUMBER</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 <table>
 <thead>
 <tr>
@@ -410,10 +410,10 @@ EDI Time with Zone |
 </tr>
 </tbody>
 </table>
-<p>定义计算函数，传入日期和 EDI Time Code, 输出对应的 Local 时间 (这里是 China Local Time UTC+8)</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> get_local_time(p_datetime <span class="keyword">in</span> <span class="type">date</span>, p_time_code <span class="keyword">in</span> varchar2) <span class="keyword">return</span> <span class="type">date</span></span><br><span class="line">   <span class="keyword">is</span></span><br><span class="line">     l_return <span class="type">date</span>;</span><br><span class="line">     l_local_offset  number :<span class="operator">=</span> <span class="number">8</span>;</span><br><span class="line">     l_one_day_hours number :<span class="operator">=</span> <span class="number">24</span>;</span><br><span class="line">   <span class="keyword">begin</span></span><br><span class="line">     <span class="keyword">begin</span></span><br><span class="line">       <span class="keyword">select</span> p_datetime <span class="operator">+</span> (l_local_offset <span class="operator">-</span> tc.utc_offset) <span class="operator">/</span> l_one_day_hours</span><br><span class="line">         <span class="keyword">into</span> l_return</span><br><span class="line">         <span class="keyword">from</span> som_edi_time_code tc</span><br><span class="line">        <span class="keyword">where</span> tc.code <span class="operator">=</span> p_time_code;</span><br><span class="line">     exception</span><br><span class="line">       <span class="keyword">when</span> others <span class="keyword">then</span></span><br><span class="line">         raise;</span><br><span class="line">     <span class="keyword">end</span>;</span><br><span class="line">     </span><br><span class="line">     <span class="keyword">return</span> l_return;</span><br><span class="line"> <span class="keyword">end</span> get_local_time;</span><br></pre></td></tr></table></figure>
-<p>以  <code>DTM*002*20200331*121010*20</code>  为例  get_local_time 输出  <code>4/1/2020 1:10:10 AM</code></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> get_local_time(</span><br><span class="line">        to_date(<span class="string">&#x27;20200331 121010&#x27;</span>, <span class="string">&#x27;yyyymmdd hh24miss&#x27;</span>), </span><br><span class="line">        <span class="number">20</span>)</span><br><span class="line">  <span class="keyword">from</span> dual;</span><br></pre></td></tr></table></figure>
+<p>定义计算函数，传入日期和 EDI Time Code， 输出对应的 Local 时间（这里获取 China Local Time, timezone is UTC+8）。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> get_local_time(p_datetime <span class="keyword">in</span> <span class="type">date</span>, p_time_code <span class="keyword">in</span> varchar2) <span class="keyword">return</span> <span class="type">date</span></span><br><span class="line">   <span class="keyword">is</span></span><br><span class="line">     l_return <span class="type">date</span>;</span><br><span class="line">     l_local_offset  number :<span class="operator">=</span> <span class="number">8</span>;</span><br><span class="line">     l_one_day_hours number :<span class="operator">=</span> <span class="number">24</span>;</span><br><span class="line">   <span class="keyword">begin</span></span><br><span class="line">     <span class="keyword">begin</span></span><br><span class="line">       <span class="keyword">select</span> p_datetime <span class="operator">+</span> (l_local_offset <span class="operator">-</span> tc.utc_offset) <span class="operator">/</span> l_one_day_hours</span><br><span class="line">         <span class="keyword">into</span> l_return</span><br><span class="line">         <span class="keyword">from</span> som_edi_time_code tc</span><br><span class="line">        <span class="keyword">where</span> tc.code <span class="operator">=</span> p_time_code;</span><br><span class="line">     exception</span><br><span class="line">       <span class="keyword">when</span> others <span class="keyword">then</span></span><br><span class="line">         raise;</span><br><span class="line">     <span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line">     <span class="keyword">return</span> l_return;</span><br><span class="line"> <span class="keyword">end</span> get_local_time;</span><br></pre></td></tr></table></figure>
+<p>以  <code>DTM*002*20200331*121010*20</code>  为例 get_local_time 输出  <code>4/1/2020 1:10:10 AM</code></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> get_local_time(</span><br><span class="line">        to_date(<span class="string">&#x27;20200331 121010&#x27;</span>, <span class="string">&#x27;yyyymmdd hh24miss&#x27;</span>),</span><br><span class="line">        <span class="number">20</span>)</span><br><span class="line">  <span class="keyword">from</span> dual;</span><br></pre></td></tr></table></figure>
 
       <div class="tags">
           <a href="/tags/edi/" rel="tag"><i class="ic i-tag"></i> edi</a>
@@ -428,7 +428,7 @@ EDI Time with Zone |
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2021-10-18 13:27:08" itemprop="dateModified" datetime="2021-10-18T13:27:08+08:00">2021-10-18</time>
+    <time title="Modified: 2021-10-20 13:50:43" itemprop="dateModified" datetime="2021-10-20T13:50:43+08:00">2021-10-20</time>
   </span>
 </div>
 
@@ -445,7 +445,7 @@ EDI Time with Zone |
     <div class="item left">
       
 
-  <a href="/2021/10/11/time-zone/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclhnx9glj20zk0m8npd.jpg" title="How to Write Time Zones Correctly">
+  <a href="/2021/10/11/time-zone/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclfb3vzhj20zk0m8wny.jpg" title="How to Write Time Zones Correctly">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>How to Write Time Zones Correctly</h3>
@@ -455,7 +455,7 @@ EDI Time with Zone |
     <div class="item right">
       
 
-  <a href="/2021/10/14/edi-as2-connection/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclip4jbpj20zk0m87cv.jpg" title="EDI AS2 Connection">
+  <a href="/2021/10/14/edi-as2-connection/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicli9lfebj20zk0m84qp.jpg" title="EDI AS2 Connection">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>EDI AS2 Connection</h3>
@@ -491,7 +491,7 @@ EDI Time with Zone |
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">277</span>
+        <span class="count">273</span>
         <span class="name">posts</span>
       </a>
     </div>
