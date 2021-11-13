@@ -102,12 +102,12 @@ IS NUMBER - Oracle FAQ |
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclxp31goj20zk0m8qv5.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclg5ms2rj20zk0m8u0x.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclgi503lj20zk0m8hdt.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicm0n457cj20zk0m8e81.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclil3m4ej20zk0m8tn8.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipexe4oykj20zk0m87ji.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giciukx8a7j20zk0m8aio.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipexbei4hj20zk0m8npd.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclxfdlttj20zk0m8npd.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicliwyw55j20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giph4lm9i7j20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicli9lfebj20zk0m84qp.jpg"></li>
         </ul>
       </div>
     </header>
@@ -151,7 +151,11 @@ IS NUMBER - Oracle FAQ |
   <div class="body md" itemprop="articleBody">
     
 
-    <p>Oracle doesn’t have a built-in <strong>IS_NUMERIC</strong> function to check is a value is numeric, but over the years people developed innovative alternatives. This page will discuss some of them:</p>
+    <blockquote></blockquote>
+<blockquote>
+<p>转载：<span class="exturl" data-url="aHR0cHM6Ly93d3cub3JhZmFxLmNvbS93aWtpL0lTX05VTUJFUg==">IS NUMBER - Oracle FAQ</span></p>
+</blockquote>
+<p>Oracle doesn’t have a built-in <strong>IS_NUMERIC</strong> function to check is a value is numeric, but over the years people developed innovative alternatives. This page will discuss some of them:</p>
 <h2 id="sql-solution"><a class="markdownIt-Anchor" href="#sql-solution">#</a> SQL solution</h2>
 <p>Pure SQL solutions usually use <span class="exturl" data-url="aHR0cHM6Ly93d3cub3JhZmFxLmNvbS93aWtpL1RSQU5TTEFURQ==">TRANSLATE</span> or <span class="exturl" data-url="aHR0cHM6Ly93d3cub3JhZmFxLmNvbS93aWtpL2luZGV4LnBocD90aXRsZT1SRUdFWFBfTElLRSZhbXA7YWN0aW9uPWVkaXQmYW1wO3JlZGxpbms9MQ==">REGEXP_LIKE</span> to identify numeric data. Some examples:</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">case</span> <span class="keyword">when</span> <span class="built_in">trim</span>(<span class="built_in">TRANSLATE</span>(col1, <span class="string">&#x27;0123456789-,.&#x27;</span>, <span class="string">&#x27; &#x27;</span>)) <span class="keyword">is</span> <span class="keyword">null</span></span><br><span class="line">            <span class="keyword">then</span> <span class="string">&#x27;numeric&#x27;</span></span><br><span class="line">            <span class="keyword">else</span> <span class="string">&#x27;alpha&#x27;</span></span><br><span class="line">       <span class="keyword">end</span></span><br><span class="line"><span class="keyword">FROM</span> tab1;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">case</span> <span class="keyword">when</span> regexp_like(col1, <span class="string">&#x27;^\d+(\.\d+)?$&#x27;</span>)</span><br><span class="line">            <span class="keyword">then</span> <span class="string">&#x27;numeric&#x27;</span></span><br><span class="line">            <span class="keyword">else</span> <span class="string">&#x27;alpha&#x27;</span></span><br><span class="line">      <span class="keyword">end</span></span><br><span class="line"><span class="keyword">FROM</span>  tab1;</span><br></pre></td></tr></table></figure>
@@ -175,7 +179,7 @@ IS NUMBER - Oracle FAQ |
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2021-11-05 16:02:27" itemprop="dateModified" datetime="2021-11-05T16:02:27+08:00">2021-11-05</time>
+    <time title="Modified: 2021-11-06 09:49:33" itemprop="dateModified" datetime="2021-11-06T09:49:33+08:00">2021-11-06</time>
   </span>
 </div>
 
@@ -192,7 +196,7 @@ IS NUMBER - Oracle FAQ |
     <div class="item left">
       
 
-  <a href="/2021/10/26/javascript-code-tidbits/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipevgoki5j20zk0m84qp.jpg" title="Code Tidbits Images">
+  <a href="/2021/10/26/javascript-code-tidbits/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipexoj0moj20zk0m8kgu.jpg" title="Code Tidbits Images">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Code Tidbits Images</h3>
@@ -200,6 +204,14 @@ IS NUMBER - Oracle FAQ |
 
     </div>
     <div class="item right">
+      
+
+  <a href="/2021/11/09/c-dynamic-array/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipesx5fdwj20zk0m81kx.jpg" title="C Dynamic Array">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>C Dynamic Array</h3>
+  </a>
+
     </div>
 </div>
 
@@ -231,7 +243,7 @@ IS NUMBER - Oracle FAQ |
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">275</span>
+        <span class="count">276</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -301,10 +313,12 @@ IS NUMBER - Oracle FAQ |
 
   <ul id="quick">
     <li class="prev pjax">
+        <a href="/2021/10/26/javascript-code-tidbits/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
     </li>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
     <li class="next pjax">
+        <a href="/2021/11/09/c-dynamic-array/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
     </li>
     <li class="percent"></li>
   </ul>
