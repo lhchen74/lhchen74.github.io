@@ -1,0 +1,453 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="我知这世界本如露水般短暂 然而 然而" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="我知这世界本如露水般短暂 然而 然而" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="我知这世界本如露水般短暂 然而 然而" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="db" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2021/12/07/sql-basic/">
+
+
+
+  <title>
+SQL Basic |
+露の世 = 我知这世界本如露水般短暂 然而 然而</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">SQL Basic
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2021-12-07 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2021-12-07T00:00:00+08:00">2021-12-07</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">露の世</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giciub8ja1j20zk0m81ky.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclfdu6exj20zk0m87hw.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeyhsblkj20zk0m81kx.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclhfehz7j20zk0m8u0x.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipesng5oej20zk0m87d4.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicm0n457cj20zk0m8e81.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2021/12/07/sql-basic/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="我知这世界本如露水般短暂 然而 然而">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>SQL 基础教程 /（日） MICK 著；孙淼，罗勇译. – 2 版. – 北京：人民邮电出版社， 2017.6</p>
+</blockquote>
+<h2 id="distinct-和-group-by"><a class="markdownIt-Anchor" href="#distinct-和-group-by">#</a> DISTINCT 和 GROUP BY</h2>
+<p>DISTINCT 和 GROUP BY 子句，都能够删除后续列中的重复数据。除此之外，它们还都会把 NULL 作为一个独立的结果返回。其实不仅处理结果相同，执行速度也基本上差不多（它们都是数据的内部处理，都是通过排序处理来实现的，那么到底应该使用哪一个呢？</p>
+<p>这个问题本身就是本末倒置的，我们应该考虑的是该 SELECT 语句是否满足需求。选择的标准其实非常简单，在 “想要删除选择结果中的重复记录” 时<br>
+使用 DISTINCT，在 “想要计算汇总结果” 时使用 GROUP BY。不使用 COUNT 等聚合函数，而只使用 GROUP BY 子句的 SELECT 语句，会让人觉得非常奇怪，使人产生 “到底为什么要对表进行分组呢？这样做有必要吗？” 等疑问。</p>
+<h2 id="事务处理何时开始"><a class="markdownIt-Anchor" href="#事务处理何时开始">#</a> 事务处理何时开始</h2>
+<p>之前我们说过，事务并没有标准的开始指令存在，而是根据 DBMS 的不同而不同。</p>
+<p>实际上，几乎所有的数据库产品的事务都无需开始指令。这是因为大部分情况下，事务在数据库连接建立时就已经悄悄开始了，并不需要用户再明确发出开始指令。例如，使用 Oracle 时，数据库连接建立之后，第一条 SQL 语句执行的同时，事务就已经悄悄开始了。</p>
+<p>像这样不使用指令而悄悄开始事务的情况下，应该如何区分各个事务呢？通常会有如下两种情况。</p>
+<ol>
+<li>每条 SQL 语句就是一个事务（自动提交模式）</li>
+<li>直到用户执行 COMMIT 或者 ROLLBACK 为止算作一个事务</li>
+</ol>
+<p>通常的 DBMS 都可以选择其中任意一种模式。默认使用自动提交模式的 DBMS 有 SQL Server、 PostgreSQL 和 MySQL (开启事务 START TRANSACTION) 等 1。该模式下的 DML 语句如下所示，每一条语句都括在事务的开始语句和结束语句之中。</p>
+<p><em>1. 例如，PostgreSQL 的用户手册中有如下记述 ：“PostgreSQL 中所有的 SQL 指令语句都在事务内执行。即使不执行 BEGIN，这些命令语句也会在执 行时悄悄被括在 BEGIN 和 COMMIT（如果成功的话）之间。”</em></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">BEGIN</span> TRANSACTION;</span><br><span class="line"><span class="comment">-- 将运动T恤的销售单价降低1000日元</span></span><br><span class="line">UPDATE Product</span><br><span class="line"><span class="keyword">SET</span> sale_price <span class="operator">=</span> sale_price <span class="operator">-</span> <span class="number">1000</span></span><br><span class="line"><span class="keyword">WHERE</span> product_name <span class="operator">=</span> <span class="string">&#x27;运动T恤&#x27;</span>;</span><br><span class="line"><span class="keyword">COMMIT</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">BEGIN</span> TRANSACTION;</span><br><span class="line"><span class="comment">-- 将T恤衫的销售单价上浮1000日元</span></span><br><span class="line">UPDATE Product</span><br><span class="line"><span class="keyword">SET</span> sale_price <span class="operator">=</span> sale_price <span class="operator">+</span> <span class="number">1000</span></span><br><span class="line"><span class="keyword">WHERE</span> product_name <span class="operator">=</span> <span class="string">&#x27;T恤衫&#x27;</span>;</span><br><span class="line"><span class="keyword">COMMIT</span>;</span><br></pre></td></tr></table></figure>
+<p>在默认使用 B 模式的 Oracle 中，事务都是直到用户自己执行提交或者回滚指令才会结束。自动提交的情况需要特别注意的是 DELETE 语句。如果不是自动提交，即使使用 DELETE 语句删除了数据表，也可以通过 ROLLBACK 命令取消该事务的处理，恢复表中的数据。但这仅限于明示开始事务，或者关闭自动提交的情况。如果不小心在自动提交模式下执行了 DELETE 操作，即使再回滚也无济于事了。这是一个很严重的问题，初学者难免会碰到这样的麻烦。一旦误删了数据，如果无法重新插入，是不是想哭的心都有了？所以一定要特别小心。</p>
+<h2 id="acid"><a class="markdownIt-Anchor" href="#acid">#</a> ACID</h2>
+<p>DBMS 的事务都遵循四种特性，将这四种特性的首字母结合起来统称为 ACID 特性。这是所有 DBMS 都必须遵守的规则。</p>
+<p><strong>原子性（Atomicity）</strong></p>
+<p>原子性是指在事务结束时，其中所包含的更新处理要么全部执行，要么完全不执行，也就是要么占有一切要么一无所有。例如，在之前的例<br>
+子中，在事务结束时，绝对不可能出现运动 T 恤的价格下降了，而 T 恤衫的价格却没有上涨的情况。该事务的结束状态，要么是两者都执行了<br>
+（COMMIT），要么是两者都未执行（ROLLBACK）。从事务中途停止的角度去考虑，就能比较容易理解原子性的重要性了。由于用户在一个事务中定义了两条 UPDATE 语句， DBMS 肯定不会只执行其中一条，否则就会对业务处理造成影响。</p>
+<p><strong>一致性（Consistency）</strong></p>
+<p>一致性指的是事务中包含的处理要满足数据库提前设置的约束，如主键约束或者 NOT NULL 约束等。例如，设置了 NOT NULL 约束的列是不能更新为 NULL 的，试图插入违反主键约束的记录就会出错，无法执行。对事务来说，这些不合法的 SQL 会被回滚。也就是说，这些 SQL 处理会被取消，不会执行。一致性也称为完整性。</p>
+<img data-src="/2021/12/07/sql-basic/1638859336304.png" class="" title="Consistency Flow">
+<p><strong>隔离性（Isolation）</strong></p>
+<p>隔离性指的是保证不同事务之间互不干扰的特性。该特性保证了事务之间不会互相嵌套。此外，在某个事务中进行的更改，在该事务结束之前，<br>
+对其他事务而言是不可见的。因此，即使某个事务向表中添加了记录，在没有提交之前，其他事务也是看不到新添加的记录的。</p>
+<p><strong>持久性（Durability）</strong></p>
+<p>持久性也可以称为耐久性，指的是在事务（不论是提交还是回滚）结束后， DBMS 能够保证该时间点的数据状态会被保存的特性。即使由于系<br>
+统故障导致数据丢失，数据库也一定能通过某种手段进行恢复。如果不能保证持久性，即使是正常提交结束的事务，一旦发生了系统故障，也会导致数据丢失，一切都需要从头再来。保证持久性的方法根据实现的不同而不同，其中最常见的就是将事务的执行记录保存到硬盘等存储介质中（该执行记录称为日志）。当发生故障时，可以通过日志恢复到故障发生前的状态。</p>
+<h2 id="视图和表"><a class="markdownIt-Anchor" href="#视图和表">#</a> 视图和表</h2>
+<p>视图和表区别是 “是否保存了实际的数据”。通常，我们在创建表时，会通过 INSERT 语句将数据保存到数据库之中，而数据库中的数据实际上会被保存到计算机的存储设备（通常是硬盘）中。因此，我们通过 SELECT 语句查询数据时，实际上就是从存储设备（硬盘）中读取数据，进行各种计算之后，再将结果返回给用户这样一个过程。</p>
+<p>但是使用视图时并不会将数据保存到存储设备之中，而且也不会将数据保存到其他任何地方。实际上视图保存的是 SELECT 语句。我们从视图中读取数据时，视图会在内部执行该 SELECT 语句并创建出一张临时表。</p>
+<img data-src="/2021/12/07/sql-basic/1638859659594.png" class="" title="View">
+<h2 id="视图的限制"><a class="markdownIt-Anchor" href="#视图的限制">#</a> 视图的限制</h2>
+<p><strong>定义视图时不能使用 ORDER BY 子句</strong></p>
+<p>为什么不能使用 ORDER BY 子句呢？这是因为视图和表一样， 数据行都是没有顺序的。实际上，有些 DBMS 在定义视图的语句中是可以使用 ORDER BY 子句的（例 如，在 PostgreSQL 中 上 述 SQL 语句就没有问题，可以执行。），但是这并不是通用的语法。因此，在定义视图时请不要使用 ORDER BY 子句。</p>
+<p><strong>对视图进行更新</strong></p>
+<p>标准 SQL 中有这样的规定：如果定义视图的 SELECT 语句能够满足某些条件，那么这个视图就可以被更新。下面就给大家列举一些比较具有代表性的条件。</p>
+<ol>
+<li>SELECT 子句中未使用 DISTINCT</li>
+<li>FROM 子句中只有一张表</li>
+<li>未使用 GROUP BY 子句</li>
+<li>未使用 HAVING 子句</li>
+</ol>
+<p>为什么通过汇总得到的视图不能进行更新呢？</p>
+<p>视图归根结底还是从表派生出来的，因此，如果原表可以更新，那么视图中的数据也可以更新。反之亦然，如果视图发生了改变，而原表没有进行相应更新的话，就无法保证数据的一致性了。</p>
+<p>使用前述 INSERT 语句，向视图 ProductSum 中添加数据 (‘电器制品’, 5) 时，原表 Product 应该如何更新才好呢？按理说应该向表中添加商品种类为 “电器制品” 的 5 行数据，但是这些商品对应的商品编号、商品名称和销售单价等我们都不清楚。数据库在这里就遇到了麻烦。</p>
+<img data-src="/2021/12/07/sql-basic/1638860199216.png" class="" title="View Update">
+<h2 id="关联子查询结合条件一定要写在子查询中"><a class="markdownIt-Anchor" href="#关联子查询结合条件一定要写在子查询中">#</a> 关联子查询结合条件一定要写在子查询中</h2>
+<p>错误的关联子查询书写方法，将关联条件移到子查询之外.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> product_type, product_name, sale_price</span><br><span class="line">  <span class="keyword">FROM</span> Product <span class="keyword">AS</span> P1</span><br><span class="line"> <span class="keyword">WHERE</span> P1.product_type <span class="operator">=</span> P2.product_type <span class="comment">-- 将关联条件移到子查询之外</span></span><br><span class="line">   <span class="keyword">AND</span> sale_price <span class="operator">&gt;</span> (<span class="keyword">SELECT</span> <span class="built_in">AVG</span>(sale_price)</span><br><span class="line">                       <span class="keyword">FROM</span> Product <span class="keyword">AS</span> P2</span><br><span class="line">                      <span class="keyword">GROUP</span> <span class="keyword">BY</span> product_type);</span><br></pre></td></tr></table></figure>
+<p>SQL 的规则禁止这样的书写方法。该书写方法究竟违反了什么规则呢？那就是关联名称的作用域。虽然这一术语看起来有些晦涩难懂，但是一解释大家就明白了。关联名称就是像 P1、 P2 这样作为表别名的名称，作用域（scope）就是生存范围。也就是说，关联名称存在一个有效范围的限制。具体来讲，子查询内部设定的关联名称，只能在该子查询内部使用。换句话说，就是 “内部可以看到外部，而外部看不到内部”。请大家一定不要忘记关联名称具有一定的有效范围。如前所述，SQL 是按照先内层子查询后外层查询的顺序来执行的。这样，子查询执行结束时只会留下执行结果，作为抽出源的 P2 表其实已经不存在了。因此，在执行外层查询时，由于 P2 表已经不存在了，因此就会返回 “不存在使用该名称的表” 这样的错误。</p>
+<img data-src="/2021/12/07/sql-basic/1638860615353.png" class="" title="Scope">
+<h2 id="联结的特定语法和过时语法"><a class="markdownIt-Anchor" href="#联结的特定语法和过时语法">#</a> 联结的特定语法和过时语法</h2>
+<p><strong>使用过时语法的内联结</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> SP.shop_id, SP.shop_name, SP.product_id, P.product_name, P.sale_price</span><br><span class="line">  <span class="keyword">FROM</span> ShopProduct SP, Product P</span><br><span class="line"> <span class="keyword">WHERE</span> SP.product_id <span class="operator">=</span> P.product_id</span><br><span class="line">   <span class="keyword">AND</span> SP.shop_id <span class="operator">=</span> <span class="string">&#x27;000A&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>这样的书写方式所得到的结果与标准语法完全相同，并且这样的语法可以在所有的 DBMS 中执行，并不能算是特定的语法，只是过时了而已。但是，由于这样的语法不仅过时，而且还存在很多其他的问题，因此不推荐大家使用，理由主要有以下三点。</p>
+<p>第一，使用这样的语法无法马上判断出到底是内联结还是外联结（又或者是其他种类的联结）。<br>
+第二，由于联结条件都写在 WHERE 子句之中，因此无法在短时间内分辨出哪部分是联结条件，哪部分是用来选取记录的限制条件。<br>
+第三，我们不知道这样的语法到底还能使用多久。每个 DBMS 的开发者都会考虑放弃过时的语法，转而支持新的语法。虽然并不是马上就不能使用了，但那一天总会到来的。</p>
+<p><strong>标准语法的内联结</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> SP.shop_id, SP.shop_name, SP.product_id, P.product_name, P.sale_price</span><br><span class="line">  <span class="keyword">FROM</span> ShopProduct SP <span class="keyword">INNER</span> <span class="keyword">JOIN</span> Product P</span><br><span class="line">    <span class="keyword">ON</span> SP.product_id <span class="operator">=</span> P.product_id</span><br><span class="line"> <span class="keyword">WHERE</span> SP.shop_id <span class="operator">=</span> <span class="string">&#x27;000A&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="窗口函数"><a class="markdownIt-Anchor" href="#窗口函数">#</a> 窗口函数</h2>
+<h3 id="窗口函数只能写在-select-子句"><a class="markdownIt-Anchor" href="#窗口函数只能写在-select-子句">#</a> 窗口函数只能写在 SELECT 子句</h3>
+<p><strong>RANK 函数</strong></p>
+<p>计算排序时，如果存在相同位次的记录，则会跳过之后的位次。<br>
+例）有 3 条记录排在第 1 位时：1 位、1 位、1 位、4 位……</p>
+<p><strong>DENSE_RANK 函数</strong></p>
+<p>同样是计算排序，即使存在相同位次的记录，也不会跳过之后的位次。<br>
+例）有 3 条记录排在第 1 位时：1 位、1 位、1 位、2 位……</p>
+<p><strong>ROW_NUMBER 函数</strong></p>
+<p>赋予唯一的连续位次。<br>
+例）有 3 条记录排在第 1 位时：1 位、2 位、3 位、4 位</p>
+<p>窗口函数只能书写在一个特定的位置。这个位置就是 SELECT 子句之中。反过来说，就是这类函数不能在 WHERE 子句或者 GROUP BY 子句中使用。</p>
+<p>但是为什么窗口函数只能在 SELECT 子句中使用呢（也就是不能在 WHERE 子句或者 GROUPBY 子句中使用）？下面我们就来简单说明一下其中的理由。其理由就是，在 DBMS 内部，窗口函数是对 WHERE 子句或者 GROUP BY 子句处理后的 “结果” 进行的操作。大家仔细想一想就会明白，在得到用户想要的结果之前，即使进行了排序处理，结果也是错误的。在得到排序结果之后，如果通过 WHERE 子句中的条件除去了某些记录，或者使用 GROUP BY 子句进行了汇总处理，那好不容易得到的排序结果也无法使用了。正是由于这样的原因， 在 SELECT 子句之外 “使用窗口函数是没有意义的”，所以在语法上才会有这样的限制。</p>
+<h3 id="两个-order-by"><a class="markdownIt-Anchor" href="#两个-order-by">#</a> 两个 ORDER BY</h3>
+<p>最后我们来介绍一下使用窗口函数时与结果形式相关的注意事项，那就是记录的排列顺序。因为使用窗口函数时必须要在 OVER 子句中使用 ORDER BY，所以可能有读者乍一看会觉得结果中的记录不会按照该 ORDER BY 指定的顺序进行排序。但其实这只是一种错觉。 OVER 子句中的 ORDER BY 只是用来决定<br>
+窗口函数按照什么样的顺序进行计算的，对结果的排列顺序并没有影响。因此如下代码可能得到一个记录的排列顺序比较混乱的结果。有些 DBMS 也可以按照窗口函数的 ORDER BY 子句所指定的顺序对结果进行排序，但那也仅仅是个例而已。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> product_name, product_type, sale_price,</span><br><span class="line">        <span class="built_in">RANK</span> () <span class="keyword">OVER</span> (<span class="keyword">ORDER</span> <span class="keyword">BY</span> sale_price) <span class="keyword">AS</span> ranking</span><br><span class="line">  <span class="keyword">FROM</span> Product;</span><br></pre></td></tr></table></figure>
+<img data-src="/2021/12/07/sql-basic/1638862000582.png" class="" title="Without Order Ranking">
+<p>那么，如何才能让记录切实按照 ranking 列的升序进行排列呢？答案非常简单。那就是在 SELECT 语句的最后，使用 ORDER BY 子句进行指定。这样就能保证 SELECT 语句的结果中记录的排列顺序了，除此之外也没有其他办法了。也许大家会觉得在一条 SELECT 语句中使用两次 ORDER BY 会有点别扭，但是尽管这两个 ORDER BY 看上去是相同的，但其实它们的功能却完全不同。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--Oracle SQL Server DB2 PostgreSQL</span></span><br><span class="line"><span class="keyword">SELECT</span> product_name, product_type, sale_price,</span><br><span class="line">       <span class="built_in">RANK</span> () <span class="keyword">OVER</span> (<span class="keyword">ORDER</span> <span class="keyword">BY</span> sale_price) <span class="keyword">AS</span> ranking</span><br><span class="line">  <span class="keyword">FROM</span> Product</span><br><span class="line"> <span class="keyword">ORDER</span> <span class="keyword">BY</span> ranking;</span><br></pre></td></tr></table></figure>
+
+      <div class="tags">
+          <a href="/tags/db/" rel="tag"><i class="ic i-tag"></i> db</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2021-12-07 16:08:51" itemprop="dateModified" datetime="2021-12-07T16:08:51+08:00">2021-12-07</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2021/11/15/oracle-lob/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giciuv0socj20zk0m8qes.jpg" title="Oracle LOB">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Oracle LOB</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#distinct-%E5%92%8C-group-by"><span class="toc-number">1.</span> <span class="toc-text"> DISTINCT 和 GROUP BY</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86%E4%BD%95%E6%97%B6%E5%BC%80%E5%A7%8B"><span class="toc-number">2.</span> <span class="toc-text"> 事务处理何时开始</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#acid"><span class="toc-number">3.</span> <span class="toc-text"> ACID</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%86%E5%9B%BE%E5%92%8C%E8%A1%A8"><span class="toc-number">4.</span> <span class="toc-text"> 视图和表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%86%E5%9B%BE%E7%9A%84%E9%99%90%E5%88%B6"><span class="toc-number">5.</span> <span class="toc-text"> 视图的限制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E8%81%94%E5%AD%90%E6%9F%A5%E8%AF%A2%E7%BB%93%E5%90%88%E6%9D%A1%E4%BB%B6%E4%B8%80%E5%AE%9A%E8%A6%81%E5%86%99%E5%9C%A8%E5%AD%90%E6%9F%A5%E8%AF%A2%E4%B8%AD"><span class="toc-number">6.</span> <span class="toc-text"> 关联子查询结合条件一定要写在子查询中</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%81%94%E7%BB%93%E7%9A%84%E7%89%B9%E5%AE%9A%E8%AF%AD%E6%B3%95%E5%92%8C%E8%BF%87%E6%97%B6%E8%AF%AD%E6%B3%95"><span class="toc-number">7.</span> <span class="toc-text"> 联结的特定语法和过时语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0"><span class="toc-number">8.</span> <span class="toc-text"> 窗口函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0%E5%8F%AA%E8%83%BD%E5%86%99%E5%9C%A8-select-%E5%AD%90%E5%8F%A5"><span class="toc-number">8.1.</span> <span class="toc-text"> 窗口函数只能写在 SELECT 子句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%A4%E4%B8%AA-order-by"><span class="toc-number">8.2.</span> <span class="toc-text"> 两个 ORDER BY</span></a></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">278</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">39</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2022</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ 露の世</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2021/12/07/sql-basic/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

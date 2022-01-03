@@ -102,12 +102,12 @@ Visual Studio Code 常用快捷键 |
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclfdu6exj20zk0m87hw.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipeu1usa7j20zk0m8b29.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicljitigmj20zk0m87fp.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicivghyooj20zk0m8dir.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclh5u05ej20zk0m87df.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giciub8ja1j20zk0m81ky.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipetlbztpj20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclgi503lj20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giciszlczyj20zk0m816d.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipewkhf1zj20zk0m81kx.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclil3m4ej20zk0m8tn8.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicmnywqgpj20zk0m8dwx.jpg"></li>
         </ul>
       </div>
     </header>
@@ -326,9 +326,15 @@ Visual Studio Code 常用快捷键 |
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">&quot;世界，你好！&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># [Running] python -u &quot;d:\study\kotlin\basic\test-chinese.py&quot;</span></span><br><span class="line"><span class="comment"># ���磬��ã�</span></span><br></pre></td></tr></table></figure>
 <p>修改 code runner 配置  <code>&quot;code-runner.runInTerminal&quot;: true</code> <br>
  然后运行 python 成功， kotlin 依旧失败。控制台输出如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cd &quot;d:\study\kotlin\basic\&quot; &amp;&amp; kotlinc test-chinese.kt -include-runtime -d test-chinese.jar &amp;&amp; java -jar test-chinese.jar&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd &quot;d:\study\kotlin\basic\&quot; &amp;&amp; kotlinc test-chinese.kt -include-runtime -d test-chinese.jar &amp;&amp; java -jar test-chinese.jar&gt;</span><br></pre></td></tr></table></figure>
 <p>原因是因为我的 VSCode Terminal 使用的是 Git, 不能使用反斜杠作为目录分割符，修改 Code Runner 的 executorMap 去掉 cd 到目录这部分。</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;code-runner.executorMap&quot;: &#123;</span><br><span class="line">  &quot;kotlin&quot;: &quot;kotlinc $fileName -include-runtime -d $fileNameWithoutExt.jar &amp;&amp; java -jar $fileNameWithoutExt.jar&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="markdown-snippets"><a class="markdownIt-Anchor" href="#markdown-snippets">#</a> Markdown snippets</h2>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&quot;Meta of markdown file&quot;: &#123;</span><br><span class="line">    &quot;prefix&quot;: &quot;meta&quot;,</span><br><span class="line">    &quot;body&quot;: [</span><br><span class="line">        &quot;---&quot;,</span><br><span class="line">        &quot;title: $&#123;TM_FILENAME/(.*)\\..*/$&#123;1:/pascalcase&#125;/&#125;$1&quot;,</span><br><span class="line">        &quot;tags: $&#123;TM_FILENAME/(.*\\.)//&#125;$2&quot;,</span><br><span class="line">        &quot;date: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE&quot;,</span><br><span class="line">        &quot;---\n&quot;,</span><br><span class="line">        &quot;$0&quot;,</span><br><span class="line">    ],</span><br><span class="line">    &quot;description&quot;: &quot;Meta of markdown file&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在 settings.json 中设置如下，使 meta 可以被 trigger。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;[markdown]&quot;: &#123;</span><br><span class="line">    &quot;editor.quickSuggestions&quot;: true</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<p>以 <span class="exturl" data-url="aHR0cDovL21hcmtkb3duLXRlc3QubWQ=">markdown-test.md</span> 为例，输入 meta 点击 tab 。</p>
+<img data-src="/2019/10/25/vscode/2021-12-09-10-58-49.png" class="">
 
       <div class="tags">
           <a href="/tags/vscode/" rel="tag"><i class="ic i-tag"></i> vscode</a>
@@ -343,7 +349,7 @@ Visual Studio Code 常用快捷键 |
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2021-10-18 13:27:21" itemprop="dateModified" datetime="2021-10-18T13:27:21+08:00">2021-10-18</time>
+    <time title="Modified: 2021-12-09 11:24:03" itemprop="dateModified" datetime="2021-12-09T11:24:03+08:00">2021-12-09</time>
   </span>
 </div>
 
@@ -360,7 +366,7 @@ Visual Studio Code 常用快捷键 |
     <div class="item left">
       
 
-  <a href="/2019/10/19/java/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicitspjpbj20zk0m81ky.jpg" title="Java">
+  <a href="/2019/10/19/java/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipeybxm1pj20zk0m8niv.jpg" title="Java">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Java</h3>
@@ -370,7 +376,7 @@ Visual Studio Code 常用快捷键 |
     <div class="item right">
       
 
-  <a href="/2019/10/25/python-zip/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipey84bjtj20zk0m8hdt.jpg" title="Python Uncompress Compressed File">
+  <a href="/2019/10/25/python-zip/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giph4fomxoj20zk0m8axp.jpg" title="Python Uncompress Compressed File">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Python Uncompress Compressed File</h3>
@@ -392,7 +398,7 @@ Visual Studio Code 常用快捷键 |
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="Contents">
-          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E5%91%BD%E4%BB%A4%E6%A1%86"><span class="toc-number">1.</span> <span class="toc-text"> 主命令框</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-number">2.</span> <span class="toc-text"> 常用快捷键</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%8E%E7%AA%97%E5%8F%A3%E7%AE%A1%E7%90%86"><span class="toc-number">2.1.</span> <span class="toc-text"> 编辑器与窗口管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E7%BC%96%E8%BE%91"><span class="toc-number">2.2.</span> <span class="toc-text"> 代码编辑</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F%E8%B0%83%E6%95%B4"><span class="toc-number">2.2.1.</span> <span class="toc-text"> 格式调整</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%89%E6%A0%87%E7%9B%B8%E5%85%B3"><span class="toc-number">2.2.2.</span> <span class="toc-text"> 光标相关</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%87%8D%E6%9E%84%E4%BB%A3%E7%A0%81"><span class="toc-number">2.2.3.</span> <span class="toc-text"> 重构代码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E6%9B%BF%E6%8D%A2"><span class="toc-number">2.2.4.</span> <span class="toc-text"> 查找替换</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%BE%E7%A4%BA%E7%9B%B8%E5%85%B3"><span class="toc-number">2.3.</span> <span class="toc-text"> 显示相关</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-number">3.</span> <span class="toc-text"> 其他</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E9%BB%98%E8%AE%A4%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-number">4.</span> <span class="toc-text"> 修改默认快捷键</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%BF%85%E5%A4%87%E6%8F%92%E4%BB%B6"><span class="toc-number">5.</span> <span class="toc-text"> 前端开发必备插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E8%AE%BE%E7%BD%AE%E5%8F%82%E8%80%83"><span class="toc-number">6.</span> <span class="toc-text"> 自定义设置参考</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A5%E5%85%85%E6%8F%92%E4%BB%B6"><span class="toc-number">7.</span> <span class="toc-text"> 补充插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#qa"><span class="toc-number">8.</span> <span class="toc-text"> Q&amp;A</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#code-runner-%E8%BF%90%E8%A1%8C%E4%BB%A3%E7%A0%81%E5%8C%85%E5%90%AB%E4%B8%AD%E6%96%87%E4%BC%9A%E4%B9%B1%E7%A0%81"><span class="toc-number">8.1.</span> <span class="toc-text"> Code Runner 运行代码包含中文会乱码</span></a></li></ol></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E5%91%BD%E4%BB%A4%E6%A1%86"><span class="toc-number">1.</span> <span class="toc-text"> 主命令框</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-number">2.</span> <span class="toc-text"> 常用快捷键</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%8E%E7%AA%97%E5%8F%A3%E7%AE%A1%E7%90%86"><span class="toc-number">2.1.</span> <span class="toc-text"> 编辑器与窗口管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E7%BC%96%E8%BE%91"><span class="toc-number">2.2.</span> <span class="toc-text"> 代码编辑</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F%E8%B0%83%E6%95%B4"><span class="toc-number">2.2.1.</span> <span class="toc-text"> 格式调整</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%89%E6%A0%87%E7%9B%B8%E5%85%B3"><span class="toc-number">2.2.2.</span> <span class="toc-text"> 光标相关</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%87%8D%E6%9E%84%E4%BB%A3%E7%A0%81"><span class="toc-number">2.2.3.</span> <span class="toc-text"> 重构代码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E6%9B%BF%E6%8D%A2"><span class="toc-number">2.2.4.</span> <span class="toc-text"> 查找替换</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%BE%E7%A4%BA%E7%9B%B8%E5%85%B3"><span class="toc-number">2.3.</span> <span class="toc-text"> 显示相关</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-number">3.</span> <span class="toc-text"> 其他</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E9%BB%98%E8%AE%A4%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-number">4.</span> <span class="toc-text"> 修改默认快捷键</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%BF%85%E5%A4%87%E6%8F%92%E4%BB%B6"><span class="toc-number">5.</span> <span class="toc-text"> 前端开发必备插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E8%AE%BE%E7%BD%AE%E5%8F%82%E8%80%83"><span class="toc-number">6.</span> <span class="toc-text"> 自定义设置参考</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A5%E5%85%85%E6%8F%92%E4%BB%B6"><span class="toc-number">7.</span> <span class="toc-text"> 补充插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#qa"><span class="toc-number">8.</span> <span class="toc-text"> Q&amp;A</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#code-runner-%E8%BF%90%E8%A1%8C%E4%BB%A3%E7%A0%81%E5%8C%85%E5%90%AB%E4%B8%AD%E6%96%87%E4%BC%9A%E4%B9%B1%E7%A0%81"><span class="toc-number">8.1.</span> <span class="toc-text"> Code Runner 运行代码包含中文会乱码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#markdown-snippets"><span class="toc-number">9.</span> <span class="toc-text"> Markdown snippets</span></a></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
       </div>
@@ -407,7 +413,7 @@ Visual Studio Code 常用快捷键 |
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">277</span>
+        <span class="count">278</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -503,7 +509,7 @@ Visual Studio Code 常用快捷键 |
   <div class="copyright">
     
     &copy; 2010 – 
-    <span itemprop="copyrightYear">2021</span>
+    <span itemprop="copyrightYear">2022</span>
     <span class="with-love">
       <i class="ic i-sakura rotate"></i>
     </span>
