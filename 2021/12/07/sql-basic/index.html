@@ -102,12 +102,12 @@ D E W = 露の世</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipeyonbf9j20zk0m8e81.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclimtf7dj20zk0m8qav.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipetlbztpj20zk0m84qp.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicitspjpbj20zk0m81ky.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclh5u05ej20zk0m87df.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giciukx8a7j20zk0m8aio.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipetfk5zwj20zk0m8e81.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipet8c1a2j20zk0m8kct.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicit31ffoj20zk0m8naf.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipew8gmvyj20zk0m87wh.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipevarprfj20zk0m8npd.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclg5ms2rj20zk0m8u0x.jpg"></li>
         </ul>
       </div>
     </header>
@@ -152,12 +152,11 @@ D E W = 露の世</title>
     
 
     <blockquote>
-<p>SQL 基础教程 /（日） MICK 著；孙淼，罗勇译. – 2 版. – 北京：人民邮电出版社， 2017.6</p>
+<p>SQL 基础教程 /（日） MICK 著；孙淼，罗勇译.</p>
 </blockquote>
 <h2 id="distinct-和-group-by"><a class="markdownIt-Anchor" href="#distinct-和-group-by">#</a> DISTINCT 和 GROUP BY</h2>
-<p>DISTINCT 和 GROUP BY 子句，都能够删除后续列中的重复数据。除此之外，它们还都会把 NULL 作为一个独立的结果返回。其实不仅处理结果相同，执行速度也基本上差不多（它们都是数据的内部处理，都是通过排序处理来实现的，那么到底应该使用哪一个呢？</p>
-<p>这个问题本身就是本末倒置的，我们应该考虑的是该 SELECT 语句是否满足需求。选择的标准其实非常简单，在 “想要删除选择结果中的重复记录” 时<br>
-使用 DISTINCT，在 “想要计算汇总结果” 时使用 GROUP BY。不使用 COUNT 等聚合函数，而只使用 GROUP BY 子句的 SELECT 语句，会让人觉得非常奇怪，使人产生 “到底为什么要对表进行分组呢？这样做有必要吗？” 等疑问。</p>
+<p>DISTINCT 和 GROUP BY 子句，都能够删除后续列中的重复数据。除此之外，它们还都会把 NULL 作为一个独立的结果返回。其实不仅处理结果相同，执行速度也基本上差不多（它们都是数据的内部处理，都是通过排序处理来实现的），那么到底应该使用哪一个呢？</p>
+<p>这个问题本身就是本末倒置的，我们应该考虑的是该 SELECT 语句是否满足需求。选择的标准其实非常简单，在 “想要删除选择结果中的重复记录” 时使用 DISTINCT，在 “想要计算汇总结果” 时使用 GROUP BY。不使用 COUNT 等聚合函数，而只使用 GROUP BY 子句的 SELECT 语句，会让人觉得非常奇怪，使人产生 “到底为什么要对表进行分组呢？这样做有必要吗？” 等疑问。</p>
 <h2 id="事务处理何时开始"><a class="markdownIt-Anchor" href="#事务处理何时开始">#</a> 事务处理何时开始</h2>
 <p>之前我们说过，事务并没有标准的开始指令存在，而是根据 DBMS 的不同而不同。</p>
 <p>实际上，几乎所有的数据库产品的事务都无需开始指令。这是因为大部分情况下，事务在数据库连接建立时就已经悄悄开始了，并不需要用户再明确发出开始指令。例如，使用 Oracle 时，数据库连接建立之后，第一条 SQL 语句执行的同时，事务就已经悄悄开始了。</p>
@@ -166,32 +165,27 @@ D E W = 露の世</title>
 <li>每条 SQL 语句就是一个事务（自动提交模式）</li>
 <li>直到用户执行 COMMIT 或者 ROLLBACK 为止算作一个事务</li>
 </ol>
-<p>通常的 DBMS 都可以选择其中任意一种模式。默认使用自动提交模式的 DBMS 有 SQL Server、 PostgreSQL 和 MySQL (开启事务 START TRANSACTION) 等 1。该模式下的 DML 语句如下所示，每一条语句都括在事务的开始语句和结束语句之中。</p>
-<p><em>1. 例如，PostgreSQL 的用户手册中有如下记述 ：“PostgreSQL 中所有的 SQL 指令语句都在事务内执行。即使不执行 BEGIN，这些命令语句也会在执 行时悄悄被括在 BEGIN 和 COMMIT（如果成功的话）之间。”</em></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">BEGIN</span> TRANSACTION;</span><br><span class="line"><span class="comment">-- 将运动T恤的销售单价降低1000日元</span></span><br><span class="line">UPDATE Product</span><br><span class="line"><span class="keyword">SET</span> sale_price <span class="operator">=</span> sale_price <span class="operator">-</span> <span class="number">1000</span></span><br><span class="line"><span class="keyword">WHERE</span> product_name <span class="operator">=</span> <span class="string">&#x27;运动T恤&#x27;</span>;</span><br><span class="line"><span class="keyword">COMMIT</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">BEGIN</span> TRANSACTION;</span><br><span class="line"><span class="comment">-- 将T恤衫的销售单价上浮1000日元</span></span><br><span class="line">UPDATE Product</span><br><span class="line"><span class="keyword">SET</span> sale_price <span class="operator">=</span> sale_price <span class="operator">+</span> <span class="number">1000</span></span><br><span class="line"><span class="keyword">WHERE</span> product_name <span class="operator">=</span> <span class="string">&#x27;T恤衫&#x27;</span>;</span><br><span class="line"><span class="keyword">COMMIT</span>;</span><br></pre></td></tr></table></figure>
+<p>通常的 DBMS 都可以选择其中任意一种模式。默认使用自动提交模式的 DBMS 有 SQL Server、 PostgreSQL 和 MySQL（例如: PostgreSQL 中所有的 SQL 指令语句都在事务内执行。即使不执行 BEGIN，这些命令语句也会在执行时悄悄被括在 BEGIN 和 COMMIT（如果成功的话）之间。）。该模式下的 DML 语句如下所示，每一条语句都括在事务的开始语句和结束语句之中。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">BEGIN</span> TRANSACTION; <span class="comment">-- MySQL use START TRANSACTION</span></span><br><span class="line"><span class="comment">-- 将运动T恤的销售单价降低1000日元</span></span><br><span class="line">UPDATE Product</span><br><span class="line"><span class="keyword">SET</span> sale_price <span class="operator">=</span> sale_price <span class="operator">-</span> <span class="number">1000</span></span><br><span class="line"><span class="keyword">WHERE</span> product_name <span class="operator">=</span> <span class="string">&#x27;运动T恤&#x27;</span>;</span><br><span class="line"><span class="keyword">COMMIT</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">BEGIN</span> TRANSACTION;</span><br><span class="line"><span class="comment">-- 将T恤衫的销售单价上浮1000日元</span></span><br><span class="line">UPDATE Product</span><br><span class="line"><span class="keyword">SET</span> sale_price <span class="operator">=</span> sale_price <span class="operator">+</span> <span class="number">1000</span></span><br><span class="line"><span class="keyword">WHERE</span> product_name <span class="operator">=</span> <span class="string">&#x27;T恤衫&#x27;</span>;</span><br><span class="line"><span class="keyword">COMMIT</span>;</span><br></pre></td></tr></table></figure>
 <p>在默认使用 B 模式的 Oracle 中，事务都是直到用户自己执行提交或者回滚指令才会结束。自动提交的情况需要特别注意的是 DELETE 语句。如果不是自动提交，即使使用 DELETE 语句删除了数据表，也可以通过 ROLLBACK 命令取消该事务的处理，恢复表中的数据。但这仅限于明示开始事务，或者关闭自动提交的情况。如果不小心在自动提交模式下执行了 DELETE 操作，即使再回滚也无济于事了。这是一个很严重的问题，初学者难免会碰到这样的麻烦。一旦误删了数据，如果无法重新插入，是不是想哭的心都有了？所以一定要特别小心。</p>
 <h2 id="acid"><a class="markdownIt-Anchor" href="#acid">#</a> ACID</h2>
 <p>DBMS 的事务都遵循四种特性，将这四种特性的首字母结合起来统称为 ACID 特性。这是所有 DBMS 都必须遵守的规则。</p>
 <p><strong>原子性（Atomicity）</strong></p>
-<p>原子性是指在事务结束时，其中所包含的更新处理要么全部执行，要么完全不执行，也就是要么占有一切要么一无所有。例如，在之前的例<br>
-子中，在事务结束时，绝对不可能出现运动 T 恤的价格下降了，而 T 恤衫的价格却没有上涨的情况。该事务的结束状态，要么是两者都执行了<br>
-（COMMIT），要么是两者都未执行（ROLLBACK）。从事务中途停止的角度去考虑，就能比较容易理解原子性的重要性了。由于用户在一个事务中定义了两条 UPDATE 语句， DBMS 肯定不会只执行其中一条，否则就会对业务处理造成影响。</p>
+<p>原子性是指在事务结束时，其中所包含的更新处理要么全部执行，要么完全不执行，也就是要么占有一切要么一无所有。例如，在之前的例子中，在事务结束时，绝对不可能出现运动 T 恤的价格下降了，而 T 恤衫的价格却没有上涨的情况。该事务的结束状态，要么是两者都执行了（COMMIT），要么是两者都未执行（ROLLBACK）。从事务中途停止的角度去考虑，就能比较容易理解原子性的重要性了。由于用户在一个事务中定义了两条 UPDATE 语句， DBMS 肯定不会只执行其中一条，否则就会对业务处理造成影响。</p>
 <p><strong>一致性（Consistency）</strong></p>
 <p>一致性指的是事务中包含的处理要满足数据库提前设置的约束，如主键约束或者 NOT NULL 约束等。例如，设置了 NOT NULL 约束的列是不能更新为 NULL 的，试图插入违反主键约束的记录就会出错，无法执行。对事务来说，这些不合法的 SQL 会被回滚。也就是说，这些 SQL 处理会被取消，不会执行。一致性也称为完整性。</p>
 <img data-src="/2021/12/07/sql-basic/1638859336304.png" class="" title="Consistency Flow">
 <p><strong>隔离性（Isolation）</strong></p>
-<p>隔离性指的是保证不同事务之间互不干扰的特性。该特性保证了事务之间不会互相嵌套。此外，在某个事务中进行的更改，在该事务结束之前，<br>
-对其他事务而言是不可见的。因此，即使某个事务向表中添加了记录，在没有提交之前，其他事务也是看不到新添加的记录的。</p>
+<p>隔离性指的是保证不同事务之间互不干扰的特性。该特性保证了事务之间不会互相嵌套。此外，在某个事务中进行的更改，在该事务结束之前，对其他事务而言是不可见的。因此，即使某个事务向表中添加了记录，在没有提交之前，其他事务也是看不到新添加的记录的。</p>
 <p><strong>持久性（Durability）</strong></p>
-<p>持久性也可以称为耐久性，指的是在事务（不论是提交还是回滚）结束后， DBMS 能够保证该时间点的数据状态会被保存的特性。即使由于系<br>
-统故障导致数据丢失，数据库也一定能通过某种手段进行恢复。如果不能保证持久性，即使是正常提交结束的事务，一旦发生了系统故障，也会导致数据丢失，一切都需要从头再来。保证持久性的方法根据实现的不同而不同，其中最常见的就是将事务的执行记录保存到硬盘等存储介质中（该执行记录称为日志）。当发生故障时，可以通过日志恢复到故障发生前的状态。</p>
+<p>持久性也可以称为耐久性，指的是在事务（不论是提交还是回滚）结束后， DBMS 能够保证该时间点的数据状态会被保存的特性。即使由于系统故障导致数据丢失，数据库也一定能通过某种手段进行恢复。如果不能保证持久性，即使是正常提交结束的事务，一旦发生了系统故障，也会导致数据丢失，一切都需要从头再来。保证持久性的方法根据实现的不同而不同，其中最常见的就是将事务的执行记录保存到硬盘等存储介质中（该执行记录称为日志）。当发生故障时，可以通过日志恢复到故障发生前的状态。</p>
 <h2 id="视图和表"><a class="markdownIt-Anchor" href="#视图和表">#</a> 视图和表</h2>
 <p>视图和表区别是 “是否保存了实际的数据”。通常，我们在创建表时，会通过 INSERT 语句将数据保存到数据库之中，而数据库中的数据实际上会被保存到计算机的存储设备（通常是硬盘）中。因此，我们通过 SELECT 语句查询数据时，实际上就是从存储设备（硬盘）中读取数据，进行各种计算之后，再将结果返回给用户这样一个过程。</p>
 <p>但是使用视图时并不会将数据保存到存储设备之中，而且也不会将数据保存到其他任何地方。实际上视图保存的是 SELECT 语句。我们从视图中读取数据时，视图会在内部执行该 SELECT 语句并创建出一张临时表。</p>
 <img data-src="/2021/12/07/sql-basic/1638859659594.png" class="" title="View">
 <h2 id="视图的限制"><a class="markdownIt-Anchor" href="#视图的限制">#</a> 视图的限制</h2>
 <p><strong>定义视图时不能使用 ORDER BY 子句</strong></p>
-<p>为什么不能使用 ORDER BY 子句呢？这是因为视图和表一样， 数据行都是没有顺序的。实际上，有些 DBMS 在定义视图的语句中是可以使用 ORDER BY 子句的（例 如，在 PostgreSQL 中 上 述 SQL 语句就没有问题，可以执行。），但是这并不是通用的语法。因此，在定义视图时请不要使用 ORDER BY 子句。</p>
+<p>为什么不能使用 ORDER BY 子句呢？这是因为视图和表一样， 数据行都是没有顺序的。实际上，有些 DBMS 在定义视图的语句中是可以使用 ORDER BY 子句的（例如，在 PostgreSQL 中 上 述 SQL 语句就没有问题，可以执行。），但是这并不是通用的语法。因此，在定义视图时请不要使用 ORDER BY 子句。</p>
 <p><strong>对视图进行更新</strong></p>
 <p>标准 SQL 中有这样的规定：如果定义视图的 SELECT 语句能够满足某些条件，那么这个视图就可以被更新。下面就给大家列举一些比较具有代表性的条件。</p>
 <ol>
@@ -232,12 +226,20 @@ D E W = 露の世</title>
 <p>窗口函数只能书写在一个特定的位置。这个位置就是 SELECT 子句之中。反过来说，就是这类函数不能在 WHERE 子句或者 GROUP BY 子句中使用。</p>
 <p>但是为什么窗口函数只能在 SELECT 子句中使用呢（也就是不能在 WHERE 子句或者 GROUPBY 子句中使用）？下面我们就来简单说明一下其中的理由。其理由就是，在 DBMS 内部，窗口函数是对 WHERE 子句或者 GROUP BY 子句处理后的 “结果” 进行的操作。大家仔细想一想就会明白，在得到用户想要的结果之前，即使进行了排序处理，结果也是错误的。在得到排序结果之后，如果通过 WHERE 子句中的条件除去了某些记录，或者使用 GROUP BY 子句进行了汇总处理，那好不容易得到的排序结果也无法使用了。正是由于这样的原因， 在 SELECT 子句之外 “使用窗口函数是没有意义的”，所以在语法上才会有这样的限制。</p>
 <h3 id="两个-order-by"><a class="markdownIt-Anchor" href="#两个-order-by">#</a> 两个 ORDER BY</h3>
-<p>最后我们来介绍一下使用窗口函数时与结果形式相关的注意事项，那就是记录的排列顺序。因为使用窗口函数时必须要在 OVER 子句中使用 ORDER BY，所以可能有读者乍一看会觉得结果中的记录不会按照该 ORDER BY 指定的顺序进行排序。但其实这只是一种错觉。 OVER 子句中的 ORDER BY 只是用来决定<br>
-窗口函数按照什么样的顺序进行计算的，对结果的排列顺序并没有影响。因此如下代码可能得到一个记录的排列顺序比较混乱的结果。有些 DBMS 也可以按照窗口函数的 ORDER BY 子句所指定的顺序对结果进行排序，但那也仅仅是个例而已。</p>
+<p>最后我们来介绍一下使用窗口函数时与结果形式相关的注意事项，那就是记录的排列顺序。因为使用窗口函数时必须要在 OVER 子句中使用 ORDER BY，所以可能有读者乍一看会觉得结果中的记录不会按照该 ORDER BY 指定的顺序进行排序。但其实这只是一种错觉。 OVER 子句中的 ORDER BY 只是用来决定窗口函数按照什么样的顺序进行计算的，对结果的排列顺序并没有影响。因此如下代码可能得到一个记录的排列顺序比较混乱的结果。有些 DBMS 也可以按照窗口函数的 ORDER BY 子句所指定的顺序对结果进行排序，但那也仅仅是个例而已。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> product_name, product_type, sale_price,</span><br><span class="line">        <span class="built_in">RANK</span> () <span class="keyword">OVER</span> (<span class="keyword">ORDER</span> <span class="keyword">BY</span> sale_price) <span class="keyword">AS</span> ranking</span><br><span class="line">  <span class="keyword">FROM</span> Product;</span><br></pre></td></tr></table></figure>
 <img data-src="/2021/12/07/sql-basic/1638862000582.png" class="" title="Without Order Ranking">
 <p>那么，如何才能让记录切实按照 ranking 列的升序进行排列呢？答案非常简单。那就是在 SELECT 语句的最后，使用 ORDER BY 子句进行指定。这样就能保证 SELECT 语句的结果中记录的排列顺序了，除此之外也没有其他办法了。也许大家会觉得在一条 SELECT 语句中使用两次 ORDER BY 会有点别扭，但是尽管这两个 ORDER BY 看上去是相同的，但其实它们的功能却完全不同。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--Oracle SQL Server DB2 PostgreSQL</span></span><br><span class="line"><span class="keyword">SELECT</span> product_name, product_type, sale_price,</span><br><span class="line">       <span class="built_in">RANK</span> () <span class="keyword">OVER</span> (<span class="keyword">ORDER</span> <span class="keyword">BY</span> sale_price) <span class="keyword">AS</span> ranking</span><br><span class="line">  <span class="keyword">FROM</span> Product</span><br><span class="line"> <span class="keyword">ORDER</span> <span class="keyword">BY</span> ranking;</span><br></pre></td></tr></table></figure>
+<h2 id="sql基础教程"><a class="markdownIt-Anchor" href="#sql基础教程">#</a> SQL 基础教程</h2>
+
+
+	<div class="row">
+    <embed src="./sql-basic.pdf" width="100%" height="550" type="application/pdf">
+	</div>
+
+
+
 
       <div class="tags">
           <a href="/tags/db/" rel="tag"><i class="ic i-tag"></i> db</a>
@@ -252,7 +254,7 @@ D E W = 露の世</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2022-01-03 10:56:40" itemprop="dateModified" datetime="2022-01-03T10:56:40+08:00">2022-01-03</time>
+    <time title="Modified: 2022-01-05 18:22:56" itemprop="dateModified" datetime="2022-01-05T18:22:56+08:00">2022-01-05</time>
   </span>
 </div>
 
@@ -269,7 +271,7 @@ D E W = 露の世</title>
     <div class="item left">
       
 
-  <a href="/2021/11/22/https-flow/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclga70tsj20zk0m84mr.jpg" title="HTTPS Flow">
+  <a href="/2021/11/22/https-flow/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipeyvx1d4j20zk0m8hdt.jpg" title="HTTPS Flow">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>HTTPS Flow</h3>
@@ -279,10 +281,10 @@ D E W = 露の世</title>
     <div class="item right">
       
 
-  <a href="/2022/01/03/haiku/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclfb3vzhj20zk0m8wny.jpg" title="一座向四面洞开的草庵 — 俳句小札">
+  <a href="/2021/12/30/python-third-lib/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipeuv80yoj20zk0m8kjl.jpg" title="Python Third-party Libraries">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
-  <h3>一座向四面洞开的草庵 — 俳句小札</h3>
+  <h3>Python Third-party Libraries</h3>
   </a>
 
     </div>
@@ -301,7 +303,7 @@ D E W = 露の世</title>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="Contents">
-          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#distinct-%E5%92%8C-group-by"><span class="toc-number">1.</span> <span class="toc-text"> DISTINCT 和 GROUP BY</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86%E4%BD%95%E6%97%B6%E5%BC%80%E5%A7%8B"><span class="toc-number">2.</span> <span class="toc-text"> 事务处理何时开始</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#acid"><span class="toc-number">3.</span> <span class="toc-text"> ACID</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%86%E5%9B%BE%E5%92%8C%E8%A1%A8"><span class="toc-number">4.</span> <span class="toc-text"> 视图和表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%86%E5%9B%BE%E7%9A%84%E9%99%90%E5%88%B6"><span class="toc-number">5.</span> <span class="toc-text"> 视图的限制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E8%81%94%E5%AD%90%E6%9F%A5%E8%AF%A2%E7%BB%93%E5%90%88%E6%9D%A1%E4%BB%B6%E4%B8%80%E5%AE%9A%E8%A6%81%E5%86%99%E5%9C%A8%E5%AD%90%E6%9F%A5%E8%AF%A2%E4%B8%AD"><span class="toc-number">6.</span> <span class="toc-text"> 关联子查询结合条件一定要写在子查询中</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%81%94%E7%BB%93%E7%9A%84%E7%89%B9%E5%AE%9A%E8%AF%AD%E6%B3%95%E5%92%8C%E8%BF%87%E6%97%B6%E8%AF%AD%E6%B3%95"><span class="toc-number">7.</span> <span class="toc-text"> 联结的特定语法和过时语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0"><span class="toc-number">8.</span> <span class="toc-text"> 窗口函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0%E5%8F%AA%E8%83%BD%E5%86%99%E5%9C%A8-select-%E5%AD%90%E5%8F%A5"><span class="toc-number">8.1.</span> <span class="toc-text"> 窗口函数只能写在 SELECT 子句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%A4%E4%B8%AA-order-by"><span class="toc-number">8.2.</span> <span class="toc-text"> 两个 ORDER BY</span></a></li></ol></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#distinct-%E5%92%8C-group-by"><span class="toc-number">1.</span> <span class="toc-text"> DISTINCT 和 GROUP BY</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86%E4%BD%95%E6%97%B6%E5%BC%80%E5%A7%8B"><span class="toc-number">2.</span> <span class="toc-text"> 事务处理何时开始</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#acid"><span class="toc-number">3.</span> <span class="toc-text"> ACID</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%86%E5%9B%BE%E5%92%8C%E8%A1%A8"><span class="toc-number">4.</span> <span class="toc-text"> 视图和表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%86%E5%9B%BE%E7%9A%84%E9%99%90%E5%88%B6"><span class="toc-number">5.</span> <span class="toc-text"> 视图的限制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E8%81%94%E5%AD%90%E6%9F%A5%E8%AF%A2%E7%BB%93%E5%90%88%E6%9D%A1%E4%BB%B6%E4%B8%80%E5%AE%9A%E8%A6%81%E5%86%99%E5%9C%A8%E5%AD%90%E6%9F%A5%E8%AF%A2%E4%B8%AD"><span class="toc-number">6.</span> <span class="toc-text"> 关联子查询结合条件一定要写在子查询中</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%81%94%E7%BB%93%E7%9A%84%E7%89%B9%E5%AE%9A%E8%AF%AD%E6%B3%95%E5%92%8C%E8%BF%87%E6%97%B6%E8%AF%AD%E6%B3%95"><span class="toc-number">7.</span> <span class="toc-text"> 联结的特定语法和过时语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0"><span class="toc-number">8.</span> <span class="toc-text"> 窗口函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0%E5%8F%AA%E8%83%BD%E5%86%99%E5%9C%A8-select-%E5%AD%90%E5%8F%A5"><span class="toc-number">8.1.</span> <span class="toc-text"> 窗口函数只能写在 SELECT 子句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%A4%E4%B8%AA-order-by"><span class="toc-number">8.2.</span> <span class="toc-text"> 两个 ORDER BY</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sql%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B"><span class="toc-number">9.</span> <span class="toc-text"> SQL 基础教程</span></a></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
       </div>
@@ -316,7 +318,7 @@ D E W = 露の世</title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">280</span>
+        <span class="count">276</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -391,7 +393,7 @@ D E W = 露の世</title>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
     <li class="next pjax">
-        <a href="/2022/01/03/haiku/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+        <a href="/2021/12/30/python-third-lib/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
     </li>
     <li class="percent"></li>
   </ul>
