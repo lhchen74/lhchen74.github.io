@@ -102,12 +102,12 @@ D E W = 露の世</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclil3m4ej20zk0m8tn8.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipeyonbf9j20zk0m8e81.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicis081o9j20zk0m8dmr.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclh3brzpj20zk0m8ann.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giciub8ja1j20zk0m81ky.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giph47e9vtj20zk0m8x6l.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giciub8ja1j20zk0m81ky.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipeuibk9fj20zk0m8ay2.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipeun65urj20zk0m81ii.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipey0a334j20zk0m8qpt.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclh5u05ej20zk0m87df.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giciuja1j1j20zk0m8kjl.jpg"></li>
         </ul>
       </div>
     </header>
@@ -201,7 +201,7 @@ D E W = 露の世</title>
 <p>只要灵活运用这几个断言，就很容易解决：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">^(.(?&lt;!that))*this(.(?&lt;!that))*$</span><br><span class="line">^(.(?&lt;!that))*this((?!that).)*$</span><br><span class="line">^((?!that).)*this(.(?&lt;!that))*$</span><br><span class="line">^((?!that).)*this((?!that).)*$</span><br></pre></td></tr></table></figure>
 <p>这 4 个正则表达式测试上述的几句话，结果都能够满足要求。</p>
-<p>上述 4 种断言，括号里的 pattern 本身是一个正则表达式。但对 2 种后行断言有所限制，在 Perl 和 Python 中，这个表达式必须是定长 (fixed length) 的，即不能使用 <strong>*、+、?</strong> 等元字符，如 <strong>(?&lt;=abc)</strong> 没有问题，但 <strong>(?&lt;=a*bc)</strong> 是不被支持的，特别是当表达式中含有 **|** 连接的分支时，各个分支的长度必须相同。之所以不支持变长表达式，是因为当引擎检查后行断言时，无法确定要回溯多少步。Java 支持 <strong>?、{m}、{n,m}</strong> 等符号，但同样不支持 <strong>*、+</strong> 字符。Javascript 干脆不支持后行断言，不过一般来说，这不是太大的问题。</p>
+<p>上述 4 种断言，括号里的 pattern 本身是一个正则表达式。但对 2 种后行断言有所限制，在 Perl 和 Python 中，这个表达式必须是定长 (fixed length) 的，即不能使用 <strong>*、+、?</strong> 等元字符，如 <strong>(?&lt;=abc)</strong> 没有问题，但 <strong>(?&lt;=a*bc)</strong> 是不被支持的，特别是当表达式中含有 **|** 连接的分支时，各个分支的长度必须相同。之所以不支持变长表达式，是因为当引擎检查后行断言时，无法确定要回溯多少步。Java 支持 <strong>?、{m}、{n,m}</strong> 等符号，但同样不支持 <strong>*、+</strong> 字符。JavaScript 干脆不支持后行断言，不过一般来说，这不是太大的问题。</p>
 <p>先行断言和后行断言某种程度上就好比使用 <strong>if</strong> 语句对匹配的字符前后做判断验证。</p>
 <h2 id="总结-的使用"><a class="markdownIt-Anchor" href="#总结-的使用">#</a> 总结？=、?&lt;=、?!、?&lt;!= 的使用</h2>
 <p><strong>exp1(?=exp2)</strong>：查找 exp2 前面的 exp1。</p>
@@ -226,7 +226,7 @@ D E W = 露の世</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2021-10-18 13:27:19" itemprop="dateModified" datetime="2021-10-18T13:27:19+08:00">2021-10-18</time>
+    <time title="Modified: 2022-03-20 10:45:16" itemprop="dateModified" datetime="2022-03-20T10:45:16+08:00">2022-03-20</time>
   </span>
 </div>
 
@@ -243,7 +243,7 @@ D E W = 露の世</title>
     <div class="item left">
       
 
-  <a href="/2021/07/27/python-upload-download/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipetlbztpj20zk0m84qp.jpg" title="Python Upload &amp; Download File">
+  <a href="/2021/07/27/python-upload-download/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giciusoyjnj219g0u0x56.jpg" title="Python Upload &amp; Download File">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Python Upload & Download File</h3>
@@ -253,7 +253,7 @@ D E W = 露の世</title>
     <div class="item right">
       
 
-  <a href="/2021/08/03/oracle-form-download-file/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipeuibk9fj20zk0m8ay2.jpg" title="Download File by Form Personalization">
+  <a href="/2021/08/03/oracle-form-download-file/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclfdu6exj20zk0m87hw.jpg" title="Download File by Form Personalization">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Download File by Form Personalization</h3>
@@ -290,7 +290,7 @@ D E W = 露の世</title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">278</span>
+        <span class="count">280</span>
         <span class="name">posts</span>
       </a>
     </div>
