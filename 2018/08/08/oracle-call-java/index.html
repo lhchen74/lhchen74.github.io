@@ -102,12 +102,12 @@ D E W = 露の世</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipey0a334j20zk0m8qpt.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclj61ylzj20zk0m8b29.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicljgocqbj20zk0m8e81.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicivghyooj20zk0m8dir.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipexoj0moj20zk0m8kgu.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclh0m9pdj20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipew8gmvyj20zk0m87wh.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclh3brzpj20zk0m8ann.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipey84bjtj20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicm0fdw5cj20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclx6phq6j20zk0m8e36.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipeudstjqj20zk0m8k3r.jpg"></li>
         </ul>
       </div>
     </header>
@@ -151,17 +151,29 @@ D E W = 露の世</title>
   <div class="body md" itemprop="articleBody">
     
 
-    <h3 id="1-创建-java-source"><a class="markdownIt-Anchor" href="#1-创建-java-source">#</a> 1. 创建 java source</h3>
+    <h2 id="create-java-source"><a class="markdownIt-Anchor" href="#create-java-source">#</a> Create Java Source</h2>
+<p>可以在 PL/SQL 中直接编译 Java 源代码</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">create or replace and compile java source named babb as</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Babb</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getStrMsg</span><span class="params">(String str)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> str+<span class="string">&quot;\t 共有字符:&quot;</span>+str.length()+<span class="string">&quot;个&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>也可以使用 loadjava 工具加载 class 文件</p>
-<p>Babb.java</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Babb</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getStrMsg</span><span class="params">(String str)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> str+<span class="string">&quot;\t 共有字符:&quot;</span>+str.length()+<span class="string">&quot;个&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>也可以使用  <code>loadjava</code>  工具加载 Class 文件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Babb.java</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Babb</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getStrMsg</span><span class="params">(String str)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> str+<span class="string">&quot;\t 共有字符:&quot;</span>+str.length()+<span class="string">&quot;个&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><code>javac Babb.java</code>  编译生成  <code>Babb.class</code>  (注意编译的 java 版本要和数据库版本对应)</p>
 <p><code>loadjava.bat -user xxx/xxx@DEV -force -oci8 D:/study/java/oracle_call_java/Babb.class</code></p>
-<h3 id="2-创建调用函数"><a class="markdownIt-Anchor" href="#2-创建调用函数">#</a> 2. 创建调用函数</h3>
+<h2 id="create-call-function"><a class="markdownIt-Anchor" href="#create-call-function">#</a> Create Call Function</h2>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">or</span> replace <span class="keyword">function</span> javaTest(str varchar2)</span><br><span class="line"><span class="keyword">return</span> varchar2 <span class="keyword">as</span></span><br><span class="line"><span class="keyword">LANGUAGE</span> JAVA NAME <span class="string">&#x27;Babb.getStrMsg(java.lang.String) return java.lang.String&#x27;</span>;</span><br></pre></td></tr></table></figure>
-<h3 id="3-执行测试"><a class="markdownIt-Anchor" href="#3-执行测试">#</a> 3. 执行测试</h3>
+<h2 id="test"><a class="markdownIt-Anchor" href="#test">#</a> Test</h2>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> javatest(<span class="string">&#x27;abcd&#x27;</span>) <span class="keyword">from</span> dual;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- abcd 共有字符:4个</span></span><br></pre></td></tr></table></figure>
+<h2 id="drop-java-source"><a class="markdownIt-Anchor" href="#drop-java-source">#</a> Drop Java Source</h2>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> java source babb;</span><br></pre></td></tr></table></figure>
+<h2 id="comments"><a class="markdownIt-Anchor" href="#comments">#</a> Comments</h2>
+<h3 id="clean-csv-line"><a class="markdownIt-Anchor" href="#clean-csv-line">#</a> Clean CSV Line</h3>
+<p>Java Code</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jbn;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.regex.Matcher;</span><br><span class="line"><span class="keyword">import</span> java.util.regex.Pattern;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EDIJavaUtils</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">cleanCSVLine</span><span class="params">(String content, String separator)</span> </span>&#123;</span><br><span class="line">        String contentWithSeparator = separator + content + separator;</span><br><span class="line">        <span class="comment">// Java Backreference in pattern need use \\N</span></span><br><span class="line">        String regexStr = separator + <span class="string">&quot;(\&quot;?)(.*?)\\1(?=&quot;</span> + separator + <span class="string">&quot;)&quot;</span>;</span><br><span class="line">        <span class="comment">// (?=pattern) zero-width positive lookahead assertion</span></span><br><span class="line">        <span class="comment">// Pattern pattern = Pattern.compile(&quot;/(\&quot;?)(.*?)\\1(?=/)&quot;);</span></span><br><span class="line">        Pattern pattern = Pattern.compile(regexStr);</span><br><span class="line">        Matcher matcher = pattern.matcher(contentWithSeparator);</span><br><span class="line">        <span class="comment">// Java Backreference in replacement need use $N</span></span><br><span class="line">        String result = matcher.replaceAll(<span class="string">&quot;$2\n&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> result.substring(<span class="number">0</span>, result.length() - <span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String content = <span class="string">&quot;a/\&quot;b \&quot; c\&quot;/\&quot;d\&quot;&quot;</span>;</span><br><span class="line">        String result = cleanCSVLine(content, <span class="string">&quot;/&quot;</span>);</span><br><span class="line">        System.out.println(result);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// a</span></span><br><span class="line"><span class="comment">// b &quot; c</span></span><br><span class="line"><span class="comment">// d</span></span><br></pre></td></tr></table></figure>
+<p>Compile Java Source</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">or</span> replace <span class="keyword">and</span> compile java source named som_edi_java_utils <span class="keyword">as</span></span><br><span class="line">import java.util.regex.Matcher;</span><br><span class="line">import java.util.regex.Pattern;</span><br><span class="line"></span><br><span class="line">public class EDIJavaUtils &#123;</span><br><span class="line">    public static String cleanCSVLine(String content, String separator) &#123;</span><br><span class="line">        String contentWithSeparator <span class="operator">=</span> separator <span class="operator">+</span> content <span class="operator">+</span> separator;</span><br><span class="line">        String regexStr <span class="operator">=</span> separator <span class="operator">+</span> &quot;(\&quot;?)(.<span class="operator">*</span>?)\\<span class="number">1</span>(?<span class="operator">=</span>&quot; + separator + &quot;)&quot;;</span><br><span class="line">        // Pattern pattern = Pattern.compile(&quot;<span class="operator">/</span>(\&quot;?)(.*?)\\1(?=/)&quot;);</span><br><span class="line">        <span class="keyword">Pattern</span> <span class="keyword">pattern</span> <span class="operator">=</span> Pattern.compile(regexStr);</span><br><span class="line">        Matcher matcher <span class="operator">=</span> pattern.matcher(contentWithSeparator);</span><br><span class="line">        String <span class="keyword">result</span> <span class="operator">=</span> matcher.replaceAll(&quot;$2\n&quot;);</span><br><span class="line">        <span class="keyword">return</span> result.<span class="built_in">substring</span>(<span class="number">0</span>, result.length() <span class="operator">-</span> <span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Create Call Function in Package</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">or</span> replace package body som_edi_morrison_pkg <span class="keyword">is</span></span><br><span class="line">  <span class="keyword">function</span> clean_csv_line(content varchar2, separator varchar2) <span class="keyword">return</span> varchar2;</span><br><span class="line"><span class="keyword">end</span> som_edi_custom_utils_pkg;</span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">or</span> replace package body som_edi_custom_utils_pkg <span class="keyword">is</span></span><br><span class="line">  <span class="keyword">function</span> clean_csv_line(content varchar2, separator varchar2) <span class="keyword">return</span> varchar2 </span><br><span class="line">  <span class="keyword">as</span></span><br><span class="line">  <span class="keyword">LANGUAGE</span> JAVA NAME <span class="string">&#x27;EDIJavaUtils.cleanCSVLine(java.lang.String, java.lang.String) return java.lang.String&#x27;</span>;</span><br><span class="line"><span class="keyword">end</span> som_edi_custom_utils_pkg;</span><br></pre></td></tr></table></figure>
+<p>Test</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> som_edi_custom_utils_pkg.clean_csv_line(<span class="string">&#x27;ab/95&quot;508/&quot;AP&quot;PLE&quot;&quot;/&quot;10/FEB/12&quot;&#x27;</span>, <span class="string">&#x27;/&#x27;</span>) </span><br><span class="line">  <span class="keyword">from</span> dual;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- ab</span></span><br><span class="line"><span class="comment">-- 95&quot;508</span></span><br><span class="line"><span class="comment">-- AP&quot;PLE&quot;</span></span><br><span class="line"><span class="comment">-- 10/FEB/12</span></span><br></pre></td></tr></table></figure>
 
       <div class="tags">
           <a href="/tags/db/" rel="tag"><i class="ic i-tag"></i> db</a>
@@ -176,7 +188,7 @@ D E W = 露の世</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2021-10-18 13:27:14" itemprop="dateModified" datetime="2021-10-18T13:27:14+08:00">2021-10-18</time>
+    <time title="Modified: 2022-04-07 17:19:32" itemprop="dateModified" datetime="2022-04-07T17:19:32+08:00">2022-04-07</time>
   </span>
 </div>
 
@@ -193,17 +205,17 @@ D E W = 露の世</title>
     <div class="item left">
       
 
-  <a href="/2018/08/08/oracle-common/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giph4fomxoj20zk0m8axp.jpg" title="Oracle Common">
+  <a href="/2018/08/08/oracle-join/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipewf5l51j20zk0m8b29.jpg" title="Oracle Join">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
-  <h3>Oracle Common</h3>
+  <h3>Oracle Join</h3>
   </a>
 
     </div>
     <div class="item right">
       
 
-  <a href="/2018/08/08/oracle-kill-session/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclxp31goj20zk0m8qv5.jpg" title="Oracle Kill Session">
+  <a href="/2018/08/08/oracle-kill-session/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicli3sbvtj20zk0m8x6p.jpg" title="Oracle Kill Session">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Oracle Kill Session</h3>
@@ -225,7 +237,7 @@ D E W = 露の世</title>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="Contents">
-          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%88%9B%E5%BB%BA-java-source"><span class="toc-number">1.</span> <span class="toc-text"> 1. 创建 java source</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%88%9B%E5%BB%BA%E8%B0%83%E7%94%A8%E5%87%BD%E6%95%B0"><span class="toc-number">2.</span> <span class="toc-text"> 2. 创建调用函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%89%A7%E8%A1%8C%E6%B5%8B%E8%AF%95"><span class="toc-number">3.</span> <span class="toc-text"> 3. 执行测试</span></a></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#create-java-source"><span class="toc-number">1.</span> <span class="toc-text"> Create Java Source</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#create-call-function"><span class="toc-number">2.</span> <span class="toc-text"> Create Call Function</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#test"><span class="toc-number">3.</span> <span class="toc-text"> Test</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#drop-java-source"><span class="toc-number">4.</span> <span class="toc-text"> Drop Java Source</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#comments"><span class="toc-number">5.</span> <span class="toc-text"> Comments</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#clean-csv-line"><span class="toc-number">5.1.</span> <span class="toc-text"> Clean CSV Line</span></a></li></ol></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
       </div>
@@ -240,7 +252,7 @@ D E W = 露の世</title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">280</span>
+        <span class="count">281</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -310,7 +322,7 @@ D E W = 露の世</title>
 
   <ul id="quick">
     <li class="prev pjax">
-        <a href="/2018/08/08/oracle-common/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+        <a href="/2018/08/08/oracle-join/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
     </li>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
