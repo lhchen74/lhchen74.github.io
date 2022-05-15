@@ -1,0 +1,458 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="css" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2020/04/22/css-bfc/">
+
+
+
+  <title>
+CSS BFC |
+D E W = 露の世</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">CSS BFC
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2020-04-22 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2020-04-22T00:00:00+08:00">2020-04-22</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">D E W</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclj61ylzj20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipexj2jgzj20zk0m8b09.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipetlbztpj20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipeu7txpzj20zk0m81kx.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclgrvbd6j20zk0m8qv5.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicljgocqbj20zk0m8e81.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2020/04/22/css-bfc/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>转载：<span class="exturl" data-url="aHR0cDovL2ZseXB1cnN1ZS5jb20vamVreWxsL3VwZGF0ZS8yMDE1LzA4LzEwL2JmYy5odG1s">理解 CSS 中的 BFC (块级可视化上下文)</span></p>
+</blockquote>
+<h4 id="开篇"><a class="markdownIt-Anchor" href="#开篇">#</a> 开篇</h4>
+<blockquote>
+<p>一些元素，如 float 元素，如 position 为 absolute,inline-block,table-cell 或 table-caption 的元素，以及 overflow 属性不为 visible 的元素，它们将会建立一个新的块级格式化上下文。</p>
+</blockquote>
+<p>上述定义已经很详细的描述了块级格式化上下文 (Block Formatting Context) 是如何形成的，为了方便起见，文中均用 BFC 代替。现在，让我们用一种简单的方式对其进行重新定义: BFC 也是 HTML 中的一个盒子（看不见而已），只有满足至少下列条件之一才能形成 BFC:</p>
+<ul>
+<li>float 属性不为 <code>none.</code></li>
+<li>position 属性不为 <code>static和relative.</code></li>
+<li>display 属性为下列之一: <code>table-cell,table-caption,inline-block,flex,or inline-flex.</code></li>
+<li>overflow 属性不为 <code>visible.</code></li>
+</ul>
+<h4 id="让我们建立一个-bfc"><a class="markdownIt-Anchor" href="#让我们建立一个-bfc">#</a> 让我们建立一个 BFC</h4>
+<p>HTML 代码如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span>Some Content here<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>我们可以用 CSS 为 container 容器附加上述条件，如 <code>overflow: scroll, overflow: hidden, display: flex, float: left, or display: table.</code>  尽管这些条件都能形成一个 BFC，但是它们各自却有着不一样的表现：</p>
+<ul>
+<li>display: table :  <code>在响应式布局中会有问题</code></li>
+<li>overflow: scroll :  <code>可能会出现你不想要的滚动条</code></li>
+<li>float: left:  <code>使元素左浮动，并且其他元素对其环绕</code></li>
+<li>overflow: hidden:  <code>消除溢出部分</code></li>
+</ul>
+<p>这么看来，建立 BFC 的最好方式莫过于 <code>overflow:hidden</code>  了：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="在-bfc-中块级元素又是怎么布局的呢"><a class="markdownIt-Anchor" href="#在-bfc-中块级元素又是怎么布局的呢">#</a> 在 BFC 中，块级元素又是怎么布局的呢？</h4>
+<p>W3C 规范描述如下：</p>
+<blockquote>
+<p>In a block formatting context, each box’s left outer edge touches the left edge of the containing block (for right-to-left formatting, right edges touch). This is true even in the presence of floats (although a box’s line boxes may shrink due to the floats), unless the box establishes a new block formatting context (in which case the box itself may become narrower due to the floats).bfcbfc.jpg</p>
+</blockquote>
+<img data-src="/2020/04/22/css-bfc/bfc.jpg" class="">
+<p>简单的说：上图中所有属于 BFC 的 box 都默认左对齐，并且它们的左边距可以触及到容器 container 的左边。最后一个 box，尽管它是浮动的，但它依然遵循这个原则。（BFC 中的浮动下面会介绍）</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">－那么，BFC到底有什么卵用呢？</span><br><span class="line">－实际上，真的特别有用</span><br></pre></td></tr></table></figure>
+<h4 id="1利用-bfc-可以消除-margin-collapse"><a class="markdownIt-Anchor" href="#1利用-bfc-可以消除-margin-collapse">#</a> 1. 利用 BFC 可以消除 Margin Collapse</h4>
+<p>在正常情况下，在一个容器内的所有 box 将会由上至下依次垂直排列，即我们所说的一个元素占一行，并切垂直相邻的距离 (即 margin) 是由各自的 margin 决定的，而不是两个 margin 的叠加。</p>
+<p>让我们看一个例子：红色的 div 包含三个绿色的 p 元素。</p>
+<p>HTML 代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>Sibling 1<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>Sibling 2<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>Sibling 3<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>CSS 代码：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: red;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden; <span class="comment">/* creates a block formatting context */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: lightgreen;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">10px</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>理想情况下，我们会认为 p 标签之间的 margin 应该是它们的和 (20px), 但实际上却是 10px. 这其实是<span class="exturl" data-url="aHR0cDovL3d3dy5zaXRlcG9pbnQuY29tL3dlYi1mb3VuZGF0aW9ucy9jb2xsYXBzaW5nLW1hcmdpbnMv"> collapsing margins</span>。</p>
+<p>结果如下：</p>
+<img data-src="/2020/04/22/css-bfc/demo1-1.jpg" class="">
+<p>这似乎让人有点困惑，BFC 导致了 margin collapse，而现在又要用它来解决 margin cllapse. 但是始终要记住一点：只有当元素在同一个 BFC 中时，垂直方向上的 margin 才会 clollpase. 如果它们属于不同的 BFC，则不会有 margin collapse. 因此我们可以再建立一个 BFC 去阻止 margin collpase 的发生。</p>
+<p>现在 HTML 变成：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>Sibling 1<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>Sibling 2<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;newBFC&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>Sibling 3<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>CSS 也有改变：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: red;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden; <span class="comment">/* creates a block formatting context */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">10px</span> <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: lightgreen;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.newBFC</span> &#123;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden; <span class="comment">/* creates new block formatting context */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在的结果为：</p>
+<img data-src="/2020/04/22/css-bfc/demo1-2.jpg" class="">
+<p>由于第二个 p 元素和第三个 p 元素属于不同的 BFC，因此避免了 margin collapse.</p>
+<p>####2. 利用 BFC 去容纳浮动元素</p>
+<p>我相信大家经常会遇到一个容器里有浮动元素，但是这个容器的高度却是 0 的场景，如下图：</p>
+<p>看下面的例子：</p>
+<p>HTML:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>Sibling<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>Sibling<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>CSS:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: green;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.container</span> <span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="attribute">float</span>: left;</span><br><span class="line">    <span class="attribute">background-color</span>: lightgreen;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">10px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<img data-src="/2020/04/22/css-bfc/demo2-2.jpg" class="">
+<p>在上边的情形中，container 是不会有高度的，因为它包含了浮动元素。通常我们解决这个问题的办法是利用一个伪元素去实现<span class="exturl" data-url="aHR0cDovL3d3dy5zaXRlcG9pbnQuY29tL2NsZWFyaW5nLWZsb2F0cy1vdmVydmlldy1kaWZmZXJlbnQtY2xlYXJmaXgtbWV0aG9kcy8="> clear fix</span>，但是现在我们有了更好的解决办法，即利用 BFC，因为它够容纳浮动元素的。 我们现在让 container 形成 BFC 规则，结果如下：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden; <span class="comment">/* creates block formatting context */</span></span><br><span class="line">    <span class="attribute">background-color</span>: green;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.container</span> <span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="attribute">float</span>: left;</span><br><span class="line">    <span class="attribute">background-color</span>: lightgreen;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">10px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<img data-src="/2020/04/22/css-bfc/demo2-3.jpg" class="">
+<h4 id="3利用-bfc-阻止文本换行"><a class="markdownIt-Anchor" href="#3利用-bfc-阻止文本换行">#</a> 3. 利用 BFC 阻止文本换行</h4>
+<p>有时候，确切的说大多数情况 (若没有特殊设置)，文本将会环绕浮动元素 (如 Figure 1), 但有时候这并不是我们期望的，我们想要的是 Figure2。</p>
+<img data-src="/2020/04/22/css-bfc/demo3-1.jpg" class="">
+<p>往往可能大家都会选择利用 margin－left 来强行让 p 的容器有一个左边距，而距离恰好为 Floated div 的宽度，但现在我们可以利用 BFC 更好的解决这个问题。</p>
+<p>首先让我们了解一下文本换行的原理吧：</p>
+<img data-src="/2020/04/22/css-bfc/demo3-2.jpg" class="">
+<p>在 Figure1 中，整个 p 元素实际上是处于上图中的黑色区域，p 元素没有移动是因为它在浮动元素的下方。但实际上 p 作为行块级别的元素（相对于行内文本）却发生了移动，因为要给 float 元素’腾’位置，而随着文本的增加，文本高度超过浮动元素的部分则不会在水平方向上收缩内部距离，因此看起来像是环绕。</p>
+<p>如图：</p>
+<img data-src="/2020/04/22/css-bfc/demo3-3.jpg" class="">
+<p>在解决这个问题之前，我们先来看一下 W3C 的规范在这方面的描述：</p>
+<blockquote>
+<p>In a block formatting context, each box’s left outer edge touches the left edge of the containing block (for right-to-left formatting, right edges touch). This is true even in the presence of floats (although a box’s line boxes may shrink due to the floats), unless the box establishes a new block formatting context (in which case the box itself may become narrower due to the floats).</p>
+</blockquote>
+<p>W3C 为这种情况提供了一个解决方案： <code>unless the box establishes a new block formatting context</code> ，即为 p 建立 BFC。</p>
+<p>结果：</p>
+<img data-src="/2020/04/22/css-bfc/demo3-4.jpg" class="">
+<p>注：此文为译文 <span class="exturl" data-url="aHR0cDovL3d3dy5zaXRlcG9pbnQuY29tL3VuZGVyc3RhbmRpbmctYmxvY2stZm9ybWF0dGluZy1jb250ZXh0cy1pbi1jc3Mv">原文请戳</span></p>
+
+      <div class="tags">
+          <a href="/tags/css/" rel="tag"><i class="ic i-tag"></i> css</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2021-10-18 13:56:57" itemprop="dateModified" datetime="2021-10-18T13:56:57+08:00">2021-10-18</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2020/04/18/css-example/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicis081o9j20zk0m8dmr.jpg" title="CSS Example">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>CSS Example</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2020/04/30/oracle-xml/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipewkhf1zj20zk0m81kx.jpg" title="Oracle XML">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Oracle XML</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%80%E7%AF%87"><span class="toc-number">1.</span> <span class="toc-text"> 开篇</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%A9%E6%88%91%E4%BB%AC%E5%BB%BA%E7%AB%8B%E4%B8%80%E4%B8%AA-bfc"><span class="toc-number">2.</span> <span class="toc-text"> 让我们建立一个 BFC</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%A8-bfc-%E4%B8%AD%E5%9D%97%E7%BA%A7%E5%85%83%E7%B4%A0%E5%8F%88%E6%98%AF%E6%80%8E%E4%B9%88%E5%B8%83%E5%B1%80%E7%9A%84%E5%91%A2"><span class="toc-number">3.</span> <span class="toc-text"> 在 BFC 中，块级元素又是怎么布局的呢？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E5%88%A9%E7%94%A8-bfc-%E5%8F%AF%E4%BB%A5%E6%B6%88%E9%99%A4-margin-collapse"><span class="toc-number">4.</span> <span class="toc-text"> 1. 利用 BFC 可以消除 Margin Collapse</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E5%88%A9%E7%94%A8-bfc-%E9%98%BB%E6%AD%A2%E6%96%87%E6%9C%AC%E6%8D%A2%E8%A1%8C"><span class="toc-number">5.</span> <span class="toc-text"> 3. 利用 BFC 阻止文本换行</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">282</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">40</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2020/04/18/css-example/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2020/04/30/oracle-xml/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2022</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ D E W</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2020/04/22/css-bfc/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

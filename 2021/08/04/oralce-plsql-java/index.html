@@ -1,0 +1,539 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="java,db" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2021/08/04/oralce-plsql-java/">
+
+
+
+  <title>
+Calling Java from PL/SQL |
+D E W = 露の世</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">Calling Java from PL/SQL
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2021-08-04 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2021-08-04T00:00:00+08:00">2021-08-04</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">D E W</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipetv6p75j20zk0m8x6p.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicm0fdw5cj20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipev1x5e4j20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclxxcb6rj20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipevarprfj20zk0m8npd.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclgrvbd6j20zk0m8qv5.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2021/08/04/oralce-plsql-java/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>转载：<span class="exturl" data-url="aHR0cDovL2V2ZXJ5dGhpbmctb3JhY2xlLmNvbS9wbHNxbGNsanYuaHRt">Calling Java from PL/SQL </span></p>
+</blockquote>
+<h2 id="introduction"><a class="markdownIt-Anchor" href="#introduction">#</a> Introduction</h2>
+<p>This article describes how to call a method within a Java class from a PL/SQL wrapper subprogram. It‘s aimed at those PL/SQL programmers who have no previous knowledge of Java programming (to call PL/SQL from Java see <span class="exturl" data-url="aHR0cDovL2V2ZXJ5dGhpbmctb3JhY2xlLmNvbS9wbHNxbGZyanYuaHRt">this article</span>).</p>
+<p>The outline of what we wish to do is as follows:</p>
+<ul>
+<li>
+<p>Create a Java program and test that it works outside of PL/SQL.</p>
+</li>
+<li>
+<p>Compile the program using a file-based Java compiler.</p>
+</li>
+<li>
+<p>Load and store the compiled code in an Oracle database schema.</p>
+</li>
+<li>
+<p>Create a PL/SQL wrapper, or interface, for the Java program.</p>
+</li>
+<li>
+<p>Call the PL/SQL wrapper from a PL/SQL subprogram.</p>
+</li>
+</ul>
+<h2 id="introduction-to-java"><a class="markdownIt-Anchor" href="#introduction-to-java">#</a> Introduction to Java</h2>
+<p>Our program will be a variant on the familiar “Hello World” program, one beloved of tutorial writers the world over. We‘ll pass in a name as a parameter and the program will return the text &quot;Hello World from &quot; with the name appended.</p>
+<p>Let‘s start with the Java code needed to create the program and to test it:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorld</span> </span>&#123;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">sayHello</span><span class="params">( String pName )</span></span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="string">&quot;Hello World from &quot;</span> + pName;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">( String args[] )</span></span>&#123;</span><br><span class="line">      System.out.println( sayHello( <span class="string">&quot;Oracle&quot;</span> ) );</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The program begins with the text “public class HelloWorld” and ends with “}” (the keyword “public” indicates that the class is visible to the outside world).</p>
+<p>Think of this declaration as being similar to the following PL/SQL package declaration:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">or</span> replace package hello_world <span class="keyword">as</span></span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"><span class="operator">/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">or</span> replace package body hello_world <span class="keyword">as</span></span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"><span class="operator">/</span></span><br></pre></td></tr></table></figure>
+<p>This class contains two Java methods, “sayHello” and “main”. Methods are similar to the functions and procedures that we declare and define within a PL/SQL package.</p>
+<p>The method, “sayHello”, performs the required functionality. The first line:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">sayHello</span><span class="params">( String pName )</span></span>&#123;</span><br></pre></td></tr></table></figure>
+<p>implies that the method name is “sayHello” (the “Camel” notation is commonly used within Java - yes, it‘s much less readable and developer friendly than the PL/SQL equivalent, “say_hello”).</p>
+<p>The method takes a parameter “pName” with a datatype of “String” (the component within the brackets). It also returns a value with a datatype of “String” (the word that precedes the method‘s name).</p>
+<p>The keyword “public” at the start of the line tell us that the method is publicly visible (similar to declaring it the header, rather than the body, of a PL/SQL package).</p>
+<p>The keyword “static” that follows tells us that the method is like a PL/SQL packaged subprogram and belongs to the class, rather than to each instance of the class (object-oriented programming in Java offers many more variants than are possible within PL/SQL).</p>
+<p>The second line:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="string">&quot;Hello World from &quot;</span> + pName;</span><br></pre></td></tr></table></figure>
+<p>is fairly self explanatory: double quotes function as single quotes would in PL/SQL, and the “+” in Java represents string concatenation, or “||” in PL/SQL.</p>
+<p>The final “}” on the third line is equivalent to the PL/SQL “end;”</p>
+<p>In PL/SQL, we could write this method as:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> say_hello( p_name varchar2 ) <span class="keyword">return</span> varchar2 <span class="keyword">is</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">   <span class="keyword">return</span> <span class="string">&#x27;Hello World from &#x27;</span> <span class="operator">||</span> p_name;</span><br><span class="line"><span class="keyword">end</span>;</span><br></pre></td></tr></table></figure>
+<p>The second method, “main”, is just in the class for the purposes of testing (we‘ll remove it later). The keyword “void” indicates that the method returns no data (making it the equivalent of a PL/SQL procedure, rather than a function).</p>
+<p>The parameter “args[]” represents a special notation, indicating an array of command line arguments. And, finally, “System.out.println” is the Java equivalent of our old friend “dbms_output.put_line”.</p>
+<p>So, the Java class is functionally equivalent to the PL/SQL package:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">or</span> replace package hello_world <span class="keyword">as</span></span><br><span class="line">   <span class="keyword">function</span> say_hello( p_name varchar2 ) <span class="keyword">return</span> varchar2;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">procedure</span> main;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"><span class="operator">/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">or</span> replace package body hello_world <span class="keyword">as</span></span><br><span class="line">   <span class="keyword">function</span> say_hello( p_name varchar2 ) <span class="keyword">return</span> varchar2 <span class="keyword">is</span></span><br><span class="line">   <span class="keyword">begin</span></span><br><span class="line">      <span class="keyword">return</span> <span class="string">&#x27;Hello World from &#x27;</span> <span class="operator">||</span> p_name;</span><br><span class="line">   <span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">procedure</span> main <span class="keyword">is</span></span><br><span class="line">   <span class="keyword">begin</span></span><br><span class="line">      dbms_output.put_line( say_hello( <span class="string">&#x27;Oracle&#x27;</span> ) );</span><br><span class="line">   <span class="keyword">end</span>;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"><span class="operator">/</span></span><br></pre></td></tr></table></figure>
+<p>which when we run it from SQL Plus using:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">call</span> hello_world.main();</span><br></pre></td></tr></table></figure>
+<p>produces the output:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hello World from Oracle</span><br></pre></td></tr></table></figure>
+<p>Needless to say, there is rather more to writing Java code than is illustrated by this very brief example, but it should be sufficient to orient those developers coming from a PL/SQL background.</p>
+<h2 id="the-java-compiler"><a class="markdownIt-Anchor" href="#the-java-compiler">#</a> The Java Compiler</h2>
+<p>To compile Java code we need a Java compiler. A compiler is contained in a JDK (Java Development Kit), so we‘ll need to either (1) install an appropriate JDK, or (2) make use of an existing JDK.</p>
+<p>We have three options:</p>
+<ul>
+<li>
+<p><strong>Use the JDK contained in the Oracle RDBMS:</strong> the Oracle RDBMS contains an in-built JDK. We can use its compiler if we load the Java <strong>source code</strong> directly into the RDBMS. It will be automatically compiled. The downside is that we won‘t be able to test the code first before loading it into the RDBMS (the JDK in the RDBMS produces reasonable error messages when the code contains syntactic errors, but we won‘t be able to exercise the code until we create a PL/SQL wrapper and call it from a PL/SQL test stub).</p>
+</li>
+<li>
+<p><strong>Compile the Java code with an incompatible JDK:</strong> we can install or make use of an existing file-based JDK that is incompatible with that in the RDBMS - incompatible because it has a higher version number (for Oracle 11g the version number must be no greater than 1.5). We can compile and test the code, and when we are satisfied that it works correctly we can load the <strong>source code</strong> into the Oracle RDBMS and have it automatically compiled with the in-built JDK. The downside is that the source code is being compiled with one version of the JDK for testing, and with another version for use by PL/SQL (if we attempted to load the <strong>compiled code</strong> into the RDBMS we would get a <span class="exturl" data-url="aHR0cDovL2V2ZXJ5dGhpbmctb3JhY2xlLmNvbS9wajI5NTUyLmh0bQ==">ORA-29552</span> error).</p>
+</li>
+<li>
+<p><strong>Compile the Java code with a compatible JDK:</strong> we can install or make use of an existing file-based JDK that is compatible with that in the RDBMS. We can compile and test the code, and when we are satisfied that it works correctly we can load the <strong>compiled code</strong> into the Oracle RDBMS. The upside is that the compiled code that is used for testing is also referenced by our PL/SQL wrapper, reducing the likelihood of incompatibilities and errors.</p>
+</li>
+</ul>
+<p>To determine if a file-based JDK is installed and is present on the system path we can issue the command “javac -version” from a command window. If it is present, we will get the version number by way of a response:</p>
+<img data-src="/2021/08/04/oralce-plsql-java/plsqlcljv10.png" class="" title="*">
+<p>​ <strong>Figure 1 - Java Version</strong></p>
+<p>If we don‘t get a version number, then either there is no JDK installed or it is not on the system path. By default, JDKs are installed under “C:\Program Files\Java”. We can also determine whether a JDK has been installed by looking for the “Java” menu item in the “Control Panel”.</p>
+<p>If we need to install a JDK, then we can <span class="exturl" data-url="aHR0cDovL3d3dy5vcmFjbGUuY29tL3RlY2huZXR3b3JrL2phdmEvamF2YXNlL2FyY2hpdmUtMTM5MjEwLmh0bWw=">download</span> one that is compatible with the JDK in the RDBMS.</p>
+<p>It‘s quite likely that a file-based JDK already exists, and that it has a higher version number than the maximum version supported by the JDK in the RDBMS (many Oracle products and other products require a higher version of the JDK). If so, then we can still install a lower version of the JDK in addition to the one that is already present, and then temporarily add it to the system path when compiling Java code. For example, if the Java 1.5 JDK is installed under “C:\Program Files\Java”, then the path can be overriden as follows:</p>
+<img data-src="/2021/08/04/oralce-plsql-java/plsqlcljv11.png" class="" title="*">
+<p>​ <strong>Figure 2 - Setting the JDK Path</strong></p>
+<h2 id="compile-test-class"><a class="markdownIt-Anchor" href="#compile-test-class">#</a> Compile Test Class</h2>
+<p>We need to save our code for the test class in a file called “HelloWorld.java” (the Java compiler is rather fussy, and will fail to compile the code if the file name does not match the class name).</p>
+<p>Next, we can create a simple “cmd” file to compile the test class:</p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> <span class="built_in">path</span>=C:\Progra~<span class="number">1</span>\Java\jdk1.<span class="number">5</span>.<span class="number">0</span>_14\bin;<span class="variable">%path%</span></span><br><span class="line">javac HelloWorld.java</span><br><span class="line"><span class="built_in">pause</span></span><br></pre></td></tr></table></figure>
+<p>Assuming that both the class and command file are in directory “C:\Scratch\Java” (any directory will do), then when we run the command file we get the following output:</p>
+<img data-src="/2021/08/04/oralce-plsql-java/plsqlcljv01.png" class="" title="*">
+<p>​ <strong>Figure 3 - Java Compilation</strong></p>
+<p>As we discussed in the previous section, the first line sets the path to the Java JDK. This line is unnecessary if the correct JDK is already on the system path, or if we wish to compile with an incompatible JDK for the purposes of testing, and then subsequently load the source code into the RDBMS.</p>
+<p>The line “javac HelloWorld.java” does the actual compilation.</p>
+<h2 id="run-test-class"><a class="markdownIt-Anchor" href="#run-test-class">#</a> Run Test Class</h2>
+<p>To run the compiled class we issue the command “java HelloWorld”:</p>
+<img data-src="/2021/08/04/oralce-plsql-java/plsqlcljv02.png" class="" title="*">
+<p>​ <strong>Figure 4 - Test Run</strong></p>
+<h2 id="create-load-class"><a class="markdownIt-Anchor" href="#create-load-class">#</a> Create Load Class</h2>
+<p>With testing complete, we can remove the “main” method from the class, so that it only contains the code needed to implement the requirement:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorld</span> </span>&#123;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">sayHello</span><span class="params">( String pName )</span></span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="string">&quot;Hello World from &quot;</span> + pName;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="compile-load-class"><a class="markdownIt-Anchor" href="#compile-load-class">#</a> Compile Load Class</h2>
+<p>As before, we compile the modified class, while making sure that the correct version of the Java JDK is on the path:</p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> <span class="built_in">path</span>=C:\Progra~<span class="number">1</span>\Java\jdk1.<span class="number">5</span>.<span class="number">0</span>_14\bin;<span class="variable">%path%</span></span><br><span class="line">javac HelloWorld.java</span><br></pre></td></tr></table></figure>
+<p>Note, if we run the code via the file system JDK, but without the “main” method, then we get an error:</p>
+<img data-src="/2021/08/04/oralce-plsql-java/plsqlcljv03.png" class="" title="*">
+<p>​ <strong>Figure 5 - Error with no “main” Method</strong></p>
+<h2 id="load-class-into-oracle"><a class="markdownIt-Anchor" href="#load-class-into-oracle">#</a> Load Class into Oracle</h2>
+<p>Next, we must load the compiled class into an Oracle database schema:</p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">loadjava -v -user useranme/password@instance -resolve C:\Scratch\Java\HelloWorld.class</span><br></pre></td></tr></table></figure>
+<p>which produces the following output:</p>
+<img data-src="/2021/08/04/oralce-plsql-java/plsqlcljv04.png" class="" title="*">
+<p>​ <strong>Figure 6 - Load Class into Oracle</strong></p>
+<p>The “v” option produces a more verbose and informative output, but it is not required. The “user” option identifies the Oracle database schema and password, and is required. The “resolve” option resolves any references that the compiled code may make to other classes or to in-built Java functionality stored in the schema PUBLIC, and, while optional, is recommended. The final term on the command line identifies the file containing the compiled class. In addition, the first time code is loaded into a schema the line:</p>
+<ul>
+<li>created : CREATE<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mi>A</mi><mi>V</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">JAVA</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.09618em;">J</span><span class="mord mathnormal">A</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mord mathnormal">A</span></span></span></span>LOB$TABLE</li>
+</ul>
+<p>will appear before “resolving:”, as storage structures within the schema are allocated.</p>
+<p>Note, that in this case the output indicates that a compiled class is loaded, rather than source code.</p>
+<p>To load the source code and have it compiled automatically, we simply change the file type from “class” to “java”:</p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">loadjava -v -user useranme/password@instance -resolve C:\Scratch\Java\HelloWorld.java</span><br></pre></td></tr></table></figure>
+<p>which produces the following output:</p>
+<img data-src="/2021/08/04/oralce-plsql-java/plsqlcljv08.png" class="" title="*">
+<p>​ <strong>Figure 7 - Load Source Code into Oracle</strong></p>
+<p>Note, that in this case the output indicates that source code is loaded, rather than the compiled code.</p>
+<p>If we need to drop the class from Oracle we use the corresponding “dropjava” command:</p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dropjava -v -user useranme/password@instance C:\Scratch\Java\HelloWorld.class</span><br></pre></td></tr></table></figure>
+<p>which produces the following output:</p>
+<img data-src="/2021/08/04/oralce-plsql-java/plsqlcljv05.png" class="" title="*">
+<p>​ <strong>Figure 8 - Drop Class from Oracle</strong></p>
+<p>To drop both source code and class, we change the file type from “class” to “java”. Note, if <strong>source code has been loaded and we attempt to drop just the class we will get an uniformative error</strong>, and neither will be dropped.</p>
+<h2 id="create-plsql-wrapper-function"><a class="markdownIt-Anchor" href="#create-plsql-wrapper-function">#</a> Create PL/SQL Wrapper Function</h2>
+<p>The next step is to create a PL/SQL wrapper function that allows the Java code to be called as though it were PL/SQL. We need to map the Java method name, its parameters, and its return type onto PL/SQL equivalents.</p>
+<p>In the “Introduction” we demonstrated how the PL/SQL function with header:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">say_hello( p_name varchar2 ) <span class="keyword">return</span> varchar2</span><br></pre></td></tr></table></figure>
+<p>performs the same functionality as the “HelloWorld” class method with header:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">String <span class="title">sayHello</span><span class="params">( String pName )</span></span></span><br></pre></td></tr></table></figure>
+<p>To create the wrapper we just create this PL/SQL function in the normal manner, but modify the body to include the method header in a slightly modified format:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> REPLACE <span class="keyword">FUNCTION</span></span><br><span class="line">   say_hello (</span><br><span class="line">      p_name varchar2</span><br><span class="line">   ) <span class="keyword">return</span> varchar2</span><br><span class="line"><span class="keyword">AS</span> <span class="keyword">language</span> java name</span><br><span class="line">   <span class="string">&#x27;HelloWorld.sayHello(java.lang.String)</span></span><br><span class="line"><span class="string">      return java.lang.String&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>Note that the:</p>
+<ul>
+<li>
+<p>Method header is contained in quotes.</p>
+</li>
+<li>
+<p>Wrapper ends with a semi-colon, and not with the usual “end;”.</p>
+</li>
+<li>
+<p>The method name is prefixed by the class name.</p>
+</li>
+<li>
+<p>The datatype / parameter name references are replaced by an enhanced version of the datatype alone - “String” is replaced by “java.lang.String”.</p>
+</li>
+<li>
+<p>Function return datatype follows, rather than precedes the method.</p>
+</li>
+</ul>
+<p>When we run the code the wrapper function is created, and is now available for use in any PL/SQL subprogram.</p>
+<img data-src="/2021/08/04/oralce-plsql-java/plsqlcljv06.png" class="" title="*">
+<p>​ <strong>Figure 9 - Create PL/SQL Wrapper</strong></p>
+<p>For a list of how different Java datatypes should be mapped to PL/SQL datatypes see <span class="exturl" data-url="aHR0cDovL2RvY3Mub3JhY2xlLmNvbS9jZC9CMTkzMDZfMDEvamF2YS4xMDIvYjE0MTg4L2RhdGFtYXAuaHRt">Table 3-1 SQL and PL/SQL Data Type to Oracle and JDBC Mapping Classes</span>.</p>
+<h2 id="run-plsql-wrapper-function"><a class="markdownIt-Anchor" href="#run-plsql-wrapper-function">#</a> Run PL/SQL Wrapper Function</h2>
+<p>If we call the PL/SQL wrapper function, passing in the same parameter value as when testing the Java code directly:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">   dbms_output.put_line( say_hello( <span class="string">&#x27;Oracle&#x27;</span> ) );</span><br><span class="line"><span class="keyword">END</span>;</span><br></pre></td></tr></table></figure>
+<p>then we get the same output as before:</p>
+<img data-src="/2021/08/04/oralce-plsql-java/plsqlcljv07.png" class="" title="*">
+<p>​ <strong>Figure 10 - Call PL/SQL Wrapper</strong></p>
+<h2 id="grant-permissions"><a class="markdownIt-Anchor" href="#grant-permissions">#</a> Grant Permissions</h2>
+<p>For some use cases, we need to explicitly grant specific permissions using the “grant_permissions” procedure in the “dbms_java” package. For example, if we want to write a Java program that performs file operations on the files in directory “C:\Scratch\Java” then we can do so as follows:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"></span><br><span class="line">   dbms_java.grant_permission (</span><br><span class="line">      <span class="string">&#x27;TEST&#x27;</span>,</span><br><span class="line">      <span class="string">&#x27;SYS:java.io.FilePermission&#x27;</span>,</span><br><span class="line">      <span class="string">&#x27;C:\Scratch\Java\*&#x27;</span>,</span><br><span class="line">      <span class="string">&#x27;read,write,delete&#x27;</span></span><br><span class="line">   );</span><br><span class="line"></span><br><span class="line"><span class="keyword">END</span>;</span><br></pre></td></tr></table></figure>
+<p>Note, that, unlike the normal database convention, the schema name, “TEST”, <strong>must be in uppercase.</strong></p>
+<p>In addition, we also need to create a directory and grant permissions on that directory in the usual manner:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DIRECTORY text <span class="keyword">as</span> <span class="string">&#x27;C:\Scratch\Java&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">GRANT</span> read, write <span class="keyword">on</span> directory text <span class="keyword">to</span> test;</span><br></pre></td></tr></table></figure>
+
+      <div class="tags">
+          <a href="/tags/java/" rel="tag"><i class="ic i-tag"></i> java</a>
+          <a href="/tags/db/" rel="tag"><i class="ic i-tag"></i> db</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2021-10-18 13:27:15" itemprop="dateModified" datetime="2021-10-18T13:27:15+08:00">2021-10-18</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2021/08/03/oracle-form-download-file/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipex2cdtbj20zk0m8x6p.jpg" title="Download File by Form Personalization">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Download File by Form Personalization</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2021/08/07/rust-webassembly/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giph4baakhj20zk0m8h5q.jpg" title="Compiling from Rust to WebAssembly">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Compiling from Rust to WebAssembly</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#introduction"><span class="toc-number">1.</span> <span class="toc-text"> Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#introduction-to-java"><span class="toc-number">2.</span> <span class="toc-text"> Introduction to Java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#the-java-compiler"><span class="toc-number">3.</span> <span class="toc-text"> The Java Compiler</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#compile-test-class"><span class="toc-number">4.</span> <span class="toc-text"> Compile Test Class</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#run-test-class"><span class="toc-number">5.</span> <span class="toc-text"> Run Test Class</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#create-load-class"><span class="toc-number">6.</span> <span class="toc-text"> Create Load Class</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#compile-load-class"><span class="toc-number">7.</span> <span class="toc-text"> Compile Load Class</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#load-class-into-oracle"><span class="toc-number">8.</span> <span class="toc-text"> Load Class into Oracle</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#create-plsql-wrapper-function"><span class="toc-number">9.</span> <span class="toc-text"> Create PL&#x2F;SQL Wrapper Function</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#run-plsql-wrapper-function"><span class="toc-number">10.</span> <span class="toc-text"> Run PL&#x2F;SQL Wrapper Function</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#grant-permissions"><span class="toc-number">11.</span> <span class="toc-text"> Grant Permissions</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">282</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">40</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2021/08/03/oracle-form-download-file/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2021/08/07/rust-webassembly/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2022</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ D E W</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2021/08/04/oralce-plsql-java/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

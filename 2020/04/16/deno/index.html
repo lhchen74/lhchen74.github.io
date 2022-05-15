@@ -1,0 +1,585 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="node" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2020/04/16/deno/">
+
+
+
+  <title>
+Forget NodeJS! Build native TypeScript applications with Deno |
+D E W = 露の世</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">Forget NodeJS! Build native TypeScript applications with Deno
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2020-04-16 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2020-04-16T00:00:00+08:00">2020-04-16</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">D E W</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclfw2t96j20zk0m8x6p.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giciukx8a7j20zk0m8aio.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicm0fdw5cj20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicit4jrvuj20zk0m8785.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclj61ylzj20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giciundwu5j20zk0m8n9e.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2020/04/16/deno/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>转载：<span class="exturl" data-url="aHR0cHM6Ly9kZWVwdS50ZWNoL2Rlbm8tcnVudGltZS1mb3ItdHlwZXNjcmlwdC8=">Forget NodeJS! Build native TypeScript applications with Deno 🦖 | Technorage</span></p>
+</blockquote>
+<p>Have you heard of <span class="exturl" data-url="aHR0cHM6Ly9kZW5vLmxhbmQv">Deno</span>? If not you should check it out. Deno is a modern JavaScript/TypeScript runtime &amp; scripting environment. Deno is what NodeJS should have been according to Ryan Dahl who created NodeJS. Deno was also created by Ryan Dahl in 2018 and is built with <span class="exturl" data-url="aHR0cHM6Ly92OC5kZXYv">V8</span>, <span class="exturl" data-url="aHR0cHM6Ly93d3cucnVzdC1sYW5nLm9yZy8=">Rust</span> and <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3Rva2lvLXJzL3Rva2lv">Tokio</span> with a focus on security, performance, and ease of use. Deno takes many inspirations from Go and Rust.</p>
+<p>In this post let us see what Deno offers and how it compares to NodeJS. You can also watch the same in a talk format I did for Devoxx Ukraine below</p>
+<p>Let us install Deno before we proceed.</p>
+<h1 id="install-deno"><a class="markdownIt-Anchor" href="#install-deno">#</a> Install Deno</h1>
+<p>There are multiple ways to install Deno. If you are on Mac or Linux, you can install it via <span class="exturl" data-url="aHR0cHM6Ly9mb3JtdWxhZS5icmV3LnNoL2Zvcm11bGEvZGVubw==">Homebrew</span>. On Windows, you can use <span class="exturl" data-url="aHR0cHM6Ly9jaG9jb2xhdGV5Lm9yZy9wYWNrYWdlcy9kZW5v">Chocolatey</span>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># Mac&#x2F;Linux</span><br><span class="line">brew install deno</span><br><span class="line"></span><br><span class="line"># windows</span><br><span class="line">choco install deno</span><br></pre></td></tr></table></figure>
+<p>Check <span class="exturl" data-url="aHR0cHM6Ly9kZW5vLmxhbmQvc3RkL21hbnVhbC5tZCNzZXR1cA==">the official doc</span> for other installation methods</p>
+<blockquote>
+<p>Please note that Deno is still under active development and hence may not be ready for production use</p>
+</blockquote>
+<p>Now that we have Deno installed, let us look at its features.</p>
+<h1 id="features"><a class="markdownIt-Anchor" href="#features">#</a> Features</h1>
+<ul>
+<li>TypeScript supported out of the box without any transpiling setup</li>
+<li>Can execute remote scripts</li>
+<li>Secure by default. No file, network, or environment access by default unless explicitly enabled</li>
+<li>Provides curated standard modules</li>
+<li>Supports only ES modules. Modules are cached globally and are immutable</li>
+<li>Built-in tooling (format, lint, test, bundle and so on)</li>
+<li>Deno applications can be browser compatible</li>
+<li>Promise based API( <code>async/await</code>  supported) and no callback hell</li>
+<li>Top-level  <code>await</code>  support</li>
+<li>Sub-process using web workers</li>
+<li>WebAssembly support</li>
+<li>Lightweight multi-platform executable(~10MB)</li>
+</ul>
+<blockquote>
+<p>Deno does not use NPM for dependency management and hence there is no  <code>node_modules</code>  hell to deal with, which IMO is a huge selling point</p>
+</blockquote>
+<h2 id="typescript-support"><a class="markdownIt-Anchor" href="#typescript-support">#</a> TypeScript support</h2>
+<p>Deno has native support for TypeScript and JavaScript. You can write Deno applications directly in TypeScript and Deno can execute them without any transpiling step from your side. Let us try it</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params">person: <span class="built_in">string</span></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`Hello <span class="subst">$&#123;person&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(hello(<span class="string">&quot;Babb&quot;</span>));</span><br></pre></td></tr></table></figure>
+<p>Save this to  <code>hello.ts</code>  file and execute  <code>deno hello.ts</code> . You will see Deno compiles the file and executes it.</p>
+<p>Deno supports the latest version of TypeScript and keeps the support up to date.</p>
+<h2 id="remote-script-execution"><a class="markdownIt-Anchor" href="#remote-script-execution">#</a> Remote script execution</h2>
+<p>With Deno, you can run a local or remote script quite easily. Just point to the file or HTTP URL of the script and Deno will download and execute it</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 deno https:&#x2F;&#x2F;deno.land&#x2F;std&#x2F;examples&#x2F;welcome.ts</span><br></pre></td></tr></table></figure>
+<p>This means you can just point to a raw GitHub URL to execute a script, no hassle of installing something. The default security model Deno is applied to remote scripts as well.</p>
+<h2 id="secure-by-default"><a class="markdownIt-Anchor" href="#secure-by-default">#</a> Secure by default</h2>
+<p>By default, a script run with Deno cannot access the file system, network, sub-process, or environment. This creates a sandbox for the script and the user has to explicitly provide permissions. This puts control in the hands of the end-user.</p>
+<ul>
+<li>Granular permissions</li>
+<li>Permissions can be revoked</li>
+<li>Permissions whitelist support</li>
+</ul>
+<p>The permissions can be provided via command-line flags during execution or programmatically when using sub-processes.</p>
+<p>The available flags are:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">--allow-all | -A</span><br><span class="line">--allow-env</span><br><span class="line">--allow-hrtime</span><br><span class="line">--allow-read&#x3D;&lt;whitelist&gt;</span><br><span class="line">--allow-write&#x3D;&lt;whitelist&gt;</span><br><span class="line">--allow-net&#x3D;&lt;whitelist&gt;</span><br><span class="line">--allow-plugin</span><br><span class="line">--allow-run</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Please note that flags must be passed before the filename like  <code>deno -A file.ts</code>  or  <code>deno run -A file.ts</code> . Anything passed after the filename will be considered as program arguments.</p>
+</blockquote>
+<p>Let us see an example that creates a local HTTP server:</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.info(<span class="string">&quot;Hello there!&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; serve &#125; <span class="keyword">from</span> <span class="string">&quot;https://deno.land/std/http/server.ts&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> server = serve(<span class="string">&quot;:8000&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.info(<span class="string">&quot;Server created!&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>The snippet tries to use the network and hence when you run the program with Deno it will fail with an error</p>
+<p>To avoid the error we need to pass the  <code>--allow-net</code>  or  <code>--allow-all</code>  flag when running the program. You can also grant access to specific ports and domains as well using a whitelist. For example  <code>deno --allow-net=:8000 security.ts</code></p>
+<h2 id="standard-modules"><a class="markdownIt-Anchor" href="#standard-modules">#</a> Standard modules</h2>
+<p>Deno provides <span class="exturl" data-url="aHR0cHM6Ly9kZW5vLmxhbmQvc3RkLw==">standard modules</span> like NodeJS, Go or Rust. The list is growing as newer versions are released. Currently available modules are:</p>
+<ul>
+<li><code>archive</code>  - TAR archive handling</li>
+<li><code>colors</code>  - ANSI colors on console</li>
+<li><code>datetime</code>  - Datetime parse utilities</li>
+<li><code>encoding</code>  - Encode/Decode CSV, YAML, HEX, Base32 &amp; TOML</li>
+<li><code>flags</code>  - CLI argument parser</li>
+<li><code>fs</code>  - Filesystem API</li>
+<li><code>http</code>  - HTTP server framework</li>
+<li><code>log</code>  - Logging framework</li>
+<li><code>media_types</code>  - Resolve media types</li>
+<li><code>prettier</code>  - Prettier formatting API</li>
+<li><code>strings</code>  - String utils</li>
+<li><code>testing</code>  - Testing utils</li>
+<li><code>uuid</code>  - UUID support</li>
+<li><code>ws</code>  - Websocket client/server</li>
+</ul>
+<p>The standard modules are available under  <code>https://deno.land/std</code>  namespace and are tagged in accordance with Deno releases.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 import &#123; green &#125; from &quot;https:&#x2F;&#x2F;deno.land&#x2F;std&#x2F;fmt&#x2F;colors.ts&quot;;</span><br></pre></td></tr></table></figure>
+<h2 id="es-modules"><a class="markdownIt-Anchor" href="#es-modules">#</a> ES Modules</h2>
+<p>Deno supports only <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvSmF2YVNjcmlwdC9HdWlkZS9Nb2R1bGVz">ES Modules</span> using a remote or local URL. This keeps dependency management simple and light. Unlike NodeJS, Deno doesn’t try to be too smart here, which means:</p>
+<ul>
+<li><code>require()</code>  is not supported, so no confusion with import syntax</li>
+<li>No “magical” module resolution</li>
+<li>Third-party modules are imported by URL(Local and remote)</li>
+<li>Remote code is fetched only once and cached globally for later use</li>
+<li>Remote code is considered immutable and never updated unless  <code>--reload</code>  flag is used</li>
+<li>Dynamic imports are supported</li>
+<li>Supports <span class="exturl" data-url="aHR0cHM6Ly9kZW5vLmxhbmQvc3RkL21hbnVhbC5tZCNpbXBvcnQtbWFwcw==">import maps</span></li>
+<li>Third-party modules are available in <span class="exturl" data-url="aHR0cHM6Ly9kZW5vLmxhbmQveC8=">https://deno.land/x/</span></li>
+<li>NPM modules can be used, if required, as simple local file URL or from <span class="exturl" data-url="aHR0cHM6Ly9qc3BtLmlvLw==">jspm.io</span> or <span class="exturl" data-url="aHR0cHM6Ly93d3cucGlrYS5kZXYv">pika.dev</span></li>
+</ul>
+<p>Hence we can any import any library that is available from a URL. Let’s build on our HTTP server example</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; serve &#125; <span class="keyword">from</span> <span class="string">&quot;https://deno.land/std/http/server.ts&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; green &#125; <span class="keyword">from</span> <span class="string">&quot;https://raw.githubusercontent.com/denoland/deno/master/std/fmt/colors.ts&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> capitalize <span class="keyword">from</span> <span class="string">&quot;https://unpkg.com/lodash-es@4.17.15/capitalize.js&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> server = serve(<span class="string">&quot;:8000&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.info(green(capitalize(<span class="string">&quot;server created!&quot;</span>)));</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> body = <span class="keyword">new</span> TextEncoder().encode(<span class="string">&quot;Hello there\n&quot;</span>);</span><br><span class="line"></span><br><span class="line">(<span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(green(<span class="string">&quot;Listening on http://localhost:8000/&quot;</span>));</span><br><span class="line">    <span class="keyword">for</span> <span class="keyword">await</span> (<span class="keyword">const</span> req <span class="keyword">of</span> server) &#123;</span><br><span class="line">        req.respond(&#123; body &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<p>The import paths can be made nicer by using an import map below</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;imports&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;http/&quot;</span>: <span class="string">&quot;https://deno.land/std/http/&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;fmt/&quot;</span>: <span class="string">&quot;https://raw.githubusercontent.com/denoland/deno/master/std/fmt/&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;lodash/&quot;</span>: <span class="string">&quot;https://unpkg.com/lodash-es@4.17.15/&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Now we can simplify the paths as below</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; serve &#125; <span class="keyword">from</span> <span class="string">&quot;http/server.ts&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; green &#125; <span class="keyword">from</span> <span class="string">&quot;fmt/colors.ts&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> capitalize <span class="keyword">from</span> <span class="string">&quot;lodash/capitalize.js&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> server = serve(<span class="string">&quot;:8000&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.info(green(capitalize(<span class="string">&quot;server created!&quot;</span>)));</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> body = <span class="keyword">new</span> TextEncoder().encode(<span class="string">&quot;Hello there\n&quot;</span>);</span><br><span class="line"></span><br><span class="line">(<span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(green(<span class="string">&quot;Listening on http://localhost:8000/&quot;</span>));</span><br><span class="line">    <span class="keyword">for</span> <span class="keyword">await</span> (<span class="keyword">const</span> req <span class="keyword">of</span> server) &#123;</span><br><span class="line">        req.respond(&#123; body &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<p>Run this with the  <code>--importmap</code>  flag  <code>deno --allow-net --importmap import-map.json server.ts</code> . Please note that the flags should be before the filename. Now you can access  <code>http://localhost:8000</code>  to verify this.</p>
+<h2 id="built-in-tooling"><a class="markdownIt-Anchor" href="#built-in-tooling">#</a> Built-in tooling</h2>
+<p>Deno takes inspiration from Rust and Golang to provide built-in tooling, this IMO is great as it helps you get started without having to worry about setting up testing, linting and bundling frameworks. The below are tools currently available/planned</p>
+<ul>
+<li>Dependency inspector ( <code>deno info</code> ): Provides information about cache and source files</li>
+<li>Bundler ( <code>deno bundle</code> ): Bundle module and dependencies into a single JavaScript file</li>
+<li>Installer ( <code>deno install</code> ): Install a Deno module globally, the equivalent of  <code>npm install</code></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2Rlbm9sYW5kL2Rlbm8vdHJlZS9tYXN0ZXIvc3RkL3Rlc3Rpbmc=">Test runner</span> ( <code>deno test</code> ): Run tests using the Deno built-in test framework</li>
+<li>Type info ( <code>deno types</code> ): Get the Deno TypeScript API reference</li>
+<li>Code formatter ( <code>deno fmt</code> ): Format source code using Prettier</li>
+<li>Linter (planned) ( <code>deno lint</code> ): Linting support for source code</li>
+<li>Debugger (planned) ( <code>--debug</code> ): Debug support for Chrome Dev tools</li>
+</ul>
+<p>For example, with Deno, you can write test cases easily using provided utilities</p>
+<p>Let’s say we have  <code>factorial.ts</code></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">factorial</span>(<span class="params">n: <span class="built_in">number</span></span>): <span class="title">number</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> n == <span class="number">0</span> ? <span class="number">1</span> : n * factorial(n - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>We can write a test for this as below</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; assertEquals &#125; <span class="keyword">from</span> <span class="string">&quot;https://deno.land/std/testing/asserts.ts&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; factorial &#125; <span class="keyword">from</span> <span class="string">&quot;./factorial.ts&quot;</span>;</span><br><span class="line"></span><br><span class="line">Deno.test(<span class="function"><span class="keyword">function</span> <span class="title">testFactorial</span>(<span class="params"></span>): <span class="title">void</span> </span>&#123;</span><br><span class="line">    assertEquals(factorial(<span class="number">5</span>), <span class="number">120</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">Deno.test(<span class="function"><span class="keyword">function</span> <span class="title">t2</span>(<span class="params"></span>): <span class="title">void</span> </span>&#123;</span><br><span class="line">    assertEquals(<span class="string">&quot;world&quot;</span>, <span class="string">&quot;worlds&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//  deno test 06_builtin_tools.ts</span></span><br></pre></td></tr></table></figure>
+<h2 id="browser-compatibility"><a class="markdownIt-Anchor" href="#browser-compatibility">#</a> Browser compatibility</h2>
+<p>Deno programs or modules can be run on a browser as well if they satisfy the below conditions</p>
+<ul>
+<li>The program must are written completely in JavaScript and should not use the global Deno APIs</li>
+<li>If the program is written in Typescript, it must be bundled as JavaScript using  <code>deno bundle</code>  and should not use the global Deno APIs</li>
+</ul>
+<p>For browser compatibility Deno also supports  <code>window.load</code>  and  <code>window.unload</code>  events.  <code>load</code>  and  <code>unload</code>  events can be used with  <code>window.addEventListener</code>  as well.</p>
+<p>Let us see below sample, this can be run using  <code>deno run</code>  or we can package it and execute in a browser</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> capitalize <span class="keyword">from</span> <span class="string">&quot;https://unpkg.com/lodash-es@4.17.15/capitalize.js&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// export function main() &#123;</span></span><br><span class="line"><span class="comment">//     console.log(capitalize(&quot;hello from the web browser&quot;));</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.onload = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.info(capitalize(<span class="string">&quot;module loaded!&quot;</span>));</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>We can package this using  <code>deno bundle example.ts browser_compatibility.js</code>  and use the  <code>browser_compatibility.js</code>  in an HTML file and load it in a browser. Try it out and look at the browser console.</p>
+<h2 id="promise-api"><a class="markdownIt-Anchor" href="#promise-api">#</a> Promise API</h2>
+<p>Another great thing about Deno is that all of its API is <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvSmF2YVNjcmlwdC9SZWZlcmVuY2UvR2xvYmFsX09iamVjdHMvUHJvbWlzZQ==">Promise</span> based which means, unlike NodeJS we do not have to deal with callback hells. Also, the API is quite consistent across standard modules. Let us see an example:</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> filePromise: <span class="built_in">Promise</span>&lt;Deno.File&gt; = Deno.open(<span class="string">&quot;dummyFile.txt&quot;</span>);</span><br><span class="line"></span><br><span class="line">filePromise.then(<span class="function">(<span class="params">file: Deno.File</span>) =&gt;</span> &#123;</span><br><span class="line">    Deno.copy(Deno.stdout, file).then(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        file.close();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>But we said no callbacks right, the good thing about Promise API is that we can use <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvSmF2YVNjcmlwdC9SZWZlcmVuY2UvU3RhdGVtZW50cy9hc3luY19mdW5jdGlvbg==">async/await</span> syntax, so with that, we can rewrite above</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> filePromise: <span class="built_in">Promise</span>&lt;Deno.File&gt; = Deno.open(<span class="string">&quot;dummyFile.txt&quot;</span>);</span><br><span class="line"></span><br><span class="line">filePromise.then(<span class="keyword">async</span> (file: Deno.File) =&gt; &#123;</span><br><span class="line">    <span class="keyword">await</span> Deno.copy(Deno.stdout, file);</span><br><span class="line">    file.close();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>Run  <code>deno -A example.ts</code>  to see it in action, don’t forget to create the  <code>dummyFile.txt</code>  with some content</p>
+<h2 id="top-level-await"><a class="markdownIt-Anchor" href="#top-level-await">#</a> Top-level  <code>await</code></h2>
+<p>The above code still uses a callback, what if we can use  <code>await</code>  for that as well, luckily Deno has support for the <a target="_blank" rel="noopener" href="https://github.com/tc39/proposal-top-level-await">top-level  <code>await</code> </a> proposal(Not supported by TypeScript yet). With this, we can rewrite the above</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fileName = Deno.args[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> file: Deno.File = <span class="keyword">await</span> Deno.open(fileName);</span><br><span class="line"></span><br><span class="line"><span class="keyword">await</span> Deno.copy(Deno.stdout, file);</span><br><span class="line"></span><br><span class="line">file.close();</span><br></pre></td></tr></table></figure>
+<p>Isn’t that neat? Run it as  <code>deno -A example.ts dummyFile.txt</code></p>
+<h2 id="subprocess-using-web-workers"><a class="markdownIt-Anchor" href="#subprocess-using-web-workers">#</a> Subprocess using web workers</h2>
+<p>Since Deno uses the V8 engine which is single-threaded, we have to use a sub-process like in NodeJS to spawn new threads(V8 instance). This is done using service workers in Deno. Here is an example, we are importing the code we used in the top-level  <code>await</code>  example in the subprocess here.</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> p = Deno.run(&#123;</span><br><span class="line">    cmd: [<span class="string">&quot;deno&quot;</span>, <span class="string">&quot;run&quot;</span>, <span class="string">&quot;--allow-read&quot;</span>, <span class="string">&quot;top_level_await.ts&quot;</span>, <span class="string">&quot;dummyFile.txt&quot;</span>],</span><br><span class="line">    stdout: <span class="string">&quot;piped&quot;</span>,</span><br><span class="line">    stderr: <span class="string">&quot;piped&quot;</span>,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> &#123; code &#125; = <span class="keyword">await</span> p.status();</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (code === <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> rawOutput = <span class="keyword">await</span> p.output();</span><br><span class="line">    <span class="keyword">await</span> Deno.stdout.write(rawOutput);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> rawError = <span class="keyword">await</span> p.stderrOutput();</span><br><span class="line">    <span class="keyword">const</span> errorString = <span class="keyword">new</span> TextDecoder().decode(rawError);</span><br><span class="line">    <span class="built_in">console</span>.log(errorString);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Deno.exit(code);</span><br></pre></td></tr></table></figure>
+<p>You can run any CMD/Unix command as a subprocess like in NodeJS</p>
+<h2 id="webassembly-support"><a class="markdownIt-Anchor" href="#webassembly-support">#</a> WebAssembly support</h2>
+<p><span class="exturl" data-url="aHR0cHM6Ly93ZWJhc3NlbWJseS5vcmcv">WebAssembly</span> is one of the most innovative features to have landed on the JavaScript world. It lets us use programs written in any compatible language to be executed in a JS Engine. Deno has native support for WebAssembly. Let us see an example.</p>
+<p>First, we need a WebAssembly(WASM) binary. Since we are focusing on Deno here, let’s use a simple C program. You can also use Rust, Go or any other <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FwcGN5cGhlci9hd2Vzb21lLXdhc20tbGFuZ3M=">supported language</span>. In the end, you just need to provide a compiled  <code>.wasm</code>  binary file.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">factorial</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> n == <span class="number">0</span> ? <span class="number">1</span> : n * factorial(n - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>We can convert this to WASM binary using the online converter <span class="exturl" data-url="aHR0cHM6Ly93YXNkay5naXRodWIuaW8vV2FzbUZpZGRsZS8/cGtrdTQ=">here</span> and import it in our TypeScript program below</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mod = <span class="keyword">new</span> WebAssembly.Module(<span class="keyword">await</span> Deno.readFile(<span class="string">&quot;fact_c.wasm&quot;</span>));</span><br><span class="line"><span class="keyword">const</span> &#123;</span><br><span class="line">    <span class="built_in">exports</span>: &#123; factorial &#125;,</span><br><span class="line">&#125; = <span class="keyword">new</span> WebAssembly.Instance(mod);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(factorial(<span class="number">10</span>));</span><br></pre></td></tr></table></figure>
+<p>Run  <code>deno -A example.ts</code>  and see the output from the C program.</p>
+<hr>
+<h1 id="a-deno-application-in-action"><a class="markdownIt-Anchor" href="#a-deno-application-in-action">#</a> A Deno application in action</h1>
+<p>Now that we have an overview of Deno features, let’s build a Deno CLI app</p>
+<blockquote>
+<p>Run  <code>deno --help</code>  and  <code>deno run --help</code>  to see all options that can be passed when you run a program. You can learn more about Deno features and API in the Deno <span class="exturl" data-url="aHR0cHM6Ly9kZW5vLmxhbmQv">website</span> and <span class="exturl" data-url="aHR0cHM6Ly9kZW5vLmxhbmQvc3RkL21hbnVhbC5tZA==">manual</span></p>
+</blockquote>
+<p>Let’s build a simple proxy server that can be installed as a CLI tool. This is a really simple proxy, but you can add more features to make it smarter if you like</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.info(<span class="string">&quot;Proxy server starting!&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; serve &#125; <span class="keyword">from</span> <span class="string">&quot;https://deno.land/std/http/server.ts&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; green, yellow &#125; <span class="keyword">from</span> <span class="string">&quot;https://deno.land/std/fmt/colors.ts&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> server = serve(<span class="string">&quot;:8000&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> url = Deno.args[<span class="number">0</span>] || <span class="string">&quot;https://deepu.tech&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.info(green(<span class="string">&quot;proxy server created!&quot;</span>));</span><br><span class="line"></span><br><span class="line">(<span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(green(<span class="string">`Proxy listening on http://localhost:8000/ for <span class="subst">$&#123;url&#125;</span>`</span>));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> <span class="keyword">await</span> (<span class="keyword">const</span> req <span class="keyword">of</span> server) &#123;</span><br><span class="line">        <span class="keyword">let</span> reqUrl = req.url.startsWith(<span class="string">&quot;http&quot;</span>) ? req.url : <span class="string">`<span class="subst">$&#123;url&#125;</span><span class="subst">$&#123;req.url&#125;</span>`</span>;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">console</span>.log(yellow(<span class="string">`URL requested: <span class="subst">$&#123;reqUrl&#125;</span>`</span>));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">const</span> res = <span class="keyword">await</span> fetch(reqUrl);</span><br><span class="line">        req.respond(res);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<p>Run  <code>deno --allow-net deno_app.ts https://google.com</code>  and visit <span class="exturl" data-url="aHR0cDovL2xvY2FsaG9zdDo4MDAwLw==">http://localhost:8000/</span>. You can now see all the traffic on your console. You can use any URL you like instead of Google.</p>
+<p>Lets package and install the app.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 deno install --allow-net my-proxy deno_app.ts</span><br></pre></td></tr></table></figure>
+<p>If you want to override the file use  <code>deno install -f --allow-net my-proxy deno_app.ts</code> . You can also publish the script to an HTTP URL and install it from there.</p>
+<p>Now just run  <code>my-proxy https://google.com</code>  and viola we have our own proxy app. Isn’t that simple and neat.</p>
+<hr>
+<h1 id="conclusion"><a class="markdownIt-Anchor" href="#conclusion">#</a> Conclusion</h1>
+<p>Let us see how Deno compares against NodeJS and why I believe it has great potential</p>
+<h2 id="why-is-deno-better-than-nodejs"><a class="markdownIt-Anchor" href="#why-is-deno-better-than-nodejs">#</a> Why is Deno better than NodeJS</h2>
+<p>I consider Deno to be better than NodeJS for the following reasons. The creator of NodeJS thinks the same I guess</p>
+<ul>
+<li>Easy to install - Single lightweight binary, built-in dependency management</li>
+<li>Secure by default - Sandboxed, Fine-grained privileges and user-controlled</li>
+<li>Simple ES module resolution - No smart(confusing) module system like NodeJS</li>
+<li>Decentralized and globally cached third-party modules - No  <code>node_modules</code>  hell, efficient</li>
+<li>No dependency on package managers or package registries(No NPM, No Yarn, No  <code>node_modules</code> )</li>
+<li>Native TypeScript support</li>
+<li>Follows web standards and modern language features</li>
+<li>Browser compatibility - Ability to reuse modules in browser and Deno apps</li>
+<li>Remote script runner - Neat installation of scripts and tools</li>
+<li>Built-in tooling - No hassle of setting up tooling, bundlers and so on</li>
+</ul>
+<h2 id="why-does-it-matter"><a class="markdownIt-Anchor" href="#why-does-it-matter">#</a> Why does it matter</h2>
+<p>Why does it matter, why do we need another scripting environment? Isn’t JavaScript ecosystem already bloated enough</p>
+<ul>
+<li>NodeJS ecosystem has become too heavy and bloated and we need something to break the monopoly and force constructive improvements</li>
+<li>Dynamic languages are still important especially in the below domains
+<ul>
+<li>Data science</li>
+<li>Scripting</li>
+<li>Tooling</li>
+<li>CLI</li>
+</ul>
+</li>
+<li>Many Python/NodeJS/Bash use cases can be replaced with TypeScript using Deno
+<ul>
+<li>TypeScript provides better developer experience</li>
+<li>Consistent and documentable API</li>
+<li>Easier to build and distribute</li>
+<li>Does not download the internet all the time</li>
+<li>More secure</li>
+</ul>
+</li>
+</ul>
+<h2 id="challenges"><a class="markdownIt-Anchor" href="#challenges">#</a> Challenges</h2>
+<p>This is not without challenges, for Deno to succeed it still has to overcome these issues</p>
+<ul>
+<li>Fragmentation of libraries and modules</li>
+<li>Not compatible with many of the NPM modules already out there</li>
+<li>Library authors would have to publish a Deno compatible build(Not difficult but en extra step)</li>
+<li>Migrating existing NodeJS apps will not be easy due to incompatible API</li>
+<li>Bundles are not optimized so might need tooling or improvements there</li>
+<li>Stability, since Deno is quite new (NodeJS is battle-tested)</li>
+<li>Not production-ready</li>
+</ul>
+
+      <div class="tags">
+          <a href="/tags/node/" rel="tag"><i class="ic i-tag"></i> node</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2021-10-18 13:27:08" itemprop="dateModified" datetime="2021-10-18T13:27:08+08:00">2021-10-18</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2020/04/15/c-makefile/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclhtuo6nj20zk0m8ttm.jpg" title="A Simple Makefile Tutorial">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>A Simple Makefile Tutorial</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2020/04/17/ajax/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giph4baakhj20zk0m8h5q.jpg" title="AJAX">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>AJAX</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#install-deno"><span class="toc-number">1.</span> <span class="toc-text"> Install Deno</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#features"><span class="toc-number">2.</span> <span class="toc-text"> Features</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#typescript-support"><span class="toc-number">2.1.</span> <span class="toc-text"> TypeScript support</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#remote-script-execution"><span class="toc-number">2.2.</span> <span class="toc-text"> Remote script execution</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#secure-by-default"><span class="toc-number">2.3.</span> <span class="toc-text"> Secure by default</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#standard-modules"><span class="toc-number">2.4.</span> <span class="toc-text"> Standard modules</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#es-modules"><span class="toc-number">2.5.</span> <span class="toc-text"> ES Modules</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#built-in-tooling"><span class="toc-number">2.6.</span> <span class="toc-text"> Built-in tooling</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#browser-compatibility"><span class="toc-number">2.7.</span> <span class="toc-text"> Browser compatibility</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#promise-api"><span class="toc-number">2.8.</span> <span class="toc-text"> Promise API</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#top-level-await"><span class="toc-number">2.9.</span> <span class="toc-text"> Top-level  await</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#subprocess-using-web-workers"><span class="toc-number">2.10.</span> <span class="toc-text"> Subprocess using web workers</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#webassembly-support"><span class="toc-number">2.11.</span> <span class="toc-text"> WebAssembly support</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#a-deno-application-in-action"><span class="toc-number">3.</span> <span class="toc-text"> A Deno application in action</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#conclusion"><span class="toc-number">4.</span> <span class="toc-text"> Conclusion</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#why-is-deno-better-than-nodejs"><span class="toc-number">4.1.</span> <span class="toc-text"> Why is Deno better than NodeJS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#why-does-it-matter"><span class="toc-number">4.2.</span> <span class="toc-text"> Why does it matter</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#challenges"><span class="toc-number">4.3.</span> <span class="toc-text"> Challenges</span></a></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">282</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">40</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2020/04/15/c-makefile/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2020/04/17/ajax/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2022</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ D E W</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2020/04/16/deno/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

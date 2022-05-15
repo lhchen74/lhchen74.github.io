@@ -1,0 +1,548 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="linux" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2021/03/14/linux-sed-awk/">
+
+
+
+  <title>
+Linux Grep Sed And Awk |
+D E W = 露の世</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">Linux Grep Sed And Awk
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2021-03-14 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2021-03-14T00:00:00+08:00">2021-03-14</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">D E W</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipevarprfj20zk0m8npd.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipet4bz0yj20zk0m8e81.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclwrdwyaj20zk0m8are.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipesx5fdwj20zk0m81kx.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicivghyooj20zk0m8dir.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclize41wj20zk0m87gk.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2021/03/14/linux-sed-awk/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h2 id="grep"><a class="markdownIt-Anchor" href="#grep">#</a> grep</h2>
+<p>grep 是文本查找命令，可以通过正则查找匹配。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> grep <span class="string">&#x27;root&#x27;</span> passwd</span></span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> grep <span class="string">&#x27;^\w\&#123;4\&#125;:&#x27;</span> passwd</span></span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">sync:x:4:65534:sync:/bin:/bin/sync</span><br><span class="line">mail:x:8:8:mail:/var/mail:/usr/sbin/nologin</span><br><span class="line">news:x:9:9:news:/var/spool/news:/usr/sbin/nologin</span><br><span class="line">uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin</span><br><span class="line">list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin</span><br></pre></td></tr></table></figure>
+<h2 id="sed"><a class="markdownIt-Anchor" href="#sed">#</a> sed</h2>
+<p>流处理编辑器， sed 一次处理一行内容，不改变文件内容（除非重定向）。</p>
+<ol>
+<li>文本或管道输入</li>
+<li>读入一行到<strong>模式空间</strong>（临时缓存区）</li>
+<li>sed 命令处理</li>
+<li>输出到屏幕</li>
+<li>重复 2</li>
+</ol>
+<h3 id="sed-格式"><a class="markdownIt-Anchor" href="#sed-格式">#</a> sed 格式</h3>
+<ul>
+<li>
+<p>命令行格式</p>
+<p><code>sed [options] 'command' file(s)</code></p>
+<p>options:</p>
+<ul>
+<li>-n: -n, --quiet, --silent suppress automatic printing of pattern space</li>
+<li>-e: -e script, --expression=script add the script to the commands to be executed</li>
+</ul>
+<p>command: 行定位（正则） + sed 命令（操作）</p>
+</li>
+<li>
+<p>脚本格式</p>
+<p><code>sed -f scriptfile file(s)</code></p>
+</li>
+</ul>
+<h3 id="p-打印"><a class="markdownIt-Anchor" href="#p-打印">#</a> p 打印</h3>
+<p>sed 读入一行自动输出打印一行，p 打印命令也会打印一行，所以  <code>sed 'p' passwd </code>  每行会打印两遍。使用  <code>-n</code>  option 关闭自动打印。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sed <span class="string">&#x27;p&#x27;</span> passwd</span></span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin</span><br><span class="line">daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin</span><br><span class="line">......</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> sed -n <span class="string">&#x27;p&#x27;</span> passwd</span></span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+<p>行定位</p>
+<p>定位一行：行号 <code>x</code>  , 正则表达式  <code>/pattern/</code></p>
+<p>定位间隔行：行号 <code>x,y</code>  , 正则表达式  <code>/pattern1/,/pattern2/</code>  , 混合  <code>/pattern/,x</code></p>
+<p>取反： <code>x,y!</code></p>
+<p>定位间隔几行： <code>first ~ step</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> nl passwd | sed -n <span class="string">&#x27;10p&#x27;</span></span></span><br><span class="line">    10  news:x:9:9:news:/var/spool/news:/usr/sbin/nologin</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> nl passwd | sed -n <span class="string">&#x27;/news/p&#x27;</span></span></span><br><span class="line">    10  news:x:9:9:news:/var/spool/news:/usr/sbin/nologin</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> nl passwd | sed -n <span class="string">&#x27;1,2p&#x27;</span></span></span><br><span class="line">    1  root:x:0:0:root:/root:/bin/bash</span><br><span class="line">    2  daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> nl passwd | sed -n <span class="string">&#x27;/root/,/daemon/p&#x27;</span></span></span><br><span class="line">     1  root:x:0:0:root:/root:/bin/bash</span><br><span class="line">     2  daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> nl passwd | sed -n <span class="string">&#x27;1,/daemon/p&#x27;</span></span></span><br><span class="line">     1  root:x:0:0:root:/root:/bin/bash</span><br><span class="line">     2  daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> nl passwd | sed -n <span class="string">&#x27;1,/daemon/!p&#x27;</span></span></span><br><span class="line">     3  bin:x:2:2:bin:/bin:/usr/sbin/nologin</span><br><span class="line">     4  sys:x:3:3:sys:/dev:/usr/sbin/nologin</span><br><span class="line">     5  sync:x:4:65534:sync:/bin:/bin/sync</span><br><span class="line">     6  games:x:5:60:games:/usr/games:/usr/sbin/nologin</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> nl passwd | sed -n <span class="string">&#x27;1~2p&#x27;</span></span></span><br><span class="line">     1  root:x:0:0:root:/root:/bin/bash</span><br><span class="line">     3  bin:x:2:2:bin:/bin:/usr/sbin/nologin</span><br><span class="line">     5  sync:x:4:65534:sync:/bin:/bin/sync</span><br><span class="line">     7  man:x:6:12:man:/var/cache/man:/usr/sbin/nologin</span><br><span class="line">     9  mail:x:8:8:mail:/var/mail:/usr/sbin/nologin</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+<h3 id="a-i-c-d-行处理"><a class="markdownIt-Anchor" href="#a-i-c-d-行处理">#</a> a、i、c、d 行处理</h3>
+<ul>
+<li>a 新增行 (之后) i 插入行 (之前)</li>
+<li>c 替代行  <code>sed '1,3 c =========='</code>  范围替换时整体替换，不是单行替换， 1-3 行都替换为  <code>==========</code></li>
+<li>d 删除行</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> nl passwd | sed <span class="string">&#x27;2a ==========&#x27;</span></span></span><br><span class="line">     1  root:x:0:0:root:/root:/bin/bash</span><br><span class="line">     2  daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin</span><br><span class="line">==========</span><br><span class="line">     3  bin:x:2:2:bin:/bin:/usr/sbin/nologin</span><br><span class="line">......</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> nl passwd | sed <span class="string">&#x27;2,3a ==========&#x27;</span></span></span><br><span class="line">     1  root:x:0:0:root:/root:/bin/bash</span><br><span class="line">     2  daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin</span><br><span class="line">==========</span><br><span class="line">     3  bin:x:2:2:bin:/bin:/usr/sbin/nologin</span><br><span class="line">==========</span><br><span class="line">     4  sys:x:3:3:sys:/dev:/usr/sbin/nologin</span><br><span class="line">......</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> nl passwd | sed <span class="string">&#x27;2i ==========&#x27;</span></span></span><br><span class="line">     1  root:x:0:0:root:/root:/bin/bash</span><br><span class="line">==========</span><br><span class="line">     2  daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin</span><br><span class="line">     3  bin:x:2:2:bin:/bin:/usr/sbin/nologin</span><br><span class="line">......</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> nl passwd | sed <span class="string">&#x27;1c ==========&#x27;</span></span></span><br><span class="line">==========</span><br><span class="line">     2  daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin</span><br><span class="line">     3  bin:x:2:2:bin:/bin:/usr/sbin/nologin</span><br><span class="line">......</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> nl passwd | sed <span class="string">&#x27;1,3c ==========&#x27;</span></span></span><br><span class="line">==========</span><br><span class="line">     4  sys:x:3:3:sys:/dev:/usr/sbin/nologin</span><br><span class="line">     5  sync:x:4:65534:sync:/bin:/bin/sync</span><br><span class="line">......</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> nl passwd | sed <span class="string">&#x27;1d&#x27;</span></span></span><br><span class="line">     2  daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin</span><br><span class="line">     3  bin:x:2:2:bin:/bin:/usr/sbin/nologin</span><br><span class="line">......</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> nl passwd | sed <span class="string">&#x27;/root/d&#x27;</span></span></span><br><span class="line">     2  daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin</span><br><span class="line">     3  bin:x:2:2:bin:/bin:/usr/sbin/nologin</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+<p>优化服务器配置，在 ssh 的配置 ssh_config 文件中加入相应的文本。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#   port123</span><br><span class="line">#   permitrootlogin no</span><br></pre></td></tr></table></figure>
+<p>因为命令和文本使用空格分隔，如果在开头使用空格需要添加转义符。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sed <span class="string">&#x27;$a    port456 \n    permitrootlogin no&#x27;</span> ssh_config</span></span><br><span class="line"><span class="meta">#</span><span class="bash">   port123</span></span><br><span class="line"><span class="meta">#</span><span class="bash">   permitrootlogin no</span></span><br><span class="line">port456</span><br><span class="line">    permitrootlogin n</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> sed <span class="string">&#x27;$a \    port456 \n    permitrootlogin no&#x27;</span> ssh_config</span></span><br><span class="line"><span class="meta">#</span><span class="bash">   port123</span></span><br><span class="line"><span class="meta">#</span><span class="bash">   permitrootlogin no</span></span><br><span class="line">    port456</span><br><span class="line">    permitrootlogin no</span><br></pre></td></tr></table></figure>
+<p>删除文本中的空行。echo -e 表示启用解释反斜杠转义。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">echo</span> -e <span class="string">&#x27;a\n\nb\n\nc&#x27;</span> | sed <span class="string">&#x27;/^$/d&#x27;</span></span></span><br><span class="line">a</span><br><span class="line">b</span><br><span class="line">c</span><br></pre></td></tr></table></figure>
+<h3 id="s-替换命令"><a class="markdownIt-Anchor" href="#s-替换命令">#</a> s 替换命令</h3>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sed <span class="string">&#x27;s/:/%/&#x27;</span> passwd</span></span><br><span class="line"><span class="meta">root%</span><span class="bash">x:0:0:root:/root:/bin/bash</span></span><br><span class="line"><span class="meta">daemon%</span><span class="bash">x:1:1:daemon:/usr/sbin:/usr/sbin/nologin</span></span><br><span class="line"><span class="meta">bin%</span><span class="bash">x:2:2:bin:/bin:/usr/sbin/nologin</span></span><br><span class="line">......</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> sed <span class="string">&#x27;s/:/%/g&#x27;</span> passwd</span></span><br><span class="line"><span class="meta">root%</span><span class="bash">x%0%0%root%/root%/bin/bash</span></span><br><span class="line"><span class="meta">daemon%</span><span class="bash">x%1%1%daemon%/usr/sbin%/usr/sbin/nologin</span></span><br><span class="line"><span class="meta">bin%</span><span class="bash">x%2%2%bin%/bin%/usr/sbin/nologin</span></span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+<h3 id="多个-sed-命令用-分开"><a class="markdownIt-Anchor" href="#多个-sed-命令用-分开">#</a> {} 多个 sed 命令，用；分开</h3>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> nl passwd | sed <span class="string">&#x27;&#123;1,3d;s/:/%/g&#125;&#x27;</span></span></span><br><span class="line">     4  sys%x%3%3%sys%/dev%/usr/sbin/nologin</span><br><span class="line">     5  sync%x%4%65534%sync%/bin%/bin/sync</span><br><span class="line">     6  games%x%5%60%games%/usr/games%/usr/sbin/nologin</span><br><span class="line">......</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> nl passwd | sed -n <span class="string">&#x27;&#123;p;n&#125;&#x27;</span></span></span><br><span class="line">     1  root:x:0:0:root:/root:/bin/bash</span><br><span class="line">     3  bin:x:2:2:bin:/bin:/usr/sbin/nologin</span><br><span class="line">     5  sync:x:4:65534:sync:/bin:/bin/sync</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+<h3 id="n-读取下一个输入行用下一个命令处理"><a class="markdownIt-Anchor" href="#n-读取下一个输入行用下一个命令处理">#</a> n 读取下一个输入行（用下一个命令处理）</h3>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> nl passwd | sed -n <span class="string">&#x27;&#123;n;p&#125;&#x27;</span></span></span><br><span class="line">     2  daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin</span><br><span class="line">     4  sys:x:3:3:sys:/dev:/usr/sbin/nologin</span><br><span class="line">     6  games:x:5:60:games:/usr/games:/usr/sbin/nologin</span><br><span class="line">......</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> nl passwd | sed -n <span class="string">&#x27;&#123;n;n;p&#125;&#x27;</span></span></span><br><span class="line">     3  bin:x:2:2:bin:/bin:/usr/sbin/nologin</span><br><span class="line">     6  games:x:5:60:games:/usr/games:/usr/sbin/nologin</span><br><span class="line">     9  mail:x:8:8:mail:/var/mail:/usr/sbin/nologin</span><br><span class="line">......</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> nl passwd | sed -n <span class="string">&#x27;1~2p&#x27;</span></span></span><br><span class="line">     1  root:x:0:0:root:/root:/bin/bash</span><br><span class="line">     3  bin:x:2:2:bin:/bin:/usr/sbin/nologin</span><br><span class="line">     5  sync:x:4:65534:sync:/bin:/bin/sync</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+<h3 id="替换固定字符串"><a class="markdownIt-Anchor" href="#替换固定字符串">#</a> &amp; 替换固定字符串</h3>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sed <span class="string">&#x27;s/^[a-z_-]\+/&amp;   /&#x27;</span>  passwd</span></span><br><span class="line">root   :x:0:0:root:/root:/bin/bash</span><br><span class="line">daemon   :x:1:1:daemon:/usr/sbin:/usr/sbin/nologin</span><br><span class="line">bin   :x:2:2:bin:/bin:/usr/sbin/nologin</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+<p>大小写转换  <code>\u\l\U\L</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sed <span class="string">&#x27;s/^[a-z_-]\+/\u&amp;/&#x27;</span>  passwd</span></span><br><span class="line">Root:x:0:0:root:/root:/bin/bash</span><br><span class="line">Daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin</span><br><span class="line">Bin:x:2:2:bin:/bin:/usr/sbin/nologin</span><br><span class="line">......</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> sed <span class="string">&#x27;s/^[a-z_-]\+/\U&amp;/&#x27;</span>  passwd</span></span><br><span class="line">ROOT:x:0:0:root:/root:/bin/bash</span><br><span class="line">DAEMON:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin</span><br><span class="line">BIN:x:2:2:bin:/bin:/usr/sbin/nologin</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+<p>将文件夹下的 .txt 文件名转换为大写</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ls *.txt | sed <span class="string">&#x27;s/^\w\+/\U&amp;/&#x27;</span></span></span><br><span class="line">123.txt</span><br><span class="line">ABC.txt</span><br><span class="line">TEST.txt</span><br></pre></td></tr></table></figure>
+<h3 id="匹配组"><a class="markdownIt-Anchor" href="#匹配组">#</a> () 匹配组</h3>
+<p>获取 passwd 中 USER、UID 和 GID.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sed <span class="string">&#x27;s/\(^[a-z_-]\+\):x:\([0-9]\+\):\([0-9]\+\).*$/USER:\1    UID:\2    GID:\3/&#x27;</span> passwd</span></span><br><span class="line">USER:root    UID:0    GID:0</span><br><span class="line">USER:daemon    UID:1    GID:1</span><br><span class="line">USER:bin    UID:2    GID:2</span><br><span class="line">USER:sys    UID:3    GID:3</span><br><span class="line">USER:sync    UID:4    GID:65534</span><br></pre></td></tr></table></figure>
+<h3 id="rw-读写"><a class="markdownIt-Anchor" href="#rw-读写">#</a> rw 读写</h3>
+<p>r: 复制指定文件插入到匹配行，不改变文件内容。</p>
+<p>w: 复制指定行拷贝到指定文件里，会改变目标文件内容。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">echo</span> -e <span class="string">&#x27;123\n456\n789&#x27;</span> &gt; 123.txt</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">echo</span> -e <span class="string">&#x27;abc\ndef\nghk&#x27;</span> &gt; abc.txt</span></span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> sed <span class="string">&#x27;1r 123.txt&#x27;</span> abc.txt</span></span><br><span class="line">abc</span><br><span class="line">123</span><br><span class="line">456</span><br><span class="line">789</span><br><span class="line">def</span><br><span class="line">ghk</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> sed <span class="string">&#x27;1w abc.txt&#x27;</span> 123.txt</span></span><br><span class="line">123</span><br><span class="line">456</span><br><span class="line">789</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> cat abc.txt</span></span><br><span class="line">123</span><br></pre></td></tr></table></figure>
+<h3 id="q-退出-sed"><a class="markdownIt-Anchor" href="#q-退出-sed">#</a> q 退出 sed</h3>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> nl passwd | sed <span class="string">&#x27;3q&#x27;</span></span></span><br><span class="line">     1  root:x:0:0:root:/root:/bin/bash</span><br><span class="line">     2  daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin</span><br><span class="line">     3  bin:x:2:2:bin:/bin:/usr/sbin/nologin</span><br></pre></td></tr></table></figure>
+<h2 id="awk"><a class="markdownIt-Anchor" href="#awk">#</a> awk</h2>
+<p>文本与数据处理工具，与 sed 相比可以编程，处理灵活，功能强大。更侧重于复杂逻辑处理。</p>
+<h3 id="awk-处理方式与格式"><a class="markdownIt-Anchor" href="#awk-处理方式与格式">#</a> awk 处理方式与格式</h3>
+<h4 id="awk-处理方式"><a class="markdownIt-Anchor" href="#awk-处理方式">#</a> awk 处理方式</h4>
+<ul>
+<li>awk 一次处理一行内容。</li>
+<li>awk 对每行可以切片处理。</li>
+</ul>
+<p><code>awk '&#123;print $1&#125;'</code>  输出首个单词。</p>
+<h4 id="awk-格式"><a class="markdownIt-Anchor" href="#awk-格式">#</a> awk 格式</h4>
+<ul>
+<li>
+<p>命令行格式</p>
+<p><code>awk [options] 'command' file(s)</code></p>
+<p>基本格式: command:  <code>pattern &#123;awk 操作命令&#125;</code></p>
+<p>pattern: 正则表达式；逻辑判断式。</p>
+<p>awk 操作命令：内置函数 print (), printf (), getline…; 控制指令：if (){} else {}, while () {}。</p>
+<p>扩展格式：command:  <code>BEGIN &#123;print &quot;start&quot;&#125; pattern &#123;awk 操作命令&#125; END &#123;print &quot;end&quot;&#125;</code></p>
+</li>
+<li>
+<p>脚本格式</p>
+<p><code>awk -f awk-script-file file(s)</code></p>
+</li>
+</ul>
+<h3 id="awk-内置参数"><a class="markdownIt-Anchor" href="#awk-内置参数">#</a> awk 内置参数</h3>
+<ul>
+<li>
+<p>awk 内置变量 1</p>
+<p>$0: 表示整个当前行</p>
+<p>$1: 每行第一个字段</p>
+<p>$2: 每行第二个字段</p>
+<p>…</p>
+</li>
+<li>
+<p>awk 内置参数：分隔符</p>
+<p>options: -F field-separator (默认为空格)</p>
+<p>例如： <code>awk -F ':' '&#123;print $3&#125;' /etc/passwd</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">echo</span> <span class="string">&#x27;babb:28:170&#x27;</span> | awk -F <span class="string">&#x27;:&#x27;</span> <span class="string">&#x27;&#123;print $1,$2&#125;&#x27;</span></span></span><br><span class="line">babb 28</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">echo</span> <span class="string">&#x27;babb:28:170&#x27;</span> | awk -F <span class="string">&#x27;:&#x27;</span> <span class="string">&#x27;&#123;print $1&quot; &quot;$2&#125;&#x27;</span></span></span><br><span class="line">babb 28</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">echo</span> <span class="string">&#x27;babb:28:170&#x27;</span> | awk -F <span class="string">&#x27;:&#x27;</span> <span class="string">&#x27;&#123;print &quot;name:&quot; $1 &quot;\t&quot; &quot;age:&quot; $2&#125;&#x27;</span></span></span><br><span class="line">  name:babb       age:28</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>awk 内置变量 2</p>
+<p>NR: 每行的记录号</p>
+<p>NF: 字段数量的变量</p>
+<p>FILENAME: 正在处理的文件名</p>
+<p>例如：  <code>awk -F ':' '&#123;print FILENAME,NR,NF&#125;' /etc/passwd</code></p>
+<p>显示 /etc/passwd 每行的行号，每行的列数，对应的用户名（prrint, printf）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> awk -F <span class="string">&#x27;:&#x27;</span> <span class="string">&#x27;&#123;print &quot;Line: &quot;NR, &quot;Col: &quot;NF, &quot;User: &quot;$1&#125;&#x27;</span> passwd</span></span><br><span class="line">Line: 1 Col: 7 User: root</span><br><span class="line">Line: 2 Col: 7 User: daemon</span><br><span class="line">Line: 3 Col: 7 User: bin</span><br><span class="line">......</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> awk -F <span class="string">&#x27;:&#x27;</span> <span class="string">&#x27;&#123;printf(&quot;Line: %s Col: %s User: %s\n&quot;,NR,NF,$1)&#125;&#x27;</span> passwd</span></span><br><span class="line">Line: 1 Col: 7 User: root</span><br><span class="line">Line: 2 Col: 7 User: daemon</span><br><span class="line">Line: 3 Col: 7 User: bin</span><br><span class="line">......</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> awk -F <span class="string">&#x27;:&#x27;</span> <span class="string">&#x27;&#123;printf(&quot;Line: %3s Col: %s User: %s\n&quot;,NR,NF,$1)&#125;&#x27;</span> passwd</span></span><br><span class="line">Line: 1 Col: 7 User: root</span><br><span class="line">Line: 2 Col: 7 User: daemon</span><br><span class="line">Line: 3 Col: 7 User: bin</span><br><span class="line">......</span><br><span class="line">Line: 9 Col: 7 User: mail</span><br><span class="line">Line: 10 Col: 7 User: news</span><br><span class="line">Line: 11 Col: 7 User: uucp</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>显示 /etc/passwd 中用户 ID 大于 100 的行号和用户名（if … else …）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> awk -F <span class="string">&#x27;:&#x27;</span> <span class="string">&#x27;&#123;if ($3&gt;100) print &quot;Line: &quot;NR, &quot;User: &quot;$1&#125;&#x27;</span> passwd</span></span><br><span class="line">Line: 18 User: nobody</span><br><span class="line">Line: 20 User: syslog</span><br><span class="line">Line: 21 User: messagebus</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+<p>在服务器 log 中找出 ‘Error’ 的发生日期</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sed -n <span class="string">&#x27;/Error/p&#x27;</span> fresh.log | awk <span class="string">&#x27;&#123;print $1&#125;&#x27;</span></span></span><br><span class="line">2016-11-01T10:39:04.09558300+08:00</span><br><span class="line">2016-11-02T10:39:04.09558300+08:00</span><br><span class="line">2016-11-03T08:39:04.09558300+08:00</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> awk <span class="string">&#x27;/Error/&#123;print $1&#125;&#x27;</span> fresh.log</span></span><br><span class="line">2016-11-01T10:39:04.09558300+08:00</span><br><span class="line">2016-11-02T10:39:04.09558300+08:00</span><br><span class="line">2016-11-03T08:39:04.09558300+08:00</span><br></pre></td></tr></table></figure>
+<h3 id="awk-逻辑判断式"><a class="markdownIt-Anchor" href="#awk-逻辑判断式">#</a> awk 逻辑判断式</h3>
+<p><code>~, !~</code>  : 匹配正则表达式。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> awk -F <span class="string">&#x27;:&#x27;</span> <span class="string">&#x27;$1~/^m.*/&#123;print $1&#125;&#x27;</span> passwd</span></span><br><span class="line">man</span><br><span class="line">mail</span><br><span class="line">messagebus</span><br><span class="line">myths</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> awk -F <span class="string">&#x27;:&#x27;</span> <span class="string">&#x27;$1!~/^m.*/&#123;print $1&#125;&#x27;</span> passwd</span></span><br><span class="line">root</span><br><span class="line">daemon</span><br><span class="line">bin</span><br><span class="line">sys</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+<p><code>==, !=, &lt;, &gt;</code> : 判断逻辑表达式。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> awk -F <span class="string">&#x27;:&#x27;</span> <span class="string">&#x27;$3&gt;100 &#123;print $1&#125;&#x27;</span> passwd</span></span><br><span class="line">nobody</span><br><span class="line">syslog</span><br><span class="line">messagebus</span><br><span class="line">usbmux</span><br></pre></td></tr></table></figure>
+<h3 id="awk-扩展格式"><a class="markdownIt-Anchor" href="#awk-扩展格式">#</a> awk 扩展格式</h3>
+<p>扩展格式：command:  <code>BEGIN &#123;print &quot;start&quot;&#125; pattern &#123;awk 操作命令&#125; END &#123;print &quot;end&quot;&#125;</code>  可以在整个循环开始和结尾做一些操作。</p>
+<p>制表显示 /etc/passwd 每行的行号，每行的列数，对应的用户名。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> awk -F <span class="string">&#x27;:&#x27;</span> <span class="string">&#x27;BEGIN &#123;print &quot;Line\tCol\t User&quot;&#125;&#123;print NR&quot;\t&quot;NF&quot;\t&quot;$1&#125;END&#123;print &quot;----------&quot;FILENAME&quot;----------&quot;&#125;&#x27;</span> passwd</span></span><br><span class="line">Line    Col      User</span><br><span class="line">1       7       root</span><br><span class="line">2       7       daemon</span><br><span class="line">3       7       bin</span><br><span class="line">4       7       sys</span><br><span class="line">5       7       sync</span><br><span class="line">......</span><br><span class="line">----------passwd----------</span><br></pre></td></tr></table></figure>
+<p>统计当前文件夹下的文件 / 文件夹占用的大小。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ls -l</span></span><br><span class="line">total 12</span><br><span class="line">-rw-r--r-- 1 11435 1049089   24  3月 14 16:00 123.txt</span><br><span class="line">-rw-r--r-- 1 11435 1049089   22  3月 14 16:04 abc.txt</span><br><span class="line">-rw-r--r-- 1 11435 1049089  531  3月 14 17:21 fresh.log</span><br><span class="line">-rw-r--r-- 1 11435 1049089 2463  3月 11 14:02 index.html</span><br><span class="line">-rw-r--r-- 1 11435 1049089 2202  3月 14 16:55 passwd</span><br><span class="line">-rw-r--r-- 1 11435 1049089  127  3月 14 15:57 ssh_config</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> ls -l | awk <span class="string">&#x27;BEGIN&#123;size=0&#125;&#123;size+=$5&#125;END&#123;print &quot; size is &quot; size&#125;&#x27;</span></span></span><br><span class="line"> size is 5369</span><br></pre></td></tr></table></figure>
+<p>统计显示 /etc/passwd 的账户总人数。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> awk -F <span class="string">&#x27;:&#x27;</span> <span class="string">&#x27;BEGIN&#123;count=0&#125;$1!~/^$/&#123;count++&#125;END&#123;print &quot; count = &quot; count&#125;&#x27;</span> passwd</span></span><br><span class="line"> count = 17</span><br></pre></td></tr></table></figure>
+<p>统计显示 UID 大于 10 的用户名。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> awk -F <span class="string">&#x27;:&#x27;</span> <span class="string">&#x27;BEGIN&#123;count=0&#125;&#123;if ($3&gt;10) name[count++]=$1&#125;END&#123;for (i=0;i&lt;count;i++) print i, name[i]&#125;&#x27;</span> passwd</span></span><br><span class="line">0 proxy</span><br><span class="line">1 www-data</span><br><span class="line">2 backup</span><br><span class="line">3 list</span><br><span class="line">4 irc</span><br><span class="line">5 gnats</span><br></pre></td></tr></table></figure>
+<p>统计 netstat -anp 状态下为 LISTEN 和 CONNECTED 的连接数量。</p>
+<p>! 需要在 Linux 下测试</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> netstat -anp | awk <span class="string">&#x27;$6~/CONNECTED|LISTEN/&#123;sum[$6]++&#125;END&#123;for(i in sum) print i, sum[i]&#125;&#x27;</span></span></span><br></pre></td></tr></table></figure>
+<h3 id="etcpasswd-文件样例"><a class="markdownIt-Anchor" href="#etcpasswd-文件样例">#</a> etc/passwd 文件样例</h3>
+<p>用户名：口令：用户标识号：组标识号：注释性描述：主目录：登录 Shell</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin</span><br><span class="line">bin:x:2:2:bin:/bin:/usr/sbin/nologin</span><br><span class="line">sys:x:3:3:sys:/dev:/usr/sbin/nologin</span><br><span class="line">sync:x:4:65534:sync:/bin:/bin/sync</span><br><span class="line">games:x:5:60:games:/usr/games:/usr/sbin/nologin</span><br><span class="line">man:x:6:12:man:/var/cache/man:/usr/sbin/nologin</span><br><span class="line">lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin</span><br><span class="line">mail:x:8:8:mail:/var/mail:/usr/sbin/nologin</span><br><span class="line">news:x:9:9:news:/var/spool/news:/usr/sbin/nologin</span><br><span class="line">uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin</span><br><span class="line">proxy:x:13:13:proxy:/bin:/usr/sbin/nologin</span><br><span class="line">www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin</span><br><span class="line">backup:x:34:34:backup:/var/backups:/usr/sbin/nologin</span><br><span class="line">list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin</span><br><span class="line">irc:x:39:39:ircd:/var/run/ircd:/usr/sbin/nologin</span><br><span class="line">gnats:x:41:41:Gnats Bug-Reporting System</span><br></pre></td></tr></table></figure>
+<h3 id="freshlog-文件样例"><a class="markdownIt-Anchor" href="#freshlog-文件样例">#</a> fresh.log 文件样例</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">2016-10-31T10:39:04.09558300+08:00 Fresh token in 7199 seconds later...</span><br><span class="line">2016-10-31T12:39:04.09558300+08:00 Fresh token in 7199 seconds later...</span><br><span class="line">2016-11-01T10:39:04.09558300+08:00 Fresh token in 7199 seconds later...</span><br><span class="line">2016-11-01T10:39:04.09558300+08:00 Error in genToken()</span><br><span class="line">2016-11-01T12:39:04.09558300+08:00 Fresh token in 7199 seconds later...</span><br><span class="line">2016-11-01T20:39:04.09558300+08:00 Fresh token in 7199 seconds later...</span><br><span class="line">2016-11-02T10:39:04.09558300+08:00 Error in genToken()</span><br><span class="line">2016-11-03T08:39:04.09558300+08:00 Error in genToken()</span><br></pre></td></tr></table></figure>
+<h2 id="应用"><a class="markdownIt-Anchor" href="#应用">#</a> 应用</h2>
+<h3 id="查找不包含-test-的文件夹"><a class="markdownIt-Anchor" href="#查找不包含-test-的文件夹">#</a> 查找不包含 TEST 的文件夹</h3>
+<p>-v, --invert-match: select non-matching lines</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ls | grep -v <span class="string">&#x27;.*\?TEST.*\?&#x27;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> ls | awk <span class="string">&#x27;!/TEST/&#x27;</span></span></span><br></pre></td></tr></table></figure>
+<h3 id="批量替换文件名"><a class="markdownIt-Anchor" href="#批量替换文件名">#</a> 批量替换文件名</h3>
+<table>
+<thead>
+<tr>
+<th>src</th>
+<th>dest</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AAA-o60807012@76027.xml</td>
+<td>o60807012.out</td>
+</tr>
+<tr>
+<td>BBB-o60466251@75842.xml</td>
+<td>o60466251.out</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ls *.xml | sed <span class="string">&#x27;s/.*\?-\(.*\?\)@.*\?/mv &amp; \1.out/&#x27;</span></span></span><br><span class="line">mv AAA-o60807012@76027.xml o60807012.out</span><br><span class="line">mv BBB-o60466251@75842.xml o60466251.out</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 需要添加 sh 才会执行 shell 命令</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ls *.xml | sed <span class="string">&#x27;s/.*\?-\(.*\?\)@.*\?/mv &amp; \1.out/&#x27;</span> | sh</span></span><br></pre></td></tr></table></figure>
+
+      <div class="tags">
+          <a href="/tags/linux/" rel="tag"><i class="ic i-tag"></i> linux</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2021-10-18 13:27:12" itemprop="dateModified" datetime="2021-10-18T13:27:12+08:00">2021-10-18</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2021/03/13/python-pathlib/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicis081o9j20zk0m8dmr.jpg" title="Discovering Python 3’s pathlib">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Discovering Python 3’s pathlib</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2021/03/19/iso8601-date/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giph4baakhj20zk0m8h5q.jpg" title="ISO 8601 the better date format">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>ISO 8601 the better date format</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#grep"><span class="toc-number">1.</span> <span class="toc-text"> grep</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sed"><span class="toc-number">2.</span> <span class="toc-text"> sed</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#sed-%E6%A0%BC%E5%BC%8F"><span class="toc-number">2.1.</span> <span class="toc-text"> sed 格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#p-%E6%89%93%E5%8D%B0"><span class="toc-number">2.2.</span> <span class="toc-text"> p 打印</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#a-i-c-d-%E8%A1%8C%E5%A4%84%E7%90%86"><span class="toc-number">2.3.</span> <span class="toc-text"> a、i、c、d 行处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#s-%E6%9B%BF%E6%8D%A2%E5%91%BD%E4%BB%A4"><span class="toc-number">2.4.</span> <span class="toc-text"> s 替换命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E4%B8%AA-sed-%E5%91%BD%E4%BB%A4%E7%94%A8-%E5%88%86%E5%BC%80"><span class="toc-number">2.5.</span> <span class="toc-text"> {} 多个 sed 命令，用；分开</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#n-%E8%AF%BB%E5%8F%96%E4%B8%8B%E4%B8%80%E4%B8%AA%E8%BE%93%E5%85%A5%E8%A1%8C%E7%94%A8%E4%B8%8B%E4%B8%80%E4%B8%AA%E5%91%BD%E4%BB%A4%E5%A4%84%E7%90%86"><span class="toc-number">2.6.</span> <span class="toc-text"> n 读取下一个输入行（用下一个命令处理）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%BF%E6%8D%A2%E5%9B%BA%E5%AE%9A%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">2.7.</span> <span class="toc-text"> &amp; 替换固定字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%B9%E9%85%8D%E7%BB%84"><span class="toc-number">2.8.</span> <span class="toc-text"> () 匹配组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rw-%E8%AF%BB%E5%86%99"><span class="toc-number">2.9.</span> <span class="toc-text"> rw 读写</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#q-%E9%80%80%E5%87%BA-sed"><span class="toc-number">2.10.</span> <span class="toc-text"> q 退出 sed</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#awk"><span class="toc-number">3.</span> <span class="toc-text"> awk</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#awk-%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F%E4%B8%8E%E6%A0%BC%E5%BC%8F"><span class="toc-number">3.1.</span> <span class="toc-text"> awk 处理方式与格式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#awk-%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F"><span class="toc-number">3.1.1.</span> <span class="toc-text"> awk 处理方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#awk-%E6%A0%BC%E5%BC%8F"><span class="toc-number">3.1.2.</span> <span class="toc-text"> awk 格式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#awk-%E5%86%85%E7%BD%AE%E5%8F%82%E6%95%B0"><span class="toc-number">3.2.</span> <span class="toc-text"> awk 内置参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#awk-%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD%E5%BC%8F"><span class="toc-number">3.3.</span> <span class="toc-text"> awk 逻辑判断式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#awk-%E6%89%A9%E5%B1%95%E6%A0%BC%E5%BC%8F"><span class="toc-number">3.4.</span> <span class="toc-text"> awk 扩展格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#etcpasswd-%E6%96%87%E4%BB%B6%E6%A0%B7%E4%BE%8B"><span class="toc-number">3.5.</span> <span class="toc-text"> etc&#x2F;passwd 文件样例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#freshlog-%E6%96%87%E4%BB%B6%E6%A0%B7%E4%BE%8B"><span class="toc-number">3.6.</span> <span class="toc-text"> fresh.log 文件样例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%94%E7%94%A8"><span class="toc-number">4.</span> <span class="toc-text"> 应用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E4%B8%8D%E5%8C%85%E5%90%AB-test-%E7%9A%84%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="toc-number">4.1.</span> <span class="toc-text"> 查找不包含 TEST 的文件夹</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%B9%E9%87%8F%E6%9B%BF%E6%8D%A2%E6%96%87%E4%BB%B6%E5%90%8D"><span class="toc-number">4.2.</span> <span class="toc-text"> 批量替换文件名</span></a></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">282</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">40</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2021/03/13/python-pathlib/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2021/03/19/iso8601-date/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2022</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ D E W</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2021/03/14/linux-sed-awk/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

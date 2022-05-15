@@ -1,0 +1,444 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="python" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2021/07/27/python-process-monitor/">
+
+
+
+  <title>
+How to Make a Process Monitor in Python |
+D E W = 露の世</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">How to Make a Process Monitor in Python
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2021-07-27 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2021-07-27T00:00:00+08:00">2021-07-27</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">D E W</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipewkhf1zj20zk0m81kx.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclj61ylzj20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicli9lfebj20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipewr8iypj20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giph4wqtg4j20zk0m8x6p.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipeun65urj20zk0m81ii.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2021/07/27/python-process-monitor/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>转载：<span class="exturl" data-url="aHR0cHM6Ly93d3cudGhlcHl0aG9uY29kZS5jb20vYXJ0aWNsZS9tYWtlLXByb2Nlc3MtbW9uaXRvci1weXRob24=">How to Make a Process Monitor in Python - Python Code</span></p>
+</blockquote>
+<p>Monitoring <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvUHJvY2Vzc18oY29tcHV0aW5nKQ==">operating system processes</span> enables us to monitor and display process activity in the real time. In this tutorial, you will learn how to retrieve information on running processes in the operating system using Python, and build a task manager around it !</p>
+<p>Now you’re may be thinking about creating something like this:</p>
+<img data-src="/2021/07/27/python-process-monitor/real_task_manager.jpg" class="" title="Windows Task Manager">
+<p>Well, not exactly, we gonna make a command line version of this, the final script output will be this:</p>
+<img data-src="/2021/07/27/python-process-monitor/python_task_manager.PNG" class="" title="Python Process Monitor">
+<p>However, if you are a GUI programmer, you can make this a lot better with your own design and compete with Windows Task Manager!</p>
+<p><strong>*Related:</strong> How to Handle Files in Python using OS Module.*</p>
+<p>Alright, now let’s get into building this. First, let’s install the dependencies:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install psutil pandas</span><br></pre></td></tr></table></figure>
+<p>Open up a new Python file and import the necessary modules:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> psutil</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> os</span><br></pre></td></tr></table></figure>
+<p>We’ll use <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2dpYW1wYW9sby9wc3V0aWw=">psutil</span> as it is a cross-platform library for retrieving running processes information in Python.</p>
+<p>The reason that we need <span class="exturl" data-url="aHR0cHM6Ly9wYW5kYXMucHlkYXRhLm9yZy8=">pandas</span> here is that after retrieving processes information, we gonna need to sort by columns and printing in a tabular way.</p>
+<p>Now, we need a way to retrieve all processes in a loop. Luckily for us, there is the function psutil.process_iter() which returns a generator yielding a process instance for all running processes in the operating system.</p>
+<p>Let’s build the core function that returns all process information, we gonna store all the processes in a list of dictionaries, so it can be easy later on to convert it to a dataframe:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_processes_info</span>():</span></span><br><span class="line">    <span class="comment"># the list the contain all process dictionaries</span></span><br><span class="line">    processes = []</span><br></pre></td></tr></table></figure>
+<p>Let’s start the loop and iterate over the generator:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> process <span class="keyword">in</span> psutil.process_iter():</span><br><span class="line">    <span class="comment"># get all process info in one shot</span></span><br><span class="line">    <span class="keyword">with</span> process.oneshot():</span><br><span class="line">        <span class="comment"># get the process id</span></span><br><span class="line">        pid = process.pid</span><br><span class="line">        <span class="keyword">if</span> pid == <span class="number">0</span>:</span><br><span class="line">            <span class="comment"># System Idle Process for Windows NT, useless to see anyways</span></span><br><span class="line">            <span class="keyword">continue</span></span><br></pre></td></tr></table></figure>
+<p>As you may notice, I have eliminated the PID of 0, which is the System Idle Process that is for Windows NT, it has no useful information anyways.</p>
+<p>process.oneshot() helps us retrieve process information efficiently (faster way), we already got the <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvUHJvY2Vzc19pZGVudGlmaWVy">pid</span>, let’s get the process name:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># get the name of the file executed</span></span><br><span class="line">name = process.name()</span><br></pre></td></tr></table></figure>
+<p>Retrieving the time when the process was created in timestamp, as a result, we’ll convert to a proper Python datetime object:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># get the time the process was spawned</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    create_time = datetime.fromtimestamp(process.create_time())</span><br><span class="line"><span class="keyword">except</span> OSError:</span><br><span class="line">    <span class="comment"># system processes, using boot time instead</span></span><br><span class="line">    create_time = datetime.fromtimestamp(psutil.boot_time())</span><br></pre></td></tr></table></figure>
+<p>Let’s get the process CPU usage as well as the number of cores that can execute this process:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="comment"># get the number of CPU cores that can execute this process</span></span><br><span class="line">    cores = <span class="built_in">len</span>(process.cpu_affinity())</span><br><span class="line"><span class="keyword">except</span> psutil.AccessDenied:</span><br><span class="line">    cores = <span class="number">0</span></span><br><span class="line"><span class="comment"># get the CPU usage percentage</span></span><br><span class="line">cpu_usage = process.cpu_percent()</span><br></pre></td></tr></table></figure>
+<p><em>Note: <strong>cpu_affinity()</strong> method only works for Linux, Windows and FreeBSD, so if you’re using another OS such as MacOS, you should comment the above code.</em></p>
+<p>The reason I wrapped process.cpu_affinity() in a try/except block is that sometimes it will raise a psutil.AccessDenied for system processes (make sure you run Python as an administrator).</p>
+<p>process.cpu_percent() method returns a float representing the current process CPU utilization as a percentage. It compares process times to system CPU times elapsed since last call, returning immediately. That means that the first time this is called it will return 0.0.</p>
+<p>Getting the status of the process, whether it is running, sleeping, etc:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># get the status of the process (running, idle, etc.)</span></span><br><span class="line">status = process.status()</span><br></pre></td></tr></table></figure>
+<p>Process priority:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="comment"># get the process priority (a lower value means a more prioritized process)</span></span><br><span class="line">    nice = <span class="built_in">int</span>(process.nice())</span><br><span class="line"><span class="keyword">except</span> psutil.AccessDenied:</span><br><span class="line">    nice = <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<p>Memory usage:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="comment"># get the memory usage in bytes</span></span><br><span class="line">    memory_usage = process.memory_full_info().uss</span><br><span class="line"><span class="keyword">except</span> psutil.AccessDenied:</span><br><span class="line">    memory_usage = <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<p>Total written and read bytes by this process:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># total process read and written bytes</span></span><br><span class="line">io_counters = process.io_counters()</span><br><span class="line">read_bytes = io_counters.read_bytes</span><br><span class="line">write_bytes = io_counters.write_bytes</span><br></pre></td></tr></table></figure>
+<p>Total threads spawned:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># get the number of total threads spawned by this process</span></span><br><span class="line">n_threads = process.num_threads()</span><br></pre></td></tr></table></figure>
+<p>Finally, the user that spawned that process:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># get the username of user spawned the process</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    username = process.username()</span><br><span class="line"><span class="keyword">except</span> psutil.AccessDenied:</span><br><span class="line">    username = <span class="string">&quot;N/A&quot;</span></span><br></pre></td></tr></table></figure>
+<p>Let’s add all this information to our list and get out of the loop and return it:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">processes.append(&#123;</span><br><span class="line">    <span class="string">&#x27;pid&#x27;</span>: pid, <span class="string">&#x27;name&#x27;</span>: name, <span class="string">&#x27;create_time&#x27;</span>: create_time,</span><br><span class="line">    <span class="string">&#x27;cores&#x27;</span>: cores, <span class="string">&#x27;cpu_usage&#x27;</span>: cpu_usage, <span class="string">&#x27;status&#x27;</span>: status, <span class="string">&#x27;nice&#x27;</span>: nice,</span><br><span class="line">    <span class="string">&#x27;memory_usage&#x27;</span>: memory_usage, <span class="string">&#x27;read_bytes&#x27;</span>: read_bytes, <span class="string">&#x27;write_bytes&#x27;</span>: write_bytes,</span><br><span class="line">    <span class="string">&#x27;n_threads&#x27;</span>: n_threads, <span class="string">&#x27;username&#x27;</span>: username,</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> processes</span><br></pre></td></tr></table></figure>
+<p>As mentioned earlier, we gonna convert processes list into a pandas.DataFrame, as a result, the following function takes the previous processes list and convert it to a dataframe:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">construct_dataframe</span>(<span class="params">processes</span>):</span></span><br><span class="line">    <span class="comment"># convert to pandas dataframe</span></span><br><span class="line">    df = pd.DataFrame(processes)</span><br><span class="line">    <span class="comment"># set the process id as index of a process</span></span><br><span class="line">    df.set_index(<span class="string">&#x27;pid&#x27;</span>, inplace=<span class="literal">True</span>)</span><br><span class="line">    <span class="comment"># sort rows by the column passed as argument</span></span><br><span class="line">    df.sort_values(sort_by, inplace=<span class="literal">True</span>, ascending=<span class="keyword">not</span> descending)</span><br><span class="line">    <span class="comment"># pretty printing bytes</span></span><br><span class="line">    df[<span class="string">&#x27;memory_usage&#x27;</span>] = df[<span class="string">&#x27;memory_usage&#x27;</span>].apply(get_size)</span><br><span class="line">    df[<span class="string">&#x27;write_bytes&#x27;</span>] = df[<span class="string">&#x27;write_bytes&#x27;</span>].apply(get_size)</span><br><span class="line">    df[<span class="string">&#x27;read_bytes&#x27;</span>] = df[<span class="string">&#x27;read_bytes&#x27;</span>].apply(get_size)</span><br><span class="line">    <span class="comment"># convert to proper date format</span></span><br><span class="line">    df[<span class="string">&#x27;create_time&#x27;</span>] = df[<span class="string">&#x27;create_time&#x27;</span>].apply(datetime.strftime, args=(<span class="string">&quot;%Y-%m-%d %H:%M:%S&quot;</span>,))</span><br><span class="line">    <span class="comment"># reorder and define used columns</span></span><br><span class="line">    df = df[columns.split(<span class="string">&quot;,&quot;</span>)]</span><br><span class="line">    <span class="keyword">return</span> df</span><br></pre></td></tr></table></figure>
+<p>The above function doesn’t only convert that list into a dataframe, it does many other things:</p>
+<ul>
+<li>It sets the index of a each row in the dataframe as the process id (as it is the unique identifier).</li>
+<li>It sorts the rows by the column sort_by that will be passed as command line arguments (we’ll get into it).</li>
+<li>Since we need a good way to print bytes, it applies get_size() function (which we’ll declare in a moment) that converts bunch of big numbers into a bytes format (such as 54.4MB, 103.3KB, etc.)</li>
+<li>It also format the create time as a readable date.</li>
+</ul>
+<p>Here is the get_size() function:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_size</span>(<span class="params"><span class="built_in">bytes</span></span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Returns size of bytes in a nice format</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">for</span> unit <span class="keyword">in</span> [<span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;K&#x27;</span>, <span class="string">&#x27;M&#x27;</span>, <span class="string">&#x27;G&#x27;</span>, <span class="string">&#x27;T&#x27;</span>, <span class="string">&#x27;P&#x27;</span>]:</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">bytes</span> &lt; <span class="number">1024</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">f&quot;<span class="subst">&#123;<span class="built_in">bytes</span>:<span class="number">.2</span>f&#125;</span><span class="subst">&#123;unit&#125;</span>B&quot;</span></span><br><span class="line">        <span class="built_in">bytes</span> /= <span class="number">1024</span></span><br></pre></td></tr></table></figure>
+<p>Now let’s do some command line argument parsing:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    <span class="keyword">import</span> argparse</span><br><span class="line">    parser = argparse.ArgumentParser(description=<span class="string">&quot;Process Viewer &amp; Monitor&quot;</span>)</span><br><span class="line">    parser.add_argument(<span class="string">&quot;-c&quot;</span>, <span class="string">&quot;--columns&quot;</span>, <span class="built_in">help</span>=<span class="string">&quot;&quot;&quot;Columns to show,</span></span><br><span class="line"><span class="string">                                                available are name,create_time,cores,cpu_usage,status,nice,memory_usage,read_bytes,write_bytes,n_threads,username.</span></span><br><span class="line"><span class="string">                                                Default is name,cpu_usage,memory_usage,read_bytes,write_bytes,status,create_time,nice,n_threads,cores.&quot;&quot;&quot;</span>,</span><br><span class="line">                        default=<span class="string">&quot;name,cpu_usage,memory_usage,read_bytes,write_bytes,status,create_time,nice,n_threads,cores&quot;</span>)</span><br><span class="line">    parser.add_argument(<span class="string">&quot;-s&quot;</span>, <span class="string">&quot;--sort-by&quot;</span>, dest=<span class="string">&quot;sort_by&quot;</span>, <span class="built_in">help</span>=<span class="string">&quot;Column to sort by, default is memory_usage .&quot;</span>, default=<span class="string">&quot;memory_usage&quot;</span>)</span><br><span class="line">    parser.add_argument(<span class="string">&quot;--descending&quot;</span>, action=<span class="string">&quot;store_true&quot;</span>, <span class="built_in">help</span>=<span class="string">&quot;Whether to sort in descending order.&quot;</span>)</span><br><span class="line">    parser.add_argument(<span class="string">&quot;-n&quot;</span>, <span class="built_in">help</span>=<span class="string">&quot;Number of processes to show, will show all if 0 is specified, default is 25 .&quot;</span>, default=<span class="number">25</span>)</span><br><span class="line">    parser.add_argument(<span class="string">&quot;-u&quot;</span>, <span class="string">&quot;--live-update&quot;</span>, action=<span class="string">&quot;store_true&quot;</span>, <span class="built_in">help</span>=<span class="string">&quot;Whether to keep the program on and updating process information each second&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># parse arguments</span></span><br><span class="line">    args = parser.parse_args()</span><br><span class="line">    columns = args.columns</span><br><span class="line">    sort_by = args.sort_by</span><br><span class="line">    descending = args.descending</span><br><span class="line">    n = <span class="built_in">int</span>(args.n)</span><br><span class="line">    live_update = args.live_update</span><br></pre></td></tr></table></figure>
+<p>If you’re not familiar with Python’s argparse built-in module, it allows us to easily parse arguments passed from the command line (i.e terminal).</p>
+<p>We added a bunch of arguments, such as columns to show, sort_by column that we’ll sort by in the dataframe, number of processes to show, and live_update which is responsible for whether you want to keep the program running and continuously updating and printing process information each time (like top command in Linux).</p>
+<p>Finally, let’s call our functions we made and show the dataframe:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># print the processes for the first time</span></span><br><span class="line">processes = get_processes_info()</span><br><span class="line">df = construct_dataframe(processes)</span><br><span class="line"><span class="keyword">if</span> n == <span class="number">0</span>:</span><br><span class="line">    print(df.to_string())</span><br><span class="line"><span class="keyword">elif</span> n &gt; <span class="number">0</span>:</span><br><span class="line">    print(df.head(n).to_string())</span><br><span class="line"><span class="comment"># print continuously</span></span><br><span class="line"><span class="keyword">while</span> live_update:</span><br><span class="line">    <span class="comment"># get all process info</span></span><br><span class="line">    processes = get_processes_info()</span><br><span class="line">    df = construct_dataframe(processes)</span><br><span class="line">    <span class="comment"># clear the screen depending on your OS</span></span><br><span class="line">    os.system(<span class="string">&quot;cls&quot;</span>) <span class="keyword">if</span> <span class="string">&quot;nt&quot;</span> <span class="keyword">in</span> os.name <span class="keyword">else</span> os.system(<span class="string">&quot;clear&quot;</span>)</span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">0</span>:</span><br><span class="line">        print(df.to_string())</span><br><span class="line">    <span class="keyword">elif</span> n &gt; <span class="number">0</span>:</span><br><span class="line">        print(df.head(n).to_string())</span><br><span class="line">    time.sleep(<span class="number">0.7</span>)</span><br></pre></td></tr></table></figure>
+<p>I’m using head() method here which prints the first n rows.</p>
+<p>Now, to execute this, you should run it as an administrator to get information about system processes as well, here is a sample output from my linux box:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">root@rockikz:~&#x2F;pythonscripts# python3 process_monitor.py --columns name,cpu_usage,memory_usage,status -n 20 --sort-by memory_usage --descending</span><br><span class="line">                name  cpu_usage memory_usage    status</span><br><span class="line">pid</span><br><span class="line">1312          mysqld        0.0     144.63MB  sleeping</span><br><span class="line">915      gnome-shell        0.0      81.00MB  sleeping</span><br><span class="line">3214         python3        0.0      58.12MB   running</span><br><span class="line">1660   rtorrent main        0.0      35.84MB  sleeping</span><br><span class="line">2466   rtorrent main        0.0      24.02MB  sleeping</span><br><span class="line">3186             php        0.0      19.58MB  sleeping</span><br><span class="line">737             Xorg        0.0      15.52MB  sleeping</span><br><span class="line">1452         apache2        0.0      12.18MB  sleeping</span><br><span class="line">872      teamviewerd        0.0      11.53MB  sleeping</span><br><span class="line">974        gsd-color        0.0       8.65MB  sleeping</span><br><span class="line">553   NetworkManager        0.0       7.71MB  sleeping</span><br><span class="line">1045          colord        0.0       7.16MB  sleeping</span><br><span class="line">982     gsd-keyboard        0.0       6.23MB  sleeping</span><br><span class="line">969    gsd-clipboard        0.0       6.09MB  sleeping</span><br><span class="line">548     ModemManager        0.0       5.68MB  sleeping</span><br><span class="line">986   gsd-media-keys        0.0       4.94MB  sleeping</span><br><span class="line">1001       gsd-power        0.0       4.72MB  sleeping</span><br><span class="line">962    gsd-xsettings        0.0       4.59MB  sleeping</span><br><span class="line">1023       gsd-wacom        0.0       4.40MB  sleeping</span><br><span class="line">961      packagekitd        0.0       4.31MB  sleeping</span><br></pre></td></tr></table></figure>
+<p>And there we go ! We are done with this, as discussed above, you can make a GUI version of this, with buttons to kill, suspend, and resume the process as there are already available functions for that (process.kill(), process.suspend() and process.resume()).</p>
+<p>There are also another information you can retrieve that are not discussed here, type help(psutil.Process) for all available fields and methods, or check <span class="exturl" data-url="aHR0cHM6Ly9wc3V0aWwucmVhZHRoZWRvY3MuaW8vZW4vbGF0ZXN0Lw==">their official documentation</span>.</p>
+<p>Full code.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> psutil</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_size</span>(<span class="params"><span class="built_in">bytes</span></span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Returns size of bytes in a nice format</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">for</span> unit <span class="keyword">in</span> [<span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;K&#x27;</span>, <span class="string">&#x27;M&#x27;</span>, <span class="string">&#x27;G&#x27;</span>, <span class="string">&#x27;T&#x27;</span>, <span class="string">&#x27;P&#x27;</span>]:</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">bytes</span> &lt; <span class="number">1024</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">f&quot;<span class="subst">&#123;<span class="built_in">bytes</span>:<span class="number">.2</span>f&#125;</span><span class="subst">&#123;unit&#125;</span>B&quot;</span></span><br><span class="line">        <span class="built_in">bytes</span> /= <span class="number">1024</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_processes_info</span>():</span></span><br><span class="line">    <span class="comment"># the list the contain all process dictionaries</span></span><br><span class="line">    processes = []</span><br><span class="line">    <span class="keyword">for</span> process <span class="keyword">in</span> psutil.process_iter():</span><br><span class="line">        <span class="comment"># get all process info in one shot</span></span><br><span class="line">        <span class="keyword">with</span> process.oneshot():</span><br><span class="line">            <span class="comment"># get the process id</span></span><br><span class="line">            pid = process.pid</span><br><span class="line">            <span class="keyword">if</span> pid == <span class="number">0</span>:</span><br><span class="line">                <span class="comment"># System Idle Process for Windows NT, useless to see anyways</span></span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="comment"># get the name of the file executed</span></span><br><span class="line">            name = process.name()</span><br><span class="line">            <span class="comment"># get the time the process was spawned</span></span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                create_time = datetime.fromtimestamp(process.create_time())</span><br><span class="line">            <span class="keyword">except</span> OSError:</span><br><span class="line">                <span class="comment"># system processes, using boot time instead</span></span><br><span class="line">                create_time = datetime.fromtimestamp(psutil.boot_time())</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                <span class="comment"># get the number of CPU cores that can execute this process</span></span><br><span class="line">                cores = <span class="built_in">len</span>(process.cpu_affinity())</span><br><span class="line">            <span class="keyword">except</span> psutil.AccessDenied:</span><br><span class="line">                cores = <span class="number">0</span></span><br><span class="line">            <span class="comment"># get the CPU usage percentage</span></span><br><span class="line">            cpu_usage = process.cpu_percent()</span><br><span class="line">            <span class="comment"># get the status of the process (running, idle, etc.)</span></span><br><span class="line">            status = process.status()</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                <span class="comment"># get the process priority (a lower value means a more prioritized process)</span></span><br><span class="line">                nice = <span class="built_in">int</span>(process.nice())</span><br><span class="line">            <span class="keyword">except</span> psutil.AccessDenied:</span><br><span class="line">                nice = <span class="number">0</span></span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                <span class="comment"># get the memory usage in bytes</span></span><br><span class="line">                memory_usage = process.memory_full_info().uss</span><br><span class="line">            <span class="keyword">except</span> psutil.AccessDenied:</span><br><span class="line">                memory_usage = <span class="number">0</span></span><br><span class="line">            <span class="comment"># total process read and written bytes</span></span><br><span class="line">            io_counters = process.io_counters()</span><br><span class="line">            read_bytes = io_counters.read_bytes</span><br><span class="line">            write_bytes = io_counters.write_bytes</span><br><span class="line">            <span class="comment"># get the number of total threads spawned by this process</span></span><br><span class="line">            n_threads = process.num_threads()</span><br><span class="line">            <span class="comment"># get the username of user spawned the process</span></span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                username = process.username()</span><br><span class="line">            <span class="keyword">except</span> psutil.AccessDenied:</span><br><span class="line">                username = <span class="string">&quot;N/A&quot;</span></span><br><span class="line"></span><br><span class="line">        processes.append(&#123;</span><br><span class="line">            <span class="string">&#x27;pid&#x27;</span>: pid, <span class="string">&#x27;name&#x27;</span>: name, <span class="string">&#x27;create_time&#x27;</span>: create_time,</span><br><span class="line">            <span class="string">&#x27;cores&#x27;</span>: cores, <span class="string">&#x27;cpu_usage&#x27;</span>: cpu_usage, <span class="string">&#x27;status&#x27;</span>: status, <span class="string">&#x27;nice&#x27;</span>: nice,</span><br><span class="line">            <span class="string">&#x27;memory_usage&#x27;</span>: memory_usage, <span class="string">&#x27;read_bytes&#x27;</span>: read_bytes, <span class="string">&#x27;write_bytes&#x27;</span>: write_bytes,</span><br><span class="line">            <span class="string">&#x27;n_threads&#x27;</span>: n_threads, <span class="string">&#x27;username&#x27;</span>: username,</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> processes</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">construct_dataframe</span>(<span class="params">processes</span>):</span></span><br><span class="line">    <span class="comment"># convert to pandas dataframe</span></span><br><span class="line">    df = pd.DataFrame(processes)</span><br><span class="line">    <span class="comment"># set the process id as index of a process</span></span><br><span class="line">    df.set_index(<span class="string">&#x27;pid&#x27;</span>, inplace=<span class="literal">True</span>)</span><br><span class="line">    <span class="comment"># sort rows by the column passed as argument</span></span><br><span class="line">    df.sort_values(sort_by, inplace=<span class="literal">True</span>, ascending=<span class="keyword">not</span> descending)</span><br><span class="line">    <span class="comment"># pretty printing bytes</span></span><br><span class="line">    df[<span class="string">&#x27;memory_usage&#x27;</span>] = df[<span class="string">&#x27;memory_usage&#x27;</span>].apply(get_size)</span><br><span class="line">    df[<span class="string">&#x27;write_bytes&#x27;</span>] = df[<span class="string">&#x27;write_bytes&#x27;</span>].apply(get_size)</span><br><span class="line">    df[<span class="string">&#x27;read_bytes&#x27;</span>] = df[<span class="string">&#x27;read_bytes&#x27;</span>].apply(get_size)</span><br><span class="line">    <span class="comment"># convert to proper date format</span></span><br><span class="line">    df[<span class="string">&#x27;create_time&#x27;</span>] = df[<span class="string">&#x27;create_time&#x27;</span>].apply(</span><br><span class="line">        datetime.strftime, args=(<span class="string">&quot;%Y-%m-%d %H:%M:%S&quot;</span>,))</span><br><span class="line">    <span class="comment"># reorder and define used columns</span></span><br><span class="line">    df = df[columns.split(<span class="string">&quot;,&quot;</span>)]</span><br><span class="line">    <span class="keyword">return</span> df</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    <span class="keyword">import</span> argparse</span><br><span class="line">    parser = argparse.ArgumentParser(description=<span class="string">&quot;Process Viewer &amp; Monitor&quot;</span>)</span><br><span class="line">    parser.add_argument(<span class="string">&quot;-c&quot;</span>, <span class="string">&quot;--columns&quot;</span>, <span class="built_in">help</span>=<span class="string">&quot;&quot;&quot;Columns to show,</span></span><br><span class="line"><span class="string">                                                available are name,create_time,cores,cpu_usage,status,nice,memory_usage,read_bytes,write_bytes,n_threads,username.</span></span><br><span class="line"><span class="string">                                                Default is name,cpu_usage,memory_usage,read_bytes,write_bytes,status,create_time,nice,n_threads,cores.&quot;&quot;&quot;</span>,</span><br><span class="line">                        default=<span class="string">&quot;name,cpu_usage,memory_usage,read_bytes,write_bytes,status,create_time,nice,n_threads,cores&quot;</span>)</span><br><span class="line">    parser.add_argument(<span class="string">&quot;-s&quot;</span>, <span class="string">&quot;--sort-by&quot;</span>, dest=<span class="string">&quot;sort_by&quot;</span>,</span><br><span class="line">                        <span class="built_in">help</span>=<span class="string">&quot;Column to sort by, default is memory_usage .&quot;</span>, default=<span class="string">&quot;memory_usage&quot;</span>)</span><br><span class="line">    parser.add_argument(<span class="string">&quot;--descending&quot;</span>, action=<span class="string">&quot;store_true&quot;</span>,</span><br><span class="line">                        <span class="built_in">help</span>=<span class="string">&quot;Whether to sort in descending order.&quot;</span>)</span><br><span class="line">    parser.add_argument(</span><br><span class="line">        <span class="string">&quot;-n&quot;</span>, <span class="built_in">help</span>=<span class="string">&quot;Number of processes to show, will show all if 0 is specified, default is 25 .&quot;</span>, default=<span class="number">25</span>)</span><br><span class="line">    parser.add_argument(<span class="string">&quot;-u&quot;</span>, <span class="string">&quot;--live-update&quot;</span>, action=<span class="string">&quot;store_true&quot;</span>,</span><br><span class="line">                        <span class="built_in">help</span>=<span class="string">&quot;Whether to keep the program on and updating process information each second&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># parse arguments</span></span><br><span class="line">    args = parser.parse_args()</span><br><span class="line">    columns = args.columns</span><br><span class="line">    sort_by = args.sort_by</span><br><span class="line">    descending = args.descending</span><br><span class="line">    n = <span class="built_in">int</span>(args.n)</span><br><span class="line">    live_update = args.live_update</span><br><span class="line">    <span class="comment"># print the processes for the first time</span></span><br><span class="line">    processes = get_processes_info()</span><br><span class="line">    df = construct_dataframe(processes)</span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">0</span>:</span><br><span class="line">        print(df.to_string())</span><br><span class="line">    <span class="keyword">elif</span> n &gt; <span class="number">0</span>:</span><br><span class="line">        print(df.head(n).to_string())</span><br><span class="line">    <span class="comment"># print continuously</span></span><br><span class="line">    <span class="keyword">while</span> live_update:</span><br><span class="line">        <span class="comment"># get all process info</span></span><br><span class="line">        processes = get_processes_info()</span><br><span class="line">        df = construct_dataframe(processes)</span><br><span class="line">        <span class="comment"># clear the screen depending on your OS</span></span><br><span class="line">        os.system(<span class="string">&quot;cls&quot;</span>) <span class="keyword">if</span> <span class="string">&quot;nt&quot;</span> <span class="keyword">in</span> os.name <span class="keyword">else</span> os.system(<span class="string">&quot;clear&quot;</span>)</span><br><span class="line">        <span class="keyword">if</span> n == <span class="number">0</span>:</span><br><span class="line">            print(df.to_string())</span><br><span class="line">        <span class="keyword">elif</span> n &gt; <span class="number">0</span>:</span><br><span class="line">            print(df.head(n).to_string())</span><br><span class="line">        time.sleep(<span class="number">0.7</span>)</span><br></pre></td></tr></table></figure>
+
+      <div class="tags">
+          <a href="/tags/python/" rel="tag"><i class="ic i-tag"></i> python</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2021-10-18 13:27:18" itemprop="dateModified" datetime="2021-10-18T13:27:18+08:00">2021-10-18</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2021/07/26/python-watchdog/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giciryrr3rj20zk0m8nhk.jpg" title="How to Create a Watchdog in Python">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>How to Create a Watchdog in Python</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2021/07/27/python-upload-download/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicmnywqgpj20zk0m8dwx.jpg" title="Python Upload &amp; Download File">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Python Upload & Download File</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">282</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">40</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2021/07/26/python-watchdog/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2021/07/27/python-upload-download/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2022</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ D E W</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2021/07/27/python-process-monitor/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

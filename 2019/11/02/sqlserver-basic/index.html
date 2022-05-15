@@ -1,0 +1,441 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="db" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2019/11/02/sqlserver-basic/">
+
+
+
+  <title>
+SQLServer 基本语法 |
+D E W = 露の世</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">SQLServer 基本语法
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2019-11-02 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2019-11-02T00:00:00+08:00">2019-11-02</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">D E W</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipesrnqv3j20zk0m8ava.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicli3sbvtj20zk0m8x6p.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipet8c1a2j20zk0m8kct.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicitzannuj20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicit31ffoj20zk0m8naf.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclg5ms2rj20zk0m8u0x.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2019/11/02/sqlserver-basic/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>转载：<span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vbGlwYW4vYXJjaGl2ZS8yMDEwLzEyLzA5LzE4OTI1MTYuaHRtbA==">SqlServer 编程基本语法 - lipan</span></p>
+</blockquote>
+<h3 id="一-定义变量"><a class="markdownIt-Anchor" href="#一-定义变量">#</a> 一、定义变量</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">--简单赋值</span><br><span class="line">declare @a int</span><br><span class="line">set @a&#x3D;5</span><br><span class="line">print @a</span><br><span class="line"></span><br><span class="line">--使用select语句赋值</span><br><span class="line">declare @user1 nvarchar(50)</span><br><span class="line">select @user1&#x3D;&#39;张三&#39;</span><br><span class="line">print @user1</span><br><span class="line">declare @user2 nvarchar(50)</span><br><span class="line">select @user2 &#x3D; Name from ST_User where ID&#x3D;1</span><br><span class="line">print @user2</span><br><span class="line"></span><br><span class="line">--使用update语句赋值</span><br><span class="line">declare @user3 nvarchar(50)</span><br><span class="line">update ST_User set @user3 &#x3D; Name where ID&#x3D;1</span><br><span class="line">print @user3</span><br></pre></td></tr></table></figure>
+<h3 id="二-表-临时表-表变量"><a class="markdownIt-Anchor" href="#二-表-临时表-表变量">#</a> 二、表、临时表、表变量</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">--创建临时表1</span><br><span class="line">create table #DU_User1</span><br><span class="line">(</span><br><span class="line">     [ID] [int]  NOT NULL,</span><br><span class="line">     [Oid] [int] NOT NULL,</span><br><span class="line">     [Login] [nvarchar](50) NOT NULL,</span><br><span class="line">     [Rtx] [nvarchar](4) NOT NULL,</span><br><span class="line">     [Name] [nvarchar](5) NOT NULL,</span><br><span class="line">     [Password] [nvarchar](max) NULL,</span><br><span class="line">     [State] [nvarchar](8) NOT NULL</span><br><span class="line">);</span><br><span class="line">--向临时表1插入一条记录</span><br><span class="line">insert into #DU_User1 (ID,Oid,[Login],Rtx,Name,[Password],State) values (100,2,&#39;LS&#39;,&#39;0000&#39;,&#39;临时&#39;,&#39;321&#39;,&#39;特殊&#39;);</span><br><span class="line"></span><br><span class="line">--从ST_User查询数据，填充至新生成的临时表</span><br><span class="line">select * into #DU_User2 from ST_User where ID&lt;8</span><br><span class="line"></span><br><span class="line">--查询并联合两临时表</span><br><span class="line">select * from #DU_User2 where ID&lt;3 union select * from #DU_User1</span><br><span class="line"></span><br><span class="line">--删除两临时表</span><br><span class="line">drop table #DU_User1</span><br><span class="line">drop table #DU_User2</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">--创建临时表</span><br><span class="line">CREATE TABLE #t</span><br><span class="line">(</span><br><span class="line">    [ID] [int] NOT NULL,</span><br><span class="line">    [Oid] [int] NOT NULL,</span><br><span class="line">    [Login] [nvarchar](50) NOT NULL,</span><br><span class="line">    [Rtx] [nvarchar](4) NOT NULL,</span><br><span class="line">    [Name] [nvarchar](5) NOT NULL,</span><br><span class="line">    [Password] [nvarchar](max) NULL,</span><br><span class="line">    [State] [nvarchar](8) NOT NULL,</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">--将查询结果集（多条数据）插入临时表</span><br><span class="line">insert into #t select * from ST_User</span><br><span class="line">--不能这样插入</span><br><span class="line">--select * into #t from dbo.ST_User</span><br><span class="line"></span><br><span class="line">--添加一列，为int型自增长子段</span><br><span class="line">alter table #t add [myid] int NOT NULL IDENTITY(1,1)</span><br><span class="line">--添加一列，默认填充全球唯一标识</span><br><span class="line">alter table #t add [myid1] uniqueidentifier NOT NULL default(newid())</span><br><span class="line"></span><br><span class="line">select * from #t</span><br><span class="line">drop table #t</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">--给查询结果集增加自增长列</span><br><span class="line"></span><br><span class="line">--无主键时：</span><br><span class="line">select IDENTITY(int,1,1)as ID, Name,[Login],[Password] into #t from ST_User</span><br><span class="line">select * from #t</span><br><span class="line"></span><br><span class="line">--有主键时：</span><br><span class="line">select (select SUM(1) from ST_User where ID&lt;&#x3D; a.ID) as myID,* from ST_User a order by myID</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">--定义表变量</span><br><span class="line">declare @t table</span><br><span class="line">(</span><br><span class="line">    id int not null,</span><br><span class="line">    msg nvarchar(50) null</span><br><span class="line">)</span><br><span class="line">insert into @t values(1,&#39;1&#39;)</span><br><span class="line">insert into @t values(2,&#39;2&#39;)</span><br><span class="line">select * from @t</span><br></pre></td></tr></table></figure>
+<h3 id="三-循环"><a class="markdownIt-Anchor" href="#三-循环">#</a> 三、循环</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">--while循环计算1到100的和</span><br><span class="line">declare @a int</span><br><span class="line">declare @sum int</span><br><span class="line">set @a&#x3D;1</span><br><span class="line">set @sum&#x3D;0</span><br><span class="line">while @a&lt;&#x3D;100</span><br><span class="line">begin</span><br><span class="line">    set @sum+&#x3D;@a</span><br><span class="line">    set @a+&#x3D;1</span><br><span class="line">end</span><br><span class="line">print @sum</span><br></pre></td></tr></table></figure>
+<h3 id="四-条件语句"><a class="markdownIt-Anchor" href="#四-条件语句">#</a> 四、条件语句</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">--if,else条件分支</span><br><span class="line">if(1+1&#x3D;2)</span><br><span class="line">begin</span><br><span class="line">    print &#39;对&#39;</span><br><span class="line">end</span><br><span class="line">else</span><br><span class="line">begin</span><br><span class="line">    print &#39;错&#39;</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">--when then条件分支</span><br><span class="line">declare @today int</span><br><span class="line">declare @week nvarchar(3)</span><br><span class="line">set @today&#x3D;3</span><br><span class="line">set @week&#x3D;case</span><br><span class="line">    when @today&#x3D;1 then &#39;星期一&#39;</span><br><span class="line">    when @today&#x3D;2 then &#39;星期二&#39;</span><br><span class="line">    when @today&#x3D;3 then &#39;星期三&#39;</span><br><span class="line">    when @today&#x3D;4 then &#39;星期四&#39;</span><br><span class="line">    when @today&#x3D;5 then &#39;星期五&#39;</span><br><span class="line">    when @today&#x3D;6 then &#39;星期六&#39;</span><br><span class="line">    when @today&#x3D;7 then &#39;星期日&#39;</span><br><span class="line">    else &#39;值错误&#39;</span><br><span class="line">end</span><br><span class="line">print @week</span><br></pre></td></tr></table></figure>
+<h3 id="五-游标"><a class="markdownIt-Anchor" href="#五-游标">#</a> 五、游标</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">declare @ID int</span><br><span class="line">declare @Oid int</span><br><span class="line">declare @Login varchar(50)</span><br><span class="line"></span><br><span class="line">--定义一个游标</span><br><span class="line">declare user_cur cursor for select ID,Oid,[Login] from ST_User</span><br><span class="line">--打开游标</span><br><span class="line">open user_cur</span><br><span class="line">while @@fetch_status&#x3D;0</span><br><span class="line">begin</span><br><span class="line">--读取游标</span><br><span class="line">    fetch next from user_cur into @ID,@Oid,@Login</span><br><span class="line">    print @ID</span><br><span class="line">    --print @Login</span><br><span class="line">end</span><br><span class="line">close user_cur</span><br><span class="line">--摧毁游标</span><br><span class="line">deallocate user_cur</span><br></pre></td></tr></table></figure>
+<h3 id="六-触发器"><a class="markdownIt-Anchor" href="#六-触发器">#</a> 六、触发器</h3>
+<p>触发器中的临时表：</p>
+<p>Inserted<br>
+ 存放进行 insert 和 update 操作后的数据<br>
+ Deleted<br>
+ 存放进行 delete 和 update 操作前的数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">--创建触发器</span><br><span class="line">Create trigger User_OnUpdate</span><br><span class="line">    On ST_User</span><br><span class="line">    for Update</span><br><span class="line">As</span><br><span class="line">    declare @msg nvarchar(50)</span><br><span class="line">    --@msg记录修改情况</span><br><span class="line">    select @msg &#x3D; N&#39;姓名从“&#39; + Deleted.Name + N&#39;”修改为“&#39; + Inserted.Name + &#39;”&#39; from Inserted,Deleted</span><br><span class="line">    --插入日志表</span><br><span class="line">    insert into [LOG](MSG)values(@msg)</span><br><span class="line"></span><br><span class="line">--删除触发器</span><br><span class="line">drop trigger User_OnUpdate</span><br></pre></td></tr></table></figure>
+<h3 id="七-存储过程"><a class="markdownIt-Anchor" href="#七-存储过程">#</a> 七、存储过程</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">--创建带output参数的存储过程</span><br><span class="line">CREATE PROCEDURE PR_Sum</span><br><span class="line">    @a int,</span><br><span class="line">    @b int,</span><br><span class="line">    @sum int output</span><br><span class="line">AS</span><br><span class="line">BEGIN</span><br><span class="line">    set @sum&#x3D;@a+@b</span><br><span class="line">END</span><br><span class="line"></span><br><span class="line">--创建Return返回值存储过程</span><br><span class="line">CREATE PROCEDURE PR_Sum2</span><br><span class="line">    @a int,</span><br><span class="line">    @b int</span><br><span class="line">AS</span><br><span class="line">BEGIN</span><br><span class="line">    Return @a+@b</span><br><span class="line">END</span><br><span class="line"></span><br><span class="line">--执行存储过程获取output型返回值</span><br><span class="line">declare @mysum int</span><br><span class="line">execute PR_Sum 1,2,@mysum output</span><br><span class="line">print @mysum</span><br><span class="line"></span><br><span class="line">--执行存储过程获取Return型返回值</span><br><span class="line">declare @mysum2 int</span><br><span class="line">execute @mysum2&#x3D; PR_Sum2 1,2</span><br><span class="line">print @mysum2</span><br></pre></td></tr></table></figure>
+<h3 id="八-自定义函数"><a class="markdownIt-Anchor" href="#八-自定义函数">#</a> 八、自定义函数</h3>
+<p>函数的分类：</p>
+<p>1）标量值函数</p>
+<p>2）表值函数</p>
+<p>a: 内联表值函数</p>
+<p>b: 多语句表值函数</p>
+<p>3）系统函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">--新建标量值函数</span><br><span class="line">create function FUNC_Sum1</span><br><span class="line">(</span><br><span class="line">    @a int,</span><br><span class="line">    @b int</span><br><span class="line">)</span><br><span class="line">returns int</span><br><span class="line">as</span><br><span class="line">begin</span><br><span class="line">    return @a+@b</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">--新建内联表值函数</span><br><span class="line">create function FUNC_UserTab_1</span><br><span class="line">(</span><br><span class="line">    @myId int</span><br><span class="line">)</span><br><span class="line">returns table</span><br><span class="line">as</span><br><span class="line">return (select * from ST_User where ID&lt;@myId)</span><br><span class="line"></span><br><span class="line">--新建多语句表值函数</span><br><span class="line">create function FUNC_UserTab_2</span><br><span class="line">(</span><br><span class="line">    @myId int</span><br><span class="line">)</span><br><span class="line">returns @t table</span><br><span class="line">(</span><br><span class="line">    [ID] [int] NOT NULL,</span><br><span class="line">    [Oid] [int] NOT NULL,</span><br><span class="line">    [Login] [nvarchar](50) NOT NULL,</span><br><span class="line">    [Rtx] [nvarchar](4) NOT NULL,</span><br><span class="line">    [Name] [nvarchar](5) NOT NULL,</span><br><span class="line">    [Password] [nvarchar](max) NULL,</span><br><span class="line">    [State] [nvarchar](8) NOT NULL</span><br><span class="line">)</span><br><span class="line">as</span><br><span class="line">begin</span><br><span class="line">    insert into @t select * from ST_User where ID&lt;@myId</span><br><span class="line">    return</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">--调用表值函数</span><br><span class="line">select * from dbo.FUNC_UserTab_1(15)</span><br><span class="line">--调用标量值函数</span><br><span class="line">declare @s int</span><br><span class="line">set @s&#x3D;dbo.FUNC_Sum1(100,50)</span><br><span class="line">print @s</span><br><span class="line"></span><br><span class="line">--删除标量值函数</span><br><span class="line">drop function FUNC_Sum1</span><br></pre></td></tr></table></figure>
+<h3 id="自定义函数与存储过程的区别"><a class="markdownIt-Anchor" href="#自定义函数与存储过程的区别">#</a> 自定义函数与存储过程的区别</h3>
+<p>一、自定义函数：</p>
+<ol>
+<li>
+<p>可以返回表变量</p>
+</li>
+<li>
+<p>限制颇多，包括</p>
+<p>不能使用 output 参数；</p>
+<p>不能用临时表；</p>
+<p>函数内部的操作不能影响到外部环境；</p>
+<p>不能通过 select 返回结果集；</p>
+<p>不能 update，delete，数据库表；</p>
+</li>
+<li>
+<p>必须 return 一个标量值或表变量</p>
+</li>
+</ol>
+<p>自定义函数一般用在复用度高，功能简单单一，争对性强的地方。</p>
+<p>二、存储过程</p>
+<ol>
+<li>
+<p>不能返回表变量</p>
+</li>
+<li>
+<p>限制少，可以执行对数据库表的操作，可以返回数据集</p>
+</li>
+<li>
+<p>可以 return 一个标量值，也可以省略 return</p>
+</li>
+</ol>
+<p>存储过程一般用在实现复杂的功能，数据操纵方面。</p>
+
+      <div class="tags">
+          <a href="/tags/db/" rel="tag"><i class="ic i-tag"></i> db</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2021-10-18 13:27:20" itemprop="dateModified" datetime="2021-10-18T13:27:20+08:00">2021-10-18</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2019/10/31/php-oracle/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclx6phq6j20zk0m8e36.jpg" title="PHP connect Oracle">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>PHP connect Oracle</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2019/11/02/java-jpa/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giciuv0socj20zk0m8qes.jpg" title="Java Jpa">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Java Jpa</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80-%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F"><span class="toc-number">1.</span> <span class="toc-text"> 一、定义变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C-%E8%A1%A8-%E4%B8%B4%E6%97%B6%E8%A1%A8-%E8%A1%A8%E5%8F%98%E9%87%8F"><span class="toc-number">2.</span> <span class="toc-text"> 二、表、临时表、表变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89-%E5%BE%AA%E7%8E%AF"><span class="toc-number">3.</span> <span class="toc-text"> 三、循环</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B-%E6%9D%A1%E4%BB%B6%E8%AF%AD%E5%8F%A5"><span class="toc-number">4.</span> <span class="toc-text"> 四、条件语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94-%E6%B8%B8%E6%A0%87"><span class="toc-number">5.</span> <span class="toc-text"> 五、游标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AD-%E8%A7%A6%E5%8F%91%E5%99%A8"><span class="toc-number">6.</span> <span class="toc-text"> 六、触发器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%83-%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B"><span class="toc-number">7.</span> <span class="toc-text"> 七、存储过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AB-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%87%BD%E6%95%B0"><span class="toc-number">8.</span> <span class="toc-text"> 八、自定义函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%87%BD%E6%95%B0%E4%B8%8E%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">9.</span> <span class="toc-text"> 自定义函数与存储过程的区别</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">282</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">40</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2019/10/31/php-oracle/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2019/11/02/java-jpa/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2022</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ D E W</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2019/11/02/sqlserver-basic/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

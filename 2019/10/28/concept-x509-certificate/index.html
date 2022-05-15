@@ -1,0 +1,458 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="concept" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2019/10/28/concept-x509-certificate/">
+
+
+
+  <title>
+X.509数字证书的结构与解析 |
+D E W = 露の世</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">X.509数字证书的结构与解析
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2019-10-28 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2019-10-28T00:00:00+08:00">2019-10-28</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">D E W</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclxfdlttj20zk0m8npd.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicit4jrvuj20zk0m8785.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclgrvbd6j20zk0m8qv5.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclil3m4ej20zk0m8tn8.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipevuctzzj20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipeuv80yoj20zk0m8kjl.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2019/10/28/concept-x509-certificate/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3h5MDEwOTAyMTAwNDQ5L2FydGljbGUvZGV0YWlscy81MjE0NTAwOQ==">X.509 数字证书的结构与解析 - ZP1015 - CSDN 博客</span></p>
+</blockquote>
+<h3 id="数字签名"><a class="markdownIt-Anchor" href="#数字签名">#</a> 数字签名</h3>
+<p>将报文按双方约定的 HASH 算法计算得到一个固定位数的报文摘要。在数学上保证：只要改动报文中任何一位，重新计算出的报文摘要值就会与原先的值不相符。这样就保证了报文的不可更改性。<br>
+将该报文摘要值用发送者的私人密钥加密，然后连同原报文一起发送给接收者，而产生的报文即称数字签名。</p>
+<h3 id="数字证书"><a class="markdownIt-Anchor" href="#数字证书">#</a> 数字证书</h3>
+<p>数字证书就是互联网通讯中标志通讯各方身份信息的一系列数据，提供了一种在 Internet 上验证您身份的方式，其作用类似于司机的驾驶执照或日常生活中的身份证。它是由一个由权威机构 - CA 机构，又称为证书授权，（Certificate Authority）中心发行的，人们可以在网上用它来识别对方的身份。数字证书是一个经证书授权中心数字签名的包含公开密钥拥有者信息以及公开密钥的文件。最简单的证书包含一个公开密钥、名称以及证书授权中心的数字签名。</p>
+<h3 id="交互过程"><a class="markdownIt-Anchor" href="#交互过程">#</a> 交互过程</h3>
+<p>鲍勃有两把钥匙，一把是公钥，另一把是私钥。</p>
+<img data-src="/2019/10/28/concept-x509-certificate/20160807210347532.jpg" class="">
+<p>鲍勃把公钥送给他的朋友们 - 帕蒂、道格、苏珊 - 每人一把。</p>
+<img data-src="/2019/10/28/concept-x509-certificate/20160807210405977.jpg" class="">
+<p>苏珊要给鲍勃写一封保密的信。她写完后用鲍勃的公钥加密，就可以达到保密的效果。</p>
+<img data-src="/2019/10/28/concept-x509-certificate/20160807210420243.jpg" class="">
+<p>鲍勃收信后，用私钥解密，就看到了信件内容。这里要强调的是，只要鲍勃的私钥不泄露，这封信就是安全的，即使落在别人手里，也无法解密。</p>
+<img data-src="/2019/10/28/concept-x509-certificate/20160807210804580.jpg" class="">
+<p>鲍勃给苏珊回信，决定采用 “数字签名”。他写完后先用 Hash 函数，生成信件的摘要（digest）。</p>
+<img data-src="/2019/10/28/concept-x509-certificate/20160807210507751.jpg" class="">
+<p>然后，鲍勃使用私钥，对这个摘要加密，生成” 数字签名”（signature）。</p>
+<img data-src="/2019/10/28/concept-x509-certificate/20160807210529876.jpg" class="">
+<p>鲍勃将这个签名，附在信件下面，一起发给苏珊。</p>
+<img data-src="/2019/10/28/concept-x509-certificate/20160807210545845.jpg" class="">
+<p>苏珊收信后，取下数字签名，用鲍勃的公钥解密，得到信件的摘要。由此证明，这封信确实是鲍勃发出的。</p>
+<img data-src="/2019/10/28/concept-x509-certificate/20160807210601886.jpg" class="">
+<p>苏珊再对信件本身使用 Hash 函数，将得到的结果，与上一步得到的摘要进行对比。如果两者一致，就证明这封信未被修改过。</p>
+<img data-src="/2019/10/28/concept-x509-certificate/20160807210619814.jpg" class="">
+<p>复杂的情况出现了。道格想欺骗苏珊，他偷偷使用了苏珊的电脑，用自己的公钥换走了鲍勃的公钥。此时，苏珊实际拥有的是道格的公钥，但是还以为这是鲍勃的公钥。因此，道格就可以冒充鲍勃，用自己的私钥做成” 数字签名”，写信给苏珊，让苏珊用假的鲍勃公钥进行解密。</p>
+<img data-src="/2019/10/28/concept-x509-certificate/20160807210640793.jpg" class="">
+<p>后来，苏珊感觉不对劲，发现自己无法确定公钥是否真的属于鲍勃。她想到了一个办法，要求鲍勃去找” 证书中心”（certificate authority，简称 CA），为公钥做认证。证书中心用自己的私钥，对鲍勃的公钥和一些相关信息一起加密，生成” 数字证书”（Digital Certificate）。</p>
+<img data-src="/2019/10/28/concept-x509-certificate/20160807210656731.jpg" class="">
+<p>鲍勃拿到数字证书以后，就可以放心了。以后再给苏珊写信，只要在签名的同时，再附上数字证书就行了。</p>
+<img data-src="/2019/10/28/concept-x509-certificate/20160807210712846.jpg" class="">
+<p>苏珊收信后，用 CA 的公钥解开数字证书，就可以拿到鲍勃真实的公钥了，然后就能证明” 数字签名” 是否真的是鲍勃签的。</p>
+<img data-src="/2019/10/28/concept-x509-certificate/20160807210734721.jpg" class="">
+<h3 id="x509-数字证书"><a class="markdownIt-Anchor" href="#x509-数字证书">#</a> X.509 数字证书</h3>
+<p>X.509 标准规定了证书可以包含什么信息，并说明了记录信息的方法（数据格式）。除了签名外，所有 X.509 证书还包含以下数据：</p>
+<p><strong>版本</strong><br>
+识别用于该证书的 X.509 标准的版本，这可以影响证书中所能指定的信息。迄今为止，已定义的版本有三个。</p>
+<p><strong>序列号</strong><br>
+发放证书的实体有责任为证书指定序列号，以使其区别于该实体发放的其它证书。此信息用途很多。例如，如果某一证书被撤消，其序列号将放到证书撤消清单 (CRL) 中。</p>
+<p><strong>签名算法标识符</strong><br>
+用于识别 CA 签写证书时所用的算法。</p>
+<p><strong>签发人姓名</strong><br>
+签写证书的实体的 X.500 名称。它通常为一个 CA。 使用该证书意味着信任签写该证书的实体（注意：有些情况下（例如根或顶层 CA 证书），签发人会签写自己的证书）。</p>
+<p><strong>有效期</strong><br>
+每个证书均只能在一个有限的时间段内有效。该有效期以起始日期和时间及终止日期和时间表示，可以短至几秒或长至一世纪。所选有效期取决于许多因素，例如用于签写证书的私钥的使用频率及愿为证书支付的金钱等。它是在没有危及相关私钥的条件下，实体可以依赖公钥值的预计时间。</p>
+<p><strong>主体名</strong><br>
+证书可以识别其公钥的实体名。此名称使用 X.500 标准，因此在 Internet 中应是唯一的。它是实体的特征名 (DN)，例如，<br>
+CN=Java Duke，OU=Java Software Division，O=Sun Microsystems Inc，C=US<br>
+（这些指主体的通用名、组织单位、组织和国家）。</p>
+<p><strong>主体公钥信息</strong><br>
+这是被命名实体的公钥，同时包括指定该密钥所属公钥密码系统的算法标识符及所有相关的密钥参数。</p>
+<p><strong>常见的 X.509 证书格式</strong></p>
+<ul>
+<li>
+<p><strong>.der</strong> — in binary DER form</p>
+</li>
+<li>
+<p><strong>.pem</strong> — This is a (Privacy-enhanced Electronic Mail) Base64 encoded DER certificate, enclosed between “—–BEGIN CERTIFICATE—–” and “—–END CERTIFICATE—–“</p>
+</li>
+<li>
+<p><strong>.cer, .crt</strong> — Base64-encoded certificates are also common (see .pem above) or binary DER form (.der).</p>
+</li>
+<li>
+<p><strong>.p7b and .p7c</strong> — PKCS#7 SignedData structure without data, just certificate(s) or CRL(s).</p>
+</li>
+<li>
+<p><strong>.p12</strong> — PKCS#12 files may contain certificate(s) (public) and private keys (password protected).</p>
+</li>
+<li>
+<p><strong>.pfx</strong> — PFX is the predecessor of PKCS#12. This type of file usually contains data in PKCS#12 format (e.g., with PFX files generated in IIS).</p>
+</li>
+</ul>
+<p><strong>证书文件 / 私钥文件</strong></p>
+<p>在 HTTPS 通讯中最常用的是 cer/crt 和 pem。下面以 pem 格式的证书为例进行说明。下面是一个完整的 PEM 格式证书：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">Certificate:</span><br><span class="line"></span><br><span class="line">Data:</span><br><span class="line"></span><br><span class="line">     Version: 1 (0x0)</span><br><span class="line"></span><br><span class="line">Serial Number: 1 (0x1)</span><br><span class="line"></span><br><span class="line">Signature Algorithm: md5WithRSAEncryption</span><br><span class="line"></span><br><span class="line">Issuer: C&#x3D;US, ST&#x3D;Montana, L&#x3D;Bozeman, O&#x3D;sawtooth, OU&#x3D;consulting, CN&#x3D;www.sawtooth-consulting.com&#x2F;emailAddress&#x3D;info@yassl.com</span><br><span class="line"></span><br><span class="line">Validity</span><br><span class="line"></span><br><span class="line">    Not Before: Jun 30 18:52:17 2010 GMT</span><br><span class="line"></span><br><span class="line">    Not After : Mar 26 18:52:17 2013 GMT</span><br><span class="line"></span><br><span class="line">Subject: C&#x3D;US, ST&#x3D;Montana, L&#x3D;Bozeman, O&#x3D;yaSSL, OU&#x3D;support, CN&#x3D;www.yassl.com&#x2F;emailAddress&#x3D;info@yassl.com</span><br><span class="line"></span><br><span class="line">Subject Public Key Info:</span><br><span class="line"></span><br><span class="line">Public Key Algorithm: rsaEncryption</span><br><span class="line"></span><br><span class="line">RSA Public Key: (512 bit)</span><br><span class="line"></span><br><span class="line">    Modulus (512 bit):</span><br><span class="line"></span><br><span class="line">        00:c6:7b:c0:68:81:2f:de:82:3f:f9:ac:c3:86:4a:66:b7:ec:d4:f1:f6:64:21:ff:f5:a2:34:42:d0:38:9f:c6:dd:3b:6e:26:65:6a:54:96:dd:d2:7b:eb:36:a2:ae:7e:2a:9e:7e:56:a5:b6:87:9f:15:c7:18:66:7e:16:77:e2:a7</span><br><span class="line"></span><br><span class="line">    Exponent: 65537 (0x10001)</span><br><span class="line"></span><br><span class="line">Signature Algorithm: md5WithRSAEncryption</span><br><span class="line"></span><br><span class="line">    58:a9:98:e7:16:52:4c:40:e7:e1:47:92:19:1b:3a:8f:97:6c:7b:b7:b0:cb:20:6d:ad:b5:d3:47:58:d8:e4:f2:3e:32:e9:ef:87:77:e5:54:36:f4:8d:50:8d:07:b4:77:45:ea:9d:a4:33:36:9b:0b:e0:74:58:11:c5:01:7b:4d</span><br><span class="line"></span><br><span class="line">-----BEGIN CERTIFICATE-----</span><br><span class="line"></span><br><span class="line">MIICFDCCAb4CAQEwDQYJKoZIhvcNAQEEBQAwgZ4xCzAJBgNVBAYTAlVTMRAwDgYDVQQIEwdNb250YW5hMRAwDgYDVQQHEwdCb3plbWFuMREwDwYDVQQKEwhzYXd0b290aDETMBEGA1UECxMKY29uc3VsdGluZzEkMCIGA1UEAxMbd3d3LnNhd3Rvb3RoLWNvbnN1bHRpbmcuY29tMR0wGwYJKoZIhvcNAQkBFg5pbmZvQHlhc3NsLmNvbTAeFw0xMDA2MzAxODUyMTdaFw0xMzAzMjYxODUyMTdaMIGKMQswCQYDVQQGEwJVUzEQMA4GA1UECBMHTW9udGFuYTEQMA4GA1UEBxMHQm96ZW1hbjEOMAwGA1UEChMFeWFTU0wxEDAOBgNVBAsTB3N1cHBvcnQxFjAUBgNVBAMTDXd3dy55YXNzbC5jb20xHTAbBgkqhkiG9w0BCQEWDmluZm9AeWFzc2wuY29tMFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAMZ7wGiBL96CP&#x2F;msw4ZKZrfs1PH2ZCH&#x2F;9aI0QtA4n8bdO24mZWpUlt3Se+s2oq5+Kp5+VqW2h58VxxhmfhZ34qcCAwEAATANBgkqhkiG9w0BAQQFAANBAFipmOcWUkxA5+FHkhkbOo+XbHu3sMsgba2100dY2OTyPjLp74d35VQ29I1QjQe0d0XqnaQzNpsL4HRYEcUBe00&#x3D;</span><br><span class="line"></span><br><span class="line">-----END CERTIFICATE-----</span><br></pre></td></tr></table></figure>
+<p>从 Certificate 开始到 &quot;-----BEGIN CERTIFICATE-----“为止，中间的内容是证书的明文格式。从”-----BEGIN CERTIFICATE-----“开始到”-----END CERTIFICATE-----&quot; 为止是证书的明文格式经过 ASN.1 编码再经过 Base64 编码得到的。</p>
+<p>对于私钥文件，真正的私钥是包含在字符串 &quot;-----BEGIN PRIVATE KEY-----“和字符串”-----END PRIVATE KEY-----“之间。如果该私钥文件是 pkcs8 格式的，那么该私钥文件的格式如下。如果不是 pkcs8 格式的，那么”-----BEGIN PRIVATE KEY-----“和”-----END PRIVATE KEY-----&quot; 之间的内容就是私钥的 Base64 编码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">PrivateKeyInfo ::&#x3D; SEQUENCE &#123;</span><br><span class="line"></span><br><span class="line">    version Version(INTEGER),</span><br><span class="line"></span><br><span class="line">    privateKeyAlgorithm PrivateKeyAlgorithmIdentifier (AlgorithmIdentifier),</span><br><span class="line"></span><br><span class="line">    privateKey PrivateKey(OCTET STRING),</span><br><span class="line"></span><br><span class="line">    attributes [] IMPLICIT Attributes OPTIONAL(SET OF Attribute)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="x509-证书数据结构"><a class="markdownIt-Anchor" href="#x509-证书数据结构">#</a> X.509 证书数据结构</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br></pre></td><td class="code"><pre><span class="line">Certificate ::&#x3D; SEQUENCE &#123;</span><br><span class="line"></span><br><span class="line">        tbsCertificate       TBSCertificate, -- 证书主体</span><br><span class="line"></span><br><span class="line">        signatureAlgorithm   AlgorithmIdentifier, -- 证书签名算法标识</span><br><span class="line"></span><br><span class="line">        signatureValue       BIT STRING --证书签名值,是使用signatureAlgorithm部分指定的签名算法对tbsCertificate证书主题部分签名后的值.</span><br><span class="line"></span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line">TBSCertificate ::&#x3D; SEQUENCE &#123;</span><br><span class="line"></span><br><span class="line">        version         [] EXPLICIT Version DEFAULT v1, -- 证书版本号</span><br><span class="line"></span><br><span class="line">        serialNumber         CertificateSerialNumber, -- 证书序列号，对同一CA所颁发的证书，序列号唯一标识证书</span><br><span class="line"></span><br><span class="line">        signature            AlgorithmIdentifier, --证书签名算法标识</span><br><span class="line"></span><br><span class="line">        issuer               Name,                --证书发行者名称</span><br><span class="line"></span><br><span class="line">        validity             Validity,            --证书有效期</span><br><span class="line"></span><br><span class="line">        subject              Name,                --证书主体名称</span><br><span class="line"></span><br><span class="line">        subjectPublicKeyInfo SubjectPublicKeyInfo,--证书公钥</span><br><span class="line"></span><br><span class="line">        issuerUniqueID [] IMPLICIT UniqueIdentifier OPTIONAL, -- 证书发行者ID(可选)，只在证书版本2、3中才有</span><br><span class="line"></span><br><span class="line">        subjectUniqueID [] IMPLICIT UniqueIdentifier OPTIONAL,-- 证书主体ID(可选)，只在证书版本2、3中才有</span><br><span class="line"></span><br><span class="line">        extensions      [] EXPLICIT Extensions OPTIONAL -- 证书扩展段（可选），只在证书版本3中才有</span><br><span class="line">        </span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">Version ::&#x3D; INTEGER &#123; v1(0), v2(1), v3(2) &#125;</span><br><span class="line"></span><br><span class="line">CertificateSerialNumber ::&#x3D; INTEGER</span><br><span class="line"></span><br><span class="line">AlgorithmIdentifier ::&#x3D; SEQUENCE &#123;</span><br><span class="line"></span><br><span class="line">        algorithm               OBJECT IDENTIFIER,</span><br><span class="line"></span><br><span class="line">        parameters              ANY DEFINED BY algorithm OPTIONAL &#125;</span><br><span class="line"></span><br><span class="line">parameters:</span><br><span class="line"></span><br><span class="line">Dss-Parms ::&#x3D; SEQUENCE &#123; -- parameters ，DSA(DSS)算法时的 parameters,</span><br><span class="line"></span><br><span class="line">RSA 算法没有此参数</span><br><span class="line"></span><br><span class="line">        p             INTEGER,</span><br><span class="line"></span><br><span class="line">        q             INTEGER,</span><br><span class="line"></span><br><span class="line">        g             INTEGER &#125;</span><br><span class="line"></span><br><span class="line">signatureValue：</span><br><span class="line"></span><br><span class="line">Dss-Sig-Value ::&#x3D; SEQUENCE &#123; -- sha1DSA 签名算法时,签名值</span><br><span class="line"></span><br><span class="line">                   r       INTEGER,</span><br><span class="line"></span><br><span class="line">                   s       INTEGER &#125;</span><br><span class="line"></span><br><span class="line">Name ::&#x3D; CHOICE &#123;</span><br><span class="line"></span><br><span class="line">     RDNSequence  &#125;</span><br><span class="line"></span><br><span class="line">RDNSequence ::&#x3D; SEQUENCE OF RelativeDistinguishedName</span><br><span class="line"></span><br><span class="line">RelativeDistinguishedName ::&#x3D;</span><br><span class="line"></span><br><span class="line">     SET OF AttributeTypeAndValue</span><br><span class="line"></span><br><span class="line">AttributeTypeAndValue ::&#x3D; SEQUENCE &#123;</span><br><span class="line"></span><br><span class="line">     type     AttributeType,</span><br><span class="line"></span><br><span class="line">     value    AttributeValue &#125;</span><br><span class="line"></span><br><span class="line">AttributeType ::&#x3D; OBJECT IDENTIFIER</span><br><span class="line"></span><br><span class="line">AttributeValue ::&#x3D; ANY DEFINED BY AttributeType</span><br><span class="line"></span><br><span class="line">Validity ::&#x3D; SEQUENCE &#123;</span><br><span class="line"></span><br><span class="line">        notBefore      Time,  -- 证书有效期起始时间</span><br><span class="line"></span><br><span class="line">        notAfter       Time  -- 证书有效期终止时间</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">Time ::&#x3D; CHOICE &#123;</span><br><span class="line"></span><br><span class="line">        utcTime        UTCTime,</span><br><span class="line"></span><br><span class="line">        generalTime    GeneralizedTime &#125;</span><br><span class="line"></span><br><span class="line">UniqueIdentifier ::&#x3D; BIT STRING</span><br><span class="line"></span><br><span class="line">SubjectPublicKeyInfo ::&#x3D; SEQUENCE &#123;</span><br><span class="line"></span><br><span class="line">        algorithm            AlgorithmIdentifier, -- 公钥算法</span><br><span class="line"></span><br><span class="line">        subjectPublicKey     BIT STRING            -- 公钥值</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">subjectPublicKey:</span><br><span class="line"></span><br><span class="line">RSAPublicKey ::&#x3D; SEQUENCE &#123; -- RSA 算法时的公钥值</span><br><span class="line"></span><br><span class="line">         modulus            INTEGER, -- n</span><br><span class="line"></span><br><span class="line">         publicExponent     INTEGER -- e -- &#125;</span><br><span class="line"></span><br><span class="line">Extensions ::&#x3D; SEQUENCE SIZE (1..MAX) OF Extension</span><br><span class="line"></span><br><span class="line">Extension ::&#x3D; SEQUENCE &#123;</span><br><span class="line"></span><br><span class="line">        extnID      OBJECT IDENTIFIER,</span><br><span class="line"></span><br><span class="line">        critical    BOOLEAN DEFAULT FALSE,</span><br><span class="line"></span><br><span class="line">        extnValue   OCTET STRING &#125;</span><br></pre></td></tr></table></figure>
+
+      <div class="tags">
+          <a href="/tags/concept/" rel="tag"><i class="ic i-tag"></i> concept</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2022-01-07 15:06:30" itemprop="dateModified" datetime="2022-01-07T15:06:30+08:00">2022-01-07</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2019/10/28/csharp-async/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipew8gmvyj20zk0m87wh.jpg" title="C#中 Thread，Task，Async&#x2F;Await，IAsyncResult 的那些事儿！">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>C#中 Thread，Task，Async/Await，IAsyncResult 的那些事儿！</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2019/10/28/concept-base64/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipevgoki5j20zk0m84qp.jpg" title="Base64 原理解析">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Base64 原理解析</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D"><span class="toc-number">1.</span> <span class="toc-text"> 数字签名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E8%AF%81%E4%B9%A6"><span class="toc-number">2.</span> <span class="toc-text"> 数字证书</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%A4%E4%BA%92%E8%BF%87%E7%A8%8B"><span class="toc-number">3.</span> <span class="toc-text"> 交互过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#x509-%E6%95%B0%E5%AD%97%E8%AF%81%E4%B9%A6"><span class="toc-number">4.</span> <span class="toc-text"> X.509 数字证书</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#x509-%E8%AF%81%E4%B9%A6%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-number">5.</span> <span class="toc-text"> X.509 证书数据结构</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">282</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">40</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2019/10/28/csharp-async/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2019/10/28/concept-base64/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2022</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ D E W</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2019/10/28/concept-x509-certificate/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

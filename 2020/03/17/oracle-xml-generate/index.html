@@ -1,0 +1,415 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="db" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2020/03/17/oracle-xml-generate/">
+
+
+
+  <title>
+Oracle Generate XML |
+D E W = 露の世</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">Oracle Generate XML
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2020-03-17 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2020-03-17T00:00:00+08:00">2020-03-17</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">D E W</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclhpw3lwj20zk0m8gvw.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giph4fomxoj20zk0m8axp.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipevgoki5j20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicitcxhpij20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicliwyw55j20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicis081o9j20zk0m8dmr.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2020/03/17/oracle-xml-generate/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>转载: <span class="exturl" data-url="aHR0cHM6Ly9vcmFjbGUtYmFzZS5jb20vYXJ0aWNsZXMvbWlzYy9zcWx4bWwtc3FseC1nZW5lcmF0aW5nLXhtbC1jb250ZW50LXVzaW5nLXNxbA==">ORACLE-BASE - SQL/XML (SQLX) : Generating XML using SQL</span></p>
+</blockquote>
+<p>The example code in this article assumes you have access to the SCOTT schema.</p>
+<h2 id="the-past"><a class="markdownIt-Anchor" href="#the-past">#</a> The Past</h2>
+<p>In Oracle 9i Release 1 it was necessary to use several database object types to create complex XML documents using SQL.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> TYPE emp_row <span class="keyword">AS</span> OBJECT (</span><br><span class="line">  EMPNO     NUMBER(<span class="number">4</span>),</span><br><span class="line">  ENAME     VARCHAR2(<span class="number">10</span>),</span><br><span class="line">  JOB       VARCHAR2(<span class="number">9</span>),</span><br><span class="line">  MGR       NUMBER(<span class="number">4</span>),</span><br><span class="line">  HIREDATE  <span class="type">DATE</span>,</span><br><span class="line">  SAL       NUMBER(<span class="number">7</span>,<span class="number">2</span>),</span><br><span class="line">  COMM      NUMBER(<span class="number">7</span>,<span class="number">2</span>)</span><br><span class="line">);</span><br><span class="line"><span class="operator">/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> TYPE emp_tab <span class="keyword">AS</span> <span class="keyword">TABLE</span> <span class="keyword">OF</span> emp_row;</span><br><span class="line"><span class="operator">/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> TYPE dept_row <span class="keyword">AS</span> OBJECT (</span><br><span class="line">  DEPTNO    NUMBER(<span class="number">2</span>),</span><br><span class="line">  DNAME     VARCHAR2(<span class="number">14</span>),</span><br><span class="line">  LOC       VARCHAR2(<span class="number">13</span>),</span><br><span class="line">  EMP_LIST  emp_tab</span><br><span class="line">);</span><br><span class="line"><span class="operator">/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> SYS_XMLAGG (</span><br><span class="line">         SYS_XMLGEN(</span><br><span class="line">           dept_row(</span><br><span class="line">             d.deptno, d.dname, d.loc,</span><br><span class="line">             <span class="built_in">CAST</span>(<span class="keyword">MULTISET</span>(<span class="keyword">SELECT</span> e.empno, e.ename, e.job, e.mgr, e.hiredate, e.sal, e.comm</span><br><span class="line">                           <span class="keyword">FROM</span>   emp e</span><br><span class="line">                           <span class="keyword">WHERE</span>  e.deptno <span class="operator">=</span> d.deptno) <span class="keyword">AS</span> emp_tab)</span><br><span class="line">           ),</span><br><span class="line">           SYS.XMLGENFORMATtYPE.createFormat(<span class="string">&#x27;DEPT&#x27;</span>)</span><br><span class="line">         )</span><br><span class="line">       ) <span class="keyword">AS</span> &quot;XML_QUERY&quot;</span><br><span class="line"><span class="keyword">FROM</span>   dept d</span><br><span class="line"><span class="keyword">WHERE</span>  d.deptno <span class="operator">=</span> <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">XML_QUERY</span><br><span class="line"><span class="comment">----------------------------------------------------------------------------------------------------</span></span><br><span class="line"><span class="operator">&lt;</span>?xml version<span class="operator">=</span>&quot;1.0&quot;?<span class="operator">&gt;</span></span><br><span class="line"><span class="operator">&lt;</span>ROWSET<span class="operator">&gt;</span></span><br><span class="line">  <span class="operator">&lt;</span>DEPT<span class="operator">&gt;</span></span><br><span class="line">    <span class="operator">&lt;</span>DEPTNO<span class="operator">&gt;</span><span class="number">10</span><span class="operator">&lt;</span><span class="operator">/</span>DEPTNO<span class="operator">&gt;</span></span><br><span class="line">    <span class="operator">&lt;</span>DNAME<span class="operator">&gt;</span>ACCOUNTING<span class="operator">&lt;</span><span class="operator">/</span>DNAME<span class="operator">&gt;</span></span><br><span class="line">    <span class="operator">&lt;</span>LOC<span class="operator">&gt;</span><span class="keyword">NEW</span> YORK<span class="operator">&lt;</span><span class="operator">/</span>LOC<span class="operator">&gt;</span></span><br><span class="line">    <span class="operator">&lt;</span>EMP_LIST<span class="operator">&gt;</span></span><br><span class="line">      <span class="operator">&lt;</span>EMP_ROW<span class="operator">&gt;</span></span><br><span class="line">        <span class="operator">&lt;</span>EMPNO<span class="operator">&gt;</span><span class="number">7782</span><span class="operator">&lt;</span><span class="operator">/</span>EMPNO<span class="operator">&gt;</span></span><br><span class="line">        <span class="operator">&lt;</span>ENAME<span class="operator">&gt;</span>CLARK<span class="operator">&lt;</span><span class="operator">/</span>ENAME<span class="operator">&gt;</span></span><br><span class="line">        <span class="operator">&lt;</span>JOB<span class="operator">&gt;</span>MANAGER<span class="operator">&lt;</span><span class="operator">/</span>JOB<span class="operator">&gt;</span></span><br><span class="line">        <span class="operator">&lt;</span>MGR<span class="operator">&gt;</span><span class="number">7839</span><span class="operator">&lt;</span><span class="operator">/</span>MGR<span class="operator">&gt;</span></span><br><span class="line">        <span class="operator">&lt;</span>HIREDATE<span class="operator">&gt;</span><span class="number">09</span><span class="operator">-</span>JUN<span class="number">-1981</span> <span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span><span class="operator">&lt;</span><span class="operator">/</span>HIREDATE<span class="operator">&gt;</span></span><br><span class="line">        <span class="operator">&lt;</span>SAL<span class="operator">&gt;</span><span class="number">2450</span><span class="operator">&lt;</span><span class="operator">/</span>SAL<span class="operator">&gt;</span></span><br><span class="line">      <span class="operator">&lt;</span><span class="operator">/</span>EMP_ROW<span class="operator">&gt;</span></span><br><span class="line">      <span class="operator">&lt;</span>EMP_ROW<span class="operator">&gt;</span></span><br><span class="line">        <span class="operator">&lt;</span>EMPNO<span class="operator">&gt;</span><span class="number">7839</span><span class="operator">&lt;</span><span class="operator">/</span>EMPNO<span class="operator">&gt;</span></span><br><span class="line">        <span class="operator">&lt;</span>ENAME<span class="operator">&gt;</span>KING<span class="operator">&lt;</span><span class="operator">/</span>ENAME<span class="operator">&gt;</span></span><br><span class="line">        <span class="operator">&lt;</span>JOB<span class="operator">&gt;</span>PRESIDENT<span class="operator">&lt;</span><span class="operator">/</span>JOB<span class="operator">&gt;</span></span><br><span class="line">        <span class="operator">&lt;</span>HIREDATE<span class="operator">&gt;</span><span class="number">17</span><span class="operator">-</span>NOV<span class="number">-1981</span> <span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span><span class="operator">&lt;</span><span class="operator">/</span>HIREDATE<span class="operator">&gt;</span></span><br><span class="line">        <span class="operator">&lt;</span>SAL<span class="operator">&gt;</span><span class="number">5000</span><span class="operator">&lt;</span><span class="operator">/</span>SAL<span class="operator">&gt;</span></span><br><span class="line">      <span class="operator">&lt;</span><span class="operator">/</span>EMP_ROW<span class="operator">&gt;</span></span><br><span class="line">      <span class="operator">&lt;</span>EMP_ROW<span class="operator">&gt;</span></span><br><span class="line">        <span class="operator">&lt;</span>EMPNO<span class="operator">&gt;</span><span class="number">7934</span><span class="operator">&lt;</span><span class="operator">/</span>EMPNO<span class="operator">&gt;</span></span><br><span class="line">        <span class="operator">&lt;</span>ENAME<span class="operator">&gt;</span>MILLER<span class="operator">&lt;</span><span class="operator">/</span>ENAME<span class="operator">&gt;</span></span><br><span class="line">        <span class="operator">&lt;</span>JOB<span class="operator">&gt;</span>CLERK<span class="operator">&lt;</span><span class="operator">/</span>JOB<span class="operator">&gt;</span></span><br><span class="line">        <span class="operator">&lt;</span>MGR<span class="operator">&gt;</span><span class="number">7782</span><span class="operator">&lt;</span><span class="operator">/</span>MGR<span class="operator">&gt;</span></span><br><span class="line">        <span class="operator">&lt;</span>HIREDATE<span class="operator">&gt;</span><span class="number">23</span><span class="operator">-</span>JAN<span class="number">-1982</span> <span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span><span class="operator">&lt;</span><span class="operator">/</span>HIREDATE<span class="operator">&gt;</span></span><br><span class="line">        <span class="operator">&lt;</span>SAL<span class="operator">&gt;</span><span class="number">1300</span><span class="operator">&lt;</span><span class="operator">/</span>SAL<span class="operator">&gt;</span></span><br><span class="line">      <span class="operator">&lt;</span><span class="operator">/</span>EMP_ROW<span class="operator">&gt;</span></span><br><span class="line">    <span class="operator">&lt;</span><span class="operator">/</span>EMP_LIST<span class="operator">&gt;</span></span><br><span class="line">  <span class="operator">&lt;</span><span class="operator">/</span>DEPT<span class="operator">&gt;</span></span><br><span class="line"><span class="operator">&lt;</span><span class="operator">/</span>ROWSET<span class="operator">&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="number">1</span> <span class="type">row</span> selected.</span><br><span class="line"></span><br><span class="line"><span class="keyword">SQL</span><span class="operator">&gt;</span></span><br></pre></td></tr></table></figure>
+<p>This may cause administration problems as the number of database object types will increase drastically as the number of XML extracts increase.</p>
+<h2 id="sqlxml-functions"><a class="markdownIt-Anchor" href="#sqlxml-functions">#</a> SQL/XML Functions</h2>
+<p>The SQL/XML functions present in Oracle9i Release 2 allow nested structures to be queried in a standard way with no additional database object definitions. In this article I will only present those I use most frequently.</p>
+<h3 id="xmlelement"><a class="markdownIt-Anchor" href="#xmlelement">#</a> XMLELEMENT</h3>
+<p>The  <code>XMLELEMENT</code>  function is the basic unit for turning column data into XML fragments. In the following example, the first parameter specifies the tag name to be used and the second specifies the column that will supply the data contained within the tag.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> XMLELEMENT(&quot;name&quot;, e.ename) <span class="keyword">AS</span> employee</span><br><span class="line"><span class="keyword">FROM</span>   emp e</span><br><span class="line"><span class="keyword">WHERE</span>  e.empno <span class="operator">=</span> <span class="number">7782</span>;</span><br><span class="line"></span><br><span class="line">EMPLOYEE</span><br><span class="line"><span class="comment">----------------------------------------------------------------------------------------------------</span></span><br><span class="line"><span class="operator">&lt;</span>name<span class="operator">&gt;</span>CLARK<span class="operator">&lt;</span><span class="operator">/</span>name<span class="operator">&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="number">1</span> <span class="type">row</span> selected.</span><br><span class="line"></span><br><span class="line"><span class="keyword">SQL</span><span class="operator">&gt;</span></span><br></pre></td></tr></table></figure>
+<p>The  <code>XMLELEMENT</code>  function can also be used to group together and place a tag around existing XML fragments.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> XMLELEMENT(&quot;employee&quot;,</span><br><span class="line">         XMLELEMENT(&quot;works_number&quot;, e.empno),</span><br><span class="line">         XMLELEMENT(&quot;name&quot;, e.ename)</span><br><span class="line">       ) <span class="keyword">AS</span> employee</span><br><span class="line"><span class="keyword">FROM</span>   emp e</span><br><span class="line"><span class="keyword">WHERE</span>  e.empno <span class="operator">=</span> <span class="number">7782</span>;</span><br><span class="line"></span><br><span class="line">EMPLOYEE</span><br><span class="line"><span class="comment">----------------------------------------------------------------------------------------------------</span></span><br><span class="line"><span class="operator">&lt;</span>employee<span class="operator">&gt;</span><span class="operator">&lt;</span>works_number<span class="operator">&gt;</span><span class="number">7782</span><span class="operator">&lt;</span><span class="operator">/</span>works_number<span class="operator">&gt;</span><span class="operator">&lt;</span>name<span class="operator">&gt;</span>CLARK<span class="operator">&lt;</span><span class="operator">/</span>name<span class="operator">&gt;</span><span class="operator">&lt;</span><span class="operator">/</span>employee<span class="operator">&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="number">1</span> <span class="type">row</span> selected.</span><br><span class="line"></span><br><span class="line"><span class="keyword">SQL</span><span class="operator">&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="xmlattributes"><a class="markdownIt-Anchor" href="#xmlattributes">#</a> XMLATTRIBUTES</h3>
+<p>The  <code>XMLATRIBUTES</code>  function converts column data into attributes of the parent element. The function call should contain one or more columns in a comma separated list. The attribute names will match the column names using the default uppercase unless an alias is used.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> XMLELEMENT(&quot;employee&quot;,</span><br><span class="line">         XMLATTRIBUTES(</span><br><span class="line">           e.empno <span class="keyword">AS</span> &quot;works_number&quot;,</span><br><span class="line">           e.ename <span class="keyword">AS</span> &quot;name&quot;)</span><br><span class="line">       ) <span class="keyword">AS</span> employee</span><br><span class="line"><span class="keyword">FROM</span>   emp e</span><br><span class="line"><span class="keyword">WHERE</span>  e.empno <span class="operator">=</span> <span class="number">7782</span>;</span><br><span class="line"></span><br><span class="line">EMPLOYEE</span><br><span class="line"><span class="comment">----------------------------------------------------------------------------------------------------</span></span><br><span class="line"><span class="operator">&lt;</span>employee works_number<span class="operator">=</span>&quot;7782&quot; name<span class="operator">=</span>&quot;CLARK&quot;<span class="operator">&gt;</span><span class="operator">&lt;</span><span class="operator">/</span>employee<span class="operator">&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="number">1</span> <span class="type">row</span> selected.</span><br><span class="line"></span><br><span class="line"><span class="keyword">SQL</span><span class="operator">&gt;</span></span><br></pre></td></tr></table></figure>
+<p>The parent  <code>XMLELEMENT</code>  can contain both attributes and child tags.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> XMLELEMENT(&quot;employee&quot;,</span><br><span class="line">         XMLATTRIBUTES(e.empno <span class="keyword">AS</span> &quot;works_number&quot;),</span><br><span class="line">         XMLELEMENT(&quot;name&quot;,e.ename),</span><br><span class="line">         XMLELEMENT(&quot;job&quot;,e.job)</span><br><span class="line">       ) <span class="keyword">AS</span> employee</span><br><span class="line"><span class="keyword">FROM</span>   emp e</span><br><span class="line"><span class="keyword">WHERE</span>  e.empno <span class="operator">=</span> <span class="number">7782</span>;</span><br><span class="line"></span><br><span class="line">EMPLOYEE</span><br><span class="line"><span class="comment">----------------------------------------------------------------------------------------------------</span></span><br><span class="line"><span class="operator">&lt;</span>employee works_number<span class="operator">=</span>&quot;7782&quot;<span class="operator">&gt;</span><span class="operator">&lt;</span>name<span class="operator">&gt;</span>CLARK<span class="operator">&lt;</span><span class="operator">/</span>name<span class="operator">&gt;</span><span class="operator">&lt;</span>job<span class="operator">&gt;</span>MANAGER<span class="operator">&lt;</span><span class="operator">/</span>job<span class="operator">&gt;</span><span class="operator">&lt;</span><span class="operator">/</span>employee<span class="operator">&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="number">1</span> <span class="type">row</span> selected.</span><br><span class="line"></span><br><span class="line"><span class="keyword">SQL</span><span class="operator">&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="xmlforest"><a class="markdownIt-Anchor" href="#xmlforest">#</a> XMLFOREST</h3>
+<p>Using  <code>XMLELEMENT</code>  to deal with lots of columns is rather clumsy. Like  <code>XMLATTRIBUTES</code> , the  <code>XMLFOREST</code>  function allows you to process multiple columns at once.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> XMLELEMENT(&quot;employee&quot;,</span><br><span class="line">         XMLFOREST(</span><br><span class="line">           e.empno <span class="keyword">AS</span> &quot;works_number&quot;,</span><br><span class="line">           e.ename <span class="keyword">AS</span> &quot;name&quot;,</span><br><span class="line">           e.job <span class="keyword">AS</span> &quot;job&quot;)</span><br><span class="line">       ) <span class="keyword">AS</span> employee</span><br><span class="line"><span class="keyword">FROM</span>   emp e</span><br><span class="line"><span class="keyword">WHERE</span>  e.empno <span class="operator">=</span> <span class="number">7782</span>;</span><br><span class="line"></span><br><span class="line">EMPLOYEE</span><br><span class="line"><span class="comment">----------------------------------------------------------------------------------------------------</span></span><br><span class="line"><span class="operator">&lt;</span>employee<span class="operator">&gt;</span><span class="operator">&lt;</span>works_number<span class="operator">&gt;</span><span class="number">7782</span><span class="operator">&lt;</span><span class="operator">/</span>works_number<span class="operator">&gt;</span><span class="operator">&lt;</span>name<span class="operator">&gt;</span>CLARK<span class="operator">&lt;</span><span class="operator">/</span>name<span class="operator">&gt;</span><span class="operator">&lt;</span>job<span class="operator">&gt;</span>MANAGER<span class="operator">&lt;</span><span class="operator">/</span>job<span class="operator">&gt;</span><span class="operator">&lt;</span><span class="operator">/</span>employee<span class="operator">&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="number">1</span> <span class="type">row</span> selected.</span><br><span class="line"></span><br><span class="line"><span class="keyword">SQL</span><span class="operator">&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="xmlagg"><a class="markdownIt-Anchor" href="#xmlagg">#</a> XMLAGG</h3>
+<p>So far we have just looked at creating individual XML fragments. What happens if we start dealing with multiple rows of data?</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> XMLELEMENT(&quot;employee&quot;,</span><br><span class="line">         XMLFOREST(</span><br><span class="line">           e.empno <span class="keyword">AS</span> &quot;works_number&quot;,</span><br><span class="line">           e.ename <span class="keyword">AS</span> &quot;name&quot;)</span><br><span class="line">       ) <span class="keyword">AS</span> employees</span><br><span class="line"><span class="keyword">FROM</span>   emp e</span><br><span class="line"><span class="keyword">WHERE</span>  e.deptno <span class="operator">=</span> <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">EMPLOYEES</span><br><span class="line"><span class="comment">----------------------------------------------------------------------------------------------------</span></span><br><span class="line"><span class="operator">&lt;</span>employee<span class="operator">&gt;</span><span class="operator">&lt;</span>works_number<span class="operator">&gt;</span><span class="number">7782</span><span class="operator">&lt;</span><span class="operator">/</span>works_number<span class="operator">&gt;</span><span class="operator">&lt;</span>name<span class="operator">&gt;</span>CLARK<span class="operator">&lt;</span><span class="operator">/</span>name<span class="operator">&gt;</span><span class="operator">&lt;</span><span class="operator">/</span>employee<span class="operator">&gt;</span></span><br><span class="line"><span class="operator">&lt;</span>employee<span class="operator">&gt;</span><span class="operator">&lt;</span>works_number<span class="operator">&gt;</span><span class="number">7839</span><span class="operator">&lt;</span><span class="operator">/</span>works_number<span class="operator">&gt;</span><span class="operator">&lt;</span>name<span class="operator">&gt;</span>KING<span class="operator">&lt;</span><span class="operator">/</span>name<span class="operator">&gt;</span><span class="operator">&lt;</span><span class="operator">/</span>employee<span class="operator">&gt;</span></span><br><span class="line"><span class="operator">&lt;</span>employee<span class="operator">&gt;</span><span class="operator">&lt;</span>works_number<span class="operator">&gt;</span><span class="number">7934</span><span class="operator">&lt;</span><span class="operator">/</span>works_number<span class="operator">&gt;</span><span class="operator">&lt;</span>name<span class="operator">&gt;</span>MILLER<span class="operator">&lt;</span><span class="operator">/</span>name<span class="operator">&gt;</span><span class="operator">&lt;</span><span class="operator">/</span>employee<span class="operator">&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="number">3</span> <span class="keyword">rows</span> selected.</span><br><span class="line"></span><br><span class="line"><span class="keyword">SQL</span><span class="operator">&gt;</span></span><br></pre></td></tr></table></figure>
+<p>We got the XML we wanted, but it is returned as three fragments in three separate rows. The  <code>XMLAGG</code>  function allows is to aggregate these separate fragments into a single fragment. In the following example we can see the three fragments are now presented in a single row.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> XMLAGG(</span><br><span class="line">         XMLELEMENT(&quot;employee&quot;,</span><br><span class="line">           XMLFOREST(</span><br><span class="line">             e.empno <span class="keyword">AS</span> &quot;works_number&quot;,</span><br><span class="line">             e.ename <span class="keyword">AS</span> &quot;name&quot;)</span><br><span class="line">         )</span><br><span class="line">       ) <span class="keyword">AS</span> employees</span><br><span class="line"><span class="keyword">FROM</span>   emp e</span><br><span class="line"><span class="keyword">WHERE</span>  e.deptno <span class="operator">=</span> <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">EMPLOYEE</span><br><span class="line"><span class="comment">----------------------------------------------------------------------------------------------------</span></span><br><span class="line"><span class="operator">&lt;</span>employee<span class="operator">&gt;</span><span class="operator">&lt;</span>works_number<span class="operator">&gt;</span><span class="number">7782</span><span class="operator">&lt;</span><span class="operator">/</span>works_number<span class="operator">&gt;</span><span class="operator">&lt;</span>name<span class="operator">&gt;</span>CLARK<span class="operator">&lt;</span><span class="operator">/</span>name<span class="operator">&gt;</span><span class="operator">&lt;</span><span class="operator">/</span>employee<span class="operator">&gt;</span><span class="operator">&lt;</span>employee<span class="operator">&gt;</span><span class="operator">&lt;</span>works_number<span class="operator">&gt;</span><span class="number">7839</span></span><br><span class="line"><span class="operator">&lt;</span><span class="operator">/</span>works_number<span class="operator">&gt;</span><span class="operator">&lt;</span>name<span class="operator">&gt;</span>KING<span class="operator">&lt;</span><span class="operator">/</span>name<span class="operator">&gt;</span><span class="operator">&lt;</span><span class="operator">/</span>employee<span class="operator">&gt;</span><span class="operator">&lt;</span>employee<span class="operator">&gt;</span><span class="operator">&lt;</span>works_number<span class="operator">&gt;</span><span class="number">7934</span><span class="operator">&lt;</span><span class="operator">/</span>works_number<span class="operator">&gt;</span><span class="operator">&lt;</span>name<span class="operator">&gt;</span>MILLER<span class="operator">&lt;</span><span class="operator">/</span></span><br><span class="line">name<span class="operator">&gt;</span><span class="operator">&lt;</span><span class="operator">/</span>employee<span class="operator">&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="number">1</span> <span class="type">row</span> selected.</span><br><span class="line"></span><br><span class="line"><span class="keyword">SQL</span><span class="operator">&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Without a root (base) tag, this is not a well formed document, so we must surround it in an  <code>XMLELEMENT</code></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> XMLELEMENT(&quot;employees&quot;,</span><br><span class="line">         XMLAGG(</span><br><span class="line">           XMLELEMENT(&quot;employee&quot;,</span><br><span class="line">             XMLFOREST(</span><br><span class="line">               e.empno <span class="keyword">AS</span> &quot;works_number&quot;,</span><br><span class="line">               e.ename <span class="keyword">AS</span> &quot;name&quot;)</span><br><span class="line">           )</span><br><span class="line">         )</span><br><span class="line">       ) <span class="keyword">AS</span> employees</span><br><span class="line"><span class="keyword">FROM</span>   emp e</span><br><span class="line"><span class="keyword">WHERE</span>  e.deptno <span class="operator">=</span> <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">EMPLOYEE</span><br><span class="line"><span class="comment">----------------------------------------------------------------------------------------------------</span></span><br><span class="line"><span class="operator">&lt;</span>employees<span class="operator">&gt;</span><span class="operator">&lt;</span>employee<span class="operator">&gt;</span><span class="operator">&lt;</span>works_number<span class="operator">&gt;</span><span class="number">7782</span><span class="operator">&lt;</span><span class="operator">/</span>works_number<span class="operator">&gt;</span><span class="operator">&lt;</span>name<span class="operator">&gt;</span>CLARK<span class="operator">&lt;</span><span class="operator">/</span>name<span class="operator">&gt;</span><span class="operator">&lt;</span><span class="operator">/</span>employee<span class="operator">&gt;</span><span class="operator">&lt;</span>employee<span class="operator">&gt;</span><span class="operator">&lt;</span>works_</span><br><span class="line">number<span class="operator">&gt;</span><span class="number">7839</span><span class="operator">&lt;</span><span class="operator">/</span>works_number<span class="operator">&gt;</span><span class="operator">&lt;</span>name<span class="operator">&gt;</span>KING<span class="operator">&lt;</span><span class="operator">/</span>name<span class="operator">&gt;</span><span class="operator">&lt;</span><span class="operator">/</span>employee<span class="operator">&gt;</span><span class="operator">&lt;</span>employee<span class="operator">&gt;</span><span class="operator">&lt;</span>works_number<span class="operator">&gt;</span><span class="number">7934</span><span class="operator">&lt;</span><span class="operator">/</span>works_number<span class="operator">&gt;</span><span class="operator">&lt;</span>na</span><br><span class="line">me<span class="operator">&gt;</span>MILLER<span class="operator">&lt;</span><span class="operator">/</span>name<span class="operator">&gt;</span><span class="operator">&lt;</span><span class="operator">/</span>employee<span class="operator">&gt;</span><span class="operator">&lt;</span><span class="operator">/</span>employees<span class="operator">&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="number">1</span> <span class="type">row</span> selected.</span><br><span class="line"></span><br><span class="line"><span class="keyword">SQL</span><span class="operator">&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="xmlroot"><a class="markdownIt-Anchor" href="#xmlroot">#</a> XMLROOT</h3>
+<p>The  <code>XMLROOT</code>  function allows us to place an XML declaration tag at the start of our XML document. In newer database versions, this function is either deprecated, or removed entirely. If you need and XML declaration, you should add it manually to the document.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> XMLROOT(</span><br><span class="line">         XMLELEMENT(&quot;employees&quot;,</span><br><span class="line">           XMLAGG(</span><br><span class="line">             XMLELEMENT(&quot;employee&quot;,</span><br><span class="line">               XMLFOREST(</span><br><span class="line">                 e.empno <span class="keyword">AS</span> &quot;works_number&quot;,</span><br><span class="line">                 e.ename <span class="keyword">AS</span> &quot;name&quot;)</span><br><span class="line">             )</span><br><span class="line">           )</span><br><span class="line">         )</span><br><span class="line">       ) <span class="keyword">AS</span> employees</span><br><span class="line"><span class="keyword">FROM</span>   emp e</span><br><span class="line"><span class="keyword">WHERE</span>  e.deptno <span class="operator">=</span> <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">EMPLOYEE</span><br><span class="line"><span class="comment">----------------------------------------------------------------------------------------------------</span></span><br><span class="line"><span class="operator">&lt;</span>?xml version<span class="operator">=</span>&quot;1.0&quot; encoding<span class="operator">=</span>&quot;US-ASCII&quot;?<span class="operator">&gt;</span></span><br><span class="line"><span class="operator">&lt;</span>employees<span class="operator">&gt;</span></span><br><span class="line">  <span class="operator">&lt;</span>employee<span class="operator">&gt;</span></span><br><span class="line">    <span class="operator">&lt;</span>works_number<span class="operator">&gt;</span><span class="number">7782</span><span class="operator">&lt;</span><span class="operator">/</span>works_number<span class="operator">&gt;</span></span><br><span class="line">    <span class="operator">&lt;</span>name<span class="operator">&gt;</span>CLARK<span class="operator">&lt;</span><span class="operator">/</span>name<span class="operator">&gt;</span></span><br><span class="line">  <span class="operator">&lt;</span><span class="operator">/</span>employee<span class="operator">&gt;</span></span><br><span class="line">  <span class="operator">&lt;</span>employee<span class="operator">&gt;</span></span><br><span class="line">    <span class="operator">&lt;</span>works_number<span class="operator">&gt;</span><span class="number">7839</span><span class="operator">&lt;</span><span class="operator">/</span>works_number<span class="operator">&gt;</span></span><br><span class="line">    <span class="operator">&lt;</span>name<span class="operator">&gt;</span>KING<span class="operator">&lt;</span><span class="operator">/</span>name<span class="operator">&gt;</span></span><br><span class="line">  <span class="operator">&lt;</span><span class="operator">/</span>employee<span class="operator">&gt;</span></span><br><span class="line">  <span class="operator">&lt;</span>employee<span class="operator">&gt;</span></span><br><span class="line">    <span class="operator">&lt;</span>works_number<span class="operator">&gt;</span><span class="number">7934</span><span class="operator">&lt;</span><span class="operator">/</span>works_number<span class="operator">&gt;</span></span><br><span class="line">    <span class="operator">&lt;</span>name<span class="operator">&gt;</span>MILLER<span class="operator">&lt;</span><span class="operator">/</span>name<span class="operator">&gt;</span></span><br><span class="line">  <span class="operator">&lt;</span><span class="operator">/</span>employee<span class="operator">&gt;</span></span><br><span class="line"><span class="operator">&lt;</span><span class="operator">/</span>employees<span class="operator">&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="number">1</span> <span class="type">row</span> selected.</span><br><span class="line"></span><br><span class="line"><span class="keyword">SQL</span><span class="operator">&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="xmlcdata"><a class="markdownIt-Anchor" href="#xmlcdata">#</a> XMLCDATA</h3>
+<p>The  <code>XMLCDATA</code>  function surrounds column data with a CDATA tag.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> XMLELEMENT(&quot;employees&quot;,</span><br><span class="line">         XMLAGG(</span><br><span class="line">           XMLELEMENT(&quot;employee&quot;,</span><br><span class="line">             XMLFOREST(</span><br><span class="line">               e.empno <span class="keyword">AS</span> &quot;works_number&quot;,</span><br><span class="line">               XMLCDATA(e.ename) <span class="keyword">AS</span> &quot;name&quot;)</span><br><span class="line">           )</span><br><span class="line">         )</span><br><span class="line">       ) <span class="keyword">AS</span> employees</span><br><span class="line"><span class="keyword">FROM</span>   emp e</span><br><span class="line"><span class="keyword">WHERE</span>  e.deptno <span class="operator">=</span> <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">EMPLOYEE</span><br><span class="line"><span class="comment">----------------------------------------------------------------------------------------------------</span></span><br><span class="line"><span class="operator">&lt;</span>employees<span class="operator">&gt;</span></span><br><span class="line">  <span class="operator">&lt;</span>employee<span class="operator">&gt;</span></span><br><span class="line">    <span class="operator">&lt;</span>works_number<span class="operator">&gt;</span><span class="number">7782</span><span class="operator">&lt;</span><span class="operator">/</span>works_number<span class="operator">&gt;</span></span><br><span class="line">    <span class="operator">&lt;</span>name<span class="operator">&gt;</span><span class="operator">&lt;</span><span class="operator">!</span>[CDATA[CLARK]]<span class="operator">&gt;</span><span class="operator">&lt;</span><span class="operator">/</span>name<span class="operator">&gt;</span></span><br><span class="line">  <span class="operator">&lt;</span><span class="operator">/</span>employee<span class="operator">&gt;</span></span><br><span class="line">  <span class="operator">&lt;</span>employee<span class="operator">&gt;</span></span><br><span class="line">    <span class="operator">&lt;</span>works_number<span class="operator">&gt;</span><span class="number">7839</span><span class="operator">&lt;</span><span class="operator">/</span>works_number<span class="operator">&gt;</span></span><br><span class="line">    <span class="operator">&lt;</span>name<span class="operator">&gt;</span><span class="operator">&lt;</span><span class="operator">!</span>[CDATA[KING]]<span class="operator">&gt;</span><span class="operator">&lt;</span><span class="operator">/</span>name<span class="operator">&gt;</span></span><br><span class="line">  <span class="operator">&lt;</span><span class="operator">/</span>employee<span class="operator">&gt;</span></span><br><span class="line">  <span class="operator">&lt;</span>employee<span class="operator">&gt;</span></span><br><span class="line">    <span class="operator">&lt;</span>works_number<span class="operator">&gt;</span><span class="number">7934</span><span class="operator">&lt;</span><span class="operator">/</span>works_number<span class="operator">&gt;</span></span><br><span class="line">    <span class="operator">&lt;</span>name<span class="operator">&gt;</span><span class="operator">&lt;</span><span class="operator">!</span>[CDATA[MILLER]]<span class="operator">&gt;</span><span class="operator">&lt;</span><span class="operator">/</span>name<span class="operator">&gt;</span></span><br><span class="line">  <span class="operator">&lt;</span><span class="operator">/</span>employee<span class="operator">&gt;</span></span><br><span class="line"><span class="operator">&lt;</span><span class="operator">/</span>employees<span class="operator">&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="number">1</span> <span class="type">row</span> selected.</span><br><span class="line"></span><br><span class="line"><span class="keyword">SQL</span><span class="operator">&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="putting-it-together"><a class="markdownIt-Anchor" href="#putting-it-together">#</a> Putting It Together</h2>
+<p>The following example shows something a little more complex, including a nested query.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> XMLELEMENT(&quot;dept_list&quot;,</span><br><span class="line">         XMLAGG (</span><br><span class="line">           XMLELEMENT(&quot;dept&quot;,</span><br><span class="line">             XMLATTRIBUTES(d.deptno <span class="keyword">AS</span> &quot;deptno&quot;),</span><br><span class="line">             XMLFOREST(</span><br><span class="line">               d.deptno <span class="keyword">AS</span> &quot;deptno&quot;,</span><br><span class="line">               d.dname <span class="keyword">AS</span> &quot;dname&quot;,</span><br><span class="line">               d.loc <span class="keyword">AS</span> &quot;loc&quot;,</span><br><span class="line">               (<span class="keyword">SELECT</span> XMLAGG(</span><br><span class="line">                         XMLELEMENT(&quot;emp&quot;,</span><br><span class="line">                           XMLFOREST(</span><br><span class="line">                             e.empno <span class="keyword">AS</span> &quot;empno&quot;,</span><br><span class="line">                             e.ename <span class="keyword">AS</span> &quot;ename&quot;,</span><br><span class="line">                             e.job <span class="keyword">AS</span> &quot;job&quot;,</span><br><span class="line">                             e.mgr <span class="keyword">AS</span> &quot;mgr&quot;,</span><br><span class="line">                             e.hiredate <span class="keyword">AS</span> &quot;hiredate&quot;,</span><br><span class="line">                             e.sal <span class="keyword">AS</span> &quot;sal&quot;,</span><br><span class="line">                             e.comm <span class="keyword">AS</span> &quot;comm&quot;</span><br><span class="line">                           )</span><br><span class="line">                         )</span><br><span class="line">                       )</span><br><span class="line">                <span class="keyword">FROM</span>   emp e</span><br><span class="line">                <span class="keyword">WHERE</span>  e.deptno <span class="operator">=</span> d.deptno</span><br><span class="line">               ) &quot;emp_list&quot;</span><br><span class="line">             )</span><br><span class="line">           )</span><br><span class="line">         )</span><br><span class="line">       ) <span class="keyword">AS</span> &quot;depts&quot;</span><br><span class="line"><span class="keyword">FROM</span>   dept d</span><br><span class="line"><span class="keyword">WHERE</span>  d.deptno <span class="operator">=</span> <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">depts</span><br><span class="line"><span class="comment">----------------------------------------------------------------------------------------------------</span></span><br><span class="line"><span class="operator">&lt;</span>dept_list<span class="operator">&gt;</span></span><br><span class="line">  <span class="operator">&lt;</span>dept deptno<span class="operator">=</span>&quot;10&quot;<span class="operator">&gt;</span></span><br><span class="line">    <span class="operator">&lt;</span>deptno<span class="operator">&gt;</span><span class="number">10</span><span class="operator">&lt;</span><span class="operator">/</span>deptno<span class="operator">&gt;</span></span><br><span class="line">    <span class="operator">&lt;</span>dname<span class="operator">&gt;</span>ACCOUNTING<span class="operator">&lt;</span><span class="operator">/</span>dname<span class="operator">&gt;</span></span><br><span class="line">    <span class="operator">&lt;</span>loc<span class="operator">&gt;</span><span class="keyword">NEW</span> YORK<span class="operator">&lt;</span><span class="operator">/</span>loc<span class="operator">&gt;</span></span><br><span class="line">    <span class="operator">&lt;</span>emp_list<span class="operator">&gt;</span></span><br><span class="line">      <span class="operator">&lt;</span>emp<span class="operator">&gt;</span></span><br><span class="line">        <span class="operator">&lt;</span>empno<span class="operator">&gt;</span><span class="number">7782</span><span class="operator">&lt;</span><span class="operator">/</span>empno<span class="operator">&gt;</span></span><br><span class="line">        <span class="operator">&lt;</span>ename<span class="operator">&gt;</span>CLARK<span class="operator">&lt;</span><span class="operator">/</span>ename<span class="operator">&gt;</span></span><br><span class="line">        <span class="operator">&lt;</span>job<span class="operator">&gt;</span>MANAGER<span class="operator">&lt;</span><span class="operator">/</span>job<span class="operator">&gt;</span></span><br><span class="line">        <span class="operator">&lt;</span>mgr<span class="operator">&gt;</span><span class="number">7839</span><span class="operator">&lt;</span><span class="operator">/</span>mgr<span class="operator">&gt;</span></span><br><span class="line">        <span class="operator">&lt;</span>hiredate<span class="operator">&gt;</span><span class="number">1981</span><span class="number">-06</span><span class="number">-09</span><span class="operator">&lt;</span><span class="operator">/</span>hiredate<span class="operator">&gt;</span></span><br><span class="line">        <span class="operator">&lt;</span>sal<span class="operator">&gt;</span><span class="number">2450</span><span class="operator">&lt;</span><span class="operator">/</span>sal<span class="operator">&gt;</span></span><br><span class="line">      <span class="operator">&lt;</span><span class="operator">/</span>emp<span class="operator">&gt;</span></span><br><span class="line">      <span class="operator">&lt;</span>emp<span class="operator">&gt;</span></span><br><span class="line">        <span class="operator">&lt;</span>empno<span class="operator">&gt;</span><span class="number">7839</span><span class="operator">&lt;</span><span class="operator">/</span>empno<span class="operator">&gt;</span></span><br><span class="line">        <span class="operator">&lt;</span>ename<span class="operator">&gt;</span>KING<span class="operator">&lt;</span><span class="operator">/</span>ename<span class="operator">&gt;</span></span><br><span class="line">        <span class="operator">&lt;</span>job<span class="operator">&gt;</span>PRESIDENT<span class="operator">&lt;</span><span class="operator">/</span>job<span class="operator">&gt;</span></span><br><span class="line">        <span class="operator">&lt;</span>hiredate<span class="operator">&gt;</span><span class="number">1981</span><span class="number">-11</span><span class="number">-17</span><span class="operator">&lt;</span><span class="operator">/</span>hiredate<span class="operator">&gt;</span></span><br><span class="line">        <span class="operator">&lt;</span>sal<span class="operator">&gt;</span><span class="number">5000</span><span class="operator">&lt;</span><span class="operator">/</span>sal<span class="operator">&gt;</span></span><br><span class="line">      <span class="operator">&lt;</span><span class="operator">/</span>emp<span class="operator">&gt;</span></span><br><span class="line">      <span class="operator">&lt;</span>emp<span class="operator">&gt;</span></span><br><span class="line">        <span class="operator">&lt;</span>empno<span class="operator">&gt;</span><span class="number">7934</span><span class="operator">&lt;</span><span class="operator">/</span>empno<span class="operator">&gt;</span></span><br><span class="line">        <span class="operator">&lt;</span>ename<span class="operator">&gt;</span>MILLER<span class="operator">&lt;</span><span class="operator">/</span>ename<span class="operator">&gt;</span></span><br><span class="line">        <span class="operator">&lt;</span>job<span class="operator">&gt;</span>CLERK<span class="operator">&lt;</span><span class="operator">/</span>job<span class="operator">&gt;</span></span><br><span class="line">        <span class="operator">&lt;</span>mgr<span class="operator">&gt;</span><span class="number">7782</span><span class="operator">&lt;</span><span class="operator">/</span>mgr<span class="operator">&gt;</span></span><br><span class="line">        <span class="operator">&lt;</span>hiredate<span class="operator">&gt;</span><span class="number">1982</span><span class="number">-01</span><span class="number">-23</span><span class="operator">&lt;</span><span class="operator">/</span>hiredate<span class="operator">&gt;</span></span><br><span class="line">        <span class="operator">&lt;</span>sal<span class="operator">&gt;</span><span class="number">1300</span><span class="operator">&lt;</span><span class="operator">/</span>sal<span class="operator">&gt;</span></span><br><span class="line">      <span class="operator">&lt;</span><span class="operator">/</span>emp<span class="operator">&gt;</span></span><br><span class="line">    <span class="operator">&lt;</span><span class="operator">/</span>emp_list<span class="operator">&gt;</span></span><br><span class="line">  <span class="operator">&lt;</span><span class="operator">/</span>dept<span class="operator">&gt;</span></span><br><span class="line"><span class="operator">&lt;</span><span class="operator">/</span>dept_list<span class="operator">&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="number">1</span> <span class="type">row</span> selected.</span><br><span class="line"></span><br><span class="line"><span class="keyword">SQL</span><span class="operator">&gt;</span></span><br></pre></td></tr></table></figure>
+
+      <div class="tags">
+          <a href="/tags/db/" rel="tag"><i class="ic i-tag"></i> db</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2022-03-20 10:43:47" itemprop="dateModified" datetime="2022-03-20T10:43:47+08:00">2022-03-20</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2020/03/17/oracle-xml-parse/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipeyvx1d4j20zk0m8hdt.jpg" title="Oracle Parse XML">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Oracle Parse XML</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2020/03/17/go-read2db/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipeyhsblkj20zk0m81kx.jpg" title="Go Read File To Mysql">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Go Read File To Mysql</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#the-past"><span class="toc-number">1.</span> <span class="toc-text"> The Past</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sqlxml-functions"><span class="toc-number">2.</span> <span class="toc-text"> SQL&#x2F;XML Functions</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#xmlelement"><span class="toc-number">2.1.</span> <span class="toc-text"> XMLELEMENT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#xmlattributes"><span class="toc-number">2.2.</span> <span class="toc-text"> XMLATTRIBUTES</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#xmlforest"><span class="toc-number">2.3.</span> <span class="toc-text"> XMLFOREST</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#xmlagg"><span class="toc-number">2.4.</span> <span class="toc-text"> XMLAGG</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#xmlroot"><span class="toc-number">2.5.</span> <span class="toc-text"> XMLROOT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#xmlcdata"><span class="toc-number">2.6.</span> <span class="toc-text"> XMLCDATA</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#putting-it-together"><span class="toc-number">3.</span> <span class="toc-text"> Putting It Together</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">282</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">40</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2020/03/17/oracle-xml-parse/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2020/03/17/go-read2db/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2022</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ D E W</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2020/03/17/oracle-xml-generate/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
