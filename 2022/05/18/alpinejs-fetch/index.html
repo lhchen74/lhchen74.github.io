@@ -1,0 +1,423 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="js" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2022/05/18/alpinejs-fetch/">
+
+
+
+  <title>
+Using Native Fetch With AlpineJs |
+D E W = 露の世</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">Using Native Fetch With AlpineJs
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2022-05-18 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2022-05-18T00:00:00+08:00">2022-05-18</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">D E W</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclhfehz7j20zk0m8u0x.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicit31ffoj20zk0m8naf.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipewf5l51j20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclhnx9glj20zk0m8npd.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclxxcb6rj20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipeuv80yoj20zk0m8kjl.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2022/05/18/alpinejs-fetch/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>转载：<span class="exturl" data-url="aHR0cHM6Ly93d3cud2l0dHlwcm9ncmFtbWluZy5kZXYvYXJ0aWNsZXMvdXNpbmctbmF0aXZlLWZldGNoLXdpdGgtYWxwaW5lanMv">Using Native Fetch With AlpineJs - Witty Programming</span></p>
+</blockquote>
+<p>One of the most common web app patterns involves collecting data from a form and submitting it to a REST API or, the opposite, populating a form from data originating from a REST API. This pattern can easily be achieved in Alpinejs using the native javascript <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvQVBJL0ZldGNoX0FQSS9Vc2luZ19GZXRjaA==">Fetch Api</span>. As a bonus, I describe the  <code>fetch</code>  async version at the end of the article.</p>
+<p>If you are not familiar with the Alpinejs, checkout <span class="exturl" data-url="aHR0cHM6Ly93d3cud2l0dHlwcm9ncmFtbWluZy5kZXYvYXJ0aWNsZXMvaW50cm9kdWN0aW9uLXRvLWFscGluZWpzLw==">my introduction article</span> and how can help you introduce simple interactions in your web page very easily.</p>
+<p>If you do not like using the native  <code>fetch</code> , there is the magic helper <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvQVBJL0ZldGNoX0FQSS9Vc2luZ19GZXRjaA==">$fetch</span> which is using <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2F4aW9zL2F4aW9z">Axios</span> behind the scenes. I prefer to use the native javascript approach to a library that adds another  <code>~15KB</code>  payload to my build. Nowadays, with the ability to cancel the  <code>fetch</code> , I do not see a reason not to use it. But if you like the Axios library, know that there is an Alpinejs way to it, too.</p>
+<h2 id="backend-json-server"><a class="markdownIt-Anchor" href="#backend-json-server">#</a> Backend JSON Server</h2>
+<p>For testing purposes, we will use a <span class="exturl" data-url="aHR0cHM6Ly9qc29ucGxhY2Vob2xkZXIudHlwaWNvZGUuY29tLw==">free fake API</span> powered by <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3R5cGljb2RlL2pzb24tc2VydmVy">JSON Server</span> and <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3R5cGljb2RlL2xvd2Ri">LowDB</span>. Check these projects out cause they are amazing and may help in your endeavours. In this example, we hit the free fake API at  <code>https://jsonplaceholder.typicode.com/users/1</code> , which returns the following data:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;id&quot;</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;Leanne Graham&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;username&quot;</span>: <span class="string">&quot;Bret&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;email&quot;</span>: <span class="string">&quot;Sincere@april.biz&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;address&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;street&quot;</span>: <span class="string">&quot;Kulas Light&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;suite&quot;</span>: <span class="string">&quot;Apt. 556&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;city&quot;</span>: <span class="string">&quot;Gwenborough&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;zipcode&quot;</span>: <span class="string">&quot;92998-3874&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;geo&quot;</span>: &#123;</span><br><span class="line">      <span class="attr">&quot;lat&quot;</span>: <span class="string">&quot;-37.3159&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;lng&quot;</span>: <span class="string">&quot;81.1496&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">&quot;phone&quot;</span>: <span class="string">&quot;1-770-736-8031 x56442&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;website&quot;</span>: <span class="string">&quot;hildegard.org&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;company&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;Romaguera-Crona&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;catchPhrase&quot;</span>: <span class="string">&quot;Multi-layered client-server neural-net&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;bs&quot;</span>: <span class="string">&quot;harness real-time e-markets&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>We will only use the <strong>name</strong>,<strong>email</strong>, <strong>address.city</strong>, and <strong>address.street</strong> attributes from the JSON not to complicate the form structure too much.</p>
+<p>Below you may check up the final result. We use the native JavaScript  <code>fetch</code>  in an Alpinejs component to receive data to populate the form. You may change the form data, and by clicking on the “update info” button, we are making a POST request to an API Endpoint with the updated data. The endpoint does not exist. Therefore, it returns an error, but I want to show how to use the  <code>fetch</code>  to make a post request.</p>
+<h2 id="form-design-using-tailwindcss"><a class="markdownIt-Anchor" href="#form-design-using-tailwindcss">#</a> Form Design Using Tailwindcss</h2>
+<p>Initially, let’s build our form using the tailwindcss. <span class="exturl" data-url="aHR0cHM6Ly90YWlsd2luZGNzcy5jb20v">Tailwindcss</span> is a utility-first CSS that let you compose your design directly in your markup. It has the same philosophy as the Alpinejs so, they often grouped together.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;flex flex-col content-center justify-center h-screen&quot;</span>&gt;</span></span><br><span class="line">  &lt;div</span><br><span class="line">    class=&quot;flex flex-col self-center px-8 pt-6 pb-8 my-2 mb-4 bg-white rounded shadow-md max-w-7xl&quot;</span><br><span class="line">  &gt;</span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;mb-6 md:flex&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;px-3 mb-6 md:w-1/2 md:mb-0&quot;</span>&gt;</span></span><br><span class="line">        &lt;label</span><br><span class="line">          class=&quot;block mb-2 text-xs font-bold tracking-wide uppercase text-grey-darker&quot;</span><br><span class="line">          for=&quot;name&quot;</span><br><span class="line">        &gt;</span><br><span class="line">          Name</span><br><span class="line">        <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">        &lt;input</span><br><span class="line">          class=&quot;block w-full px-4 py-3 mb-3 border rounded appearance-none bg-grey-lighter text-grey-darker border-red&quot;</span><br><span class="line">          required</span><br><span class="line">          type=&quot;text&quot;</span><br><span class="line">          id=&quot;name&quot;</span><br><span class="line">        /&gt;</span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;px-3 md:w-1/2&quot;</span>&gt;</span></span><br><span class="line">        &lt;label</span><br><span class="line">          class=&quot;block mb-2 text-xs font-bold tracking-wide uppercase text-grey-darker&quot;</span><br><span class="line">          for=&quot;email&quot;</span><br><span class="line">        &gt;</span><br><span class="line">          email</span><br><span class="line">        <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">        &lt;input</span><br><span class="line">          class=&quot;block w-full px-4 py-3 border rounded appearance-none bg-grey-lighter text-grey-darker border-grey-lighter&quot;</span><br><span class="line">          required</span><br><span class="line">          type=&quot;email&quot;</span><br><span class="line">          id=&quot;email&quot;</span><br><span class="line">        /&gt;</span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;mb-6 md:flex&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;px-3 mb-6 md:w-1/2 md:mb-0&quot;</span>&gt;</span></span><br><span class="line">        &lt;label</span><br><span class="line">          class=&quot;block mb-2 text-xs font-bold tracking-wide uppercase text-grey-darker&quot;</span><br><span class="line">          for=&quot;address&quot;</span><br><span class="line">        &gt;</span><br><span class="line">          Address</span><br><span class="line">        <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">        &lt;input</span><br><span class="line">          class=&quot;block w-full px-4 py-3 border rounded appearance-none bg-grey-lighter text-grey-darker border-grey-lighter&quot;</span><br><span class="line">          required</span><br><span class="line">          type=&quot;text&quot;</span><br><span class="line">          id=&quot;address&quot;</span><br><span class="line">        /&gt;</span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;px-3 md:w-1/2&quot;</span>&gt;</span></span><br><span class="line">        &lt;label</span><br><span class="line">          class=&quot;block mb-2 text-xs font-bold tracking-wide uppercase text-grey-darker&quot;</span><br><span class="line">          for=&quot;city&quot;</span><br><span class="line">        &gt;</span><br><span class="line">          City</span><br><span class="line">        <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">        &lt;input</span><br><span class="line">          class=&quot;block w-full px-4 py-3 border rounded appearance-none bg-grey-lighter text-grey-darker border-grey-lighter&quot;</span><br><span class="line">          required</span><br><span class="line">          type=&quot;text&quot;</span><br><span class="line">          id=&quot;city&quot;</span><br><span class="line">        /&gt;</span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;flex justify-end mb-2 md:flex&quot;</span>&gt;</span></span><br><span class="line">      &lt;button</span><br><span class="line">        class=&quot;inline-block px-6 py-2 text-xs font-medium leading-6 text-center text-white uppercase transition bg-blue-700 rounded shadow ripple hover:shadow-lg hover:bg-blue-800 focus:outline-none&quot;</span><br><span class="line">      &gt;</span><br><span class="line">        Update Info</span><br><span class="line">      <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>The above markup produces the following responsive form design:</p>
+<p><a target="_blank" rel="noopener" href="https://www.wittyprogramming.dev/articles/using-native-fetch-with-alpinejs/form-design.png"><img data-src="alpinejs-fetch/form-design.png" alt="img"></a></p>
+<p><em>The form design using tailwindcss</em></p>
+<h2 id="form-initialization"><a class="markdownIt-Anchor" href="#form-initialization">#</a> Form Initialization</h2>
+<p>Next, we create an alpinejs component by defining an object  <code>person</code>  in the  <code>x-data</code>  attribute, which it stores all the information needed for the form:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x-data=&quot;&#123; person : &#123;</span><br><span class="line">          name: null,</span><br><span class="line">          email: null,</span><br><span class="line">          address: null,</span><br><span class="line">          city: null</span><br><span class="line">        &#125;&#125;&quot;</span><br></pre></td></tr></table></figure>
+<p>The best time to get our values from the REST API and display them in the form is during the alpinejs component’s initialization using the  <code>x-init</code>  attribute:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">x-init=<span class="string">&quot;fetch(&#x27;https://jsonplaceholder.typicode.com/users/1&#x27;)</span></span><br><span class="line"><span class="string">          .then(response=&gt; &#123;</span></span><br><span class="line"><span class="string">              if (!response.ok) alert(`Something went wrong: $&#123;response.status&#125; - $&#123;response.statusText&#125;`)</span></span><br><span class="line"><span class="string">              return response.json()</span></span><br><span class="line"><span class="string">          &#125;)</span></span><br><span class="line"><span class="string">          .then(data =&gt; person = &#123;</span></span><br><span class="line"><span class="string">              name: data.name,</span></span><br><span class="line"><span class="string">              email: data.email,</span></span><br><span class="line"><span class="string">              address: data.address.street,</span></span><br><span class="line"><span class="string">              city: data.address.city</span></span><br><span class="line"><span class="string">          &#125;)&quot;</span></span><br></pre></td></tr></table></figure>
+<p>We are using the  <code>fetch</code>  to hit our REST endpoint, which returns a promise. At first, we resolve the response from the endpoint and check if it was a success. If not, we alert the user about the problem. To extract the JSON data from the response object, we use the  <code>json()</code>  command, which also returns a promise that it resolves at last to a javascript object containing the data returned from the endpoint. Finally, we are populated our  <code>person</code>  object with these data.</p>
+<h2 id="two-way-form-binding"><a class="markdownIt-Anchor" href="#two-way-form-binding">#</a> Two-Way Form Binding</h2>
+<p>To display the data in the form, we are binding the  <code>person</code>  object attributes to the corresponding  <code>input</code>  text boxes in our form using the  <code>x-model</code>  attribute. The  <code>x-mode</code>  attributes create a two-way binding between the  <code>input</code>  elements’ value and the value of corresponding  <code>person</code>  attributes. For example, for the <strong>name</strong> input box, we are two-way binding to the  <code>person.name</code> :</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;input</span><br><span class="line">  x-model=&quot;person.name&quot;</span><br><span class="line">  class=&quot;block w-full px-4 py-3 mb-3 border rounded appearance-none bg-grey-lighter text-grey-darker border-red&quot;</span><br><span class="line">  required</span><br><span class="line">  type=&quot;text&quot;</span><br><span class="line">  id=&quot;name&quot;</span><br><span class="line">/&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="form-submission"><a class="markdownIt-Anchor" href="#form-submission">#</a> Form Submission</h2>
+<p>Finally, by clicking the “UPDATE INFO” button, we are sending the form data to a REST endpoint by a <strong>POST</strong> request through the  <code>fetch</code>  command. To do that, we attach a listener to the <strong>click</strong> event using the Alpinejs event syntax  <code>@:event</code> :</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;button</span><br><span class="line">  @click=&quot;fetch(&#x27;/update&#x27;, &#123;</span><br><span class="line">                    method: &#x27;POST&#x27;,</span><br><span class="line">                    body: JSON.stringify(person)</span><br><span class="line">                &#125;)</span><br><span class="line">                .then(response =&gt; &#123;</span><br><span class="line">                    if (response.ok) alert(&#x27;Updated Successfully!&#x27;)</span><br><span class="line">                    else alert(`Something went wrong: $&#123;response.status&#125; - $&#123;response.statusText&#125;`)</span><br><span class="line">                &#125;)&quot;</span><br><span class="line">  class=&quot;inline-block px-6 py-2 text-xs font-medium leading-6 text-center text-white uppercase transition bg-blue-700 rounded shadow ripple hover:shadow-lg hover:bg-blue-800 focus:outline-none&quot;</span><br><span class="line">&gt;</span><br><span class="line">  Update Info</span><br><span class="line"><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>The  <code>fetch</code>  command will send a <strong>POST</strong> response to a non-existent endpoint, so the output will be an error alert. If you want to pass a header to the request, you may add it in the options object. For learning about available full options, you may check out the <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvQVBJL0ZldGNoX0FQSS9Vc2luZ19GZXRjaCNzdXBwbHlpbmdfcmVxdWVzdF9vcHRpb25z">mozilla MDN web docs</span></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;button</span><br><span class="line">  @click=&quot;fetch(&#x27;/update&#x27;, &#123;</span><br><span class="line">                    method: &#x27;POST&#x27;,</span><br><span class="line">                    body: JSON.stringify(person),</span><br><span class="line">                    headers: &#123;</span><br><span class="line">                        &#x27;Content-Type&#x27;: &#x27;application/json&#x27;</span><br><span class="line">                        &#125;</span><br><span class="line">                &#125;)</span><br><span class="line">                .then(response =&gt; &#123;</span><br><span class="line">                    if (response.ok) alert(&#x27;Updated Successfully!&#x27;)</span><br><span class="line">                    else alert(`Something went wrong: $&#123;response.status&#125; - $&#123;response.statusText&#125;`)</span><br><span class="line">                &#125;)&quot;</span><br><span class="line">  class=&quot;inline-block px-6 py-2 text-xs font-medium leading-6 text-center text-white uppercase transition bg-blue-700 rounded shadow ripple hover:shadow-lg hover:bg-blue-800 focus:outline-none&quot;</span><br><span class="line">&gt;</span><br><span class="line">  Update Info</span><br><span class="line"><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>The final code is:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;flex flex-col content-center justify-center h-screen&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;flex flex-col self-center px-8 pt-6 pb-8 my-2 mb-4 bg-white rounded shadow-md max-w-7xl&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">x-data</span>=<span class="string">&quot;&#123; person : &#123;</span></span></span><br><span class="line"><span class="tag"><span class="string">                        name: null,</span></span></span><br><span class="line"><span class="tag"><span class="string">                        email: null,</span></span></span><br><span class="line"><span class="tag"><span class="string">                        address: null,</span></span></span><br><span class="line"><span class="tag"><span class="string">                        city: null</span></span></span><br><span class="line"><span class="tag"><span class="string">                        &#125;&#125;&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">x-init</span>=<span class="string">&quot;fetch(&#x27;https://jsonplaceholder.typicode.com/users/1&#x27;)</span></span></span><br><span class="line"><span class="tag"><span class="string">                    .then(response=&gt; &#123;</span></span></span><br><span class="line"><span class="tag"><span class="string">                        if (!response.ok) alert(`Something went wrong: $&#123;response.status&#125; - $&#123;response.statusText&#125;`)</span></span></span><br><span class="line"><span class="tag"><span class="string">                        return response.json()</span></span></span><br><span class="line"><span class="tag"><span class="string">                    &#125;)</span></span></span><br><span class="line"><span class="tag"><span class="string">                    .then(data =&gt; person = &#123;</span></span></span><br><span class="line"><span class="tag"><span class="string">                        name: data.name,</span></span></span><br><span class="line"><span class="tag"><span class="string">                        email: data.email,</span></span></span><br><span class="line"><span class="tag"><span class="string">                        address: data.address.street,</span></span></span><br><span class="line"><span class="tag"><span class="string">                        city: data.address.city</span></span></span><br><span class="line"><span class="tag"><span class="string">                    &#125;)&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;mb-6 md:flex&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;px-3 mb-6 md:w-1/2 md:mb-0&quot;</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">&quot;block mb-2 text-xs font-bold tracking-wide uppercase text-grey-darker&quot;</span> <span class="attr">for</span>=<span class="string">&quot;name&quot;</span>&gt;</span></span><br><span class="line">                        Name</span><br><span class="line">                    <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">                    &lt;input</span><br><span class="line">                        x-model=&quot;person.name&quot;</span><br><span class="line">                        class=&quot;block w-full px-4 py-3 mb-3 border rounded appearance-none bg-grey-lighter text-grey-darker border-red&quot;</span><br><span class="line">                        required type=&quot;text&quot; id=&quot;name&quot;&gt;</span><br><span class="line">                <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;px-3 md:w-1/2&quot;</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">&quot;block mb-2 text-xs font-bold tracking-wide uppercase text-grey-darker&quot;</span> <span class="attr">for</span>=<span class="string">&quot;email&quot;</span>&gt;</span></span><br><span class="line">                        email</span><br><span class="line">                    <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">input</span> <span class="attr">x-model</span>=<span class="string">&quot;person.email&quot;</span></span></span><br><span class="line"><span class="tag">                        <span class="attr">class</span>=<span class="string">&quot;block w-full px-4 py-3 border rounded appearance-none bg-grey-lighter text-grey-darker border-grey-lighter&quot;</span></span></span><br><span class="line"><span class="tag">                        <span class="attr">required</span> <span class="attr">type</span>=<span class="string">&quot;email&quot;</span> <span class="attr">id</span>=<span class="string">&quot;email&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;mb-6 md:flex&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;px-3 mb-6 md:w-1/2 md:mb-0&quot;</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">&quot;block mb-2 text-xs font-bold tracking-wide uppercase text-grey-darker&quot;</span> <span class="attr">for</span>=<span class="string">&quot;address&quot;</span>&gt;</span></span><br><span class="line">                        Address</span><br><span class="line">                    <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">input</span> <span class="attr">x-model</span>=<span class="string">&quot;person.address&quot;</span></span></span><br><span class="line"><span class="tag">                        <span class="attr">class</span>=<span class="string">&quot;block w-full px-4 py-3 border rounded appearance-none bg-grey-lighter text-grey-darker border-grey-lighter&quot;</span></span></span><br><span class="line"><span class="tag">                        <span class="attr">required</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">id</span>=<span class="string">&quot;address&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;px-3 md:w-1/2&quot;</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">&quot;block mb-2 text-xs font-bold tracking-wide uppercase text-grey-darker&quot;</span> <span class="attr">for</span>=<span class="string">&quot;city&quot;</span>&gt;</span></span><br><span class="line">                        City</span><br><span class="line">                    <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">input</span> <span class="attr">x-model</span>=<span class="string">&quot;person.city&quot;</span></span></span><br><span class="line"><span class="tag">                        <span class="attr">class</span>=<span class="string">&quot;block w-full px-4 py-3 border rounded appearance-none bg-grey-lighter text-grey-darker border-grey-lighter&quot;</span></span></span><br><span class="line"><span class="tag">                        <span class="attr">required</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">id</span>=<span class="string">&quot;city&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;flex justify-end mb-2 md:flex&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">&quot;fetch(&#x27;/update&#x27;, &#123;</span></span></span><br><span class="line"><span class="tag"><span class="string">                                    method: &#x27;POST&#x27;,</span></span></span><br><span class="line"><span class="tag"><span class="string">                                    body: JSON.stringify(person),</span></span></span><br><span class="line"><span class="tag"><span class="string">                                    headers: &#123;</span></span></span><br><span class="line"><span class="tag"><span class="string">                                        &#x27;Content-Type&#x27;: &#x27;application/json&#x27;</span></span></span><br><span class="line"><span class="tag"><span class="string">                                        &#125;</span></span></span><br><span class="line"><span class="tag"><span class="string">                                &#125;)</span></span></span><br><span class="line"><span class="tag"><span class="string">                                .then(response =&gt; &#123;</span></span></span><br><span class="line"><span class="tag"><span class="string">                                    if (response.ok) alert(&#x27;Updated Successfully!&#x27;)</span></span></span><br><span class="line"><span class="tag"><span class="string">                                    else alert(`Something went wrong: $&#123;response.status&#125; - $&#123;response.statusText&#125;`)</span></span></span><br><span class="line"><span class="tag"><span class="string">                                &#125;)&quot;</span></span></span><br><span class="line"><span class="tag">                        <span class="attr">class</span>=<span class="string">&quot;inline-block px-6 py-2 text-xs font-medium leading-6 text-center text-white uppercase transition bg-blue-700 rounded shadow ripple hover:shadow-lg hover:bg-blue-800 focus:outline-none&quot;</span>&gt;</span></span><br><span class="line">                    Update Info</span><br><span class="line">                <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="using-async"><a class="markdownIt-Anchor" href="#using-async">#</a> Using  <code>Async</code></h2>
+<p>Although, in the code above we are resolving the  <code>fetch</code>  promise through its classic approach, the  <code>async</code> / <code>await</code>  have achieve a <span class="exturl" data-url="aHR0cHM6Ly9jYW5pdXNlLmNvbS8/c2VhcmNoPWF3YWl0">very wide support on the modern browsers</span>. So there nothing holding back to not use it (except for supporting legacy browsers). The only consideration is that alpinejs expects a function expression in its attributes instead of a function declaration. That means that we need to surround the arrow function with a self-execute function. Therefore, our  <code>x-init</code>  code is transformed:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">x-init=<span class="string">&quot;(async () =&gt; &#123;</span></span><br><span class="line"><span class="string">                const response = await fetch(&#x27;https://jsonplaceholder.typicode.com/users/1&#x27;)</span></span><br><span class="line"><span class="string">                if (! response.ok) alert(`Something went wrong: $&#123;response.status&#125; - $&#123;response.statusText&#125;`)</span></span><br><span class="line"><span class="string">                data = await response.json()</span></span><br><span class="line"><span class="string">                person = &#123;</span></span><br><span class="line"><span class="string">                            name: data.name,</span></span><br><span class="line"><span class="string">                            email: data.email,</span></span><br><span class="line"><span class="string">                            address: data.address.street,</span></span><br><span class="line"><span class="string">                            city: data.address.city</span></span><br><span class="line"><span class="string">                        &#125;</span></span><br><span class="line"><span class="string">            &#125;)()&quot;</span></span><br></pre></td></tr></table></figure>
+<p>And the  <code>async</code> / <code>await</code>  version for the <strong>POST</strong> request code is:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">click=<span class="string">&quot;(async () =&gt; &#123;</span></span><br><span class="line"><span class="string">                const response = await fetch(&#x27;/api/update&#x27;, &#123;</span></span><br><span class="line"><span class="string">                    method: &#x27;POST&#x27;,</span></span><br><span class="line"><span class="string">                    body: JSON.stringify(person)</span></span><br><span class="line"><span class="string">                &#125;)</span></span><br><span class="line"><span class="string">                if (response.ok) alert(&#x27;Updated Successfully!&#x27;)</span></span><br><span class="line"><span class="string">                else alert(`Something went wrong: $&#123;response.status&#125; - $&#123;response.statusText&#125;`)</span></span><br><span class="line"><span class="string">            &#125;)()&quot;</span></span><br></pre></td></tr></table></figure>
+<p>The final example using the  <code>async</code> / <code>await</code>  version is:</p>
+<iframe height="300" style="width: 100%;" scrolling="no" title="Alpine.js Fetch" src="https://codepen.io/lhchen74/embed/gOvmjre?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <span class="exturl" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0L3Blbi9nT3ZtanJl">
+  Alpine.js Fetch</span> by lhchen74 (<span class="exturl" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0">@lhchen74</span>)
+  on <span class="exturl" data-url="aHR0cHM6Ly9jb2RlcGVuLmlv">CodePen</span>.
+</iframe>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">&quot;flex flex-col h-screen justify-center content-center&quot;</span>&gt;</span><br><span class="line">  &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">&quot;flex flex-col self-center px-8 pt-6 pb-8 max-w-7xl my-2 mb-4 bg-white rounded shadow-md&quot;</span> x-data=<span class="string">&quot;&#123;person : &#123;</span></span><br><span class="line"><span class="string">                        firstName: null,</span></span><br><span class="line"><span class="string">                        lastName: null,</span></span><br><span class="line"><span class="string">                        address: null,</span></span><br><span class="line"><span class="string">                        city: null</span></span><br><span class="line"><span class="string">                        &#125;&#125;&quot;</span> x-init=<span class="string">&quot;(async () =&gt; &#123;</span></span><br><span class="line"><span class="string">                                  const response = await fetch(&#x27;https://jsonplaceholder.typicode.com/users/1&#x27;)</span></span><br><span class="line"><span class="string">                                  if (! response.ok) alert(`Something went wrong: $&#123;response.status&#125; - $&#123;response.statusText&#125;`)</span></span><br><span class="line"><span class="string">                                  data = await response.json()</span></span><br><span class="line"><span class="string">                                  person = &#123;</span></span><br><span class="line"><span class="string">                                             name: data.name,</span></span><br><span class="line"><span class="string">                                             email: data.email,</span></span><br><span class="line"><span class="string">                                             address: data.address.street,</span></span><br><span class="line"><span class="string">                                             city: data.address.city</span></span><br><span class="line"><span class="string">                                             &#125;</span></span><br><span class="line"><span class="string">                                             &#125;)()&quot;</span>&gt;</span><br><span class="line">    &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">&quot;mb-6 md:flex&quot;</span>&gt;</span><br><span class="line">      &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">&quot;px-3 mb-6 md:w-1/2 md:mb-0&quot;</span>&gt;</span><br><span class="line">        &lt;label <span class="class"><span class="keyword">class</span></span>=<span class="string">&quot;block mb-2 text-xs font-bold tracking-wide uppercase text-grey-darker&quot;</span> <span class="keyword">for</span>=<span class="string">&quot;name&quot;</span>&gt;</span><br><span class="line">          Name</span><br><span class="line">        &lt;/label&gt;</span><br><span class="line">        &lt;input x-model=<span class="string">&quot;person.name&quot;</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">&quot;block w-full px-4 py-3 mb-3 border rounded appearance-none bg-grey-lighter text-grey-darker border-red&quot;</span> required type=<span class="string">&quot;text&quot;</span> id=<span class="string">&quot;name&quot;</span>&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">      &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">&quot;px-3 md:w-1/2&quot;</span>&gt;</span><br><span class="line">        &lt;label <span class="class"><span class="keyword">class</span></span>=<span class="string">&quot;block mb-2 text-xs font-bold tracking-wide uppercase text-grey-darker&quot;</span> <span class="keyword">for</span>=<span class="string">&quot;email&quot;</span>&gt;</span><br><span class="line">          email</span><br><span class="line">        &lt;/label&gt;</span><br><span class="line">        &lt;input x-model=<span class="string">&quot;person.email&quot;</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">&quot;block w-full px-4 py-3 border rounded appearance-none bg-grey-lighter text-grey-darker border-grey-lighter&quot;</span> required type=<span class="string">&quot;email&quot;</span> id=<span class="string">&quot;email&quot;</span>&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">&quot;mb-6  md:flex&quot;</span>&gt;</span><br><span class="line">      &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">&quot;px-3 mb-6 md:w-1/2 md:mb-0&quot;</span>&gt;</span><br><span class="line">        &lt;label <span class="class"><span class="keyword">class</span></span>=<span class="string">&quot;block mb-2 text-xs font-bold tracking-wide uppercase text-grey-darker&quot;</span> <span class="keyword">for</span>=<span class="string">&quot;address&quot;</span>&gt;</span><br><span class="line">          Address</span><br><span class="line">        &lt;/label&gt;</span><br><span class="line">        &lt;input x-model=<span class="string">&quot;person.address&quot;</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">&quot;block w-full px-4 py-3 border rounded appearance-none bg-grey-lighter text-grey-darker border-grey-lighter&quot;</span> required type=<span class="string">&quot;text&quot;</span> id=<span class="string">&quot;address&quot;</span>&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">      &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">&quot;px-3 md:w-1/2&quot;</span>&gt;</span><br><span class="line">        &lt;label <span class="class"><span class="keyword">class</span></span>=<span class="string">&quot;block mb-2 text-xs font-bold tracking-wide uppercase text-grey-darker&quot;</span> <span class="keyword">for</span>=<span class="string">&quot;city&quot;</span>&gt;</span><br><span class="line">          City</span><br><span class="line">        &lt;/label&gt;</span><br><span class="line">        &lt;input x-model=<span class="string">&quot;person.city&quot;</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">&quot;block w-full px-4 py-3 border rounded appearance-none bg-grey-lighter text-grey-darker border-grey-lighter&quot;</span> required type=<span class="string">&quot;text&quot;</span> id=<span class="string">&quot;city&quot;</span>&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">&quot;mb-2  md:flex flex justify-end&quot;</span>&gt;</span><br><span class="line">      &lt;button @click=<span class="string">&quot;(async () =&gt; &#123;</span></span><br><span class="line"><span class="string">                                    const response = await fetch(&#x27;/api/update&#x27;, &#123;</span></span><br><span class="line"><span class="string">                                        method: &#x27;POST&#x27;,</span></span><br><span class="line"><span class="string">                                        body: JSON.stringify(person)</span></span><br><span class="line"><span class="string">                                    &#125;)</span></span><br><span class="line"><span class="string">                                    if (response.ok) alert(&#x27;Updated Successfully!&#x27;)</span></span><br><span class="line"><span class="string">                                    else alert(`Something went wrong: $&#123;response.status&#125; - $&#123;response.statusText&#125;`)</span></span><br><span class="line"><span class="string">                                &#125;)()&quot;</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">&quot;inline-block px-6 py-2 text-xs font-medium leading-6 text-center text-white uppercase transition bg-blue-700 rounded shadow ripple hover:shadow-lg hover:bg-blue-800 focus:outline-none&quot;</span>&gt;</span><br><span class="line">        Update Info</span><br><span class="line">      &lt;/button&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>As you see, using the  <code>fetch</code>  command is very straightforward, and I think it is the preferred way to deal with REST APIs in our Alpinejs components.</p>
+
+      <div class="tags">
+          <a href="/tags/js/" rel="tag"><i class="ic i-tag"></i> js</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2022-05-18 11:46:26" itemprop="dateModified" datetime="2022-05-18T11:46:26+08:00">2022-05-18</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2022/05/17/svg-deployment/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipet4bz0yj20zk0m8e81.jpg" title="SVG deployment">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>SVG deployment</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2022/05/19/javascript-web-components-practice/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicljitigmj20zk0m87fp.jpg" title="Web Components Practice">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Web Components Practice</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#backend-json-server"><span class="toc-number">1.</span> <span class="toc-text"> Backend JSON Server</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#form-design-using-tailwindcss"><span class="toc-number">2.</span> <span class="toc-text"> Form Design Using Tailwindcss</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#form-initialization"><span class="toc-number">3.</span> <span class="toc-text"> Form Initialization</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#two-way-form-binding"><span class="toc-number">4.</span> <span class="toc-text"> Two-Way Form Binding</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#form-submission"><span class="toc-number">5.</span> <span class="toc-text"> Form Submission</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#using-async"><span class="toc-number">6.</span> <span class="toc-text"> Using  Async</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">286</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">40</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item about" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2022/05/17/svg-deployment/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2022/05/19/javascript-web-components-practice/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2022</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ D E W</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2022/05/18/alpinejs-fetch/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
