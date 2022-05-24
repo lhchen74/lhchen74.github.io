@@ -1,0 +1,442 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="html" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2022/05/20/html-white-space/">
+
+
+
+  <title>
+CSS 的空格处理 |
+D E W = 露の世</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">CSS 的空格处理
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2022-05-20 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2022-05-20T00:00:00+08:00">2022-05-20</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">D E W</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeyvx1d4j20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeun65urj20zk0m81ii.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giciusoyjnj219g0u0x56.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclgrvbd6j20zk0m8qv5.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicm0fdw5cj20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclize41wj20zk0m87gk.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2022/05/20/html-white-space/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>转载：<span class="exturl" data-url="aHR0cHM6Ly93d3cucnVhbnlpZmVuZy5jb20vYmxvZy8yMDE4LzA3L3doaXRlLXNwYWNlLmh0bWw=">CSS 的空格处理 - 阮一峰的网络日志</span></p>
+</blockquote>
+<h2 id="一-空格规则"><a class="markdownIt-Anchor" href="#一-空格规则">#</a> 一、空格规则</h2>
+<p>HTML 代码的空格通常会被浏览器忽略。</p>
+<img data-src="/2022/05/20/html-white-space/bg2018073106-1653024890782.jpg" class="">
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;◡◡hello◡◡world◡◡&lt;&#x2F;p&gt;</span><br></pre></td></tr></table></figure>
+<p>上面是一行 HTML 代码，文字的前部、内部和后部各有两个空格。为了便于识别，这里使用半圆形符号 <code>◡</code> 表示空格。</p>
+<p>浏览器的输出结果如下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hello world</span><br></pre></td></tr></table></figure>
+<p>可以看到，文字的前部和后部的空格都会忽略，内部的连续空格只会算作一个。这就是浏览器处理空格的基本规则。</p>
+<p>如果希望空格原样输出，可以使用 <code>&lt;pre&gt;</code>  标签。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;pre&gt;◡◡hello◡◡world◡◡&lt;&#x2F;pre&gt;</span><br></pre></td></tr></table></figure>
+<p>另一种方法是，改用 HTML 实体 <code>&amp;nbsp;</code>  表示空格。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;&amp;nbsp;&amp;nbsp;hello&amp;nbsp;&amp;nbsp;world&amp;nbsp;&amp;nbsp;&lt;&#x2F;p&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="二-空格字符"><a class="markdownIt-Anchor" href="#二-空格字符">#</a> 二、空格字符</h2>
+<p>HTML 处理空格的规则，适用于多种字符。除了普通的空格键，还包括制表符（ <code>\t</code> ）和换行符（ <code>\r</code>  和 <code>\n</code> ）。</p>
+<p>浏览器会自动把这些符号转成普通的空格键。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;hello</span><br><span class="line">world&lt;&#x2F;p&gt;</span><br></pre></td></tr></table></figure>
+<p>上面代码中，文本内部包含了一个换行符，浏览器视同为空格，输出结果如下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hello world</span><br></pre></td></tr></table></figure>
+<p>所以，文本内部的换行是无效的（除非文本放在 <code>&lt;pre&gt;</code>  标签内）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;hello&lt;br&gt;world&lt;&#x2F;p&gt;</span><br></pre></td></tr></table></figure>
+<p>上面代码使用 <code>&lt;br&gt;</code>  标签显式表示换行。</p>
+<h2 id="三-css-的-white-space-属性"><a class="markdownIt-Anchor" href="#三-css-的-white-space-属性">#</a> 三、CSS 的 white-space 属性</h2>
+<p>HTML 语言的空格处理，基本上就是直接过滤。这样的处理过于粗糙，完全忽视了原始文本内部的空格可能是有意义的。</p>
+<p>CSS 提供了一个 <code>white-space</code>  属性，可以提供更精确一点的空格处理方式。该属性共有六个值，除了一个通用的 <code>inherit</code> （继承父元素），下面依次介绍剩下的五个值。</p>
+<h3 id="31-white-space-normal"><a class="markdownIt-Anchor" href="#31-white-space-normal">#</a> 3.1 white-space: normal</h3>
+<p><code>white-space</code>  属性的默认值为 <code>normal</code> ，表示浏览器以正常方式处理空格。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;◡◡hellohellohello◡hello</span><br><span class="line">world</span><br><span class="line">&lt;&#x2F;p&gt;</span><br></pre></td></tr></table></figure>
+<p>上面代码中，文本前部有两个空格，内部有一个长单词和一个换行符。</p>
+<p>然后，容器 <code>&lt;p&gt;</code>  指定一个比较小的宽度。为了便于识别，背景色设为红色。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">background</span>: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>显示效果如下图。</p>
+<img data-src="/2022/05/20/html-white-space/bg2018073101-1653024890792.png" class="">
+<p>可以看到，文首的空格被忽略。由于容器太窄，第一个单词溢出容器，然后在后面一个空格处换行。文本内部的换行符自动转成了空格。</p>
+<h3 id="32-white-space-nowrap"><a class="markdownIt-Anchor" href="#32-white-space-nowrap">#</a> 3.2 white-space: nowrap</h3>
+<p><code>white-space</code>  属性为 <code>nowrap</code>  时，不会因为超出容器宽度而发生换行。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">  <span class="attribute">white-space</span>: nowrap;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>显示效果如下图。</p>
+<img data-src="/2022/05/20/html-white-space/bg2018073102-1653024890802.png" class="">
+<p>所有文本显示为一行，不会换行。</p>
+<h3 id="33-white-space-pre"><a class="markdownIt-Anchor" href="#33-white-space-pre">#</a> 3.3 white-space: pre</h3>
+<p><code>white-space</code>  属性为 <code>pre</code>  时，就按照 <code>&lt;pre&gt;</code>  标签的方式处理。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">  <span class="attribute">white-space</span>: pre;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>显示效果如下图。</p>
+<img data-src="/2022/05/20/html-white-space/bg2018073103-1653024890818.png" class="">
+<p>上面结果与原始文本完全一致，所有空格和换行符都保留了。</p>
+<h3 id="34-white-space-pre-wrap"><a class="markdownIt-Anchor" href="#34-white-space-pre-wrap">#</a> 3.4 white-space: pre-wrap</h3>
+<p><code>white-space</code>  属性为 <code>pre-wrap</code>  时，基本还是按照 <code>&lt;pre&gt;</code>  标签的方式处理，唯一区别是超出容器宽度时，会发生换行。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">  <span class="attribute">white-space</span>: pre-wrap;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>显示效果如下图。</p>
+<img data-src="/2022/05/20/html-white-space/bg2018073104-1653024890830.png" class="">
+<p>文首的空格、内部的空格和换行符都保留了，超出容器的地方发生了折行。</p>
+<h3 id="35-white-space-pre-line"><a class="markdownIt-Anchor" href="#35-white-space-pre-line">#</a> 3.5 white-space: pre-line</h3>
+<p><code>white-space</code>  属性为 <code>pre-line</code>  时，意为保留换行符。除了换行符会原样输出，其他都与 <code>white-space:normal</code>  规则一致。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">  <span class="attribute">white-space</span>: pre-line;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>显示效果如下图。</p>
+<img data-src="/2022/05/20/html-white-space/bg2018073105-1653024890840.png" class="">
+<p>除了文本内部的换行符没有转成空格，其他都与 <code>normal</code>  的处理规则一致。这对于诗歌类型的文本很有用。</p>
+<h2 id="四-参考链接"><a class="markdownIt-Anchor" href="#四-参考链接">#</a> 四、参考链接</h2>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9tZWRpdW0uY29tL0BwYXRyaWNrYnJvc3NldC93aGVuLWRvZXMtd2hpdGUtc3BhY2UtbWF0dGVyLWluLWh0bWwtYjkwZThhN2NkZDMz">When does white space matter in HTML?</span>，by Patrick Brosset</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9jc3MtdHJpY2tzLmNvbS9hbG1hbmFjL3Byb3BlcnRpZXMvdy93aGl0ZXNwYWNlLw==">white-space</span>，by Sara Cope</li>
+</ul>
+
+      <div class="tags">
+          <a href="/tags/html/" rel="tag"><i class="ic i-tag"></i> html</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2022-05-20 13:39:39" itemprop="dateModified" datetime="2022-05-20T13:39:39+08:00">2022-05-20</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2022/05/19/html-xhtml/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclgrvbd6j20zk0m8qv5.jpg" title="Write HTML, the HTML Way (Not the XHTML Way)">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Write HTML, the HTML Way (Not the XHTML Way)</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2022/05/21/html-http-referrer/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipetv6p75j20zk0m8x6p.jpg" title="HTTP Referer 教程">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>HTTP Referer 教程</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E7%A9%BA%E6%A0%BC%E8%A7%84%E5%88%99"><span class="toc-number">1.</span> <span class="toc-text"> 一、空格规则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E7%A9%BA%E6%A0%BC%E5%AD%97%E7%AC%A6"><span class="toc-number">2.</span> <span class="toc-text"> 二、空格字符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-css-%E7%9A%84-white-space-%E5%B1%9E%E6%80%A7"><span class="toc-number">3.</span> <span class="toc-text"> 三、CSS 的 white-space 属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#31-white-space-normal"><span class="toc-number">3.1.</span> <span class="toc-text"> 3.1 white-space: normal</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#32-white-space-nowrap"><span class="toc-number">3.2.</span> <span class="toc-text"> 3.2 white-space: nowrap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#33-white-space-pre"><span class="toc-number">3.3.</span> <span class="toc-text"> 3.3 white-space: pre</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#34-white-space-pre-wrap"><span class="toc-number">3.4.</span> <span class="toc-text"> 3.4 white-space: pre-wrap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#35-white-space-pre-line"><span class="toc-number">3.5.</span> <span class="toc-text"> 3.5 white-space: pre-line</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-number">4.</span> <span class="toc-text"> 四、参考链接</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">288</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">40</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item about" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2022/05/19/html-xhtml/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2022/05/21/html-http-referrer/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2022</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ D E W</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2022/05/20/html-white-space/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

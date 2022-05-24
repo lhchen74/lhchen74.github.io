@@ -1,0 +1,444 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="html" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2022/05/21/html-http-referrer/">
+
+
+
+  <title>
+HTTP Referer 教程 |
+D E W = 露の世</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">HTTP Referer 教程
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2022-05-21 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2022-05-21T00:00:00+08:00">2022-05-21</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">D E W</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicliwyw55j20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipey0a334j20zk0m8qpt.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipevgoki5j20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giciuja1j1j20zk0m8kjl.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipet8c1a2j20zk0m8kct.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclxfdlttj20zk0m8npd.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2022/05/21/html-http-referrer/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>转载：<span class="exturl" data-url="aHR0cDovL3d3dy5ydWFueWlmZW5nLmNvbS9ibG9nLzIwMTkvMDYvaHR0cC1yZWZlcmVyLmh0bWw=">HTTP Referer 教程 - 阮一峰的网络日志</span></p>
+</blockquote>
+<p>HTTP 请求的头信息里面， <code>Referer</code>  是一个常见字段，提供访问来源的信息。</p>
+<p>很多开发者知道这个字段，但是说不清它的具体细节。本文详细介绍该字段。</p>
+<h2 id="一-referer-的含义"><a class="markdownIt-Anchor" href="#一-referer-的含义">#</a> 一、Referer 的含义</h2>
+<p>现实生活中，购买服务或加入会员的时候，往往要求提供信息：“你从哪里知道了我们？”</p>
+<img data-src="/2022/05/21/html-http-referrer/bg2019060401.jpg" class="">
+<p>这叫做引荐人（referrer），谁引荐了你？对于公司来说，这是很有用的信息。</p>
+<p>互联网也是一样，你不会无缘无故访问一个网页，总是有人告诉你，可以去那里看看。服务器也想知道，你的 &quot;引荐人&quot; 是谁？</p>
+<p>HTTP 协议在请求（request）的头信息里面，设计了一个 <code>Referer</code>  字段，给出 &quot;引荐网页&quot; 的 URL。</p>
+<img data-src="/2022/05/21/html-http-referrer/bg2019060402.jpg" class="">
+<p>这个字段是可选的。客户端发送请求的时候，自主决定是否加上该字段。</p>
+<p>很有趣的是，这个字段的拼写是错的。 <code>Referer</code>  的正确拼写是 <code>Referrer</code> ，但是写入标准的时候，不知为何，没人发现少了一个字母 <code>r</code> 。标准定案以后，只能将错就错，所有头信息的该字段都一律错误拼写成 <code>Referer</code> 。</p>
+<h2 id="二-referer-的发生场景"><a class="markdownIt-Anchor" href="#二-referer-的发生场景">#</a> 二、Referer 的发生场景</h2>
+<p>浏览器向服务器请求资源的时候， <code>Referer</code>  字段的逻辑是这样的，用户在地址栏输入网址，或者选中浏览器书签，就不发送 <code>Referer</code>  字段。</p>
+<p>主要是以下三种场景，会发送 <code>Referer</code>  字段。</p>
+<p>（1）用户点击网页上的链接。</p>
+<p>（2）用户发送表单。</p>
+<p>（3）网页加载静态资源，比如加载图片、脚本、样式。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 加载图片 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;foo.jpg&quot;</span> /&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 加载脚本 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;foo.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 加载样式 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">&quot;foo.css&quot;</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<p>上面这些场景，浏览器都会将当前网址作为 <code>Referer</code>  字段，放在 HTTP 请求的头信息发送。</p>
+<p>浏览器的 JavaScript 引擎提供 <code>document.referrer</code>  属性，可以查看当前页面的引荐来源。注意，这里采用的是正确拼写。</p>
+<h2 id="三-referer-的作用"><a class="markdownIt-Anchor" href="#三-referer-的作用">#</a> 三、Referer 的作用</h2>
+<p><code>Referer</code>  字段实际上告诉了服务器，用户在访问当前资源之前的位置。这往往可以用来用户跟踪。</p>
+<p>一个典型的应用是，有些网站不允许图片外链，只有自家的网站才能显示图片，外部网站加载图片就会报错。它的实现就是基于 <code>Referer</code>  字段，如果该字段的网址是自家网址，就放行。</p>
+<p>由于涉及隐私，很多时候不适合发送 <code>Referer</code>  字段。</p>
+<p>这里举两个例子，都不适合暴露 URL。一个是功能 URL，即有的 URL 不要登录，可以访问，就能直接完成密码重置、邮件退订等功能。另一个是内网 URL，不希望外部用户知道内网有这样的地址。 <code>Referer</code>  字段很可能把这些 URL 暴露出去。</p>
+<p>此外，还有一种特殊情况，需要定制 <code>Referer</code>  字段。比如社交网站上，用户在对话中提到某个网址。这时，不希望暴露用户所在的原始网址，但是可以暴露社交网站的域名，让对方知道，是我贡献了你的流量。</p>
+<h2 id="四-rel属性"><a class="markdownIt-Anchor" href="#四-rel属性">#</a> 四、 <code>rel</code>  属性</h2>
+<p>由于上一节的原因，浏览器提供一系列手段，允许改变默认的 <code>Referer</code>  行为。</p>
+<p>对于用户来说，可以改变浏览器本身的<span class="exturl" data-url="aHR0cDovL2tiLm1vemlsbGF6aW5lLm9yZy9OZXR3b3JrLmh0dHAuc2VuZFJlZmVyZXJIZWFkZXI=">全局设置</span>，也可以安装<span class="exturl" data-url="aHR0cHM6Ly9icm93c2VybmF0aXZlLmNvbS9odHRwLXJlZmVyZXItY29udHJvbC1jaHJvbWUv">浏览器扩展</span>。这里就不详细介绍了。</p>
+<p>对于开发者来说， <code>rel=&quot;noreferrer&quot;</code>  属性是最简单的一种方法。 <code>&lt;a&gt;</code> 、 <code>&lt;area&gt;</code>  和 <code>&lt;form&gt;</code>  三个标签可以使用这个属性，一旦使用，该元素就不会发送 <code>Referer</code>  字段。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;...&quot;</span> <span class="attr">rel</span>=<span class="string">&quot;noreferrer&quot;</span> <span class="attr">target</span>=<span class="string">&quot;_blank&quot;</span>&gt;</span>xxx<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>上面链接点击产生的 HTTP 请求，不会带有 <code>Referer</code>  字段。</p>
+<p>注意， <code>rel=&quot;noreferrer&quot;</code>  采用的是正确的拼写。</p>
+<h2 id="五-referrer-policy-的值"><a class="markdownIt-Anchor" href="#五-referrer-policy-的值">#</a> 五、Referrer Policy 的值</h2>
+<p><code>rel</code>  属性只能定制单个元素的 <code>Referer</code>  行为，而且选择比较少，只能发送或不发送。W3C 为此制定了更强大的 <span class="exturl" data-url="aHR0cHM6Ly93M2MuZ2l0aHViLmlvL3dlYmFwcHNlYy1yZWZlcnJlci1wb2xpY3kv">Referrer Policy</span>。</p>
+<p>Referrer Policy 可以设定 8 个值。</p>
+<blockquote>
+<p><strong>（1）no-referrer</strong></p>
+<p>不发送 <code>Referer</code>  字段。</p>
+<p><strong>（2）no-referrer-when-downgrade</strong></p>
+<p>如果从 HTTPS 网址链接到 HTTP 网址，不发送 <code>Referer</code>  字段，其他情况发送（包括 HTTP 网址链接到 HTTP 网址）。这是浏览器的默认行为。</p>
+<p><strong>（3）same-origin</strong></p>
+<p>链接到同源网址（协议 + 域名 + 端口 都相同）时发送，否则不发送。注意， <code>https://foo.com</code>  链接到 <code>http://foo.com</code>  也属于跨域。</p>
+<p><strong>（4）origin</strong></p>
+<p><code>Referer</code>  字段一律只发送<em>源信息（协议 + 域名 + 端口）</em>，不管是否跨域。</p>
+<p><strong>（5）strict-origin</strong></p>
+<p>如果从 HTTPS 网址链接到 HTTP 网址，不发送 <code>Referer</code>  字段，其他情况只发送<em>源信息（协议 + 域名 + 端口）</em>。</p>
+<p><strong>（6）origin-when-cross-origin</strong></p>
+<p>同源时，发送完整的 <code>Referer</code>  字段，跨域时发送源信息（协议 + 域名 + 端口）。</p>
+<p><strong>（7）strict-origin-when-cross-origin</strong></p>
+<p>同源时，发送完整的 <code>Referer</code>  字段；跨域时，如果 HTTPS 网址链接到 HTTP 网址，不发送 <code>Referer</code>  字段，否则发送源信息（协议 + 域名 + 端口）。</p>
+<p><strong>（8）unsafe-url</strong></p>
+<p><code>Referer</code>  字段包含源信息（协议 + 域名 + 端口）、路径和查询字符串，不包含锚点、用户名和密码。</p>
+</blockquote>
+<h2 id="六-referrer-policy-的用法"><a class="markdownIt-Anchor" href="#六-referrer-policy-的用法">#</a> 六、Referrer Policy 的用法</h2>
+<p>Referrer Policy 有<span class="exturl" data-url="aHR0cHM6Ly93M2MuZ2l0aHViLmlvL3dlYmFwcHNlYy1yZWZlcnJlci1wb2xpY3kvI3JlZmVycmVyLXBvbGljeS1kZWxpdmVyeQ==">多种使用方法</span>。</p>
+<p><strong>（1）HTTP 头信息</strong></p>
+<p>服务器发送网页的时候，通过 HTTP 头信息的 <code>Referrer-Policy</code>  告诉浏览器。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Referrer-Policy: origin</span><br></pre></td></tr></table></figure>
+<p><strong>（2） <code>&lt;meta&gt;</code>  标签</strong></p>
+<p>也可以使用 <code>&lt;meta&gt;</code>  标签，在网页头部设置。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;referrer&quot;</span> <span class="attr">content</span>=<span class="string">&quot;origin&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>（3）referrerpolicy 属性</strong></p>
+<p><code>&lt;a&gt;</code> 、 <code>&lt;area&gt;</code> 、 <code>&lt;img&gt;</code> 、 <code>&lt;iframe&gt;</code>  和 <code>&lt;link&gt;</code>  标签，可以设置 referrerpolicy 属性。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;...&quot;</span> <span class="attr">referrerpolicy</span>=<span class="string">&quot;origin&quot;</span> <span class="attr">target</span>=<span class="string">&quot;_blank&quot;</span>&gt;</span>xxx<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="七-退出页面重定向"><a class="markdownIt-Anchor" href="#七-退出页面重定向">#</a> 七、退出页面重定向</h2>
+<p>还有一种比较老式的<span class="exturl" data-url="aHR0cHM6Ly9nZWVrdGhpcy5uZXQvcG9zdC9oaWRlLWh0dHAtcmVmZXJlci1oZWFkZXJzLyNleGl0LXBhZ2UtcmVkaXJlY3Q=">技巧</span>，但是非常有效，可以隐藏掉原始网址，谷歌和 Facebook 都在使用这种方法。</p>
+<p>链接的时候，不要直接跳转，而是通过一个重定向网址，就像下面这样。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;/exit.php?url=http%3A%2F%2Fexample.com&quot;</span>&gt;</span>Example.com<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>上面网址中，先跳转到 <code>/exit.php</code> ，然后再跳转到目标网址。这时， <code>Referer</code>  字段就不会包含原始网址。</p>
+<h2 id="comments"><a class="markdownIt-Anchor" href="#comments">#</a> Comments</h2>
+<p>设置  <code>&lt;img&gt;</code>  标签的  <code>referrerpolicy=&quot;unsafe-url&quot;</code>  可以看到 <code>Referer</code>  请求字段不仅包含源信息（协议 + 域名 + 端口）、同时包含路径  <code>test.html</code> .</p>
+<p>test.html</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Test<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    &lt;img</span><br><span class="line">      referrerpolicy=&quot;unsafe-url&quot;</span><br><span class="line">      src=&quot;https://lhchen74.github.io/images/css/three-body.jpg&quot;</span><br><span class="line">      alt=&quot;Image of Three Body&quot;</span><br><span class="line">    /&gt;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<img data-src="/2022/05/21/html-http-referrer/1653098650986.png" class="">
+      <div class="tags">
+          <a href="/tags/html/" rel="tag"><i class="ic i-tag"></i> html</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2022-05-21 10:12:15" itemprop="dateModified" datetime="2022-05-21T10:12:15+08:00">2022-05-21</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2022/05/20/html-white-space/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclffsa1cj20zk0m811l.jpg" title="CSS 的空格处理">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>CSS 的空格处理</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-referer-%E7%9A%84%E5%90%AB%E4%B9%89"><span class="toc-number">1.</span> <span class="toc-text"> 一、Referer 的含义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-referer-%E7%9A%84%E5%8F%91%E7%94%9F%E5%9C%BA%E6%99%AF"><span class="toc-number">2.</span> <span class="toc-text"> 二、Referer 的发生场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-referer-%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">3.</span> <span class="toc-text"> 三、Referer 的作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-rel%E5%B1%9E%E6%80%A7"><span class="toc-number">4.</span> <span class="toc-text"> 四、 rel  属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94-referrer-policy-%E7%9A%84%E5%80%BC"><span class="toc-number">5.</span> <span class="toc-text"> 五、Referrer Policy 的值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD-referrer-policy-%E7%9A%84%E7%94%A8%E6%B3%95"><span class="toc-number">6.</span> <span class="toc-text"> 六、Referrer Policy 的用法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83-%E9%80%80%E5%87%BA%E9%A1%B5%E9%9D%A2%E9%87%8D%E5%AE%9A%E5%90%91"><span class="toc-number">7.</span> <span class="toc-text"> 七、退出页面重定向</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#comments"><span class="toc-number">8.</span> <span class="toc-text"> Comments</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">288</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">40</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item about" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2022</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ D E W</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2022/05/21/html-http-referrer/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
