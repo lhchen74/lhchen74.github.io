@@ -1,0 +1,412 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="db" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2022/06/22/oracle-recursive/">
+
+
+
+  <title>
+Recursive Subquery Factoring Hierarchical Queries Using Recursive WITH Clauses |
+D E W = 露の世</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">Recursive Subquery Factoring Hierarchical Queries Using Recursive WITH Clauses
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2022-06-22 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2022-06-22T00:00:00+08:00">2022-06-22</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">D E W</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipet4bz0yj20zk0m8e81.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeun65urj20zk0m81ii.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giph4fomxoj20zk0m8axp.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipex2cdtbj20zk0m8x6p.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipewf5l51j20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicitht3xtj20zk0m8k5v.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2022/06/22/oracle-recursive/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>转载：<span class="exturl" data-url="aHR0cHM6Ly9vcmFjbGUtYmFzZS5jb20vYXJ0aWNsZXMvMTFnL3JlY3Vyc2l2ZS1zdWJxdWVyeS1mYWN0b3JpbmctMTFncjI=">ORACLE-BASE - Recursive Subquery Factoring : Hierarchical Queries Using Recursive WITH Clauses</span></p>
+</blockquote>
+<p>This articles gives an overview of how to query hierarchical data in Oracle databases using recursive subquery factoring. This functionality was introduced in Oracle 11g Release 2, giving an alternative to the method of performing hierarchical queries from <span class="exturl" data-url="aHR0cHM6Ly9vcmFjbGUtYmFzZS5jb20vYXJ0aWNsZXMvbWlzYy9oaWVyYXJjaGljYWwtcXVlcmllcw==">previous versions</span>.</p>
+<h2 id="setup"><a class="markdownIt-Anchor" href="#setup">#</a> Setup</h2>
+<p>The following table contains hierarchical data.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> tab1 PURGE;</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> tab1 (</span><br><span class="line">  id        NUMBER,</span><br><span class="line">  parent_id NUMBER,</span><br><span class="line">  <span class="keyword">CONSTRAINT</span> tab1_pk <span class="keyword">PRIMARY</span> KEY (id),</span><br><span class="line">  <span class="keyword">CONSTRAINT</span> tab1_tab1_fk <span class="keyword">FOREIGN</span> KEY (parent_id) <span class="keyword">REFERENCES</span> tab1(id)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> INDEX tab1_parent_id_idx <span class="keyword">ON</span> tab1(parent_id);</span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> tab1 <span class="keyword">VALUES</span> (<span class="number">1</span>, <span class="keyword">NULL</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> tab1 <span class="keyword">VALUES</span> (<span class="number">2</span>, <span class="number">1</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> tab1 <span class="keyword">VALUES</span> (<span class="number">3</span>, <span class="number">2</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> tab1 <span class="keyword">VALUES</span> (<span class="number">4</span>, <span class="number">2</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> tab1 <span class="keyword">VALUES</span> (<span class="number">5</span>, <span class="number">4</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> tab1 <span class="keyword">VALUES</span> (<span class="number">6</span>, <span class="number">4</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> tab1 <span class="keyword">VALUES</span> (<span class="number">7</span>, <span class="number">1</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> tab1 <span class="keyword">VALUES</span> (<span class="number">8</span>, <span class="number">7</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> tab1 <span class="keyword">VALUES</span> (<span class="number">9</span>, <span class="number">1</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> tab1 <span class="keyword">VALUES</span> (<span class="number">10</span>, <span class="number">9</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> tab1 <span class="keyword">VALUES</span> (<span class="number">11</span>, <span class="number">10</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> tab1 <span class="keyword">VALUES</span> (<span class="number">12</span>, <span class="number">9</span>);</span><br><span class="line"><span class="keyword">COMMIT</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="basic-hierarchical-query"><a class="markdownIt-Anchor" href="#basic-hierarchical-query">#</a> Basic Hierarchical Query</h2>
+<p>A recursive subquery factoring clause must contain two query blocks combined by a  <code>UNION ALL</code>  set operator. The first block is known as the anchor member, which can not reference the query name. It can be made up of one or more query blocks combined by the  <code>UNION ALL</code> ,  <code>UNION</code> ,  <code>INTERSECT</code>  or  <code>MINUS</code>  set operators. The second query block is known as the recursive member, which must reference the query name once.</p>
+<p>The following query uses a recursive  <code>WITH</code>  clause to perform a tree walk. The anchor member queries the root nodes by testing for records with no parents. The recursive member successively adds the children to the root nodes.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SET</span> PAGESIZE <span class="number">20</span> LINESIZE <span class="number">110</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">WITH</span> t1(id, parent_id) <span class="keyword">AS</span> (</span><br><span class="line">  <span class="comment">-- Anchor member.</span></span><br><span class="line">  <span class="keyword">SELECT</span> id,</span><br><span class="line">         parent_id</span><br><span class="line">  <span class="keyword">FROM</span>   tab1</span><br><span class="line">  <span class="keyword">WHERE</span>  parent_id <span class="keyword">IS</span> <span class="keyword">NULL</span></span><br><span class="line">  <span class="keyword">UNION</span> <span class="keyword">ALL</span></span><br><span class="line">  <span class="comment">-- Recursive member.</span></span><br><span class="line">  <span class="keyword">SELECT</span> t2.id,</span><br><span class="line">         t2.parent_id</span><br><span class="line">  <span class="keyword">FROM</span>   tab1 t2, t1</span><br><span class="line">  <span class="keyword">WHERE</span>  t2.parent_id <span class="operator">=</span> t1.id</span><br><span class="line">)</span><br><span class="line"><span class="keyword">SELECT</span> id,</span><br><span class="line">       parent_id</span><br><span class="line"><span class="keyword">FROM</span>   t1;</span><br><span class="line"></span><br><span class="line">        ID  PARENT_ID</span><br><span class="line"><span class="comment">---------- ----------</span></span><br><span class="line">         <span class="number">1</span></span><br><span class="line">         <span class="number">2</span>          <span class="number">1</span></span><br><span class="line">         <span class="number">7</span>          <span class="number">1</span></span><br><span class="line">         <span class="number">9</span>          <span class="number">1</span></span><br><span class="line">         <span class="number">3</span>          <span class="number">2</span></span><br><span class="line">         <span class="number">4</span>          <span class="number">2</span></span><br><span class="line">         <span class="number">8</span>          <span class="number">7</span></span><br><span class="line">        <span class="number">10</span>          <span class="number">9</span></span><br><span class="line">        <span class="number">12</span>          <span class="number">9</span></span><br><span class="line">         <span class="number">5</span>          <span class="number">4</span></span><br><span class="line">         <span class="number">6</span>          <span class="number">4</span></span><br><span class="line">        <span class="number">11</span>         <span class="number">10</span></span><br></pre></td></tr></table></figure>
+<p>The ordering of the rows is specified using the  <code>SEARCH</code>  clause, which can use two methods.</p>
+<ul>
+<li><code>BREADTH FIRST BY</code>  : Sibling rows are returned before child rows are processed.</li>
+<li><code>DEPTH FIRST BY</code>  : Child rows are returned before siblings are processed.</li>
+</ul>
+<p>The following queries show the result of these differing ordering methods.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">WITH</span> t1(id, parent_id) <span class="keyword">AS</span> (</span><br><span class="line">  <span class="comment">-- Anchor member.</span></span><br><span class="line">  <span class="keyword">SELECT</span> id,</span><br><span class="line">         parent_id</span><br><span class="line">  <span class="keyword">FROM</span>   tab1</span><br><span class="line">  <span class="keyword">WHERE</span>  parent_id <span class="keyword">IS</span> <span class="keyword">NULL</span></span><br><span class="line">  <span class="keyword">UNION</span> <span class="keyword">ALL</span></span><br><span class="line">  <span class="comment">-- Recursive member.</span></span><br><span class="line">  <span class="keyword">SELECT</span> t2.id,</span><br><span class="line">         t2.parent_id</span><br><span class="line">  <span class="keyword">FROM</span>   tab1 t2, t1</span><br><span class="line">  <span class="keyword">WHERE</span>  t2.parent_id <span class="operator">=</span> t1.id</span><br><span class="line">)</span><br><span class="line"><span class="keyword">SEARCH</span> BREADTH <span class="keyword">FIRST</span> <span class="keyword">BY</span> id <span class="keyword">SET</span> order1</span><br><span class="line"><span class="keyword">SELECT</span> id,</span><br><span class="line">       parent_id</span><br><span class="line"><span class="keyword">FROM</span>   t1</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> order1;</span><br><span class="line"></span><br><span class="line">        ID  PARENT_ID</span><br><span class="line"><span class="comment">---------- ----------</span></span><br><span class="line">         <span class="number">1</span></span><br><span class="line">         <span class="number">2</span>          <span class="number">1</span></span><br><span class="line">         <span class="number">7</span>          <span class="number">1</span></span><br><span class="line">         <span class="number">9</span>          <span class="number">1</span></span><br><span class="line">         <span class="number">3</span>          <span class="number">2</span></span><br><span class="line">         <span class="number">4</span>          <span class="number">2</span></span><br><span class="line">         <span class="number">8</span>          <span class="number">7</span></span><br><span class="line">        <span class="number">10</span>          <span class="number">9</span></span><br><span class="line">        <span class="number">12</span>          <span class="number">9</span></span><br><span class="line">         <span class="number">5</span>          <span class="number">4</span></span><br><span class="line">         <span class="number">6</span>          <span class="number">4</span></span><br><span class="line">        <span class="number">11</span>         <span class="number">10</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">WITH</span> t1(id, parent_id) <span class="keyword">AS</span> (</span><br><span class="line">  <span class="comment">-- Anchor member.</span></span><br><span class="line">  <span class="keyword">SELECT</span> id,</span><br><span class="line">         parent_id</span><br><span class="line">  <span class="keyword">FROM</span>   tab1</span><br><span class="line">  <span class="keyword">WHERE</span>  parent_id <span class="keyword">IS</span> <span class="keyword">NULL</span></span><br><span class="line">  <span class="keyword">UNION</span> <span class="keyword">ALL</span></span><br><span class="line">  <span class="comment">-- Recursive member.</span></span><br><span class="line">  <span class="keyword">SELECT</span> t2.id,</span><br><span class="line">         t2.parent_id</span><br><span class="line">  <span class="keyword">FROM</span>   tab1 t2, t1</span><br><span class="line">  <span class="keyword">WHERE</span>  t2.parent_id <span class="operator">=</span> t1.id</span><br><span class="line">)</span><br><span class="line"><span class="keyword">SEARCH</span> DEPTH <span class="keyword">FIRST</span> <span class="keyword">BY</span> id <span class="keyword">SET</span> order1</span><br><span class="line"><span class="keyword">SELECT</span> id,</span><br><span class="line">       parent_id</span><br><span class="line"><span class="keyword">FROM</span>   t1</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> order1;</span><br><span class="line"></span><br><span class="line">        ID  PARENT_ID</span><br><span class="line"><span class="comment">---------- ----------</span></span><br><span class="line">         <span class="number">1</span></span><br><span class="line">         <span class="number">2</span>          <span class="number">1</span></span><br><span class="line">         <span class="number">3</span>          <span class="number">2</span></span><br><span class="line">         <span class="number">4</span>          <span class="number">2</span></span><br><span class="line">         <span class="number">5</span>          <span class="number">4</span></span><br><span class="line">         <span class="number">6</span>          <span class="number">4</span></span><br><span class="line">         <span class="number">7</span>          <span class="number">1</span></span><br><span class="line">         <span class="number">8</span>          <span class="number">7</span></span><br><span class="line">         <span class="number">9</span>          <span class="number">1</span></span><br><span class="line">        <span class="number">10</span>          <span class="number">9</span></span><br><span class="line">        <span class="number">11</span>         <span class="number">10</span></span><br><span class="line">        <span class="number">12</span>          <span class="number">9</span></span><br></pre></td></tr></table></figure>
+<h2 id="implement-equivalent-of-level"><a class="markdownIt-Anchor" href="#implement-equivalent-of-level">#</a> Implement Equivalent of LEVEL</h2>
+<p>The following example shows how we can determine the  <code>LEVEL</code>  of the hierarchy the current row resides in.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">COLUMN</span> tree FORMAT A20</span><br><span class="line"></span><br><span class="line"><span class="keyword">WITH</span> t1(id, parent_id, lvl) <span class="keyword">AS</span> (</span><br><span class="line">  <span class="comment">-- Anchor member.</span></span><br><span class="line">  <span class="keyword">SELECT</span> id,</span><br><span class="line">         parent_id,</span><br><span class="line">         <span class="number">1</span> <span class="keyword">AS</span> lvl</span><br><span class="line">  <span class="keyword">FROM</span>   tab1</span><br><span class="line">  <span class="keyword">WHERE</span>  parent_id <span class="keyword">IS</span> <span class="keyword">NULL</span></span><br><span class="line">  <span class="keyword">UNION</span> <span class="keyword">ALL</span></span><br><span class="line">  <span class="comment">-- Recursive member.</span></span><br><span class="line">  <span class="keyword">SELECT</span> t2.id,</span><br><span class="line">         t2.parent_id,</span><br><span class="line">         lvl<span class="operator">+</span><span class="number">1</span></span><br><span class="line">  <span class="keyword">FROM</span>   tab1 t2, t1</span><br><span class="line">  <span class="keyword">WHERE</span>  t2.parent_id <span class="operator">=</span> t1.id</span><br><span class="line">)</span><br><span class="line"><span class="keyword">SEARCH</span> DEPTH <span class="keyword">FIRST</span> <span class="keyword">BY</span> id <span class="keyword">SET</span> order1</span><br><span class="line"><span class="keyword">SELECT</span> id,</span><br><span class="line">       parent_id,</span><br><span class="line">       RPAD(<span class="string">&#x27;.&#x27;</span>, (lvl<span class="number">-1</span>)<span class="operator">*</span><span class="number">2</span>, <span class="string">&#x27;.&#x27;</span>) <span class="operator">||</span> id <span class="keyword">AS</span> tree,</span><br><span class="line">       lvl</span><br><span class="line"><span class="keyword">FROM</span> t1</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> order1;</span><br><span class="line"></span><br><span class="line">        ID  PARENT_ID TREE                        LVL</span><br><span class="line"><span class="comment">---------- ---------- -------------------- ----------</span></span><br><span class="line">         <span class="number">1</span>            <span class="number">1</span>                             <span class="number">1</span></span><br><span class="line">         <span class="number">2</span>          <span class="number">1</span> .<span class="number">.2</span>                           <span class="number">2</span></span><br><span class="line">         <span class="number">3</span>          <span class="number">2</span> ...<span class="number">.3</span>                         <span class="number">3</span></span><br><span class="line">         <span class="number">4</span>          <span class="number">2</span> ...<span class="number">.4</span>                         <span class="number">3</span></span><br><span class="line">         <span class="number">5</span>          <span class="number">4</span> .....<span class="number">.5</span>                       <span class="number">4</span></span><br><span class="line">         <span class="number">6</span>          <span class="number">4</span> .....<span class="number">.6</span>                       <span class="number">4</span></span><br><span class="line">         <span class="number">7</span>          <span class="number">1</span> .<span class="number">.7</span>                           <span class="number">2</span></span><br><span class="line">         <span class="number">8</span>          <span class="number">7</span> ...<span class="number">.8</span>                         <span class="number">3</span></span><br><span class="line">         <span class="number">9</span>          <span class="number">1</span> .<span class="number">.9</span>                           <span class="number">2</span></span><br><span class="line">        <span class="number">10</span>          <span class="number">9</span> ...<span class="number">.10</span>                        <span class="number">3</span></span><br><span class="line">        <span class="number">11</span>         <span class="number">10</span> .....<span class="number">.11</span>                      <span class="number">4</span></span><br><span class="line">        <span class="number">12</span>          <span class="number">9</span> ...<span class="number">.12</span>                        <span class="number">3</span></span><br></pre></td></tr></table></figure>
+<h2 id="implement-equivalent-of-connect_by_root"><a class="markdownIt-Anchor" href="#implement-equivalent-of-connect_by_root">#</a> Implement Equivalent of CONNECT_BY_ROOT</h2>
+<p>The next example shows how to mimic  <code>CONNECT_BY_ROOT</code>  functionality.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">WITH</span> t1(id, parent_id, lvl, root_id) <span class="keyword">AS</span> (</span><br><span class="line">  <span class="comment">-- Anchor member.</span></span><br><span class="line">  <span class="keyword">SELECT</span> id,</span><br><span class="line">         parent_id,</span><br><span class="line">         <span class="number">1</span> <span class="keyword">AS</span> lvl,</span><br><span class="line">         id <span class="keyword">AS</span> root_id</span><br><span class="line">  <span class="keyword">FROM</span>   tab1</span><br><span class="line">  <span class="keyword">WHERE</span>  parent_id <span class="keyword">IS</span> <span class="keyword">NULL</span></span><br><span class="line">  <span class="keyword">UNION</span> <span class="keyword">ALL</span></span><br><span class="line">  <span class="comment">-- Recursive member.</span></span><br><span class="line">  <span class="keyword">SELECT</span> t2.id,</span><br><span class="line">         t2.parent_id,</span><br><span class="line">         lvl<span class="operator">+</span><span class="number">1</span>,</span><br><span class="line">         t1.root_id</span><br><span class="line">  <span class="keyword">FROM</span>   tab1 t2, t1</span><br><span class="line">  <span class="keyword">WHERE</span>  t2.parent_id <span class="operator">=</span> t1.id</span><br><span class="line">)</span><br><span class="line"><span class="keyword">SEARCH</span> DEPTH <span class="keyword">FIRST</span> <span class="keyword">BY</span> id <span class="keyword">SET</span> order1</span><br><span class="line"><span class="keyword">SELECT</span> id,</span><br><span class="line">       parent_id,</span><br><span class="line">       RPAD(<span class="string">&#x27;.&#x27;</span>, (lvl<span class="number">-1</span>)<span class="operator">*</span><span class="number">2</span>, <span class="string">&#x27;.&#x27;</span>) <span class="operator">||</span> id <span class="keyword">AS</span> tree,</span><br><span class="line">       lvl,</span><br><span class="line">       root_id</span><br><span class="line"><span class="keyword">FROM</span> t1</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> order1;</span><br><span class="line"></span><br><span class="line">        ID  PARENT_ID TREE                        LVL    ROOT_ID</span><br><span class="line"><span class="comment">---------- ---------- -------------------- ---------- ----------</span></span><br><span class="line">         <span class="number">1</span>            <span class="number">1</span>                             <span class="number">1</span>          <span class="number">1</span></span><br><span class="line">         <span class="number">2</span>          <span class="number">1</span> .<span class="number">.2</span>                           <span class="number">2</span>          <span class="number">1</span></span><br><span class="line">         <span class="number">3</span>          <span class="number">2</span> ...<span class="number">.3</span>                         <span class="number">3</span>          <span class="number">1</span></span><br><span class="line">         <span class="number">4</span>          <span class="number">2</span> ...<span class="number">.4</span>                         <span class="number">3</span>          <span class="number">1</span></span><br><span class="line">         <span class="number">5</span>          <span class="number">4</span> .....<span class="number">.5</span>                       <span class="number">4</span>          <span class="number">1</span></span><br><span class="line">         <span class="number">6</span>          <span class="number">4</span> .....<span class="number">.6</span>                       <span class="number">4</span>          <span class="number">1</span></span><br><span class="line">         <span class="number">7</span>          <span class="number">1</span> .<span class="number">.7</span>                           <span class="number">2</span>          <span class="number">1</span></span><br><span class="line">         <span class="number">8</span>          <span class="number">7</span> ...<span class="number">.8</span>                         <span class="number">3</span>          <span class="number">1</span></span><br><span class="line">         <span class="number">9</span>          <span class="number">1</span> .<span class="number">.9</span>                           <span class="number">2</span>          <span class="number">1</span></span><br><span class="line">        <span class="number">10</span>          <span class="number">9</span> ...<span class="number">.10</span>                        <span class="number">3</span>          <span class="number">1</span></span><br><span class="line">        <span class="number">11</span>         <span class="number">10</span> .....<span class="number">.11</span>                      <span class="number">4</span>          <span class="number">1</span></span><br><span class="line">        <span class="number">12</span>          <span class="number">9</span> ...<span class="number">.12</span>                        <span class="number">3</span>          <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<h2 id="implement-equivalent-of-sys_connect_by_path"><a class="markdownIt-Anchor" href="#implement-equivalent-of-sys_connect_by_path">#</a> Implement Equivalent of SYS_CONNECT_BY_PATH</h2>
+<p>The following example shows how to mimic the  <code>SYS_CONNECT_BY_PATH</code>  functionality.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">COLUMN</span> path FORMAT A20</span><br><span class="line"></span><br><span class="line"><span class="keyword">WITH</span> t1(id, parent_id, lvl, root_id, path) <span class="keyword">AS</span> (</span><br><span class="line">  <span class="comment">-- Anchor member.</span></span><br><span class="line">  <span class="keyword">SELECT</span> id,</span><br><span class="line">         parent_id,</span><br><span class="line">         <span class="number">1</span> <span class="keyword">AS</span> lvl,</span><br><span class="line">         id <span class="keyword">AS</span> root_id,</span><br><span class="line">         TO_CHAR(id) <span class="keyword">AS</span> path</span><br><span class="line">  <span class="keyword">FROM</span>   tab1</span><br><span class="line">  <span class="keyword">WHERE</span>  parent_id <span class="keyword">IS</span> <span class="keyword">NULL</span></span><br><span class="line">  <span class="keyword">UNION</span> <span class="keyword">ALL</span></span><br><span class="line">  <span class="comment">-- Recursive member.</span></span><br><span class="line">  <span class="keyword">SELECT</span> t2.id,</span><br><span class="line">         t2.parent_id,</span><br><span class="line">         lvl<span class="operator">+</span><span class="number">1</span>,</span><br><span class="line">         t1.root_id,</span><br><span class="line">         t1.path <span class="operator">||</span> <span class="string">&#x27;-&#x27;</span> <span class="operator">||</span> t2.id <span class="keyword">AS</span> path</span><br><span class="line">  <span class="keyword">FROM</span>   tab1 t2, t1</span><br><span class="line">  <span class="keyword">WHERE</span>  t2.parent_id <span class="operator">=</span> t1.id</span><br><span class="line">)</span><br><span class="line"><span class="keyword">SEARCH</span> DEPTH <span class="keyword">FIRST</span> <span class="keyword">BY</span> id <span class="keyword">SET</span> order1</span><br><span class="line"><span class="keyword">SELECT</span> id,</span><br><span class="line">       parent_id,</span><br><span class="line">       RPAD(<span class="string">&#x27;.&#x27;</span>, (lvl<span class="number">-1</span>)<span class="operator">*</span><span class="number">2</span>, <span class="string">&#x27;.&#x27;</span>) <span class="operator">||</span> id <span class="keyword">AS</span> tree,</span><br><span class="line">       lvl,</span><br><span class="line">       root_id,</span><br><span class="line">       path</span><br><span class="line"><span class="keyword">FROM</span> t1</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> order1;</span><br><span class="line"></span><br><span class="line">        ID  PARENT_ID TREE                        LVL    ROOT_ID PATH</span><br><span class="line"><span class="comment">---------- ---------- -------------------- ---------- ---------- --------------------</span></span><br><span class="line">         <span class="number">1</span>            <span class="number">1</span>                             <span class="number">1</span>          <span class="number">1</span> <span class="number">1</span></span><br><span class="line">         <span class="number">2</span>          <span class="number">1</span> .<span class="number">.2</span>                           <span class="number">2</span>          <span class="number">1</span> <span class="number">1</span><span class="number">-2</span></span><br><span class="line">         <span class="number">3</span>          <span class="number">2</span> ...<span class="number">.3</span>                         <span class="number">3</span>          <span class="number">1</span> <span class="number">1</span><span class="number">-2</span><span class="number">-3</span></span><br><span class="line">         <span class="number">4</span>          <span class="number">2</span> ...<span class="number">.4</span>                         <span class="number">3</span>          <span class="number">1</span> <span class="number">1</span><span class="number">-2</span><span class="number">-4</span></span><br><span class="line">         <span class="number">5</span>          <span class="number">4</span> .....<span class="number">.5</span>                       <span class="number">4</span>          <span class="number">1</span> <span class="number">1</span><span class="number">-2</span><span class="number">-4</span><span class="number">-5</span></span><br><span class="line">         <span class="number">6</span>          <span class="number">4</span> .....<span class="number">.6</span>                       <span class="number">4</span>          <span class="number">1</span> <span class="number">1</span><span class="number">-2</span><span class="number">-4</span><span class="number">-6</span></span><br><span class="line">         <span class="number">7</span>          <span class="number">1</span> .<span class="number">.7</span>                           <span class="number">2</span>          <span class="number">1</span> <span class="number">1</span><span class="number">-7</span></span><br><span class="line">         <span class="number">8</span>          <span class="number">7</span> ...<span class="number">.8</span>                         <span class="number">3</span>          <span class="number">1</span> <span class="number">1</span><span class="number">-7</span><span class="number">-8</span></span><br><span class="line">         <span class="number">9</span>          <span class="number">1</span> .<span class="number">.9</span>                           <span class="number">2</span>          <span class="number">1</span> <span class="number">1</span><span class="number">-9</span></span><br><span class="line">        <span class="number">10</span>          <span class="number">9</span> ...<span class="number">.10</span>                        <span class="number">3</span>          <span class="number">1</span> <span class="number">1</span><span class="number">-9</span><span class="number">-10</span></span><br><span class="line">        <span class="number">11</span>         <span class="number">10</span> .....<span class="number">.11</span>                      <span class="number">4</span>          <span class="number">1</span> <span class="number">1</span><span class="number">-9</span><span class="number">-10</span><span class="number">-11</span></span><br><span class="line">        <span class="number">12</span>          <span class="number">9</span> ...<span class="number">.12</span>                        <span class="number">3</span>          <span class="number">1</span> <span class="number">1</span><span class="number">-9</span><span class="number">-12</span></span><br></pre></td></tr></table></figure>
+<h2 id="implement-equivalent-of-connect_by_isleaf"><a class="markdownIt-Anchor" href="#implement-equivalent-of-connect_by_isleaf">#</a> Implement Equivalent of CONNECT_BY_ISLEAF</h2>
+<p>The following example shows how to mimic the  <code>CONNECT_BY_ISLEAF</code>  functionality.</p>
+<p>There is no natural way to find the leaf nodes until the result set is produced, so we use the  <code>LEAD</code>  analytic function in the main select list to check the next row in the result set. If it has a level that is less than or equal to the current row, we know the current row must be a leaf node.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">WITH</span> t1(id, parent_id, lvl, root_id, path) <span class="keyword">AS</span> (</span><br><span class="line">  <span class="comment">-- Anchor member.</span></span><br><span class="line">  <span class="keyword">SELECT</span> id,</span><br><span class="line">         parent_id,</span><br><span class="line">         <span class="number">1</span> <span class="keyword">AS</span> lvl,</span><br><span class="line">         id <span class="keyword">AS</span> root_id,</span><br><span class="line">         TO_CHAR(id) <span class="keyword">AS</span> path</span><br><span class="line">  <span class="keyword">FROM</span>   tab1</span><br><span class="line">  <span class="keyword">WHERE</span>  parent_id <span class="keyword">IS</span> <span class="keyword">NULL</span></span><br><span class="line">  <span class="keyword">UNION</span> <span class="keyword">ALL</span></span><br><span class="line">  <span class="comment">-- Recursive member.</span></span><br><span class="line">  <span class="keyword">SELECT</span> t2.id,</span><br><span class="line">         t2.parent_id,</span><br><span class="line">         lvl<span class="operator">+</span><span class="number">1</span>,</span><br><span class="line">         t1.root_id,</span><br><span class="line">         t1.path <span class="operator">||</span> <span class="string">&#x27;-&#x27;</span> <span class="operator">||</span> t2.id <span class="keyword">AS</span> path</span><br><span class="line">  <span class="keyword">FROM</span>   tab1 t2, t1</span><br><span class="line">  <span class="keyword">WHERE</span>  t2.parent_id <span class="operator">=</span> t1.id</span><br><span class="line">)</span><br><span class="line"><span class="keyword">SEARCH</span> DEPTH <span class="keyword">FIRST</span> <span class="keyword">BY</span> id <span class="keyword">SET</span> order1</span><br><span class="line"><span class="keyword">SELECT</span> id,</span><br><span class="line">       parent_id,</span><br><span class="line">       RPAD(<span class="string">&#x27;.&#x27;</span>, (lvl<span class="number">-1</span>)<span class="operator">*</span><span class="number">2</span>, <span class="string">&#x27;.&#x27;</span>) <span class="operator">||</span> id <span class="keyword">AS</span> tree,</span><br><span class="line">       lvl,</span><br><span class="line">       root_id,</span><br><span class="line">       path,</span><br><span class="line">       <span class="keyword">CASE</span> </span><br><span class="line">         <span class="keyword">WHEN</span> <span class="built_in">LEAD</span>(lvl, <span class="number">1</span>, <span class="number">1</span>) <span class="keyword">OVER</span> (<span class="keyword">ORDER</span> <span class="keyword">BY</span> order1) <span class="operator">&lt;=</span> lvl <span class="keyword">THEN</span> <span class="number">1</span></span><br><span class="line">         <span class="keyword">ELSE</span> <span class="number">0</span></span><br><span class="line">       <span class="keyword">END</span> leaf</span><br><span class="line"><span class="keyword">FROM</span> t1</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> order1;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        ID  PARENT_ID TREE                        LVL    ROOT_ID PATH                       LEAF</span><br><span class="line"><span class="comment">---------- ---------- -------------------- ---------- ---------- -------------------- ----------</span></span><br><span class="line">         <span class="number">1</span>            <span class="number">1</span>                             <span class="number">1</span>          <span class="number">1</span> <span class="number">1</span>                             <span class="number">0</span></span><br><span class="line">         <span class="number">2</span>          <span class="number">1</span> .<span class="number">.2</span>                           <span class="number">2</span>          <span class="number">1</span> <span class="number">1</span><span class="number">-2</span>                           <span class="number">0</span></span><br><span class="line">         <span class="number">3</span>          <span class="number">2</span> ...<span class="number">.3</span>                         <span class="number">3</span>          <span class="number">1</span> <span class="number">1</span><span class="number">-2</span><span class="number">-3</span>                         <span class="number">1</span></span><br><span class="line">         <span class="number">4</span>          <span class="number">2</span> ...<span class="number">.4</span>                         <span class="number">3</span>          <span class="number">1</span> <span class="number">1</span><span class="number">-2</span><span class="number">-4</span>                         <span class="number">0</span></span><br><span class="line">         <span class="number">5</span>          <span class="number">4</span> .....<span class="number">.5</span>                       <span class="number">4</span>          <span class="number">1</span> <span class="number">1</span><span class="number">-2</span><span class="number">-4</span><span class="number">-5</span>                       <span class="number">1</span></span><br><span class="line">         <span class="number">6</span>          <span class="number">4</span> .....<span class="number">.6</span>                       <span class="number">4</span>          <span class="number">1</span> <span class="number">1</span><span class="number">-2</span><span class="number">-4</span><span class="number">-6</span>                       <span class="number">1</span></span><br><span class="line">         <span class="number">7</span>          <span class="number">1</span> .<span class="number">.7</span>                           <span class="number">2</span>          <span class="number">1</span> <span class="number">1</span><span class="number">-7</span>                           <span class="number">0</span></span><br><span class="line">         <span class="number">8</span>          <span class="number">7</span> ...<span class="number">.8</span>                         <span class="number">3</span>          <span class="number">1</span> <span class="number">1</span><span class="number">-7</span><span class="number">-8</span>                         <span class="number">1</span></span><br><span class="line">         <span class="number">9</span>          <span class="number">1</span> .<span class="number">.9</span>                           <span class="number">2</span>          <span class="number">1</span> <span class="number">1</span><span class="number">-9</span>                           <span class="number">0</span></span><br><span class="line">        <span class="number">10</span>          <span class="number">9</span> ...<span class="number">.10</span>                        <span class="number">3</span>          <span class="number">1</span> <span class="number">1</span><span class="number">-9</span><span class="number">-10</span>                        <span class="number">0</span></span><br><span class="line">        <span class="number">11</span>         <span class="number">10</span> .....<span class="number">.11</span>                      <span class="number">4</span>          <span class="number">1</span> <span class="number">1</span><span class="number">-9</span><span class="number">-10</span><span class="number">-11</span>                     <span class="number">1</span></span><br><span class="line">        <span class="number">12</span>          <span class="number">9</span> ...<span class="number">.12</span>                        <span class="number">3</span>          <span class="number">1</span> <span class="number">1</span><span class="number">-9</span><span class="number">-12</span>                        <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SQL</span><span class="operator">&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="cyclic-hierarchical-query-nocycle-and-connect_by_iscycle"><a class="markdownIt-Anchor" href="#cyclic-hierarchical-query-nocycle-and-connect_by_iscycle">#</a> Cyclic Hierarchical Query (NOCYCLE and CONNECT_BY_ISCYCLE)</h2>
+<p>It is possible for a hierarchy to be cyclical, which can represent a problem when querying the data.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- Create a cyclic reference</span></span><br><span class="line">UPDATE tab1 <span class="keyword">SET</span> parent_id <span class="operator">=</span> <span class="number">9</span> <span class="keyword">WHERE</span> id <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line"><span class="keyword">COMMIT</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">WITH</span> t1(id, parent_id, lvl, root_id, path) <span class="keyword">AS</span> (</span><br><span class="line">  <span class="comment">-- Anchor member.</span></span><br><span class="line">  <span class="keyword">SELECT</span> id,</span><br><span class="line">         parent_id,</span><br><span class="line">         <span class="number">1</span> <span class="keyword">AS</span> lvl,</span><br><span class="line">         id <span class="keyword">AS</span> root_id,</span><br><span class="line">         TO_CHAR(id) <span class="keyword">AS</span> path</span><br><span class="line">  <span class="keyword">FROM</span>   tab1</span><br><span class="line">  <span class="keyword">WHERE</span>  id <span class="operator">=</span> <span class="number">1</span> <span class="comment">--Because UPDATE tab1 SET parent_id = 9 WHERE id = 1; Here cannot use parent_id IS NULL</span></span><br><span class="line">  <span class="keyword">UNION</span> <span class="keyword">ALL</span></span><br><span class="line">  <span class="comment">-- Recursive member.</span></span><br><span class="line">  <span class="keyword">SELECT</span> t2.id,</span><br><span class="line">         t2.parent_id,</span><br><span class="line">         lvl<span class="operator">+</span><span class="number">1</span>,</span><br><span class="line">         t1.root_id,</span><br><span class="line">         t1.path <span class="operator">||</span> <span class="string">&#x27;-&#x27;</span> <span class="operator">||</span> t2.id <span class="keyword">AS</span> path</span><br><span class="line">  <span class="keyword">FROM</span>   tab1 t2, t1</span><br><span class="line">  <span class="keyword">WHERE</span>  t2.parent_id <span class="operator">=</span> t1.id</span><br><span class="line">)</span><br><span class="line"><span class="keyword">SEARCH</span> DEPTH <span class="keyword">FIRST</span> <span class="keyword">BY</span> id <span class="keyword">SET</span> order1</span><br><span class="line"><span class="keyword">SELECT</span> id,</span><br><span class="line">       parent_id,</span><br><span class="line">       RPAD(<span class="string">&#x27;.&#x27;</span>, (lvl<span class="number">-1</span>)<span class="operator">*</span><span class="number">2</span>, <span class="string">&#x27;.&#x27;</span>) <span class="operator">||</span> id <span class="keyword">AS</span> tree,</span><br><span class="line">       lvl,</span><br><span class="line">       root_id,</span><br><span class="line">       path</span><br><span class="line"><span class="keyword">FROM</span> t1</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> order1;</span><br><span class="line">     <span class="operator">*</span></span><br><span class="line">ERROR <span class="keyword">at</span> line <span class="number">27</span>:</span><br><span class="line">ORA<span class="number">-32044</span>: <span class="keyword">cycle</span> detected while executing <span class="keyword">recursive</span> <span class="keyword">WITH</span> query</span><br></pre></td></tr></table></figure>
+<p>The  <code>NOCYCLE</code>  and  <code>CONNECT_BY_ISCYCLE</code>  functionality is replicated using the  <code>CYCLE</code>  clause. By specifying this clause, the cycle is detected and the recursion stops, with the cycle column set to the specified value, to indicate the row where the cycle is detected. Unlike the  <code>CONNECT BY NOCYCLE</code>  method, which stops at the row before the cycle, this method stops at the row after the cycle.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">WITH</span> t1(id, parent_id, lvl, root_id, path) <span class="keyword">AS</span> (</span><br><span class="line">  <span class="comment">-- Anchor member.</span></span><br><span class="line">  <span class="keyword">SELECT</span> id,</span><br><span class="line">         parent_id,</span><br><span class="line">         <span class="number">1</span> <span class="keyword">AS</span> lvl,</span><br><span class="line">         id <span class="keyword">AS</span> root_id,</span><br><span class="line">         TO_CHAR(id) <span class="keyword">AS</span> path</span><br><span class="line">  <span class="keyword">FROM</span>   tab1</span><br><span class="line">  <span class="keyword">WHERE</span>  id <span class="operator">=</span> <span class="number">1</span> <span class="comment">--Because UPDATE tab1 SET parent_id = 9 WHERE id = 1; Here cannot use parent_id IS NULL</span></span><br><span class="line">  <span class="keyword">UNION</span> <span class="keyword">ALL</span></span><br><span class="line">  <span class="comment">-- Recursive member.</span></span><br><span class="line">  <span class="keyword">SELECT</span> t2.id,</span><br><span class="line">         t2.parent_id,</span><br><span class="line">         lvl<span class="operator">+</span><span class="number">1</span>,</span><br><span class="line">         t1.root_id,</span><br><span class="line">         t1.path <span class="operator">||</span> <span class="string">&#x27;-&#x27;</span> <span class="operator">||</span> t2.id <span class="keyword">AS</span> path</span><br><span class="line">  <span class="keyword">FROM</span>   tab1 t2, t1</span><br><span class="line">  <span class="keyword">WHERE</span>  t2.parent_id <span class="operator">=</span> t1.id</span><br><span class="line">)</span><br><span class="line"><span class="keyword">SEARCH</span> DEPTH <span class="keyword">FIRST</span> <span class="keyword">BY</span> id <span class="keyword">SET</span> order1</span><br><span class="line"><span class="keyword">CYCLE</span> id <span class="keyword">SET</span> <span class="keyword">cycle</span> <span class="keyword">TO</span> <span class="number">1</span> <span class="keyword">DEFAULT</span> <span class="number">0</span></span><br><span class="line"><span class="keyword">SELECT</span> id,</span><br><span class="line">       parent_id,</span><br><span class="line">       RPAD(<span class="string">&#x27;.&#x27;</span>, (lvl<span class="number">-1</span>)<span class="operator">*</span><span class="number">2</span>, <span class="string">&#x27;.&#x27;</span>) <span class="operator">||</span> id <span class="keyword">AS</span> tree,</span><br><span class="line">       lvl,</span><br><span class="line">       root_id,</span><br><span class="line">       path,</span><br><span class="line">       <span class="keyword">cycle</span></span><br><span class="line"><span class="keyword">FROM</span> t1</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> order1;</span><br><span class="line"></span><br><span class="line">        ID  PARENT_ID TREE                        LVL    ROOT_ID PATH                 C</span><br><span class="line"><span class="comment">---------- ---------- -------------------- ---------- ---------- -------------------- -</span></span><br><span class="line">         <span class="number">1</span>          <span class="number">9</span> <span class="number">1</span>                             <span class="number">1</span>          <span class="number">1</span> <span class="number">1</span>                    <span class="number">0</span></span><br><span class="line">         <span class="number">2</span>          <span class="number">1</span> .<span class="number">.2</span>                           <span class="number">2</span>          <span class="number">1</span> <span class="number">1</span><span class="number">-2</span>                  <span class="number">0</span></span><br><span class="line">         <span class="number">3</span>          <span class="number">2</span> ...<span class="number">.3</span>                         <span class="number">3</span>          <span class="number">1</span> <span class="number">1</span><span class="number">-2</span><span class="number">-3</span>                <span class="number">0</span></span><br><span class="line">         <span class="number">4</span>          <span class="number">2</span> ...<span class="number">.4</span>                         <span class="number">3</span>          <span class="number">1</span> <span class="number">1</span><span class="number">-2</span><span class="number">-4</span>                <span class="number">0</span></span><br><span class="line">         <span class="number">5</span>          <span class="number">4</span> .....<span class="number">.5</span>                       <span class="number">4</span>          <span class="number">1</span> <span class="number">1</span><span class="number">-2</span><span class="number">-4</span><span class="number">-5</span>              <span class="number">0</span></span><br><span class="line">         <span class="number">6</span>          <span class="number">4</span> .....<span class="number">.6</span>                       <span class="number">4</span>          <span class="number">1</span> <span class="number">1</span><span class="number">-2</span><span class="number">-4</span><span class="number">-6</span>              <span class="number">0</span></span><br><span class="line">         <span class="number">7</span>          <span class="number">1</span> .<span class="number">.7</span>                           <span class="number">2</span>          <span class="number">1</span> <span class="number">1</span><span class="number">-7</span>                  <span class="number">0</span></span><br><span class="line">         <span class="number">8</span>          <span class="number">7</span> ...<span class="number">.8</span>                         <span class="number">3</span>          <span class="number">1</span> <span class="number">1</span><span class="number">-7</span><span class="number">-8</span>                <span class="number">0</span></span><br><span class="line">         <span class="number">9</span>          <span class="number">1</span> .<span class="number">.9</span>                           <span class="number">2</span>          <span class="number">1</span> <span class="number">1</span><span class="number">-9</span>                  <span class="number">0</span></span><br><span class="line">         <span class="number">1</span>          <span class="number">9</span> ...<span class="number">.1</span>                         <span class="number">3</span>          <span class="number">1</span> <span class="number">1</span><span class="number">-9</span><span class="number">-1</span>                <span class="number">1</span></span><br><span class="line">        <span class="number">10</span>          <span class="number">9</span> ...<span class="number">.10</span>                        <span class="number">3</span>          <span class="number">1</span> <span class="number">1</span><span class="number">-9</span><span class="number">-10</span>               <span class="number">0</span></span><br><span class="line">        <span class="number">11</span>         <span class="number">10</span> .....<span class="number">.11</span>                      <span class="number">4</span>          <span class="number">1</span> <span class="number">1</span><span class="number">-9</span><span class="number">-10</span><span class="number">-11</span>            <span class="number">0</span></span><br><span class="line">        <span class="number">12</span>          <span class="number">9</span> ...<span class="number">.12</span>                        <span class="number">3</span>          <span class="number">1</span> <span class="number">1</span><span class="number">-9</span><span class="number">-12</span>               <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<p>For more information see:</p>
+<ul>
+<li><span class="exturl" data-url="aHR0cDovL2RvY3Mub3JhY2xlLmNvbS9kYXRhYmFzZS8xMjEvU1FMUkYvc3RhdGVtZW50c18xMDAwMi5odG0jaTIwNzcxNDI=">Recursive Subquery Factoring</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj1SSXM5SGFjZVlJYw==">Hierarchical Queries in Oracle (Recursive WITH Clause) </span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9vcmFjbGUtYmFzZS5jb20vYXJ0aWNsZXMvbWlzYy9oaWVyYXJjaGljYWwtcXVlcmllcw==">Hierarchical Queries in Oracle</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj1IWEZVWFlGZEItWQ==">Hierarchical Queries in Oracle (CONNECT BY) </span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9vcmFjbGUtYmFzZS5jb20vYXJ0aWNsZXMvbWlzYy93aXRoLWNsYXVzZQ==">WITH Clause : Subquery Factoring</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9vcmFjbGUtYmFzZS5jb20vYXJ0aWNsZXMvMTJjL3dpdGgtY2xhdXNlLWVuaGFuY2VtZW50cy0xMmNyMQ==">WITH Clause Enhancements in Oracle Database 12c Release 1 (12.1)</span></li>
+</ul>
+
+      <div class="tags">
+          <a href="/tags/db/" rel="tag"><i class="ic i-tag"></i> db</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2022-06-23 11:36:22" itemprop="dateModified" datetime="2022-06-23T11:36:22+08:00">2022-06-23</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2022/06/20/chinese-rarely-used-character/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipet8c1a2j20zk0m8kct.jpg" title="生僻字">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>生僻字</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#setup"><span class="toc-number">1.</span> <span class="toc-text"> Setup</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#basic-hierarchical-query"><span class="toc-number">2.</span> <span class="toc-text"> Basic Hierarchical Query</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#implement-equivalent-of-level"><span class="toc-number">3.</span> <span class="toc-text"> Implement Equivalent of LEVEL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#implement-equivalent-of-connect_by_root"><span class="toc-number">4.</span> <span class="toc-text"> Implement Equivalent of CONNECT_BY_ROOT</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#implement-equivalent-of-sys_connect_by_path"><span class="toc-number">5.</span> <span class="toc-text"> Implement Equivalent of SYS_CONNECT_BY_PATH</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#implement-equivalent-of-connect_by_isleaf"><span class="toc-number">6.</span> <span class="toc-text"> Implement Equivalent of CONNECT_BY_ISLEAF</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cyclic-hierarchical-query-nocycle-and-connect_by_iscycle"><span class="toc-number">7.</span> <span class="toc-text"> Cyclic Hierarchical Query (NOCYCLE and CONNECT_BY_ISCYCLE)</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">293</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">40</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item about" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2022</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ D E W</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2022/06/22/oracle-recursive/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

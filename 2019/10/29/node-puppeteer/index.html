@@ -102,12 +102,12 @@ D E W = 露の世</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipesng5oej20zk0m87d4.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicis081o9j20zk0m8dmr.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclip4jbpj20zk0m87cv.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giciukx8a7j20zk0m8aio.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicliierfjj20zk0m8npd.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipesrnqv3j20zk0m8ava.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giph4lm9i7j20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclga70tsj20zk0m84mr.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipew28b65j20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclwuom7cj20zk0m8dvn.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclhtuo6nj20zk0m8ttm.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipexoj0moj20zk0m8kgu.jpg"></li>
         </ul>
       </div>
     </header>
@@ -206,7 +206,7 @@ D E W = 露の世</title>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> searchValue = <span class="keyword">await</span> page.$eval(<span class="string">&#x27;#search&#x27;</span>, <span class="function"><span class="params">el</span> =&gt;</span> el.value)</span><br><span class="line"><span class="keyword">const</span> preloadHref = <span class="keyword">await</span> page.$eval(<span class="string">&#x27;link[rel=preload]&#x27;</span>, <span class="function"><span class="params">el</span> =&gt;</span> el.href)</span><br><span class="line"><span class="keyword">const</span> html = <span class="keyword">await</span> page.$eval(<span class="string">&#x27;.main-container&#x27;</span>, <span class="function"><span class="params">e</span> =&gt;</span> e.outerHTML)</span><br><span class="line"><span class="keyword">const</span> divsCounts = <span class="keyword">await</span> page.$$eval(<span class="string">&#x27;div&#x27;</span>, <span class="function"><span class="params">divs</span> =&gt;</span> divs.length)</span><br></pre></td></tr></table></figure>
 <p>值得注意的是如果  <code>pageFunction</code>  返回的是 Promise，那么  <code>page.$eval</code>  会等待方法 resolve</p>
 <h3 id="evaluate"><a class="markdownIt-Anchor" href="#evaluate">#</a> evaluate</h3>
-<p>如果我们有一些及其个性的需求，无法通过 page.<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mo stretchy="false">)</mo><mtext>或者</mtext><mi>p</mi><mi>a</mi><mi>g</mi><mi>e</mi><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">() 或者 page.</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mclose">)</span><span class="mord cjk_fallback">或</span><span class="mord cjk_fallback">者</span><span class="mord mathnormal">p</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">e</span><span class="mord">.</span></span></span></span>eval () 实现，可以用大招 ——evaluate，有几个相关的 API</p>
+<p>如果我们有一些及其个性的需求，无法通过  <code>page.$()</code>  或者  <code>page.$eval()</code>  实现，可以用大招 - evaluate，有几个相关的 API</p>
 <ol>
 <li>page.evaluate(pageFunction, …args)</li>
 <li>page.evaluateHandle(pageFunction, …args):</li>
@@ -321,7 +321,7 @@ D E W = 露の世</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2021-10-18 13:27:13" itemprop="dateModified" datetime="2021-10-18T13:27:13+08:00">2021-10-18</time>
+    <time title="Modified: 2022-06-23 12:02:09" itemprop="dateModified" datetime="2022-06-23T12:02:09+08:00">2022-06-23</time>
   </span>
 </div>
 
@@ -338,7 +338,7 @@ D E W = 露の世</title>
     <div class="item left">
       
 
-  <a href="/2019/10/29/php-array/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclga70tsj20zk0m84mr.jpg" title="PHP 数组的相关操作">
+  <a href="/2019/10/29/php-array/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipeubcbajj20zk0m8h1h.jpg" title="PHP 数组的相关操作">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>PHP 数组的相关操作</h3>
@@ -348,7 +348,7 @@ D E W = 露の世</title>
     <div class="item right">
       
 
-  <a href="/2019/10/29/linux-shell/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipey0a334j20zk0m8qpt.jpg" title="Shell">
+  <a href="/2019/10/29/linux-shell/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipet4bz0yj20zk0m8e81.jpg" title="Shell">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Shell</h3>
@@ -385,7 +385,7 @@ D E W = 露の世</title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">292</span>
+        <span class="count">293</span>
         <span class="name">posts</span>
       </a>
     </div>
