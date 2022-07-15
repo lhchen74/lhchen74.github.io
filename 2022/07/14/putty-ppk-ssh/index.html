@@ -1,0 +1,489 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="ssh" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2022/07/14/putty-ppk-ssh/">
+
+
+
+  <title>
+Change Private Key Format to Use with PuTTY |
+D E W = 露の世</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">Change Private Key Format to Use with PuTTY
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2022-07-14 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2022-07-14T00:00:00+08:00">2022-07-14</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">D E W</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicm07ih54j20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipet4bz0yj20zk0m8e81.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicljitigmj20zk0m87fp.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeyvx1d4j20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicmnywqgpj20zk0m8dwx.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeybxm1pj20zk0m8niv.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2022/07/14/putty-ppk-ssh/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>转载：<span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm9yYWNsZS5jb20vZW4vY2xvdWQvcGFhcy9nb2xkZW5nYXRlLWNsb3VkL3R1dG9yaWFsLWNoYW5nZS1wcml2YXRlLWtleS1mb3JtYXQv">Change Private Key Format to Use with PuTTY</span></p>
+</blockquote>
+<p>This 10-minute tutorial shows you how to change your private key format to use with PuTTY, which is a Secure Shell (SSH) client for Windows that can connect to a remote machine. If you’re using SSH on Linux, then this tutorial isn’t for you.</p>
+<h3 id="background"><a class="markdownIt-Anchor" href="#background">#</a> Background</h3>
+<p>PuTTY doesn’t support the SSH private key format created by the Oracle Cloud wizards. You need to convert the private key to the PuTTY required format. To connect to a remote machine with PuTTY, your private key should have a <strong>ppk</strong> format.</p>
+<p>For this tutorial, we assume that you already created an Oracle GoldenGate Cloud service instance and have a  <code>privateKey</code>  file unzipped from the  <code>sshkeybundle.zip</code>  that’s generated when creating the service instance.</p>
+<p>If you don’t have these, then create a cloud service instance and generate a public/private key pair for it.</p>
+<p><strong>Note:</strong> Some Oracle Public Cloud services such as Oracle Storage Cloud Service don’t provide access to their VMs with private keys. Instead you use REST API calls to access the service. This tutorial is for cloud services that allow SSH access to their VMs and therefore, you create a public/private key for the SSH access.</p>
+<h3 id="what-do-you-need"><a class="markdownIt-Anchor" href="#what-do-you-need">#</a> What Do You Need?</h3>
+<ul>
+<li>Windows</li>
+<li>PuTTY (<span class="exturl" data-url="aHR0cDovL3d3dy5wdXR0eS5vcmcv">http://www.PuTTY.org</span>)</li>
+<li>An SSH private key file unzipped from the <strong>ssheybundle.zip,</strong> downloaded when you created an Oracle GoldenGate Cloud service instance.</li>
+</ul>
+<h2 id="changing-the-format-of-the-ssh-private-key"><a class="markdownIt-Anchor" href="#changing-the-format-of-the-ssh-private-key">#</a> Changing the Format of the SSH Private Key</h2>
+<p>After you download and install PuTTY:</p>
+<ol>
+<li>
+<p>Make a copy of your private key just in case you lose it when changing the format.</p>
+</li>
+<li>
+<p>From the <strong>Start</strong> menu, go to <strong>All Programs &gt; PuTTY</strong> &gt; <strong>PuTTYgen</strong> and run the <strong>PuTTYgen</strong> program.</p>
+</li>
+<li>
+<p>In the Parameters section:</p>
+<ul>
+<li>For <strong>Type of Key to generate</strong>, select <strong>RSA</strong>.</li>
+<li>For <strong>Number of bits in a generated key</strong>, leave the default value of  <code>2048</code> .</li>
+</ul>
+</li>
+<li>
+<p>Click <strong>Load</strong>.</p>
+</li>
+</ol>
+<img data-src="/2022/07/14/putty-ppk-ssh/g17-1657798968230.png" class="">
+<ol start="6">
+<li>In the Load private key window, change the <strong>PuTTY Private Key Files (*.ppk)</strong> drop-down menu option to <strong>All Files (*.*)</strong>.</li>
+</ol>
+<img data-src="/2022/07/14/putty-ppk-ssh/g18-1657798968249.png" class="">
+<ol start="8">
+<li>Find and select the <strong>Private Key</strong> file that you unzipped from the <strong>sshkeybundle.zip</strong> file, after you created an Oracle Cloud service instance. In this example, it’s called <strong>privateKey</strong>.</li>
+</ol>
+<img data-src="/2022/07/14/putty-ppk-ssh/g19-1657798968676.png" class="">
+<ol start="10">
+<li>
+<p>Click <strong>Open</strong>.</p>
+</li>
+<li>
+<p>In the <strong>PuTTYgen Notice</strong> dialog box, click <strong>OK</strong>.</p>
+</li>
+</ol>
+<img data-src="/2022/07/14/putty-ppk-ssh/g20-1657798968713.png" class="">
+<ol start="13">
+<li>
+<p>Change the key comment from imported-openssh-key to something meaningful. This comment appears on your PuTTY screen when you connect to your VM.</p>
+</li>
+<li>
+<p>Click <strong>Save private key</strong>.</p>
+</li>
+</ol>
+<img data-src="/2022/07/14/putty-ppk-ssh/g22-1657798968725.png" class="">
+<ol start="16">
+<li>In the <strong>PuTTYgen Warning</strong> dialog box, click <strong>Yes</strong>.</li>
+</ol>
+<img data-src="/2022/07/14/putty-ppk-ssh/g23-1657798968723.png" class="">
+<ol start="18">
+<li>
+<p><strong>Note:</strong> The warning message suggests that you use a passphrase for extra privacy so no one can access the instance with just the private key. However, having a passphrase makes it complicated to automate, so decide whether or not to add a <strong>passphrase</strong> in the field.</p>
+</li>
+<li>
+<p>If you decide to enter a passphrase, then remember it, because you can’t access the instance without it.</p>
+</li>
+<li>
+<p>If you’re planning to use the private key with the ppk format for a SOCKS5 proxy connection on Linux, then you must set a passphrase. An easier way is to use the private key without the ppk format.</p>
+</li>
+<li>
+<p>Name the <strong>privateKey.ppk</strong> file and save as type <strong>.ppk (PuTTY Private Key Files)</strong>, by entering the <strong>.ppk</strong> extension. This ensures that you aren’t overwriting the original private key.</p>
+</li>
+</ol>
+<img data-src="/2022/07/14/putty-ppk-ssh/g26-1657798969023.png" class="">
+<ol start="23">
+<li>Click <strong>Save</strong>, close the PuTTY Key Generator window and remember the location of the private key file for future use.</li>
+</ol>
+<h2 id="convert-ppk-format-to-openssh"><a class="markdownIt-Anchor" href="#convert-ppk-format-to-openssh">#</a> Convert ppk format to OpenSSH</h2>
+<p>Another option is to convert the ppk format to an OpenSSH format using the PuTTygen program:</p>
+<ol>
+<li>
+<p>Run the puTTygen program.</p>
+</li>
+<li>
+<p>Click <strong>Load</strong>.</p>
+</li>
+<li>
+<p>Select your private key that ends in  <code>.ppk</code>  and click <strong>Open</strong>.</p>
+</li>
+<li>
+<p>Click the <strong>Conversions</strong> menu option.</p>
+</li>
+<li>
+<p>Click <strong>Export OpenSSH key</strong>.</p>
+<img data-src="/2022/07/14/putty-ppk-ssh/g5-1657798969163.png" class="">
+</li>
+<li>
+<p>If you want a passphrase, enter it in the Key passphrase field and confirm it. Ensure that you know this passphrase later, because <strong>it’s not retrievable</strong>.</p>
+</li>
+<li>
+<p>If you didn’t choose a passphrase, confirm that you don’t want one.</p>
+<img data-src="/2022/07/14/putty-ppk-ssh/g7-1657798969197.png" class="">
+</li>
+<li>
+<p>Give your private key a new name. For example, <strong>SSHprivateKey</strong> and click <strong>Save</strong>.</p>
+<img data-src="/2022/07/14/putty-ppk-ssh/g8-1657798969211.png" class="">
+</li>
+<li>
+<p>Close the puTTygen program.</p>
+</li>
+<li>
+<p>Confirm that your new private key has been saved in the location that you specified.</p>
+<img data-src="/2022/07/14/putty-ppk-ssh/g9-1657798969187.png" class="">
+</li>
+</ol>
+
+      <div class="tags">
+          <a href="/tags/ssh/" rel="tag"><i class="ic i-tag"></i> ssh</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2022-07-14 19:49:43" itemprop="dateModified" datetime="2022-07-14T19:49:43+08:00">2022-07-14</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2022/06/27/excerpt-ancient-prose/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipesng5oej20zk0m87d4.jpg" title="古文摘抄">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> excerpt</span>
+  <h3>古文摘抄</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#background"><span class="toc-number">1.</span> <span class="toc-text"> Background</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#what-do-you-need"><span class="toc-number">2.</span> <span class="toc-text"> What Do You Need?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#changing-the-format-of-the-ssh-private-key"><span class="toc-number"></span> <span class="toc-text"> Changing the Format of the SSH Private Key</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#convert-ppk-format-to-openssh"><span class="toc-number"></span> <span class="toc-text"> Convert ppk format to OpenSSH</span></a>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">296</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">41</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item about" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2022</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ D E W</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2022/07/14/putty-ppk-ssh/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
