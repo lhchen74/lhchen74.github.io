@@ -1,0 +1,425 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="css" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2022/07/15/css-background-clip-origin/">
+
+
+
+  <title>
+CSS — background-clip vs. background-origin properties |
+D E W = 露の世</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">CSS — background-clip vs. background-origin properties
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2022-07-15 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2022-07-15T00:00:00+08:00">2022-07-15</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">D E W</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giciukx8a7j20zk0m8aio.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclfdu6exj20zk0m87hw.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giph4baakhj20zk0m8h5q.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipey84bjtj20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipet8c1a2j20zk0m8kct.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclx29mstj20zk0m8hdt.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2022/07/15/css-background-clip-origin/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>转载：<span class="exturl" data-url="aHR0cHM6Ly9sZXZlbHVwLmdpdGNvbm5lY3RlZC5jb20vY3NzLWJhY2tncm91bmQtY2xpcC12cy1iYWNrZ3JvdW5kLW9yaWdpbi1wcm9wZXJ0aWVzLWUyYTE1ZDVkN2ZhMA==">CSS — background-clip vs. background-origin properties | by Tsz | Level Up Coding</span></p>
+</blockquote>
+<p>When I was learning these 2 CSS properties, I felt confused since both of them have the same set of property values and their demonstration effect looks similar. After research and investigation, here’s how I understood the 2 properties right now.</p>
+<p>In all the below examples, I will use a div with a 20px dashed border and 15px padding, with background-repeat. (The orange, green, and blue color below represents the border, padding, and content area respectively)</p>
+<img data-src="/2022/07/15/css-background-clip-origin/1.png" class="" title="The div to be used in below examples">
+<img data-src="/2022/07/15/css-background-clip-origin/2.png" class="" title="The background image to be used in the below examples">
+<h2 id="background-origin"><a class="markdownIt-Anchor" href="#background-origin">#</a> background-origin</h2>
+<p>It defines where the starting <strong>position</strong> of the background. (from the upper left corner)</p>
+<h3 id="border-box"><a class="markdownIt-Anchor" href="#border-box">#</a> border-box</h3>
+<p>When we set the value to “border-box”, the background begins at the upper-left corner of the border area</p>
+<img data-src="/2022/07/15/css-background-clip-origin/3.png" class="">
+<h3 id="padding-box"><a class="markdownIt-Anchor" href="#padding-box">#</a> padding-box</h3>
+<p>The background begins at the upper-left corner of the padding area</p>
+<img data-src="/2022/07/15/css-background-clip-origin/4.png" class="">
+<h3 id="content-box"><a class="markdownIt-Anchor" href="#content-box">#</a> content-box</h3>
+<p>The background begins at the upper-left corner of the content area</p>
+<img data-src="/2022/07/15/css-background-clip-origin/5.png" class="">
+<h2 id="background-clip"><a class="markdownIt-Anchor" href="#background-clip">#</a> background-clip</h2>
+<p>After understanding what the “background-origin” does, it’s easier to understand what is “background-clip”.</p>
+<h3 id="differences-between-the-2-properties"><a class="markdownIt-Anchor" href="#differences-between-the-2-properties">#</a> Differences between the 2 properties</h3>
+<p>“background-clip” — let you define in which <strong>area</strong> the background should be displayed, background outside the area will be “clipped”</p>
+<p>“background-origin” — defines <strong>only the starting position</strong> of the background, we don’t have the power to define anything else (e.g.: where does it end) using this property on its own</p>
+<h3 id="content-box-2"><a class="markdownIt-Anchor" href="#content-box-2">#</a> content-box</h3>
+<p>We will start from “content-box” this time as it shows the most obvious effect. We can see that the background only fills up within the content area, but not the padding nor border area.</p>
+<img data-src="/2022/07/15/css-background-clip-origin/6.png" class="">
+<h3 id="padding-box-2"><a class="markdownIt-Anchor" href="#padding-box-2">#</a> padding-box</h3>
+<p>The background extended to the padding area this time.</p>
+<img data-src="/2022/07/15/css-background-clip-origin/7.png" class="">
+<h3 id="border-box-2"><a class="markdownIt-Anchor" href="#border-box-2">#</a> border-box</h3>
+<p>The background extends to the complete div, including its border area.</p>
+<img data-src="/2022/07/15/css-background-clip-origin/8.png" class="">
+<p>CodePen for css background-clip &amp; background-origin demo</p>
+<h2 id="more-use-cases"><a class="markdownIt-Anchor" href="#more-use-cases">#</a> More use cases</h2>
+<p>After understanding what each property does, we can use them independently or together for different use cases!</p>
+<h3 id="applying-multiple-values"><a class="markdownIt-Anchor" href="#applying-multiple-values">#</a> Applying multiple values</h3>
+<p>Apart from the above single value examples, both properties support giving multiple values (separated by comma), to define the multiple background behavior.</p>
+<p>In the coming examples, I set 2 background image URLs in the “background-image” property.</p>
+<p>Then in the “background-clip” demo, I can define image A to be extended to the content box area; while image B can extend to the border-box area.</p>
+<img data-src="/2022/07/15/css-background-clip-origin/9.png" class="">
+<p>In the “background-origin” demo, the starting point of background A &amp; background B can be different. (A begins at the content box, B begins at the border-box)</p>
+<img data-src="/2022/07/15/css-background-clip-origin/10.png" class="">
+<p>CodePen for assigning multiple values to background-clip &amp; background-origin</p>
+<h3 id="apply-the-2-properties-together"><a class="markdownIt-Anchor" href="#apply-the-2-properties-together">#</a> Apply the 2 properties together</h3>
+<p>The 2 properties can be used together. In the below examples, I used “background-origin” to set the background image’s position; and used “background-clip” to decide what area of background images should be shown.</p>
+<img data-src="/2022/07/15/css-background-clip-origin/11.png" class="">
+<p>the starting points of the 2 background images ar different!</p>
+<p>CodePen for demo combination of background-origin &amp; background-clip</p>
+
+      <div class="tags">
+          <a href="/tags/css/" rel="tag"><i class="ic i-tag"></i> css</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2022-07-15 15:48:21" itemprop="dateModified" datetime="2022-07-15T15:48:21+08:00">2022-07-15</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2022/07/14/putty-ppk-ssh/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicljitigmj20zk0m87fp.jpg" title="Change Private Key Format to Use with PuTTY">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Change Private Key Format to Use with PuTTY</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2022/07/16/misc/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipeun65urj20zk0m81ii.jpg" title="Miscellaneous">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Miscellaneous</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#background-origin"><span class="toc-number">1.</span> <span class="toc-text"> background-origin</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#border-box"><span class="toc-number">1.1.</span> <span class="toc-text"> border-box</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#padding-box"><span class="toc-number">1.2.</span> <span class="toc-text"> padding-box</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#content-box"><span class="toc-number">1.3.</span> <span class="toc-text"> content-box</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#background-clip"><span class="toc-number">2.</span> <span class="toc-text"> background-clip</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#differences-between-the-2-properties"><span class="toc-number">2.1.</span> <span class="toc-text"> Differences between the 2 properties</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#content-box-2"><span class="toc-number">2.2.</span> <span class="toc-text"> content-box</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#padding-box-2"><span class="toc-number">2.3.</span> <span class="toc-text"> padding-box</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#border-box-2"><span class="toc-number">2.4.</span> <span class="toc-text"> border-box</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#more-use-cases"><span class="toc-number">3.</span> <span class="toc-text"> More use cases</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#applying-multiple-values"><span class="toc-number">3.1.</span> <span class="toc-text"> Applying multiple values</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#apply-the-2-properties-together"><span class="toc-number">3.2.</span> <span class="toc-text"> Apply the 2 properties together</span></a></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">297</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">42</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item about" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2022/07/14/putty-ppk-ssh/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2022/07/16/misc/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2022</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ D E W</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2022/07/15/css-background-clip-origin/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
