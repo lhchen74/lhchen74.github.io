@@ -24,15 +24,15 @@
 <link rel="stylesheet" href="/css/app.css?v=0.2.5">
 
   
-  <meta name="keywords" content="css" />
+  <meta name="keywords" content="db" />
 
 
-<link rel="canonical" href="https://lhchen74.github.io/2022/05/31/css-secret/">
+<link rel="canonical" href="https://lhchen74.github.io/2022/07/20/oracle-qa/">
 
 
 
   <title>
-CSS Secret |
+Oracle Q&A |
 D E W = 露の世</title>
 <meta name="generator" content="Hexo 5.4.0"></head>
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -60,16 +60,16 @@ D E W = 露の世</title>
         <div id="brand">
           <div class="pjax">
           
-  <h1 itemprop="name headline">CSS Secret
+  <h1 itemprop="name headline">Oracle Q&A
   </h1>
   
 <div class="meta">
-  <span class="item" title="Created: 2022-05-31 00:00:00">
+  <span class="item" title="Created: 2022-07-20 00:00:00">
     <span class="icon">
       <i class="ic i-calendar"></i>
     </span>
     <span class="text">Posted on</span>
-    <time itemprop="dateCreated datePublished" datetime="2022-05-31T00:00:00+08:00">2022-05-31</time>
+    <time itemprop="dateCreated datePublished" datetime="2022-07-20T00:00:00+08:00">2022-07-20</time>
   </span>
 </div>
 
@@ -102,12 +102,12 @@ D E W = 露の世</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclize41wj20zk0m87gk.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclflwv2aj20zk0m84qp.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipet4bz0yj20zk0m8e81.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicis081o9j20zk0m8dmr.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giciundwu5j20zk0m8n9e.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicit4jrvuj20zk0m8785.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicitspjpbj20zk0m81ky.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipexj2jgzj20zk0m8b09.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclimtf7dj20zk0m8qav.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipev1x5e4j20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclhfehz7j20zk0m8u0x.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipewkhf1zj20zk0m81kx.jpg"></li>
         </ul>
       </div>
     </header>
@@ -136,7 +136,7 @@ D E W = 露の世</title>
 </div>
 
     <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
-  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2022/05/31/css-secret/">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2022/07/20/oracle-qa/">
 
   <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="image" content="/images/avatar.jpg">
@@ -151,9 +151,14 @@ D E W = 露の世</title>
   <div class="body md" itemprop="articleBody">
     
 
-    
+    <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> get_qty_per_pallet(p_invoice_line_id <span class="keyword">in</span> number) <span class="keyword">return</span> number</span><br><span class="line">  <span class="keyword">is</span> </span><br><span class="line">    l_return number;</span><br><span class="line">  <span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">begin</span></span><br><span class="line">      <span class="keyword">select</span> <span class="keyword">distinct</span></span><br><span class="line">             spm.pallet_stack_qty <span class="operator">*</span></span><br><span class="line">             spm.qty_carton_per_stack <span class="operator">*</span> </span><br><span class="line">             spm.fg_item_per_carton</span><br><span class="line">        <span class="keyword">into</span> l_return</span><br><span class="line">        <span class="keyword">from</span> som_commercial_invoice_lines scl, </span><br><span class="line">             oe_order_lines_all           ool,</span><br><span class="line">             wsh_carrier_services         wcs,</span><br><span class="line">             som_packing_material_setup   spm</span><br><span class="line">        <span class="keyword">where</span> scl.so_line_id <span class="operator">=</span> ool.line_id</span><br><span class="line">         <span class="keyword">and</span> <span class="built_in">upper</span>(ool.shipping_method_code) <span class="operator">=</span> <span class="built_in">upper</span>(wcs.ship_method_code)</span><br><span class="line">         <span class="keyword">and</span> instr(<span class="built_in">upper</span>(spm.shipping_method_code), <span class="built_in">upper</span>(wcs.attribute2)) <span class="operator">&lt;&gt;</span> <span class="number">0</span></span><br><span class="line">         <span class="keyword">and</span> spm.organization_id <span class="operator">=</span> <span class="number">85</span></span><br><span class="line">         <span class="keyword">and</span> spm.inventory_item_id <span class="operator">=</span> scl.inventory_item_id</span><br><span class="line">         <span class="keyword">and</span> scl.invoice_line_id <span class="operator">=</span> p_invoice_line_id;</span><br><span class="line">    exception</span><br><span class="line">      <span class="keyword">when</span> others <span class="keyword">then</span></span><br><span class="line">        debug(<span class="string">&#x27;get_qty_per_pallet error: &#x27;</span> <span class="operator">||</span> sqlerrm);</span><br><span class="line">        l_return :<span class="operator">=</span> <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> l_return;</span><br><span class="line">  <span class="keyword">end</span> get_qty_per_pallet;</span><br></pre></td></tr></table></figure>
+<p>当 get_qty_per_pallet 以如下方式调用时，会进入到 get_qty_per_pallet 的 exception 中，打印 <em>get_qty_per_pallet error: ORA-01403: no data found</em> 但是最终结果是正确的，看起来外部的  <code>som_commercial_invoice_lines sel </code>  和函数内部的  <code>som_commercial_invoice_lines scl</code>  先进行连接，之后再通过  <code>seh.invoice_no = 'EX001'</code>  这个条件筛选。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">count</span>(<span class="number">1</span>)</span><br><span class="line">  <span class="keyword">into</span> l_qty_per_pallet_error_count</span><br><span class="line">  <span class="keyword">from</span> som_commercial_invoice_headers seh, </span><br><span class="line">       som_commercial_invoice_lines sel </span><br><span class="line"> <span class="keyword">where</span> seh.invoice_header_id <span class="operator">=</span> sel.invoice_header_id</span><br><span class="line">   <span class="keyword">and</span> seh.invoice_no <span class="operator">=</span> <span class="string">&#x27;EX001&#x27;</span></span><br><span class="line">   <span class="keyword">and</span> get_qty_per_pallet(sel.invoice_line_id) <span class="keyword">is</span> <span class="keyword">null</span>;</span><br></pre></td></tr></table></figure>
+<p>使用 exists 不会有这种情况。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> sel.invoice_line_id</span><br><span class="line"><span class="comment">--into l_qty_per_pallet_error_count</span></span><br><span class="line">  <span class="keyword">from</span> som_commercial_invoice_headers seh, som_commercial_invoice_lines sel</span><br><span class="line"> <span class="keyword">where</span> seh.invoice_header_id <span class="operator">=</span> sel.invoice_header_id</span><br><span class="line">   <span class="keyword">and</span> seh.invoice_no <span class="operator">=</span> <span class="string">&#x27;EX001&#x27;</span></span><br><span class="line">   <span class="keyword">and</span> <span class="keyword">exists</span> (<span class="keyword">select</span> <span class="number">1</span></span><br><span class="line">                 <span class="keyword">from</span> dual</span><br><span class="line">                <span class="keyword">where</span> som_edi_dachser_pkg.get_qty_per_pallet(sel.invoice_line_id) <span class="keyword">is</span> <span class="keyword">null</span>)</span><br></pre></td></tr></table></figure>
+
       <div class="tags">
-          <a href="/tags/css/" rel="tag"><i class="ic i-tag"></i> css</a>
+          <a href="/tags/db/" rel="tag"><i class="ic i-tag"></i> db</a>
       </div>
   </div>
 
@@ -165,7 +170,7 @@ D E W = 露の世</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2022-07-15 18:47:38" itemprop="dateModified" datetime="2022-07-15T18:47:38+08:00">2022-07-15</time>
+    <time title="Modified: 2022-07-20 20:03:09" itemprop="dateModified" datetime="2022-07-20T20:03:09+08:00">2022-07-20</time>
   </span>
 </div>
 
@@ -182,20 +187,20 @@ D E W = 露の世</title>
     <div class="item left">
       
 
-  <a href="/2022/05/31/markdown/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclhfehz7j20zk0m8u0x.jpg" title="Escaping backtick in Markdown">
+  <a href="/2022/07/16/misc/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipexbei4hj20zk0m8npd.jpg" title="Miscellaneous">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
-  <h3>Escaping backtick in Markdown</h3>
+  <h3>Miscellaneous</h3>
   </a>
 
     </div>
     <div class="item right">
       
 
-  <a href="/2022/06/20/excerpt-rarely-used-character/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipeu7txpzj20zk0m81kx.jpg" title="生僻字">
+  <a href="/2022/07/21/window-custom-url-protocol/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipetlbztpj20zk0m84qp.jpg" title="Register custom URL protocol in Windows">
   <span class="type">Next Post</span>
-  <span class="category"><i class="ic i-flag"></i> excerpt</span>
-  <h3>生僻字</h3>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Register custom URL protocol in Windows</h3>
   </a>
 
     </div>
@@ -228,7 +233,7 @@ D E W = 露の世</title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">297</span>
+        <span class="count">298</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -240,7 +245,7 @@ D E W = 露の世</title>
     </div>
     <div class="item tags">
       <a href="/tags/">
-        <span class="count">42</span>
+        <span class="count">43</span>
         <span class="name">tags</span>
       </a>
     </div>
@@ -299,12 +304,12 @@ D E W = 露の世</title>
 
   <ul id="quick">
     <li class="prev pjax">
-        <a href="/2022/05/31/markdown/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+        <a href="/2022/07/16/misc/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
     </li>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
     <li class="next pjax">
-        <a href="/2022/06/20/excerpt-rarely-used-character/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+        <a href="/2022/07/21/window-custom-url-protocol/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
     </li>
     <li class="percent"></li>
   </ul>
@@ -341,7 +346,7 @@ D E W = 露の世</title>
   </div>
 <script data-config type="text/javascript">
   var LOCAL = {
-    path: '2022/05/31/css-secret/',
+    path: '2022/07/20/oracle-qa/',
     favicon: {
       show: "（●´3｀●）Goooood",
       hide: "(´Д｀)Booooom"

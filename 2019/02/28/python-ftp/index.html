@@ -102,12 +102,12 @@ D E W = 露の世</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclhtuo6nj20zk0m8ttm.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipexe4oykj20zk0m87ji.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicis081o9j20zk0m8dmr.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclfb3vzhj20zk0m8wny.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicitht3xtj20zk0m8k5v.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeyhsblkj20zk0m81kx.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipew28b65j20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipev1x5e4j20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeyhsblkj20zk0m81kx.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclhtuo6nj20zk0m8ttm.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipevo9j1jj20zk0m8e81.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giciuv0socj20zk0m8qes.jpg"></li>
         </ul>
       </div>
     </header>
@@ -156,7 +156,7 @@ D E W = 露の世</title>
 <h2 id="sftp-file-upload-and-download-use-paramiko"><a class="markdownIt-Anchor" href="#sftp-file-upload-and-download-use-paramiko">#</a> SFTP File Upload and Download use Paramiko</h2>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> paramiko</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">hostname = <span class="string">&#x27;xxx&#x27;</span></span><br><span class="line">username = <span class="string">&#x27;xxx&#x27;</span></span><br><span class="line">password = <span class="string">&#x27;xxx&#x27;</span></span><br><span class="line">port = <span class="number">22</span>  <span class="comment"># int</span></span><br><span class="line">upload_local_dir = <span class="string">&#x27;xxx&#x27;</span></span><br><span class="line">download_local_dir = <span class="string">&#x27;xxx&#x27;</span></span><br><span class="line">remote_dir = <span class="string">&#x27;inbox/&#x27;</span> <span class="comment"># 注意目录，需要手动添加 /</span></span><br><span class="line">SFTP_DOWNLOAD_FLAG = <span class="literal">False</span> <span class="comment"># 用来判断文件是否下载成功</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sftp_callback</span>(<span class="params">transfered, total</span>):</span></span><br><span class="line">    <span class="keyword">global</span> SFTP_DOWNLOAD_FLAG</span><br><span class="line">    <span class="keyword">if</span> transfered == total:</span><br><span class="line">        SFTP_DOWNLOAD_FLAG = <span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sftpconnect</span>(<span class="params">host, port, username, password</span>):</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        sf = paramiko.Transport((host, port))</span><br><span class="line">        sf.connect(username=username, password=password)</span><br><span class="line">        sftp = paramiko.SFTPClient.from_transport(sf)</span><br><span class="line">        <span class="keyword">return</span> sftp</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        print(<span class="string">&#x27;connect exception: &#x27;</span>, e)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sftp_upload</span>(<span class="params">host, port, username, password, local, remote</span>):</span></span><br><span class="line">    sf = paramiko.Transport((host, port))</span><br><span class="line">    sf.connect(username=username, password=password)</span><br><span class="line">    sftp = paramiko.SFTPClient.from_transport(sf)</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">if</span> os.path.isdir(local):</span><br><span class="line">            <span class="keyword">for</span> f <span class="keyword">in</span> os.listdir(local):</span><br><span class="line">                sftp.put(os.path.join(local, f), os.path.join(remote+f))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            sftp.put(local, remote)</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        print(<span class="string">&#x27;upload exception: &#x27;</span>, e)</span><br><span class="line">    <span class="keyword">finally</span>:</span><br><span class="line">        <span class="keyword">if</span> sf <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">            sf.close()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sftp_download</span>(<span class="params">host, port, username, password, local, remote</span>):</span></span><br><span class="line">    <span class="keyword">global</span> SFTP_DOWNLOAD_FLAG</span><br><span class="line">    sf = paramiko.Transport((host, port))</span><br><span class="line">    sf.connect(username=username, password=password)</span><br><span class="line">    sftp = paramiko.SFTPClient.from_transport(sf)</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="comment"># 远程目录不要用 os.path.isdir(local) 判断是否是文件夹，除非已经确定</span></span><br><span class="line">        <span class="comment"># 因为 inbox/ 的上层目录可能没有权限访问，判断目录总是会返回 False</span></span><br><span class="line">        <span class="keyword">for</span> f <span class="keyword">in</span> sftp.listdir(remote):</span><br><span class="line">            sftpAttributes = sftp.lstat(os.path.join(remote+f))</span><br><span class="line">            fileSize = sftpAttributes.st_size</span><br><span class="line">            <span class="keyword">if</span> fileSize:  <span class="comment"># 只有文件不为空，才会调用 sftp_callback 函数</span></span><br><span class="line">                sftp.get(os.path.join(remote+f), os.path.join(local, f), sftp_callback)</span><br><span class="line">            <span class="keyword">else</span>:         <span class="comment"># 空文件无法用 sftp_callback 判断是否下载成功，所以不下载</span></span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> SFTP_DOWNLOAD_FLAG:  <span class="comment"># 下载成功，移除远程目录文件</span></span><br><span class="line">                SFTP_DOWNLOAD_FLAG = <span class="literal">False</span></span><br><span class="line">                sftp.remove(os.path.join(remote+f))</span><br><span class="line">            <span class="keyword">else</span>:                   <span class="comment"># 如果上传存在问题，移除本地已经上传的文件</span></span><br><span class="line">                os.remove(os.path.join(local, f))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        print(<span class="string">&#x27;download exception: &#x27;</span>, e)</span><br><span class="line">    <span class="keyword">finally</span>:</span><br><span class="line">        <span class="keyword">if</span> sf <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">            sf.close()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="comment"># 测试连接</span></span><br><span class="line">    sftp = sftpconnect(host, port, username, password)</span><br><span class="line">    print(sftp)</span><br></pre></td></tr></table></figure>
 <h3 id="paramiko-use-ssh-private-key-connect-sftp"><a class="markdownIt-Anchor" href="#paramiko-use-ssh-private-key-connect-sftp">#</a> Paramiko use SSH Private Key Connect SFTP</h3>
-<p>Python <strong>paramiko</strong> connect SFTP cannot use <strong>ppk</strong>(PuTTY-User-Key-File, include public key and private key). So need use PuTTYgen load <strong>ppk</strong> then export <strong>OpenSSH</strong>(include private key only) key.</p>
+<p>Python paramiko connect SFTP cannot use ppk(PuTTY-User-Key-File, include public key and private key). So we need to use PuTTYgen load ppk then export OpenSSH(including private key only) key.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> paramiko</span><br><span class="line"></span><br><span class="line">hostname = <span class="string">&#x27;xxx&#x27;</span></span><br><span class="line">username = <span class="string">&#x27;xxx&#x27;</span></span><br><span class="line">password = <span class="string">&#x27;xxx&#x27;</span></span><br><span class="line">port = <span class="number">22</span>  <span class="comment"># int</span></span><br><span class="line"></span><br><span class="line">ssh = paramiko.SSHClient()</span><br><span class="line">ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())</span><br><span class="line"><span class="comment"># customer_sftp.id_rsa SSH private key</span></span><br><span class="line">ssh.connect(hostname, port=port, username=username, password=password, key_filename=<span class="string">&#x27;./customer_sftp.id_rsa&#x27;</span>)</span><br><span class="line">sftp = ssh.open_sftp()</span><br><span class="line"></span><br><span class="line"><span class="comment"># print(sftp)</span></span><br><span class="line"><span class="comment"># Some SFTP maybe not open the shell function </span></span><br><span class="line"><span class="comment"># stdin, stdout, stderr = ssh.exec_command(&#x27;ls&#x27;)</span></span><br><span class="line"><span class="comment"># print(stdout.readlines())</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># sftp.put(sourcefile, uploadfile)</span></span><br><span class="line"></span><br><span class="line">sftp.close()</span><br><span class="line">ssh.close()</span><br></pre></td></tr></table></figure>
 
       <div class="tags">
@@ -172,7 +172,7 @@ D E W = 露の世</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2022-07-15 19:14:16" itemprop="dateModified" datetime="2022-07-15T19:14:16+08:00">2022-07-15</time>
+    <time title="Modified: 2022-07-19 11:36:29" itemprop="dateModified" datetime="2022-07-19T11:36:29+08:00">2022-07-19</time>
   </span>
 </div>
 
@@ -189,20 +189,20 @@ D E W = 露の世</title>
     <div class="item left">
       
 
-  <a href="/2019/02/28/python-log/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giph4lm9i7j20zk0m84qp.jpg" title="Python Logging">
+  <a href="/2019/02/28/python-generator/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipey0a334j20zk0m8qpt.jpg" title="Python Yield">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
-  <h3>Python Logging</h3>
+  <h3>Python Yield</h3>
   </a>
 
     </div>
     <div class="item right">
       
 
-  <a href="/2019/02/28/python-iterator/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclwuom7cj20zk0m8dvn.jpg" title="Python Iterable">
+  <a href="/2019/02/28/python-flask-iis/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicljgocqbj20zk0m8e81.jpg" title="Python Flask IIS">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
-  <h3>Python Iterable</h3>
+  <h3>Python Flask IIS</h3>
   </a>
 
     </div>
@@ -236,7 +236,7 @@ D E W = 露の世</title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">297</span>
+        <span class="count">298</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -248,7 +248,7 @@ D E W = 露の世</title>
     </div>
     <div class="item tags">
       <a href="/tags/">
-        <span class="count">42</span>
+        <span class="count">43</span>
         <span class="name">tags</span>
       </a>
     </div>
@@ -307,12 +307,12 @@ D E W = 露の世</title>
 
   <ul id="quick">
     <li class="prev pjax">
-        <a href="/2019/02/28/python-log/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+        <a href="/2019/02/28/python-generator/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
     </li>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
     <li class="next pjax">
-        <a href="/2019/02/28/python-iterator/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+        <a href="/2019/02/28/python-flask-iis/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
     </li>
     <li class="percent"></li>
   </ul>
