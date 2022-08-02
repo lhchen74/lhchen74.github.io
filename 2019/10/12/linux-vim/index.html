@@ -102,12 +102,12 @@ D E W = 露の世</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicli3sbvtj20zk0m8x6p.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclxp31goj20zk0m8qv5.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclxfdlttj20zk0m8npd.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipev1x5e4j20zk0m8b29.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giph4lm9i7j20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicitf0kl1j20zk0m87fe.jpg"></li>
           <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicli9lfebj20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipet4bz0yj20zk0m8e81.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeuv80yoj20zk0m8kjl.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclj9410cj20zk0m8h12.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipesx5fdwj20zk0m81kx.jpg"></li>
         </ul>
       </div>
     </header>
@@ -153,89 +153,97 @@ D E W = 露の世</title>
   <div class="body md" itemprop="articleBody">
     
 
-    <h3 id="normal-普通模式"><a class="markdownIt-Anchor" href="#normal-普通模式">#</a> normal (普通模式)</h3>
-<p>普通模式下可以进行各种命令操作和移动。</p>
-<p>进入 vim 默认是 normal 模式（大部分情况是浏览而不是编辑）。使用  <code>Esc</code>  从 insert 模式回到 normal 模式</p>
-<h4 id="光标移动"><a class="markdownIt-Anchor" href="#光标移动">#</a> 光标移动</h4>
+    <h2 id="normal-普通模式"><a class="markdownIt-Anchor" href="#normal-普通模式">#</a> Normal 普通模式</h2>
+<p>进入 Vim 默认是  <code>normal</code>  模式（大部分情况是浏览而不是编辑）。使用  <code>Esc</code>  可以从  <code>insert</code>  模式回到  <code>normal</code>  模式。普通模式下可以进行各种命令操作和移动。</p>
+<h3 id="光标移动"><a class="markdownIt-Anchor" href="#光标移动">#</a> 光标移动</h3>
 <ul>
 <li>h 向左移动光标</li>
 <li>j 向下移动光标</li>
 <li>k 向上移动光标</li>
 <li>l 向右移动光标</li>
 </ul>
-<h4 id="单词移动"><a class="markdownIt-Anchor" href="#单词移动">#</a> 单词移动</h4>
+<h3 id="单词移动"><a class="markdownIt-Anchor" href="#单词移动">#</a> 单词移动</h3>
 <ul>
 <li><code>w/W</code>  移动到下一个 word/WORD 开头， <code>e/E</code>  移动到下一个 word/WORD 结尾</li>
 <li><code>b/B</code>  回到上一个 word/WORD 开头（back word)</li>
 <li>word 指以非空白字符分割的单词，WORD 以空白字符分割的单词</li>
 </ul>
-<h4 id="行间搜索移动"><a class="markdownIt-Anchor" href="#行间搜索移动">#</a> 行间搜索移动</h4>
+<h3 id="行间搜索移动"><a class="markdownIt-Anchor" href="#行间搜索移动">#</a> 行间搜索移动</h3>
 <p>同一行快速移动的方式是搜索一个字符并且移动到该字符</p>
 <ul>
 <li>使用  <code>f&#123;char&#125;</code>  可以移动到 char 字符上， <code>t</code>  移动到 char 的前一个字符</li>
-<li>使用 <code>;或,</code>  继续搜索该行 <code>下一个或上一个</code></li>
+<li>使用  <code>;</code>  或  <code>,</code>  继续搜索该行下一个或上一个</li>
 <li>大写的  <code>F</code>  表示反过来搜索前面的字符</li>
 </ul>
-<h4 id="水平移动"><a class="markdownIt-Anchor" href="#水平移动">#</a> 水平移动</h4>
+<h3 id="水平移动"><a class="markdownIt-Anchor" href="#水平移动">#</a> 水平移动</h3>
 <p>快速移动到一行的行首或行尾</p>
 <ul>
 <li><code>0</code>  移动到行首第一个字符， <code>^</code>  移动到第一个非空白字符</li>
-<li><code>$</code>  移动到行尾， <code>g_</code> 移动到行尾非空白字符</li>
+<li><code>$</code>  移动到行尾， <code>g_</code>  移动到行尾非空白字符</li>
 </ul>
-<h4 id="页面移动"><a class="markdownIt-Anchor" href="#页面移动">#</a> 页面移动</h4>
+<h3 id="页面移动"><a class="markdownIt-Anchor" href="#页面移动">#</a> 页面移动</h3>
 <ul>
 <li><code>gg/G</code>  移动到文件开头和结尾，可以使用  <code>Ctrl + o</code>  快速返回</li>
 <li><code>H/M/L</code>  跳转到文件开头（Head），中间（Middle) 和结尾（Lower)</li>
 <li><code>Ctrl + u、Ctrl + f</code>  上下翻页（upward/forward)</li>
 <li><code>zz</code>  把光标所在位置移动到屏幕中间</li>
 </ul>
-<h4 id="快速删除"><a class="markdownIt-Anchor" href="#快速删除">#</a> 快速删除</h4>
+<h3 id="快速删除"><a class="markdownIt-Anchor" href="#快速删除">#</a> 快速删除</h3>
 <ul>
 <li><code>x</code>  快速删除一个字符</li>
 <li><code>d</code>  配合文本对象快速删除一个单词  <code>daw/dw</code> (delete around word)</li>
-<li><code>dd</code>  删除一行，  <code>d0</code>  删除到行首， <code>d$</code>  删除到行尾， <code>dt;dt)</code>  删除到  <code>;或者)</code></li>
-<li>d 和 x 可以搭配数字执行，表示重复执行，  <code>4dd</code>  删除 4 行， <code>4x</code>  删除 4 个字符</li>
+<li><code>dd</code>  删除一行， <code>d0</code>  删除到行首， <code>d$</code>  删除到行尾， <code>dt;</code>  删除到  <code>;</code>  不包含  <code>;</code> ,  <code>df;</code>  刪除到  <code>;</code>  包含  <code>;</code> .</li>
+<li><code>d</code>  和  <code>x</code>  可以搭配数字执行，表示重复执行， <code>4dd</code>  删除 4 行， <code>4x</code>  删除 4 个字符</li>
 </ul>
-<h4 id="快速修改"><a class="markdownIt-Anchor" href="#快速修改">#</a> 快速修改</h4>
+<h3 id="快速修改"><a class="markdownIt-Anchor" href="#快速修改">#</a> 快速修改</h3>
 <ul>
 <li><code>r</code>  replace 替换一个字符， <code>R</code>  连续向下替换</li>
-<li><code>s</code>  substitute 删除当前字符并进入插入模式， <code>4s</code>  删除 4 个字符进入插入模式，  <code>S</code>  整行删除进入插入模式</li>
-<li><code>c</code>  change 配合文本对象修改， <code>cw</code>  删除当前单词进入插入模式， <code>ct&quot;</code>  删除到 <code>&quot;</code>  进入插入模式， <code>C</code>  整行删除进入插入模式</li>
+<li><code>s</code>  substitute 删除当前字符并进入插入模式， <code>4s</code>  删除 4 个字符进入插入模式， <code>S</code>  整行删除进入插入模式</li>
+<li><code>c</code>  change 配合文本对象修改， <code>cw</code>  删除当前单词进入插入模式， <code>ct;</code>  删除到  <code>;</code>  进入插入模式， <code>C</code>  整行删除进入插入模式</li>
 </ul>
-<h4 id="查询"><a class="markdownIt-Anchor" href="#查询">#</a> 查询</h4>
+<h3 id="查询"><a class="markdownIt-Anchor" href="#查询">#</a> 查询</h3>
 <ul>
-<li><code>/或者？</code> 进行前向或者反向搜索 (需要使用 <code>enter</code>  退出搜索，才能使用  <code>n/N </code> 跳转到下一个或者上一个匹配 )</li>
+<li><code>/</code>  或者  <code>?</code>  进行前向或者反向搜索 (需要使用  <code>enter</code>  退出搜索，才能使用  <code>n/N </code>  跳转到下一个或者上一个匹配)</li>
 <li><code>n/N</code>  跳转到下一个或者上一个匹配。</li>
-<li><code>*/#</code> 进行当前单词的前向和后向匹配。</li>
+<li><code>*/#</code>  进行当前单词的前向和后向匹配。</li>
 </ul>
-<h4 id="复制剪切黏贴"><a class="markdownIt-Anchor" href="#复制剪切黏贴">#</a> 复制 / 剪切 / 黏贴</h4>
+<h3 id="复制剪切黏贴"><a class="markdownIt-Anchor" href="#复制剪切黏贴">#</a> 复制 / 剪切 / 黏贴</h3>
 <ul>
 <li><code>d</code>  cut</li>
-<li><code>y</code>  copy</li>
+<li><code>y</code>  yank 复制</li>
 <li><code>P</code>  paste before the cursor</li>
 <li><code>p</code>  paste after the cursor</li>
 </ul>
-<h3 id="insert-插入模式"><a class="markdownIt-Anchor" href="#insert-插入模式">#</a> insert (插入模式)</h3>
-<p>normal -&gt; insert</p>
+<h3 id="撤销和重做"><a class="markdownIt-Anchor" href="#撤销和重做">#</a> 撤销和重做</h3>
+<ul>
+<li><code>u</code>  撤销上一步的操作</li>
+<li><code>Ctrl+r</code>  恢复上一步被撤销的操作</li>
+</ul>
+<h2 id="insert-插入模式"><a class="markdownIt-Anchor" href="#insert-插入模式">#</a> Insert 插入模式</h2>
+<p><code>normal</code>  模式切换到  <code>insert</code>  模式有如下几种方式。</p>
 <table>
 <thead>
 <tr>
-<th>a</th>
-<th>append</th>
+<th>Command</th>
+<th>Meaning</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>i</td>
-<td>insert</td>
+<td>insert before of current character</td>
 </tr>
 <tr>
-<td>A</td>
-<td>append after line</td>
+<td>a</td>
+<td>append after of current character</td>
 </tr>
 <tr>
 <td>I</td>
-<td>insert before line</td>
+<td>insert of line start</td>
+</tr>
+<tr>
+<td>A</td>
+<td>append of line end</td>
 </tr>
 <tr>
 <td>o</td>
@@ -243,53 +251,446 @@ D E W = 露の世</title>
 </tr>
 <tr>
 <td>O</td>
-<td>append a line above</td>
+<td>insert a line above</td>
 </tr>
 </tbody>
 </table>
-<h4 id="删除操作"><a class="markdownIt-Anchor" href="#删除操作">#</a> 删除操作</h4>
+<h3 id="删除操作"><a class="markdownIt-Anchor" href="#删除操作">#</a> 删除操作</h3>
 <p>如下命令也可以在 Terminal 中使用</p>
 <ul>
 <li><code>Ctrl + h</code>  删除上一个字符</li>
 <li><code>Ctrl + w</code>  删除上一个单词</li>
 <li><code>Ctrl + u</code>  删除当前行</li>
 </ul>
-<h3 id="command命令模式"><a class="markdownIt-Anchor" href="#command命令模式">#</a> command (命令模式)</h3>
+<h2 id="command-命令模式"><a class="markdownIt-Anchor" href="#command-命令模式">#</a> Command 命令模式</h2>
 <table>
 <thead>
 <tr>
-<th>:wq/:x</th>
-<th>写入并退出</th>
+<th>Command</th>
+<th>Meaning</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>:vs</td>
+<td><code>:wq/:x</code></td>
+<td>写入并退出</td>
+</tr>
+<tr>
+<td><code>:vs</code></td>
 <td>vertical split 垂直分屏</td>
 </tr>
 <tr>
-<td>:sp</td>
+<td><code>:sp</code></td>
 <td>split 水平分屏</td>
 </tr>
 <tr>
-<td>:set nu</td>
+<td><code>:set nu</code></td>
 <td>设置行号</td>
 </tr>
 <tr>
-<td>:% s/foo/bar/g</td>
+<td><code>:set nu!</code></td>
+<td>取消行号设置</td>
+</tr>
+<tr>
+<td><code>:% s/foo/bar/g</code></td>
 <td>全局替换 foo -&gt; bar</td>
+</tr>
+<tr>
+<td><code>:help s</code></td>
+<td>查询帮助</td>
+</tr>
+<tr>
+<td><code>:e b.txt</code></td>
+<td>打开当前目录下的 b.txt 文件</td>
+</tr>
+<tr>
+<td><code>:e！</code></td>
+<td>重新加载并且不保存当前文件</td>
 </tr>
 </tbody>
 </table>
-<h3 id="visual可视模式"><a class="markdownIt-Anchor" href="#visual可视模式">#</a> visual (可视模式)</h3>
+<h3 id="替换命令"><a class="markdownIt-Anchor" href="#替换命令">#</a> 替换命令</h3>
+<p><code>substitute</code>  命令可以用来查找并且替换文本，并且支持正则表达式。</p>
+<p><code>:[range]s[ubstitute]/&#123;pattern&#125;/&#123;string&#125;/[flags]</code></p>
+<ul>
+<li><code>range</code>  表示范围，例如: 10,20 表示 10-20 行，% 表示全部。</li>
+<li><code>pattern</code>  要替换的模式。</li>
+<li><code>string</code>  需要替换成的文本。</li>
+<li><code>flags</code>  替换标志位。
+<ul>
+<li><code>g(global)</code>  表示全局范围内执行。</li>
+<li><code>c(confirm)</code>  表示确认，可以确认或者拒绝修改。</li>
+<li><code>n(number)</code>  报告匹配的次数而不替换，可以用来查询匹配次数。</li>
+</ul>
+</li>
+</ul>
+<p>example:  <code>:% s/\&lt;foo\&gt;/bar</code>  精确匹配 foo, 替换成 bar.</p>
+<h2 id="visual-可视模式"><a class="markdownIt-Anchor" href="#visual-可视模式">#</a> Visual 可视模式</h2>
 <p>Visual 模式一般用来块状选择文本。</p>
 <p>Normal 模式下使用  <code>v</code>  进入 visual 选择</p>
 <p>使用  <code>V</code>  选择行</p>
 <p>使用  <code>Ctrl + v</code>  进行方块选择</p>
-<h3 id="快速切换-insert-和-normal-模式"><a class="markdownIt-Anchor" href="#快速切换-insert-和-normal-模式">#</a> 快速切换 insert 和 normal 模式</h3>
-<p>使用  <code>Ctrl + c</code>  代替  <code>Esc</code>  (但是会中断某些插件) 或者  <code>Ctrl + [</code></p>
-<p><code>gi</code>  快速跳转到最后一次编辑的地方并进入插入模式</p>
-<h3 id="terminal"><a class="markdownIt-Anchor" href="#terminal">#</a> Terminal</h3>
+<h2 id="模式切换"><a class="markdownIt-Anchor" href="#模式切换">#</a> 模式切换</h2>
+<p><strong>insert =&gt; normal</strong></p>
+<p><code>Esc</code>  可以从  <code>insert</code>  模式回到  <code>normal</code>  模式，也可以使用  <code>Ctrl + c</code>  或者  <code>Ctrl + [</code>  代替  <code>Esc</code>  (可能会中断某些插件)。</p>
+<p><strong>normal =&gt; insert</strong></p>
+<p><code>i, a, I, A, o, O</code>  进入插入模式。</p>
+<p><code>gi</code>  快速跳转到最后一次编辑的地方并进入插入模式。</p>
+<h2 id="多文件操作"><a class="markdownIt-Anchor" href="#多文件操作">#</a> 多文件操作</h2>
+<h3 id="bufferwindowtab"><a class="markdownIt-Anchor" href="#bufferwindowtab">#</a> Buffer，Window，Tab</h3>
+<p>Buffer 是指打开的一个文件的内存缓冲区</p>
+<p>Window 是 Buffer 可视化的分割区域</p>
+<p>Tab 可以组织 Window 为一个工作区</p>
+<h3 id="buffer"><a class="markdownIt-Anchor" href="#buffer">#</a> Buffer</h3>
+<p>Buffer 是指打开的一个文件的内存缓冲区。</p>
+<ul>
+<li>Vim 打开一个文件后会加载文件内容到缓存区。</li>
+<li>之后的修改都是针对内存中的缓存区，并不会直接保存到文件。</li>
+<li>直到我们执行  <code>:w</code>  (write) 的时候才会把修改内容写入到文件里。</li>
+<li><code>:e filename</code>  打开多个文件，创建多个缓存区，使用  <code>:ls</code>  会列举当前缓存区，然后使用  <code>:b n</code>  跳转到第  <code>n</code>  个缓存区。</li>
+<li><code>:bpre</code>   <code>:bnext</code>   <code>:bfirst</code>   <code>:blast</code>  分別跳转到上一个，下一个，第一个最后一个缓存区。</li>
+<li>或者用  <code>:b buffer_name</code>  加上 tab 补全跳转。</li>
+</ul>
+<h3 id="window"><a class="markdownIt-Anchor" href="#window">#</a> Window</h3>
+<p>Window 是 Buffer 可视化的分割区域</p>
+<ul>
+<li>一个缓存区可以分割成多个窗口，每个窗口也可以打开不同的缓存区。</li>
+<li><code>&lt;Ctrl + w&gt; s</code>  水平分割， <code>&lt;Ctrl + w&gt; v</code>  垂直分割。或者  <code>:sp</code>  和  <code>:vs</code> 。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;Ctrl + w&gt; w</code></td>
+<td>在窗口间循环切换</td>
+</tr>
+<tr>
+<td><code>&lt;Ctrl + w&gt; h</code></td>
+<td>切换到左边的窗口</td>
+</tr>
+<tr>
+<td><code>&lt;Ctrl + w&gt; j</code></td>
+<td>切换到下边的窗口</td>
+</tr>
+<tr>
+<td><code>&lt;Ctrl + w&gt; k</code></td>
+<td>切换到上边的窗口</td>
+</tr>
+<tr>
+<td><code>&lt;Ctrl + w&gt; l</code></td>
+<td>切换到右边的窗口</td>
+</tr>
+<tr>
+<td><code>&lt;Ctrl + w&gt; H</code></td>
+<td>把窗口移动到左边</td>
+</tr>
+<tr>
+<td><code>&lt;Ctrl + w&gt; L</code></td>
+<td>把窗口移动到右边</td>
+</tr>
+</tbody>
+</table>
+<h3 id="tab"><a class="markdownIt-Anchor" href="#tab">#</a> Tab</h3>
+<p>Tab 可以组织 Window 为一个工作区。</p>
+<ul>
+<li>
+<p>Vim 的 Tab 和其它编辑器不太一样，可以想象成 Linux 的虚拟桌面。</p>
+</li>
+<li>
+<p>比如一个 Tab 全部用来编辑 Python 文件，一个 Tab 全部是 HTML 文件。</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr filename="">
+<td><code>:tabn[ew] &#123;filename&#125;</code></td>
+<td>在新标签页打开</td>
+</tr>
+<tr filename="">
+<td><code>:tabe[dit] &#123;filename&#125;</code></td>
+<td>在新标签页打开</td>
+</tr>
+<tr>
+<td><code>&lt;Ctrl+w&gt; T</code></td>
+<td>把当前窗口移动到一个新的标签页</td>
+</tr>
+<tr>
+<td><code>:tabc[lose]</code></td>
+<td>关闭当前标签页及其中的所有窗口</td>
+</tr>
+<tr>
+<td><code>:tabo[nly]</code></td>
+<td>只保留活动标签页，关闭其它标签页</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td>Ex Command</td>
+<td>Normal Command</td>
+<td>Meaning</td>
+</tr>
+<tr>
+<td>----------------</td>
+<td>--------------</td>
+<td>---------------------------</td>
+</tr>
+<tr>
+<td><code>:tabn[ext] &#123;N&#125;</code></td>
+<td><code>&#123;N&#125;gt</code></td>
+<td>切换到编号为  <code>&#123;N&#125;</code>  的标签页</td>
+</tr>
+<tr>
+<td><code>:tabn[ext]</code></td>
+<td><code>gt</code></td>
+<td>切换到下一标签页</td>
+</tr>
+<tr>
+<td><code>:tabp[revious]</code></td>
+<td><code>gT</code></td>
+<td>切换到上一标签页</td>
+</tr>
+</tbody>
+</table>
+<h2 id="text-object"><a class="markdownIt-Anchor" href="#text-object">#</a> Text Object</h2>
+<p>Text Object 文本对象</p>
+<ul>
+<li>Vim 里文本也有对象的概念，比如一个单词，一段句子，一个段落。</li>
+<li>Vim 可以通过操作文本对象来修改文本比指操作单个字符高效。</li>
+</ul>
+<p>Text Object 文本对象操作方式</p>
+<ul>
+<li><code>[number] &lt;command&gt; [text object]</code>
+<ul>
+<li><code>number</code>  表示次数</li>
+<li><code>command</code>  是命令， <code>d(elete)</code> ,  <code>c(hange)</code> ,  <code>y(ank)</code></li>
+<li>text object 是要操作的文本对象，比如单词  <code>w</code> , 句子  <code>s</code> , 段落  <code>p</code></li>
+</ul>
+</li>
+</ul>
+<p><code>iw</code>  表示 <strong>inner word</strong>, 如果键入  <code>viw</code>  那么首先  <code>v</code>  将进入选择模式，然后  <code>iw</code>  选中当前单词。</p>
+<p><code>aw</code>  表示 <strong>around word</strong>, 它不但会选中当前单词，还会包含单词之后的空格。</p>
+<p><code>i(</code>  ,  <code>i)</code>  选中  <code>()</code>  里面的内容，其它的  <code>i&lt;</code>  ,  <code>i&quot;</code>  等也可以。</p>
+<p><code>a(</code>  ,  <code>a)</code>  选中  <code>()</code>  和  <code>()</code>  里面的内容。</p>
+<h2 id="复制粘贴与寄存器"><a class="markdownIt-Anchor" href="#复制粘贴与寄存器">#</a> 复制粘贴与寄存器</h2>
+<h3 id="normal-模式下的复制与粘贴"><a class="markdownIt-Anchor" href="#normal-模式下的复制与粘贴">#</a> Normal 模式下的复制与粘贴</h3>
+<ul>
+<li>normal 模式下复制粘贴分別使用  <code>y(yank)</code>  和  <code>p(put)</code> , 剪切使用  <code>d(delete) + p(put)</code> .</li>
+<li>可以使用  <code>v(visual)</code>  命令选中所要复制的地方，然后使用  <code>p</code>  粘贴。</li>
+<li>配合文本对象，比如使用  <code>yiw</code>  复制一个单词，  <code>yy</code>  复制一行。</li>
+</ul>
+<h3 id="insert-模式下的复制与粘贴"><a class="markdownIt-Anchor" href="#insert-模式下的复制与粘贴">#</a> Insert 模式下的复制与粘贴</h3>
+<ul>
+<li>和其它文本编辑器差不多，使用  <code>Ctrl + c</code>  选中，使用  <code>Crtl + v</code>  粘贴。</li>
+<li>在  <code>vimrc</code>  中设置了  <code>autoindent</code>  的情况下，粘贴 Python 代码缩进会混乱，这个时候需要使用  <code>:set paste</code>  进行粘贴，粘贴之后执行 <code>:set nopaste</code> .</li>
+</ul>
+<h3 id="寄存器"><a class="markdownIt-Anchor" href="#寄存器">#</a> 寄存器</h3>
+<p>Vim 在 normal 模式下复制 / 剪贴的内容去了哪？</p>
+<ul>
+<li>Vim 里操作的是寄存器而不是系统剪贴板，这和其它编辑器不同。</li>
+<li>默认我们使用  <code>d</code>  删除或者  <code>y</code>  复制的内容都放到了 “无名寄存器”。</li>
+<li><code>x</code>  删除一个字符放到无名寄存器。</li>
+</ul>
+<h3 id="深入寄存器register"><a class="markdownIt-Anchor" href="#深入寄存器register">#</a> 深入寄存器 (register)</h3>
+<p>Vim 不使用单一剪贴板进行剪贴，复制与粘贴，而是多组寄存器。</p>
+<ul>
+<li>通过  <code>&quot;&#123;register&#125;</code>  前缀可以指定寄存器，不使用默认的无名寄存器。</li>
+<li>比如  <code>&quot;ayiw</code>  复制一个单词到寄存器  <code>a</code>  中， <code>&quot;bdd</code>  删除当前行到寄存器  <code>b</code>  中。
+<ul>
+<li><code>:reg a</code>  查看  <code>a</code>  寄存器。</li>
+<li><code>&quot;ap</code>  粘贴  <code>a</code>  寄存器中的内容。</li>
+</ul>
+</li>
+<li>Vim 中  <code>&quot;&quot;</code>  表示无名寄存器，缺省使用。 <code>&quot;&quot;p</code>  其实就等于  <code>p</code> .</li>
+</ul>
+<h3 id="其它常用寄存器"><a class="markdownIt-Anchor" href="#其它常用寄存器">#</a> 其它常用寄存器</h3>
+<p>除了有名的寄存器  <code>a-z</code> , Vim 中还有一些其它常见的寄存器。</p>
+<ul>
+<li>复制专用寄存器  <code>&quot;0</code> , 使用  <code>y</code>  复制文本到无名寄存器的同时会被拷贝到复制寄存器  <code>0</code> .</li>
+<li>系统剪贴板  <code>&quot;+</code> , 可以在复制前加上  <code>&quot;+</code>  复制到系统剪贴板。
+<ul>
+<li><code>:echo has('clipboard')</code>  输出的是  <code>1</code>  表示支持系统剪贴板。</li>
+<li><code>:set clipboard=unnamed</code>  可以让你直接复制粘贴系统剪贴板内容，在 Vim 中  <code>y</code>  复制的内容，可以在其它编辑软件中  <code>Ctrl + v</code>  粘贴，在其它编辑软件  <code>Ctrl + c</code>  复制的内容，在 Vim 中可以用  <code>p</code>  直接粘贴。</li>
+</ul>
+</li>
+<li>其它一些寄存器，比如  <code>&quot;%</code>  表示当前文件名， <code>&quot;.</code>  上次插入的文本。</li>
+</ul>
+<h2 id="macro-宏"><a class="markdownIt-Anchor" href="#macro-宏">#</a> Macro 宏</h2>
+<p>宏可以看成一系列命令的集合。我们可以使用宏<em>录制</em>一系列操作，然后用于<em>回放</em>。宏可以非常方便把一系列命令用在多行文本上。</p>
+<ul>
+<li>Vim 使用  <code>q</code>  来录制宏，同时也是使用  <code>q</code>  结束录制。</li>
+<li>使用  <code>q&#123;register&#125;</code>  选择要保存的寄存器，把录制的命令保存其中。</li>
+<li>使用  <code>@&#123;register&#125;</code>  回访寄存器中保存的一系列命令。</li>
+</ul>
+<p>给如下文本每行前后添加上双引号</p>
+<ol>
+<li>nomal 模式定位到第一行， <code>qa</code>  开始录制宏到  <code>a</code>  寄存器。</li>
+<li>(Caps Lock 切换到大写)  <code>I</code>  进入 insert 模式，在行首添加  <code>&quot;</code> ;  <code>Esc</code>  退回到 normal 模式； <code>A</code>  进入 insert 模式，在行末添加  <code>&quot;</code> 。</li>
+<li>(Caps Lock 切换到小写)  <code>Esc</code>  退回到 normal 模式； <code>q</code>  结束宏录制。</li>
+<li>normal 模式定位到第二行， <code>V</code>  进入 visual 模式并选中当前行， <code>G</code>  向下选中所有行。</li>
+<li>command 模式使用 normal 命令， <code>:'&lt;,'&gt;normal @a</code>  回放  <code>a</code>  寄存器中的宏命令。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;khmdb.googleapis.com</span><br><span class="line">https:&#x2F;&#x2F;storage.googleapis.com</span><br><span class="line">https:&#x2F;&#x2F;translate.googleapis.com</span><br><span class="line">https:&#x2F;&#x2F;update.googleapis.com</span><br><span class="line">https:&#x2F;&#x2F;safebrowsing.googleapis.com</span><br><span class="line">https:&#x2F;&#x2F;cn.gravatar.com</span><br><span class="line">https:&#x2F;&#x2F;connectivitycheck.gstatic.com</span><br><span class="line">https:&#x2F;&#x2F;csi.gstatic.com</span><br><span class="line">https:&#x2F;&#x2F;fonts.gstatic.com</span><br></pre></td></tr></table></figure>
+<p>不使用宏给上面文本每行前后添加上双引号</p>
+<ol>
+<li>normal 模式定位到第一行， <code>V</code>  进入 visual 模式并选中当前行， <code>G</code>  向下选中所有行。</li>
+<li><code>:'&lt;,'&gt;normal I&quot;</code>  在每行行首添加上  <code>&quot;</code> .</li>
+<li><code>:</code>  然后按下  <code>Ctrl + p</code>  执行上一个命令，替换命令为  <code>:'&lt;,'&gt;normal A&quot;</code>  在每行行尾添加上  <code>&quot;</code> .</li>
+</ol>
+<h2 id="补全"><a class="markdownIt-Anchor" href="#补全">#</a> 补全</h2>
+<p>常见的三种补全方式。</p>
+<ul>
+<li>使用  <code>Ctrl + n</code>  和  <code>Ctrl + p</code>  补全单词。</li>
+<li>使用  <code>Ctrl + x</code>   <code>Ctrl + f</code>  补全文件名。
+<ul>
+<li><code>:[read]</code>  插入命令输出到 buffer.</li>
+<li><code>:r! echo %</code>  插入当前文件名。</li>
+<li><code>:r! echo %:p</code>  插入当前文件全路径名。</li>
+</ul>
+</li>
+<li>使用  <code>Ctrl + x</code>   <code>Ctrl + o</code>  补全代码，需要开启文件类型检查，安装插件。</li>
+</ul>
+<h2 id="配色"><a class="markdownIt-Anchor" href="#配色">#</a> 配色</h2>
+<ul>
+<li>使用  <code>:colorscheme</code>  显示当前的主题色，默认是  <code>default</code> .</li>
+<li>使用  <code>:colorscheme &lt;Ctrl + d&gt;</code>  可以显示所有的配色。</li>
+<li>使用  <code>:colorscheme &#123;schemename&#125;</code>  可以修改配色。</li>
+</ul>
+<p>使用网上下载的配色，以 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3cwbmcvdmltLWh5YnJpZA==">GitHub - w0ng/vim-hybrid: A dark color scheme for Vim</span> 为例。</p>
+<ul>
+<li>
+<p>方式 1：复制 colors/hybrid.vim 到  <code>~/.vim/colors/hybrid.vim</code> , 没有  <code>~/.vim/colors</code>  目录需要先手动建立。</p>
+</li>
+<li>
+<p>方式 2：增加如下配置到  <code>~/.vim/vimrc</code> .</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set background=dark</span><br><span class="line">colorscheme hybrid</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>注意：Windows git 默认 term 是 xterm, 不支持 256 色，需要调整为 xterm-256color， <code>:set term=xterm-256color</code> .</p>
+<h2 id="配置"><a class="markdownIt-Anchor" href="#配置">#</a> 配置</h2>
+<ul>
+<li>可以把常用的设置写到  <code>~/.vim/vimrc</code>  中，避免每次打开 vim 重新设置。</li>
+<li>比如设置行号  <code>set nu</code> ; 设置主题  <code>colorscheme hybrid</code> .</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&quot; 设置行号</span><br><span class="line">set number</span><br><span class="line"></span><br><span class="line">&quot; 设置 term, Windows git 默认 term 是 xterm</span><br><span class="line">set term=xterm-256color</span><br><span class="line"></span><br><span class="line">&quot; 按 F2 进入粘贴模式</span><br><span class="line">set pastetoggle=&lt;F2&gt;</span><br><span class="line"></span><br><span class="line">&quot; 设置主题</span><br><span class="line">set background=dark</span><br><span class="line">colorscheme hybrid</span><br><span class="line"></span><br><span class="line">&quot; 高亮搜索</span><br><span class="line">set hlsearch</span><br></pre></td></tr></table></figure>
+<p>如何使配置生效，第一种是重新打开 Vim, 第二种是  <code>w</code>  保存但是不退出，然后执行 <code>:source %</code> ，  <code>%</code>  表示当前文件名。</p>
+<h2 id="映射"><a class="markdownIt-Anchor" href="#映射">#</a> 映射</h2>
+<p>Vim 映射就是把<em>一个操作</em>映射到<em>另一个操作</em>。</p>
+<h3 id="基本映射"><a class="markdownIt-Anchor" href="#基本映射">#</a> 基本映射</h3>
+<p>基本映射指的是 normal 模式下的映射。使用  <code>map</code>  添加映射命令， <code>unmap</code>  取消映射命令。</p>
+<ul>
+<li><code>:map - x</code>   按下  <code>-</code>  会删除字符。</li>
+<li><code>:map &lt;space&gt; viw</code>  按下空格的时候会选中整个单词。</li>
+<li><code>:map &lt;c-d&gt; dd</code>  按下  <code>Ctrl + d</code>  执行  <code>dd</code>  删除一行。</li>
+<li><code>:unmap -</code>  取消  <code>-</code>  的映射。</li>
+</ul>
+<h3 id="模式映射"><a class="markdownIt-Anchor" href="#模式映射">#</a> 模式映射</h3>
+<p>Vim 常用模式 normal/visual/insert 都可以定义映射，用  <code>nmap</code> , <code>vmap</code> , <code>imap</code>  定义只在 normal/visual/insert 分別有效。</p>
+<ul>
+<li><code>:vmap \ U</code>  在 visual 模式下使用  <code>\</code>  转换大写（U/u 转换大小写）。</li>
+<li>在 insert 模式下映射  <code>Ctrl + d</code>  来删除一行  <code>:imap &lt;c-d&gt; &lt;Esc&gt;ddi</code> .</li>
+</ul>
+<h3 id="递归映射与非递归映射"><a class="markdownIt-Anchor" href="#递归映射与非递归映射">#</a> 递归映射与非递归映射</h3>
+<p>如下，当你按下  <code>\</code>  时，Vim 会解释其为  <code>-</code> ， 然后又映射了  <code>-</code> , Vim 会继续解释  <code>-</code>  为  <code>dd</code> , 即它会删除整行。 <code>nmap</code> , <code>vmap</code> , <code>imap</code>  命令有递归的风险，如果安装了一个插件，插件映射了同一个按键的不同行为，就会有冲突，有一个就会失效。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">:nmap - dd</span><br><span class="line">:nmap \ -</span><br></pre></td></tr></table></figure>
+<p>Vim 提供了非递归映射 (no recursive map)，这些命令不会递归解释， <code>nnoremap</code> ,  <code>vnoremap</code> ,  <code>inoremap</code> .</p>
+<p>在  <code>~/.vim/vimrc</code>  中添加映射配置。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&quot;&quot;&quot;&quot;&quot;&quot;&quot; 基本配置 &quot;&quot;&quot;&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">&quot; 设置行号</span><br><span class="line">set number</span><br><span class="line"></span><br><span class="line">&quot; 设置 term, Windows git 默认 term 是 xterm</span><br><span class="line">set term=xterm-256color</span><br><span class="line"></span><br><span class="line">&quot; 按 F2 进入粘贴模式</span><br><span class="line">set pastetoggle=&lt;F2&gt;</span><br><span class="line"></span><br><span class="line">&quot; 设置主题</span><br><span class="line">set background=dark</span><br><span class="line">colorscheme hybrid</span><br><span class="line"></span><br><span class="line">&quot; 高亮搜索</span><br><span class="line">set hlsearch</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;&quot;&quot;&quot; 映射配置 &quot;&quot;&quot;&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">&quot; 默认是 \</span><br><span class="line">let mapleader=&#x27;,&#x27;</span><br><span class="line"></span><br><span class="line">&quot; 使用 jj 进入 normal 模式，:help `^</span><br><span class="line">inoremap jj &lt;Esc&gt;`^</span><br><span class="line">&quot; 使用 leader+w 直接保存</span><br><span class="line">inoremap &lt;leader&gt;w &lt;Esc&gt;:w&lt;cr&gt;</span><br><span class="line">noremap &lt;leader&gt;w :w&lt;cr&gt;</span><br><span class="line"></span><br><span class="line">&quot; 使用 Ctrl + h/j/k/l 切换窗口</span><br><span class="line">noremap &lt;C-h&gt; &lt;C-w&gt;h</span><br><span class="line">noremap &lt;C-j&gt; &lt;C-w&gt;j</span><br><span class="line">noremap &lt;C-k&gt; &lt;C-w&gt;k</span><br><span class="line">noremap &lt;C-l&gt; &lt;C-w&gt;l</span><br><span class="line"></span><br><span class="line">&quot; json 格式化</span><br><span class="line">com! FormatJSON %!python -m json.tool</span><br></pre></td></tr></table></figure>
+<h2 id="插件"><a class="markdownIt-Anchor" href="#插件">#</a> 插件</h2>
+<h3 id="如何安装插件"><a class="markdownIt-Anchor" href="#如何安装插件">#</a> 如何安装插件</h3>
+<ul>
+<li>原始的方式是直接 clone 插件代码。</li>
+<li>现在可以使用插件管理器。常见的插件管理器有 <strong>vim-plug</strong> , <strong>Vundle</strong>, <strong>Pathogen</strong>, <strong>Dein.Vim</strong>, <strong>volt</strong>, <strong>minpac</strong> 等。</li>
+</ul>
+<p>以  <code>minpac</code>  为例。</p>
+<blockquote>
+<p><span class="exturl" data-url="aHR0cDovL3ZpbWNhc3RzLm9yZy9lcGlzb2Rlcy9taW5wYWMv">Meet minpac</span></p>
+</blockquote>
+<blockquote>
+<p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2stdGFrYXRhL21pbnBhYw==">GitHub - k-takata/minpac: A minimal package manager for Vim 8 (and Neovim)</span></p>
+</blockquote>
+<p>在  <code>~/.vim/vimrc</code>  中添加插件配置。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">&quot; Use Vim settings, rather than Vi settings (much better!).</span><br><span class="line">&quot; This must be first, because it changes other options as a side effect.</span><br><span class="line">&quot; Avoid side effects when it was already reset.</span><br><span class="line">if &amp;compatible</span><br><span class="line">  set nocompatible</span><br><span class="line">endif</span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;&quot;&quot;&quot;&quot; 基本配置 &quot;&quot;&quot;&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">&quot; 设置行号</span><br><span class="line">set number</span><br><span class="line"></span><br><span class="line">&quot; 设置 term, Windows git 默认 term 是 xterm</span><br><span class="line">set term=xterm-256color</span><br><span class="line"></span><br><span class="line">&quot; 按 F2 进入粘贴模式</span><br><span class="line">set pastetoggle=&lt;F2&gt;</span><br><span class="line"></span><br><span class="line">&quot; 设置主题</span><br><span class="line">set background=dark</span><br><span class="line">colorscheme hybrid</span><br><span class="line"></span><br><span class="line">&quot; 高亮搜索</span><br><span class="line">set hlsearch</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;&quot;&quot;&quot; 映射配置 &quot;&quot;&quot;&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">&quot; 默认是 \</span><br><span class="line">let mapleader=&#x27;,&#x27;</span><br><span class="line"></span><br><span class="line">&quot; 使用 jj 进入 normal 模式 :help `^</span><br><span class="line">inoremap jj &lt;Esc&gt;`^</span><br><span class="line">&quot; 使用 leader+w 直接保存</span><br><span class="line">inoremap &lt;leader&gt;w &lt;Esc&gt;:w&lt;cr&gt;</span><br><span class="line">noremap &lt;leader&gt;w :w&lt;cr&gt;</span><br><span class="line"></span><br><span class="line">&quot; 使用 Ctrl + h/j/k/l 切换窗口</span><br><span class="line">noremap &lt;C-h&gt; &lt;C-w&gt;h</span><br><span class="line">noremap &lt;C-j&gt; &lt;C-w&gt;j</span><br><span class="line">noremap &lt;C-k&gt; &lt;C-w&gt;k</span><br><span class="line">noremap &lt;C-l&gt; &lt;C-w&gt;l</span><br><span class="line"></span><br><span class="line">&quot; json 格式化</span><br><span class="line">com! FormatJSON %!python -m json.tool</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;&quot;&quot;&quot; 插件配置 &quot;&quot;&quot;&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">&quot; settings for minpac</span><br><span class="line">function! PackInit() abort</span><br><span class="line">  &quot; try to load minpac</span><br><span class="line">  packadd minpac</span><br><span class="line">  call minpac#init()</span><br><span class="line">  &quot; minpac must have &#123;&#x27;type&#x27;: &#x27;opt&#x27;&#125; so that it can be loaded with `packadd`.</span><br><span class="line">  call minpac#add(&#x27;k-takata/minpac&#x27;, &#123;&#x27;type&#x27;: &#x27;opt&#x27;&#125;)</span><br><span class="line"></span><br><span class="line">  &quot; Additional plugins here.</span><br><span class="line">  &quot; call minpac#add(&#x27;tpope/vim-surround&#x27;, &#123;&#x27;type&#x27;: &#x27;opt&#x27;&#125;)</span><br><span class="line"></span><br><span class="line">  &quot; Additional color schemes here.</span><br><span class="line">  call minpac#add(&#x27;w0ng/vim-hybrid&#x27;, &#123;&#x27;type&#x27;: &#x27;opt&#x27;&#125;)</span><br><span class="line">endfunction</span><br><span class="line"></span><br><span class="line">&quot; Define user commands for updating/cleaning the plugins.</span><br><span class="line">&quot; Each of them reloads the .vimrc first, then calls PackInit to load minpac</span><br><span class="line">&quot; and register the information of plugins, then performs the task.</span><br><span class="line">command! PackUpdate source $MYVIMRC | call PackInit() | call minpac#update()</span><br><span class="line">command! PackClean  source $MYVIMRC | call PackInit() | call minpac#clean()</span><br><span class="line">command! PackStatus source $MYVIMRC | call PackInit() | call minpac#status()</span><br></pre></td></tr></table></figure>
+<h3 id="如何搜寻插件"><a class="markdownIt-Anchor" href="#如何搜寻插件">#</a> 如何搜寻插件</h3>
+<ol>
+<li>
+<p>大部分插件托管在了 github 上，可以通过 google 搜索关键词寻找想要的插件，例如 <em>vim file manager plugin</em>, <em>vim python plugin github</em>.</p>
+</li>
+<li>
+<p>可以在 Vim Awesome 查找需要的插件，<span class="exturl" data-url="aHR0cHM6Ly92aW1hd2Vzb21lLmNvbS8=">Vim Awesome</span>: AWESOME VIM PLUGINS from ACROSS THE UNIVERSE.</p>
+</li>
+<li>
+<p>浏览网上开源的 vim 配置借鉴想要的插件。</p>
+</li>
+</ol>
+<h3 id="常用插件"><a class="markdownIt-Anchor" href="#常用插件">#</a> 常用插件</h3>
+<h4 id="vim-startify"><a class="markdownIt-Anchor" href="#vim-startify">#</a> vim-startify</h4>
+<blockquote>
+<p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL21oaW56L3ZpbS1zdGFydGlmeQ==">GitHub - mhinz/vim-startify: The fancy start screen for Vim.</span></p>
+</blockquote>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">call minpac#add(&#x27;mhinz/vim-startify&#x27;)</span><br></pre></td></tr></table></figure>
+<h3 id="vim-airline"><a class="markdownIt-Anchor" href="#vim-airline">#</a> vim-airline</h3>
+<blockquote>
+<p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3ZpbS1haXJsaW5lL3ZpbS1haXJsaW5l">GitHub - vim-airline/vim-airline: lean &amp; mean status/tabline for vim that’s light as air</span></p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">call minpac#add(&#x27;vim-airline/vim-airline&#x27;)</span><br><span class="line">call minpac#add(&#x27;vim-airline/vim-airline-themes&#x27;)</span><br></pre></td></tr></table></figure>
+<h3 id="vim-indentline"><a class="markdownIt-Anchor" href="#vim-indentline">#</a> vim-indentline</h3>
+<blockquote>
+<p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL1lnZ2Ryb290L2luZGVudExpbmU=">GitHub - Yggdroot/indentLine: A vim plugin to display the indention levels with thin vertical lines</span></p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">call minpac#add(&#x27;Yggdroot/indentLine&#x27;)</span><br></pre></td></tr></table></figure>
+<h3 id="nerdtree"><a class="markdownIt-Anchor" href="#nerdtree">#</a> nerdtree</h3>
+<blockquote>
+<p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3ByZXNlcnZpbS9uZXJkdHJlZQ==">GitHub - preservim/nerdtree: A tree explorer plugin for vim.</span></p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">call minpac#add(&#x27;preservim/nerdtree&#x27;)</span><br><span class="line"></span><br><span class="line">nnoremap &lt;C-t&gt; :NERDTreeToggle&lt;CR&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="ctrlp"><a class="markdownIt-Anchor" href="#ctrlp">#</a> ctrlp</h3>
+<blockquote>
+<p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2tpZW4vY3RybHAudmlt">GitHub - kien/ctrlp.vim: Fuzzy file, buffer, mru, tag, etc finder.</span></p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">call minpac#add(&#x27;kien/ctrlp.vim&#x27;)</span><br><span class="line"></span><br><span class="line">let g:ctrlp_map = &#x27;&lt;c-p&gt;&#x27;</span><br></pre></td></tr></table></figure>
+<h3 id="easymotion"><a class="markdownIt-Anchor" href="#easymotion">#</a> easymotion</h3>
+<blockquote>
+<p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2Vhc3ltb3Rpb24vdmltLWVhc3ltb3Rpb24=">GitHub - easymotion/vim-easymotion: Vim motions on speed!</span></p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">call minpac#add(&#x27;easymotion/vim-easymotion&#x27;)</span><br><span class="line"></span><br><span class="line">nmap ss &lt;Plug&gt;(easymotion-s2)</span><br></pre></td></tr></table></figure>
+<ol>
+<li>
+<p>normal 模式下，连续按两次  <code>s</code> . 输入需要查找的两个字符。例如  <code>op</code> .</p>
+</li>
+<li>
+<p>选择 Tagget key, 例如这里选择  <code>s</code>  会定位到第  <code>63</code>  行的 opt 前面。</p>
+<img data-src="/2019/10/12/linux-vim/1659441184098.png" class="">
+</li>
+</ol>
+<h4 id="vim-surround"><a class="markdownIt-Anchor" href="#vim-surround">#</a> vim-surround</h4>
+<blockquote>
+<p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3Rwb3BlL3ZpbS1zdXJyb3VuZA==">GitHub - tpope/vim-surround: surround.vim: Delete/change/add parentheses/quotes/XML-tags/much more with ease</span></p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">call minpac#add(&#x27;tpope/vim-surround&#x27;)</span><br></pre></td></tr></table></figure>
+<p>normal 模式下增加，删除，修改成对内容。</p>
+<ul>
+<li>
+<p><code>ys</code>  (you add a surrounding)  <code>ys iw &quot;</code>  为当前光标定位的单词前后添加  <code>&quot;</code> .</p>
+</li>
+<li>
+<p><code>cs</code>  (change a surrounding)   <code>cs ( [</code>  替换  <code>()</code>  为  <code>[  ]</code>  此时  <code>[  ]</code>  前后有空格，如果不需要空格，使用  <code>cs ( ]</code> .</p>
+</li>
+<li>
+<p><code>ds</code>  (delete a surrounding)  <code>ds &quot;</code>  删除单词左右的  <code>&quot;</code> .</p>
+</li>
+</ul>
+<h2 id="terminal"><a class="markdownIt-Anchor" href="#terminal">#</a> Terminal</h2>
 <ul>
 <li><code>Ctrl + h</code>  删除上一个字符</li>
 <li><code>Ctrl + w</code>  删除上一个单词</li>
@@ -313,7 +714,7 @@ D E W = 露の世</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2022-06-23 12:03:21" itemprop="dateModified" datetime="2022-06-23T12:03:21+08:00">2022-06-23</time>
+    <time title="Modified: 2022-08-02 20:03:27" itemprop="dateModified" datetime="2022-08-02T20:03:27+08:00">2022-08-02</time>
   </span>
 </div>
 
@@ -330,7 +731,7 @@ D E W = 露の世</title>
     <div class="item left">
       
 
-  <a href="/2019/10/11/db-dialect/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclflwv2aj20zk0m84qp.jpg" title="DB Dialect">
+  <a href="/2019/10/11/db-dialect/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclhfehz7j20zk0m8u0x.jpg" title="DB Dialect">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>DB Dialect</h3>
@@ -340,7 +741,7 @@ D E W = 露の世</title>
     <div class="item right">
       
 
-  <a href="/2019/10/16/python-gooey/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclflwv2aj20zk0m84qp.jpg" title="Gooey Turn CLI into GUI">
+  <a href="/2019/10/16/python-gooey/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipevgoki5j20zk0m84qp.jpg" title="Gooey Turn CLI into GUI">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Gooey Turn CLI into GUI</h3>
@@ -362,7 +763,7 @@ D E W = 露の世</title>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="Contents">
-          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#normal-%E6%99%AE%E9%80%9A%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.</span> <span class="toc-text"> normal (普通模式)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%89%E6%A0%87%E7%A7%BB%E5%8A%A8"><span class="toc-number">1.1.</span> <span class="toc-text"> 光标移动</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%95%E8%AF%8D%E7%A7%BB%E5%8A%A8"><span class="toc-number">1.2.</span> <span class="toc-text"> 单词移动</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A1%8C%E9%97%B4%E6%90%9C%E7%B4%A2%E7%A7%BB%E5%8A%A8"><span class="toc-number">1.3.</span> <span class="toc-text"> 行间搜索移动</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B0%B4%E5%B9%B3%E7%A7%BB%E5%8A%A8"><span class="toc-number">1.4.</span> <span class="toc-text"> 水平移动</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A1%B5%E9%9D%A2%E7%A7%BB%E5%8A%A8"><span class="toc-number">1.5.</span> <span class="toc-text"> 页面移动</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E5%88%A0%E9%99%A4"><span class="toc-number">1.6.</span> <span class="toc-text"> 快速删除</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E4%BF%AE%E6%94%B9"><span class="toc-number">1.7.</span> <span class="toc-text"> 快速修改</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.8.</span> <span class="toc-text"> 查询</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%8D%E5%88%B6%E5%89%AA%E5%88%87%E9%BB%8F%E8%B4%B4"><span class="toc-number">1.9.</span> <span class="toc-text"> 复制 &#x2F; 剪切 &#x2F; 黏贴</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#insert-%E6%8F%92%E5%85%A5%E6%A8%A1%E5%BC%8F"><span class="toc-number">2.</span> <span class="toc-text"> insert (插入模式)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E6%93%8D%E4%BD%9C"><span class="toc-number">2.1.</span> <span class="toc-text"> 删除操作</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#command%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F"><span class="toc-number">3.</span> <span class="toc-text"> command (命令模式)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#visual%E5%8F%AF%E8%A7%86%E6%A8%A1%E5%BC%8F"><span class="toc-number">4.</span> <span class="toc-text"> visual (可视模式)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E5%88%87%E6%8D%A2-insert-%E5%92%8C-normal-%E6%A8%A1%E5%BC%8F"><span class="toc-number">5.</span> <span class="toc-text"> 快速切换 insert 和 normal 模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#terminal"><span class="toc-number">6.</span> <span class="toc-text"> Terminal</span></a></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#normal-%E6%99%AE%E9%80%9A%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.</span> <span class="toc-text"> Normal 普通模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%89%E6%A0%87%E7%A7%BB%E5%8A%A8"><span class="toc-number">1.1.</span> <span class="toc-text"> 光标移动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E8%AF%8D%E7%A7%BB%E5%8A%A8"><span class="toc-number">1.2.</span> <span class="toc-text"> 单词移动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%8C%E9%97%B4%E6%90%9C%E7%B4%A2%E7%A7%BB%E5%8A%A8"><span class="toc-number">1.3.</span> <span class="toc-text"> 行间搜索移动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B0%B4%E5%B9%B3%E7%A7%BB%E5%8A%A8"><span class="toc-number">1.4.</span> <span class="toc-text"> 水平移动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B5%E9%9D%A2%E7%A7%BB%E5%8A%A8"><span class="toc-number">1.5.</span> <span class="toc-text"> 页面移动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E5%88%A0%E9%99%A4"><span class="toc-number">1.6.</span> <span class="toc-text"> 快速删除</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E4%BF%AE%E6%94%B9"><span class="toc-number">1.7.</span> <span class="toc-text"> 快速修改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.8.</span> <span class="toc-text"> 查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E5%88%B6%E5%89%AA%E5%88%87%E9%BB%8F%E8%B4%B4"><span class="toc-number">1.9.</span> <span class="toc-text"> 复制 &#x2F; 剪切 &#x2F; 黏贴</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%92%A4%E9%94%80%E5%92%8C%E9%87%8D%E5%81%9A"><span class="toc-number">1.10.</span> <span class="toc-text"> 撤销和重做</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#insert-%E6%8F%92%E5%85%A5%E6%A8%A1%E5%BC%8F"><span class="toc-number">2.</span> <span class="toc-text"> Insert 插入模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E6%93%8D%E4%BD%9C"><span class="toc-number">2.1.</span> <span class="toc-text"> 删除操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#command-%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F"><span class="toc-number">3.</span> <span class="toc-text"> Command 命令模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%BF%E6%8D%A2%E5%91%BD%E4%BB%A4"><span class="toc-number">3.1.</span> <span class="toc-text"> 替换命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#visual-%E5%8F%AF%E8%A7%86%E6%A8%A1%E5%BC%8F"><span class="toc-number">4.</span> <span class="toc-text"> Visual 可视模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%BC%8F%E5%88%87%E6%8D%A2"><span class="toc-number">5.</span> <span class="toc-text"> 模式切换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C"><span class="toc-number">6.</span> <span class="toc-text"> 多文件操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#bufferwindowtab"><span class="toc-number">6.1.</span> <span class="toc-text"> Buffer，Window，Tab</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#buffer"><span class="toc-number">6.2.</span> <span class="toc-text"> Buffer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#window"><span class="toc-number">6.3.</span> <span class="toc-text"> Window</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tab"><span class="toc-number">6.4.</span> <span class="toc-text"> Tab</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#text-object"><span class="toc-number">7.</span> <span class="toc-text"> Text Object</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%8D%E5%88%B6%E7%B2%98%E8%B4%B4%E4%B8%8E%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">8.</span> <span class="toc-text"> 复制粘贴与寄存器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#normal-%E6%A8%A1%E5%BC%8F%E4%B8%8B%E7%9A%84%E5%A4%8D%E5%88%B6%E4%B8%8E%E7%B2%98%E8%B4%B4"><span class="toc-number">8.1.</span> <span class="toc-text"> Normal 模式下的复制与粘贴</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#insert-%E6%A8%A1%E5%BC%8F%E4%B8%8B%E7%9A%84%E5%A4%8D%E5%88%B6%E4%B8%8E%E7%B2%98%E8%B4%B4"><span class="toc-number">8.2.</span> <span class="toc-text"> Insert 模式下的复制与粘贴</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">8.3.</span> <span class="toc-text"> 寄存器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%B1%E5%85%A5%E5%AF%84%E5%AD%98%E5%99%A8register"><span class="toc-number">8.4.</span> <span class="toc-text"> 深入寄存器 (register)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E5%AE%83%E5%B8%B8%E7%94%A8%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">8.5.</span> <span class="toc-text"> 其它常用寄存器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#macro-%E5%AE%8F"><span class="toc-number">9.</span> <span class="toc-text"> Macro 宏</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A5%E5%85%A8"><span class="toc-number">10.</span> <span class="toc-text"> 补全</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E8%89%B2"><span class="toc-number">11.</span> <span class="toc-text"> 配色</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE"><span class="toc-number">12.</span> <span class="toc-text"> 配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%98%A0%E5%B0%84"><span class="toc-number">13.</span> <span class="toc-text"> 映射</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%98%A0%E5%B0%84"><span class="toc-number">13.1.</span> <span class="toc-text"> 基本映射</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E5%BC%8F%E6%98%A0%E5%B0%84"><span class="toc-number">13.2.</span> <span class="toc-text"> 模式映射</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%92%E5%BD%92%E6%98%A0%E5%B0%84%E4%B8%8E%E9%9D%9E%E9%80%92%E5%BD%92%E6%98%A0%E5%B0%84"><span class="toc-number">13.3.</span> <span class="toc-text"> 递归映射与非递归映射</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%92%E4%BB%B6"><span class="toc-number">14.</span> <span class="toc-text"> 插件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6"><span class="toc-number">14.1.</span> <span class="toc-text"> 如何安装插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E6%90%9C%E5%AF%BB%E6%8F%92%E4%BB%B6"><span class="toc-number">14.2.</span> <span class="toc-text"> 如何搜寻插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6"><span class="toc-number">14.3.</span> <span class="toc-text"> 常用插件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#vim-startify"><span class="toc-number">14.3.1.</span> <span class="toc-text"> vim-startify</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vim-airline"><span class="toc-number">14.4.</span> <span class="toc-text"> vim-airline</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vim-indentline"><span class="toc-number">14.5.</span> <span class="toc-text"> vim-indentline</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nerdtree"><span class="toc-number">14.6.</span> <span class="toc-text"> nerdtree</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ctrlp"><span class="toc-number">14.7.</span> <span class="toc-text"> ctrlp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#easymotion"><span class="toc-number">14.8.</span> <span class="toc-text"> easymotion</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#vim-surround"><span class="toc-number">14.8.1.</span> <span class="toc-text"> vim-surround</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#terminal"><span class="toc-number">15.</span> <span class="toc-text"> Terminal</span></a></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
         <ul>
