@@ -4561,8 +4561,11 @@ main >.inner {
 pre,
 code,
 .code-container {
-  font-family: 'Inconsolata', consolas, Menlo, -apple-system, "PingFang SC", "Microsoft YaHei";
+  font-family: 'Fira Code', consolas, Menlo, -apple-system, "PingFang SC", "Microsoft YaHei";
   font-size: 1em;
+}
+code {
+  white-space: pre-line;
 }
 :not(td)>pre {
   background: var(--grey-1);
@@ -4608,6 +4611,8 @@ code,
   left: 0.75rem;
   top: 0.8125rem;
   box-shadow: 1.25rem 0 #fdbc40, 2.5rem 0 #35cd4b;
+  top: 0;
+  left: 3rem;
 }
 .highlight figcaption {
   color: var(--grey-4);
@@ -4692,9 +4697,6 @@ code,
   border: unset;
   transition: all 0.2s ease-in-out 0s;
 }
-.code-container td pre::before {
-  content: " ";
-}
 .code-container td:first-child {
   position: absolute;
   background: var(--grey-2);
@@ -4706,9 +4708,11 @@ code,
   padding-right: 0.9375rem;
   color: var(--color-grey);
   z-index: 1;
+  padding-top: 1rem;
 }
 .code-container td:nth-child(2) {
   padding-left: 3rem;
+  padding-top: 1rem;
 }
 .code-container td:last-child {
   padding-right: 0.9375rem;
@@ -4838,6 +4842,22 @@ code,
 .code-container .keyword,
 .code-container .javascript .function {
   color: var(--color-purple);
+}
+.highlight.plain {
+  font-family: 'Mulish', -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+.highlight.plain::before {
+  content: none;
+}
+.highlight.plain .code-container td:nth-child(2) {
+  padding-left: 1rem;
+  padding-top: 1rem;
+}
+.highlight.plain pre {
+  white-space: pre-line;
+}
+.highlight.plain .gutter {
+  display: none;
 }
 .md li {
   position: relative;
@@ -5289,7 +5309,7 @@ span.label {
   border-radius: 0.3rem;
   border: 0.0625rem solid;
   padding: 0.2rem 0.3rem;
-  font-family: 'Inconsolata', consolas, Menlo, -apple-system, "PingFang SC", "Microsoft YaHei";
+  font-family: 'Fira Code', consolas, Menlo, -apple-system, "PingFang SC", "Microsoft YaHei";
   font-size: 1em;
   background: var(--note-bg, var(--grey-2));
   border-color: var(--note-border, var(--grey-4));

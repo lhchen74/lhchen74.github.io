@@ -19,7 +19,7 @@
 <link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
 <link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
 
-<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CFira%20Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
 <link rel="stylesheet" href="/css/app.css?v=0.2.5">
 
@@ -88,12 +88,12 @@
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipesrnqv3j20zk0m8ava.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclg5ms2rj20zk0m8u0x.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclxp31goj20zk0m8qv5.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclj9410cj20zk0m8h12.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicitcxhpij20zk0m8hdt.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclh0m9pdj20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicliierfjj20zk0m8npd.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclg5ms2rj20zk0m8u0x.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipew8gmvyj20zk0m87wh.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeybxm1pj20zk0m8niv.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclwuom7cj20zk0m8dvn.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclimtf7dj20zk0m8qav.jpg"></li>
         </ul>
       </div>
     </header>
@@ -119,7 +119,79 @@
         
 <article class="item">
   <div class="cover">
-    <a href="/2019/04/30/python-crawler/" itemprop="url" title="Python Crawler"><img data-src="https://tva2.sinaimg.cn/mw690/6833939bly1gicitspjpbj20zk0m81ky.jpg"></a>
+    <a href="/2019/04/30/python-call-c/" itemprop="url" title="Python Call C"><img data-src="https://tva4.sinaimg.cn/mw690/6833939bly1gipexj2jgzj20zk0m8b09.jpg"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="Created: 2019-04-30 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2019-04-30T00:00:00+08:00">2019-04-30</time>
+  </span>
+</div>
+
+    <h3><a href="/2019/04/30/python-call-c/" itemprop="url" title="Python Call C">Python Call C</a></h3>
+    <div class="excerpt">
+        将 .c 后缀的文件编译为动态库文件 ( .so 结尾)
+
+1gcc c_dll.c -shared -o c_dll.so
+
+在 python 文件中导入头文件
+
+1from ctypes import *
+
+在 python 中引入 c 动态库，并用变量接收动态库的引用
+
+1result = cdll.LodaLibrary(&amp;quot;./c_dll.so&amp;quot;)
+
+调用动态库方法
+
+1result.my_add(num)
+
+source code
+
+c_dll.c
+1234567891011#include&amp;lt;stdio.h&amp;gt;void...
+    </div>
+    <a href="/2019/04/30/python-call-c/" itemprop="url" title="Python Call C" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2019/04/30/python-cxoracle/" itemprop="url" title="python cx_Oracle"><img data-src="https://tva4.sinaimg.cn/mw690/6833939bly1gicm0fdw5cj20zk0m8hdt.jpg"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="Created: 2019-04-30 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2019-04-30T00:00:00+08:00">2019-04-30</time>
+  </span>
+</div>
+
+    <h3><a href="/2019/04/30/python-cxoracle/" itemprop="url" title="python cx_Oracle">python cx_Oracle</a></h3>
+    <div class="excerpt">
+        # 读取压缩 excel 数据到 oracle
+
+使用 7z 解压缩 zip 文件
+获取所有 excel 文件
+读取 excel 数据到列表
+使用 cx_Oracle 写入将列表数据写入...
+    </div>
+    <a href="/2019/04/30/python-cxoracle/" itemprop="url" title="python cx_Oracle" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2019/04/30/python-crawler/" itemprop="url" title="Python Crawler"><img data-src="https://tva4.sinaimg.cn/mw690/6833939bly1giclip4jbpj20zk0m87cv.jpg"></a>
   </div>
   <div class="info">
     
@@ -194,79 +266,7 @@ file.readline(size= num)
         
 <article class="item">
   <div class="cover">
-    <a href="/2019/04/30/python-cxoracle/" itemprop="url" title="python cx_Oracle"><img data-src="https://tva2.sinaimg.cn/mw690/6833939bly1giph47e9vtj20zk0m8x6l.jpg"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="Created: 2019-04-30 00:00:00">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2019-04-30T00:00:00+08:00">2019-04-30</time>
-  </span>
-</div>
-
-    <h3><a href="/2019/04/30/python-cxoracle/" itemprop="url" title="python cx_Oracle">python cx_Oracle</a></h3>
-    <div class="excerpt">
-        # 读取压缩 excel 数据到 oracle
-
-使用 7z 解压缩 zip 文件
-获取所有 excel 文件
-读取 excel 数据到列表
-使用 cx_Oracle 写入将列表数据写入...
-    </div>
-    <a href="/2019/04/30/python-cxoracle/" itemprop="url" title="python cx_Oracle" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/2019/04/30/python-call-c/" itemprop="url" title="Python Call C"><img data-src="https://tva2.sinaimg.cn/mw690/6833939bly1giclhtuo6nj20zk0m8ttm.jpg"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="Created: 2019-04-30 00:00:00">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2019-04-30T00:00:00+08:00">2019-04-30</time>
-  </span>
-</div>
-
-    <h3><a href="/2019/04/30/python-call-c/" itemprop="url" title="Python Call C">Python Call C</a></h3>
-    <div class="excerpt">
-        将 .c 后缀的文件编译为动态库文件 ( .so 结尾)
-
-1gcc c_dll.c -shared -o c_dll.so
-
-在 python 文件中导入头文件
-
-1from ctypes import *
-
-在 python 中引入 c 动态库，并用变量接收动态库的引用
-
-1result = cdll.LodaLibrary(&amp;quot;./c_dll.so&amp;quot;)
-
-调用动态库方法
-
-1result.my_add(num)
-
-source code
-
-c_dll.c
-1234567891011#include&amp;lt;stdio.h&amp;gt;void...
-    </div>
-    <a href="/2019/04/30/python-call-c/" itemprop="url" title="Python Call C" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/2019/04/17/jwt/" itemprop="url" title="JSON Web Token 入门教程"><img data-src="https://tva2.sinaimg.cn/mw690/6833939bly1gipeyhsblkj20zk0m81kx.jpg"></a>
+    <a href="/2019/04/17/jwt/" itemprop="url" title="JSON Web Token 入门教程"><img data-src="https://tva4.sinaimg.cn/mw690/6833939bly1gicitspjpbj20zk0m81ky.jpg"></a>
   </div>
   <div class="info">
     
@@ -301,7 +301,7 @@ JSON Web Token（缩写 JWT）是目前最流行的跨域认证解决方案，�
         
 <article class="item">
   <div class="cover">
-    <a href="/2019/03/22/java-jdbc/" itemprop="url" title="Java	Jdbc"><img data-src="https://tva2.sinaimg.cn/mw690/6833939bly1gipex2cdtbj20zk0m8x6p.jpg"></a>
+    <a href="/2019/03/22/java-jdbc/" itemprop="url" title="Java	Jdbc"><img data-src="https://tva4.sinaimg.cn/mw690/6833939bly1gipeubcbajj20zk0m8h1h.jpg"></a>
   </div>
   <div class="info">
     
@@ -332,7 +332,7 @@ mvn install:install-file -DgroupId=com.oracle -DartifactId=ojdbc14 -Dversion=11.
         
 <article class="item">
   <div class="cover">
-    <a href="/2019/03/22/oracle-error/" itemprop="url" title="Oracle Error"><img data-src="https://tva2.sinaimg.cn/mw690/6833939bly1gicm0n457cj20zk0m8e81.jpg"></a>
+    <a href="/2019/03/22/oracle-error/" itemprop="url" title="Oracle Error"><img data-src="https://tva4.sinaimg.cn/mw690/6833939bly1gicm0fdw5cj20zk0m8hdt.jpg"></a>
   </div>
   <div class="info">
     
@@ -359,7 +359,7 @@ exact fetch returns more than requested number of rows
         
 <article class="item">
   <div class="cover">
-    <a href="/2019/03/01/javascript-d3/" itemprop="url" title="D3"><img data-src="https://tva2.sinaimg.cn/mw690/6833939bly1giclh0m9pdj20zk0m8hdt.jpg"></a>
+    <a href="/2019/03/01/javascript-d3/" itemprop="url" title="D3"><img data-src="https://tva4.sinaimg.cn/mw690/6833939bly1gicm07ih54j20zk0m84qp.jpg"></a>
   </div>
   <div class="info">
     
@@ -384,7 +384,7 @@ exact fetch returns more than requested number of rows
         
 <article class="item">
   <div class="cover">
-    <a href="/2019/02/28/config-file-format/" itemprop="url" title="Config File Format"><img data-src="https://tva2.sinaimg.cn/mw690/6833939bly1gipeyhsblkj20zk0m81kx.jpg"></a>
+    <a href="/2019/02/28/config-file-format/" itemprop="url" title="Config File Format"><img data-src="https://tva4.sinaimg.cn/mw690/6833939bly1giclffsa1cj20zk0m811l.jpg"></a>
   </div>
   <div class="info">
     
@@ -411,7 +411,7 @@ exact fetch returns more than requested number of rows
         
 <article class="item">
   <div class="cover">
-    <a href="/2019/02/28/node-ts/" itemprop="url" title="Typescript Sample"><img data-src="https://tva2.sinaimg.cn/mw690/6833939bly1gipeudstjqj20zk0m8k3r.jpg"></a>
+    <a href="/2019/02/28/node-ts/" itemprop="url" title="Typescript Sample"><img data-src="https://tva4.sinaimg.cn/mw690/6833939bly1giclgrvbd6j20zk0m8qv5.jpg"></a>
   </div>
   <div class="info">
     
@@ -439,7 +439,7 @@ tsc --init 初始化 tsconfig.json
         
 <article class="item">
   <div class="cover">
-    <a href="/2019/02/28/python-class/" itemprop="url" title="Python Class"><img data-src="https://tva2.sinaimg.cn/mw690/6833939bly1giclwuom7cj20zk0m8dvn.jpg"></a>
+    <a href="/2019/02/28/python-class/" itemprop="url" title="Python Class"><img data-src="https://tva4.sinaimg.cn/mw690/6833939bly1gicliierfjj20zk0m8npd.jpg"></a>
   </div>
   <div class="info">
     
