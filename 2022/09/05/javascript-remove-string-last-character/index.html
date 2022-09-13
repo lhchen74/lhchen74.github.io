@@ -1,0 +1,418 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CFira%20Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="js" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2022/09/05/javascript-remove-string-last-character/">
+
+
+
+  <title>
+How to Remove the Last Character from a String in JavaScript |
+D E W = 露の世</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">How to Remove the Last Character from a String in JavaScript
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2022-09-05 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2022-09-05T00:00:00+08:00">2022-09-05</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">D E W</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeu7txpzj20zk0m81kx.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclize41wj20zk0m87gk.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeyhsblkj20zk0m81kx.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipey0a334j20zk0m8qpt.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giph4wqtg4j20zk0m8x6p.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicm0n457cj20zk0m8e81.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2022/09/05/javascript-remove-string-last-character/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>转载: [How to Remove the Last Character from a String in JavaScript - Mastering JS](<span class="exturl" data-url="aHR0cHM6Ly9tYXN0ZXJpbmdqcy5pby90dXRvcmlhbHMvZnVuZGFtZW50YWxzL3JlbW92ZS1sYXN0LWNoYXJhY3RlciM6fjp0ZXh0PU5vdg==">https://masteringjs.io/tutorials/fundamentals/remove-last-character#:~:text=Nov</span> 12%2C 2021-,To remove the last character from a string in JavaScript,length - 1)</p>
+</blockquote>
+<p>To remove the last character from a string in JavaScript, you should use the  <code>slice()</code>  method. It takes two arguments: the start index and the end index.  <code>slice()</code>  supports negative indexing, which means that  <code>slice(0, -1)</code>  is equivalent to  <code>slice(0, str.length - 1)</code> .</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;Masteringjs.ioF&#x27;</span>;</span><br><span class="line">str.slice(<span class="number">0</span>, -<span class="number">1</span>); <span class="comment">// Masteringjs.io</span></span><br></pre></td></tr></table></figure>
+<h2 id="alternative-methods"><a class="markdownIt-Anchor" href="#alternative-methods">#</a> Alternative Methods</h2>
+<p><code>slice()</code>  is generally easier, however other methods available are  <code>substring()</code>  and  <code>replace()</code> .  <code>substring()</code>  does not have negative indexing, so be sure to use  <code>str.length - 1</code>  when removing the last character from the string.  <code>replace()</code>  takes either a string or a regular expression as its  <code>pattern</code>  argument. Using  <code>/.$/</code>  as the regular expression argument matches the last character of the string, so  <code>.replace(/.$/, '')</code>  replaces the last character of the string with an empty string.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;Masteringjs.ioF&#x27;</span>;</span><br><span class="line">str.substring(<span class="number">0</span>, str.length - <span class="number">1</span>); <span class="comment">// Masteringjs.io</span></span><br><span class="line">str.substr(<span class="number">0</span>, str.length - <span class="number">1</span>); <span class="comment">// Masteringjs.io</span></span><br><span class="line">str.replace(<span class="regexp">/.$/</span>, <span class="string">&#x27;&#x27;</span>); <span class="comment">// Masteringjs.io</span></span><br></pre></td></tr></table></figure>
+<h2 id="advanced-features"><a class="markdownIt-Anchor" href="#advanced-features">#</a> Advanced Features</h2>
+<p>With  <code>replace()</code> , you can specify if the last character should be removed depending on what it is with a regular expression. For example, suppose you want to remove the last character only if the last character is a number. You can use  <code>.replace(/\d$/, '')</code>  as shown below.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// For a number, use \d$.</span></span><br><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;Masteringjs.io0&#x27;</span>;</span><br><span class="line">str.replace(<span class="regexp">/\d$/</span>, <span class="string">&#x27;&#x27;</span>); <span class="comment">// Masteringjs.io</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> str2 = <span class="string">&#x27;Masteringjs.io0F&#x27;</span>;</span><br><span class="line"><span class="comment">// If the last character is not a number, it will not replace.</span></span><br><span class="line">str.replace(<span class="regexp">/\d$/</span>, <span class="string">&#x27;&#x27;</span>); <span class="comment">// Masteringjs.io0F;</span></span><br></pre></td></tr></table></figure>
+<h2 id="comments-from-mdn"><a class="markdownIt-Anchor" href="#comments-from-mdn">#</a> Comments from MDN</h2>
+<blockquote>
+<p><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvSmF2YVNjcmlwdC9SZWZlcmVuY2UvR2xvYmFsX09iamVjdHMvU3RyaW5nL3N1YnN0cmluZw==">String.prototype.substring() - JavaScript | MDN</span></p>
+</blockquote>
+<h3 id="the-difference-between-substring-and-substr"><a class="markdownIt-Anchor" href="#the-difference-between-substring-and-substr">#</a> The difference between substring() and substr()</h3>
+<p>There are subtle differences between the  <code>substring()</code>  and <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/substr"> <code>substr()</code> </a> methods, so you should be careful not to get them confused.</p>
+<ul>
+<li>The two parameters of  <code>substr()</code>  are  <code>start</code>  and  <code>length</code> , while for  <code>substring()</code> , they are  <code>start</code>  and  <code>end</code> .</li>
+<li><code>substr()</code> 's  <code>start</code>  index will wrap to the end of the string if it is negative, while  <code>substring()</code>  will clamp it to  <code>0</code> .</li>
+<li>Negative lengths in  <code>substr()</code>  are treated as zero, while  <code>substring()</code>  will swap the two indexes if  <code>end</code>  is less than  <code>start</code> .</li>
+</ul>
+<p>Furthermore,  <code>substr()</code>  is considered a <em>legacy feature in ECMAScript</em>, so it is best to avoid using it if possible.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> text = <span class="string">&#x27;Mozilla&#x27;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(text.substring(<span class="number">2</span>, <span class="number">5</span>));  <span class="comment">// =&gt; &quot;zil&quot;</span></span><br><span class="line"><span class="built_in">console</span>.log(text.substr(<span class="number">2</span>, <span class="number">3</span>));     <span class="comment">// =&gt; &quot;zil&quot;</span></span><br></pre></td></tr></table></figure>
+<h3 id="differences-between-substring-and-slice"><a class="markdownIt-Anchor" href="#differences-between-substring-and-slice">#</a> Differences between substring() and slice()</h3>
+<p>The  <code>substring()</code>  and <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/slice"> <code>slice()</code> </a> methods are almost identical, but there are a couple of subtle differences between the two, especially in the way negative arguments are dealt with.</p>
+<p>The  <code>substring()</code>  method swaps its two arguments if  <code>indexStart</code>  is greater than  <code>indexEnd</code> , meaning that a string is still returned. The <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/slice"> <code>slice()</code> </a> method returns an empty string if this is the case.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> text = <span class="string">&#x27;Mozilla&#x27;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(text.substring(<span class="number">5</span>, <span class="number">2</span>));  <span class="comment">// =&gt; &quot;zil&quot;</span></span><br><span class="line"><span class="built_in">console</span>.log(text.slice(<span class="number">5</span>, <span class="number">2</span>));      <span class="comment">// =&gt; &quot;&quot;</span></span><br></pre></td></tr></table></figure>
+<p>If either or both of the arguments are negative or  <code>NaN</code> , the  <code>substring()</code>  method treats them as if they were  <code>0</code> .</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(text.substring(-<span class="number">5</span>, <span class="number">2</span>));  <span class="comment">// =&gt; &quot;Mo&quot;</span></span><br><span class="line"><span class="built_in">console</span>.log(text.substring(-<span class="number">5</span>, -<span class="number">2</span>)); <span class="comment">// =&gt; &quot;&quot;</span></span><br></pre></td></tr></table></figure>
+<p><code>slice()</code>  also treats  <code>NaN</code>  arguments as  <code>0</code> , but when it is given negative values it counts backwards from the end of the string to find the indexes.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(text.slice(-<span class="number">5</span>, <span class="number">2</span>))   <span class="comment">// =&gt; &quot;&quot;</span></span><br><span class="line"><span class="built_in">console</span>.log(text.slice(-<span class="number">5</span>, -<span class="number">2</span>))  <span class="comment">// =&gt; &quot;zil&quot;</span></span><br></pre></td></tr></table></figure>
+<p>See the <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/slice"> <code>slice()</code> </a> page for more examples with negative numbers.</p>
+<h3 id="replacing-a-substring-within-a-string"><a class="markdownIt-Anchor" href="#replacing-a-substring-within-a-string">#</a> Replacing a substring within a string</h3>
+<p>The following example replaces a substring within a string. It will replace both individual characters and substrings. The function call at the end of the example changes the string  <code>Brave New World</code>  to  <code>Brave New Web</code> .</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Replaces oldS with newS in the string fullS</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">replaceString</span>(<span class="params">oldS, newS, fullS</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; fullS.length; ++i) &#123;</span><br><span class="line">    <span class="keyword">if</span> (fullS.substring(i, i + oldS.length) === oldS) &#123;</span><br><span class="line">      fullS = fullS.substring(<span class="number">0</span>, i) + newS + fullS.substring(i + oldS.length, fullS.length);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> fullS;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">replaceString(<span class="string">&#x27;World&#x27;</span>, <span class="string">&#x27;Web&#x27;</span>, <span class="string">&#x27;Brave New World&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<p>Note that this can result in an infinite loop if  <code>oldS</code>  is itself a substring of  <code>newS</code>  — for example, if you attempted to replace ‘ <code>World</code> ’ with ‘ <code>OtherWorld</code> ’ here.</p>
+<p>A better method for replacing strings is as follows:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">replaceString</span>(<span class="params">oldS, newS, fullS</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> fullS.split(oldS).join(newS);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The code above serves as an example for substring operations. If you need to replace substrings, most of the time you will want to use <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace"> <code>String.prototype.replace()</code> </a>.</p>
+
+      <div class="tags">
+          <a href="/tags/js/" rel="tag"><i class="ic i-tag"></i> js</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2022-09-05 13:57:59" itemprop="dateModified" datetime="2022-09-05T13:57:59+08:00">2022-09-05</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2022/07/22/anki/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipexe4oykj20zk0m87ji.jpg" title="Anki">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Anki</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2022/09/06/oracle-generate-list-numbers/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclx6phq6j20zk0m8e36.jpg" title="Untitled">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Untitled</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#alternative-methods"><span class="toc-number">1.</span> <span class="toc-text"> Alternative Methods</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#advanced-features"><span class="toc-number">2.</span> <span class="toc-text"> Advanced Features</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#comments-from-mdn"><span class="toc-number">3.</span> <span class="toc-text"> Comments from MDN</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#the-difference-between-substring-and-substr"><span class="toc-number">3.1.</span> <span class="toc-text"> The difference between substring() and substr()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#differences-between-substring-and-slice"><span class="toc-number">3.2.</span> <span class="toc-text"> Differences between substring() and slice()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#replacing-a-substring-within-a-string"><span class="toc-number">3.3.</span> <span class="toc-text"> Replacing a substring within a string</span></a></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">302</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">43</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
+      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2022/07/22/anki/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2022/09/06/oracle-generate-list-numbers/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2022</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ D E W</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2022/09/05/javascript-remove-string-last-character/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

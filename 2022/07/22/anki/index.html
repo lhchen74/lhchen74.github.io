@@ -102,12 +102,12 @@ D E W = 露の世</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipewr8iypj20zk0m8b29.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicit4jrvuj20zk0m8785.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicit31ffoj20zk0m8naf.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclffsa1cj20zk0m811l.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipexj2jgzj20zk0m8b09.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipet4bz0yj20zk0m8e81.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipex2cdtbj20zk0m8x6p.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giciub8ja1j20zk0m81ky.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclga70tsj20zk0m84mr.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclh0m9pdj20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipetfk5zwj20zk0m8e81.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclgrvbd6j20zk0m8qv5.jpg"></li>
         </ul>
       </div>
     </header>
@@ -151,8 +151,8 @@ D E W = 露の世</title>
   <div class="body md" itemprop="articleBody">
     
 
-    <p>在 Anki 的模板中可以使用 JavaScript, 如下读取卡片正面的单词，为卡片背面出现此单词的例句加上  <code>&lt;span class=&quot;emphasize-word&quot;&gt;&lt;/span&gt;</code> ， 然后用 CSS 设置样式。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="comment">// Anki 对 ES6 不是完全支持，使用 var 定义变量</span></span><br><span class="line">  <span class="keyword">var</span> wordText = <span class="built_in">document</span>.getElementsByClassName(<span class="string">&quot;Word&quot;</span>)[<span class="number">0</span>].innerText;</span><br><span class="line">  <span class="comment">// 使用 RegExp 定义 正则表达式 \\ 表示 \， Example 中的内容是 HTML，HTML 中的空格是 &amp;nbsp;</span></span><br><span class="line">  <span class="comment">// 以 pervade 为例，如下正则表达式使用字面量可以表示为 /(pervade\w*(&amp;nbsp;)?\.?)/gi</span></span><br><span class="line">  <span class="comment">// var re = new RegExp(&#x27;(&#x27; + wordText + &#x27;\\w*(&amp;nbsp;)?\\.?)&#x27;, &#x27;gi&#x27;);</span></span><br><span class="line">  <span class="keyword">var</span> re = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">&#x27;(&#x27;</span> + wordText + <span class="string">&#x27;\\w*)&#x27;</span>, <span class="string">&#x27;gi&#x27;</span>);</span><br><span class="line">  <span class="comment">// $1 引用第一个 group 中的值</span></span><br><span class="line">  <span class="keyword">var</span> emphasizeWordText = <span class="string">&#x27;&lt;span class=&quot;emphasize-word&quot;&gt;$1&lt;/span&gt;&#x27;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> example = <span class="built_in">document</span>.getElementsByClassName(<span class="string">&quot;Example&quot;</span>)[<span class="number">0</span>];</span><br><span class="line">  <span class="keyword">var</span> exampleHTML = example.innerHTML.replace(re, emphasizeWordText);</span><br><span class="line">  example.innerHTML = exampleHTML;</span><br><span class="line"></span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+    <p>在 Anki 的模板中除了可以使用 HTML 之外还可以使用 JavaScript, 如下读取卡片正面的单词，为卡片背面例句出现的此单词加上  <code>&lt;span class=&quot;emphasize-word&quot;&gt;&lt;/span&gt;</code> ， 然后用 CSS 设置样式。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="comment">// Anki 对 ES6 不是完全支持，使用 var 定义变量</span></span><br><span class="line">  <span class="keyword">var</span> wordText = <span class="built_in">document</span>.querySelector(<span class="string">&quot;.Word&quot;</span>).innerText;</span><br><span class="line">  <span class="comment">// 使用 RegExp 定义 正则表达式 \\ 表示 \;</span></span><br><span class="line">  <span class="comment">// HTML 中的空格是 &amp;nbsp;</span></span><br><span class="line">  <span class="comment">// 以 pervade 为例，如下正则表达式使用字面量可以表示为 /(pervade\w*(&amp;nbsp;)?\.?)/gi</span></span><br><span class="line">  <span class="comment">// var re = new RegExp(&#x27;(&#x27; + wordText + &#x27;\\w*(&amp;nbsp;)?\\.?)&#x27;, &#x27;gi&#x27;);</span></span><br><span class="line">  <span class="keyword">var</span> re = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">&#x27;(&#x27;</span> + wordText.slice(<span class="number">0</span>, -<span class="number">1</span>) + <span class="string">&#x27;\\w*)&#x27;</span>, <span class="string">&#x27;gi&#x27;</span>);</span><br><span class="line">  <span class="comment">// $1 引用第一个 group 中的值</span></span><br><span class="line">  <span class="keyword">var</span> emphasizeWordText = <span class="string">&#x27;&lt;span class=&quot;emphasize-word&quot;&gt;$1&lt;/span&gt;&#x27;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> example = <span class="built_in">document</span>.querySelector(<span class="string">&quot;.Example&quot;</span>);</span><br><span class="line">  <span class="keyword">var</span> exampleHTML = example.innerHTML.replace(re, emphasizeWordText);</span><br><span class="line">  example.innerHTML = exampleHTML;</span><br><span class="line"></span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">span</span><span class="selector-class">.emphasize-word</span> &#123;</span><br><span class="line">  <span class="attribute">font-weight</span>: bold;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <img data-src="/2022/07/22/anki/1658485972507.png" class="">
       <div class="tags">
@@ -168,7 +168,7 @@ D E W = 露の世</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2022-08-27 15:57:43" itemprop="dateModified" datetime="2022-08-27T15:57:43+08:00">2022-08-27</time>
+    <time title="Modified: 2022-09-05 13:40:23" itemprop="dateModified" datetime="2022-09-05T13:40:23+08:00">2022-09-05</time>
   </span>
 </div>
 
@@ -185,7 +185,7 @@ D E W = 露の世</title>
     <div class="item left">
       
 
-  <a href="/2022/07/21/window-custom-url-protocol/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipey0a334j20zk0m8qpt.jpg" title="Register custom URL protocol in Windows">
+  <a href="/2022/07/21/window-custom-url-protocol/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclxfdlttj20zk0m8npd.jpg" title="Register custom URL protocol in Windows">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Register custom URL protocol in Windows</h3>
@@ -193,6 +193,14 @@ D E W = 露の世</title>
 
     </div>
     <div class="item right">
+      
+
+  <a href="/2022/09/05/javascript-remove-string-last-character/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipetv6p75j20zk0m8x6p.jpg" title="How to Remove the Last Character from a String in JavaScript">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>How to Remove the Last Character from a String in JavaScript</h3>
+  </a>
+
     </div>
 </div>
 
@@ -223,7 +231,7 @@ D E W = 露の世</title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">299</span>
+        <span class="count">302</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -295,10 +303,12 @@ D E W = 露の世</title>
 
   <ul id="quick">
     <li class="prev pjax">
+        <a href="/2022/07/21/window-custom-url-protocol/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
     </li>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
     <li class="next pjax">
+        <a href="/2022/09/05/javascript-remove-string-last-character/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
     </li>
     <li class="percent"></li>
   </ul>
