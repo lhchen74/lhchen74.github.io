@@ -102,12 +102,12 @@ D E W = 露の世</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclh0m9pdj20zk0m8hdt.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicis081o9j20zk0m8dmr.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclwrdwyaj20zk0m8are.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipesng5oej20zk0m87d4.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicm0fdw5cj20zk0m8hdt.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeuv80yoj20zk0m8kjl.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipexj2jgzj20zk0m8b09.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclfw2t96j20zk0m8x6p.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclfdu6exj20zk0m87hw.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeu1usa7j20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclh3brzpj20zk0m8ann.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giph4lm9i7j20zk0m84qp.jpg"></li>
         </ul>
       </div>
     </header>
@@ -216,7 +216,27 @@ D E W = 露の世</title>
 <p>Use the  <code>type=&quot;search&quot;</code>  for your search inputs and you get the “clear” button for free.</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;search&quot;</span>&gt;</span>Input Type Search<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;search&quot;</span> <span class="attr">name</span>=<span class="string">&quot;search&quot;</span> <span class="attr">id</span>=<span class="string">&quot;search&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <img data-src="/2021/06/20/html-tips/1624182004962.png" class="">
-
+<h3 id="comments"><a class="markdownIt-Anchor" href="#comments">#</a> Comments</h3>
+<h4 id="input-autocomplete"><a class="markdownIt-Anchor" href="#input-autocomplete">#</a> input autocomplete</h4>
+<p>When submit form, the Browser will record the history of the input. The next time you focus on the same type of input will popup the history for autofill. If your website doesn’t want the Browser to do this, you can set  <code>autocomplete=&quot;off&quot;</code> .</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;email&quot;</span> <span class="attr">name</span>=<span class="string">&quot;email&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;email&quot;</span> <span class="attr">name</span>=<span class="string">&quot;email&quot;</span> <span class="attr">autocomplete</span>=<span class="string">&quot;off&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;Submit&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<img data-src="/2021/06/20/html-tips/1663298243094.png" class="">
+<p>If you are a user, you can clean the history as below:</p>
+<ul>
+<li>Deleting unwanted entries one at a time. Reference <span class="exturl" data-url="aHR0cHM6Ly93d3cuY29tcHV0ZXJob3BlLmNvbS9pc3N1ZXMvY2gwMDA1NTMuaHRt">How to Delete Autocomplete History</span>
+<ol>
+<li>Open Google Chrome.</li>
+<li>Locate the <span class="exturl" data-url="aHR0cHM6Ly93d3cuY29tcHV0ZXJob3BlLmNvbS9qYXJnb24vZi9maWVsZC5odG0=">field</span> where the unwanted item is being autocompleted. This field can be any search box or the <span class="exturl" data-url="aHR0cHM6Ly93d3cuY29tcHV0ZXJob3BlLmNvbS9qYXJnb24vYS9hZGRyZWJhci5odG0=">address bar</span>.</li>
+<li>Start typing the unwanted phrase or web address, or press the <strong>down arrow key</strong> until it is highlighted.</li>
+<li>Press <span class="exturl" data-url="aHR0cHM6Ly93d3cuY29tcHV0ZXJob3BlLmNvbS9qYXJnb24vZC9kZWxldGUuaHRt">Delete</span>. If the entry is not removed, press Shift+Delete.</li>
+</ol>
+</li>
+</ul>
+<img data-src="/2021/06/20/html-tips/chrome-selected-autocomplete.jpg" class="">
+<ul>
+<li>Close Autofill function.</li>
+</ul>
+<img data-src="/2021/06/20/html-tips/1663298534862.png" class="">
       <div class="tags">
           <a href="/tags/html/" rel="tag"><i class="ic i-tag"></i> html</a>
       </div>
@@ -230,7 +250,7 @@ D E W = 露の世</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2021-10-18 13:27:10" itemprop="dateModified" datetime="2021-10-18T13:27:10+08:00">2021-10-18</time>
+    <time title="Modified: 2022-09-16 11:34:21" itemprop="dateModified" datetime="2022-09-16T11:34:21+08:00">2022-09-16</time>
   </span>
 </div>
 
@@ -247,7 +267,7 @@ D E W = 露の世</title>
     <div class="item left">
       
 
-  <a href="/2021/06/14/excerpt-tv/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclil3m4ej20zk0m8tn8.jpg" title="影视语录">
+  <a href="/2021/06/14/excerpt-tv/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclgi503lj20zk0m8hdt.jpg" title="影视语录">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> excerpt</span>
   <h3>影视语录</h3>
@@ -257,7 +277,7 @@ D E W = 露の世</title>
     <div class="item right">
       
 
-  <a href="/2021/06/23/oracle-report-rtf/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipevo9j1jj20zk0m8e81.jpg" title="XML Publisher Templates by Example">
+  <a href="/2021/06/23/oracle-report-rtf/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclx29mstj20zk0m8hdt.jpg" title="XML Publisher Templates by Example">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>XML Publisher Templates by Example</h3>
@@ -279,7 +299,7 @@ D E W = 露の世</title>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="Contents">
-          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#the-loadinglazy-attribute"><span class="toc-number">1.</span> <span class="toc-text"> The  loading&#x3D;lazy  attribute</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#email-call-and-sms-links"><span class="toc-number">2.</span> <span class="toc-text"> Email, call, and SMS links:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ordered-lists-start-attribute"><span class="toc-number">3.</span> <span class="toc-text"> Ordered lists  start  attribute.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#the-meter-element"><span class="toc-number">4.</span> <span class="toc-text"> The  meter  element</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#html-native-search"><span class="toc-number">5.</span> <span class="toc-text"> HTML Native Search</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#fieldset-element"><span class="toc-number">6.</span> <span class="toc-text"> Fieldset Element</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#windowopener"><span class="toc-number">7.</span> <span class="toc-text"> Window.opener</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#base-element"><span class="toc-number">8.</span> <span class="toc-text"> Base Element</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#favicon-cache-busting"><span class="toc-number">9.</span> <span class="toc-text"> Favicon cache busting</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#the-spellcheck-attribute"><span class="toc-number">10.</span> <span class="toc-text"> The  spellcheck  attribute</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#native-html-sliders"><span class="toc-number">11.</span> <span class="toc-text"> Native HTML sliders</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#html-accordion"><span class="toc-number">12.</span> <span class="toc-text"> HTML Accordion</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mark-tag"><span class="toc-number">13.</span> <span class="toc-text">  mark  tag</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#download-attribute"><span class="toc-number">14.</span> <span class="toc-text">  download  attribute</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#performance-tip"><span class="toc-number">15.</span> <span class="toc-text"> Performance tip</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#video-thumbnail"><span class="toc-number">16.</span> <span class="toc-text"> Video thumbnail</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#input-typesearch"><span class="toc-number">17.</span> <span class="toc-text"> input  type&#x3D;&quot;search&quot;</span></a></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#the-loadinglazy-attribute"><span class="toc-number">1.</span> <span class="toc-text"> The  loading&#x3D;lazy  attribute</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#email-call-and-sms-links"><span class="toc-number">2.</span> <span class="toc-text"> Email, call, and SMS links:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ordered-lists-start-attribute"><span class="toc-number">3.</span> <span class="toc-text"> Ordered lists  start  attribute.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#the-meter-element"><span class="toc-number">4.</span> <span class="toc-text"> The  meter  element</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#html-native-search"><span class="toc-number">5.</span> <span class="toc-text"> HTML Native Search</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#fieldset-element"><span class="toc-number">6.</span> <span class="toc-text"> Fieldset Element</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#windowopener"><span class="toc-number">7.</span> <span class="toc-text"> Window.opener</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#base-element"><span class="toc-number">8.</span> <span class="toc-text"> Base Element</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#favicon-cache-busting"><span class="toc-number">9.</span> <span class="toc-text"> Favicon cache busting</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#the-spellcheck-attribute"><span class="toc-number">10.</span> <span class="toc-text"> The  spellcheck  attribute</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#native-html-sliders"><span class="toc-number">11.</span> <span class="toc-text"> Native HTML sliders</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#html-accordion"><span class="toc-number">12.</span> <span class="toc-text"> HTML Accordion</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mark-tag"><span class="toc-number">13.</span> <span class="toc-text">  mark  tag</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#download-attribute"><span class="toc-number">14.</span> <span class="toc-text">  download  attribute</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#performance-tip"><span class="toc-number">15.</span> <span class="toc-text"> Performance tip</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#video-thumbnail"><span class="toc-number">16.</span> <span class="toc-text"> Video thumbnail</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#input-typesearch"><span class="toc-number">17.</span> <span class="toc-text"> input  type&#x3D;&quot;search&quot;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#comments"><span class="toc-number">18.</span> <span class="toc-text"> Comments</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#input-autocomplete"><span class="toc-number">18.1.</span> <span class="toc-text"> input autocomplete</span></a></li></ol></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
       </div>
@@ -294,7 +314,7 @@ D E W = 露の世</title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">302</span>
+        <span class="count">303</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -306,7 +326,7 @@ D E W = 露の世</title>
     </div>
     <div class="item tags">
       <a href="/tags/">
-        <span class="count">43</span>
+        <span class="count">44</span>
         <span class="name">tags</span>
       </a>
     </div>

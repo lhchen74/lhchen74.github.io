@@ -1,0 +1,457 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CFira%20Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="js" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2022/09/16/javascript-await/">
+
+
+
+  <title>
+await - JavaScript | MDN |
+D E W = 露の世</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">await - JavaScript | MDN
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2022-09-16 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2022-09-16T00:00:00+08:00">2022-09-16</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">D E W</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeyonbf9j20zk0m8e81.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicitcxhpij20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclh0m9pdj20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicitspjpbj20zk0m81ky.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipexe4oykj20zk0m87ji.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeu7txpzj20zk0m81kx.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2022/09/16/javascript-await/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>转载：<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvSmF2YVNjcmlwdC9SZWZlcmVuY2UvT3BlcmF0b3JzL2F3YWl0I3N5bnRheA==">await - JavaScript | MDN</span></p>
+</blockquote>
+<p>The  <code>await</code>  operator is used to wait for a <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise"> <code>Promise</code> </a> and get its fulfillment value. It can only be used inside an <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvSmF2YVNjcmlwdC9SZWZlcmVuY2UvU3RhdGVtZW50cy9hc3luY19mdW5jdGlvbg==">async function</span> or a <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvSmF2YVNjcmlwdC9HdWlkZS9Nb2R1bGVz">JavaScript module</span>.</p>
+<h2 id="syntax"><a class="markdownIt-Anchor" href="#syntax">#</a> <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvSmF2YVNjcmlwdC9SZWZlcmVuY2UvT3BlcmF0b3JzL2F3YWl0I3N5bnRheA==">Syntax</span></h2>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">await</span> expression;</span><br></pre></td></tr></table></figure>
+<h3 id="parameters"><a class="markdownIt-Anchor" href="#parameters">#</a> <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvSmF2YVNjcmlwdC9SZWZlcmVuY2UvT3BlcmF0b3JzL2F3YWl0I3BhcmFtZXRlcnM=">Parameters</span></h3>
+<ul>
+<li>
+<p><code>expression</code></p>
+<p>A <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise"> <code>Promise</code> </a> or any value to wait for.</p>
+</li>
+</ul>
+<h3 id="return-value"><a class="markdownIt-Anchor" href="#return-value">#</a> <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvSmF2YVNjcmlwdC9SZWZlcmVuY2UvT3BlcmF0b3JzL2F3YWl0I3JldHVybl92YWx1ZQ==">Return value</span></h3>
+<p>The fulfillment value of the promise, or the expression itself’s value itself if it’s not a  <code>Promise</code> .</p>
+<h3 id="exceptions"><a class="markdownIt-Anchor" href="#exceptions">#</a> <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvSmF2YVNjcmlwdC9SZWZlcmVuY2UvT3BlcmF0b3JzL2F3YWl0I2V4Y2VwdGlvbnM=">Exceptions</span></h3>
+<p>Throws the rejection reason if the promise is rejected.</p>
+<h2 id="description"><a class="markdownIt-Anchor" href="#description">#</a> <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvSmF2YVNjcmlwdC9SZWZlcmVuY2UvT3BlcmF0b3JzL2F3YWl0I2Rlc2NyaXB0aW9u">Description</span></h2>
+<p>The  <code>await</code>  expression causes async function execution to pause until a promise is settled (that is, fulfilled or rejected), and to resume execution of the async function after fulfillment. When resumed, the value of the  <code>await</code>  expression is that of the fulfilled promise.</p>
+<p>The  <code>expression</code>  is resolved in the same way as <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve"> <code>Promise.resolve()</code> </a>, which means <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvSmF2YVNjcmlwdC9SZWZlcmVuY2UvR2xvYmFsX09iamVjdHMvUHJvbWlzZSN0aGVuYWJsZXM=">thenable objects</span> are supported, and if  <code>expression</code>  is not a promise, it’s implicitly wrapped in a  <code>Promise</code>  and then resolved.</p>
+<p>If the promise is rejected, the  <code>await</code>  expression throws the rejected value. The function containing the  <code>await</code>  expression will <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvSmF2YVNjcmlwdC9SZWZlcmVuY2UvT3BlcmF0b3JzL2F3YWl0I2ltcHJvdmluZ19zdGFja190cmFjZQ==">appear in the stack trace</span> of the error. Otherwise, if the rejected promise is not awaited or is immediately returned, the caller function will not appear in the stack trace.</p>
+<p>An  <code>await</code>  splits execution flow, allowing the caller of the async function to resume execution. After the  <code>await</code>  defers the continuation of the async function, execution of subsequent statements ensues. If this  <code>await</code>  is the last expression executed by its function, execution continues by returning to the function’s caller a pending  <code>Promise</code>  for completion of the  <code>await</code> 's function and resuming execution of that caller.</p>
+<p>Because  <code>await</code>  is only valid inside async functions and modules, which themselves are asynchronous and return promises, the  <code>await</code>  expression never blocks the main thread and only defers execution of code that actually depends on the result, i.e. anything after the  <code>await</code>  expression.</p>
+<h2 id="examples"><a class="markdownIt-Anchor" href="#examples">#</a> <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvSmF2YVNjcmlwdC9SZWZlcmVuY2UvT3BlcmF0b3JzL2F3YWl0I2V4YW1wbGVz">Examples</span></h2>
+<h3 id="awaiting-a-promise-to-be-fulfilled"><a class="markdownIt-Anchor" href="#awaiting-a-promise-to-be-fulfilled">#</a> <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvSmF2YVNjcmlwdC9SZWZlcmVuY2UvT3BlcmF0b3JzL2F3YWl0I2F3YWl0aW5nX2FfcHJvbWlzZV90b19iZV9mdWxmaWxsZWQ=">Awaiting a promise to be fulfilled</span></h3>
+<p>If a  <code>Promise</code>  is passed to an  <code>await</code>  expression, it waits for the  <code>Promise</code>  to be fulfilled and returns the fulfilled value.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">resolveAfter2Seconds</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      resolve(x);</span><br><span class="line">    &#125;, <span class="number">2000</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> x = <span class="keyword">await</span> resolveAfter2Seconds(<span class="number">10</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(x); <span class="comment">// 10</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">f1();</span><br></pre></td></tr></table></figure>
+<h3 id="thenable-objects"><a class="markdownIt-Anchor" href="#thenable-objects">#</a> <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvSmF2YVNjcmlwdC9SZWZlcmVuY2UvT3BlcmF0b3JzL2F3YWl0I3RoZW5hYmxlX29iamVjdHM=">Thenable objects</span></h3>
+<p><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvSmF2YVNjcmlwdC9SZWZlcmVuY2UvR2xvYmFsX09iamVjdHMvUHJvbWlzZSN0aGVuYWJsZXM=">Thenable objects</span> will be fulfilled just the same.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">f2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> thenable = &#123;</span><br><span class="line">    <span class="function"><span class="title">then</span>(<span class="params">resolve, _reject</span>)</span> &#123;</span><br><span class="line">      resolve(<span class="string">&quot;resolved!&quot;</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">await</span> thenable); <span class="comment">// resolved!</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">f2();</span><br></pre></td></tr></table></figure>
+<h3 id="conversion-to-promise"><a class="markdownIt-Anchor" href="#conversion-to-promise">#</a> <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvSmF2YVNjcmlwdC9SZWZlcmVuY2UvT3BlcmF0b3JzL2F3YWl0I2NvbnZlcnNpb25fdG9fcHJvbWlzZQ==">Conversion to promise</span></h3>
+<p>If the value is not a  <code>Promise</code> , it converts the value to a resolved  <code>Promise</code> , and waits for it.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">f3</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> y = <span class="keyword">await</span> <span class="number">20</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(y); <span class="comment">// 20</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">f3();</span><br></pre></td></tr></table></figure>
+<h3 id="promise-rejection"><a class="markdownIt-Anchor" href="#promise-rejection">#</a> <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvSmF2YVNjcmlwdC9SZWZlcmVuY2UvT3BlcmF0b3JzL2F3YWl0I3Byb21pc2VfcmVqZWN0aW9u">Promise rejection</span></h3>
+<p>If the  <code>Promise</code>  is rejected, the rejected value is thrown.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">f4</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> z = <span class="keyword">await</span> <span class="built_in">Promise</span>.reject(<span class="number">30</span>);</span><br><span class="line">  &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">    <span class="built_in">console</span>.error(e); <span class="comment">// 30</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">f4();</span><br></pre></td></tr></table></figure>
+<h3 id="handling-rejected-promises"><a class="markdownIt-Anchor" href="#handling-rejected-promises">#</a> <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvSmF2YVNjcmlwdC9SZWZlcmVuY2UvT3BlcmF0b3JzL2F3YWl0I2hhbmRsaW5nX3JlamVjdGVkX3Byb21pc2Vz">Handling rejected promises</span></h3>
+<p>You can handle rejected promises without a  <code>try</code>  block by chaining a <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch"> <code>catch()</code> </a> handler before awaiting the promise.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> response = <span class="keyword">await</span> promisedFunction().catch(<span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.error(err);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// response will be undefined if the promise is rejected</span></span><br></pre></td></tr></table></figure>
+<h3 id="top-level-await"><a class="markdownIt-Anchor" href="#top-level-await">#</a> <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvSmF2YVNjcmlwdC9SZWZlcmVuY2UvT3BlcmF0b3JzL2F3YWl0I3RvcF9sZXZlbF9hd2FpdA==">Top level await</span></h3>
+<p>You can use the  <code>await</code>  keyword on its own (outside of an async function) within a <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvSmF2YVNjcmlwdC9HdWlkZS9Nb2R1bGVz">JavaScript module</span>. This means modules, with child modules that use  <code>await</code> , wait for the child module to execute before they themselves run, all while not blocking other child modules from loading.</p>
+<p>Here is an example of a simple module using the <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvQVBJL0ZldGNoX0FQSQ==">Fetch API</span> and specifying await within the <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export"> <code>export</code> </a> statement. Any modules that include this will wait for the fetch to resolve before running any code.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// fetch request</span></span><br><span class="line"><span class="keyword">const</span> colors = fetch(<span class="string">&quot;../data/colors.json&quot;</span>).then(<span class="function">(<span class="params">response</span>) =&gt;</span> response.json());</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">await</span> colors;</span><br></pre></td></tr></table></figure>
+<h3 id="control-flow-effects-of-await"><a class="markdownIt-Anchor" href="#control-flow-effects-of-await">#</a> <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvSmF2YVNjcmlwdC9SZWZlcmVuY2UvT3BlcmF0b3JzL2F3YWl0I2NvbnRyb2xfZmxvd19lZmZlY3RzX29mX2F3YWl0">Control flow effects of await</span></h3>
+<p>When an  <code>await</code>  is encountered in code (either in an async function or in a module), execution of all code following this is immediately paused and pushed into the <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvSmF2YVNjcmlwdC9FdmVudExvb3A=">microtask queue</span>. The main thread is then freed for the next task in the event loop. This happens even if the awaited value is an already-resolved promise or not a promise. For example, consider the following code:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(name, <span class="string">&quot;start&quot;</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(name, <span class="string">&quot;middle&quot;</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(name, <span class="string">&quot;end&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo(<span class="string">&quot;First&quot;</span>);</span><br><span class="line">foo(<span class="string">&quot;Second&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// First start</span></span><br><span class="line"><span class="comment">// First middle</span></span><br><span class="line"><span class="comment">// First end</span></span><br><span class="line"><span class="comment">// Second start</span></span><br><span class="line"><span class="comment">// Second middle</span></span><br><span class="line"><span class="comment">// Second end</span></span><br></pre></td></tr></table></figure>
+<p>In this case, the two async functions are synchronous in effect, because they don’t contain any  <code>await</code>  expression. The three statements happen in the same tick. In promise terms, the function corresponds to:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Promise</span>.resolve().then(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(name, <span class="string">&quot;start&quot;</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(name, <span class="string">&quot;middle&quot;</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(name, <span class="string">&quot;end&quot;</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>However, as soon as there’s one  <code>await</code> , the function becomes asynchronous, and execution of following statements is deferred to the next tick.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(name, <span class="string">&quot;start&quot;</span>);</span><br><span class="line">  <span class="keyword">await</span> <span class="built_in">console</span>.log(name, <span class="string">&quot;middle&quot;</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(name, <span class="string">&quot;end&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo(<span class="string">&quot;First&quot;</span>);</span><br><span class="line">foo(<span class="string">&quot;Second&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// First start</span></span><br><span class="line"><span class="comment">// First middle</span></span><br><span class="line"><span class="comment">// Second start</span></span><br><span class="line"><span class="comment">// Second middle</span></span><br><span class="line"><span class="comment">// First end</span></span><br><span class="line"><span class="comment">// Second end</span></span><br></pre></td></tr></table></figure>
+<p>This corresponds to:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Promise</span>.resolve()</span><br><span class="line">    .then(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(name, <span class="string">&quot;start&quot;</span>);</span><br><span class="line">      <span class="built_in">console</span>.log(name, <span class="string">&quot;middle&quot;</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">    .then(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(name, <span class="string">&quot;end&quot;</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>While the extra  <code>then()</code>  handler is not necessary and can be merged with the previous one, its existence means the code will take one extra tick to complete. The same happens for  <code>await</code> . Therefore, make sure to use  <code>await</code>  only when necessary (to unwrap promises into their values).</p>
+<h3 id="improving-stack-trace"><a class="markdownIt-Anchor" href="#improving-stack-trace">#</a> <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvSmF2YVNjcmlwdC9SZWZlcmVuY2UvT3BlcmF0b3JzL2F3YWl0I2ltcHJvdmluZ19zdGFja190cmFjZQ==">Improving stack trace</span></h3>
+<p>Sometimes, the  <code>await</code>  is omitted when a promise is directly returned from an async function.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">noAwait</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// Some actions...</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="comment">/* await */</span> lastAsyncTask();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>However, consider the case where  <code>someAsyncTask</code>  asynchronously throws an error.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">lastAsyncTask</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">await</span> <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;&#125;, <span class="number">100</span>);</span><br><span class="line">  <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&quot;failed&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">noAwait</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> lastAsyncTask();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">noAwait();</span><br><span class="line"></span><br><span class="line"><span class="comment">// Error: failed</span></span><br><span class="line"><span class="comment">//    at lastAsyncTask</span></span><br></pre></td></tr></table></figure>
+<p>Only  <code>lastAsyncTask</code>  appears in the stack trace, because the promise is rejected after it has already been returned from  <code>noAwait</code>  — in some sense, the promise is unrelated to  <code>noAwait</code> . To improve the stack trace, you can use  <code>await</code>  to unwrap the promise, so that the exception gets thrown into the current function. The exception will then be immediately wrapped into a new rejected promise, but during error creation, the caller will appear in the stack trace.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">lastAsyncTask</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">await</span> <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;&#125;, <span class="number">100</span>);</span><br><span class="line">  <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&quot;failed&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">withAwait</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">await</span> lastAsyncTask();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">withAwait();</span><br><span class="line"></span><br><span class="line"><span class="comment">// Error: failed</span></span><br><span class="line"><span class="comment">//    at lastAsyncTask</span></span><br><span class="line"><span class="comment">//    at async withAwait</span></span><br></pre></td></tr></table></figure>
+<p>However, there’s a little performance penalty coming with  <code>return await</code>  because the promise has to be unwrapped and wrapped again.</p>
+<h2 id="comments"><a class="markdownIt-Anchor" href="#comments">#</a> Comments</h2>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> getLastPost = <span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> res = <span class="keyword">await</span> fetch(<span class="string">&quot;https://jsonplaceholder.typicode.com/posts&quot;</span>);</span><br><span class="line">  <span class="keyword">const</span> data = <span class="keyword">await</span> res.json();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> &#123; <span class="attr">title</span>: data.at(-<span class="number">1</span>).title &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>promise.then</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> lastPost = getLastPost().then(<span class="function">(<span class="params">post</span>) =&gt;</span> <span class="built_in">console</span>.log(post));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;end&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// end</span></span><br><span class="line"><span class="comment">// &#123;title: &#x27;at nam consequatur ea labore ea harum&#x27;&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>async wrap IIFE(Immediately Invoked Function Expression)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> lastPost = <span class="keyword">await</span> getLastPost();</span><br><span class="line">  <span class="built_in">console</span>.log(lastPost);</span><br><span class="line">&#125;)();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;end&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// end</span></span><br><span class="line"><span class="comment">// &#123;title: &#x27;at nam consequatur ea labore ea harum&#x27;&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>top level await</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> lastPost = <span class="keyword">await</span> getLastPost();</span><br><span class="line"><span class="built_in">console</span>.log(lastPost);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;end&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#123;title: &#x27;at nam consequatur ea labore ea harum&#x27;&#125;</span></span><br><span class="line"><span class="comment">// end</span></span><br></pre></td></tr></table></figure>
+<p>Import in HTML need by module way.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;module&quot;</span> <span class="attr">defer</span> <span class="attr">src</span>=<span class="string">&quot;script.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      <div class="tags">
+          <a href="/tags/js/" rel="tag"><i class="ic i-tag"></i> js</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2022-09-16 11:07:36" itemprop="dateModified" datetime="2022-09-16T11:07:36+08:00">2022-09-16</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2022/09/13/css-rebeccapurple/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicm07ih54j20zk0m84qp.jpg" title="The &quot;Hidden&quot; Purple Memorial in Your Web Browser">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>The "Hidden" Purple Memorial in Your Web Browser</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2022/09/16/anime-3lion/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipewf5l51j20zk0m8b29.jpg" title="《三月的狮子》 Endcard">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>《三月的狮子》 Endcard</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#syntax"><span class="toc-number">1.</span> <span class="toc-text"> Syntax</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#parameters"><span class="toc-number">1.1.</span> <span class="toc-text"> Parameters</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#return-value"><span class="toc-number">1.2.</span> <span class="toc-text"> Return value</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#exceptions"><span class="toc-number">1.3.</span> <span class="toc-text"> Exceptions</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#description"><span class="toc-number">2.</span> <span class="toc-text"> Description</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#examples"><span class="toc-number">3.</span> <span class="toc-text"> Examples</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#awaiting-a-promise-to-be-fulfilled"><span class="toc-number">3.1.</span> <span class="toc-text"> Awaiting a promise to be fulfilled</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#thenable-objects"><span class="toc-number">3.2.</span> <span class="toc-text"> Thenable objects</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#conversion-to-promise"><span class="toc-number">3.3.</span> <span class="toc-text"> Conversion to promise</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#promise-rejection"><span class="toc-number">3.4.</span> <span class="toc-text"> Promise rejection</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#handling-rejected-promises"><span class="toc-number">3.5.</span> <span class="toc-text"> Handling rejected promises</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#top-level-await"><span class="toc-number">3.6.</span> <span class="toc-text"> Top level await</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#control-flow-effects-of-await"><span class="toc-number">3.7.</span> <span class="toc-text"> Control flow effects of await</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#improving-stack-trace"><span class="toc-number">3.8.</span> <span class="toc-text"> Improving stack trace</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#comments"><span class="toc-number">4.</span> <span class="toc-text"> Comments</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">303</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">44</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
+      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2022/09/13/css-rebeccapurple/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2022/09/16/anime-3lion/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2022</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ D E W</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2022/09/16/javascript-await/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
