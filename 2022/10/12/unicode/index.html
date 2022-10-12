@@ -1,0 +1,695 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CFira%20Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="js,concept" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2022/10/12/unicode/">
+
+
+
+  <title>
+What every JavaScript developer should know about Unicode |
+D E W = 露の世</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">What every JavaScript developer should know about Unicode
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2022-10-12 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2022-10-12T00:00:00+08:00">2022-10-12</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">D E W</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeybxm1pj20zk0m8niv.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclwrdwyaj20zk0m8are.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeyvx1d4j20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giph4fomxoj20zk0m8axp.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclflwv2aj20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclx29mstj20zk0m8hdt.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2022/10/12/unicode/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>转载：<span class="exturl" data-url="aHR0cHM6Ly9kbWl0cmlwYXZsdXRpbi5jb20vd2hhdC1ldmVyeS1qYXZhc2NyaXB0LWRldmVsb3Blci1zaG91bGQta25vdy1hYm91dC11bmljb2RlLyMxLXRoZS1pZGVhLWJlaGluZC11bmljb2Rl">What every JavaScript developer should know about Unicode</span></p>
+</blockquote>
+<p>This story starts with a confession: I was afraid of Unicode for a long time. When a programming task required Unicode knowledge, I was searching for a hackable solution for the problem, without a good understanding of what I was doing.</p>
+<p>My avoidance continued until I faced a problem that required detailed Unicode knowledge. There was no way to apply situational solutions.</p>
+<p>After putting in some effort, reading a bunch of articles — surprisingly it wasn’t hard to understand it. Well… some articles have required reading at least 3 times.</p>
+<p>As it turns out, Unicode is a universal and elegant standard, but it may be tough because of a bunch of abstract terms it operates with.</p>
+<p>If you have gaps in understanding Unicode, now is the right time to face it! It’s not that hard. Make yourself a tasteful tea or coffee ☕. And let’s dive into the wonderful world of abstraction, characters, astrals, and surrogates.</p>
+<p>The post explains the basic concepts of Unicode, creating the necessary ground.</p>
+<p>Then it clarifies how JavaScript works with Unicode and what traps you may encounter.<br>
+You’ll learn also how to apply new ECMAScript 2015 features to solve a part of the difficulties.</p>
+<p>Ready? Let’s start!</p>
+<h2 id="1-the-idea-behind-unicode"><a class="markdownIt-Anchor" href="#1-the-idea-behind-unicode">#</a> 1. The idea behind Unicode</h2>
+<p>Let’s start with a simple question. How are you able to read and understand the current article? Simply: because you know the meaning of letters and words as a group of letters.</p>
+<p>Why are you able to understand the meaning of letters? Simply: because you (reader) and me (writer) have an agreement over the association between the graphical symbol (what is seen on the screen) and the English language letter (the meaning).</p>
+<p>The same happens with computers. The difference is that computers don’t understand the meaning of letters. For computers, the letters are just sequences of bits.</p>
+<p>Imagine the <em>User1</em> sends through the network a message  <code>'hello'</code>  to <em>User2</em> .</p>
+<p><em>User1</em>’s computer doesn’t know the meaning of letters. So it transforms  <code>'hello'</code>  into a sequence of numbers  <code>0x68 0x65 0x6C 0x6C 0x6F</code> , where each letter uniquely corresponds to a number:  <code>h</code>  is  <code>0x68</code> ,  <code>e</code>  is  <code>0x65</code> , etc. These numbers are sent to <em>User2</em>’s computer.</p>
+<p>When the computer of <em>User2</em> receives the sequence of numbers  <code>0x68 0x65 0x6C 0x6C 0x6F</code> , it uses the same letter to number correspondence and restores the message. Then it displays the correct message:  <code>'hello'</code> .</p>
+<p>The agreement between the two computers about the correspondence between letters and numbers is what <strong>Unicode</strong> standardizes.</p>
+<p>In terms of Unicode,  <code>h</code>  is an abstract character named <em>LATIN SMALL LETTER H</em>. This character has the corresponding number  <code>0x68</code> , which is a code point in notation  <code>U+0068</code> .</p>
+<p>The role of Unicode is to provide a list of abstract characters (character set) and assign to each character a unique identifier code point (coded character set).</p>
+<h2 id="2-basic-unicode-terms"><a class="markdownIt-Anchor" href="#2-basic-unicode-terms">#</a> 2. Basic Unicode terms</h2>
+<p>The <a target="_blank" rel="noopener" href="http://unicode.org/"> <code>www.unicode.org</code> </a> websites mentions:</p>
+<blockquote>
+<p><strong>Unicode</strong> provides a unique number for every character, no matter what the platform, no matter what the program, no matter what the language.</p>
+</blockquote>
+<p>Unicode is a universal character set that defines the list of characters from the majority of the writing systems, and associates for every character a unique number (code point).</p>
+<img data-src="/2022/10/12/unicode/unicode-logo.svg" class="" title="Unicode logo">
+<p>Unicode includes characters from most of today’s languages, punctuation marks, diacritics, mathematical symbols, technical symbols, arrows, emoji, and more.</p>
+<p>The first Unicode version 1.0 was published in October 1991 and had 7,161 characters. The latest version 14.0 (published in September 2021) provides codes for 144,697 characters.</p>
+<p>The universal and embracing approach of Unicode solves a major problem that existed before when vendors implemented a lot of character sets and encodings that were difficult to handle.</p>
+<p>It was complicated to create an application that supports all character sets and encodings.</p>
+<p><em>If you think that Unicode is hard, programming without Unicode would be even more difficult.</em></p>
+<p>I still remember picking random charsets and encodings to read the content of files. Pure lottery!</p>
+<h3 id="21-characters-and-code-points"><a class="markdownIt-Anchor" href="#21-characters-and-code-points">#</a> 2.1 Characters and code points</h3>
+<blockquote>
+<p><strong>Abstract character</strong> (or character) is a unit of information used for the organization, control, or representation of textual data.</p>
+</blockquote>
+<p>Unicode deals with characters as abstract terms. Every abstract character has an associated name, e.g. <em>LATIN SMALL LETTER A</em>. The rendered form (glyph) of this character is  <code>a</code> .</p>
+<blockquote>
+<p><strong>Code point</strong> is a number assigned to a single character.</p>
+</blockquote>
+<p>Code points are numbers in the range from  <code>U+0000</code>  to  <code>U+10FFFF</code> .</p>
+<p><code>U+&lt;hex&gt;</code>  is the format of code points, where  <code>U+</code>  is a prefix meaning <strong>U</strong>nicode and  <code>&lt;hex&gt;</code>  is a number in hexadecimal. For example,  <code>U+0041</code>  and  <code>U+2603</code>  are code points.</p>
+<p>Remember that a code point is a simple number. And that’s how you should think about it. The code point is a kind of index of an element in an array.</p>
+<p>The magic happens because Unicode associates a code point with a character. For example  <code>U+0041</code>  corresponds to the character named <em>LATIN CAPITAL LETTER A</em> (rendered as  <code>A</code> ), or  <code>U+2603</code>  corresponds to the character named <em>SNOWMAN</em> (rendered as  <code>☃</code> ).</p>
+<p>Not all code points have associated characters.  <code>1,114,112</code>  code points are available (the range  <code>U+0000</code>  to  <code>U+10FFFF</code> ), but only  <code>144,697</code>  (as of September 2021) have associated characters.</p>
+<h3 id="22-unicode-planes"><a class="markdownIt-Anchor" href="#22-unicode-planes">#</a> 2.2 Unicode planes</h3>
+<blockquote>
+<p><strong>Plane</strong> is a range of 65,536 (or 1000016) contiguous Unicode code points from  <code>U+n0000</code>  up to  <code>U+nFFFF</code> , where  <code>n</code>  can take values from 016 to 1016.</p>
+</blockquote>
+<p>The whole set of Unicode code points is split into 17 planes:</p>
+<ul>
+<li><em>Plane 0</em> contains code points from  <code>U+0000</code>  to  <code>U+FFFF</code> ,</li>
+<li><em>Plane 1</em> contains code points from  <code>U+**1**0000</code>  to  <code>U+**1**FFFF</code></li>
+<li>…</li>
+<li><em>Plane 16</em> contains code points from  <code>U+**10**0000</code>  to  <code>U+**10**FFFF</code> .</li>
+</ul>
+<img data-src="/2022/10/12/unicode/unicode-planes.png" class="" title="Unicode planes">
+<h4 id="basic-multilingual-plane"><a class="markdownIt-Anchor" href="#basic-multilingual-plane">#</a> Basic Multilingual Plane</h4>
+<p><em>Plane 0</em> is a special one, named <strong>Basic Multilingual Plane</strong> or shortly <strong>BMP</strong>. It contains characters from most of the modern languages (<span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvQmFzaWNfTGF0aW5fKFVuaWNvZGVfYmxvY2sp">Basic Latin</span>, <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvQ3lyaWxsaWNfKFVuaWNvZGVfYmxvY2sp">Cyrillic</span>, <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvR3JlZWtfYW5kX0NvcHRpYw==">Greek</span>, etc) and a big number of <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvVW5pY29kZV9zeW1ib2xz">symbols</span>.</p>
+<p>As mentioned above, the code points from the Basic Multilingual Plane are in the range from  <code>U+0000</code>  to  <code>U+FFFF</code>  and can have up to 4 hexadecimal digits.</p>
+<p>The developer usually deals with characters from BMP.</p>
+<p>Some characters from BMP:</p>
+<ul>
+<li><code>e</code>  is  <code>U+0065</code>  named <em>LATIN SMALL LETTER E</em></li>
+<li><code>|</code>  is  <code>U+007C</code>  named <em>VERTICAL BAR</em></li>
+<li><code>■</code>  is  <code>U+25A0</code>  named <em>BLACK SQUARE</em></li>
+<li><code>☂</code>  is  <code>U+2602</code>  named <em>UMBRELLA</em></li>
+</ul>
+<h4 id="astral-planes"><a class="markdownIt-Anchor" href="#astral-planes">#</a> Astral planes</h4>
+<p>The 16 planes beyond the BMP (<em>Plane 1</em>, <em>Plane 2</em>, …, <em>Plane 16</em>) are named <strong>astral planes</strong> or <strong>supplementary planes</strong>.</p>
+<p>The code points that are part of the astral planes are named <strong>astral code points</strong>. These code points are in the range from  <code>U+10000</code>  to  <code>U+10FFFF</code> .</p>
+<p>An astral code point can have 5 or 6 digits in hexadecimal:  <code>U+ddddd</code>  or  <code>U+dddddd</code> .</p>
+<p>Let’s see some characters from astral planes:</p>
+<ul>
+<li><code>𝄞</code>  is  <code>U+1D11E</code>  named <em>MUSICAL SYMBOL G CLEF</em></li>
+<li><code>𝐁</code>  is  <code>U+1D401</code>  named <em>MATHEMATICAL BOLD CAPITAL B</em></li>
+<li><code>🀵</code>  is  <code>U+1F035</code>  named <em>DOMINO TITLE HORIZONTAL-00-04</em></li>
+<li><code>😀</code>  is  <code>U+1F600</code>  named <em>GRINNING FACE</em></li>
+</ul>
+<h3 id="23-code-units"><a class="markdownIt-Anchor" href="#23-code-units">#</a> 2.3 Code units</h3>
+<p>Ok, the Unicode characters, code points, and planes are abstractions.</p>
+<p>But now let’s see how Unicode is implemented at the physical, hardware level.</p>
+<p>A computer at the memory level doesn’t use code points or abstract characters. It needs a physical way to represent Unicode code points: the code units.</p>
+<blockquote>
+<p><strong>Code unit</strong> is a bit sequence used to encode each character within a given encoding form.</p>
+</blockquote>
+<p>The <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvQ2hhcmFjdGVyX2VuY29kaW5n">character encoding</span> is what transforms abstract code points into physical bits: code units. In other words, the character encoding translates the Unicode code points to unique code unit sequences.</p>
+<p>Popular encodings are <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvVVRGLTg=">UTF-8</span>, <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvVVRGLTE2">UTF-16</span> and <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvVVRGLTMy">UTF-32</span>.</p>
+<p>Most <strong>JavaScript engines use UTF-16</strong> encoding, so let’s detail into UTF-16.</p>
+<p>UTF-16 (the long name: 16-bit Unicode Transformation Format) is a <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvVmFyaWFibGUtd2lkdGhfZW5jb2Rpbmc=">variable-length</span> encoding:</p>
+<ul>
+<li>Code points from BMP are encoded using a single code unit of 16-bit</li>
+<li>Code points from astral planes are encoded using two code units of 16-bit each.</li>
+</ul>
+<p>Ok, that would be all for the dry theory. Let’s follow some examples.</p>
+<p>Suppose you want to save to hard drive <em>LATIN SMALL LETTER A</em> character  <code>a</code> . Unicode tells you that <em>LATIN SMALL LETTER A</em> abstract character maps to  <code>U+0061</code>  code point.</p>
+<p>Now let’s ask UTF-16 encoding how  <code>U+0061</code>  should be transformed. The encoding specification says that for BMP code point take its hexadecimal number  <code>U+**0061**</code>  and store it into <strong>one code unit</strong> of 16-bit:  <code>0x0061</code> .</p>
+<p>As you can see, code points from BMP fit into a single 16-bit code unit.</p>
+<h3 id="24-surrogate-pairs"><a class="markdownIt-Anchor" href="#24-surrogate-pairs">#</a> 2.4 Surrogate pairs</h3>
+<p>Now let’s study a complex case. Suppose you want to encode <em>GRINNING FACE</em> character  <code>😀</code> . This character maps to  <code>U+1F600</code>  code point, from an astral plane.</p>
+<p>Because astral code points require 21 bits to save the information, UTF-16 says that you need <strong>two code units</strong> of 16-bit. The code point  <code>U+1F600</code>  is split into so-called surrogate pair:  <code>0xD83D</code>  (high-surrogate code unit) and  <code>0xDE00</code>  (low-surrogate code unit).</p>
+<blockquote>
+<p><strong>Surrogate pair</strong> is a representation for a single abstract character that consists of a sequence of code units of two 16-bit code units, where the first value of the pair is a <strong>high-surrogate code unit</strong> and the second value is a <strong>low-surrogate code unit</strong>.</p>
+</blockquote>
+<p>An astral code point requires two code units — a surrogate pair. E.g. to encode  <code>U+1F600</code>  ( <code>😀</code> ) in UTF-16 a surrogate pair is used:  <code>0xD83D 0xDE00</code> .</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;\uD83D\uDE00&quot;</span>); <span class="comment">// =&gt; &#x27;😀&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>High-surrogate code unit takes values from range  <code>0xD800</code>  to  <code>0xDBFF</code> . Low-surrogate code unit takes values from range  <code>0xDC00</code>  to  <code>0xDFFF</code> .</p>
+<p>The algorithm of converting a surrogate pair into astral code point and vice-versa is the following:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getSurrogatePair</span>(<span class="params">astralCodePoint</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> highSurrogate = <span class="built_in">Math</span>.floor((astralCodePoint - <span class="number">0x10000</span>) / <span class="number">0x400</span>) + <span class="number">0xd800</span>;</span><br><span class="line">  <span class="keyword">let</span> lowSurrogate = ((astralCodePoint - <span class="number">0x10000</span>) % <span class="number">0x400</span>) + <span class="number">0xdc00</span>;</span><br><span class="line">  <span class="keyword">return</span> [highSurrogate, lowSurrogate];</span><br><span class="line">&#125;</span><br><span class="line">getSurrogatePair(<span class="number">0x1f600</span>); <span class="comment">// =&gt; [0xD83D, 0xDE00]</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getAstralCodePoint</span>(<span class="params">highSurrogate, lowSurrogate</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (highSurrogate - <span class="number">0xd800</span>) * <span class="number">0x400</span> + lowSurrogate - <span class="number">0xdc00</span> + <span class="number">0x10000</span>;</span><br><span class="line">&#125;</span><br><span class="line">getAstralCodePoint(<span class="number">0xd83d</span>, <span class="number">0xde00</span>); <span class="comment">// =&gt; 0x1F600</span></span><br></pre></td></tr></table></figure>
+<p>Surrogate pairs are not comfortable. You have to handle them as special cases when dealing with strings in JavaScript, as described below in the article.</p>
+<p>However, UTF-16 is memory efficient. 99% of the processed characters are from BMP, which requires one code unit and saves lots of memory.</p>
+<h3 id="25-combining-marks"><a class="markdownIt-Anchor" href="#25-combining-marks">#</a> 2.5 Combining marks</h3>
+<blockquote>
+<p>A <strong>grapheme</strong>, or <strong>symbol</strong>, is a minimally distinctive unit of writing in the context of a particular writing system.</p>
+</blockquote>
+<p>A <strong>grapheme</strong> is how a user thinks about a character. A concrete image of a grapheme displayed on the screen is named <strong>glyph</strong>.</p>
+<p>In many cases, a single Unicode character represents a single grapheme. For instance  <code>U+0066</code>  <em>LATIN SMALL LETTER F</em> is an English writing  <code>f</code> .</p>
+<p>There are cases when a grapheme contains a sequence of characters.</p>
+<p>For example,  <code>å</code>  is an atomic grapheme in the Danish writing system. It is displayed using  <code>U+0061</code>  <em>LATIN SMALL LETTER A</em> (rendered as  <code>a</code> ) combined with a special character  <code>U+030A</code>  <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Ring_(diacritic)"><em>COMBINING RING ABOVE</em></a> (rendered as ◌̊).</p>
+<p><code>U+030A</code>  modifies the precedent character and is named <strong>combining mark</strong>.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;\u0061\u030A&quot;</span>); <span class="comment">// =&gt; &#x27;å&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;\u0061&quot;</span>); <span class="comment">// =&gt; &#x27;a&#x27;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>Combining mark</strong> is a character that applies to the precedent base character to create a new grapheme.</p>
+</blockquote>
+<p>Combining marks include such characters as accents, diacritics, Hebrew points, Arabic vowel signs, and Indic matras.</p>
+<p>Combining marks aren’t normally used in isolation, i.e. without the base character. You should avoid displaying them isolated.</p>
+<p>As well as the surrogate pairs, combining marks are tough to handle in JavaScript.</p>
+<p>A combining character sequence (base character + combining mark) is distinguished by the user as a single symbol (e.g.  <code>'\u0061\u030A'</code>  is  <code>'å'</code> ). But the developer must determine that 2 code points  <code>U+0061</code>  and  <code>U+030A</code>  are used to construct  <code>å</code> .</p>
+<img data-src="/2022/10/12/unicode/unicode-terms.png" class="" title="Unicode basic terms">]
+<h2 id="3-unicode-in-javascript"><a class="markdownIt-Anchor" href="#3-unicode-in-javascript">#</a> 3. Unicode in JavaScript</h2>
+<p>ES2015 specification <span class="exturl" data-url="aHR0cDovL3d3dy5lY21hLWludGVybmF0aW9uYWwub3JnL2VjbWEtMjYyLzYuMC8jc2VjLXNvdXJjZS10ZXh0">mentions</span> that source code text is expressed using Unicode (version 5.1 and above). The source text is a sequence of code points from  <code>U+0000</code>  to  <code>U+10FFFF</code> . The way source code is stored or interchanged is not relevant to ECMAScript specification, but usually is encoded in UTF-8 (the preferred encoding for the web).</p>
+<p>I recommend keeping the source code text with characters from <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvQmFzaWNfTGF0aW5fKFVuaWNvZGVfYmxvY2sp">Basic Latin Unicode block</span> (or ASCII). Characters outside ASCII should be escaped. This will ensure fewer problems when comes to encoding.</p>
+<p>Internally, at the language level, ECMAScript 2015 provides an explicit <span class="exturl" data-url="aHR0cDovL3d3dy5lY21hLWludGVybmF0aW9uYWwub3JnL2VjbWEtMjYyLzYuMC8jc2VjLWVjbWFzY3JpcHQtbGFuZ3VhZ2UtdHlwZXMtc3RyaW5nLXR5cGU=">definition</span> what strings are in JavaScript:</p>
+<blockquote>
+<p>The String type is the set of all ordered sequences of zero or more 16-bit unsigned integer values (“elements”) up to a maximum length of 253-1 elements. The String type is generally used to represent textual data in a running ECMAScript program, in which case each element in the String is treated as a <strong>UTF-16 code unit</strong> value.</p>
+</blockquote>
+<p>Every element of a string is interpreted by the engine as a code unit. The way a string is rendered does not provide a deterministic way to decide what code units (that represent code points) it contains. See the following example:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;cafe\u0301&quot;</span>); <span class="comment">// =&gt; &#x27;café&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;café&quot;</span>); <span class="comment">// =&gt; &#x27;café&#x27;</span></span><br></pre></td></tr></table></figure>
+<p><code>'cafe\u0301'</code>  and  <code>'café'</code>  literals have slightly different code units, but both are rendered the same sequence of symbols  <code>café</code> .</p>
+<blockquote>
+<p><strong>The length of a String</strong> is the number of elements (i.e., 16-bit values) within it. […] Where ECMAScript operations interpret String values, each element is interpreted as a single UTF-16 code unit.</p>
+</blockquote>
+<p>As you know from surrogate pairs and combining marks above chapters, some symbols need 2 or more code units to be represented. So you should take precautions when counting the number of characters or accessing characters by index:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> smile = <span class="string">&quot;\uD83D\uDE00&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(smile); <span class="comment">// =&gt; &#x27;😀&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(smile.length); <span class="comment">// =&gt; 2</span></span><br><span class="line"><span class="keyword">const</span> letter = <span class="string">&quot;e\u0301&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(letter); <span class="comment">// =&gt; &#x27;é&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(letter.length); <span class="comment">// =&gt; 2</span></span><br></pre></td></tr></table></figure>
+<p><code>smile</code>  string contains 2 code units:  <code>\uD83D</code>  (high-surrogate) and  <code>\uDE00</code>  (low-surrogate). Since the string is a sequence of code units,  <code>smile.length</code>  evaluates to  <code>2</code> . Even if rendered  <code>smile</code>  has only one symbol  <code>'😀'</code> .</p>
+<p>The same scenario happens with  <code>letter</code>  string. The combining mark  <code>U+0301</code>  applies to the previous character and the rendered result is one symbol  <code>'é'</code> . However  <code>letter</code>  contains  <code>2</code>  code units, thus  <code>letter.length</code>  is  <code>2</code> .</p>
+<p>My advice: <strong>always think of string in JavaScript as a sequence of code units</strong>. The way string is rendered on the screen cannot say clearly what code units it contains.</p>
+<p>Astral symbols and combining character sequences require 2 or more code units to be encoded but are treated as a single grapheme. If a string has surrogate pairs or combining marks, you may be confused when evaluating string length or accessing a character by index without keeping this idea in mind.</p>
+<p>Most of the JavaScript string methods are not Unicode-aware. If your string contains compound Unicode characters, take precaution when using  <code>myString.slice()</code> ,  <code>myString.substring()</code> , etc.</p>
+<h3 id="31-escape-sequences"><a class="markdownIt-Anchor" href="#31-escape-sequences">#</a> 3.1 Escape sequences</h3>
+<p>Escape sequences in strings are used to express code units based on code point numbers. JavaScript has 3 escape types, one which was introduced in ECMAScript 2015.</p>
+<p>Let’s see them in more detail.</p>
+<h4 id="hexadecimal-escape-sequence"><a class="markdownIt-Anchor" href="#hexadecimal-escape-sequence">#</a> Hexadecimal escape sequence</h4>
+<p>The shortest form is named <strong>hexadecimal escape sequence</strong>:  <code>\x&lt;hex&gt;</code> , where  <code>\x</code>  is a prefix followed by a hexadecimal number  <code>&lt;hex&gt;</code>  with a fixed length of 2 digits.<br>
+For example  <code>'\x30'</code>  (symbol  <code>'0'</code> ) or  <code>'\x5B'</code>  (symbol  <code>'['</code> ).</p>
+<p>The hexadecimal escape sequence in a string literal or regular expression looks this way:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> str = <span class="string">&quot;\x4A\x61vaScript&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str); <span class="comment">// =&gt; &#x27;JavaScript&#x27;</span></span><br><span class="line"><span class="keyword">const</span> reg = <span class="regexp">/\x4A\x61va.*/</span>;</span><br><span class="line"><span class="built_in">console</span>.log(reg.test(<span class="string">&quot;JavaScript&quot;</span>)); <span class="comment">// =&gt; true</span></span><br></pre></td></tr></table></figure>
+<p>A hexadecimal escape sequence can escape code points in a limited range: from  <code>U+00</code>  to  <code>U+FF</code>  because only 2 digits are allowed. But hexadecimal escape is nice because it’s short.</p>
+<h4 id="unicode-escape-sequence"><a class="markdownIt-Anchor" href="#unicode-escape-sequence">#</a> Unicode escape sequence</h4>
+<p>If you want to escape code points from the entire BMP, then use an <strong>unicode escape sequence</strong>. The escape format is  <code>\u&lt;hex&gt;</code> , where  <code>\u</code>  is a prefix followed by a hexadecimal number  <code>&lt;hex&gt;</code>  with a fixed length of 4 digits. For example  <code>'\u0051'</code>  (symbol  <code>'Q'</code> ) or  <code>'\u222B'</code>  (integral symbol  <code>'∫'</code> ).</p>
+<p>Let’s use some unicode escape sequences:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> str = <span class="string">&quot;I\u0020learn \u0055nicode&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str); <span class="comment">// =&gt; &#x27;I learn Unicode&#x27;</span></span><br><span class="line"><span class="keyword">const</span> reg = <span class="regexp">/\u0055ni.*/</span>;</span><br><span class="line"><span class="built_in">console</span>.log(reg.test(<span class="string">&quot;Unicode&quot;</span>)); <span class="comment">// =&gt; true</span></span><br></pre></td></tr></table></figure>
+<p>An unicode escape sequence can escape code points in a limited range: from  <code>U+0000</code>  to  <code>U+FFFF</code>  (all BMP code points) because only 4 digits are allowed. Mostly that’s enough to represent the commonly used symbols.</p>
+<p>To indicate an astral symbol in a JavaScript literal you have to use two joined unicode escape sequences (a high surrogate and low surrogate), which creates a surrogate pair:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> str = <span class="string">&quot;My face \uD83D\uDE00&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str); <span class="comment">// =&gt; &#x27;My face 😀&#x27;</span></span><br></pre></td></tr></table></figure>
+<p><code>\uD83D\uDE00</code>  is a surrogate pair created using 2 escape sequences.</p>
+<h4 id="code-point-escape-sequence"><a class="markdownIt-Anchor" href="#code-point-escape-sequence">#</a> Code point escape sequence</h4>
+<p>ECMAScript 2015 provides escape sequences that represent code points from the entire Unicode space:  <code>U+0000</code>  to  <code>U+10FFFF</code> , i.e. BMP and astral planes.</p>
+<p>The new format is called <strong>code point escape sequence</strong>:  <code>\u&#123;&lt;hex&gt;&#125;</code> , where  <code>&lt;hex&gt;</code>  is a hexadecimal number with a variable length of 1 to 6 digits.</p>
+<p>For example  <code>'\u&#123;7A&#125;'</code>  (symbol  <code>'z'</code> ) or  <code>'\u&#123;1F639&#125;'</code>  (funny cat symbol  <code>😹</code> ).</p>
+<p>Let’s see how you can use it in literals:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> str = <span class="string">&quot;Funny cat \u&#123;1F639&#125;&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str); <span class="comment">// =&gt; &#x27;Funny cat 😹&#x27;</span></span><br><span class="line"><span class="keyword">const</span> reg = <span class="regexp">/\u&#123;1F639&#125;/u</span>;</span><br><span class="line"><span class="built_in">console</span>.log(reg.test(<span class="string">&quot;Funny cat 😹&quot;</span>)); <span class="comment">// =&gt; true</span></span><br></pre></td></tr></table></figure>
+<p>The regular expression  <code>/\u&#123;1F639&#125;/u</code>  has a special flag  <code>u</code> , which enables additional Unicode features (see more about that in <span class="exturl" data-url="aHR0cHM6Ly9kbWl0cmlwYXZsdXRpbi5jb20vd2hhdC1ldmVyeS1qYXZhc2NyaXB0LWRldmVsb3Blci1zaG91bGQta25vdy1hYm91dC11bmljb2RlLyMzNXJlZ3VsYXJleHByZXNzaW9ubWF0Y2g=">3.5 Regular expression match</span>).</p>
+<p>I like that code point escape gets rid of surrogate pair to represent an astral symbol. For example, let’s escape  <code>U+1F607</code>  <em>SMILING FACE WITH HALO</em> code point:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> niceEmoticon = <span class="string">&quot;\u&#123;1F607&#125;&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(niceEmoticon); <span class="comment">// =&gt; &#x27;😇&#x27;</span></span><br><span class="line"><span class="keyword">const</span> spNiceEmoticon = <span class="string">&quot;\uD83D\uDE07&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(spNiceEmoticon); <span class="comment">// =&gt; &#x27;😇&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(niceEmoticon === spNiceEmoticon); <span class="comment">// =&gt; true</span></span><br></pre></td></tr></table></figure>
+<p>The string literal assigned to variable  <code>niceEmoticon</code>  has a code point escape  <code>'\u&#123;1F607&#125;'</code>  that represents an astral code point  <code>U+1F607</code> .</p>
+<p>Nevertheless, under the hood, the code point escape creates a surrogate pair (2 code units). The  <code>spNiceEmoticon</code>  (created using a surrogate pair of unicode escapes  <code>'\uD83D\uDE07'</code> ) equals to  <code>niceEmoticon</code> .</p>
+<img data-src="/2022/10/12/unicode/unicode-escape-sequence.png" class="" title="Unicode escape sequences JavaScript">
+<p>When a regular expression is created using  <code>RegExp</code>  constructor, in the string literal you must replace each  <code>\</code>  with  <code>\\</code>  to indicate unicode escapes. The following regular expression objects are equivalent:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> reg1 = <span class="regexp">/\x4A \u0020 \u&#123;1F639&#125;/</span>;</span><br><span class="line"><span class="keyword">const</span> reg2 = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">&quot;\\x4A \\u0020 \\u&#123;1F639&#125;&quot;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(reg1.source === reg2.source); <span class="comment">// =&gt; true</span></span><br></pre></td></tr></table></figure>
+<h3 id="32-string-comparison"><a class="markdownIt-Anchor" href="#32-string-comparison">#</a> 3.2 String comparison</h3>
+<p>Strings in JavaScript are sequences of code units. You could expect that string comparison involves the evaluation of code units for a match: if the code units from both strings are equal.</p>
+<p>This approach is fast and effective. It works nicely with “simple” strings:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> firstStr = <span class="string">&quot;hello&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> secondStr = <span class="string">&quot;\u0068ell\u006F&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(firstStr === secondStr); <span class="comment">// =&gt; true</span></span><br></pre></td></tr></table></figure>
+<p><code>firstStr</code>  and  <code>secondStr</code>  strings have the same sequence of code units — they are equal.</p>
+<p>However, suppose you want to compare two strings that look the same rendered but contain different code unit sequences. Then you may have an unexpected result, because strings that visually look the same are not equal in a comparison:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> str1 = <span class="string">&quot;ça va bien&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> str2 = <span class="string">&quot;c\u0327a va bien&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str1); <span class="comment">// =&gt; &#x27;ça va bien&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(str2); <span class="comment">// =&gt; &#x27;ça va bien&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(str1 === str2); <span class="comment">// =&gt; false</span></span><br></pre></td></tr></table></figure>
+<p><code>str1</code>  and  <code>str2</code>  when rendered look the same, but have different code units.<br>
+It happens because  <code>ç</code>  grapheme can be constructed in two ways:</p>
+<ul>
+<li>Using  <code>U+00E7</code>  <em>LATIN SMALL LETTER C WITH CEDILLA</em></li>
+<li>Or using a combining character sequence:  <code>U+0063</code>  <em>LATIN SMALL LETTER C</em> plus the combining mark  <code>U+0327</code>  <em>COMBINING CEDILLA</em>.</li>
+</ul>
+<p>How to handle such situations and compare correctly the strings? The answer is string normalization.</p>
+<h4 id="normalization"><a class="markdownIt-Anchor" href="#normalization">#</a> Normalization</h4>
+<blockquote>
+<p><strong>Normalization</strong> is a string conversion to a canonical representation, to ensure that canonical-equivalent (and/or compatibility-equivalent) strings have unique representations.</p>
+</blockquote>
+<p>In other words, when a string has a complex structure containing combining character sequences or other compound constructs, you can <em>normalize</em> it to a canonical form. Normalized strings are painless to compare or perform string operations like text search, etc.</p>
+<p><span class="exturl" data-url="aHR0cDovL3VuaWNvZGUub3JnL3JlcG9ydHMvdHIxNS8=">Unicode Standard Annex #15</span> has interesting details about the normalization process.</p>
+<p>In JavaScript to normalize a string invoke  <code>myString.normalize([normForm])</code>  method, available in ES2015.  <code>normForm</code>  is an optional parameter (defaults to  <code>'NFC'</code> ) and can take one of the following normalization forms:</p>
+<ul>
+<li><code>'NFC'</code>  as Normalization Form Canonical Composition</li>
+<li><code>'NFD'</code>  as Normalization Form Canonical Decomposition</li>
+<li><code>'NFKC'</code>  as Normalization Form Compatibility Composition</li>
+<li><code>'NFKD'</code>  as Normalization Form Compatibility Decomposition</li>
+</ul>
+<p>Let’s improve the previous example by applying a string normalization to correctly compare the strings:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> str1 = <span class="string">&quot;ça va bien&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> str2 = <span class="string">&quot;c\u0327a va bien&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str1.normalize() === str2.normalize()); <span class="comment">// =&gt; true</span></span><br><span class="line"><span class="built_in">console</span>.log(str1 === str2);</span><br></pre></td></tr></table></figure>
+<p>When  <code>str2.normalize()</code>  is invoked, a canonical version of  <code>str2</code>  is returned ( <code>'c\u0327'</code>  is replaced with  <code>'ç'</code> ). So the comparison  <code>str1.normalize() === str2.normalize()</code>  returns  <code>true</code>  as expected.</p>
+<p><code>str1</code>  is not affected by the normalization, since it’s already in a canonical form.</p>
+<h3 id="33-string-length"><a class="markdownIt-Anchor" href="#33-string-length">#</a> 3.3 String length</h3>
+<p>The common way to determine the string length is, of course, reading the  <code>myString.length</code>  property. This property indicates the number of code units that a string has.</p>
+<p>The evaluation of the string length that contains code points from BMP works usually as expected:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> color = <span class="string">&quot;Green&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(color.length); <span class="comment">// =&gt; 5</span></span><br></pre></td></tr></table></figure>
+<p>Each code unit in  <code>color</code>  corresponds to a single grapheme. The expected length of the string is  <code>5</code> .</p>
+<h4 id="length-and-surrogate-pairs"><a class="markdownIt-Anchor" href="#length-and-surrogate-pairs">#</a> Length and surrogate pairs</h4>
+<p>The situation becomes tricky when a string contains surrogate pairs, to represent astral code points. Since each surrogate pair contains 2 code units (a high-surrogate and a low-surrogate), the length property is greater than expected.</p>
+<p>Take a look at the example:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> str = <span class="string">&quot;cat\u&#123;1F639&#125;&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str); <span class="comment">// =&gt; &#x27;cat😹&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(str.length); <span class="comment">// =&gt; 5</span></span><br></pre></td></tr></table></figure>
+<p>When  <code>str</code>  string is rendered, it contains 4 symbols  <code>cat😹</code> .</p>
+<p>However  <code>smile.length</code>  evaluates to  <code>5</code> , because  <code>U+1F639</code>  is an astral code point encoded with 2 code units (a surrogate pair).</p>
+<p>Unfortunately, a native and performant way to fix the problem is not available at the moment.</p>
+<p>At least ECMAScript 2015 introduced algorithms that are aware of astral symbols. The astral symbol is counted as a single character, even being encoded with 2 code units.</p>
+<p>Unicode-aware is the string iterator <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/@@iterator"> <code>String.prototype[@@iterator]()</code> </a>. You can combine the string with spread operator  <code>[...str]</code>  or  <code>Array.from(str)</code>  function (both consume the string iterator). Then count the number of symbols in the returned array.</p>
+<p>However, the above solution may cost you slight performance losses when used extensively.</p>
+<p>Let’s improve the above example with a spread operator:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> str = <span class="string">&quot;cat\u&#123;1F639&#125;&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str); <span class="comment">// =&gt; &#x27;cat😹&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log([...str]); <span class="comment">// =&gt; [&#x27;c&#x27;, &#x27;a&#x27;, &#x27;t&#x27;, &#x27;😹&#x27;]</span></span><br><span class="line"><span class="built_in">console</span>.log([...str].length); <span class="comment">// =&gt; 4</span></span><br></pre></td></tr></table></figure>
+<p><code>[...str]</code>  creates an array of 4 symbols. The surrogate pair that encodes  <code>U+1F639</code>  <em>CAT FACE WITH TEARS OF JOY</em> 😹 is kept intact, because the string iterator is Unicode-aware.</p>
+<h4 id="length-and-combining-marks"><a class="markdownIt-Anchor" href="#length-and-combining-marks">#</a> Length and combining marks</h4>
+<p>What about combining character sequences? Because each combining mark is a code unit, you can encounter the same difficulties.</p>
+<p>The problem is solved when normalizing the string. If you’re lucky, the combining character sequence is normalized to a single character. Let’s try:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> drink = <span class="string">&quot;cafe\u0301&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(drink); <span class="comment">// =&gt; &#x27;café&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(drink.length); <span class="comment">// =&gt; 5</span></span><br><span class="line"><span class="built_in">console</span>.log(drink.normalize()); <span class="comment">// =&gt; &#x27;café&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(drink.normalize().length); <span class="comment">// =&gt; 4</span></span><br></pre></td></tr></table></figure>
+<p><code>drink</code>  string contains 5 code units (thus  <code>drink.length</code>  is  <code>5</code> ), even if rendered it displays 4 symbols.</p>
+<p>When normalizing  <code>drink</code> , luckily the combining character sequence  <code>'e\u0301'</code>  has a canonical form  <code>'é'</code> . So  <code>drink.normalize().length</code>  contains the expected  <code>4</code>  symbols.</p>
+<p>Unfortunately, normalization is not a universal solution. Long combining character sequences do not always have canonical equivalents in one symbol. Let’s see such a case:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> drink = <span class="string">&quot;cafe\u0327\u0301&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(drink); <span class="comment">// =&gt; &#x27;cafȩ́&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(drink.length); <span class="comment">// =&gt; 6</span></span><br><span class="line"><span class="built_in">console</span>.log(drink.normalize()); <span class="comment">// =&gt; &#x27;cafȩ́&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(drink.normalize().length); <span class="comment">// =&gt; 5</span></span><br></pre></td></tr></table></figure>
+<p><code>drink</code>  has 6 code units and  <code>drink.length</code>  evaluates to  <code>6</code> . However  <code>drink</code>  has 4 symbols.</p>
+<p>The normalization  <code>drink.normalize()</code>  transforms the combining sequence  <code>'e\u0327\u0301'</code>  into a canonical form of two characters  <code>'ȩ\u0301'</code>  (by removing only one combining mark).</p>
+<p>Sadly  <code>drink.normalize().length</code>  evaluates to  <code>5</code>  and still does not indicate the visually expected number of symbols.</p>
+<h3 id="34-character-positioning"><a class="markdownIt-Anchor" href="#34-character-positioning">#</a> 3.4 Character positioning</h3>
+<p>Because the string is a sequence of code units, accessing the character in a string by index has difficulties also.</p>
+<p>When a string contains only BMP characters the character positioning works correctly.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> str = <span class="string">&quot;hello&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str[<span class="number">0</span>]); <span class="comment">// =&gt; &#x27;h&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(str[<span class="number">4</span>]); <span class="comment">// =&gt; &#x27;o&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>Each symbol is encoded with a single code unit, so accessing by index a string character is correct.</p>
+<h4 id="character-positioning-and-surrogate-pairs"><a class="markdownIt-Anchor" href="#character-positioning-and-surrogate-pairs">#</a> Character positioning and surrogate pairs</h4>
+<p>The situation changes when the string contains astral symbols.</p>
+<p>An astral symbol is encoded using 2 code units (a surrogate pair). So accessing string characters by index may return a separated high-surrogate or low-surrogate, which are invalid symbols.</p>
+<p>The following example accesses characters from an astral symbol:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> omega = <span class="string">&quot;\u&#123;1D6C0&#125; is omega&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(omega); <span class="comment">// =&gt; &#x27;𝛀 is omega&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(omega[<span class="number">0</span>]); <span class="comment">// =&gt; &#x27;&#x27; (unprintable symbol)</span></span><br><span class="line"><span class="built_in">console</span>.log(omega[<span class="number">1</span>]); <span class="comment">// =&gt; &#x27;&#x27; (unprintable symbol)</span></span><br></pre></td></tr></table></figure>
+<p>Because  <code>U+1D6C0</code>  <em>MATHEMATICAL BOLD CAPITAL OMEGA</em> is an astral character, it is encoded using a surrogate pair of 2 code units.</p>
+<p><code>omega[0]</code>  accesses the high-surrogate code unit and  <code>omega[1]</code>  the low-surrogate, breaking apart the surrogate pair.</p>
+<p>There are 2 possibilities to access astral symbols correctly in a string:</p>
+<ul>
+<li>Use the Unicode-aware string iterator and generate an array of symbols  <code>[...str][index]</code></li>
+<li>Get code point number using  <code>number = myString.codePointAt(index)</code> , then transform the number to a symbol using  <code>String.fromCodePoint(number)</code>  (recommended option).</li>
+</ul>
+<p>Let’s apply both options:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> omega = <span class="string">&quot;\u&#123;1D6C0&#125; is omega&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(omega); <span class="comment">// =&gt; &#x27;𝛀 is omega&#x27;</span></span><br><span class="line"><span class="comment">// Option 1</span></span><br><span class="line"><span class="built_in">console</span>.log([...omega][<span class="number">0</span>]); <span class="comment">// =&gt; &#x27;𝛀&#x27;</span></span><br><span class="line"><span class="comment">// Option 2</span></span><br><span class="line"><span class="keyword">const</span> number = omega.codePointAt(<span class="number">0</span>);</span><br><span class="line"><span class="built_in">console</span>.log(number.toString(<span class="number">16</span>)); <span class="comment">// =&gt; &#x27;1d6c0&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">String</span>.fromCodePoint(number)); <span class="comment">// =&gt; &#x27;𝛀&#x27;</span></span><br></pre></td></tr></table></figure>
+<p><code>[...omega]</code>  returns an array of symbols that  <code>omega</code>  string contains. Surrogate pairs are evaluated correctly, so accessing the first character works as expected.  <code>[...smile][0]</code>  is  <code>'𝛀'</code> .</p>
+<p><code>omega.codePointAt(0)</code>  method call is Unicode-aware, so it returns the astral code point number  <code>0x1D6C0</code>  of the first character in  <code>omega</code>  string. The function  <code>String.fromCodePoint(number)</code>  returns the symbol based on the code point number:  <code>'𝛀'</code> .</p>
+<h4 id="character-positioning-and-combining-marks"><a class="markdownIt-Anchor" href="#character-positioning-and-combining-marks">#</a> Character positioning and combining marks</h4>
+<p>Character positioning in strings with combining marks has the same problem as string length described above.</p>
+<p>Accessing characters by index in a string is accessing code units. However, the combining mark sequence should be accessed as a whole, without splitting into separated code units.</p>
+<p>The following example demonstrates the problem:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> drink = <span class="string">&quot;cafe\u0301&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(drink); <span class="comment">// =&gt; &#x27;café&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(drink.length); <span class="comment">// =&gt; 5</span></span><br><span class="line"><span class="built_in">console</span>.log(drink[<span class="number">3</span>]); <span class="comment">// =&gt; &#x27;e&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(drink[<span class="number">4</span>]); <span class="comment">// =&gt; ◌́</span></span><br></pre></td></tr></table></figure>
+<p><code>drink[3]</code>  accesses only the base character  <code>e</code> , without the combining mark  <code>U+0301</code>  <em>COMBINING ACUTE ACCENT</em> (rendered as ◌́ ).<br>
+ <code>drink[4]</code>  accesses the isolated combining mark ◌́ .</p>
+<p>In such cases apply a string normalization. The combining character sequence  <code>U+0065</code>  <em>LATIN SMALL LETTER E</em> +  <code>U+0301</code>  <em>COMBINING ACUTE ACCENT</em> has a canonical equivalent  <code>U+00E9</code>  <em>LATIN SMALL LETTER E WITH ACUTE</em>  <code>é</code> .</p>
+<p>Let’s improve the previous code sample:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> drink = <span class="string">&quot;cafe\u0301&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(drink.normalize()); <span class="comment">// =&gt; &#x27;café&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(drink.normalize().length); <span class="comment">// =&gt; 4</span></span><br><span class="line"><span class="built_in">console</span>.log(drink.normalize()[<span class="number">3</span>]); <span class="comment">// =&gt; &#x27;é&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>Unfortunately, not all combining character sequences have canonical equivalents as a single symbol. So the normalization solution is not universal.</p>
+<p>Fortunately, it should work in most of the cases for European / North America’s languages.</p>
+<h3 id="35-regular-expression-match"><a class="markdownIt-Anchor" href="#35-regular-expression-match">#</a> 3.5 Regular expression match</h3>
+<p>Regular expressions, as well as strings, work in terms of code units. Similar to previously described scenarios, this creates difficulties when processing surrogate pairs and combining character sequences using regular expressions.</p>
+<p>BMP characters match as expected because a single code unit represents a symbol:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> greetings = <span class="string">&quot;Hi!&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> regex = <span class="regexp">/^.&#123;3&#125;$/</span>;</span><br><span class="line"><span class="built_in">console</span>.log(regex.test(greetings)); <span class="comment">// =&gt; true</span></span><br></pre></td></tr></table></figure>
+<p><code>greetings</code>  has 3 symbols encoded with 3 code units. Regular expression  <code>/.&#123;3&#125;/</code> , which expects 3 code units, matches  <code>greetings</code> .</p>
+<p>When matching astral symbols (which are encoded with a surrogate pair of 2 code units), you may encounter difficulties:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> smile = <span class="string">&quot;😀&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> regex = <span class="regexp">/^.$/</span>;</span><br><span class="line"><span class="built_in">console</span>.log(regex.test(smile)); <span class="comment">// =&gt; false</span></span><br></pre></td></tr></table></figure>
+<p><code>smile</code>  contains the astral symbol  <code>U+1F600</code>  <em>GRINNING FACE</em>.  <code>U+1F600</code>  is encoded using a surrogate pair  <code>0xD83D</code> + <code>0xDE00</code> .</p>
+<p>However, the regular expression  <code>/^.$/</code>  expects one code unit, so the match fails:  <code>regexp.test(smile)</code>  is  <code>false</code> .</p>
+<p>It’s even worse when defining character classes with astral symbols. JavaScript throws an error:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> regex = <span class="regexp">/[😀-😎]/</span>;</span><br><span class="line"><span class="comment">// =&gt; SyntaxError: Invalid regular expression: /[😀-😎]/:</span></span><br><span class="line"><span class="comment">// Range out of order in character class</span></span><br></pre></td></tr></table></figure>
+<p>The astral code points are encoded to surrogate pairs. So JavaScript represents the regular expression using code units  <code>/[\uD83D\uDE00-\uD83D\uDE0E]/</code> . Each code unit is considered a separate element in the pattern, so the regular expression ignores the concept of a surrogate pair.</p>
+<p>The  <code>\uDE00-\uD83D</code>  part of the character class is not valid, because  <code>\uDE00</code>  is greater than  <code>\uD83D</code> . As a result, an error is generated.</p>
+<h4 id="regular-expression-u-flag"><a class="markdownIt-Anchor" href="#regular-expression-u-flag">#</a> Regular expression <em>u</em> flag</h4>
+<p>Fortunately, ECMAScript 2015 introduced a useful  <code>u</code>  flag, making the regular expression Unicode-aware. This flag enables the correct processing of astral symbols.</p>
+<p>You can use unicode escape sequences in regular expressions  <code>/u&#123;1F600&#125;/u</code> . This escape is shorter than indicating the high-surrogate and low-surrogate pair  <code>/\uD83D\uDE00/</code> .</p>
+<p>Let’s apply  <code>u</code>  flag and see how  <code>.</code>  operator (including quantifiers  <code>?</code> ,  <code>+</code> ,  <code>*</code>  and  <code>&#123;3&#125;</code> ,  <code>&#123;3,&#125;</code> ,  <code>&#123;2,3&#125;</code> ) matches the astral symbol:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> smile = <span class="string">&quot;😀&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> regex = <span class="regexp">/^.$/u</span>;</span><br><span class="line"><span class="built_in">console</span>.log(regex.test(smile)); <span class="comment">// =&gt; true</span></span><br></pre></td></tr></table></figure>
+<p><code>/^.$/u</code>  regular expression, which is Unicode-aware because of the  <code>u</code>  flag, now matches  <code>😀</code>  astral symbol.</p>
+<p>The  <code>u</code>  flag enables the correct processing of astral symbols in character classes too:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> smile = <span class="string">&quot;😀&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> regex = <span class="regexp">/[😀-😎]/u</span>;</span><br><span class="line"><span class="keyword">const</span> regexEscape = <span class="regexp">/[\u&#123;1F600&#125;-\u&#123;1F60E&#125;]/u</span>;</span><br><span class="line"><span class="keyword">const</span> regexSpEscape = <span class="regexp">/[\uD83D\uDE00-\uD83D\uDE0E]/u</span>;</span><br><span class="line"><span class="built_in">console</span>.log(regex.test(smile)); <span class="comment">// =&gt; true</span></span><br><span class="line"><span class="built_in">console</span>.log(regexEscape.test(smile)); <span class="comment">// =&gt; true</span></span><br><span class="line"><span class="built_in">console</span>.log(regexSpEscape.test(smile)); <span class="comment">// =&gt; true</span></span><br></pre></td></tr></table></figure>
+<p><code>[😀-😎]</code>  is now evaluated as a range of astral symbols.  <code>/[😀-😎]/u</code>  matches  <code>'😀'</code> .</p>
+<h4 id="regular-expression-and-combining-marks"><a class="markdownIt-Anchor" href="#regular-expression-and-combining-marks">#</a> Regular expression and combining marks</h4>
+<p>Unfortunately, with  <code>u</code>  flag or without it regular expression treats the combining marks as separate code units.</p>
+<p>If you need to match a combining character sequence, you have to match the base character and the combining mark separately.</p>
+<p>Take a look at the following example:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> drink = <span class="string">&quot;cafe\u0301&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> regex1 = <span class="regexp">/^.&#123;4&#125;$/</span>;</span><br><span class="line"><span class="keyword">const</span> regex2 = <span class="regexp">/^.&#123;5&#125;$/</span>;</span><br><span class="line"><span class="built_in">console</span>.log(drink); <span class="comment">// =&gt; &#x27;café&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(regex1.test(drink)); <span class="comment">// =&gt; false</span></span><br><span class="line"><span class="built_in">console</span>.log(regex2.test(drink)); <span class="comment">// =&gt; true</span></span><br></pre></td></tr></table></figure>
+<p>The string rendered has 4 symbols  <code>café</code> .</p>
+<p>Nevertheless, the regular expression matches  <code>'cafe\u0301'</code>  as a sequence of 5 elements  <code>/^.&#123;5&#125;$/</code> .</p>
+<h2 id="4-summary"><a class="markdownIt-Anchor" href="#4-summary">#</a> 4. Summary</h2>
+<p>Probably the most important concept about Unicode in JavaScript is <strong>to treat strings as sequences of code units</strong>, as they really are.</p>
+<p>The confusion appears when the developer thinks that strings are composed of graphemes (or symbols), ignoring the code unit sequence concept.</p>
+<p>It creates misunderstanding when processing strings that contain surrogate pairs or combining character sequences:</p>
+<ul>
+<li>Getting the string length</li>
+<li>Character positioning</li>
+<li>Regular expression matching</li>
+</ul>
+<p>Note that most of the string methods in JavaScript are not Unicode-aware: like  <code>myString.indexOf()</code> ,  <code>myString.slice()</code> , etc.</p>
+<p>ECMAScript 2015 introduced nice features like code point escape sequences  <code>\u&#123;1F600&#125;</code>  in strings and regular expressions.</p>
+<p>The new regular expression flag  <code>u</code>  enables Unicode-aware string matching. It easies matching astral symbols.</p>
+<p>String iterator  <code>String.prototype[@@iterator]()</code>  is Unicode-aware. You can use the spread operator  <code>[...str]</code>  or  <code>Array.from(str)</code>  to create an array of symbols and calculate the string length or access characters by index without breaking the surrogate pair. Note that these operations have some performance impact.</p>
+<p>If you need a better way to process Unicode characters, you can use <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2Jlc3RpZWpzL3B1bnljb2RlLmpzLw==">punycode</span> library or <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL21hdGhpYXNieW5lbnMvcmVnZW5lcmF0ZQ==">generate</span> specialized regular expressions.</p>
+<p>I hope the article has helped you master Unicode!</p>
+<p><em>Do you know other interesting Unicode nuances in JavaScript? Feel free to write a comment below!</em></p>
+
+      <div class="tags">
+          <a href="/tags/js/" rel="tag"><i class="ic i-tag"></i> js</a>
+          <a href="/tags/concept/" rel="tag"><i class="ic i-tag"></i> concept</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2022-10-12 16:51:09" itemprop="dateModified" datetime="2022-10-12T16:51:09+08:00">2022-10-12</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2022/10/10/english-pronunciation/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclh3brzpj20zk0m8ann.jpg" title="American Accent">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>American Accent</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-the-idea-behind-unicode"><span class="toc-number">1.</span> <span class="toc-text"> 1. The idea behind Unicode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-basic-unicode-terms"><span class="toc-number">2.</span> <span class="toc-text"> 2. Basic Unicode terms</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#21-characters-and-code-points"><span class="toc-number">2.1.</span> <span class="toc-text"> 2.1 Characters and code points</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#22-unicode-planes"><span class="toc-number">2.2.</span> <span class="toc-text"> 2.2 Unicode planes</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#basic-multilingual-plane"><span class="toc-number">2.2.1.</span> <span class="toc-text"> Basic Multilingual Plane</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#astral-planes"><span class="toc-number">2.2.2.</span> <span class="toc-text"> Astral planes</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#23-code-units"><span class="toc-number">2.3.</span> <span class="toc-text"> 2.3 Code units</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#24-surrogate-pairs"><span class="toc-number">2.4.</span> <span class="toc-text"> 2.4 Surrogate pairs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#25-combining-marks"><span class="toc-number">2.5.</span> <span class="toc-text"> 2.5 Combining marks</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-unicode-in-javascript"><span class="toc-number">3.</span> <span class="toc-text"> 3. Unicode in JavaScript</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#31-escape-sequences"><span class="toc-number">3.1.</span> <span class="toc-text"> 3.1 Escape sequences</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#hexadecimal-escape-sequence"><span class="toc-number">3.1.1.</span> <span class="toc-text"> Hexadecimal escape sequence</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#unicode-escape-sequence"><span class="toc-number">3.1.2.</span> <span class="toc-text"> Unicode escape sequence</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#code-point-escape-sequence"><span class="toc-number">3.1.3.</span> <span class="toc-text"> Code point escape sequence</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#32-string-comparison"><span class="toc-number">3.2.</span> <span class="toc-text"> 3.2 String comparison</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#normalization"><span class="toc-number">3.2.1.</span> <span class="toc-text"> Normalization</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#33-string-length"><span class="toc-number">3.3.</span> <span class="toc-text"> 3.3 String length</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#length-and-surrogate-pairs"><span class="toc-number">3.3.1.</span> <span class="toc-text"> Length and surrogate pairs</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#length-and-combining-marks"><span class="toc-number">3.3.2.</span> <span class="toc-text"> Length and combining marks</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#34-character-positioning"><span class="toc-number">3.4.</span> <span class="toc-text"> 3.4 Character positioning</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#character-positioning-and-surrogate-pairs"><span class="toc-number">3.4.1.</span> <span class="toc-text"> Character positioning and surrogate pairs</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#character-positioning-and-combining-marks"><span class="toc-number">3.4.2.</span> <span class="toc-text"> Character positioning and combining marks</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#35-regular-expression-match"><span class="toc-number">3.5.</span> <span class="toc-text"> 3.5 Regular expression match</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#regular-expression-u-flag"><span class="toc-number">3.5.1.</span> <span class="toc-text"> Regular expression u flag</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#regular-expression-and-combining-marks"><span class="toc-number">3.5.2.</span> <span class="toc-text"> Regular expression and combining marks</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-summary"><span class="toc-number">4.</span> <span class="toc-text"> 4. Summary</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">308</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">43</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
+      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2022</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ D E W</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2022/10/12/unicode/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
