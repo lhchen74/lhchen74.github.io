@@ -1,0 +1,440 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CFira%20Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="js,html" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2022/10/20/javascript-node-element/">
+
+
+
+  <title>
+What's the Difference between DOM Node and Element? |
+D E W = 露の世</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">What's the Difference between DOM Node and Element?
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2022-10-20 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2022-10-20T00:00:00+08:00">2022-10-20</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">D E W</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="/images/龙猫-2.jpg"></li>
+          <li class="item" data-background-image="/images/借东西的小人阿莉埃蒂-2.jpg"></li>
+          <li class="item" data-background-image="/images/樱花庄的宠物女孩.jpg"></li>
+          <li class="item" data-background-image="/images/叛逆的鲁鲁修.jpg"></li>
+          <li class="item" data-background-image="/images/棋魂-2.jpg"></li>
+          <li class="item" data-background-image="/images/大剑.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2022/10/20/javascript-node-element/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>转载：<span class="exturl" data-url="aHR0cHM6Ly9kbWl0cmlwYXZsdXRpbi5jb20vZG9tLW5vZGUtZWxlbWVudC8=">What’s the Difference between DOM Node and Element?</span></p>
+</blockquote>
+<p>The Document Object Model (DOM) is an interface that treats HTML or XML document as a tree structure, where each node is an object of the document. DOM also provides a set of methods to query the tree, alter the structure, style.</p>
+<p>DOM also uses the term <em>element</em>: which is quite similar to a node. So, what’s the difference between a DOM node and an element? Let’s find out!</p>
+<h2 id="1-dom-node"><a class="markdownIt-Anchor" href="#1-dom-node">#</a> 1. DOM Node</h2>
+<p>The key to understanding the difference between a node and an element is to understand what a node is.</p>
+<p>From a higher viewpoint, a DOM document consists of a hierarchy of nodes. Each node can have a parent and/or children.</p>
+<p>Let’s look at the following HTML document:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>My Page<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- Page Body --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h2</span>&gt;</span>My Page<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">&quot;content&quot;</span>&gt;</span>Thank you for visiting my web page!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>The document contains the following hierarchy of nodes:</p>
+<img data-src="/2022/10/20/javascript-node-element/dom-nodes.png" class="" title="Hierarchy of DOM Nodes">]
+<p><code>&lt;html&gt;</code>  is a node in the document tree. It has 2 children:  <code>&lt;head&gt;</code>  and  <code>&lt;body&gt;</code>  nodes.</p>
+<p><code>&lt;body&gt;</code>  is also a node having 3 children: a comment  <code>&lt;!-- Page Body --&gt;</code> , heading  <code>&lt;h2&gt;</code> , and paragraph  <code>&lt;p&gt;</code> . The parent of the  <code>&lt;body&gt;</code>  node is  <code>&lt;html&gt;</code>  node.</p>
+<p>The tags in the HTML document represent a node, what’s interesting is that regular text is also a node. The paragraph node  <code>&lt;p&gt;</code>  has 1 child: the text node  <code>&quot;Thank you for visiting my web page!&quot;</code> .</p>
+<h3 id="12-node-types"><a class="markdownIt-Anchor" href="#12-node-types">#</a> 1.2 Node Types</h3>
+<p>How can you distinguish these different types of nodes? The answer lays in the DOM <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvQVBJL05vZGU=">Node</span> interface, particularly in the  <code>Node.nodeType</code>  property.</p>
+<p><code>Node.nodeType</code>  can have one of the following values that represents the type of the node:</p>
+<ul>
+<li><code>Node.ELEMENT_NODE</code></li>
+<li><code>Node.ATTRIBUTE_NODE</code></li>
+<li><code>Node.TEXT_NODE</code></li>
+<li><code>Node.CDATA_SECTION_NODE</code></li>
+<li><code>Node.PROCESSING_INSTRUCTION_NODE</code></li>
+<li><code>Node.COMMENT_NODE</code></li>
+<li><code>Node.DOCUMENT_NODE</code></li>
+<li><code>Node.DOCUMENT_TYPE_NODE</code></li>
+<li><code>Node.DOCUMENT_FRAGMENT_NODE</code></li>
+<li><code>Node.NOTATION_NODE</code></li>
+</ul>
+<p>The constants meaningfully indicate the node type: for example  <code>Node.ELEMENT_NODE</code>  represents an element node,  <code>Node.TEXT_NODE</code>  represents a text node,  <code>Node.DOCUMENT_NODE</code>  the document node, and so on.</p>
+<p>For example, let’s select the paragraph node, and look at its  <code>nodeType</code>  property:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> paragraph = <span class="built_in">document</span>.querySelector(<span class="string">&quot;p&quot;</span>);</span><br><span class="line">paragraph.nodeType === Node.ELEMENT_NODE; <span class="comment">// =&gt; true</span></span><br></pre></td></tr></table></figure>
+<p>As expected  <code>paragraph.nodeType</code>  has the value  <code>Node.ELEMENT_NODE</code> , indicating that the paragraph is an element.</p>
+<p>The paragraph also contains a text node:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> paragraph = <span class="built_in">document</span>.querySelector(<span class="string">&quot;p&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> firstChild = paragraph.childNodes[<span class="number">0</span>];</span><br><span class="line">firstChild.nodeType === Node.TEXT_NODE; <span class="comment">// =&gt; true</span></span><br></pre></td></tr></table></figure>
+<p>There’s a node type that represents the entire document tree of nodes —  <code>Node.DOCUMENT_NODE</code> :</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.nodeType === Node.DOCUMENT_NODE; <span class="comment">// =&gt; true</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-dom-element"><a class="markdownIt-Anchor" href="#2-dom-element">#</a> 2. DOM Element</h2>
+<p>After getting a good grasp of what a DOM node is, now is the time to differentiate the DOM node and element.</p>
+<p>If you get well the <em>node</em> term, then the answer is obvious: an element is a node of a specific type — element ( <code>Node.ELEMENT_NODE</code> ). Along with types like document, comment, text, etc.</p>
+<p>In simple words, an element is a node that’s written using a tag in the HTML document.  <code>&lt;html&gt;</code> ,  <code>&lt;head&gt;</code> ,  <code>&lt;title&gt;</code> ,  <code>&lt;body&gt;</code> ,  <code>&lt;h2&gt;</code> ,  <code>&lt;p&gt;</code>  are all elements because they are represented by tags.</p>
+<p>The document type, the comment, the text nodes aren’t elements because they are not written with tags:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- Page Body --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">      Thank you for visiting my web page!</span><br><span class="line">    <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><code>Node</code>  is constructor of a node, and  <code>HTMLElement</code>  is a constructor of an element in JavaScript DOM. A paragraph, being a node and also an element, is an instance of both  <code>Node</code>  and  <code>HTMLElement</code> :</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> paragraph = <span class="built_in">document</span>.querySelector(<span class="string">&quot;p&quot;</span>);</span><br><span class="line">paragraph <span class="keyword">instanceof</span> Node; <span class="comment">// =&gt; true</span></span><br><span class="line">paragraph <span class="keyword">instanceof</span> HTMLElement; <span class="comment">// =&gt; true</span></span><br></pre></td></tr></table></figure>
+<p>Saying it simpler, an element is a subtype of a node the same way a cat is a subtype of an animal.</p>
+<h2 id="3-dom-properties-nodes-and-elements"><a class="markdownIt-Anchor" href="#3-dom-properties-nodes-and-elements">#</a> 3. DOM properties: nodes and elements</h2>
+<p>Aside from differentiating nodes from elements, you need also to distinguish the DOM properties that contain specifically only nodes, or only elements.</p>
+<p>The following properties of  <code>Node</code>  type evaluate to a node or a collection of nodes ( <code>NodeList</code> ):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">node.parentNode; <span class="comment">// Node or null</span></span><br><span class="line">node.firstChild; <span class="comment">// Node or null</span></span><br><span class="line">node.lastChild; <span class="comment">// Node or null</span></span><br><span class="line">node.childNodes; <span class="comment">// NodeList</span></span><br></pre></td></tr></table></figure>
+<p>However, the following properties are elements or collection of elements ( <code>HTMLCollection</code> ):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node.parentElement; <span class="comment">// HTMLElement or null</span></span><br><span class="line">node.children; <span class="comment">// HTMLCollection</span></span><br></pre></td></tr></table></figure>
+<p>Since both  <code>node.childNodes</code>  and  <code>node.children</code>  return a list of children, why have both of these properties? Good question!</p>
+<p>Consider the following paragraph element containing some text:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">b</span>&gt;</span>Thank you<span class="tag">&lt;/<span class="name">b</span>&gt;</span> for visiting my web page!</span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Open the <span class="exturl" data-url="aHR0cHM6Ly9qc2l0b3IuY29tLzNtUHdvU1ZiWWg=">demo</span>, then look at  <code>childNodes</code>  and  <code>children</code>  properties of the parapgraph node:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> paragraph = <span class="built_in">document</span>.querySelector(<span class="string">&quot;p&quot;</span>);</span><br><span class="line">paragraph.childNodes; <span class="comment">// NodeList:       [HTMLElement, Text]</span></span><br><span class="line">paragraph.children;   <span class="comment">// HTMLCollection: [HTMLElement]</span></span><br></pre></td></tr></table></figure>
+<p><code>paragraph.childNodes</code>  collection contains 2 nodes: the bold element  <code>&lt;b&gt;Thank you&lt;/b&gt;</code> , as well as the text node  <code>for visiting my web page!</code> .</p>
+<p>However,  <code>paragraph.children</code>  collection contains only 1 item: the bold element  <code>&lt;b&gt;Thank you&lt;/b&gt;</code> .</p>
+<p>Because  <code>paragraph.children</code>  contains only elements, the text node wasn’t included here because its type is text ( <code>Node.TEXT_NODE</code> ), and not an element ( <code>Node.ELEMENT_NODE</code> ).</p>
+<p>Having both  <code>node.childNodes</code>  and  <code>node.children</code>  lets you choose the collection of children you’d like to access: all children nodes or only children being elements.</p>
+<h2 id="4-summary"><a class="markdownIt-Anchor" href="#4-summary">#</a> 4. Summary</h2>
+<p>A DOM document is a hierarchical collection of nodes. Each node can have a parent and/or children.</p>
+<p>Understanding the difference between a DOM node and an element is easy if you understand what a node is.</p>
+<p>Nodes have types, the element type being one of them. The element is represented by a tag in the HTML document.</p>
+
+      <div class="tags">
+          <a href="/tags/js/" rel="tag"><i class="ic i-tag"></i> js</a>
+          <a href="/tags/html/" rel="tag"><i class="ic i-tag"></i> html</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2022-10-20 10:02:29" itemprop="dateModified" datetime="2022-10-20T10:02:29+08:00">2022-10-20</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2022/10/15/css-colorpicker/" itemprop="url" rel="prev" data-background-image="&#x2F;images&#x2F;碧蓝之海.jpg" title="CSS Color Picker">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>CSS Color Picker</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-dom-node"><span class="toc-number">1.</span> <span class="toc-text"> 1. DOM Node</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#12-node-types"><span class="toc-number">1.1.</span> <span class="toc-text"> 1.2 Node Types</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-dom-element"><span class="toc-number">2.</span> <span class="toc-text"> 2. DOM Element</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-dom-properties-nodes-and-elements"><span class="toc-number">3.</span> <span class="toc-text"> 3. DOM properties: nodes and elements</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-summary"><span class="toc-number">4.</span> <span class="toc-text"> 4. Summary</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">310</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">43</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
+      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2022</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ D E W</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2022/10/20/javascript-node-element/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
