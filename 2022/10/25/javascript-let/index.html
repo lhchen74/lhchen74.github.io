@@ -102,12 +102,12 @@ D E W = 露の世</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="/images/七大罪.jpg"></li>
-          <li class="item" data-background-image="/images/昭和元禄落语心中-2.jpg"></li>
-          <li class="item" data-background-image="/images/萤火虫之墓-2.jpg"></li>
-          <li class="item" data-background-image="/images/风之谷-3.jpg"></li>
-          <li class="item" data-background-image="/images/冰海战记.jpg"></li>
-          <li class="item" data-background-image="/images/元气囝仔.jpg"></li>
+          <li class="item" data-background-image="/images/八犬传.jpg"></li>
+          <li class="item" data-background-image="/images/家庭教师.jpg"></li>
+          <li class="item" data-background-image="/images/犬夜叉-2.jpg"></li>
+          <li class="item" data-background-image="/images/辉夜姬物语-2.jpg"></li>
+          <li class="item" data-background-image="/images/星合之空.jpg"></li>
+          <li class="item" data-background-image="/images/好想告诉你.jpg"></li>
         </ul>
       </div>
     </header>
@@ -160,7 +160,7 @@ D E W = 露の世</title>
 Let’s dive into more details about this process.</p>
 <h2 id="1-error-prone-var-hoisting"><a class="markdownIt-Anchor" href="#1-error-prone-var-hoisting">#</a> 1. Error prone var hoisting</h2>
 <p>Sometimes I see a weird practice of variables  <code>var varname</code>  and functions  <code>function funName() &#123;...&#125;</code>  declaration in any place in the scope:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// var hoisting</span></span><br><span class="line">num;     <span class="comment">// =&gt; undefined</span></span><br><span class="line"><span class="keyword">var</span> num;</span><br><span class="line">num = <span class="number">10</span>;</span><br><span class="line">num;     <span class="comment">// =&gt; 10</span></span><br><span class="line"><span class="comment">// function hoisting</span></span><br><span class="line">getPi;   <span class="comment">// =&gt; function getPi() &#123;...&#125;</span></span><br><span class="line">getPi(); <span class="comment">// =&gt; 3.14</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getPi</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">3.14</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// var hoisting</span></span><br><span class="line">num; <span class="comment">// =&gt; undefined</span></span><br><span class="line"><span class="keyword">var</span> num;</span><br><span class="line">num = <span class="number">10</span>;</span><br><span class="line">num; <span class="comment">// =&gt; 10</span></span><br><span class="line"><span class="comment">// function hoisting</span></span><br><span class="line">getPi; <span class="comment">// =&gt; function getPi() &#123;...&#125;</span></span><br><span class="line">getPi(); <span class="comment">// =&gt; 3.14</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getPi</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">3.14</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>The variable  <code>num</code>  is accessed before declaration  <code>var num</code> , so it is evaluated to  <code>undefined</code> . The function  <code>function getPi() &#123;...&#125;</code>  is defined at the end of file. However the function can be called before declaration  <code>getPi()</code> , as it is hoisted to the top of the scope.</p>
 <p>This is the classical <em>hoisting</em>.</p>
 <p>As it turns out, the possibility to first use and then declare a variable or function creates confusion. Suppose you scroll a big file and suddenly see an undeclared variable… how the hell it does appear here and where is it defined?<br>
@@ -175,11 +175,11 @@ Of course a practiced JavaScript developer won’t code this way. But in the tho
 <li><strong>Assignment phase</strong> is assigning a value to the initialized variable.</li>
 </ol>
 <p>A variable has <strong>unitialized</strong> state when it passed the declaration phase, yet didn’t reach the initilization.</p>
-<img data-src="/2022/10/25/javascript-let/1-1.jpg" class="" title="Variables lifecycle phases in JavaScript">]
+<img data-src="/2022/10/25/javascript-let/1-1.jpg" class="" title="Variables lifecycle phases in JavaScript">
 <p>Notice that in terms of variables lifecycle, <em>declaration phase</em> is a different term than generally speaking <em>variable declaration</em>. In simple words, the engine processes the variable declaration in 3 phases: declaration phase, initialization phase and assignment phase.</p>
 <h2 id="3-var-variables-lifecycle"><a class="markdownIt-Anchor" href="#3-var-variables-lifecycle">#</a> 3. var variables lifecycle</h2>
 <p>Being familiar with lifecycle phases, let’s use them to describe how the engine handles  <code>var</code>  variables.</p>
-<img data-src="/2022/10/25/javascript-let/2.jpg" class="" title="var statement variables lifecycle">]
+<img data-src="/2022/10/25/javascript-let/2.jpg" class="" title="var statement variables lifecycle">
 <p>Suppose a scenario when JavaScript encounters a function scope with  <code>var variable</code>  statement inside. The variable passes the <em>declaration phase</em> and right away the <em>initialization phase</em> at the beginning of the scope, before any statements are executed (step 1).  <code>var variable</code>  statement position in the function scope does not influence the declaration and initialization phases.</p>
 <p>After declaration and initialization, but before assignment phase, the variable has  <code>undefined</code>  value and can be used already.</p>
 <p>On <em>assignment phase</em>  <code>variable = 'value'</code>  the variable receives its initial value (step 2).</p>
@@ -190,7 +190,7 @@ Let’s study an example. The following code creates a function scope with a  <c
 The statement  <code>ten = 10</code>  assigns an initial value. After assignment, the line  <code>console.log(ten)</code>  logs correctly  <code>10</code>  value.</p>
 <h2 id="4-function-declaration-lifecycle"><a class="markdownIt-Anchor" href="#4-function-declaration-lifecycle">#</a> 4. Function declaration lifecycle</h2>
 <p>In case of a <em>function declaration statement</em>  <code>function funName() &#123;...&#125;</code>  it’s even easier.</p>
-<img data-src="/2022/10/25/javascript-let/3.jpg" class="" title="Function declaration variables lifecycle">]
+<img data-src="/2022/10/25/javascript-let/3.jpg" class="" title="Function declaration variables lifecycle">
 <p>The <em>declaration, initialization and assignment phases</em> happen at once at the beginning of the enclosing function scope (only one step).  <code>funName()</code>  can be invoked in any place of the scope, not depending on the declaration statement position (it can be even at the end).</p>
 <p>The following code sample demonstrates the function hoisting:</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sumArray</span>(<span class="params">array</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> array.reduce(sum);</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">sumArray([<span class="number">5</span>, <span class="number">10</span>, <span class="number">8</span>]); <span class="comment">// =&gt; 23</span></span><br></pre></td></tr></table></figure>
@@ -198,7 +198,7 @@ The statement  <code>ten = 10</code>  assigns an initial value. After assignment
 This way  <code>array.reduce(sum)</code>  can use  <code>sum</code>  even before its declaration statement  <code>function sum(a, b) &#123;...&#125;</code> .</p>
 <h2 id="5-let-variables-lifecycle"><a class="markdownIt-Anchor" href="#5-let-variables-lifecycle">#</a> 5. let variables lifecycle</h2>
 <p><code>let</code>  variables are processed differently than  <code>var</code> . The main distinction is that declaration and initialization phases are <strong>split</strong>.</p>
-<img data-src="/2022/10/25/javascript-let/4.jpg" class="" title="let statement variables lifecycle">]
+<img data-src="/2022/10/25/javascript-let/4.jpg" class="" title="let statement variables lifecycle">
 <p>Now let’s study a scenario when the interpreter enters a block scope that contains a  <code>let variable</code>  statement. Immediately the variable passes the <em>declaration phase</em>, registering its name in the scope (step 1).<br>
 Then interpreter continues parsing the block statements line by line.</p>
 <p>If you try to access  <code>variable</code>  at this stage, JavaScript will throw  <code>ReferenceError: variable is not defined</code> . It happens because the variable state is <em>uninitialized</em>.<br>
@@ -240,7 +240,7 @@ Based on this lesson, ES2015 introduces  <code>let</code> . It uses an improved 
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2022-10-25 14:40:04" itemprop="dateModified" datetime="2022-10-25T14:40:04+08:00">2022-10-25</time>
+    <time title="Modified: 2022-10-25 17:51:31" itemprop="dateModified" datetime="2022-10-25T17:51:31+08:00">2022-10-25</time>
   </span>
 </div>
 
@@ -257,7 +257,7 @@ Based on this lesson, ES2015 introduces  <code>let</code> . It uses an improved 
     <div class="item left">
       
 
-  <a href="/2022/10/25/javascript-symbol/" itemprop="url" rel="prev" data-background-image="&#x2F;images&#x2F;龙猫-1.jpg" title="Detailed Overview of Well-known Symbols">
+  <a href="/2022/10/25/javascript-symbol/" itemprop="url" rel="prev" data-background-image="&#x2F;images&#x2F;萤火之森.jpg" title="Detailed Overview of Well-known Symbols">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Detailed Overview of Well-known Symbols</h3>
