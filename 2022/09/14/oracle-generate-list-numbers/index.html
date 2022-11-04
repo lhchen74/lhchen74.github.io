@@ -102,12 +102,12 @@ D E W = 露の世</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="/images/萤火虫之墓-1.jpg"></li>
+          <li class="item" data-background-image="/images/叛逆的鲁鲁修.jpg"></li>
+          <li class="item" data-background-image="/images/悬崖上的金鱼姬-1.jpg"></li>
+          <li class="item" data-background-image="/images/妖精的尾巴.jpg"></li>
           <li class="item" data-background-image="/images/寄生兽.jpg"></li>
-          <li class="item" data-background-image="/images/元气囝仔.jpg"></li>
-          <li class="item" data-background-image="/images/齐木楠雄的灾难.jpg"></li>
-          <li class="item" data-background-image="/images/大鱼海棠.jpg"></li>
-          <li class="item" data-background-image="/images/亚人-2.jpg"></li>
+          <li class="item" data-background-image="/images/犬夜叉.jpg"></li>
+          <li class="item" data-background-image="/images/关于我转生成史莱姆这档事.jpg"></li>
         </ul>
       </div>
     </header>
@@ -154,12 +154,12 @@ D E W = 露の世</title>
     <blockquote>
 <p>转载：<span class="exturl" data-url="aHR0cHM6Ly9zcWxiaXNhbS5ibG9nc3BvdC5jb20vMjAxNC8wMS9nZW5lcmF0ZS1zZXJpZXMtb3ItbGlzdC1vZi1udW1iZXJzLmh0bWw=">SQL Server vs. Oracle: Generate Series or List of Numbers</span></p>
 </blockquote>
-<p>To generate a list of numbers or series in Oracle or SQL Server, we need to use recursive CTE, if we call the CTE within the CTE then it is called recursive CTE</p>
+<p>To generate a list of numbers or series in Oracle or SQL Server, we need to use recursive CTE, if we call the CTE within the CTE then it is called recursive CTE.</p>
 <h2 id="sql-server"><a class="markdownIt-Anchor" href="#sql-server">#</a> SQL Server</h2>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">WITH</span> REC_CTE(ROW_NUM) <span class="keyword">AS</span> (</span><br><span class="line"></span><br><span class="line"><span class="comment">--create first record, if we want to start the series from 10 then change it from 1 to 10</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="number">1</span> <span class="keyword">AS</span> ROW_NUM</span><br><span class="line"></span><br><span class="line"><span class="keyword">UNION</span> <span class="keyword">ALL</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--calling REC_CTE within REC_CTE and add value 1 to get next number</span></span><br><span class="line"><span class="keyword">SELECT</span> ROW_NUM<span class="operator">+</span><span class="number">1</span> <span class="keyword">FROM</span> REC_CTE</span><br><span class="line"></span><br><span class="line"><span class="comment">--limit the number of rows</span></span><br><span class="line"><span class="keyword">WHERE</span> ROW_NUM<span class="operator">&lt;</span><span class="number">100</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">--now select the CTE to get the list of values</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> REC_CTE;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">WITH</span> REC_CTE(ROW_NUM) <span class="keyword">AS</span> (</span><br><span class="line">    <span class="comment">--create first record, if we want to start the series from 10 then change it from 1 to 10</span></span><br><span class="line">    <span class="keyword">SELECT</span> <span class="number">1</span> <span class="keyword">AS</span> ROW_NUM</span><br><span class="line">    <span class="keyword">UNION</span> <span class="keyword">ALL</span></span><br><span class="line">    <span class="comment">--calling REC_CTE within REC_CTE and add value 1 to get next number</span></span><br><span class="line">    <span class="keyword">SELECT</span> ROW_NUM<span class="operator">+</span><span class="number">1</span> <span class="keyword">FROM</span> REC_CTE</span><br><span class="line">    <span class="comment">--limit the number of rows</span></span><br><span class="line">    <span class="keyword">WHERE</span> ROW_NUM<span class="operator">&lt;</span><span class="number">100</span></span><br><span class="line">)</span><br><span class="line"><span class="comment">--now select the CTE to get the list of values</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> REC_CTE;</span><br></pre></td></tr></table></figure>
 <h2 id="oracle"><a class="markdownIt-Anchor" href="#oracle">#</a> Oracle</h2>
 <h3 id="oracle-11g-version-2-and-higher"><a class="markdownIt-Anchor" href="#oracle-11g-version-2-and-higher">#</a> Oracle 11g version 2 and higher</h3>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">WITH</span> REC_CTE(ROW_NUM) <span class="keyword">AS</span> (</span><br><span class="line"></span><br><span class="line"><span class="comment">--create first record, if we want to start the series from 10 then change it from 1 to 10</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="number">1</span> <span class="keyword">AS</span> ROW_NUM <span class="keyword">FROM</span> DUAL</span><br><span class="line"></span><br><span class="line"><span class="keyword">UNION</span> <span class="keyword">ALL</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--calling REC_CTE within REC_CTE and add value 1 to get next number</span></span><br><span class="line"><span class="keyword">SELECT</span> ROW_NUM<span class="operator">+</span><span class="number">1</span> <span class="keyword">FROM</span> REC_CTE</span><br><span class="line"></span><br><span class="line"><span class="comment">--limit the number of rows to 100</span></span><br><span class="line"><span class="keyword">WHERE</span> ROW_NUM<span class="operator">&lt;</span><span class="number">100</span></span><br><span class="line"></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">--now select the CTE to get the list of values</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> REC_CTE;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">WITH</span> REC_CTE(ROW_NUM) <span class="keyword">AS</span> (</span><br><span class="line">    <span class="comment">--create first record, if we want to start the series from 10 then change it from 1 to 10</span></span><br><span class="line">    <span class="keyword">SELECT</span> <span class="number">1</span> <span class="keyword">AS</span> ROW_NUM <span class="keyword">FROM</span> DUAL</span><br><span class="line">    <span class="keyword">UNION</span> <span class="keyword">ALL</span></span><br><span class="line">    <span class="comment">--calling REC_CTE within REC_CTE and add value 1 to get next number</span></span><br><span class="line">    <span class="keyword">SELECT</span> ROW_NUM<span class="operator">+</span><span class="number">1</span> <span class="keyword">FROM</span> REC_CTE</span><br><span class="line">    <span class="comment">--limit the number of rows to 100</span></span><br><span class="line">    <span class="keyword">WHERE</span> ROW_NUM<span class="operator">&lt;</span><span class="number">100</span></span><br><span class="line">)</span><br><span class="line"><span class="comment">--now select the CTE to get the list of values</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> REC_CTE;</span><br></pre></td></tr></table></figure>
 <h3 id="oracle-other"><a class="markdownIt-Anchor" href="#oracle-other">#</a> Oracle Other</h3>
 <p>Oracle provides a set of hierarchy functions such as START WITH, LEVEL, PRIOR, CONNECT BY, CONNECT_BY_ROOT.</p>
 <p>Example1:</p>
@@ -186,7 +186,7 @@ D E W = 露の世</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2022-09-30 11:06:25" itemprop="dateModified" datetime="2022-09-30T11:06:25+08:00">2022-09-30</time>
+    <time title="Modified: 2022-11-01 17:44:35" itemprop="dateModified" datetime="2022-11-01T17:44:35+08:00">2022-11-01</time>
   </span>
 </div>
 
@@ -203,7 +203,7 @@ D E W = 露の世</title>
     <div class="item left">
       
 
-  <a href="/2022/09/13/css-rebeccapurple/" itemprop="url" rel="prev" data-background-image="&#x2F;images&#x2F;凸变英雄LEAF.jpg" title="The &quot;Hidden&quot; Purple Memorial in Your Web Browser">
+  <a href="/2022/09/13/css-rebeccapurple/" itemprop="url" rel="prev" data-background-image="&#x2F;images&#x2F;物语系列.jpg" title="The &quot;Hidden&quot; Purple Memorial in Your Web Browser">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>The "Hidden" Purple Memorial in Your Web Browser</h3>
@@ -213,7 +213,7 @@ D E W = 露の世</title>
     <div class="item right">
       
 
-  <a href="/2022/09/16/javascript-await/" itemprop="url" rel="next" data-background-image="&#x2F;images&#x2F;黑礁.jpg" title="await - JavaScript | MDN">
+  <a href="/2022/09/16/javascript-await/" itemprop="url" rel="next" data-background-image="&#x2F;images&#x2F;风之谷-3.jpg" title="await - JavaScript | MDN">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>await - JavaScript | MDN</h3>
@@ -250,7 +250,7 @@ D E W = 露の世</title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">314</span>
+        <span class="count">316</span>
         <span class="name">posts</span>
       </a>
     </div>
