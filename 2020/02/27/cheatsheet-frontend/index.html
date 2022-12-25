@@ -102,12 +102,12 @@ D E W = 露の世</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="/images/起风了.jpg"></li>
-          <li class="item" data-background-image="/images/文学少女-2.jpg"></li>
-          <li class="item" data-background-image="/images/空之境界.jpg"></li>
-          <li class="item" data-background-image="/images/进击的巨人.jpg"></li>
-          <li class="item" data-background-image="/images/薄樱鬼.jpg"></li>
-          <li class="item" data-background-image="/images/冰菓.jpg"></li>
+          <li class="item" data-background-image="/images/魔女宅急便-1.jpg"></li>
+          <li class="item" data-background-image="/images/萤火之森.jpg"></li>
+          <li class="item" data-background-image="/images/怪物之子-2.jpg"></li>
+          <li class="item" data-background-image="/images/冰海战记.jpg"></li>
+          <li class="item" data-background-image="/images/神不在的星期天.jpg"></li>
+          <li class="item" data-background-image="/images/南家三姐妹.jpg"></li>
         </ul>
       </div>
     </header>
@@ -191,21 +191,55 @@ D E W = 露の世</title>
 <h2 id="git"><a class="markdownIt-Anchor" href="#git">#</a> Git</h2>
 <img data-src="/2020/02/27/cheatsheet-frontend/git.png" class="">
 <p><strong>本地操作</strong></p>
-<p><code>git add --patch -- file_name</code>  分段提交</p>
-<p><code>git commit --amen</code>  修复提交上次提交的 message</p>
-<p><code>git commit --amend --no-edit</code>  修复提交不更改上次提交的 message</p>
-<p><code>git commit -a -m commit_message</code>  等价于  <code>git add + git commit</code></p>
-<p><code>git checkout --patch branch_name file_name</code>  取出指定分支文件和当前工作区做交互式比对</p>
+<p><code>git add --patch -- file_name</code>  分段提交。</p>
+<p><code>git commit --amend</code>  修复提交上次提交的 message。</p>
+<p><code>git commit --amend --no-edit</code>  修复提交不更改上次提交的 message。</p>
+<p><code>git commit -a -m commit_message</code>  等价于  <code>git add + git commit</code> 。</p>
+<p><code>git checkout --patch branch_name file_name</code>  取出指定分支文件和当前工作区做交互式比对。</p>
 <p><strong>分支操作</strong></p>
 <ul>
-<li><code>git checkout -b branch_name</code>  根据当前分支创建新的分支并切换到新的分支，等价于  <code>git branch branch_name + git checkout branch_name</code></li>
-<li><code>git merge --abort</code>  取消 merge</li>
+<li><code>git checkout -b branch_name</code>  根据当前分支创建新的分支并切换到新的分支，等价于  <code>git branch branch_name + git checkout branch_name</code> 。</li>
+<li><code>git merge --abort</code>  取消 merge。</li>
 </ul>
 <p><strong>远程操作</strong></p>
 <ul>
-<li><code>git push origin --delete branch_name</code>  删除远程分支</li>
-<li><code>git push -u origin/branch_name</code>  push 并绑定远程分支</li>
+<li><code>git push origin --delete branch_name</code>  删除远程分支。</li>
+<li><code>git push -u origin/branch_name</code>  push 并绑定远程分支。</li>
 </ul>
+<p><strong>回退</strong></p>
+<ul>
+<li>
+<p>git reset [option] 版本号</p>
+<ul>
+<li>git reset --mixed 688b4a 对归档区和缓存区回滚，工作区的改动还在，是 reset 的默认 option。</li>
+<li>git reset --hard 688b4a 对归档区和缓存区以及工作区回滚。</li>
+<li>git reset --soft 688b4a 对归档区回滚缓存区和工作区还在。</li>
+<li>git reset --hard HEAD~1 回退到上一个提交。</li>
+</ul>
+</li>
+<li>
+<p>git revert  版本号</p>
+<p>删除中间的某个版本提交，但保留其后续提交，并且会生成一个新的提交。</p>
+<ul>
+<li>git revert e6875c</li>
+<li>git revert HEAD</li>
+<li>git revert -n  <code>master~5..master~2</code></li>
+</ul>
+</li>
+<li>
+<p>git reflog</p>
+<p>查看操作的记录，使用 git reset 之后想再撤回时可以使用 git reflog 查看之前的版本号。</p>
+</li>
+</ul>
+<p><strong>分支合并</strong></p>
+<p>master branch:  <code>git merge dev</code>  产生冲突。</p>
+<ol>
+<li>git reset --hard dbced3f 回退到 merge 之前的状态。</li>
+<li>git checkout dev 切换到 dev 分支。</li>
+<li>git merge master 合并解决冲突然后 add，commit。</li>
+<li>git checkout mater 切换到 master 分支。</li>
+<li>git merge dev 在 master 合并 dev 分支。</li>
+</ol>
 <h2 id="markdown"><a class="markdownIt-Anchor" href="#markdown">#</a> Markdown</h2>
 <img data-src="/2020/02/27/cheatsheet-frontend/markdown.png" class="">
 
@@ -222,7 +256,7 @@ D E W = 露の世</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2022-08-08 17:00:18" itemprop="dateModified" datetime="2022-08-08T17:00:18+08:00">2022-08-08</time>
+    <time title="Modified: 2022-12-20 15:33:02" itemprop="dateModified" datetime="2022-12-20T15:33:02+08:00">2022-12-20</time>
   </span>
 </div>
 
@@ -239,7 +273,7 @@ D E W = 露の世</title>
     <div class="item left">
       
 
-  <a href="/2020/01/21/oracle-cte-with/" itemprop="url" rel="prev" data-background-image="&#x2F;images&#x2F;怪化猫.jpg" title="Oracle With">
+  <a href="/2020/01/21/oracle-cte-with/" itemprop="url" rel="prev" data-background-image="&#x2F;images&#x2F;妖精森林的小不点-2.jpg" title="Oracle With">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Oracle With</h3>
@@ -249,7 +283,7 @@ D E W = 露の世</title>
     <div class="item right">
       
 
-  <a href="/2020/02/27/cheatsheet-backend/" itemprop="url" rel="next" data-background-image="&#x2F;images&#x2F;未闻花名-2.jpg" title="Backend CheatSheet">
+  <a href="/2020/02/27/cheatsheet-backend/" itemprop="url" rel="next" data-background-image="&#x2F;images&#x2F;剑风传奇.jpg" title="Backend CheatSheet">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Backend CheatSheet</h3>
@@ -286,7 +320,7 @@ D E W = 露の世</title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">316</span>
+        <span class="count">318</span>
         <span class="name">posts</span>
       </a>
     </div>

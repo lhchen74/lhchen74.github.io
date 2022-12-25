@@ -1,0 +1,689 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CFira%20Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="db" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2022/12/20/oracle-record-types-bulk-collect-collections/">
+
+
+
+  <title>
+PL/SQL Record types, Bulk Collect, and Collections. |
+D E W = 露の世</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">PL/SQL Record types, Bulk Collect, and Collections.
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2022-12-20 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2022-12-20T00:00:00+08:00">2022-12-20</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">D E W</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="/images/迷域行者.jpg"></li>
+          <li class="item" data-background-image="/images/天元突破红莲螺岩.jpg"></li>
+          <li class="item" data-background-image="/images/灼眼的夏娜.jpg"></li>
+          <li class="item" data-background-image="/images/风之谷.jpg"></li>
+          <li class="item" data-background-image="/images/捉妖小红娘-2.jpg"></li>
+          <li class="item" data-background-image="/images/物语系列.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2022/12/20/oracle-record-types-bulk-collect-collections/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <p>In this chapter, we’ll learn about:</p>
+<ul>
+<li>Using data types based on tables and columns</li>
+<li>Understanding what collections are</li>
+<li>Using the BULK COLLECT keyword to fetch data in bulk</li>
+</ul>
+<p>These are all great features of the PL/SQL language and will take your code to the next level.</p>
+<h2 id="field-types"><a class="markdownIt-Anchor" href="#field-types">#</a> Field Types</h2>
+<p>In earlier code, we declared variables to hold values we loaded from the database.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DECLARE</span></span><br><span class="line">  l_fname VARCHAR2(<span class="number">50</span>);</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">  <span class="keyword">SELECT</span> fname</span><br><span class="line">  <span class="keyword">INTO</span> l_fname</span><br><span class="line">  <span class="keyword">FROM</span> person;</span><br><span class="line">  DBMS_OUTPUT.PUT_LINE(<span class="string">&#x27;The name is &#x27;</span> <span class="operator">||</span> l_fname);</span><br><span class="line"><span class="keyword">END</span>;</span><br></pre></td></tr></table></figure>
+<p>The l_fname variable is a VARCHAR2(50). This just happens to be the same as the table we created:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> person (</span><br><span class="line">  fname VARCHAR2(<span class="number">50</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>But what if the table declaration changes? We shouldn’t be forcing our code to be the same as the table in this way, because we would have to change our code.</p>
+<p>There is a better way to do it, and that’s using the %TYPE attribute.</p>
+<p>The TYPE attribute will let you declare a variable based on the type of a column in a table. This means it is automatically linked to, or set the same as a column that exist. There’s no need to look up the data type manually or change the code if your table changes.</p>
+<p>The code to do that looks like this:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DECLARE</span></span><br><span class="line">  variable_name table_name.column_name <span class="operator">%</span>TYPE;</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">…</span><br></pre></td></tr></table></figure>
+<p>After specifying the variable name, you specify the column and table name separated by a period. You then specify %TYPE, which indicates that your variable has the same type as this column.</p>
+<h2 id="example-using-the-type-attribute"><a class="markdownIt-Anchor" href="#example-using-the-type-attribute">#</a> Example – Using the %TYPE Attribute</h2>
+<p>We can update our code to use this:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DECLARE</span></span><br><span class="line">  l_fname person.fname<span class="operator">%</span>TYPE;</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">  <span class="keyword">SELECT</span> fname</span><br><span class="line">  <span class="keyword">INTO</span> l_fname</span><br><span class="line">  <span class="keyword">FROM</span> person;</span><br><span class="line">  DBMS_OUTPUT.PUT_LINE(<span class="string">&#x27;The name is &#x27;</span> <span class="operator">||</span> l_fname);</span><br><span class="line"><span class="keyword">END</span>;</span><br></pre></td></tr></table></figure>
+<p>The output of this code is:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Statement processed.</span><br><span class="line">The name is John</span><br></pre></td></tr></table></figure>
+<p>This makes your code easier to maintain.</p>
+<h2 id="example-two-variables-using-type"><a class="markdownIt-Anchor" href="#example-two-variables-using-type">#</a> Example – Two Variables Using %TYPE</h2>
+<p>You can declare multiple variables that use the %TYPE attribute if you need to.</p>
+<p>Let’s say our table looked like this:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> person (</span><br><span class="line">  fname VARCHAR2(<span class="number">50</span>),</span><br><span class="line">  lname VARCHAR2(<span class="number">50</span>),</span><br><span class="line">  salary NUMBER(<span class="number">8</span>)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> person (fname, lname, salary)</span><br><span class="line"><span class="keyword">VALUES</span> (<span class="string">&#x27;John&#x27;</span>, <span class="string">&#x27;Smith&#x27;</span>, <span class="number">50000</span>);</span><br></pre></td></tr></table></figure>
+<p>We have one record:</p>
+<table>
+<thead>
+<tr>
+<th><strong>FNAME</strong></th>
+<th><strong>LNAME</strong></th>
+<th><strong>SALARY</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>John</td>
+<td>Smith</td>
+<td>50000</td>
+</tr>
+</tbody>
+</table>
+<p>Our PL/SQL code can output this record by using variables and the %TYPE attribute.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DECLARE</span></span><br><span class="line">  l_fname person.fname<span class="operator">%</span>TYPE;</span><br><span class="line">  l_lname person.lname<span class="operator">%</span>TYPE;</span><br><span class="line">  l_salary person.salary<span class="operator">%</span>TYPE;</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">  <span class="keyword">SELECT</span> fname, lname, salary</span><br><span class="line">  <span class="keyword">INTO</span> l_fname, l_lname, l_salary</span><br><span class="line">  <span class="keyword">FROM</span> person;</span><br><span class="line">  DBMS_OUTPUT.PUT_LINE(<span class="string">&#x27;The name is &#x27;</span> <span class="operator">||</span></span><br><span class="line">    l_fname <span class="operator">||</span> <span class="string">&#x27; &#x27;</span> <span class="operator">||</span> l_lname <span class="operator">||</span></span><br><span class="line">    <span class="string">&#x27; with a salary of &#x27;</span> <span class="operator">||</span> l_salary);</span><br><span class="line"><span class="keyword">END</span>;</span><br></pre></td></tr></table></figure>
+<p>We have used three variables (one for each column), each related to the column in the table.</p>
+<p>The output of this code is:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Statement processed.</span><br><span class="line">The name is John Smith with a salary of 50000</span><br></pre></td></tr></table></figure>
+<h2 id="row-types"><a class="markdownIt-Anchor" href="#row-types">#</a> Row Types</h2>
+<p>Another useful feature of PL/SQL is the ability to create a variable that has the same data type of an entire table row.</p>
+<p>In the example above, we had three separate variables for each of the different columns:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DECLARE</span></span><br><span class="line">  l_fname person.fname<span class="operator">%</span>TYPE;</span><br><span class="line">  l_lname person.lname<span class="operator">%</span>TYPE;</span><br><span class="line">  l_salary person.salary<span class="operator">%</span>TYPE;</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">…</span><br></pre></td></tr></table></figure>
+<p>This may seem OK, but what if we want to use 5 or 10 columns? We would need to declare a lot of variables.</p>
+<p>In PL/SQL, you can declare a single variable and set the type of it equal to the entire row. It kind of works like an array, where each element or attribute is equal to one column.</p>
+<p>We can do this using the %ROWTYPE attribute:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DECLARE</span></span><br><span class="line">  variable_name table_name<span class="operator">%</span>ROWTYPE;</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">…</span><br></pre></td></tr></table></figure>
+<p>We don’t need to specify any column names here: just the variable name, the table to base it on, and %ROWTYPE.</p>
+<p>How do we access the values? We use variable_name.column_name.</p>
+<p>Let’s see an example:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DECLARE</span></span><br><span class="line">  l_row_person person<span class="operator">%</span>ROWTYPE;</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">  <span class="keyword">SELECT</span> fname, lname, salary</span><br><span class="line">  <span class="keyword">INTO</span> l_row_person.fname, l_row_person.lname, l_row_person.salary</span><br><span class="line">  <span class="keyword">FROM</span> person;</span><br><span class="line">  DBMS_OUTPUT.PUT_LINE(<span class="string">&#x27;The name is &#x27;</span> <span class="operator">||</span></span><br><span class="line">    l_row_person.fname <span class="operator">||</span> <span class="string">&#x27; &#x27;</span> <span class="operator">||</span> l_row_person.lname <span class="operator">||</span></span><br><span class="line">    <span class="string">&#x27; with a salary of &#x27;</span> <span class="operator">||</span> l_row_person.salary);</span><br><span class="line"><span class="keyword">END</span>;</span><br></pre></td></tr></table></figure>
+<p>This code includes a few changes:</p>
+<ul>
+<li>There is a single variable called l_row_person, which has a type equal to the person table (using %ROWTYPE).</li>
+<li>The SELECT INTO is selecting the column values into separate attributes of the l_row_person variable, one for each column.</li>
+<li>The PUT_LINE function uses the attributes of the l_row_person variable. For example, l_row_person.fname is the fname column from the person table.</li>
+</ul>
+<p>This results in less code and seems easier to read. It can make a big difference in larger programs.</p>
+<p>The output of this code is:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Statement processed.</span><br><span class="line">The name is John Smith with a salary of 50000</span><br></pre></td></tr></table></figure>
+<h2 id="cursor-based-records"><a class="markdownIt-Anchor" href="#cursor-based-records">#</a> Cursor-Based Records</h2>
+<p>In the earlier example, we used %ROWTYPE to create a variable based on the data type of a table’s columns.</p>
+<p>In an earlier chapter, we also looked at using <span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9zcWwtY3Vyc29yLw==">cursors</span> to select records. Here’s an example:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DECLARE</span></span><br><span class="line">  l_fname VARCHAR2(<span class="number">50</span>);</span><br><span class="line">  <span class="keyword">CURSOR</span> c_person <span class="keyword">IS</span></span><br><span class="line">  <span class="keyword">SELECT</span> fname <span class="keyword">FROM</span> person;</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">  <span class="keyword">OPEN</span> c_person;</span><br><span class="line">  <span class="keyword">FETCH</span> c_person <span class="keyword">INTO</span> l_fname;</span><br><span class="line">  DBMS_OUTPUT.PUT_LINE(<span class="string">&#x27;Name is: &#x27;</span> <span class="operator">||</span> l_fname);</span><br><span class="line">  <span class="keyword">CLOSE</span> c_person;</span><br><span class="line"><span class="keyword">END</span>;</span><br></pre></td></tr></table></figure>
+<p>This code will select the fname into a variable. Another way to do this is to declare a variable that is equal to the type of the cursor, rather than the table or the column. This is helpful if you have a complicated query that gets data from multiple tables.</p>
+<p>The code would look like this:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DECLARE</span></span><br><span class="line">  <span class="keyword">CURSOR</span> c_person <span class="keyword">IS</span></span><br><span class="line">  <span class="keyword">SELECT</span> fname, lname, salary <span class="keyword">FROM</span> person;</span><br><span class="line">  c_person_rec c_person<span class="operator">%</span>ROWTYPE;</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">  <span class="keyword">OPEN</span> c_person;</span><br><span class="line">  <span class="keyword">FETCH</span> c_person <span class="keyword">INTO</span> c_person_rec;</span><br><span class="line">  DBMS_OUTPUT.PUT_LINE(<span class="string">&#x27;The name is &#x27;</span> <span class="operator">||</span></span><br><span class="line">    c_person_rec.fname <span class="operator">||</span> <span class="string">&#x27; &#x27;</span> <span class="operator">||</span> c_person_rec.lname <span class="operator">||</span></span><br><span class="line">    <span class="string">&#x27; with a salary of &#x27;</span> <span class="operator">||</span> c_person_rec.salary);</span><br><span class="line">  <span class="keyword">CLOSE</span> c_person;</span><br><span class="line"><span class="keyword">END</span>;</span><br></pre></td></tr></table></figure>
+<p>This works similar to using a table. The output of this query is:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Statement processed.</span><br><span class="line">The name is John Smith with a salary of 50000</span><br></pre></td></tr></table></figure>
+<h2 id="plsql-collections"><a class="markdownIt-Anchor" href="#plsql-collections">#</a> PL/SQL Collections</h2>
+<p>PL/SQL includes a feature called collections. A collection in PL/SQL is a set of values that have the same data type. It’s similar to an array that we’ve learned about earlier in this guide, but there are several differences.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Object Type</strong></th>
+<th><strong>Number of Elements</strong></th>
+<th><strong>Index Type</strong></th>
+<th><strong>Dense or Sparse</strong></th>
+<th><strong>Can be an Object</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Varray</td>
+<td>Fixed</td>
+<td>Number</td>
+<td>Dense</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Index By Table</td>
+<td>Variable</td>
+<td>String</td>
+<td>Either</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Nested Table</td>
+<td>Variable</td>
+<td>Number</td>
+<td>Either</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p>We’ll learn about the two types of collections in this section: an Index By Table and a Nested Table.</p>
+<h2 id="index-by-table"><a class="markdownIt-Anchor" href="#index-by-table">#</a> Index By Table</h2>
+<p>An Index By Table (also known as an associative array) is a type of variable that stores key-value pairs. Like arrays in other programming languages, the keys can be numbers or strings.</p>
+<p>Creating a variable using an Index By Table is done in the following way:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">TYPE type_name <span class="keyword">IS</span> <span class="keyword">TABLE</span> <span class="keyword">OF</span> element_data_type [<span class="keyword">NOT</span> <span class="keyword">NULL</span>] INDEX <span class="keyword">BY</span> index_data_type;</span><br><span class="line">variable_name type_name;</span><br></pre></td></tr></table></figure>
+<p>In this code, we declare a type, and then a variable of that type. The type has a name that we can provide, and we specify the data type of the elements and the data type of the index.</p>
+<p>An example of this feature is:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DECLARE</span></span><br><span class="line">  TYPE first_name <span class="keyword">IS</span> <span class="keyword">TABLE</span> <span class="keyword">OF</span> VARCHAR2(<span class="number">50</span>) INDEX <span class="keyword">BY</span> PLS_INTEGER;</span><br><span class="line">  name_list first_name;</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">..</span><br><span class="line"><span class="keyword">END</span>;</span><br></pre></td></tr></table></figure>
+<p>How can we populate and use this list? We add items, or elements, to the list by specifying the key in brackets and using the := symbol:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">name_list(<span class="number">1</span>) :<span class="operator">=</span> <span class="string">&#x27;John&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>We can add several elements to this variable:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DECLARE</span></span><br><span class="line">  TYPE first_name <span class="keyword">IS</span> <span class="keyword">TABLE</span> <span class="keyword">OF</span> VARCHAR2(<span class="number">50</span>) INDEX <span class="keyword">BY</span> PLS_INTEGER;</span><br><span class="line">  name_list first_name;</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">  name_list(<span class="number">1</span>) :<span class="operator">=</span> <span class="string">&#x27;John&#x27;</span>;</span><br><span class="line">  name_list(<span class="number">2</span>) :<span class="operator">=</span> <span class="string">&#x27;Susan&#x27;</span>;</span><br><span class="line">  name_list(<span class="number">3</span>) :<span class="operator">=</span> <span class="string">&#x27;Mark&#x27;</span>;</span><br><span class="line">  name_list(<span class="number">4</span>) :<span class="operator">=</span> <span class="string">&#x27;Debra&#x27;</span>;</span><br><span class="line"><span class="keyword">END</span>;</span><br></pre></td></tr></table></figure>
+<p>How do we access the values in the list to output them? We can use the FIRST and NEXT functions of the variable, as well as a loop. These functions are built into the Index By Table data type.</p>
+<p>Our code looks like this:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DECLARE</span></span><br><span class="line">  TYPE first_name <span class="keyword">IS</span> <span class="keyword">TABLE</span> <span class="keyword">OF</span> VARCHAR2(<span class="number">50</span>) INDEX <span class="keyword">BY</span> PLS_INTEGER;</span><br><span class="line">  name_list first_name;</span><br><span class="line">  current_name_id PLS_INTEGER;</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">  name_list(<span class="number">1</span>) :<span class="operator">=</span> <span class="string">&#x27;John&#x27;</span>;</span><br><span class="line">  name_list(<span class="number">2</span>) :<span class="operator">=</span> <span class="string">&#x27;Susan&#x27;</span>;</span><br><span class="line">  name_list(<span class="number">3</span>) :<span class="operator">=</span> <span class="string">&#x27;Mark&#x27;</span>;</span><br><span class="line">  name_list(<span class="number">4</span>) :<span class="operator">=</span> <span class="string">&#x27;Debra&#x27;</span>;</span><br><span class="line">  current_name_id :<span class="operator">=</span> name_list.FIRST;</span><br><span class="line">  WHILE current_name_id <span class="keyword">IS</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span> LOOP</span><br><span class="line">    DBMS_OUTPUT.PUT_LINE(<span class="string">&#x27;The name is &#x27;</span> <span class="operator">||</span> name_list(current_name_id));</span><br><span class="line">    current_name_id :<span class="operator">=</span> name_list.NEXT(current_name_id);</span><br><span class="line">  <span class="keyword">END</span> LOOP;</span><br><span class="line"><span class="keyword">END</span>;</span><br></pre></td></tr></table></figure>
+<p>There is a lot to take in here:</p>
+<ul>
+<li>We have declared a new variable called current_name_id which stores the index of the collection, and is used for the loop.</li>
+<li>The name_list.FIRST will return the index of the first element, which has been stored in the current_name_id variable;</li>
+<li>A WHILE loop will loop through the name_list and output the value of the name_list element.</li>
+<li>The current_name_id variable is incremented using the name_list.NEXT function.</li>
+</ul>
+<p>The output of this code is:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Statement processed.</span><br><span class="line">The name is John</span><br><span class="line">The name is Susan</span><br><span class="line">The name is Mark</span><br><span class="line">The name is Debra</span><br></pre></td></tr></table></figure>
+<h2 id="example-index-by-table-with-select-query"><a class="markdownIt-Anchor" href="#example-index-by-table-with-select-query">#</a> Example – Index By Table with Select Query</h2>
+<p>You can also use an Index By Table with a SELECT query on the database.</p>
+<p>Using our person table from earlier, this code will select the data from that table into the collection:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DECLARE</span></span><br><span class="line">  <span class="keyword">CURSOR</span> c_person <span class="keyword">IS</span></span><br><span class="line">  <span class="keyword">SELECT</span> fname, lname, salary <span class="keyword">FROM</span> person;</span><br><span class="line">  TYPE col_person <span class="keyword">IS</span> <span class="keyword">TABLE</span> <span class="keyword">OF</span> person.fname<span class="operator">%</span>TYPE INDEX <span class="keyword">BY</span> PLS_INTEGER;</span><br><span class="line">  person_list col_person;</span><br><span class="line">  rowcounter PLS_INTEGER :<span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">  <span class="keyword">FOR</span> i <span class="keyword">IN</span> c_person LOOP</span><br><span class="line">    rowcounter :<span class="operator">=</span> rowcounter <span class="operator">+</span> <span class="number">1</span>;</span><br><span class="line">    person_list(rowcounter) :<span class="operator">=</span> i.fname;</span><br><span class="line">    DBMS_OUTPUT.PUT_LINE(<span class="string">&#x27;The name is &#x27;</span> <span class="operator">||</span> person_list(rowcounter));</span><br><span class="line">  <span class="keyword">END</span> LOOP;</span><br><span class="line"><span class="keyword">END</span>;</span><br></pre></td></tr></table></figure>
+<p>The output will show:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Statement processed.</span><br><span class="line">The name is John</span><br><span class="line">The name is Susan</span><br><span class="line">The name is Mark</span><br><span class="line">The name is Debra</span><br></pre></td></tr></table></figure>
+<p>So that’s how you can use an index by table, or associative array, in PL/SQL.</p>
+<h2 id="nested-table"><a class="markdownIt-Anchor" href="#nested-table">#</a> Nested Table</h2>
+<p>A nested table in PL/SQL is another type of collection. It’s very similar to an Index By Table, except it always has an integer for an index. It does not have an INDEX BY clause;</p>
+<p>The syntax for creating one is:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">TYPE type_name <span class="keyword">IS</span> <span class="keyword">TABLE</span> <span class="keyword">OF</span> element_data_type [<span class="keyword">NOT</span> <span class="keyword">NULL</span>];</span><br><span class="line">variable_name type_name;</span><br></pre></td></tr></table></figure>
+<p>We declare the name of the type and the element type, then we declare a variable of that type.</p>
+<p>An example of this in action can be done by modifying the example from earlier:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DECLARE</span></span><br><span class="line">  TYPE first_name <span class="keyword">IS</span> <span class="keyword">TABLE</span> <span class="keyword">OF</span> VARCHAR2(<span class="number">50</span>);</span><br><span class="line">  name_list first_name;</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">  name_list :<span class="operator">=</span> first_name(<span class="string">&#x27;John&#x27;</span>, <span class="string">&#x27;Susan&#x27;</span>, <span class="string">&#x27;Mark&#x27;</span>, <span class="string">&#x27;Debra&#x27;</span>);</span><br><span class="line">  <span class="keyword">FOR</span> i <span class="keyword">IN</span> <span class="number">1</span> .. name_list.count LOOP</span><br><span class="line">    DBMS_OUTPUT.PUT_LINE(<span class="string">&#x27;The name is &#x27;</span> <span class="operator">||</span> name_list(i));</span><br><span class="line">  <span class="keyword">END</span> LOOP;</span><br><span class="line"><span class="keyword">END</span>;</span><br></pre></td></tr></table></figure>
+<p>This is less code than earlier examples, but it shows the concept of a Nested Table.</p>
+<p>The output of this code is:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Statement processed.</span><br><span class="line">The name is John</span><br><span class="line">The name is Susan</span><br><span class="line">The name is Mark</span><br><span class="line">The name is Debra</span><br></pre></td></tr></table></figure>
+<h2 id="when-to-use-index-by-tables-nested-tables-or-varrays-in-plsql"><a class="markdownIt-Anchor" href="#when-to-use-index-by-tables-nested-tables-or-varrays-in-plsql">#</a> When To Use Index By Tables, Nested Tables, or VArrays in PL/SQL</h2>
+<p>We’ve learned about Index By Tables, Nested Tables, and Varrays. How do we know when to use each of them?</p>
+<p>Oracle has some <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm9yYWNsZS5jb20vY2QvQjI4MzU5XzAxL2FwcGRldi4xMTEvYjI4MzcwL2NvbGxlY3Rpb25zLmh0bQ==">recommendations</span>.</p>
+<p>When to use an Index By Table/Associative Array:</p>
+<ul>
+<li>When you have a small lookup table, as it’s created each time in memory whenever you run your code</li>
+</ul>
+<p>When to use a Nested Table:</p>
+<ul>
+<li>When the index values are not consecutive</li>
+<li>When there is not a set number of index values</li>
+<li>You need to delete some of the elements</li>
+</ul>
+<p>When to use a Varray:</p>
+<ul>
+<li>The number of elements is known in advance</li>
+<li>The elements are usually accessed in order</li>
+</ul>
+<h2 id="bulk-collect"><a class="markdownIt-Anchor" href="#bulk-collect">#</a> Bulk Collect</h2>
+<p>Our PL/SQL code often contains PL/SQL code (declaring variables, loops, IF statements) and SQL code (SELECT, INSERT, UPDATE). This makes our programs quite powerful.</p>
+<p>However, it can also make our programs quite slow if they are not written correctly.</p>
+<p>Each time an SQL statement is run from PL/SQL, a “context switch” is performed. The server switches from running the PL/SQL code to running the SQL code. This involves a small amount of work by the server. This may not be noticeable with one statement, but if you’re running hundreds or thousands of statements, across many users, then it can really add up.</p>
+<p>Let’s say we had this PL/SQL code that updated the salary in our person table.</p>
+<p>Here’s our setup data.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> person;</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> person (fname, lname, salary)</span><br><span class="line"><span class="keyword">VALUES</span> (<span class="string">&#x27;John&#x27;</span>, <span class="string">&#x27;Smith&#x27;</span>, <span class="number">20000</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> person (fname, lname, salary)</span><br><span class="line"><span class="keyword">VALUES</span> (<span class="string">&#x27;Susan&#x27;</span>, <span class="string">&#x27;Jones&#x27;</span>, <span class="number">30000</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> person (fname, lname, salary)</span><br><span class="line"><span class="keyword">VALUES</span> (<span class="string">&#x27;Mark&#x27;</span>, <span class="string">&#x27;Blake&#x27;</span>, <span class="number">25000</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> person (fname, lname, salary)</span><br><span class="line"><span class="keyword">VALUES</span> (<span class="string">&#x27;Debra&#x27;</span>, <span class="string">&#x27;Carlson&#x27;</span>, <span class="number">40000</span>);</span><br></pre></td></tr></table></figure>
+<p>Here’s our PL/SQL code.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">  <span class="keyword">FOR</span> current_rec <span class="keyword">IN</span> (<span class="keyword">SELECT</span> fname</span><br><span class="line">  <span class="keyword">FROM</span> person) LOOP</span><br><span class="line"></span><br><span class="line">    DBMS_OUTPUT.PUT_LINE(<span class="string">&#x27;Name: &#x27;</span> <span class="operator">||</span> current_rec.fname);</span><br><span class="line"></span><br><span class="line">    UPDATE person p</span><br><span class="line">    <span class="keyword">SET</span> p.salary <span class="operator">=</span> p.salary <span class="operator">+</span> <span class="number">1000</span></span><br><span class="line">    <span class="keyword">WHERE</span> p.fname <span class="operator">=</span> current_rec.fname;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">END</span> LOOP;</span><br><span class="line"><span class="keyword">END</span>;</span><br></pre></td></tr></table></figure>
+<p>The output is:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1 row(s) updated.</span><br><span class="line">Name: John</span><br><span class="line">Name: Susan</span><br><span class="line">Name: Mark</span><br><span class="line">Name: Debra</span><br></pre></td></tr></table></figure>
+<p>In this code, we have a query that selects names. We loop through this collection and update the person table for each entry in the collection, which means it runs the UPDATE statement four times.</p>
+<p>We can run a SELECT statement to check the new values.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> person;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>FNAME</strong></th>
+<th><strong>LNAME</strong></th>
+<th><strong>SALARY</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>John</td>
+<td>Smith</td>
+<td>21000</td>
+</tr>
+<tr>
+<td>Susan</td>
+<td>Jones</td>
+<td>31000</td>
+</tr>
+<tr>
+<td>Mark</td>
+<td>Blake</td>
+<td>26000</td>
+</tr>
+<tr>
+<td>Debra</td>
+<td>Carlson</td>
+<td>41000</td>
+</tr>
+</tbody>
+</table>
+<p>We can see that each of the salary values has been increased by 1. However, the UPDATE statement has run 4 separate times. This is something we want to avoid.</p>
+<p>We also want to avoid using a cursor for loop as we have here. A cursor for loop is where we have a FOR loop that includes a SELECT query in its criteria. It allows you to loop through each record and process it, as we have done in our code.</p>
+<p>However, a cursor for loop is slow as it processes each row individually. It also performs a context switch between the SQL engine (running the SELECT query) and the PL/SQL engine (the FOR loop) There are better ways to do this: using a <span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9vcmFjbGUtYnVsay1pbnNlcnQv">feature called BULK COLLECT</span>.</p>
+<p>BULK COLLECT allows you to fetch all rows from a SELECT query into a collection in a single statement. The SQL code is run once, and the remainder of the logic is performed in PL/SQL. This greatly reduces the context switching between SQL and PL/SQL, improving the performance of your code.</p>
+<h2 id="example-bulk-collect"><a class="markdownIt-Anchor" href="#example-bulk-collect">#</a> Example – BULK COLLECT</h2>
+<p>So how do we do this? We can introduce a variable to hold our data, and replace the cursor for loop with a SELECT and BULK COLLECT:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DECLARE</span></span><br><span class="line">  TYPE name_type <span class="keyword">IS</span> <span class="keyword">TABLE</span> <span class="keyword">OF</span> person.fname<span class="operator">%</span>TYPE;</span><br><span class="line">  name_list name_type;</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">  <span class="keyword">SELECT</span> fname</span><br><span class="line">  BULK <span class="keyword">COLLECT</span> <span class="keyword">INTO</span> name_list</span><br><span class="line">  <span class="keyword">FROM</span> person;</span><br><span class="line">  <span class="keyword">FOR</span> i <span class="keyword">IN</span> <span class="number">1</span> .. name_list.count LOOP</span><br><span class="line"></span><br><span class="line">    UPDATE person p</span><br><span class="line">    <span class="keyword">SET</span> p.salary <span class="operator">=</span> p.salary <span class="operator">+</span> <span class="number">1000</span></span><br><span class="line">    <span class="keyword">WHERE</span> p.fname <span class="operator">=</span> name_list(i);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">END</span> LOOP;</span><br><span class="line"><span class="keyword">END</span>;</span><br></pre></td></tr></table></figure>
+<p>The changes we have made here are:</p>
+<ul>
+<li>We’ve declared a new TYPE called name_type, which is a table of values of the same type as the person.fname column.</li>
+<li>We’ve declared a new variable based on that type, called name_list.</li>
+<li>We’ve run a SELECT statement which selects the fname column into the name_list variable, using BULK COLLECT. This means all values from the query are added into this collection.</li>
+</ul>
+<p>The loop is then run based on the data already loaded into the name_list variable.</p>
+<p>The output is:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1 row(s) updated.</span><br><span class="line">Name: John</span><br><span class="line">Name: Susan</span><br><span class="line">Name: Mark</span><br><span class="line">Name: Debra</span><br></pre></td></tr></table></figure>
+<p>This improves the performance of the SELECT statement. But what about the UPDATE statement?</p>
+<h2 id="forall-in-plsql"><a class="markdownIt-Anchor" href="#forall-in-plsql">#</a> FORALL in PL/SQL</h2>
+<p>The UPDATE statement in the earlier code is run each time during the loop. This means that there is a context switch between PL/SQL and SQL each time the statement is run. In this example, it happens 4 times, but in a real database, it can happen hundreds or thousands of times.</p>
+<p>If you can put your SQL code outside the loop, then that is better. The code will only run once on all the rows that need to be updated.</p>
+<p>However, if you have logic that means you can’t do this, you can use a feature called FORALL.</p>
+<p>In PL/SQL, the FORALL statement will tell the database to generate and run all of the DML statements that would have been generated separately and run them at once. This reduces the time taken and the context switches.</p>
+<p>To do this, change the code to ensure the UPDATE statement is inside a FORALL:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DECLARE</span></span><br><span class="line">  TYPE name_type <span class="keyword">IS</span> <span class="keyword">TABLE</span> <span class="keyword">OF</span> person.fname<span class="operator">%</span>TYPE;</span><br><span class="line">  name_list name_type;</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">  <span class="keyword">SELECT</span> fname</span><br><span class="line">  BULK <span class="keyword">COLLECT</span> <span class="keyword">INTO</span> name_list</span><br><span class="line">  <span class="keyword">FROM</span> person;</span><br><span class="line">  FORALL i <span class="keyword">IN</span> <span class="number">1</span> .. name_list.count</span><br><span class="line">    UPDATE person p</span><br><span class="line">    <span class="keyword">SET</span> p.salary <span class="operator">=</span> p.salary <span class="operator">+</span> <span class="number">1000</span></span><br><span class="line">    <span class="keyword">WHERE</span> p.fname <span class="operator">=</span> name_list(i);</span><br><span class="line"><span class="keyword">END</span>;</span><br></pre></td></tr></table></figure>
+<p>This will run the UPDATE statements once on the database.</p>
+<p>You can check the before and after using this code:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> person;</span><br><span class="line"></span><br><span class="line"><span class="keyword">DECLARE</span></span><br><span class="line">  TYPE name_type <span class="keyword">IS</span> <span class="keyword">TABLE</span> <span class="keyword">OF</span> person.fname<span class="operator">%</span>TYPE;</span><br><span class="line">  name_list name_type;</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">  <span class="keyword">SELECT</span> fname</span><br><span class="line">  BULK <span class="keyword">COLLECT</span> <span class="keyword">INTO</span> name_list</span><br><span class="line">  <span class="keyword">FROM</span> person;</span><br><span class="line">  FORALL i <span class="keyword">IN</span> <span class="number">1</span> .. name_list.count</span><br><span class="line">    UPDATE person p</span><br><span class="line">    <span class="keyword">SET</span> p.salary <span class="operator">=</span> p.salary <span class="operator">+</span> <span class="number">1000</span></span><br><span class="line">    <span class="keyword">WHERE</span> p.fname <span class="operator">=</span> name_list(i);</span><br><span class="line"><span class="keyword">END</span>;</span><br><span class="line"><span class="operator">/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> person;</span><br></pre></td></tr></table></figure>
+<p>This shows the SELECT query results before the code:</p>
+<table>
+<thead>
+<tr>
+<th><strong>FNAME</strong></th>
+<th><strong>LNAME</strong></th>
+<th><strong>SALARY</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>John</td>
+<td>Smith</td>
+<td>20000</td>
+</tr>
+<tr>
+<td>Susan</td>
+<td>Jones</td>
+<td>30000</td>
+</tr>
+<tr>
+<td>Mark</td>
+<td>Blake</td>
+<td>25000</td>
+</tr>
+<tr>
+<td>Debra</td>
+<td>Carlson</td>
+<td>40000</td>
+</tr>
+</tbody>
+</table>
+<p>And the SELECT query results after the code:</p>
+<table>
+<thead>
+<tr>
+<th><strong>FNAME</strong></th>
+<th><strong>LNAME</strong></th>
+<th><strong>SALARY</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>John</td>
+<td>Smith</td>
+<td>21000</td>
+</tr>
+<tr>
+<td>Susan</td>
+<td>Jones</td>
+<td>31000</td>
+</tr>
+<tr>
+<td>Mark</td>
+<td>Blake</td>
+<td>26000</td>
+</tr>
+<tr>
+<td>Debra</td>
+<td>Carlson</td>
+<td>41000</td>
+</tr>
+</tbody>
+</table>
+<p>So that’s how you can use both BULK COLLECT and FORALL to improve the performance of your PL/SQL code. If you want to learn more about these features, read this article: <span class="exturl" data-url="aHR0cHM6Ly9ibG9ncy5vcmFjbGUuY29tL29yYWNsZW1hZ2F6aW5lL2J1bGstcHJvY2Vzc2luZy13aXRoLWJ1bGstY29sbGVjdC1hbmQtZm9yYWxs">Bulk Processing with BULK COLLECT and FORALL</span>.</p>
+<h2 id="conclusion"><a class="markdownIt-Anchor" href="#conclusion">#</a> Conclusion</h2>
+<p>Field and record types are handy features of PL/SQL and allow you to declare variables based on the type of a column or an entire row in a database table. They improve the maintainability of your code.</p>
+<p>PL/SQL also allows you to use collections. These are similar to arrays but have some other advantages. The two types of collections are Index By Table and Nested Table.</p>
+<p>Running SELECT statements or other DML statements individually can impact the performance of your code. It’s better to switch between PL/SQL and SQL as little as possible. The BULK COLLECT and FORALL features allow you to do that in a better way.</p>
+
+      <div class="tags">
+          <a href="/tags/db/" rel="tag"><i class="ic i-tag"></i> db</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2022-12-20 16:54:04" itemprop="dateModified" datetime="2022-12-20T16:54:04+08:00">2022-12-20</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2022/12/15/oracle-table-naming-conventions/" itemprop="url" rel="prev" data-background-image="&#x2F;images&#x2F;千与千寻-2.jpg" title="Singular vs Plural and Other Database Table Naming Conventions">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Singular vs Plural and Other Database Table Naming Conventions</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#field-types"><span class="toc-number">1.</span> <span class="toc-text"> Field Types</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#example-using-the-type-attribute"><span class="toc-number">2.</span> <span class="toc-text"> Example – Using the %TYPE Attribute</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#example-two-variables-using-type"><span class="toc-number">3.</span> <span class="toc-text"> Example – Two Variables Using %TYPE</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#row-types"><span class="toc-number">4.</span> <span class="toc-text"> Row Types</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cursor-based-records"><span class="toc-number">5.</span> <span class="toc-text"> Cursor-Based Records</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#plsql-collections"><span class="toc-number">6.</span> <span class="toc-text"> PL&#x2F;SQL Collections</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#index-by-table"><span class="toc-number">7.</span> <span class="toc-text"> Index By Table</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#example-index-by-table-with-select-query"><span class="toc-number">8.</span> <span class="toc-text"> Example – Index By Table with Select Query</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nested-table"><span class="toc-number">9.</span> <span class="toc-text"> Nested Table</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#when-to-use-index-by-tables-nested-tables-or-varrays-in-plsql"><span class="toc-number">10.</span> <span class="toc-text"> When To Use Index By Tables, Nested Tables, or VArrays in PL&#x2F;SQL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bulk-collect"><span class="toc-number">11.</span> <span class="toc-text"> Bulk Collect</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#example-bulk-collect"><span class="toc-number">12.</span> <span class="toc-text"> Example – BULK COLLECT</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#forall-in-plsql"><span class="toc-number">13.</span> <span class="toc-text"> FORALL in PL&#x2F;SQL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#conclusion"><span class="toc-number">14.</span> <span class="toc-text"> Conclusion</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">318</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">43</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
+      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2022</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ D E W</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2022/12/20/oracle-record-types-bulk-collect-collections/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

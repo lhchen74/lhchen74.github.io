@@ -1,0 +1,2439 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CFira%20Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="db" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2022/12/11/oracle-regexp/">
+
+
+
+  <title>
+The Complete Guide to Oracle REGEXP Functions |
+D E W = 露の世</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">The Complete Guide to Oracle REGEXP Functions
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2022-12-11 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2022-12-11T00:00:00+08:00">2022-12-11</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">D E W</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="/images/岁月的童话.jpg"></li>
+          <li class="item" data-background-image="/images/灵能百分百.jpg"></li>
+          <li class="item" data-background-image="/images/天真与闪电-1.jpg"></li>
+          <li class="item" data-background-image="/images/黑色四叶草.jpg"></li>
+          <li class="item" data-background-image="/images/死亡笔记-2.jpg"></li>
+          <li class="item" data-background-image="/images/凸变英雄LEAF.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2022/12/11/oracle-regexp/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>转载：<span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9vcmFjbGUtcmVnZXhwLWZ1bmN0aW9ucy8=">The Complete Guide to Oracle REGEXP Functions - Database Star</span></p>
+</blockquote>
+<p>Are you confused by Oracle regular expressions? Want to know how to use them to get the information you need for your queries? Learn all about Oracle REGEXP functions in this article.</p>
+<h2 id="what-is-a-regular-expression"><a class="markdownIt-Anchor" href="#what-is-a-regular-expression">#</a> What is a Regular Expression?</h2>
+<p>A regular expression is a sequence of characters that allows you to search for patterns in strings or text values.</p>
+<p>The “expression” is made up of special characters, which have their own meaning. This expression is then used in a regular expression function, and then the result is used in your query.</p>
+<h2 id="why-use-regular-expressions"><a class="markdownIt-Anchor" href="#why-use-regular-expressions">#</a> Why Use Regular Expressions?</h2>
+<p>The main reason to use regular expressions is that they provide a very specific level of control over the pattern matching for your strings.</p>
+<p>Oracle SQL has <span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9vcmFjbGUtc3FsLWZ1bmN0aW9ucy8=">many string functions</span> that allow you to do some comparisons. You can use <span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9zcWwtdXBwZXItbG93ZXIv">UPPER</span> to find upper case values, for example, and can use a combination of LIKE and <span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9zcWwtd2lsZGNhcmRzLw==">wildcard characters</span> % and _ to find certain values.</p>
+<p>However, for more complicated checks, these functions are not enough.</p>
+<p>This is where regular expressions come in.</p>
+<p>They can be used to:</p>
+<ul>
+<li>Check phone number formats</li>
+<li>Check email address formats</li>
+<li>Check URLs match a specific format</li>
+<li>Check any other type of string value to see if it matches a desired format.</li>
+</ul>
+<p>Many programming languages include regular expressions in their libraries. However, using it at the database level allows for the check to be done closer to where the data is stored, making it more efficient. It’s also more consistent, which means any application that uses the data you’re working with will see and require it in the same format.</p>
+<h2 id="oracle-regular-expression-functions"><a class="markdownIt-Anchor" href="#oracle-regular-expression-functions">#</a> Oracle Regular Expression Functions</h2>
+<p>There are a few functions in Oracle SQL that can be used with regular expressions. They are:</p>
+<ul>
+<li>REGEXP_LIKE</li>
+<li>REGEXP_INSTR</li>
+<li>REGEXP_REPLACE</li>
+<li>REGEXP_SUBSTR</li>
+<li>REGEXP_COUNT (added in Oracle 11g)</li>
+</ul>
+<p>Let’s take a look at these functions in more detail.</p>
+<h2 id="oracle-regexp_like-function"><a class="markdownIt-Anchor" href="#oracle-regexp_like-function">#</a> Oracle REGEXP_LIKE Function</h2>
+<p>The REGEXP_LIKE function searches a column for a specified pattern. It’s used in a WHERE clause to check if a column matches a pattern, and if it does, then the row is included in the result set.</p>
+<p>It’s similar to the LIKE condition, but allows for regular expressions.</p>
+<p>The syntax for the REGEXP_LIKE function is:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">REGEXP_LIKE (source_string, pattern [, match_parameter] )</span><br></pre></td></tr></table></figure>
+<p>The parameters are:</p>
+<ul>
+<li>
+<p><strong>source_string</strong> (mandatory): The value that is searched in. It can be any data type of CHAR, VARCHAR2, NCHAR, NVARCHAR2, CLOB, or NCLOB.</p>
+</li>
+<li>
+<p><strong>pattern</strong> (mandatory): This is the regular expression that you provide. It can be up to 512 bytes.</p>
+</li>
+<li>
+<p>match_parameter</p>
+<p>(optional): This allows you to change the default matching behaviour of the function, which can be one or more of:</p>
+<ul>
+<li>“i”: case-insensitive matching</li>
+<li>“c”: case-sensitive matching</li>
+<li>“n”: allows the “.” character to match the newline character instead of any character</li>
+<li>“m”: treats the source_string value as multiple lines, where ^ is the start of a line and $ is the end of a line.</li>
+</ul>
+</li>
+</ul>
+<p>If you specify multiple match_parameter values that contradict each other (e.g. “ci” which matches to case-sensitive and case-insensitive), then Oracle uses the last value. In this example, it will use “i” instead of “c”.</p>
+<p>If you don’t specify a match parameter, then:</p>
+<ul>
+<li>The default case sensitivity is determined by the parameter NLS_SORT.</li>
+<li>The period character doesn’t match the newline character</li>
+<li>The source string is treated as a single line and not multiple lines.</li>
+</ul>
+<h2 id="oracle-regexp_like-examples"><a class="markdownIt-Anchor" href="#oracle-regexp_like-examples">#</a> Oracle REGEXP_LIKE Examples</h2>
+<p>Let’s take a look at some examples of the REGEXP_LIKE function:</p>
+<h3 id="example-1"><a class="markdownIt-Anchor" href="#example-1">#</a> Example 1</h3>
+<p>This example uses just a source and pattern value.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> title</span><br><span class="line"><span class="keyword">FROM</span> regvalues</span><br><span class="line"><span class="keyword">WHERE</span> REGEXP_LIKE(title, <span class="string">&#x27;W+&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>TITLE</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Waterfall</td>
+</tr>
+<tr>
+<td>Wishful</td>
+</tr>
+<tr>
+<td>Wellness</td>
+</tr>
+</tbody>
+</table>
+<p>It returns these three values because they start with W and have one or more characters following them.</p>
+<h3 id="example-2"><a class="markdownIt-Anchor" href="#example-2">#</a> Example 2</h3>
+<p>This example uses another source and pattern value. It looks for values where there are at least two consecutive “e” characters</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> title</span><br><span class="line"><span class="keyword">FROM</span> regvalues</span><br><span class="line"><span class="keyword">WHERE</span> REGEXP_LIKE(title, <span class="string">&#x27;e&#123;2,&#125;&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>TITLE</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tree</td>
+</tr>
+<tr>
+<td>Freedom</td>
+</tr>
+</tbody>
+</table>
+<p>These two values have the “ee” characters within them.</p>
+<h3 id="example-3"><a class="markdownIt-Anchor" href="#example-3">#</a> Example 3</h3>
+<p>This example looks for values that have a letter “C” in it.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> title</span><br><span class="line"><span class="keyword">FROM</span> regvalues</span><br><span class="line"><span class="keyword">WHERE</span> REGEXP_LIKE(title, <span class="string">&#x27;C&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>TITLE</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Chair</td>
+</tr>
+<tr>
+<td>Crypt</td>
+</tr>
+<tr>
+<td>QUICKLY</td>
+</tr>
+</tbody>
+</table>
+<p>This example shows it doesn’t matter if the “C” is at the start or in the middle of the string.</p>
+<h3 id="example-4"><a class="markdownIt-Anchor" href="#example-4">#</a> Example 4</h3>
+<p>This example looks for values that have either a “V” or a “v” in it. The “i” denotes that the search is case-insensitive.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> title</span><br><span class="line"><span class="keyword">FROM</span> regvalues</span><br><span class="line"><span class="keyword">WHERE</span> REGEXP_LIKE(title, <span class="string">&#x27;V&#x27;</span>, <span class="string">&#x27;i&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>TITLE</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vacuum</td>
+</tr>
+<tr>
+<td>November</td>
+</tr>
+<tr>
+<td>TraVERse</td>
+</tr>
+<tr>
+<td>Undercover</td>
+</tr>
+<tr>
+<td>Vain</td>
+</tr>
+</tbody>
+</table>
+<p>It shows results that have either a “V” or a “v”, at any point in the string.</p>
+<h3 id="example-5"><a class="markdownIt-Anchor" href="#example-5">#</a> Example 5</h3>
+<p>This example shows results that have a “V”, but not those that have a lowercase “v”.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> title</span><br><span class="line"><span class="keyword">FROM</span> regvalues</span><br><span class="line"><span class="keyword">WHERE</span> REGEXP_LIKE(title, <span class="string">&#x27;V&#x27;</span>, <span class="string">&#x27;c&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>TITLE</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vacuum</td>
+</tr>
+<tr>
+<td>TraVERse</td>
+</tr>
+<tr>
+<td>Vain</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-6"><a class="markdownIt-Anchor" href="#example-6">#</a> Example 6</h3>
+<p>This example shows values that have digits inside them.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> title</span><br><span class="line"><span class="keyword">FROM</span> regvalues</span><br><span class="line"><span class="keyword">WHERE</span> REGEXP_LIKE(title, <span class="string">&#x27;[[:digit:]]&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>TITLE</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Summer of 69</td>
+</tr>
+<tr>
+<td>The year is 2017</td>
+</tr>
+<tr>
+<td>1955</td>
+</tr>
+</tbody>
+</table>
+<p>It shows values that are only digits, and those that have digits inside them.</p>
+<h3 id="example-7"><a class="markdownIt-Anchor" href="#example-7">#</a> Example 7</h3>
+<p>This example shows values that have alphabetical characters.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> title</span><br><span class="line"><span class="keyword">FROM</span> regvalues</span><br><span class="line"><span class="keyword">WHERE</span> REGEXP_LIKE(title, <span class="string">&#x27;[[:alpha:]]&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<p>]’);</p>
+<table>
+<thead>
+<tr>
+<th><strong>TITLE</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Box</td>
+</tr>
+<tr>
+<td>Chair</td>
+</tr>
+<tr>
+<td>Vacuum</td>
+</tr>
+<tr>
+<td>Desk</td>
+</tr>
+<tr>
+<td>Round</td>
+</tr>
+<tr>
+<td>Under</td>
+</tr>
+</tbody>
+</table>
+<p>This also only shows a sample of values.</p>
+<h2 id="oracle-regexp_instr-function"><a class="markdownIt-Anchor" href="#oracle-regexp_instr-function">#</a> Oracle REGEXP_INSTR Function</h2>
+<p>The Oracle REGEXP_INSTR function lets you search a string for a regular expression pattern, and returns a number that indicates where the pattern was found.</p>
+<p>It’s similar to the <span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9zcWwtaW5zdHIv">Oracle INSTR function</span>, but it handles regular expressions where INSTR does not.</p>
+<p>The syntax for the REGEXP_INSTR function is:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">REGEXP_INSTR (</span><br><span class="line">  source_string, pattern [, position [, occurrence</span><br><span class="line">  [, return_option [, match_parameter [, sub_expression ] ] ] ] ]</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>This looks pretty complicated! Don’t worry, I’ll explain it all. There are a lot of parameters here, most of which are optional.</p>
+<p>Let’s look at them and see what they do.</p>
+<ul>
+<li>
+<p><strong>source_string</strong> (mandatory): This is the character string that the expression is searched in. It can be any of CHAR, VARCHAR2, NCHAR, NVACHAR2, CLOB, or NCLOB.</p>
+</li>
+<li>
+<p><strong>pattern</strong> (mandatory): This is the regular expression that is used to search within the source_string. It can be any of CHAR, VARCHAR, NCHAR, or NVARCHAR2, and can be up to 512 bytes.</p>
+</li>
+<li>
+<p><strong>position</strong> (optional): This is the position in the source_string where the function should begin the search for the pattern. It must be a positive integer, and the default value is 1 (the search begins at the first character).</p>
+</li>
+<li>
+<p><strong>occurrence</strong> (optional): This is a positive integer that indicates which occurrence of the pattern within the source_string the function should search for. The default value is 1, which means the function finds the first occurrence. If the value is greater than 1, then the function looks for the second occurrence (or further occurrences) after the first occurrence is found.</p>
+</li>
+<li>
+<p><strong>return_option</strong> (optional): This lets you specify what happens when an occurrence is found. If you specify 0, which is the default, the function returns the position of the first character of the occurrence. If you specify 1, then the function returns the position of the character after the occurrence.</p>
+</li>
+<li>
+<p>match_parameter</p>
+<p>(optional): This allows you to change the default matching behaviour of the function, which can be one or more of:</p>
+<ul>
+<li>“i”: case-insensitive matching</li>
+<li>“c”: case-sensitive matching</li>
+<li>“n”: allows the “.” character to match the newline character instead of any character</li>
+<li>“m”: treats the source_string value as multiple lines, where ^ is the start of a line and $ is the end of a line.</li>
+</ul>
+</li>
+<li>
+<p><strong>sub_expression</strong> (optional): If the pattern has subexpressions, this value indicates which subexpression is used in the function. The default value is 0.</p>
+</li>
+</ul>
+<h2 id="oracle-regexp_instr-examples"><a class="markdownIt-Anchor" href="#oracle-regexp_instr-examples">#</a> Oracle REGEXP_INSTR Examples</h2>
+<p>Let’s take a look at some examples of the Oracle REGEXP_INSTR function.</p>
+<h3 id="example-1-2"><a class="markdownIt-Anchor" href="#example-1-2">#</a> Example 1</h3>
+<p>This example finds the position of the “ee” within a string.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> title,</span><br><span class="line">REGEXP_INSTR(title, <span class="string">&#x27;ee&#x27;</span>) <span class="keyword">AS</span> reg</span><br><span class="line"><span class="keyword">FROM</span> regvalues</span><br><span class="line"><span class="keyword">WHERE</span> REGEXP_INSTR(title, <span class="string">&#x27;ee&#x27;</span>) <span class="operator">&gt;</span> <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>TITLE</strong></th>
+<th><strong>REG</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tree</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Freedom</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-2-2"><a class="markdownIt-Anchor" href="#example-2-2">#</a> Example 2</h3>
+<p>This example finds the position of a string that starts with either A, B, or C, and then has 4 alphabetical characters following it.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> title,</span><br><span class="line">REGEXP_INSTR(title, <span class="string">&#x27;[A|B|C][[:alpha:]]&#123;4&#125;&#x27;</span>) <span class="keyword">AS</span> reg</span><br><span class="line"><span class="keyword">FROM</span> regvalues</span><br><span class="line"><span class="keyword">WHERE</span> REGEXP_INSTR(title, <span class="string">&#x27;[A|B|C][[:alpha:]]&#123;4&#125;&#x27;</span>) <span class="operator">&gt;</span> <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>TITLE</strong></th>
+<th><strong>REG</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Chair</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Crypt</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-3-2"><a class="markdownIt-Anchor" href="#example-3-2">#</a> Example 3</h3>
+<p>This example finds the position of strings that have two vowels in a row.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> title,</span><br><span class="line">REGEXP_INSTR(title, <span class="string">&#x27;[aeiou]&#123;2,&#125;&#x27;</span>) <span class="keyword">AS</span> reg</span><br><span class="line"><span class="keyword">FROM</span> regvalues</span><br><span class="line"><span class="keyword">WHERE</span> REGEXP_INSTR(title, <span class="string">&#x27;[aeiou]&#123;2,&#125;&#x27;</span>) <span class="operator">&gt;</span> <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>TITLE</strong></th>
+<th><strong>REG</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Chair</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Vacuum</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Round</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Superficial</td>
+<td>9</td>
+</tr>
+<tr>
+<td>Suspicious</td>
+<td>7</td>
+</tr>
+<tr>
+<td>Tree</td>
+<td>3</td>
+</tr>
+<tr>
+<td>breakfast</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Freedom</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Helium</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Laundromat</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Exclaim</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Vain</td>
+<td>2</td>
+</tr>
+<tr>
+<td>The year is 2017</td>
+<td>6</td>
+</tr>
+</tbody>
+</table>
+<p>As you can see, the REGEXP_INSTR value is different for each row depending on where the two vowels start.</p>
+<h3 id="example-4-2"><a class="markdownIt-Anchor" href="#example-4-2">#</a> Example 4</h3>
+<p>This example shows the position of values where there are two vowels in a row, after position 4.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> title,</span><br><span class="line">REGEXP_INSTR(title, <span class="string">&#x27;[aeiou]&#123;2,&#125;&#x27;</span>, <span class="number">4</span>) <span class="keyword">AS</span> reg</span><br><span class="line"><span class="keyword">FROM</span> regvalues</span><br><span class="line"><span class="keyword">WHERE</span> REGEXP_INSTR(title, <span class="string">&#x27;[aeiou]&#123;2,&#125;&#x27;</span>, <span class="number">4</span>) <span class="operator">&gt;</span> <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>TITLE</strong></th>
+<th><strong>REG</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vacuum</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Superficial</td>
+<td>9</td>
+</tr>
+<tr>
+<td>Suspicious</td>
+<td>7</td>
+</tr>
+<tr>
+<td>Helium</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Exclaim</td>
+<td>5</td>
+</tr>
+<tr>
+<td>The year is 2017</td>
+<td>6</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-5-2"><a class="markdownIt-Anchor" href="#example-5-2">#</a> Example 5</h3>
+<p>This example shows the position of the second occurrence in a string where there is a vowel after position 5.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> title,</span><br><span class="line">REGEXP_INSTR(title, <span class="string">&#x27;[aeiou]&#x27;</span>, <span class="number">5</span>, <span class="number">2</span>) <span class="keyword">AS</span> reg</span><br><span class="line"><span class="keyword">FROM</span> regvalues</span><br><span class="line"><span class="keyword">WHERE</span> REGEXP_INSTR(title, <span class="string">&#x27;[aeiou]&#x27;</span>, <span class="number">5</span>, <span class="number">2</span>) <span class="operator">&gt;</span> <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>TITLE</strong></th>
+<th><strong>REG</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Superficial</td>
+<td>9</td>
+</tr>
+<tr>
+<td>Suspicious</td>
+<td>7</td>
+</tr>
+<tr>
+<td>Designate</td>
+<td>9</td>
+</tr>
+<tr>
+<td>Hawkeye</td>
+<td>7</td>
+</tr>
+<tr>
+<td>Laundromat</td>
+<td>9</td>
+</tr>
+<tr>
+<td>Mathematical</td>
+<td>7</td>
+</tr>
+<tr>
+<td>Exclaim</td>
+<td>6</td>
+</tr>
+<tr>
+<td>Undercover</td>
+<td>9</td>
+</tr>
+<tr>
+<td>Xylophone</td>
+<td>9</td>
+</tr>
+<tr>
+<td>Zucchini</td>
+<td>8</td>
+</tr>
+<tr>
+<td>Summer of 69</td>
+<td>8</td>
+</tr>
+<tr>
+<td>The year is 2017</td>
+<td>7</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-6-2"><a class="markdownIt-Anchor" href="#example-6-2">#</a> Example 6</h3>
+<p>This example shows the position of the second occurrence in a string where there is a vowel after position 5, but shows the position at the end of the value that was found.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> title,</span><br><span class="line">REGEXP_INSTR(title, <span class="string">&#x27;[aeiou]&#x27;</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">1</span>) <span class="keyword">AS</span> reg</span><br><span class="line"><span class="keyword">FROM</span> regvalues</span><br><span class="line"><span class="keyword">WHERE</span> REGEXP_INSTR(title, <span class="string">&#x27;[aeiou]&#x27;</span>, <span class="number">5</span>, <span class="number">2</span>) <span class="operator">&gt;</span> <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>TITLE</strong></th>
+<th><strong>REG</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Superficial</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Suspicious</td>
+<td>8</td>
+</tr>
+<tr>
+<td>Designate</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Hawkeye</td>
+<td>8</td>
+</tr>
+<tr>
+<td>Laundromat</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Mathematical</td>
+<td>8</td>
+</tr>
+<tr>
+<td>Exclaim</td>
+<td>7</td>
+</tr>
+<tr>
+<td>Undercover</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Xylophone</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Zucchini</td>
+<td>9</td>
+</tr>
+<tr>
+<td>Summer of 69</td>
+<td>9</td>
+</tr>
+<tr>
+<td>The year is 2017</td>
+<td>8</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-7-2"><a class="markdownIt-Anchor" href="#example-7-2">#</a> Example 7</h3>
+<p>This example shows the position of values that have an A, B, C, D, or E, followed by a vowel, using a case-insensitive search.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> title,</span><br><span class="line">REGEXP_INSTR(title, <span class="string">&#x27;[A|B|C|D|E][aeiou]&#x27;</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="string">&#x27;i&#x27;</span>) <span class="keyword">AS</span> reg</span><br><span class="line"><span class="keyword">FROM</span> regvalues</span><br><span class="line"><span class="keyword">WHERE</span> REGEXP_INSTR(title, <span class="string">&#x27;[A|B|C|D|E][aeiou]&#x27;</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="string">&#x27;i&#x27;</span>) <span class="operator">&gt;</span> <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>TITLE</strong></th>
+<th><strong>REG</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Box</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Chair</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Vacuum</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Desk</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Under</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Dismiss</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Superficial</td>
+<td>8</td>
+</tr>
+<tr>
+<td>Suspicious</td>
+<td>6</td>
+</tr>
+<tr>
+<td>Tree</td>
+<td>3</td>
+</tr>
+<tr>
+<td>breakfast</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Designate</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>Only some of the values are shown here. &quot;breakfast’ is shown because the search is case-insensitive, so it doesn’t matter that it has lowercase values.</p>
+<h3 id="example-8"><a class="markdownIt-Anchor" href="#example-8">#</a> Example 8</h3>
+<p>This example shows values that have an A, B, or C, followed by a vowel, and finds the position of the vowel.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> title,</span><br><span class="line">REGEXP_INSTR(title, <span class="string">&#x27;([ABC])([aeiou])&#x27;</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="string">&#x27;i&#x27;</span>, <span class="number">2</span>) <span class="keyword">AS</span> reg</span><br><span class="line"><span class="keyword">FROM</span> regvalues</span><br><span class="line"><span class="keyword">WHERE</span> REGEXP_INSTR(title, <span class="string">&#x27;([ABC])([aeiou])&#x27;</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="string">&#x27;i&#x27;</span>) <span class="operator">&gt;</span> <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>TITLE</strong></th>
+<th><strong>REG</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Box</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Chair</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Vacuum</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Superficial</td>
+<td>9</td>
+</tr>
+<tr>
+<td>Suspicious</td>
+<td>7</td>
+</tr>
+<tr>
+<td>November</td>
+<td>7</td>
+</tr>
+<tr>
+<td>October</td>
+<td>6</td>
+</tr>
+<tr>
+<td>Laundromat</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Mathematical</td>
+<td>11</td>
+</tr>
+<tr>
+<td>Exclaim</td>
+<td>6</td>
+</tr>
+<tr>
+<td>Undercover</td>
+<td>7</td>
+</tr>
+<tr>
+<td>Vain</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<h2 id="oracle-regexp_replace-function"><a class="markdownIt-Anchor" href="#oracle-regexp_replace-function">#</a> Oracle REGEXP_REPLACE Function</h2>
+<p>The Oracle REGEXP_REPLACE function is used to search a string for a regular expression and replace it with other characters.</p>
+<p>It’s an extension of the <span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9vcmFjbGUtcmVwbGFjZS8=">standard Oracle REPLACE function</span>, but REPLACE does not support regular expressions where REGEXP_REPLACE does.</p>
+<p>The syntax for this function is:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">REGEXP_REPLACE (source_string, pattern</span><br><span class="line">[, replace_string [, position [, occurrence [, match_parameter ] ] ] ]</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>Let’s take a look at each of these parameters:</p>
+<ul>
+<li>
+<p><strong>source_string</strong> (mandatory): This is the string to be searched in for this function. It is usually a character value and can be any of CHAR, VARCHAR2, NCHAR, NVARCHAR2, CLOB, or NCLOB.</p>
+</li>
+<li>
+<p><strong>pattern</strong> (mandatory): This is the regular expression and is used to search within the source_string. It can be any of CHAR, VARCHAR2, NCHAR, or NVARCHAR2, and can be up to 512 bytes.</p>
+</li>
+<li>
+<p><strong>replace_string</strong> (optional): This is a value that is used to replace the occurrences of the pattern within the source_string. It can be any of CHAR, VARCHAR2, NCHAR, NVARCHAR2, CLOB, or NCLOB. This replace_string can contain backreferences to subexpressions in the pattern by using backslashes (), which I will show you in the examples below.</p>
+</li>
+<li>
+<p><strong>position</strong> (optional): This is the position in the source_string where the function should begin the search for the pattern. It must be a positive integer, and the default value is 1 (the search begins at the first character).</p>
+</li>
+<li>
+<p><strong>occurrence</strong> (optional): This is a positive integer that indicates which occurrence of the pattern within the source_string the function should search for. The default value is 1, which means the function finds the first occurrence. If the value is greater than 1, then the function looks for the second occurrence (or further occurrences) after the first occurrence is found.</p>
+</li>
+<li>
+<p>match_parameter</p>
+<p>(optional): This allows you to change the default matching behaviour of the function, which can be one or more of:</p>
+<ul>
+<li>“i”: case-insensitive matching</li>
+<li>“c”: case-sensitive matching</li>
+<li>“n”: allows the “.” character to match the newline character instead of any character</li>
+<li>“m”: treats the source_string value as multiple lines, where ^ is the start of a line and $ is the end of a line.</li>
+</ul>
+</li>
+</ul>
+<p>The return value is a VARCHAR2 if the source_string is not a CLOB or NCLOB, and CLOB if it is.</p>
+<h2 id="oracle-regexp_replace-examples"><a class="markdownIt-Anchor" href="#oracle-regexp_replace-examples">#</a> Oracle REGEXP_REPLACE Examples</h2>
+<p>Let’s see some examples of the REGEXP_REPLACE function.</p>
+<h3 id="example-1-3"><a class="markdownIt-Anchor" href="#example-1-3">#</a> Example 1</h3>
+<p>This example removes all occurrences of two consecutive vowels.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> title,</span><br><span class="line">REGEXP_REPLACE(title, <span class="string">&#x27;[a|e|i|o|u]&#123;2,&#125;&#x27;</span>) <span class="keyword">AS</span> reg</span><br><span class="line"><span class="keyword">FROM</span> regvalues;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>TITLE</strong></th>
+<th><strong>REG</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Box</td>
+<td>Box</td>
+</tr>
+<tr>
+<td>Chair</td>
+<td>Chr</td>
+</tr>
+<tr>
+<td>Vacuum</td>
+<td>Vacm</td>
+</tr>
+<tr>
+<td>Desk</td>
+<td>Desk</td>
+</tr>
+<tr>
+<td>Round</td>
+<td>Rnd</td>
+</tr>
+<tr>
+<td>Under</td>
+<td>Under</td>
+</tr>
+<tr>
+<td>Waterfall</td>
+<td>Waterfall</td>
+</tr>
+<tr>
+<td>Dismiss</td>
+<td>Dismiss</td>
+</tr>
+<tr>
+<td>Superficial</td>
+<td>Superficl</td>
+</tr>
+<tr>
+<td>Suspicious</td>
+<td>Suspics</td>
+</tr>
+</tbody>
+</table>
+<p>As you can see, the “ai” in “Chair” was removed, but “Box” remained the same, because “Box” only has one consecutive vowel.</p>
+<h3 id="example-2-3"><a class="markdownIt-Anchor" href="#example-2-3">#</a> Example 2</h3>
+<p>This example replaces two consecutive vowels with two dashes.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> title,</span><br><span class="line">REGEXP_REPLACE(title, <span class="string">&#x27;[a|e|i|o|u]&#123;2,&#125;&#x27;</span>, <span class="string">&#x27;--&#x27;</span>) <span class="keyword">AS</span> reg</span><br><span class="line"><span class="keyword">FROM</span> regvalues;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>TITLE</strong></th>
+<th><strong>REG</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Box</td>
+<td>Box</td>
+</tr>
+<tr>
+<td>Chair</td>
+<td>Ch–r</td>
+</tr>
+<tr>
+<td>Vacuum</td>
+<td>Vac–m</td>
+</tr>
+<tr>
+<td>Desk</td>
+<td>Desk</td>
+</tr>
+<tr>
+<td>Round</td>
+<td>R–nd</td>
+</tr>
+<tr>
+<td>Under</td>
+<td>Under</td>
+</tr>
+<tr>
+<td>Waterfall</td>
+<td>Waterfall</td>
+</tr>
+<tr>
+<td>Dismiss</td>
+<td>Dismiss</td>
+</tr>
+<tr>
+<td>Superficial</td>
+<td>Superfic–l</td>
+</tr>
+<tr>
+<td>Suspicious</td>
+<td>Suspic–s</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-3-3"><a class="markdownIt-Anchor" href="#example-3-3">#</a> Example 3</h3>
+<p>This example replaces two consecutive vowels of the same vowel with two dashes.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> title,</span><br><span class="line">REGEXP_REPLACE(title, <span class="string">&#x27;([a|e|i|o|u])\1&#x27;</span>, <span class="string">&#x27;--&#x27;</span>) <span class="keyword">AS</span> reg</span><br><span class="line"><span class="keyword">FROM</span> regvalues;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>TITLE</strong></th>
+<th><strong>REG</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Box</td>
+<td>Box</td>
+</tr>
+<tr>
+<td>Chair</td>
+<td>Chair</td>
+</tr>
+<tr>
+<td>Vacuum</td>
+<td>Vac–m</td>
+</tr>
+<tr>
+<td>Desk</td>
+<td>Desk</td>
+</tr>
+<tr>
+<td>Round</td>
+<td>Round</td>
+</tr>
+<tr>
+<td>Under</td>
+<td>Under</td>
+</tr>
+<tr>
+<td>Waterfall</td>
+<td>Waterfall</td>
+</tr>
+<tr>
+<td>Dismiss</td>
+<td>Dismiss</td>
+</tr>
+<tr>
+<td>Superficial</td>
+<td>Superficial</td>
+</tr>
+<tr>
+<td>Suspicious</td>
+<td>Suspicious</td>
+</tr>
+</tbody>
+</table>
+<p>As you can see, “Vacuum” had the “uu” replaced, but “Chair” did not, as the vowels in “Chair” are not the same.</p>
+<h3 id="example-4-3"><a class="markdownIt-Anchor" href="#example-4-3">#</a> Example 4</h3>
+<p>This example replaces any digits in the string with a + and then the digit.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> title,</span><br><span class="line">REGEXP_REPLACE(title, <span class="string">&#x27;([[:digit:]])&#x27;</span>, <span class="string">&#x27;+\1&#x27;</span>) <span class="keyword">AS</span> reg</span><br><span class="line"><span class="keyword">FROM</span> regvalues;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>TITLE</strong></th>
+<th><strong>REG</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Yeti</td>
+<td>Yeti</td>
+</tr>
+<tr>
+<td>Zucchini</td>
+<td>Zucchini</td>
+</tr>
+<tr>
+<td>Summer of 69</td>
+<td>Summer of +6+9</td>
+</tr>
+<tr>
+<td>The year is 2017</td>
+<td>The year is +2+0+1+7</td>
+</tr>
+<tr>
+<td>1955</td>
+<td>+1+9+5+5</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-5-3"><a class="markdownIt-Anchor" href="#example-5-3">#</a> Example 5</h3>
+<p>This example replaces any vowel character followed by any letter from “a” to “m”, starting from position 4, with two dashes.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> title,</span><br><span class="line">REGEXP_REPLACE(title, <span class="string">&#x27;[a|e|i|o|u][a-m]&#x27;</span>, <span class="string">&#x27;--&#x27;</span>, <span class="number">4</span>) <span class="keyword">AS</span> reg</span><br><span class="line"><span class="keyword">FROM</span> regvalues;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>TITLE</strong></th>
+<th><strong>REG</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Box</td>
+<td>Box</td>
+</tr>
+<tr>
+<td>Chair</td>
+<td>Chair</td>
+</tr>
+<tr>
+<td>Vacuum</td>
+<td>Vacu–</td>
+</tr>
+<tr>
+<td>Desk</td>
+<td>Desk</td>
+</tr>
+<tr>
+<td>Round</td>
+<td>Round</td>
+</tr>
+<tr>
+<td>Under</td>
+<td>Under</td>
+</tr>
+<tr>
+<td>Waterfall</td>
+<td>Waterf–l</td>
+</tr>
+<tr>
+<td>Dismiss</td>
+<td>Dismiss</td>
+</tr>
+<tr>
+<td>Superficial</td>
+<td>Superf—-l</td>
+</tr>
+<tr>
+<td>Suspicious</td>
+<td>Susp–ious</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-6-3"><a class="markdownIt-Anchor" href="#example-6-3">#</a> Example 6</h3>
+<p>This example replaces the second occurrence of any vowel character followed by any letter from “a” to “m”, starting from position 1, with two dashes.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> title,</span><br><span class="line">REGEXP_REPLACE(title, <span class="string">&#x27;[a|e|i|o|u][a-m]&#x27;</span>, <span class="string">&#x27;--&#x27;</span>, <span class="number">1</span>, <span class="number">2</span>) <span class="keyword">AS</span> reg</span><br><span class="line"><span class="keyword">FROM</span> regvalues;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>TITLE</strong></th>
+<th><strong>REG</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Box</td>
+<td>Box</td>
+</tr>
+<tr>
+<td>Chair</td>
+<td>Chair</td>
+</tr>
+<tr>
+<td>Vacuum</td>
+<td>Vacu–</td>
+</tr>
+<tr>
+<td>Desk</td>
+<td>Desk</td>
+</tr>
+<tr>
+<td>Round</td>
+<td>Round</td>
+</tr>
+<tr>
+<td>Under</td>
+<td>Under</td>
+</tr>
+<tr>
+<td>Waterfall</td>
+<td>Waterfall</td>
+</tr>
+<tr>
+<td>Dismiss</td>
+<td>Dismiss</td>
+</tr>
+<tr>
+<td>Superficial</td>
+<td>Superfic–l</td>
+</tr>
+<tr>
+<td>Suspicious</td>
+<td>Suspicious</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-7-3"><a class="markdownIt-Anchor" href="#example-7-3">#</a> Example 7</h3>
+<p>This example replaces more than one consecutive capitalised letter with an underscore, starting from position 2.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> title,</span><br><span class="line">REGEXP_REPLACE(title, <span class="string">&#x27;[A-Z]+&#x27;</span>, <span class="string">&#x27;_&#x27;</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="string">&#x27;c&#x27;</span>) <span class="keyword">AS</span> reg</span><br><span class="line"><span class="keyword">FROM</span> regvalues;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>TITLE</strong></th>
+<th><strong>REG</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mathematical</td>
+<td>Mathematical</td>
+</tr>
+<tr>
+<td>Press</td>
+<td>Press</td>
+</tr>
+<tr>
+<td>QUICKLY</td>
+<td>Q_</td>
+</tr>
+<tr>
+<td>Roger</td>
+<td>Roger</td>
+</tr>
+<tr>
+<td>Simple</td>
+<td>Simple</td>
+</tr>
+</tbody>
+</table>
+<h2 id="oracle-regexp_substr-function"><a class="markdownIt-Anchor" href="#oracle-regexp_substr-function">#</a> Oracle REGEXP_SUBSTR Function</h2>
+<p>The Oracle REGEXP_SUBSTR function allows you to search for a string inside another string, using regular expressions.</p>
+<p>It’s similar to the REGEXP_INSTR function, but instead of returning the position of the string, it returns the substring. One of the uses is to <span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9zcWwtc3BsaXQtc3RyaW5nLw==">split a string into separate rows</span>.</p>
+<p>It extends the <span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9vcmFjbGUtc3Vic3RyLw==">SUBSTR function</span> but allows the user of regular expressions.</p>
+<p>The function returns a VARCHAR2 or CLOB data type, depending on what has been provided as an input.</p>
+<p>The syntax of the REGEXP_SUBSTR function is:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">REGEXP_SUBSTR (</span><br><span class="line">source_string, pattern [, position [, occurrence [, match_parameter ] ] ]</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>The parameters for this function are:</p>
+<ul>
+<li>
+<p><strong>source_string</strong> (mandatory): This is the string to be searched inside of. It is usually the larger of the two parameters, and is usually a character value and can be any of CHAR, VARCHAR2, NCHAR, NVARCHAR2, CLOB, or NCLOB.</p>
+</li>
+<li>
+<p><strong>pattern</strong> (mandatory): This is the regular expression and is used to search within the source_string. It can be any of CHAR, VARCHAR2, NCHAR, or NVARCHAR2, and can be up to 512 bytes.</p>
+</li>
+<li>
+<p><strong>position</strong> (optional): This is the position in the source_string where the function should begin the search for the pattern. It must be a positive integer, and the default value is 1 (the search begins at the first character).</p>
+</li>
+<li>
+<p><strong>occurrence</strong> (optional): This is a positive integer that indicates which occurrence of the pattern within the source_string the function should search for. The default value is 1, which means the function finds the first occurrence. If the value is greater than 1, then the function looks for the second occurrence (or further occurrences) after the first occurrence is found.</p>
+</li>
+<li>
+<p>match_parameter</p>
+<p>(optional): This allows you to change the default matching behaviour of the function, which can be one or more of:</p>
+<ul>
+<li>“i”: case-insensitive matching</li>
+<li>“c”: case-sensitive matching</li>
+<li>“n”: allows the “.” character to match the newline character instead of any character</li>
+<li>“m”: treats the source_string value as multiple lines, where ^ is the start of a line and $ is the end of a line.</li>
+</ul>
+</li>
+</ul>
+<h2 id="oracle-regexp_substr-examples"><a class="markdownIt-Anchor" href="#oracle-regexp_substr-examples">#</a> Oracle REGEXP_SUBSTR Examples</h2>
+<p>Let’s take a look at some examples of the REGEXP_SUBSTR function.</p>
+<h3 id="example-1-4"><a class="markdownIt-Anchor" href="#example-1-4">#</a> Example 1</h3>
+<p>This example finds a substring that matches two consecutive vowels.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> title,</span><br><span class="line">REGEXP_SUBSTR(title, <span class="string">&#x27;[a|e|i|o|u]&#123;2,&#125;&#x27;</span>) <span class="keyword">AS</span> reg</span><br><span class="line"><span class="keyword">FROM</span> regvalues;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>TITLE</strong></th>
+<th><strong>REG</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Box</td>
+<td>(null)</td>
+</tr>
+<tr>
+<td>Chair</td>
+<td>ai</td>
+</tr>
+<tr>
+<td>Vacuum</td>
+<td>uu</td>
+</tr>
+<tr>
+<td>Desk</td>
+<td>(null)</td>
+</tr>
+<tr>
+<td>Round</td>
+<td>ou</td>
+</tr>
+<tr>
+<td>Under</td>
+<td>(null)</td>
+</tr>
+<tr>
+<td>Waterfall</td>
+<td>(null)</td>
+</tr>
+<tr>
+<td>Dismiss</td>
+<td>(null)</td>
+</tr>
+<tr>
+<td>Superficial</td>
+<td>ia</td>
+</tr>
+<tr>
+<td>Suspicious</td>
+<td>iou</td>
+</tr>
+</tbody>
+</table>
+<p>It returns the substring that was found, and NULL for all other records.</p>
+<h3 id="example-2-4"><a class="markdownIt-Anchor" href="#example-2-4">#</a> Example 2</h3>
+<p>This example finds all consecutive vowels in a string that are the same, and returns NULL for those that don’t have consecutive vowels that are the same.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> title,</span><br><span class="line">REGEXP_SUBSTR(title, <span class="string">&#x27;([a|e|i|o|u])\1&#x27;</span>) <span class="keyword">AS</span> reg</span><br><span class="line"><span class="keyword">FROM</span> regvalues;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>TITLE</strong></th>
+<th><strong>REG</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Box</td>
+<td>(null)</td>
+</tr>
+<tr>
+<td>Chair</td>
+<td>(null)</td>
+</tr>
+<tr>
+<td>Vacuum</td>
+<td>uu</td>
+</tr>
+<tr>
+<td>Desk</td>
+<td>(null)</td>
+</tr>
+<tr>
+<td>Round</td>
+<td>(null)</td>
+</tr>
+<tr>
+<td>Under</td>
+<td>(null)</td>
+</tr>
+<tr>
+<td>Waterfall</td>
+<td>(null)</td>
+</tr>
+<tr>
+<td>Dismiss</td>
+<td>(null)</td>
+</tr>
+<tr>
+<td>Superficial</td>
+<td>(null)</td>
+</tr>
+<tr>
+<td>Suspicious</td>
+<td>(null)</td>
+</tr>
+<tr>
+<td>Tree</td>
+<td>ee</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-3-4"><a class="markdownIt-Anchor" href="#example-3-4">#</a> Example 3</h3>
+<p>This example finds substrings that contain one or more digits.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> title,</span><br><span class="line">REGEXP_SUBSTR(title, <span class="string">&#x27;[[:digit:]]+&#x27;</span>) <span class="keyword">AS</span> reg</span><br><span class="line"><span class="keyword">FROM</span> regvalues;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>TITLE</strong></th>
+<th><strong>REG</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Xylophone</td>
+<td>(null)</td>
+</tr>
+<tr>
+<td>Yeti</td>
+<td>(null)</td>
+</tr>
+<tr>
+<td>Zucchini</td>
+<td>(null)</td>
+</tr>
+<tr>
+<td>Summer of 69</td>
+<td>69</td>
+</tr>
+<tr>
+<td>The year is 2017</td>
+<td>2017</td>
+</tr>
+<tr>
+<td>1955</td>
+<td>1955</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-4-4"><a class="markdownIt-Anchor" href="#example-4-4">#</a> Example 4</h3>
+<p>This example finds substrings that have a vowel followed by a letter from “a” to “m”, starting from position 4.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> title,</span><br><span class="line">REGEXP_SUBSTR(title, <span class="string">&#x27;[a|e|i|o|u][a-m]&#x27;</span>, <span class="number">4</span>) <span class="keyword">AS</span> reg</span><br><span class="line"><span class="keyword">FROM</span> regvalues;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>TITLE</strong></th>
+<th><strong>REG</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Box</td>
+<td>(null)</td>
+</tr>
+<tr>
+<td>Chair</td>
+<td>(null)</td>
+</tr>
+<tr>
+<td>Vacuum</td>
+<td>um</td>
+</tr>
+<tr>
+<td>Desk</td>
+<td>(null)</td>
+</tr>
+<tr>
+<td>Round</td>
+<td>(null)</td>
+</tr>
+<tr>
+<td>Under</td>
+<td>(null)</td>
+</tr>
+<tr>
+<td>Waterfall</td>
+<td>al</td>
+</tr>
+<tr>
+<td>Dismiss</td>
+<td>(null)</td>
+</tr>
+<tr>
+<td>Superficial</td>
+<td>ic</td>
+</tr>
+<tr>
+<td>Suspicious</td>
+<td>ic</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-5-4"><a class="markdownIt-Anchor" href="#example-5-4">#</a> Example 5</h3>
+<p>This example finds the second occurrence of substrings that have a vowel followed by a letter from “a” to “m”.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> title,</span><br><span class="line">REGEXP_SUBSTR(title, <span class="string">&#x27;[a|e|i|o|u][a-m]&#x27;</span>, <span class="number">1</span>, <span class="number">2</span>) <span class="keyword">AS</span> reg</span><br><span class="line"><span class="keyword">FROM</span> regvalues;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>TITLE</strong></th>
+<th><strong>REG</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Box</td>
+<td>(null)</td>
+</tr>
+<tr>
+<td>Chair</td>
+<td>(null)</td>
+</tr>
+<tr>
+<td>Vacuum</td>
+<td>um</td>
+</tr>
+<tr>
+<td>Desk</td>
+<td>(null)</td>
+</tr>
+<tr>
+<td>Round</td>
+<td>(null)</td>
+</tr>
+<tr>
+<td>Under</td>
+<td>(null)</td>
+</tr>
+<tr>
+<td>Waterfall</td>
+<td>(null)</td>
+</tr>
+<tr>
+<td>Dismiss</td>
+<td>(null)</td>
+</tr>
+<tr>
+<td>Superficial</td>
+<td>ia</td>
+</tr>
+<tr>
+<td>Suspicious</td>
+<td>(null)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-6-4"><a class="markdownIt-Anchor" href="#example-6-4">#</a> Example 6</h3>
+<p>This example finds substrings that contain one or more consecutive capital letters starting from position 2.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> title,</span><br><span class="line">REGEXP_SUBSTR(title, <span class="string">&#x27;[A-Z]+&#x27;</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="string">&#x27;c&#x27;</span>) <span class="keyword">AS</span> reg</span><br><span class="line"><span class="keyword">FROM</span> regvalues;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>TITLE</strong></th>
+<th><strong>REG</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mathematical</td>
+<td>(null)</td>
+</tr>
+<tr>
+<td>Press</td>
+<td>(null)</td>
+</tr>
+<tr>
+<td>QUICKLY</td>
+<td>UICKLY</td>
+</tr>
+<tr>
+<td>Roger</td>
+<td>(null)</td>
+</tr>
+<tr>
+<td>Simple</td>
+<td>(null)</td>
+</tr>
+<tr>
+<td>TraVERse</td>
+<td>VER</td>
+</tr>
+<tr>
+<td>Exclaim</td>
+<td>(null)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="oracle-regexp_count"><a class="markdownIt-Anchor" href="#oracle-regexp_count">#</a> Oracle REGEXP_COUNT</h2>
+<p>The Oracle REGEXP_COUNT function finds the number of times a pattern occurs in a particular string. It returns an integer which indicates the number of times it was found. If no matches are found, it returns 0.</p>
+<p>The REGEXP_COUNT function is a new function in Oracle 11g. It works in a similar way to REGEXP_INSTR.</p>
+<p>The syntax of this function is:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">REGEXP_COUNT (source_string, pattern [, position [, match_parameter ] ] ] )</span><br></pre></td></tr></table></figure>
+<p>The parameters for this function are:</p>
+<ul>
+<li>
+<p><strong>source_string</strong> (mandatory): This is the string to be searched inside of. It is usually a character value and can be any of CHAR, VARCHAR2, NCHAR, NVARCHAR2, CLOB, or NCLOB.</p>
+</li>
+<li>
+<p><strong>pattern</strong> (mandatory): This is the regular expression and is used to search within the source_string. It can be any of CHAR, VARCHAR2, NCHAR, or NVARCHAR2, and can be up to 512 bytes.</p>
+</li>
+<li>
+<p><strong>position</strong> (optional): This is the position in the source_string where the function should begin the search for the pattern. It must be a positive integer, and the default value is 1 (the search begins at the first character).</p>
+</li>
+<li>
+<p>match_parameter</p>
+<p>(optional): This allows you to change the default matching behaviour of the function, which can be one or more of:</p>
+<ul>
+<li>“i”: case-insensitive matching</li>
+<li>“c”: case-sensitive matching</li>
+<li>“n”: allows the “.” character to match the newline character instead of any character</li>
+<li>“m”: treats the source_string value as multiple lines, where ^ is the start of a line and $ is the end of a line.</li>
+<li>“x”: ignores whitespace characters. By default, any whitespace characters will match.</li>
+</ul>
+</li>
+</ul>
+<p>The REGEXP_COUNT function ignores subexpressions in the pattern. This means any brackets used to create subexpression patterns are ignored and the pattern is treated as a single expression.</p>
+<h2 id="oracle-regexp_count-examples"><a class="markdownIt-Anchor" href="#oracle-regexp_count-examples">#</a> Oracle REGEXP_COUNT Examples</h2>
+<p>Here are some examples of the REGEX_COUNT function.</p>
+<h3 id="example-1-5"><a class="markdownIt-Anchor" href="#example-1-5">#</a> Example 1</h3>
+<p>This example finds the number of occurrences that contain two consecutive vowels.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> title,</span><br><span class="line">REGEXP_COUNT(title, <span class="string">&#x27;[a|e|i|o|u]&#123;2,&#125;&#x27;</span>) <span class="keyword">AS</span> reg</span><br><span class="line"><span class="keyword">FROM</span> regvalues;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>TITLE</strong></th>
+<th><strong>REG</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Box</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Chair</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Vacuum</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Desk</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Round</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Under</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Waterfall</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Dismiss</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Superficial</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Suspicious</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-2-5"><a class="markdownIt-Anchor" href="#example-2-5">#</a> Example 2</h3>
+<p>This example finds the number of occurrences that contain vowels.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> title,</span><br><span class="line">REGEXP_COUNT(title, <span class="string">&#x27;[a|e|i|o|u]&#x27;</span>) <span class="keyword">AS</span> reg</span><br><span class="line"><span class="keyword">FROM</span> regvalues;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>TITLE</strong></th>
+<th><strong>REG</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Box</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Chair</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Vacuum</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Desk</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Round</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Under</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Waterfall</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Dismiss</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Superficial</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Suspicious</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-3-5"><a class="markdownIt-Anchor" href="#example-3-5">#</a> Example 3</h3>
+<p>This example finds the number of occurrences that contain digits.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> title,</span><br><span class="line">REGEXP_COUNT(title, <span class="string">&#x27;[[:digit:]]&#x27;</span>) <span class="keyword">AS</span> reg</span><br><span class="line"><span class="keyword">FROM</span> regvalues;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>TITLE</strong></th>
+<th><strong>REG</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Wishful</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Wellness</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Xylophone</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Yeti</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Zucchini</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Summer of 69</td>
+<td>2</td>
+</tr>
+<tr>
+<td>The year is 2017</td>
+<td>4</td>
+</tr>
+<tr>
+<td>1955</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-4-5"><a class="markdownIt-Anchor" href="#example-4-5">#</a> Example 4</h3>
+<p>This example finds the number of occurrences that contain vowels, starting from position 3.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> title,</span><br><span class="line">REGEXP_COUNT(title, <span class="string">&#x27;[a|e|i|o|u]&#x27;</span>, <span class="number">3</span>) <span class="keyword">AS</span> reg</span><br><span class="line"><span class="keyword">FROM</span> regvalues;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>TITLE</strong></th>
+<th><strong>REG</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Box</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Chair</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Vacuum</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Desk</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Round</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Under</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Waterfall</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Dismiss</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Superficial</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Suspicious</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-5-5"><a class="markdownIt-Anchor" href="#example-5-5">#</a> Example 5</h3>
+<p>This example finds the number of occurrences that contain a capital letter, starting from position 2.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> title,</span><br><span class="line">REGEXP_COUNT(title, <span class="string">&#x27;[A-Z]&#x27;</span>, <span class="number">2</span>, <span class="string">&#x27;c&#x27;</span>) <span class="keyword">AS</span> reg</span><br><span class="line"><span class="keyword">FROM</span> regvalues;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>TITLE</strong></th>
+<th><strong>REG</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mathematical</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Press</td>
+<td>0</td>
+</tr>
+<tr>
+<td>QUICKLY</td>
+<td>6</td>
+</tr>
+<tr>
+<td>Roger</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Simple</td>
+<td>0</td>
+</tr>
+<tr>
+<td>TraVERse</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Exclaim</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Undercover</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Vain</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="function-syntax-summary"><a class="markdownIt-Anchor" href="#function-syntax-summary">#</a> Function Syntax Summary</h2>
+<p>As you may have noticed, the REGEXP functions have a lot of similar parameters. This table highlights how the parameters are the same between each function.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>REGEXP_ LIKE</strong></th>
+<th><strong>REGEXP_ INSTR</strong></th>
+<th><strong>REGEXP_ SUBSTR</strong></th>
+<th><strong>REGEXP_ REPLACE</strong></th>
+<th><strong>REGEXP_ COUNT</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>source_string</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>pattern</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>replace_string</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>position</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>occurrence</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>return_option</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>match_parameter</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>sub_expression</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<h2 id="oracle-regular-expression-patterns"><a class="markdownIt-Anchor" href="#oracle-regular-expression-patterns">#</a> Oracle Regular Expression Patterns</h2>
+<p>Regular expressions are a sequence of characters that are used to search another string.</p>
+<p>Each of the characters inside a regular expression has a specific meaning.</p>
+<p>There are characters called “metacharacters”, which are used to specify the rules used for searching a character or set of characters.</p>
+<p>I’ll show some examples of these being used shortly, but first I’ll show you what these characters are.</p>
+<p>This table shows the metacharacters used in Oracle.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Metacharacter Syntax</strong></th>
+<th><strong>Operator Name</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.</td>
+<td>Any Character: Dot</td>
+<td>Matches any character</td>
+</tr>
+<tr>
+<td>+</td>
+<td>One or More: Plus Quantifier</td>
+<td>Matches one or more occurrences of the preceding subexpression</td>
+</tr>
+<tr>
+<td>?</td>
+<td>Zero or One: Question Mark Quantifier</td>
+<td>Matches zero or one occurrence of the preceding subexpression</td>
+</tr>
+<tr>
+<td>*</td>
+<td>Zero or More: Star Quantifier</td>
+<td>Matches zero or more occurrences of the preceding subexpression</td>
+</tr>
+<tr>
+<td m=""></td>
+<td>Interval: Exact Count</td>
+<td>Matches exactly m occurrences of the preceding subexpression</td>
+</tr>
+<tr>
+<td m,=""></td>
+<td>Interval: At Least Count</td>
+<td>Matches at least m occurrences of the preceding subexpression</td>
+</tr>
+<tr>
+<td m,n=""></td>
+<td>Interval: Between Count</td>
+<td>Matches at least m, but not more than n occurrences of the preceding subexpression</td>
+</tr>
+<tr>
+<td>[ … ]</td>
+<td>Matching Character List</td>
+<td>Matches any character in list …</td>
+</tr>
+<tr>
+<td>[^ … ]</td>
+<td>Non-Matching Character List</td>
+<td>Matches any character not in list …</td>
+</tr>
+<tr>
+<td>|</td>
+<td>Or</td>
+<td>Matches either character each side of this symbol</td>
+</tr>
+<tr>
+<td>( … )</td>
+<td>Subexpression or Grouping</td>
+<td>Treat expression … as a unit. The subexpression can be a string of literals or a complex expression containing operators.</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>Backreference</td>
+<td>Matches the nth preceding subexpression, where n is an integer from 1 to 9.</td>
+</tr>
+<tr>
+<td>\</td>
+<td>Escape Character</td>
+<td>Treat the subsequent metacharacter in the expression as a literal.</td>
+</tr>
+<tr>
+<td>^</td>
+<td>Beginning of Line Anchor</td>
+<td>Match the subsequent expression only when it occurs at the beginning of a line.</td>
+</tr>
+<tr>
+<td>$</td>
+<td>End of Line Anchor</td>
+<td>Match the preceding expression only when it occurs at the end of a line.</td>
+</tr>
+<tr>
+<td>[:class:]</td>
+<td>POSIX Character Class</td>
+<td>Match any character belonging to the specified character class. Can be used inside any list expression.</td>
+</tr>
+<tr>
+<td>[.element.]</td>
+<td>POSIX Collating Sequence</td>
+<td>Specifies a collating sequence to use in the regular expression. The element you use must be a defined collating sequence, in the current locale.</td>
+</tr>
+<tr>
+<td>[=character=]</td>
+<td>POSIX Character Equivalence Class</td>
+<td>Match characters having the same base character as the character you specify.</td>
+</tr>
+</tbody>
+</table>
+<p>Let’s take a look at some examples of using regular expression patterns.</p>
+<h3 id="basic-example"><a class="markdownIt-Anchor" href="#basic-example">#</a> Basic Example</h3>
+<p>This example is the simplest match you can get with a regular expression.</p>
+<p>If you provide a pattern of ‘abc’, with no metacharacters, you will find the sequence ‘abc’.</p>
+<ul>
+<li>Pattern: ‘abc’</li>
+<li>Matches: ‘abc’</li>
+<li>Does not match: ‘abd’, ‘ab’</li>
+</ul>
+<h3 id="match-any-single-character"><a class="markdownIt-Anchor" href="#match-any-single-character">#</a> Match Any Single Character</h3>
+<p>The dot or period character ‘.’ will match any single character in your string.</p>
+<p>So, if you’re looking for an ‘ab’ followed by any single character, then a ‘d’, you will use a pattern of ‘ab.d’.</p>
+<ul>
+<li>Pattern: ‘ab.d’</li>
+<li>Matches: ‘abcd’, ‘abad’, ‘abbd’, ‘ab9d’</li>
+<li>Does not match: ‘abd’, ‘ababd’</li>
+</ul>
+<h3 id="match-any-one-or-more-characters"><a class="markdownIt-Anchor" href="#match-any-one-or-more-characters">#</a> Match Any One or More Characters</h3>
+<p>The plus character ‘+’ will match any single or multiple occurrences of the previous expression or character.</p>
+<p>For example, to find one or more occurrences of the letter ‘e’, you would use the pattern ‘e+’.</p>
+<ul>
+<li>Pattern: ‘e+’</li>
+<li>Matches: ‘e’, ‘ee’, ‘eee’, ‘eeeeeeeee’</li>
+<li>Does not match: ‘aaa’, ‘each’, ‘eaea’</li>
+</ul>
+<h3 id="match-zero-or-one-character"><a class="markdownIt-Anchor" href="#match-zero-or-one-character">#</a> Match Zero or One Character</h3>
+<p>The question mark character ‘?’ will match zero or one, and only one, occurrence of the previous expression or character.</p>
+<p>It’s helpful for specifying optional characters.</p>
+<p>For example, to find a character string ‘abcd’ where the ‘c’ may or may not be there, you would use the pattern ‘abc?d’.</p>
+<ul>
+<li>Pattern: ‘abc?d’</li>
+<li>Matches: ‘abcd’, ‘abd’</li>
+<li>Does not match: ‘acd’, ‘cabd’</li>
+</ul>
+<h3 id="match-zero-or-more-characters"><a class="markdownIt-Anchor" href="#match-zero-or-more-characters">#</a> Match Zero or More Characters</h3>
+<p>The asterisk character ‘*’ allows you to match zero or more occurrences of the previous expression or character.</p>
+<p>For example, to find a character string that starts with ‘a’ and ends in ‘b’, you could use the pattern ‘a*b’.</p>
+<ul>
+<li>Pattern: ‘a*b’</li>
+<li>Matches: ‘acedb’, ‘ab’, ‘aeb’</li>
+<li>Does not match: ‘abcd’, ‘ba’, ‘abcde’</li>
+</ul>
+<h3 id="match-an-exact-number-of-characters"><a class="markdownIt-Anchor" href="#match-an-exact-number-of-characters">#</a> Match an Exact Number of Characters</h3>
+<p>The exact count operator for regular expressions is written as a single digit inside curly braces {}. This finds the exact number of occurrences of the preceding character or expression.</p>
+<p>For example, to find expressions matching ‘eeeeee’ you would use a pattern of ‘e{6}’.</p>
+<ul>
+<li>Pattern: ‘e{6}’</li>
+<li>Matches: ‘eeeeee’</li>
+<li>Does not match: ‘eee’, ‘e6’</li>
+</ul>
+<h3 id="match-at-least-a-number-of-characters"><a class="markdownIt-Anchor" href="#match-at-least-a-number-of-characters">#</a> Match At Least a Number of Characters</h3>
+<p>The at least count operator for regular expressions is written as a single digit and a comma inside curly braces {}. This finds occurrences where at least the specified number of preceding characters or expressions are found.</p>
+<p>For example, to find if the character ‘d’ occurs at least 4 times, you would use a pattern of ‘d{4,}’.</p>
+<ul>
+<li>Pattern: ‘d{4,}’</li>
+<li>Matches: ‘dddd’, ‘ddddd’, ‘ddddddd’</li>
+<li>Does not match: ‘ddd’, ‘d4’, ‘d’</li>
+</ul>
+<h3 id="match-a-number-of-characters-between-two-counts"><a class="markdownIt-Anchor" href="#match-a-number-of-characters-between-two-counts">#</a> Match a Number of Characters Between Two Counts</h3>
+<p>The between count operator for regular expressions can be used to find occurrences of a specified value within a range. This is done by specifying the lower and upper bounds of the range, separated by a comma, inside curly braces {}.</p>
+<p>For example, to find where the character ‘g’ occurs between 3 and 5 times, you would use a pattern of ‘g{3,5}’.</p>
+<ul>
+<li>Pattern: ‘g{3,5}’</li>
+<li>Matches: ‘ggg’, ‘gggg’, ‘ggggg’</li>
+<li>Does not match: ‘gg’, ‘goooo’, ‘ggegge’</li>
+</ul>
+<h3 id="match-a-character-list"><a class="markdownIt-Anchor" href="#match-a-character-list">#</a> Match a Character List</h3>
+<p>To match a list of characters, you can specify a pattern of characters inside square brackets []. This will find any occurrences of any of the specified characters.</p>
+<p>For example, to find where either the ‘a’, ‘e’, or ‘o’ character exists, you would use a pattern of [aeo].</p>
+<ul>
+<li>Pattern: [aeo]</li>
+<li>Matches: ‘alpha’, ‘egg’, ‘orange’</li>
+<li>Does not match: ‘dig’, ‘why’, ‘xbzpgws’</li>
+</ul>
+<h3 id="non-matching-character-list"><a class="markdownIt-Anchor" href="#non-matching-character-list">#</a> Non-Matching Character List</h3>
+<p>To match against a list of characters you don’t want to match, you can specify a non-matching list. This is done by specifying a ^ character inside a character list.</p>
+<p>Characters that do not match any of the characters in your square brackets are returned by the match.</p>
+<p>For example, to exclude strings with ‘m’ and ‘p’ in them from your results, use a pattern of [^mp].</p>
+<ul>
+<li>Pattern: [^mp]</li>
+<li>Matches: ‘mpera’, ‘wamplne’</li>
+<li>Does not match: ‘mp’</li>
+</ul>
+<h3 id="range-operator"><a class="markdownIt-Anchor" href="#range-operator">#</a> Range Operator</h3>
+<p>To match on a range of characters, you can use the ‘-’ symbol between two characters inside square brackets []. This will find occurrences of any character between the two characters.</p>
+<p>For example, to find values that contain any character between ‘a’ and ‘e’, you would use the pattern of [a-e].</p>
+<ul>
+<li>Pattern: [a-e]</li>
+<li>Matches: ‘alpha’, ‘end’ ‘bubble’</li>
+<li>Does not match: ‘zip’, ‘mug’, ‘up’</li>
+</ul>
+<h3 id="or-operator"><a class="markdownIt-Anchor" href="#or-operator">#</a> Or Operator</h3>
+<p>To specify an alternative to a character or expression, you can use the pipe character ‘|’ as an OR expression.</p>
+<p>For example, to match the value ‘a’ or ‘e’, you can use the pattern of ‘a|e’.</p>
+<ul>
+<li>Pattern: ‘a|e’</li>
+<li>Matches: ‘a’, ‘e’</li>
+<li>Does not match: ‘w’, ‘c’</li>
+</ul>
+<h3 id="subexpression-or-grouping"><a class="markdownIt-Anchor" href="#subexpression-or-grouping">#</a> Subexpression or Grouping</h3>
+<p>You can use subexpressions to group characters you want to find as a whole. You do this by enclosing them in round brackets ().</p>
+<p>For example, to find the optional value of ‘un’ followed by the characters ‘col’, you can use the pattern of ‘(un)?col’.</p>
+<ul>
+<li>Pattern: ‘(un)?col’</li>
+<li>Matches: ‘col’, ‘uncol’</li>
+<li>Does not match: ‘un’, ‘ununcolcol’</li>
+</ul>
+<h3 id="backreference"><a class="markdownIt-Anchor" href="#backreference">#</a> Backreference</h3>
+<p>The backreference feature allows you to search for a repeated expression. This is done by specifying subexpressions, and then using a backslash ‘’ and a number, where the number is from 1-9 and indicates the number of the subexpression.</p>
+<p>This will be explained further with examples later in this article.</p>
+<p>For example, to find repeated expressions of either ‘aa’ or ‘bb’, you can use a pattern of ‘(aa|bb)\1’.</p>
+<ul>
+<li>Pattern: ‘(aa|bb)\1’</li>
+<li>Matches: ‘aaaa’, ‘bbbb’</li>
+<li>Does not match: ‘abab’, ‘aa’, ‘bb’</li>
+</ul>
+<h3 id="escape-character"><a class="markdownIt-Anchor" href="#escape-character">#</a> Escape Character</h3>
+<p>The escape character can be used to search for a character that is usually used for a meta character. For example, you can search of * or + characters by putting an escape character before this character, such as ‘*’</p>
+<ul>
+<li>Pattern: ‘*’</li>
+<li>Matches: ‘awe*po’</li>
+<li>Does not match: ‘awepo’, ‘abc’</li>
+</ul>
+<h3 id="beginning-of-line-anchor"><a class="markdownIt-Anchor" href="#beginning-of-line-anchor">#</a> Beginning of Line Anchor</h3>
+<p>To find the occurrence of a string that only occurs at the beginning of a line, use the caret ‘^’ operator. For example, to find expressions where the letter ‘B’ appears at the beginning of a line, use a pattern of ‘^B’.</p>
+<ul>
+<li>Pattern: ‘^B’</li>
+<li>Matches: ‘Big’, ‘Beyond’</li>
+<li>Does not match: ‘At the Big’, ‘ABC is easy’</li>
+</ul>
+<h3 id="end-of-line-anchor"><a class="markdownIt-Anchor" href="#end-of-line-anchor">#</a> End of Line Anchor</h3>
+<p>The end of line character of a dollar sign ‘$’ allows you to search for an expression that occurs only at the end of a line.</p>
+<p>For example, to find expressions where the letter ‘e’ occurs at the end of a line, use a pattern of ‘e$’.</p>
+<ul>
+<li>Pattern: ‘e$’</li>
+<li>Matches: ‘three’, ‘septe’</li>
+<li>Does not match: ‘abcdef’, ‘fourteen’</li>
+</ul>
+<h3 id="posix-character-class"><a class="markdownIt-Anchor" href="#posix-character-class">#</a> POSIX Character Class</h3>
+<p>The POSIX Character Class operator lets you search for an expression that matches a POSIX character class.</p>
+<p>POSIX character classes are a standard set of values that represent other values. They are represented by a keyword enclosed in a colon ‘:’ and two sets of square braces [[]].</p>
+<p>The full list of POSIX character classes is:</p>
+<table>
+<thead>
+<tr>
+<th><strong>POSIX Class</strong></th>
+<th><strong>Similar To</strong></th>
+<th><strong>Definition</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[:upper:]</td>
+<td>[A-Z]</td>
+<td>uppercase letters</td>
+</tr>
+<tr>
+<td>[:lower:]</td>
+<td>[a-z]</td>
+<td>lowercase letters</td>
+</tr>
+<tr>
+<td>[:alpha:]</td>
+<td>[A-Za-z]</td>
+<td>upper- and lowercase letters</td>
+</tr>
+<tr>
+<td>[:digit:]</td>
+<td>[0-9]</td>
+<td>digits</td>
+</tr>
+<tr>
+<td>[:xdigit:]</td>
+<td>[0-9A-Fa-f]</td>
+<td>hexadecimal digits</td>
+</tr>
+<tr>
+<td>[:alnum:]</td>
+<td>[A-Za-z0-9]</td>
+<td>digits, upper- and lowercase letters</td>
+</tr>
+<tr>
+<td>[:punct:]</td>
+<td></td>
+<td>punctuation (all graphic characters except letters and digits)</td>
+</tr>
+<tr>
+<td>[:blank:]</td>
+<td>[ \t]</td>
+<td>space and TAB characters only</td>
+</tr>
+<tr>
+<td>[:space:]</td>
+<td>[ \t\n\r\f\v]</td>
+<td>blank (whitespace) characters</td>
+</tr>
+<tr>
+<td>[:cntrl:]</td>
+<td></td>
+<td>control characters</td>
+</tr>
+<tr>
+<td>[:graph:]</td>
+<td>[^ [:cntrl:]]</td>
+<td>graphic characters (all characters which have graphic representation)</td>
+</tr>
+<tr>
+<td>[:print:]</td>
+<td>[[:graph] ]</td>
+<td>graphic characters and space</td>
+</tr>
+</tbody>
+</table>
+<p>So, for example, to find where there are at least four upper case characters, use a pattern of ‘<span 4,="">[:upper:]</span>’.</p>
+<ul>
+<li>Pattern: ‘<span 4,="">[:upper:]</span>’</li>
+<li>Matches: ‘ABCDE’, ‘WHYEPAFdce’</li>
+<li>Does not match: ‘AbCdEfGhIj’, ‘EPOfjnvkdfvnPO’</li>
+</ul>
+<h3 id="posix-collating-sequence"><a class="markdownIt-Anchor" href="#posix-collating-sequence">#</a> POSIX Collating Sequence</h3>
+<p>The POSIX collating sequence operator lets you specify a collating sequence in your regular expression. This operator is a value inside two dots ‘…’ and double square braces [[]].</p>
+<p>For example, to find the collating sequence of ‘ch’ in your strings, then you would use a value of ‘[[.ch.]]’.</p>
+<ul>
+<li>Pattern: ‘[[.ch.]]’</li>
+<li>Matches: ‘chabc’</li>
+<li>Does not match: ‘cdefg’</li>
+</ul>
+<h3 id="posix-character-equivalence-class"><a class="markdownIt-Anchor" href="#posix-character-equivalence-class">#</a> POSIX Character Equivalence Class</h3>
+<p>The POSIX character equivalence class allows you to find characters in the current locale that are equivalent characters. This allows you to search for characters with and without accents, for example, depending on the locale.</p>
+<p>For example, to find strings that contain an equivalent of ‘e’, use the pattern of ‘[[=e=]]’.</p>
+<p>Pattern: ‘[[=e=]]’</p>
+<p>Matches: ‘west’, ‘café’</p>
+<p>Does not match: ‘window’, garçon’</p>
+
+      <div class="tags">
+          <a href="/tags/db/" rel="tag"><i class="ic i-tag"></i> db</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2022-12-11 10:29:09" itemprop="dateModified" datetime="2022-12-11T10:29:09+08:00">2022-12-11</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2022/12/08/oracle-median/" itemprop="url" rel="prev" data-background-image="&#x2F;images&#x2F;龙与虎.jpg" title="Oracle Calculate Median">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Oracle Calculate Median</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2022/12/15/oracle-table-naming-conventions/" itemprop="url" rel="next" data-background-image="&#x2F;images&#x2F;魔道祖师.jpg" title="Singular vs Plural and Other Database Table Naming Conventions">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Singular vs Plural and Other Database Table Naming Conventions</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#what-is-a-regular-expression"><span class="toc-number">1.</span> <span class="toc-text"> What is a Regular Expression?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#why-use-regular-expressions"><span class="toc-number">2.</span> <span class="toc-text"> Why Use Regular Expressions?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#oracle-regular-expression-functions"><span class="toc-number">3.</span> <span class="toc-text"> Oracle Regular Expression Functions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#oracle-regexp_like-function"><span class="toc-number">4.</span> <span class="toc-text"> Oracle REGEXP_LIKE Function</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#oracle-regexp_like-examples"><span class="toc-number">5.</span> <span class="toc-text"> Oracle REGEXP_LIKE Examples</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#example-1"><span class="toc-number">5.1.</span> <span class="toc-text"> Example 1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#example-2"><span class="toc-number">5.2.</span> <span class="toc-text"> Example 2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#example-3"><span class="toc-number">5.3.</span> <span class="toc-text"> Example 3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#example-4"><span class="toc-number">5.4.</span> <span class="toc-text"> Example 4</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#example-5"><span class="toc-number">5.5.</span> <span class="toc-text"> Example 5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#example-6"><span class="toc-number">5.6.</span> <span class="toc-text"> Example 6</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#example-7"><span class="toc-number">5.7.</span> <span class="toc-text"> Example 7</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#oracle-regexp_instr-function"><span class="toc-number">6.</span> <span class="toc-text"> Oracle REGEXP_INSTR Function</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#oracle-regexp_instr-examples"><span class="toc-number">7.</span> <span class="toc-text"> Oracle REGEXP_INSTR Examples</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#example-1-2"><span class="toc-number">7.1.</span> <span class="toc-text"> Example 1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#example-2-2"><span class="toc-number">7.2.</span> <span class="toc-text"> Example 2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#example-3-2"><span class="toc-number">7.3.</span> <span class="toc-text"> Example 3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#example-4-2"><span class="toc-number">7.4.</span> <span class="toc-text"> Example 4</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#example-5-2"><span class="toc-number">7.5.</span> <span class="toc-text"> Example 5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#example-6-2"><span class="toc-number">7.6.</span> <span class="toc-text"> Example 6</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#example-7-2"><span class="toc-number">7.7.</span> <span class="toc-text"> Example 7</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#example-8"><span class="toc-number">7.8.</span> <span class="toc-text"> Example 8</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#oracle-regexp_replace-function"><span class="toc-number">8.</span> <span class="toc-text"> Oracle REGEXP_REPLACE Function</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#oracle-regexp_replace-examples"><span class="toc-number">9.</span> <span class="toc-text"> Oracle REGEXP_REPLACE Examples</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#example-1-3"><span class="toc-number">9.1.</span> <span class="toc-text"> Example 1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#example-2-3"><span class="toc-number">9.2.</span> <span class="toc-text"> Example 2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#example-3-3"><span class="toc-number">9.3.</span> <span class="toc-text"> Example 3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#example-4-3"><span class="toc-number">9.4.</span> <span class="toc-text"> Example 4</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#example-5-3"><span class="toc-number">9.5.</span> <span class="toc-text"> Example 5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#example-6-3"><span class="toc-number">9.6.</span> <span class="toc-text"> Example 6</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#example-7-3"><span class="toc-number">9.7.</span> <span class="toc-text"> Example 7</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#oracle-regexp_substr-function"><span class="toc-number">10.</span> <span class="toc-text"> Oracle REGEXP_SUBSTR Function</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#oracle-regexp_substr-examples"><span class="toc-number">11.</span> <span class="toc-text"> Oracle REGEXP_SUBSTR Examples</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#example-1-4"><span class="toc-number">11.1.</span> <span class="toc-text"> Example 1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#example-2-4"><span class="toc-number">11.2.</span> <span class="toc-text"> Example 2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#example-3-4"><span class="toc-number">11.3.</span> <span class="toc-text"> Example 3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#example-4-4"><span class="toc-number">11.4.</span> <span class="toc-text"> Example 4</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#example-5-4"><span class="toc-number">11.5.</span> <span class="toc-text"> Example 5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#example-6-4"><span class="toc-number">11.6.</span> <span class="toc-text"> Example 6</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#oracle-regexp_count"><span class="toc-number">12.</span> <span class="toc-text"> Oracle REGEXP_COUNT</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#oracle-regexp_count-examples"><span class="toc-number">13.</span> <span class="toc-text"> Oracle REGEXP_COUNT Examples</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#example-1-5"><span class="toc-number">13.1.</span> <span class="toc-text"> Example 1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#example-2-5"><span class="toc-number">13.2.</span> <span class="toc-text"> Example 2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#example-3-5"><span class="toc-number">13.3.</span> <span class="toc-text"> Example 3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#example-4-5"><span class="toc-number">13.4.</span> <span class="toc-text"> Example 4</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#example-5-5"><span class="toc-number">13.5.</span> <span class="toc-text"> Example 5</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#function-syntax-summary"><span class="toc-number">14.</span> <span class="toc-text"> Function Syntax Summary</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#oracle-regular-expression-patterns"><span class="toc-number">15.</span> <span class="toc-text"> Oracle Regular Expression Patterns</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#basic-example"><span class="toc-number">15.1.</span> <span class="toc-text"> Basic Example</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#match-any-single-character"><span class="toc-number">15.2.</span> <span class="toc-text"> Match Any Single Character</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#match-any-one-or-more-characters"><span class="toc-number">15.3.</span> <span class="toc-text"> Match Any One or More Characters</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#match-zero-or-one-character"><span class="toc-number">15.4.</span> <span class="toc-text"> Match Zero or One Character</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#match-zero-or-more-characters"><span class="toc-number">15.5.</span> <span class="toc-text"> Match Zero or More Characters</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#match-an-exact-number-of-characters"><span class="toc-number">15.6.</span> <span class="toc-text"> Match an Exact Number of Characters</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#match-at-least-a-number-of-characters"><span class="toc-number">15.7.</span> <span class="toc-text"> Match At Least a Number of Characters</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#match-a-number-of-characters-between-two-counts"><span class="toc-number">15.8.</span> <span class="toc-text"> Match a Number of Characters Between Two Counts</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#match-a-character-list"><span class="toc-number">15.9.</span> <span class="toc-text"> Match a Character List</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#non-matching-character-list"><span class="toc-number">15.10.</span> <span class="toc-text"> Non-Matching Character List</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#range-operator"><span class="toc-number">15.11.</span> <span class="toc-text"> Range Operator</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#or-operator"><span class="toc-number">15.12.</span> <span class="toc-text"> Or Operator</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#subexpression-or-grouping"><span class="toc-number">15.13.</span> <span class="toc-text"> Subexpression or Grouping</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#backreference"><span class="toc-number">15.14.</span> <span class="toc-text"> Backreference</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#escape-character"><span class="toc-number">15.15.</span> <span class="toc-text"> Escape Character</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#beginning-of-line-anchor"><span class="toc-number">15.16.</span> <span class="toc-text"> Beginning of Line Anchor</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#end-of-line-anchor"><span class="toc-number">15.17.</span> <span class="toc-text"> End of Line Anchor</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#posix-character-class"><span class="toc-number">15.18.</span> <span class="toc-text"> POSIX Character Class</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#posix-collating-sequence"><span class="toc-number">15.19.</span> <span class="toc-text"> POSIX Collating Sequence</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#posix-character-equivalence-class"><span class="toc-number">15.20.</span> <span class="toc-text"> POSIX Character Equivalence Class</span></a></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">318</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">43</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
+      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2022/12/08/oracle-median/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2022/12/15/oracle-table-naming-conventions/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2022</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ D E W</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2022/12/11/oracle-regexp/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

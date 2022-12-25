@@ -1,0 +1,533 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CFira%20Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="db" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2022/12/15/oracle-table-naming-conventions/">
+
+
+
+  <title>
+Singular vs Plural and Other Database Table Naming Conventions |
+D E W = 露の世</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">Singular vs Plural and Other Database Table Naming Conventions
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2022-12-15 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2022-12-15T00:00:00+08:00">2022-12-15</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">D E W</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="/images/fate_stay_night.jpg"></li>
+          <li class="item" data-background-image="/images/此花亭奇谭.jpg"></li>
+          <li class="item" data-background-image="/images/比宇宙更遥远的地方.jpg"></li>
+          <li class="item" data-background-image="/images/三月的狮子.jpg"></li>
+          <li class="item" data-background-image="/images/歌剧少女-2.jpg"></li>
+          <li class="item" data-background-image="/images/某科学的超电磁炮.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2022/12/15/oracle-table-naming-conventions/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>转载：<span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9kYXRhYmFzZS10YWJsZS1uYW1pbmctY29udmVudGlvbnMv">Singular vs Plural and Other Database Table Naming Conventions - Database Star</span></p>
+</blockquote>
+<p>Are you wondering if you should name your SQL database tables in the singular form or plural form?</p>
+<p>Learn what the preferred convention is and some reasoning behind it, as well as other database table naming conventions, in this article.</p>
+<h2 id="why-do-we-need-sql-table-naming-conventions"><a class="markdownIt-Anchor" href="#why-do-we-need-sql-table-naming-conventions">#</a> Why Do We Need SQL Table Naming Conventions?</h2>
+<p>You might be wondering why we need conventions or best practices for naming SQL tables in the first place.</p>
+<p>Can’t we just name it what we want, and move on?</p>
+<p>We could do that… but it’s better to have naming conventions for several reasons:</p>
+<ul>
+<li><strong>Consistency for developers</strong>. If the developers are working with their own coding standards, using the same conventions for table names and object names in their code will make life easier for the team. There’s a lot of time and effort wasted trying to work out if your table is called Customer or Customers, or if it’s your object in your source code that’s called Customers and your table called Customer.</li>
+<li><strong>Databases may outlive applications</strong>. A well-designed database can stand for a long time – longer than many applications. I’ve worked on databases where the application has been redesigned or replaced, but the database has stayed the same. It’s important to get it right at the start and follow conventions.</li>
+<li><strong>Saving time</strong>. If you set up table naming conventions at the start, you can save time later on when you need to create new tables or enhance the database in other ways.</li>
+</ul>
+<p>Setting up a naming convention for your database tables will take a bit of time at the start, but it will save time for the developers.</p>
+<p>(Related – <span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9kYXRhYmFzZS1kZXZlbG9wZXItZ3VpZGUv">How to Become a Database Developer: The Definitive Guide</span>)</p>
+<p>So, let’s move on to what I think are good SQL database table naming conventions.</p>
+<h2 id="singular-vs-plural-table-names-should-database-table-names-be-singular-or-plural"><a class="markdownIt-Anchor" href="#singular-vs-plural-table-names-should-database-table-names-be-singular-or-plural">#</a> Singular vs Plural Table Names: Should Database Table Names Be Singular or Plural?</h2>
+<p>I’ve done some research on this topic from a variety of sources. I’ve also used my own experience in deciding whether singular or plural table names are better.</p>
+<p>If you have existing standards within your team or project, use those. It’s better to be consistent than to use one convention in particular.</p>
+<p>If you don’t have standards, then you’ll need to decide on singular vs plural table names.</p>
+<p><strong>In my opinion, singular table names are better than plural.</strong></p>
+<p>I have several reasons for this, which I’ll mention shortly.</p>
+<p>But first, let me show you several different sources who have different opinions on this topic.</p>
+<p>The number of articles for each opinion shouldn’t matter. I’ve just added them to demonstrate that there are different views on the topic and which pages/websites have each of these views.</p>
+<h3 id="who-says-singular-table-names-are-better"><a class="markdownIt-Anchor" href="#who-says-singular-table-names-are-better">#</a> Who Says Singular Table Names are Better?</h3>
+<p>There are several sources that I found that believe singular table names are better.</p>
+<ul>
+<li>The top voted answer relating to singular vs plural on <span class="exturl" data-url="aHR0cHM6Ly9zdGFja292ZXJmbG93LmNvbS9xdWVzdGlvbnMvMzM4MTU2L3RhYmxlLW5hbWluZy1kaWxlbW1hLXNpbmd1bGFyLXZzLXBsdXJhbC1uYW1lcw==">this popular Stack Overflow question</span>.</li>
+<li>Vertabelo’s <span class="exturl" data-url="aHR0cDovL3d3dy52ZXJ0YWJlbG8uY29tL2Jsb2cvdGVjaG5pY2FsLWFydGljbGVzL25hbWluZy1jb252ZW50aW9ucy1pbi1kYXRhYmFzZS1tb2RlbGluZw==">blog post</span>.</li>
+<li>Launch By Lunch’s <span class="exturl" data-url="aHR0cHM6Ly9sYXVuY2hieWx1bmNoLmNvbS9wb3N0cy8yMDE0L0ZlYi8xNi9zcWwtbmFtaW5nLWNvbnZlbnRpb25zLw==">blog post</span>.</li>
+<li>Team Ten’s <span class="exturl" data-url="aHR0cHM6Ly93d3cudGVhbXRlbi5jb20vbGF3cmVuY2UvcHJvZ3JhbW1pbmcvdXNlLXNpbmd1bGFyLW5vdW5zLWZvci1kYXRhYmFzZS10YWJsZS1uYW1lcy5odG1s">blog post</span>.</li>
+<li>Microsoft SQL Server’s <span class="exturl" data-url="aHR0cHM6Ly9zcWxzZXJ2ZXJzYW1wbGVzLmNvZGVwbGV4LmNvbS8=">built-in AdventureWorks database</span></li>
+</ul>
+<h3 id="who-says-plural-table-names-are-better"><a class="markdownIt-Anchor" href="#who-says-plural-table-names-are-better">#</a> Who Says Plural Table Names are Better?</h3>
+<p>There are several sources that state they prefer plural table names:</p>
+<ul>
+<li>Les Hazlewood’s <span class="exturl" data-url="aHR0cDovL2xlc2hhemxld29vZC5jb20vc29mdHdhcmUtZW5naW5lZXJpbmcvc3FsLXN0eWxlLWd1aWRlLw==">blog post</span>.</li>
+<li>SQLStyle <span class="exturl" data-url="aHR0cDovL3d3dy5zcWxzdHlsZS5ndWlkZS8=">website</span>.</li>
+<li>Tim Hall from <span class="exturl" data-url="aHR0cHM6Ly9vcmFjbGUtYmFzZS5jb20vYXJ0aWNsZXMvbWlzYy9uYW1pbmctY29udmVudGlvbnM=">Oracle-Base</span>.</li>
+<li><span class="exturl" data-url="aHR0cDovL3d3dy5ncGxpdm5hLmV1L3BhcGVycy9uYW1pbmdfY29udmVudGlvbnMuaHRt">This post</span> from <span class="exturl" data-url="aHR0cDovL2dwbGl2bmEuZXU=">gplivna.eu</span>.</li>
+<li>Don Burleson from <span class="exturl" data-url="aHR0cDovL3d3dy5kYmEtb3JhY2xlLmNvbS9zdGFuZGFyZHNfc2NoZW1hX29iamVjdF9uYW1lcy5odG0=">dba-oracle.com</span>.</li>
+</ul>
+<h2 id="why-i-prefer-singular-database-table-names"><a class="markdownIt-Anchor" href="#why-i-prefer-singular-database-table-names">#</a> Why I Prefer Singular Database Table Names</h2>
+<p>There are <strong>several reasons</strong> why I prefer singular table names over plural table names. I’ve written more about them here in my <span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9zcWwtYmVzdC1wcmFjdGljZXMv">SQL Best Practices and Style Guide post</span>.</p>
+<h3 id="consistency-throughout-your-system"><a class="markdownIt-Anchor" href="#consistency-throughout-your-system">#</a> Consistency Throughout Your System</h3>
+<p>The biggest reason why I prefer singular table names instead of plural table names when it comes to database table naming conventions is that it ensures consistency between all areas of your application.</p>
+<p>Developers work with SQL code, database tables, and their own application code. In object-oriented programming, classes are singular nouns (e.g. Bike, Car, Student).</p>
+<p>This means that if we use singular table names (such as car or student), we can ensure that the same convention is easily followed for all types:</p>
+<ul>
+<li>Database tables (including <span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9zcWwtdmlld3Mv">views</span> and <span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9vcmFjbGUtc3lub255bS8=">synonyms</span>)</li>
+<li>SQL statements that query these tables</li>
+<li>Functions and APIs that use this SQL or tables</li>
+<li>Objects in source code in all languages and technologies being used in the application</li>
+</ul>
+<p>This way, a developer knows that their student class uses a getStudent() function and returns a Student object using a SELECT query on the student table.</p>
+<p>Well, maybe that’s not the exact method they would use, but the point is that the class and database table and everything else are all singular.</p>
+<p>This is a big time saver and prevents developers from trying to work out which form they used when naming tables.</p>
+<h3 id="the-concept-of-a-table-is-a-container-of-single-rows"><a class="markdownIt-Anchor" href="#the-concept-of-a-table-is-a-container-of-single-rows">#</a> The Concept of a Table is a Container of Single Rows</h3>
+<p>The second reason relates to what a table is. A table stores rows. It can store zero, one, or many rows. <strong>The name should not imply the number of items in the table.</strong></p>
+<p>A table is, therefore, a container. <strong>And a container is a single object</strong>. Whether it contains multiple rows or a single row does not impact its name, and therefore the name should be singular.</p>
+<p>A good example is the AppleBag example used in the top-rated singular/plural answer in <span class="exturl" data-url="aHR0cHM6Ly9zdGFja292ZXJmbG93LmNvbS9xdWVzdGlvbnMvMzM4MTU2L3RhYmxlLW5hbWluZy1kaWxlbW1hLXNpbmd1bGFyLXZzLXBsdXJhbC1uYW1lcw==">this Stack Overflow question</span>.</p>
+<p>A bag containing apples can be called an AppleBag, regardless of how many apples it contains. Tables are the same thing.</p>
+<h3 id="singular-names-are-easier-to-create"><a class="markdownIt-Anchor" href="#singular-names-are-easier-to-create">#</a> Singular Names are Easier to Create</h3>
+<p>It’s easy to come up with singular names for SQL table names. Well, it might not be that easy, but it’s easier than plural names.</p>
+<p>You might have a “person” table. This is a singular name. What would you call the plural version of the table? People? Persons?</p>
+<p>The pluralisation of words is an English language concept to help with speaking. SQL and databases don’t need to know about plurals of words.</p>
+<h3 id="there-are-many-non-english-developers"><a class="markdownIt-Anchor" href="#there-are-many-non-english-developers">#</a> There Are Many Non-English Developers</h3>
+<p>The number of non-English-speaking developers is rising. These non-English native speaking developers may not understand the concept of pluralisation of words. It’s easier for these developers to understand singular versions of words.</p>
+<p>Whether your team contains all English-speaking developers, or has some non-English native developers, it’s better to plan for the future and make your code as easy to understand as possible for all developers.</p>
+<h3 id="the-concept-of-master-and-detail-is-easier-to-understand"><a class="markdownIt-Anchor" href="#the-concept-of-master-and-detail-is-easier-to-understand">#</a> The Concept of Master and Detail is Easier to Understand</h3>
+<p>If you’ve seen examples of databases where a master and detail record is used, or even when you’ve created some yourself, you might have found it easier to understand to use singular names.</p>
+<p>A master-detail relationship example could be an order for many products.</p>
+<p>The main order can contain many order line items.</p>
+<p>To represent this in tables, they could be named using singular form:</p>
+<ul>
+<li>Order</li>
+<li>OrderDetail</li>
+</ul>
+<p>Or, the table names using the plural form:</p>
+<ul>
+<li>Orders</li>
+<li>OrderDetails</li>
+</ul>
+<p>The plural version is a little inconsistent as it uses a different term.</p>
+<p>For master-detail tables, it’s easier to use a singular table name.</p>
+<h2 id="other-database-table-naming-conventions"><a class="markdownIt-Anchor" href="#other-database-table-naming-conventions">#</a> Other Database Table Naming Conventions</h2>
+<p>In addition to using singular or plural words for SQL table names, there are several other conventions that I would recommend when working with database tables.</p>
+<h3 id="use-underscores-to-separate-words-instead-of-camel-case"><a class="markdownIt-Anchor" href="#use-underscores-to-separate-words-instead-of-camel-case">#</a> Use Underscores To Separate Words Instead Of Camel Case</h3>
+<p>Several sources recommend using CamelCase to separate words.</p>
+<p>This isn’t a good idea when working with SQL, for several reasons.</p>
+<p>It’s harder to read when skimming down an SQL file.</p>
+<p>For example:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> ApplicationUsers;</span><br></pre></td></tr></table></figure>
+<p>Or</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> applicationUsers;</span><br></pre></td></tr></table></figure>
+<p>It’s better to use an underscore to separate words, to improve readability.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> application_users;</span><br></pre></td></tr></table></figure>
+<p>This way it’s clearer what the name of the table is.</p>
+<p>The second reason, and probably the more important one, is that <strong>SQL is case-insensitive</strong>.</p>
+<p>It doesn’t care what case your table names are in.</p>
+<p>This matters because the objects are stored in the database in the same case, so naming them using camel case will be lost.</p>
+<p>Also, when you use SQL formatters (and you should, especially the built-in one in SQL Developer), it may cause you to lose the camel case.</p>
+<p>The SQL database doesn’t need camel case and doesn’t differentiate, so neither should you.</p>
+<p>So, using underscores to separate words in SQL table names is easier to distinguish and will be stored as expected in the database.</p>
+<h3 id="dont-use-quotes"><a class="markdownIt-Anchor" href="#dont-use-quotes">#</a> Don’t Use Quotes</h3>
+<p>If you want to store a table name in a certain case or in a certain format, you could use quotes to store the name.</p>
+<p>For example:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> &quot;ApplicationUser&quot; ...</span><br></pre></td></tr></table></figure>
+<p>This will store the table name as ApplicationUser.</p>
+<p>However, this means that every time you want to refer to the table, you’ll need to use quotes.</p>
+<p>And sometimes you’ll forget, and get an error.</p>
+<p>Or other developers won’t know or won’t remember, and they will get an error or get incorrect results.</p>
+<p>So, avoiding quotes is a good SQL table naming convention to use.</p>
+<p>This also means you should avoid spaces in database table names. The only way to add spaces is to enclose the entire name in quotes (such as “Application User”), which will cause the same issues.</p>
+<h3 id="use-full-words"><a class="markdownIt-Anchor" href="#use-full-words">#</a> Use Full Words</h3>
+<p>It might be tempting to save a few keystrokes and abbreviate your table names.</p>
+<p>So, instead of creating a customer table, you decide to call it cust.</p>
+<p>Now, it’s a little less clear as to what that table means. It’s probably customer, but are you sure?</p>
+<p>There’s no need to abbreviate words just for the sake of it. Use the full words when naming tables. It’s one of the easier database table naming conventions to follow.</p>
+<p>The exception to this is if you’ve reached Oracle’s 30 character limit for table names. Other database vendors may not have this restriction.</p>
+<p>If you have, then you can play around with the name of the table to ensure it is less than or equal to 30 characters. You can do this by:</p>
+<ul>
+<li>Removing vowels from words (e.g. customer_historic_invoice_billed (32 characters) could become customer_historic_invc_blld (27 characters))</li>
+<li>Abbreviating words in the table name using commonly known abbreviations (e.g. customer_historic_invoice_billed (32 characters) could become cust_hist_invoice_billed (24 characters))</li>
+</ul>
+<h3 id="avoid-reserved-words"><a class="markdownIt-Anchor" href="#avoid-reserved-words">#</a> Avoid Reserved Words</h3>
+<p>There are several words in SQL that are reserved for use by the database. These words should not be used to create tables with.</p>
+<p>A common example is User. Creating a table with the name of User will probably cause an error, because user is a reserved word. If you create it without an error (for example, by enclosing it in quotes), then it will still cause confusion.</p>
+<p>So, in general, it’s a good idea to avoid using reserved words for table names in SQL.</p>
+<h3 id="dont-add-prefix-of-object-type-to-the-name"><a class="markdownIt-Anchor" href="#dont-add-prefix-of-object-type-to-the-name">#</a> Don’t Add Prefix of Object Type to the Name</h3>
+<p>In the earlier days of database development, it was a common practice to add a prefix to an object name that signals what kind of object it is.</p>
+<p>For example, tbl_customer for a table, or vw_all_customers for a view.</p>
+<p>The idea is that developers could see the object name and immediately know it was a view or a table, and develop on it accordingly.</p>
+<p>However, <strong>using prefixes on an object name not only wastes valuable characters</strong>, but it also <strong>makes maintenance worse</strong>.</p>
+<p>What if you needed to change the table to a view of the same name? If you keep using this standard, you’d have to rename it from tbl* to vw*, causing your code to break unless you changed the code.</p>
+<p>If you avoid using prefixes in your SQL table names, it makes maintenance easier. It’s a good SQL table naming convention to follow.</p>
+<h3 id="avoid-concatenating-table-names-in-many-to-many-relationships-if-possible"><a class="markdownIt-Anchor" href="#avoid-concatenating-table-names-in-many-to-many-relationships-if-possible">#</a> Avoid Concatenating Table Names in Many-to-Many Relationships If Possible</h3>
+<p>Let’s say you had a student table and a subject table as I’ve used in many of my <span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9vcmFjbGUtc3FsLWZ1bmN0aW9ucy8=">SQL function examples</span>.</p>
+<p>A student can have many subjects, and a subject can have many students.</p>
+<p>This is a many-to-many relationship. In relational database design, this needs to be reflected using a joining table – a table that captures this relationship.</p>
+<p>This table also needs a name.</p>
+<p>Common suggestions of table name conventions would be to name the table the concatenation of the <span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9zcWwtam9pbnMv">two tables that join to it</span>. In this case, it would be student_subject (or subject_student)</p>
+<p>This is not a good idea as it doesn’t effectively describe the object you’re referring to. Giving it a better name will improve the developer’s code and improve understanding of the database.</p>
+<p>In this example, I could name the table subject_enrolment or class_enrolment or something, which reflects the fact a student has enrolled in a subject.</p>
+<h2 id="conclusion-singular-table-names-are-preferred"><a class="markdownIt-Anchor" href="#conclusion-singular-table-names-are-preferred">#</a> Conclusion – Singular Table Names are Preferred</h2>
+<p>I hope you’ve learned something from this post and understand the benefits of using singular table names in your database.</p>
+<p>The main point here is that you should be consistent. If your team already uses plural names, then stick with it. If there is no table naming convention, then choose singular.</p>
+<p>What are your thoughts? Are you pro-singular or pro-plural? Are there any other naming conventions for tables that I’ve missed out? Do you have any other questions? Let me know in the comments below.</p>
+<p>Lastly, if you enjoy the information and career advice I’ve been providing, <strong>sign up to my newsletter below</strong> to stay up-to-date on my articles. You’ll also receive a fantastic bonus. Thanks!</p>
+
+      <div class="tags">
+          <a href="/tags/db/" rel="tag"><i class="ic i-tag"></i> db</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2022-12-15 16:08:45" itemprop="dateModified" datetime="2022-12-15T16:08:45+08:00">2022-12-15</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2022/12/11/oracle-regexp/" itemprop="url" rel="prev" data-background-image="&#x2F;images&#x2F;灵能百分百.jpg" title="The Complete Guide to Oracle REGEXP Functions">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>The Complete Guide to Oracle REGEXP Functions</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2022/12/20/oracle-record-types-bulk-collect-collections/" itemprop="url" rel="next" data-background-image="&#x2F;images&#x2F;百变狸猫-1.jpg" title="PL&#x2F;SQL Record types, Bulk Collect, and Collections.">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>PL/SQL Record types, Bulk Collect, and Collections.</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#why-do-we-need-sql-table-naming-conventions"><span class="toc-number">1.</span> <span class="toc-text"> Why Do We Need SQL Table Naming Conventions?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#singular-vs-plural-table-names-should-database-table-names-be-singular-or-plural"><span class="toc-number">2.</span> <span class="toc-text"> Singular vs Plural Table Names: Should Database Table Names Be Singular or Plural?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#who-says-singular-table-names-are-better"><span class="toc-number">2.1.</span> <span class="toc-text"> Who Says Singular Table Names are Better?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#who-says-plural-table-names-are-better"><span class="toc-number">2.2.</span> <span class="toc-text"> Who Says Plural Table Names are Better?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#why-i-prefer-singular-database-table-names"><span class="toc-number">3.</span> <span class="toc-text"> Why I Prefer Singular Database Table Names</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#consistency-throughout-your-system"><span class="toc-number">3.1.</span> <span class="toc-text"> Consistency Throughout Your System</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#the-concept-of-a-table-is-a-container-of-single-rows"><span class="toc-number">3.2.</span> <span class="toc-text"> The Concept of a Table is a Container of Single Rows</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#singular-names-are-easier-to-create"><span class="toc-number">3.3.</span> <span class="toc-text"> Singular Names are Easier to Create</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#there-are-many-non-english-developers"><span class="toc-number">3.4.</span> <span class="toc-text"> There Are Many Non-English Developers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#the-concept-of-master-and-detail-is-easier-to-understand"><span class="toc-number">3.5.</span> <span class="toc-text"> The Concept of Master and Detail is Easier to Understand</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#other-database-table-naming-conventions"><span class="toc-number">4.</span> <span class="toc-text"> Other Database Table Naming Conventions</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#use-underscores-to-separate-words-instead-of-camel-case"><span class="toc-number">4.1.</span> <span class="toc-text"> Use Underscores To Separate Words Instead Of Camel Case</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dont-use-quotes"><span class="toc-number">4.2.</span> <span class="toc-text"> Don’t Use Quotes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#use-full-words"><span class="toc-number">4.3.</span> <span class="toc-text"> Use Full Words</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#avoid-reserved-words"><span class="toc-number">4.4.</span> <span class="toc-text"> Avoid Reserved Words</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dont-add-prefix-of-object-type-to-the-name"><span class="toc-number">4.5.</span> <span class="toc-text"> Don’t Add Prefix of Object Type to the Name</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#avoid-concatenating-table-names-in-many-to-many-relationships-if-possible"><span class="toc-number">4.6.</span> <span class="toc-text"> Avoid Concatenating Table Names in Many-to-Many Relationships If Possible</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#conclusion-singular-table-names-are-preferred"><span class="toc-number">5.</span> <span class="toc-text"> Conclusion – Singular Table Names are Preferred</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">318</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">43</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
+      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2022/12/11/oracle-regexp/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2022/12/20/oracle-record-types-bulk-collect-collections/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2022</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ D E W</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2022/12/15/oracle-table-naming-conventions/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
