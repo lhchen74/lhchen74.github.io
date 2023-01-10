@@ -1,0 +1,1318 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CFira%20Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="db" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2022/12/20/oracle-date/">
+
+
+
+  <title>
+Oracle Date Functions The Complete Guide |
+D E W = 露の世</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">Oracle Date Functions The Complete Guide
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2022-12-20 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2022-12-20T00:00:00+08:00">2022-12-20</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">D E W</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="/anime/index/终结的炽天使.jpg"></li>
+          <li class="item" data-background-image="/anime/index/钢之炼金术师.jpg"></li>
+          <li class="item" data-background-image="/anime/index/排球少年-1.jpg"></li>
+          <li class="item" data-background-image="/anime/index/只有我不存在的城市.jpg"></li>
+          <li class="item" data-background-image="/anime/index/悬崖上的金鱼姬-1.jpg"></li>
+          <li class="item" data-background-image="/anime/index/十二国记.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2022/12/20/oracle-date/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>转载：<span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9vcmFjbGUtZGF0ZS1mdW5jdGlvbnMvI0xBU1RfREFZ">Oracle Date Functions: The Complete Guide - Database Star</span></p>
+</blockquote>
+<p>There are many different date and time functions in Oracle, and they behave differently than other databases. Learn what they are and see some useful queries in this article.</p>
+<p>Oracle date functions are any functions that work with date and/or time values. They often take dates as an input and return many different types of output.</p>
+<p>I’ll explain what each of the Oracle date functions is and show an example.</p>
+<p>Let’s start by taking a look at the different date-related data types in Oracle.</p>
+<h2 id="date-and-time-data-types-in-oracle"><a class="markdownIt-Anchor" href="#date-and-time-data-types-in-oracle">#</a> Date and Time Data Types in Oracle</h2>
+<p>There are a few <span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9vcmFjbGUtZGF0YS10eXBlcy8=">different data types</span> in Oracle that store date values. They are:</p>
+<ul>
+<li>DATE: The “standard” date value in Oracle. It stores year, month, day, as well as hour, minute and second. Yes, even though it’s called “date”, it stores the time component. This is a good thing to remember.</li>
+<li>TIMESTAMP: This data type stores year, month, day, hour, minute, second, as well as fractional seconds.</li>
+<li>TIMESTAMP WITH TIME ZONE: This data type is the same as TIMESTAMP, but it stores the timezone along with it.</li>
+<li>TIMESTAMP WITH LOCAL TIME ZONE: This data type is similar to TIMESTAMP WITH TIME ZONE, but the timezone that’s stored is the database timezone.</li>
+<li>INTERVAL YEAR TO MONTH: This data type stores a “period of time” (rather than a “point in time” like other data types), and represents a period of time in months up to years.</li>
+<li>INTERVAL DAY TO SECOND: This data type also stores a period of time, but stores a value that captures seconds all the way up to days.</li>
+</ul>
+<p>So now we’ve looked at the different data types, let’s take a look at the different Oracle date functions.</p>
+<h2 id="sysdate-function"><a class="markdownIt-Anchor" href="#sysdate-function">#</a> SYSDATE Function</h2>
+<p>The Oracle SYSDATE function allows you to easily output the current date. It shows the date and time of the database server.</p>
+<p>To use it, you simply type the word SYSDATE. It has no parameters, which means you don’t need any brackets after it.</p>
+<p>An example of the SYSDATE function is:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> SYSDATE</span><br><span class="line"><span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10&#x2F;SEP&#x2F;22</span><br></pre></td></tr></table></figure>
+<p>I’ve used the DUAL table because Oracle needs to select from a table in a select query, and the DUAL table is useful for this (read more about <span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9kdWFsLXRhYmxlLWluLW9yYWNsZS8=">the dual table here</span>).</p>
+<p>As you can see, the current date is shown. It only shows the date, though. This is because the output format for SELECT queries for dates is currently set to the DD/MM/YYYY format.</p>
+<p>The SYSDATE function does return the time component as well though. We can see this if we change the session’s date format, or surround the SYSDATE in a TO_CHAR function.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> SESSION</span><br><span class="line"><span class="keyword">SET</span> NLS_DATE_FORMAT <span class="operator">=</span> <span class="string">&#x27;YYYY-MM-DD HH24:MI:SS&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>Now, let’s rerun the SELECT statement with the SYSDATE function.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> SYSDATE</span><br><span class="line"><span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2022-09-10 08:54:19</span><br></pre></td></tr></table></figure>
+<p>As you can see, the output now shows the date and time returned from SYSDATE. We changed the date format in the session to include the time.</p>
+<p>We could use the <span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9vcmFjbGUtdG9fY2hhci8=">TO_CHAR function</span> to change the way this particular function is shown:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">TO_CHAR(SYSDATE, <span class="string">&#x27;DD/MM/YYYY HH:MI:SS&#x27;</span>) <span class="keyword">AS</span> sysdate_time</span><br><span class="line"><span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10&#x2F;09&#x2F;2022 08:54:19</span><br></pre></td></tr></table></figure>
+<p>You can see that the output now includes the date and time.</p>
+<h2 id="current_date"><a class="markdownIt-Anchor" href="#current_date">#</a> CURRENT_DATE</h2>
+<p>The CURRENT_DATE function is similar to the SYSDATE function, but it shows you the <strong>current date and time in the session timezone</strong>.</p>
+<p>This is the timezone that your session is in, or the timezone you’re in when you log in to the system. This can sometimes be different to the database timezone.</p>
+<p>To use this function, simply add the word CURRENT_DATE to your query. No brackets are needed as there are no parameters.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">CURRENT_DATE</span></span><br><span class="line"><span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10&#x2F;SEP&#x2F;22</span><br></pre></td></tr></table></figure>
+<p>This shows the current date of your user session.</p>
+<p>Just like with the SYSDATE function, this function <strong>returns a DATE data type</strong>, which actually includes a date and a time. To show the time component of this value, either use the TO_CHAR function or alter your session to include the time format.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> SESSION <span class="keyword">SET</span> NLS_DATE_FORMAT <span class="operator">=</span> <span class="string">&#x27;YYYY-MM-DD HH24:MI:SS&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>The other way is to use the TO_CHAR function to change the format.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">TO_CHAR(<span class="built_in">CURRENT_DATE</span>, <span class="string">&#x27;DD/MM/YYYY HH:MI:SS&#x27;</span>)</span><br><span class="line"><span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10&#x2F;09&#x2F;2022 08:54:19</span><br></pre></td></tr></table></figure>
+<p>You can see that the output now includes the date and time.</p>
+<h3 id="oracle-current_date-vs-sysdate"><a class="markdownIt-Anchor" href="#oracle-current_date-vs-sysdate">#</a> Oracle CURRENT_DATE Vs SYSDATE</h3>
+<p>The main difference between CURRENT_DATE and SYSDATE is:</p>
+<ul>
+<li>CURRENT_DATE returns the date from your <strong>session</strong> timezone (your timezone).</li>
+<li>SYSDATE returns the date from the <strong>database</strong> timezone.</li>
+</ul>
+<p>If you’re in the east coast of the United States and your database is on the west coast, these functions will show different values. If you’re in Australia and the database is in London, they will show different values.</p>
+<p>They might even <em>look</em> the same but actually be different.</p>
+<p>This is because the default output is DD-MON-YY, which hides the time.</p>
+<p>This is the default output, assuming I’m in Melbourne (UTC +10) and the database is in Perth (UTC +8).</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">CURRENT_DATE</span>, SYSDATE</span><br><span class="line"><span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<table>
+<thead>
+<tr>
+<th><strong>CURRENT_DATE</strong></th>
+<th><strong>SYSDATE</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10/SEP/22</td>
+<td>10/SEP/22</td>
+</tr>
+</tbody>
+</table>
+<p>These values look the same, right?</p>
+<p>Now, if I include the time component by using <span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9vcmFjbGUtdG9fY2hhci8=">TO_CHAR</span>, my result shows these two values as being different.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">TO_CHAR(<span class="built_in">CURRENT_DATE</span>, <span class="string">&#x27;DD-MON-YY HH:MI:SS&#x27;</span>) <span class="keyword">AS</span> CDATE,</span><br><span class="line">TO_CHAR(SYSDATE, <span class="string">&#x27;DD-MON-YY HH:MI:SS&#x27;</span>) <span class="keyword">AS</span> SDATE</span><br><span class="line"><span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<table>
+<thead>
+<tr>
+<th><strong>CDATE</strong></th>
+<th><strong>SDATE</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10-SEP-22 05:53:33</td>
+<td>10-SEP-22 03:53:33</td>
+</tr>
+</tbody>
+</table>
+<h3 id="how-can-i-get-the-oracle-current_date-1-day"><a class="markdownIt-Anchor" href="#how-can-i-get-the-oracle-current_date-1-day">#</a> How Can I Get the Oracle CURRENT_DATE – 1 Day?</h3>
+<p>If you want to find records that are less than, greater than, or equal to the day before today (or any comparison, really), then you can do this with the Oracle CURRENT_DATE function.</p>
+<p>You’ll just have to use <span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9vcmFjbGUtdHJ1bmMv">TRUNC</span> as well.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line"><span class="built_in">CURRENT_DATE</span>,</span><br><span class="line">TRUNC(<span class="built_in">CURRENT_DATE</span>) <span class="keyword">AS</span> trunc_today,</span><br><span class="line">TRUNC(<span class="built_in">CURRENT_DATE</span>)<span class="number">-1</span> <span class="keyword">AS</span> trunc_yesterday</span><br><span class="line"><span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<table>
+<thead>
+<tr>
+<th><strong>CURRENT_DATE</strong></th>
+<th><strong>TRUNC_TODAY</strong></th>
+<th><strong>TRUNC_YESTERDAY</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10/SEP/22</td>
+<td>10/SEP/22</td>
+<td>09/SEP/22</td>
+</tr>
+</tbody>
+</table>
+<p>You can use this TRUNC(CURRENT_DATE)-1 logic in your other SQL queries:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--Find employees hired yesterday or later.</span></span><br><span class="line"><span class="keyword">SELECT</span> name</span><br><span class="line"><span class="keyword">FROM</span> employee</span><br><span class="line"><span class="keyword">WHERE</span> hire_date <span class="operator">&gt;=</span> TRUNC(<span class="built_in">CURRENT_DATE</span>)<span class="number">-1</span></span><br></pre></td></tr></table></figure>
+<h2 id="systimestamp"><a class="markdownIt-Anchor" href="#systimestamp">#</a> SYSTIMESTAMP</h2>
+<p>The SYSTIMESTAMP function returns the <strong>date and time of the database</strong>.</p>
+<p>The important part to remember is that it returns the time of the database, not your local time.</p>
+<p>So, if you’re accessing a database in a different time zone, it will return the time and timezone of the place where the database is stored, not your local time zone.</p>
+<p>For example, if your database is in London but you are in New York, the SYSTIMESTAMP will return a time that is 5 hours ahead of your time.</p>
+<p>It’s similar to the SYSDATE function, however it <strong>returns a TIMESTAMP WITH TIME ZONE</strong> instead of a DATE data type.</p>
+<p>This means it includes the date, time, and fractional seconds.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> SYSTIMESTAMP</span><br><span class="line"><span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10&#x2F;SEP&#x2F;22 08:57:17.067000000 AM +10:00</span><br></pre></td></tr></table></figure>
+<p>Now, because it’s a TIMESTAMP WITH TIME ZONE, it shows the time by default, unlike the DATE data type.</p>
+<p>You can see the output here shows the date, the time, the fractions of seconds, and the timezone. You don’t need to format it to see the complete output.</p>
+<h3 id="how-can-i-insert-with-systimestamp"><a class="markdownIt-Anchor" href="#how-can-i-insert-with-systimestamp">#</a> How Can I Insert With SYSTIMESTAMP?</h3>
+<p>You can insert the value returned by SYSTIMESTAMP in a few ways.</p>
+<p>First, you can ensure that the column you’re inserting into is of type TIMESTAMP WITH TIME ZONE.</p>
+<p>Alternatively, if it isn’t, you can use the TO_CHAR function to convert the value into a VARCHAR2 data type, and insert that.</p>
+<p>However, it’s generally not a good idea to insert dates into character fields. I would recommend inserting the value as a TIMESTAMP WITH TIME ZONE.</p>
+<h3 id="can-i-find-the-systimestamp-without-timezone"><a class="markdownIt-Anchor" href="#can-i-find-the-systimestamp-without-timezone">#</a> Can I Find the SYSTIMESTAMP Without Timezone?</h3>
+<p>Yes, you can.</p>
+<p>You can use SYSDATE to just get the date and time, but it won’t have fractional seconds.</p>
+<h3 id="can-i-use-to_char-with-systimestamp"><a class="markdownIt-Anchor" href="#can-i-use-to_char-with-systimestamp">#</a> Can I Use TO_CHAR With SYSTIMESTAMP?</h3>
+<p>Yes, you can. See the Examples below for more information.</p>
+<p>You can include the SYSTIMESTAMP function inside TO_CHAR, and specify the format of the values to output.</p>
+<h3 id="example-1"><a class="markdownIt-Anchor" href="#example-1">#</a> Example 1</h3>
+<p>This is the SYSDATE and SYSTIMESTAMP function side-by-side.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">SYSDATE,</span><br><span class="line">SYSTIMESTAMP</span><br><span class="line"><span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<table>
+<thead>
+<tr>
+<th><strong>SYSDATE</strong></th>
+<th><strong>SYSTIMESTAMP</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10/SEP/2022</td>
+<td>10/SEP/22 09:35:48.801000000 AM +11:00</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-2"><a class="markdownIt-Anchor" href="#example-2">#</a> Example 2</h3>
+<p>This example uses the TO_CHAR function on SYSTIMESTAMP.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">SYSTIMESTAMP,</span><br><span class="line">TO_CHAR(SYSTIMESTAMP, <span class="string">&#x27;dd Mon yyyy&#x27;</span>) <span class="keyword">AS</span> text_output</span><br><span class="line"><span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<table>
+<thead>
+<tr>
+<th><strong>SYSTIMESTAMP</strong></th>
+<th><strong>TEXT_OUTPUT</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10/SEP/22 09:36:18.196000000 AM +11:00</td>
+<td>10 Sep 2022</td>
+</tr>
+</tbody>
+</table>
+<h2 id="current_timestamp"><a class="markdownIt-Anchor" href="#current_timestamp">#</a> CURRENT_TIMESTAMP</h2>
+<p>The CURRENT_TIMESTAMP function returns the <strong>date and time in the timezone of your session</strong>, or where you have logged in from.</p>
+<p>It’s similar to the CURRENT_DATE function in that it returns the date and time of your session, instead of the database. It’s also similar to the SYSTIMESTAMP function in that it returns the timestamp instead of a date.</p>
+<p>The <strong>return data type is a TIMESTAMP WITH TIME ZONE</strong>, which includes date, time, fractional seconds, and a timezone.</p>
+<p>The CURRENT_TIMESTAMP has one optional parameter: the precision or number of fractional seconds to return. If omitted, it uses 6 places.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">CURRENT_TIMESTAMP</span>([<span class="keyword">precision</span>])</span><br></pre></td></tr></table></figure>
+<p>An example of this function is:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">CURRENT_TIMESTAMP</span></span><br><span class="line"><span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10&#x2F;SEP&#x2F;22 08:57:49.020000000 AM AUSTRALIA&#x2F;MELBOURNE</span><br></pre></td></tr></table></figure>
+<p>You can see that the current date and time are shown here, along with the timezone.</p>
+<h3 id="can-i-subtract-hours-from-the-current_timestamp"><a class="markdownIt-Anchor" href="#can-i-subtract-hours-from-the-current_timestamp">#</a> Can I Subtract Hours from the CURRENT_TIMESTAMP?</h3>
+<p>Yes, you can. The best way to do this is to use an interval data type, as you’ll keep your original data type.</p>
+<p>For example, if I wanted to subtract 4 hours from the current time, I would do this:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line"><span class="built_in">CURRENT_TIMESTAMP</span>,</span><br><span class="line"><span class="built_in">CURRENT_TIMESTAMP</span> <span class="operator">-</span> <span class="type">INTERVAL</span> <span class="string">&#x27;4&#x27;</span> <span class="keyword">HOUR</span></span><br><span class="line"><span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<table>
+<thead>
+<tr>
+<th><strong>CURRENT_TIMESTAMP</strong></th>
+<th><strong>CURRENT_TIMESTAMP-INTERVAL</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10/SEP/22 06:17:25.690000000 AM AUSTRALIA/SYDNEY</td>
+<td>10/SEP/22 02:17:25.690000000 AM AUSTRALIA/SYDNEY</td>
+</tr>
+</tbody>
+</table>
+<h2 id="localtimestamp"><a class="markdownIt-Anchor" href="#localtimestamp">#</a> LOCALTIMESTAMP</h2>
+<p>The final function that gets the current date is the LOCALTIMESTAMP function.</p>
+<p>This function gets the <strong>current date and time of your session</strong>.</p>
+<p>It’s similar to the CURRENT_TIMESTAMP function, but <strong>LOCALTIMESTAMP returns a TIMESTAMP value</strong> and CURRENT_TIMESTAMP returns a TIMESTAMP WITH TIME ZONE VALUE.</p>
+<p>This means that LOCALTIMESTAMP returns just the date and time, and no timezone.</p>
+<p>The LOCALTIMESTAMP function looks like this:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">LOCALTIMESTAMP</span></span><br><span class="line"><span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10&#x2F;SEP&#x2F;22 08:58:25.614000000 AM</span><br></pre></td></tr></table></figure>
+<p>You can see that the output shows the date, time, and fractional seconds.</p>
+<p>The parameters of the LOCALTIMESTAMP function are:</p>
+<ul>
+<li>timestamp_precision (mandatory): This specifies the number of digits of seconds of the return value, also known as the “fractional second precision”.</li>
+</ul>
+<h2 id="add_months"><a class="markdownIt-Anchor" href="#add_months">#</a> ADD_MONTHS</h2>
+<p>The ADD_MONTHS function allows you to input a date value, and a number of months, and return another date value. The value returned is the input date value plus the number of months you supply.</p>
+<p>So, if you start with Jan 10th 2022, and add 3 months, the function will return Apr 10th, 2022.</p>
+<p>The syntax is:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ADD_MONTHS (input_date, number_of_months)</span><br></pre></td></tr></table></figure>
+<p>An example of this function is:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">SYSDATE,</span><br><span class="line">ADD_MONTHS(SYSDATE, <span class="number">5</span>) <span class="keyword">AS</span> new_date</span><br><span class="line"><span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>SYSDATE</strong></th>
+<th><strong>NEW_DATE</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10/SEP/22</td>
+<td>10/FEB/23</td>
+</tr>
+</tbody>
+</table>
+<p>This query shows the SYSDATE, as well as the SYSDATE with 5 months added. You can see that it has the same day, but it is 5 months in the future.</p>
+<p>You can also provide negative values:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">SYSDATE,</span><br><span class="line">ADD_MONTHS(SYSDATE, <span class="number">-12</span>) <span class="keyword">AS</span> new_date</span><br><span class="line"><span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>SYSDATE</strong></th>
+<th><strong>NEW_DATE</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10/SEP/22</td>
+<td>10/SEP/21</td>
+</tr>
+</tbody>
+</table>
+<p>This will show a date of 12 months in the past.</p>
+<p>For more information on using the ADD_MONTHS function, including some “what if” questions, read this article: <span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9vcmFjbGUtYWRkX21vbnRocy8=">Oracle ADD_MONTHS Function with Examples</span>.</p>
+<h2 id="last_day"><a class="markdownIt-Anchor" href="#last_day">#</a> LAST_DAY</h2>
+<p>The LAST_DAY function returns the last day of the month of the specified date value.</p>
+<p>You supply a date, and another date is returned which is the last day of the month.</p>
+<p>The syntax is:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LAST_DAY (input_date)</span><br></pre></td></tr></table></figure>
+<p>Let’s see an example:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">SYSDATE,</span><br><span class="line">LAST_DAY(SYSDATE) <span class="keyword">AS</span> last_of_month</span><br><span class="line"><span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>SYSDATE</strong></th>
+<th><strong>LAST_OF_MONTH</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10/SEP/22</td>
+<td>30/22</td>
+</tr>
+</tbody>
+</table>
+<p>You can see here that I’ve shown today’s date using SYSDATE, and also the last day of this month using the LAST_DAY function.</p>
+<p>What if I wanted to specify a particular date?</p>
+<p>You can do that as well, by entering the date in the database’s default format (usually DD-MON-YY) or using the TO_DATE function.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">LAST_DAY(<span class="string">&#x27;03-OCT-2022&#x27;</span>)</span><br><span class="line"><span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">31&#x2F;OCT&#x2F;2022</span><br></pre></td></tr></table></figure>
+<p>For more information on the LAST_DAY function, such as returning the first day of the next month (and other examples), read my article: <span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9vcmFjbGUtbmV4dF9kYXkv">Oracle LAST_DAY Function with Examples</span>.</p>
+<h2 id="next_day"><a class="markdownIt-Anchor" href="#next_day">#</a> NEXT_DAY</h2>
+<p>The NEXT_DAY function returns the date of the next specified weekday that comes after the specified value.</p>
+<p>It’s handy for working with any business logic you have where you need to use weekdays.</p>
+<p>It takes two parameters:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NEXT_DAY (input_date, weekday)</span><br></pre></td></tr></table></figure>
+<p>The input date is the date to start from, and the weekday is the name of the day you’re looking for.</p>
+<p>For example, running SYSDATE on today’s date will show 15 Sep 2022, and it’s a Tuesday.</p>
+<p>To find the next Thursday that appears after today, use this function:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">NEXT_DAY(SYSDATE, <span class="string">&#x27;THURSDAY&#x27;</span>)</span><br><span class="line"><span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">15&#x2F;SEP&#x2F;22</span><br></pre></td></tr></table></figure>
+<p>You can see it shows a date of 15th September, which is the next Thursday that comes after the date I mentioned.</p>
+<p>If I want to find the next Monday, I change the function slightly:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">NEXT_DAY(SYSDATE, <span class="string">&#x27;MONDAY&#x27;</span>)</span><br><span class="line"><span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">12&#x2F;SEP&#x2F;22</span><br></pre></td></tr></table></figure>
+<p>You can see it shows a date of 12th September, which is next Monday. It doesn’t show the day before, even though it’s closer. It always goes forwards.</p>
+<p>For more information on the NEXT_DAY function, read my article here: <span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9vcmFjbGUtbmV4dF9kYXkv">Oracle NEXT_DAY Function with Examples</span>.</p>
+<h2 id="months_between"><a class="markdownIt-Anchor" href="#months_between">#</a> MONTHS_BETWEEN</h2>
+<p>The MONTHS_BETWEEN function allows you to find the number of months between two specified dates.</p>
+<p>You specify two dates as parameters, and a number is returned:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MONTHS_BETWEEN (date1, date2)</span><br></pre></td></tr></table></figure>
+<p>Date1 is usually the later date.</p>
+<p>If date1 is greater than date2, the value is positive. Otherwise, it is negative.</p>
+<p>The returned value can be a whole or a decimal number. So, it returns a partial month value.</p>
+<p>Let’s see an example:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">MONTHS_BETWEEN(<span class="string">&#x27;12-MAY-2022&#x27;</span>, <span class="string">&#x27;10-FEB-2022&#x27;</span>)</span><br><span class="line"><span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3.064516129</span><br></pre></td></tr></table></figure>
+<p>The value returned is 3.06 because there is approximately 3.06 months between these two dates.</p>
+<h2 id="round"><a class="markdownIt-Anchor" href="#round">#</a> ROUND</h2>
+<p>The ROUND function allows you to round a date value to a format you specify.</p>
+<p>This function is often used with numbers, but can also be used with dates.</p>
+<p>If you use it with a date value, you can specify a DATE or TIMESTAMP value. You can specify any format mask, but the default is the nearest day, and is returned as a DATE.</p>
+<p>The syntax is:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ROUND (input_date, round_to)</span><br></pre></td></tr></table></figure>
+<p>If I wanted to round a date to the nearest month, I would use something like this:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">ROUND(SYSDATE, <span class="string">&#x27;MM&#x27;</span>)</span><br><span class="line"><span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">01&#x2F;SEP&#x2F;22</span><br></pre></td></tr></table></figure>
+<p>This shows a value of 1 Sep because the specified date (SYSDATE, or 10 Sep) has been rounded forwards to this date.</p>
+<p>If we specify a different date and input:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">ROUND(SYSDATE, <span class="string">&#x27;YYYY&#x27;</span>)</span><br><span class="line"><span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">01&#x2F;JAN&#x2F;23</span><br></pre></td></tr></table></figure>
+<p>We can see that the date shown is 1 Jan 2023. This is because it has rounded forward to the nearest year, and in this case, it is the start of 2023.</p>
+<p>For more information on the ROUND function, read my article: <span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9zcWwtcm91bmQv">SQL ROUND Function with Examples</span>.</p>
+<h2 id="trunc"><a class="markdownIt-Anchor" href="#trunc">#</a> TRUNC</h2>
+<p>The TRUNC function, like the round function, works with numbers as well as dates.</p>
+<p>It truncates or removes a part of the date to the format you specify.</p>
+<p>The syntax is:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TRUNC (input_date, format_mask)</span><br></pre></td></tr></table></figure>
+<p>If you don’t specify a format mask, then the function will truncate the value to the nearest day. This is helpful if you want to remove the time part of a date value.</p>
+<p>For example, to show only the date part of today’s date:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">TRUNC(SYSDATE)</span><br><span class="line"><span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10&#x2F;SEP&#x2F;22</span><br></pre></td></tr></table></figure>
+<p>This shows only the date part of today.</p>
+<p>Or, you can show only the YEAR:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">TRUNC(SYSDATE, <span class="string">&#x27;YYYY&#x27;</span>)</span><br><span class="line"><span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">01&#x2F;JAN&#x2F;22</span><br></pre></td></tr></table></figure>
+<p>You can see that a date is shown that matches the first day of the current year.</p>
+<p>For more information on the TRUNC function, read my article here: <span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9vcmFjbGUtdHJ1bmMv">Oracle TRUNC Function with Examples</span>.</p>
+<h2 id="extract"><a class="markdownIt-Anchor" href="#extract">#</a> EXTRACT</h2>
+<p>The EXTRACT function in Oracle extracts a specific part of a date from a date or interval value.</p>
+<p>This means that it can get the month, or year, for example, from a DATE value. I think it’s easier than using a conversion function such as TO_CHAR.</p>
+<p>The EXTRACT function looks like this:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">EXTRACT</span> (date_component <span class="keyword">FROM</span> expression)</span><br></pre></td></tr></table></figure>
+<p>The date_component is a keyword that represents the part of the date to extract, such as MONTH, DAY, YEAR, or HOUR.</p>
+<p>The expression is a value or column that is a date or interval data type.</p>
+<p>An example of this function is:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">SYSDATE,</span><br><span class="line"><span class="built_in">EXTRACT</span>(<span class="keyword">MONTH</span> <span class="keyword">FROM</span> SYSDATE) <span class="keyword">AS</span> extract_month</span><br><span class="line"><span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>SYSDATE</strong></th>
+<th><strong>EXTRACT_MONTH</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10/SEP/22</td>
+<td>9</td>
+</tr>
+</tbody>
+</table>
+<p>This shows the month part of the SYSDATE.</p>
+<p>For more information on the EXTRACT function, you can read my article here: <span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9vcmFjbGUtZXh0cmFjdC8=">Oracle EXTRACT Function with Examples</span>.</p>
+<h2 id="to_date"><a class="markdownIt-Anchor" href="#to_date">#</a> TO_DATE</h2>
+<p>The TO_DATE function allows you to convert a character value into a date value. It converts any character data type (CHAR, VARCHAR2, NCHAR, or NVARCHAR2) into a DATE type.</p>
+<p>It’s useful if you have a date in a particular format in a text format or text column, and you need it in a DATE format (for a function or to insert into a column, for example).</p>
+<p>The syntax is:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TO_DATE (date_text [, format_mask] [, nls_date_language])</span><br></pre></td></tr></table></figure>
+<p>The date_text is the date you want to convert, which is in some kind of text or character format. You can optionally specify the format mask (which is the format that this date value was provided in), and the nls_date_langauge is used for dates in different languages or countries.</p>
+<p>An example of this function is:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">TO_DATE(<span class="string">&#x27;21-JAN-2022&#x27;</span>, <span class="string">&#x27;DD-MON-YYYY&#x27;</span>)</span><br><span class="line"><span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">21&#x2F;JAN&#x2F;22</span><br></pre></td></tr></table></figure>
+<p>This shows the specified date (21 Jan 2022) converted to a date format. It might look the same in your IDE, but that’s just how dates are displayed. The value started as a character value and is converted to a date value.</p>
+<p>If your date is in a different format:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">TO_DATE(<span class="string">&#x27;20220115_142309&#x27;</span>, <span class="string">&#x27;YYYYMMDD_HH24MISS&#x27;</span>)</span><br><span class="line"><span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">15&#x2F;JAN&#x2F;22</span><br></pre></td></tr></table></figure>
+<p>This example shows a completely different format, but it can still be converted to a date format. We have specified the format mask here, which is the format that the first parameter is in.</p>
+<p>For more information on the TO_DATE function, read my article here: <span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9vcmFjbGUtdG9fZGF0ZS8=">Oracle TO_DATE Function with Examples</span>.</p>
+<h2 id="new_time"><a class="markdownIt-Anchor" href="#new_time">#</a> NEW_TIME</h2>
+<p>The NEW_TIME function converts a date from one timezone to another.</p>
+<p>It’s not something I’ve used very often, but if you need to work with different timezones, it can be very helpful.</p>
+<p>The syntax is:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NEW_TIME (input_date, input_timezone, output_timezone)</span><br></pre></td></tr></table></figure>
+<p>To use this function, you specify the input_date, and the timezone this date is in as the input_timezone. You then specify the timezone you want to convert to in the output_timezone.</p>
+<p>Let’s see an example:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">SYSDATE,</span><br><span class="line">NEW_TIME(SYSDATE, <span class="string">&#x27;GMT&#x27;</span>, <span class="string">&#x27;PST&#x27;</span>) <span class="keyword">AS</span> converted_time</span><br><span class="line"><span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>SYSDATE</strong></th>
+<th><strong>CONVERTED_TIME</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10/SEP/22</td>
+<td>10/SEP/22</td>
+</tr>
+</tbody>
+</table>
+<p>This converts the current date and time from a GMT timezone to a PST timezone. Note that you can only see the dates here and not times, because I haven’t changed the session settings or used a function such as TO_CHAR to format the output.</p>
+<p>I’ll explain all about the TO_CHAR function and using it to format dates below, but here’s a brief example:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">TO_CHAR(SYSDATE, <span class="string">&#x27;dd-mm-yy hh:mi:ss AM&#x27;</span>) <span class="keyword">AS</span> sysdate_time,</span><br><span class="line">TO_CHAR(NEW_TIME(SYSDATE, <span class="string">&#x27;GMT&#x27;</span>, <span class="string">&#x27;PST&#x27;</span>), <span class="string">&#x27;dd-mm-yy hh:mi:ss AM&#x27;</span>) <span class="keyword">AS</span> newtime_test</span><br><span class="line"><span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>SYSDATE_TIME</strong></th>
+<th><strong>NEWTIME_TEST</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10-09-2209:16:37 AM</td>
+<td>10-09-22 01:16:37 AM</td>
+</tr>
+</tbody>
+</table>
+<p>This now shows the date, which was in GMT but then converted to PST.</p>
+<h2 id="from_tz"><a class="markdownIt-Anchor" href="#from_tz">#</a> FROM_TZ</h2>
+<p>This function converts a TIMESTAMP value and a specified TIME ZONE to a TIMESTAMP WITH TIME ZONE value.</p>
+<p>If you need a value that’s in a TIMESTAMP WITH TIME ZONE format, then this is the function to use.</p>
+<p>The syntax is:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FROM_TZ (timestamp_value, timezone_value)</span><br></pre></td></tr></table></figure>
+<p>An example of this function is:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">FROM_TZ(<span class="type">TIMESTAMP</span> <span class="string">&#x27;2022-04-19 07:13:50&#x27;</span>, <span class="string">&#x27;-9:00&#x27;</span>)</span><br><span class="line"><span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">19&#x2F;APR&#x2F;22 07:13:50.000000000 AM -09:00</span><br></pre></td></tr></table></figure>
+<p>This converts the timestamp specified (which is a date and time) into a TIMESTAMP WITH TIME ZONE, in the timezone of -9 hours from GMT.</p>
+<p>Note the TIMESTAMP keyword in front of the date and time value, which denotes that the value is a TIMESTAMP value.</p>
+<h2 id="sys_extract_utc"><a class="markdownIt-Anchor" href="#sys_extract_utc">#</a> SYS_EXTRACT_UTC</h2>
+<p>The SYS_EXTRACT_UTC will extract or convert the specified date and time into a UTC (also known as GMT) date and time.</p>
+<p>You specify a data type that has a timezone, and a TIMESTAMP is returned that shows the time in UTC time.</p>
+<p>For example, we can convert this date to UTC:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">SYS_EXTRACT_UTC(<span class="type">TIMESTAMP</span> <span class="string">&#x27;2022-05-15 19:10:45 +10:00&#x27;</span>)<span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">15&#x2F;MAY&#x2F;22 09:10:45.000000000 AM</span><br></pre></td></tr></table></figure>
+<p>This converts the specified time, which is +10 UTC, into a UTC time. The UTC time is 10 hours before the specified time.</p>
+<p>This function will return a different day if the conversion results in the output date being a different day to the input date:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">SYS_EXTRACT_UTC(<span class="type">TIMESTAMP</span> <span class="string">&#x27;2022-05-15 22:06:12 -7:00&#x27;</span>)</span><br><span class="line"><span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">16&#x2F;MAY&#x2F;22 05:06:12.000000000 AM</span><br></pre></td></tr></table></figure>
+<p>This moves the time forward to get to UTC time, which results in the date being on a different day.</p>
+<h2 id="sessiontimezone"><a class="markdownIt-Anchor" href="#sessiontimezone">#</a> SESSIONTIMEZONE</h2>
+<p>The SESSIONTIMEZONE function returns the timezone offset of your session, in the format of [+|-]TZH:TZM, or a time zone region name.</p>
+<p>This can be helpful to know, especially if you’re doing a lot of work with dates and work on databases in different time zones.</p>
+<p>The syntax for the SESSIONTIMEZONE function is quite simple.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SESSIONTIMEZONE</span><br></pre></td></tr></table></figure>
+<p>There is really only one way to use the SESSIONTIMEZONE function.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> SESSIONTIMEZONE</span><br><span class="line"><span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Australia&#x2F;Sydney</span><br></pre></td></tr></table></figure>
+<p>This function shows that I am in the Sydney time zone.</p>
+<h3 id="how-can-you-change-the-session-time-zone"><a class="markdownIt-Anchor" href="#how-can-you-change-the-session-time-zone">#</a> How Can You Change the Session Time Zone?</h3>
+<p>While you can’t easily change the database time zone, the session time zone is something that is easy to change.</p>
+<p>To change the session time zone, you run the ALTER SESSION command:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> SESSION <span class="keyword">SET</span> TIME_ZONE <span class="operator">=</span> <span class="string">&#x27;+8:0&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="whats-the-difference-between-sessiontimezone-and-current_timestamp"><a class="markdownIt-Anchor" href="#whats-the-difference-between-sessiontimezone-and-current_timestamp">#</a> What’s The Difference Between SESSIONTIMEZONE and CURRENT_TIMESTAMP?</h3>
+<p>Both of these functions look at the time of the session. But there are some differences.</p>
+<ul>
+<li>CURRENT_TIMESTAMP returns the entire date and time, including the time zone.</li>
+<li>SESSIONTIMEZONE returns only the time zone.</li>
+</ul>
+<p>Sometimes, SESSIONTIMEZONE may be easier to use than trying to perform string manipulation on the CURRENT_TIMESTAMP function.</p>
+<h2 id="dbtimezone"><a class="markdownIt-Anchor" href="#dbtimezone">#</a> DBTIMEZONE</h2>
+<p>The DBTIMEZONE function returns the timezone offset of the database, in the format of [+|-]TZH:TZM, or a time zone region name.</p>
+<p>It’s helpful when working with dates to know what timezone the database is in. This is easier than using one of the other date functions, or performing an extraction from a TIMESTAMP WITH TIME ZONE value.</p>
+<p>This DBTIMEZONE function is how to check the timezone in Oracle database 11g – and all other database versions.</p>
+<p>The syntax for the DBTIMEZONE function is quite simple:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DBTIMEZONE</span><br></pre></td></tr></table></figure>
+<p>There is really only one way to use the Oracle DBTIMEZONE function.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> DBTIMEZONE</span><br><span class="line"><span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+00:00</span><br></pre></td></tr></table></figure>
+<p>This shows that my database is in the UTC + 0 time zone.</p>
+<h3 id="how-can-you-change-the-database-time-zone"><a class="markdownIt-Anchor" href="#how-can-you-change-the-database-time-zone">#</a> How Can You Change the Database Time Zone?</h3>
+<p>The database time zone is actually the time zone of the operating system of the server it runs on.</p>
+<p>So, you can’t specifically change the time zone on the database.</p>
+<p>You can view it by running this query:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> SESSIONTIMEZONE <span class="keyword">FROM</span> DUAL;</span><br></pre></td></tr></table></figure>
+<p>Or, this query will show the current time with timezone:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">current_timestamp</span> <span class="keyword">FROM</span> DUAL;</span><br></pre></td></tr></table></figure>
+<h3 id="whats-the-difference-between-oracle-dbtimezone-and-sessiontimezone-in-oracle"><a class="markdownIt-Anchor" href="#whats-the-difference-between-oracle-dbtimezone-and-sessiontimezone-in-oracle">#</a> What’s the Difference Between Oracle DBTIMEZONE and SESSIONTIMEZONE in Oracle?</h3>
+<p>The difference between these two functions is:</p>
+<ul>
+<li>DBTIMEZONE returns the time zone of the database server.</li>
+<li>SESSIONTIMEZONE returns the time zone of your session.</li>
+</ul>
+<p>These two values may be different if you’re in a different location to your database.</p>
+<h3 id="whats-the-difference-between-oracle-dbtimezone-vs-systimestamp"><a class="markdownIt-Anchor" href="#whats-the-difference-between-oracle-dbtimezone-vs-systimestamp">#</a> What’s The Difference Between Oracle DBTIMEZONE vs SYSTIMESTAMP?</h3>
+<p>The difference between DBTIMEZONE and SYSTIMESTAMP is:</p>
+<ul>
+<li>DBTIMEZONE returns just the timezone offset of the database (e.g. +7:00).</li>
+<li>SYSTIMESTAMP returns the timestamp with time zone of the database (e.g. 13-JUL-2022 08:49:02 AM +7:00)</li>
+</ul>
+<p>So, the SYSTIMESTAMP includes more information than the DBTIMEZONE function.</p>
+<h2 id="formatting-dates"><a class="markdownIt-Anchor" href="#formatting-dates">#</a> Formatting Dates</h2>
+<p>So far we’re worked with date values. We’ve changed their data type, worked with timezones, and even extracted and truncated parts of them.</p>
+<p>However, you might have noticed that the data types are displayed in a certain format. And, that the DATE data type doesn’t show the time, even though the time is included.</p>
+<p>Fortunately, Oracle lets you format a DATE value for your output. This can be helpful to check if your function is returning the right value in a query, or for displaying an output in your application.</p>
+<p>You can do this with the TO_CHAR function.</p>
+<p>For example, we show the SYSDATE like this:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> SYSDATE</span><br><span class="line"><span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10&#x2F;SEP&#x2F;22</span><br></pre></td></tr></table></figure>
+<p>If we want to see it in a different format, such as 2022-09-10, we can write this:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> SYSDATE,</span><br><span class="line">TO_CHAR(SYSDATE, <span class="string">&#x27;YYYY-MM-DD&#x27;</span>) <span class="keyword">AS</span> formatted_date</span><br><span class="line"><span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>SYSDATE</strong></th>
+<th><strong>FORMATTED_DATE</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10/SEP/22</td>
+<td>2022-09-10</td>
+</tr>
+</tbody>
+</table>
+<p>You can see that the output is in a different format. It has 4 digits for the year, then a dash, then two digits for the month, then a dash, then two digits for the day.</p>
+<p>You can also use the TO_CHAR function to show the time. This is a common way to use this function.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> SYSDATE,</span><br><span class="line">TO_CHAR(SYSDATE, <span class="string">&#x27;YYYY-MM-DD HH:MI:SS AM&#x27;</span>) <span class="keyword">AS</span> formatted_date</span><br><span class="line"><span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>SYSDATE</strong></th>
+<th><strong>FORMATTED_DATE</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10/SEP/22</td>
+<td>2022-09-10 09:21:29 AM</td>
+</tr>
+</tbody>
+</table>
+<p>This shows the same date, but in a different format. It shows the hours, minutes, seconds, and an AM/PM marker.</p>
+<p>Now, you’re probably wondering, what do all of those formatting codes mean? Some of them may seem obvious (such as YYYY means a 4-digit year). But what about the others?</p>
+<p>Let’s look at them now.</p>
+<h2 id="date-format-parameters"><a class="markdownIt-Anchor" href="#date-format-parameters">#</a> Date Format Parameters</h2>
+<p>In many Oracle functions that deal with dates, such as TO_CHAR, you can specify a “format mask”. This is a parameter that lets you specify a certain combination of characters, which allows Oracle to translate into a specific format for a date.</p>
+<p>You can use these characters to change the way that dates are formatted.</p>
+<p>A full list of the date format parameters is shown here:</p>
+<p><strong>Year</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Explanation</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>YEAR</td>
+<td>Year, spelled out in full words</td>
+</tr>
+<tr>
+<td>YYYY</td>
+<td>4-digit year</td>
+</tr>
+<tr>
+<td>YYY</td>
+<td>Last 3 digits of year</td>
+</tr>
+<tr>
+<td>YY</td>
+<td>Last 2 digits of year</td>
+</tr>
+<tr>
+<td>Y</td>
+<td>Last digit of year</td>
+</tr>
+<tr>
+<td>IYY</td>
+<td>Last 3 digits of ISO year</td>
+</tr>
+<tr>
+<td>IY</td>
+<td>Last 2 digits of ISO year</td>
+</tr>
+<tr>
+<td>I</td>
+<td>Last digit of ISO year</td>
+</tr>
+<tr>
+<td>IYYY</td>
+<td>4-digit year, which is based on the ISO standard</td>
+</tr>
+<tr>
+<td>RRRR</td>
+<td>This format accepts a 2-digit year, and returns a 4-digit year. If the provided value is between 0 and 49, it will return a year greater than or equal to 2000. If the provided value is between 50 and 99, it will return a year less than 2000</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Month</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Explanation</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Q</td>
+<td>Quarter of year, from 1 to 4. JAN to MAR = 1</td>
+</tr>
+<tr>
+<td>MM</td>
+<td>Month, from 01 to 12. JAN = 01</td>
+</tr>
+<tr>
+<td>MON</td>
+<td>Abbreviated name of month.</td>
+</tr>
+<tr>
+<td>MONTH</td>
+<td>Name of month, padded with blanks to length of 9 characters.</td>
+</tr>
+<tr>
+<td>RM</td>
+<td>Roman numeral month, from I to XII. JAN = I.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Week</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Explanation</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WW</td>
+<td>Week of year, from 1 to 53. Week 1 starts on the first day of the year, and continues to the seventh day of the year.</td>
+</tr>
+<tr>
+<td>W</td>
+<td>Week of month, from 1 to 5. Week 1 starts on the first day of the month and ends on the seventh.</td>
+</tr>
+<tr>
+<td>IW</td>
+<td>Week of year, from 1 to 52 or 1 to 53, based on the ISO standard.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Day</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Explanation</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D</td>
+<td>Day of week, from 1 to 7.</td>
+</tr>
+<tr>
+<td>DAY</td>
+<td>Name of day.</td>
+</tr>
+<tr>
+<td>DD</td>
+<td>Day of month, from 1 to 31.</td>
+</tr>
+<tr>
+<td>DDD</td>
+<td>Day of year, from 1 to 366.</td>
+</tr>
+<tr>
+<td>DY</td>
+<td>Abbreviated name of day.</td>
+</tr>
+<tr>
+<td>J</td>
+<td>Julian day, which is the number of days since January 1, 4712 BC.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Time</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Explanation</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HH</td>
+<td>Hour of day, from 1 to 12.</td>
+</tr>
+<tr>
+<td>HH12</td>
+<td>Hour of day, from 1 to 12.</td>
+</tr>
+<tr>
+<td>HH24</td>
+<td>Hour of day, from 0 to 23.</td>
+</tr>
+<tr>
+<td>MI</td>
+<td>Minute, from 0 to 59</td>
+</tr>
+<tr>
+<td>SS</td>
+<td>Second, from 0 to 59</td>
+</tr>
+<tr>
+<td>SSSSS</td>
+<td>Seconds past midnight, from 0 to 86399.</td>
+</tr>
+<tr>
+<td>FF</td>
+<td>Fractional seconds. This uses a value from 1 to 9 after FF, to indicate the number of digits in the fractional seconds (e.g. FF7)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Indicators</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Explanation</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AM, A.M., PM, or P.M.</td>
+<td>Meridian indicator</td>
+</tr>
+<tr>
+<td>AD or A.D</td>
+<td>AD indicator</td>
+</tr>
+<tr>
+<td>BC or B.C.</td>
+<td>BC indicator</td>
+</tr>
+<tr>
+<td>TZD</td>
+<td>Daylight savings information</td>
+</tr>
+<tr>
+<td>TZH</td>
+<td>Time zone hour.</td>
+</tr>
+<tr>
+<td>TZM</td>
+<td>Time zone minute.</td>
+</tr>
+<tr>
+<td>TZR</td>
+<td>Time zone region.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="common-uses-for-date-functions"><a class="markdownIt-Anchor" href="#common-uses-for-date-functions">#</a> Common Uses for Date Functions</h2>
+<p>So, we’ve seen explanations of all of the date functions in Oracle, and some examples for how they work.</p>
+<p>Now, let’s take a look at some common examples of date functions.</p>
+<p>These examples will show you how to do common tasks in Oracle using dates. So, if you’re looking up how to find the date one year from now, or format a date in a certain way, this is where you’d look.</p>
+<p>Let’s see the examples.</p>
+<h3 id=""><a class="markdownIt-Anchor" href="#">#</a> </h3>
+<h3 id="find-the-number-of-days-between-two-dates"><a class="markdownIt-Anchor" href="#find-the-number-of-days-between-two-dates">#</a> Find the Number of Days Between Two Dates</h3>
+<p>To find the number of days between two dates, you can simply subtract one date from another. You don’t need to use a function for this.</p>
+<p>For example, to find the number of days between 31 Dec 2022 and today, run this query:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">TO_DATE(<span class="string">&#x27;31-DEC-2022&#x27;</span>) <span class="operator">-</span> SYSDATE</span><br><span class="line"><span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">111.6092245</span><br></pre></td></tr></table></figure>
+<h3 id="add-days-to-a-date"><a class="markdownIt-Anchor" href="#add-days-to-a-date">#</a> Add Days To A Date</h3>
+<p>Just like subtracting two dates, you can add a number to a date to get a number of days in the future. Adding numbers to a date is treated as adding days.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">SYSDATE <span class="operator">+</span> <span class="number">7</span></span><br><span class="line"><span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">17&#x2F;SEP&#x2F;22</span><br></pre></td></tr></table></figure>
+<p>This shows the date 7 days from now.</p>
+<h3 id="-2"><a class="markdownIt-Anchor" href="#-2">#</a> </h3>
+<h3 id="subtracting-days-from-a-date"><a class="markdownIt-Anchor" href="#subtracting-days-from-a-date">#</a> Subtracting Days From A Date</h3>
+<p>To subtract days from a date, just subtract a number. A number represents the number of days.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">SYSDATE <span class="operator">-</span> <span class="number">21</span></span><br><span class="line"><span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">20&#x2F;AUG&#x2F;22</span><br></pre></td></tr></table></figure>
+<p>This shows the date 21 days in the past.</p>
+<h3 id="show-todays-date-and-time"><a class="markdownIt-Anchor" href="#show-todays-date-and-time">#</a> Show Today’s Date and Time</h3>
+<p>To show today’s date and time, you can use the SYSDATE function, along with the TO_CHAR function to format it. Alternatively, you can use the CURRENT_DATE function.</p>
+<p>SYSDATE shows the server’s date and time, and CURRENT_DATE shows your session’s date and time.</p>
+<p>You can write a query like this:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">TO_CHAR(SYSDATE, <span class="string">&#x27;DD-MM-YYYY HH:MI:SS AM&#x27;</span>)</span><br><span class="line"><span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10-09-2022 09:24:11 AM</span><br></pre></td></tr></table></figure>
+<p>Or, you can write the same query using CURRENT_DATE, if your session time is more important (if, for example, your database is in another timezone and you want to find the time where you are now).</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">TO_CHAR(<span class="built_in">CURRENT_DATE</span>, <span class="string">&#x27;DD-MM-YYYY HH:MI:SS AM&#x27;</span>)</span><br><span class="line"><span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10-09-2022 09:24:11 AM</span><br></pre></td></tr></table></figure>
+<h3 id="add-one-year-to-a-date"><a class="markdownIt-Anchor" href="#add-one-year-to-a-date">#</a> Add One Year To A Date</h3>
+<p>Earlier, I showed you how to add a number of days to a date. This is helpful for adding days, but when it comes to adding years, using days is not reliable.</p>
+<p>This is because the number of days in each year is not consistent. Rather than using a complicated lookup table and formula, you can just use the ADD_MONTHS function.</p>
+<p>To add one year to today’s date:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">ADD_MONTHS(SYSDATE, <span class="number">12</span>)</span><br><span class="line"><span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10&#x2F;SEP&#x2F;23</span><br></pre></td></tr></table></figure>
+<h3 id="subtract-years-from-a-date"><a class="markdownIt-Anchor" href="#subtract-years-from-a-date">#</a> Subtract Years From a Date</h3>
+<p>Similar to adding a year to a date, you can also subtract years from a date. This is best done using the ADD_MONTHS function and providing a negative number value.</p>
+<p>To find the date 5 years before a specific date:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">ADD_MONTHS(<span class="string">&#x27;10-JUL-2022&#x27;</span>, <span class="number">-60</span>)</span><br><span class="line"><span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10&#x2F;JUL&#x2F;17</span><br></pre></td></tr></table></figure>
+<p>Notice that I added the number 60 in there, because 5 years * 12 months is 60.</p>
+<p>It could be easier to read and configure if you use the number of years * 12:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">ADD_MONTHS(<span class="string">&#x27;10-JUL-2022&#x27;</span>, <span class="number">5</span> <span class="operator">*</span> <span class="number">-12</span>)</span><br><span class="line"><span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10&#x2F;JUL&#x2F;17</span><br></pre></td></tr></table></figure>
+<p>That way, you can just change the number 5 if you ever need to change this, rather than work out how many months are in a year.</p>
+<h3 id="find-the-number-of-months-between-two-dates"><a class="markdownIt-Anchor" href="#find-the-number-of-months-between-two-dates">#</a> Find the Number of Months Between Two Dates</h3>
+<p>To find the number of months between two dates in Oracle, use the MONTHS_BETWEEN function.</p>
+<p>This is helpful to find the number of months an employee has worked at a company, or the number of months since a sale was made, for example.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">employee_id,</span><br><span class="line">hire_date,</span><br><span class="line">ROUND(MONTHS_BETWEEN(SYSDATE, HIRE_DATE), <span class="number">1</span>) <span class="keyword">AS</span> months_worked</span><br><span class="line"><span class="keyword">FROM</span> employee;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>EMPLOYEE_ID</strong></th>
+<th><strong>HIRE_DATE</strong></th>
+<th><strong>MONTHS_WORKED</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>27/AUG/11</td>
+<td>72.5</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2/JAN/12</td>
+<td>68.3</td>
+</tr>
+<tr>
+<td>3</td>
+<td>4/DEC/16</td>
+<td>9.2</td>
+</tr>
+<tr>
+<td>4</td>
+<td>12/OCT/11</td>
+<td>70.9</td>
+</tr>
+<tr>
+<td>5</td>
+<td>15/NOV11</td>
+<td>69.9</td>
+</tr>
+<tr>
+<td>6</td>
+<td>2/JUL/10</td>
+<td>86.3</td>
+</tr>
+<tr>
+<td>7</td>
+<td>3/OCT/10</td>
+<td>83.2</td>
+</tr>
+<tr>
+<td>8</td>
+<td>20/MAY10</td>
+<td>87.7</td>
+</tr>
+<tr>
+<td>9</td>
+<td>15/MAR/15</td>
+<td>29.9</td>
+</tr>
+<tr>
+<td>10</td>
+<td>3/JUL14</td>
+<td>38.2</td>
+</tr>
+</tbody>
+</table>
+<p>This shows the ID, the hire date, and the number of months the employee has worked at the company.</p>
+<p>Note that I used the ROUND function, to clean up the output, as the MONTHS_BETWEEN returns a decimal number that could be quite long.</p>
+<h3 id="get-the-first-day-of-the-month"><a class="markdownIt-Anchor" href="#get-the-first-day-of-the-month">#</a> Get the First Day of the Month</h3>
+<p>To find the first day of the month in Oracle SQL, you can use the TRUNC function.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">TRUNC(SYSDATE, <span class="string">&#x27;MONTH&#x27;</span>)</span><br><span class="line"><span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">01&#x2F;SEP&#x2F;22</span><br></pre></td></tr></table></figure>
+<h3 id="get-the-last-day-of-the-month"><a class="markdownIt-Anchor" href="#get-the-last-day-of-the-month">#</a> Get the Last Day of the Month</h3>
+<p>To find the last day of the month, use a combination of the TRUNC and LAST_DAY functions.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">TRUNC(LAST_DAY(SYSDATE))</span><br><span class="line"><span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">30&#x2F;SEP&#x2F;22</span><br></pre></td></tr></table></figure>
+<h3 id="get-the-first-day-of-the-year"><a class="markdownIt-Anchor" href="#get-the-first-day-of-the-year">#</a> Get the First Day of the Year</h3>
+<p>To get the first day of the year, which is always Jan 1st, use the TRUNC function to truncate it to a year.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">TRUNC(SYSDATE, <span class="string">&#x27;YEAR&#x27;</span>)</span><br><span class="line"><span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">01&#x2F;JAN&#x2F;22</span><br></pre></td></tr></table></figure>
+<h3 id="get-the-last-day-of-the-year"><a class="markdownIt-Anchor" href="#get-the-last-day-of-the-year">#</a> Get the Last Day Of The Year</h3>
+<p>The last day of the year is always 31 Dec. To find the last day of the year in SQL, use this query:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">ADD_MONTHS(TRUNC(SYSDATE, <span class="string">&#x27;YEAR&#x27;</span>), <span class="number">12</span>) <span class="operator">-</span> <span class="number">1</span></span><br><span class="line"><span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">31&#x2F;DEC&#x2F;22</span><br></pre></td></tr></table></figure>
+<p>This query first truncates the current date to the first day of the year (1 Jan), then adds 12 months to it (to make it 1 Jan of the next year). Then, it subtracts 1 day from that, to find the last day of the current year.</p>
+<h3 id="get-the-number-of-days-in-a-month"><a class="markdownIt-Anchor" href="#get-the-number-of-days-in-a-month">#</a> Get the Number of Days in a Month</h3>
+<p>To find the number of days in a particular month, whether it’s the current month or a month from another date, use this query.</p>
+<p>It uses the LAST_DAY, TO_CHAR, and CAST functions.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line"><span class="built_in">CAST</span>(TO_CHAR(LAST_DAY(SYSDATE), <span class="string">&#x27;dd&#x27;</span>) <span class="keyword">AS</span> <span class="type">INT</span>)</span><br><span class="line"><span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">30</span><br></pre></td></tr></table></figure>
+<p>This finds the last day of the month using LAST_DAY, and then converts it to an INT value. You can use any date here instead of SYSDATE.</p>
+<h2 id="conclusion"><a class="markdownIt-Anchor" href="#conclusion">#</a> Conclusion</h2>
+<p>So, this article has highlighted all of the DATE functions in Oracle. I’ve explained what they do, provided a small example, and covered a few common and useful ways to use these date functions.</p>
+<p>If you have any questions about these functions, please let me know!</p>
+
+      <div class="tags">
+          <a href="/tags/db/" rel="tag"><i class="ic i-tag"></i> db</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2023-01-04 16:04:31" itemprop="dateModified" datetime="2023-01-04T16:04:31+08:00">2023-01-04</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2022/12/15/oracle-table-naming-conventions/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;红猪-3.jpg" title="Singular vs Plural and Other Database Table Naming Conventions">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Singular vs Plural and Other Database Table Naming Conventions</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2022/12/20/oracle-record-types-bulk-collect-collections/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;秒速五厘米-5.jpg" title="PL&#x2F;SQL Record types, Bulk Collect, and Collections.">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>PL/SQL Record types, Bulk Collect, and Collections.</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#date-and-time-data-types-in-oracle"><span class="toc-number">1.</span> <span class="toc-text"> Date and Time Data Types in Oracle</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sysdate-function"><span class="toc-number">2.</span> <span class="toc-text"> SYSDATE Function</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#current_date"><span class="toc-number">3.</span> <span class="toc-text"> CURRENT_DATE</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#oracle-current_date-vs-sysdate"><span class="toc-number">3.1.</span> <span class="toc-text"> Oracle CURRENT_DATE Vs SYSDATE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#how-can-i-get-the-oracle-current_date-1-day"><span class="toc-number">3.2.</span> <span class="toc-text"> How Can I Get the Oracle CURRENT_DATE – 1 Day?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#systimestamp"><span class="toc-number">4.</span> <span class="toc-text"> SYSTIMESTAMP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#how-can-i-insert-with-systimestamp"><span class="toc-number">4.1.</span> <span class="toc-text"> How Can I Insert With SYSTIMESTAMP?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#can-i-find-the-systimestamp-without-timezone"><span class="toc-number">4.2.</span> <span class="toc-text"> Can I Find the SYSTIMESTAMP Without Timezone?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#can-i-use-to_char-with-systimestamp"><span class="toc-number">4.3.</span> <span class="toc-text"> Can I Use TO_CHAR With SYSTIMESTAMP?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#example-1"><span class="toc-number">4.4.</span> <span class="toc-text"> Example 1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#example-2"><span class="toc-number">4.5.</span> <span class="toc-text"> Example 2</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#current_timestamp"><span class="toc-number">5.</span> <span class="toc-text"> CURRENT_TIMESTAMP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#can-i-subtract-hours-from-the-current_timestamp"><span class="toc-number">5.1.</span> <span class="toc-text"> Can I Subtract Hours from the CURRENT_TIMESTAMP?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#localtimestamp"><span class="toc-number">6.</span> <span class="toc-text"> LOCALTIMESTAMP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#add_months"><span class="toc-number">7.</span> <span class="toc-text"> ADD_MONTHS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#last_day"><span class="toc-number">8.</span> <span class="toc-text"> LAST_DAY</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#next_day"><span class="toc-number">9.</span> <span class="toc-text"> NEXT_DAY</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#months_between"><span class="toc-number">10.</span> <span class="toc-text"> MONTHS_BETWEEN</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#round"><span class="toc-number">11.</span> <span class="toc-text"> ROUND</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#trunc"><span class="toc-number">12.</span> <span class="toc-text"> TRUNC</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#extract"><span class="toc-number">13.</span> <span class="toc-text"> EXTRACT</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#to_date"><span class="toc-number">14.</span> <span class="toc-text"> TO_DATE</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#new_time"><span class="toc-number">15.</span> <span class="toc-text"> NEW_TIME</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#from_tz"><span class="toc-number">16.</span> <span class="toc-text"> FROM_TZ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sys_extract_utc"><span class="toc-number">17.</span> <span class="toc-text"> SYS_EXTRACT_UTC</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sessiontimezone"><span class="toc-number">18.</span> <span class="toc-text"> SESSIONTIMEZONE</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#how-can-you-change-the-session-time-zone"><span class="toc-number">18.1.</span> <span class="toc-text"> How Can You Change the Session Time Zone?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#whats-the-difference-between-sessiontimezone-and-current_timestamp"><span class="toc-number">18.2.</span> <span class="toc-text"> What’s The Difference Between SESSIONTIMEZONE and CURRENT_TIMESTAMP?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dbtimezone"><span class="toc-number">19.</span> <span class="toc-text"> DBTIMEZONE</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#how-can-you-change-the-database-time-zone"><span class="toc-number">19.1.</span> <span class="toc-text"> How Can You Change the Database Time Zone?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#whats-the-difference-between-oracle-dbtimezone-and-sessiontimezone-in-oracle"><span class="toc-number">19.2.</span> <span class="toc-text"> What’s the Difference Between Oracle DBTIMEZONE and SESSIONTIMEZONE in Oracle?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#whats-the-difference-between-oracle-dbtimezone-vs-systimestamp"><span class="toc-number">19.3.</span> <span class="toc-text"> What’s The Difference Between Oracle DBTIMEZONE vs SYSTIMESTAMP?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#formatting-dates"><span class="toc-number">20.</span> <span class="toc-text"> Formatting Dates</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#date-format-parameters"><span class="toc-number">21.</span> <span class="toc-text"> Date Format Parameters</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#common-uses-for-date-functions"><span class="toc-number">22.</span> <span class="toc-text"> Common Uses for Date Functions</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">22.1.</span> <span class="toc-text"> </span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#find-the-number-of-days-between-two-dates"><span class="toc-number">22.2.</span> <span class="toc-text"> Find the Number of Days Between Two Dates</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#add-days-to-a-date"><span class="toc-number">22.3.</span> <span class="toc-text"> Add Days To A Date</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#-2"><span class="toc-number">22.4.</span> <span class="toc-text"> </span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#subtracting-days-from-a-date"><span class="toc-number">22.5.</span> <span class="toc-text"> Subtracting Days From A Date</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#show-todays-date-and-time"><span class="toc-number">22.6.</span> <span class="toc-text"> Show Today’s Date and Time</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#add-one-year-to-a-date"><span class="toc-number">22.7.</span> <span class="toc-text"> Add One Year To A Date</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#subtract-years-from-a-date"><span class="toc-number">22.8.</span> <span class="toc-text"> Subtract Years From a Date</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#find-the-number-of-months-between-two-dates"><span class="toc-number">22.9.</span> <span class="toc-text"> Find the Number of Months Between Two Dates</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#get-the-first-day-of-the-month"><span class="toc-number">22.10.</span> <span class="toc-text"> Get the First Day of the Month</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#get-the-last-day-of-the-month"><span class="toc-number">22.11.</span> <span class="toc-text"> Get the Last Day of the Month</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#get-the-first-day-of-the-year"><span class="toc-number">22.12.</span> <span class="toc-text"> Get the First Day of the Year</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#get-the-last-day-of-the-year"><span class="toc-number">22.13.</span> <span class="toc-text"> Get the Last Day Of The Year</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#get-the-number-of-days-in-a-month"><span class="toc-number">22.14.</span> <span class="toc-text"> Get the Number of Days in a Month</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#conclusion"><span class="toc-number">23.</span> <span class="toc-text"> Conclusion</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">319</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">43</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
+      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2022/12/15/oracle-table-naming-conventions/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2022/12/20/oracle-record-types-bulk-collect-collections/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ D E W</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2022/12/20/oracle-date/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
