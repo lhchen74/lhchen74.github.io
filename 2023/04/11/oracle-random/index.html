@@ -1,0 +1,529 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CFira%20Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="db" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2023/04/11/oracle-random/">
+
+
+
+  <title>
+DBMS_RANDOM Get Random Value |
+D E W = 露の世</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">DBMS_RANDOM Get Random Value
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2023-04-11 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2023-04-11T00:00:00+08:00">2023-04-11</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">D E W</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="/anime/index/怪物之子-1.jpg"></li>
+          <li class="item" data-background-image="/anime/index/狼的孩子雨和雪.jpg"></li>
+          <li class="item" data-background-image="/anime/index/幽灵公主-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/文豪野犬-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/天真与闪电-1.jpg"></li>
+          <li class="item" data-background-image="/anime/index/白兔糖.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2023/04/11/oracle-random/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <p>The  <code>DBMS_RANDOM</code>  package provides a built-in random number generator.</p>
+<h2 id="using-dbms_random"><a class="markdownIt-Anchor" href="#using-dbms_random">#</a> Using DBMS_RANDOM</h2>
+<ul>
+<li>The  <code>RANDOM</code>  function produces integers in the range [-2^^31, 2^^31).</li>
+<li>The  <code>VALUE</code>  function produces numbers in the range [0,1) with 38 digits of precision.</li>
+</ul>
+<p><code>DBMS_RANDOM</code>  can be explicitly initialized but does not require initialization before a call to the random number generator. It automatically initializes with the date, user ID, and process ID if no explicit initialization is performed.</p>
+<p>If this package is seeded twice with the same seed, then accessed in the same way, it produces the same result in both cases.</p>
+<p>In some cases, such as when testing, you may want the sequence of random numbers to be the same on every run. In that case, you seed the generator with a constant value by calling an overload of  <code>SEED</code> . To produce different output for every run, simply omit the seed call. Then the system chooses a suitable seed for you.</p>
+<h2 id="summary-of-dbms_random-subprograms"><a class="markdownIt-Anchor" href="#summary-of-dbms_random-subprograms">#</a> Summary of DBMS_RANDOM subprograms</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Subprogram</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm9yYWNsZS5jb20vZGF0YWJhc2UvdGltZXN0ZW4tMTguMS9UVFBMUC9kX3JhbmRvbS5odG0jaTk5ODI1NQ==">INITIALIZE procedure</span></td>
+<td style="text-align:left">Initializes the package with a seed value. deprecated, use SEED procedure.</td>
+</tr>
+<tr>
+<td style="text-align:left"><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm9yYWNsZS5jb20vZGF0YWJhc2UvdGltZXN0ZW4tMTguMS9UVFBMUC9kX3JhbmRvbS5odG0jaTk5Nzg0MQ==">NORMAL function</span></td>
+<td style="text-align:left">Returns random numbers in a normal distribution.</td>
+</tr>
+<tr>
+<td style="text-align:left"><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm9yYWNsZS5jb20vZGF0YWJhc2UvdGltZXN0ZW4tMTguMS9UVFBMUC9kX3JhbmRvbS5odG0jaTk5ODc0MA==">RANDOM function</span></td>
+<td style="text-align:left">Generates a random number. deprecated, use NORMAL and VALUE function.</td>
+</tr>
+<tr>
+<td style="text-align:left"><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm9yYWNsZS5jb20vZGF0YWJhc2UvdGltZXN0ZW4tMTguMS9UVFBMUC9kX3JhbmRvbS5odG0jaTk5Njc5OA==">SEED procedure</span></td>
+<td style="text-align:left">Resets the seed.</td>
+</tr>
+<tr>
+<td style="text-align:left"><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm9yYWNsZS5jb20vZGF0YWJhc2UvdGltZXN0ZW4tMTguMS9UVFBMUC9kX3JhbmRvbS5odG0jaTk5NjgyNQ==">STRING function</span></td>
+<td style="text-align:left">Gets a random string.</td>
+</tr>
+<tr>
+<td style="text-align:left"><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm9yYWNsZS5jb20vZGF0YWJhc2UvdGltZXN0ZW4tMTguMS9UVFBMUC9kX3JhbmRvbS5odG0jaTk5ODE0OQ==">TERMINATE procedure</span></td>
+<td style="text-align:left">Terminates package. deprecated.</td>
+</tr>
+<tr>
+<td style="text-align:left"><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm9yYWNsZS5jb20vZGF0YWJhc2UvdGltZXN0ZW4tMTguMS9UVFBMUC9kX3JhbmRvbS5odG0jaTk5ODA5NQ==">VALUE function</span></td>
+<td style="text-align:left">One version gets a random number greater than or equal to 0 and less than 1, with 38 digits to the right of the decimal point (38-digit precision). The other version gets a random Oracle Database number  <code>x</code> , where  <code>x</code>  is greater than or equal to a specified lower limit and less than a specified higher limit.</td>
+</tr>
+</tbody>
+</table>
+<p>Notes:</p>
+<ul>
+<li>The  <code>PLS_INTEGER</code>  and  <code>BINARY_INTEGER</code>  data types are identical. This document uses  <code>BINARY_INTEGER</code>  to indicate data types in reference information (such as for table types, record types, subprogram parameters, or subprogram return values), but may use either in discussion and examples.</li>
+<li>The  <code>INTEGER</code>  and  <code>NUMBER(38)</code>  data types are also identical. This document uses  <code>INTEGER</code>  throughout.</li>
+</ul>
+<h3 id="normal-function"><a class="markdownIt-Anchor" href="#normal-function">#</a> NORMAL function</h3>
+<p>This function returns random numbers in a standard normal distribution.</p>
+<p>Syntax</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DBMS_RANDOM.NORMAL</span><br><span class="line">  <span class="keyword">RETURN</span> NUMBER;</span><br></pre></td></tr></table></figure>
+<p>Return value</p>
+<p>The random number, a  <code>NUMBER</code>  value</p>
+<h3 id="seed-procedure"><a class="markdownIt-Anchor" href="#seed-procedure">#</a> SEED procedure</h3>
+<p>This procedure resets the seed used in generating a random number.</p>
+<p>Syntax</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">DBMS_RANDOM.SEED (</span><br><span class="line">   val  <span class="keyword">IN</span>  BINARY_INTEGER);</span><br><span class="line"></span><br><span class="line">DBMS_RANDOM.SEED (</span><br><span class="line">   val  <span class="keyword">IN</span>  VARCHAR2);</span><br></pre></td></tr></table></figure>
+<p>Parameters</p>
+<p>SEED procedure parameters</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Parameter</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>val</code></td>
+<td style="text-align:left">Seed number or string used to generate a random number</td>
+</tr>
+</tbody>
+</table>
+<p>Usage notes</p>
+<p>The seed can be a string up to length 2000.</p>
+<h3 id="string-function"><a class="markdownIt-Anchor" href="#string-function">#</a> STRING function</h3>
+<p>This function generates and returns a random string.</p>
+<p>Syntax</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">DBMS_RANDOM.STRING</span><br><span class="line">   opt  <span class="keyword">IN</span>  <span class="type">CHAR</span>,</span><br><span class="line">   len  <span class="keyword">IN</span>  NUMBER)</span><br><span class="line">  <span class="keyword">RETURN</span> VARCHAR2;</span><br></pre></td></tr></table></figure>
+<p>Parameters</p>
+<p>STRING function parameters</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Parameter</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>opt</code></td>
+<td style="text-align:left">What the returning string looks like:‘u’, ‘U’ - Returning string is in uppercase alpha characters.‘l’, ‘L’ - Returning string is in lowercase alpha characters.‘a’, ‘A’ - Returning string is in mixed-case alpha characters.‘x’, ‘X’ - Returning string is in uppercase alpha-numeric characters.‘p’, ‘P’ - Returning string is in any printable characters.Otherwise the returning string is in uppercase alpha characters.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>len</code></td>
+<td style="text-align:left">Length of the returned string</td>
+</tr>
+</tbody>
+</table>
+<p>Return value</p>
+<p>A  <code>VARCHAR2</code>  value with the random string</p>
+<h3 id="terminate-procedure"><a class="markdownIt-Anchor" href="#terminate-procedure">#</a> TERMINATE procedure</h3>
+<p>This procedure is deprecated. Although currently supported, it should not be used. It would be called when the user is finished with the package.</p>
+<p>Syntax</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DBMS_RANDOM.TERMINATE;</span><br></pre></td></tr></table></figure>
+<h3 id="value-function"><a class="markdownIt-Anchor" href="#value-function">#</a> VALUE function</h3>
+<p>One version returns a random number, greater than or equal to 0 and less than 1, with 38 digits to the right of the decimal (38-digit precision). The other version returns a random Oracle Database  <code>NUMBER</code>  value  <code>x</code> , where  <code>x</code>  is greater than or equal to the specified  <code>low</code>  value and less than the specified  <code>high</code>  value.</p>
+<p>Syntax</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">DBMS_RANDOM.VALUE</span><br><span class="line">  <span class="keyword">RETURN</span> NUMBER;</span><br><span class="line"></span><br><span class="line">DBMS_RANDOM.VALUE(</span><br><span class="line">  low  <span class="keyword">IN</span>  NUMBER,</span><br><span class="line">  high <span class="keyword">IN</span>  NUMBER)</span><br><span class="line"><span class="keyword">RETURN</span> NUMBER;</span><br></pre></td></tr></table></figure>
+<p>Parameters</p>
+<p>VALUE function parameters</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Parameter</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>low</code></td>
+<td style="text-align:left">Lower limit of the range in which to generate a random number</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>high</code></td>
+<td style="text-align:left">Upper limit of the range in which to generate a random number</td>
+</tr>
+</tbody>
+</table>
+<p>Return value</p>
+<p>A  <code>NUMBER</code>  value that is the generated random number</p>
+<hr>
+<h2 id="comments"><a class="markdownIt-Anchor" href="#comments">#</a> Comments</h2>
+<h3 id="random-order"><a class="markdownIt-Anchor" href="#random-order">#</a> Random Order</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> num <span class="keyword">from</span> (</span><br><span class="line">  <span class="keyword">select</span> <span class="number">1</span> <span class="keyword">as</span> num <span class="keyword">from</span> dual</span><br><span class="line">  <span class="keyword">union</span> <span class="keyword">all</span></span><br><span class="line">  <span class="keyword">select</span> <span class="number">2</span> <span class="keyword">from</span> dual</span><br><span class="line">  <span class="keyword">union</span> <span class="keyword">all</span></span><br><span class="line">  <span class="keyword">select</span> <span class="number">3</span> <span class="keyword">from</span> dual</span><br><span class="line">  <span class="keyword">union</span> <span class="keyword">all</span></span><br><span class="line">  <span class="keyword">select</span> <span class="number">4</span> <span class="keyword">from</span> dual</span><br><span class="line">  <span class="keyword">union</span> <span class="keyword">all</span></span><br><span class="line">  <span class="keyword">select</span> <span class="number">5</span> <span class="keyword">from</span> dual</span><br><span class="line">) <span class="keyword">order</span> <span class="keyword">by</span> DBMS_RANDOM.VALUE;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">num</span></span><br><span class="line"><span class="comment"> 2</span></span><br><span class="line"><span class="comment"> 1</span></span><br><span class="line"><span class="comment"> 3</span></span><br><span class="line"><span class="comment"> 4</span></span><br><span class="line"><span class="comment"> 5</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="select-sample"><a class="markdownIt-Anchor" href="#select-sample">#</a> Select Sample</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">select</span> rownum, num <span class="keyword">from</span> (</span><br><span class="line">  <span class="keyword">select</span> num <span class="keyword">from</span> (</span><br><span class="line">    <span class="keyword">select</span> <span class="number">1</span> <span class="keyword">as</span> num <span class="keyword">from</span> dual</span><br><span class="line">    <span class="keyword">union</span> <span class="keyword">all</span></span><br><span class="line">    <span class="keyword">select</span> <span class="number">2</span> <span class="keyword">from</span> dual</span><br><span class="line">    <span class="keyword">union</span> <span class="keyword">all</span></span><br><span class="line">    <span class="keyword">select</span> <span class="number">3</span> <span class="keyword">from</span> dual</span><br><span class="line">    <span class="keyword">union</span> <span class="keyword">all</span></span><br><span class="line">    <span class="keyword">select</span> <span class="number">4</span> <span class="keyword">from</span> dual</span><br><span class="line">    <span class="keyword">union</span> <span class="keyword">all</span></span><br><span class="line">    <span class="keyword">select</span> <span class="number">5</span> <span class="keyword">from</span> dual</span><br><span class="line">  ) <span class="keyword">order</span> <span class="keyword">by</span> DBMS_RANDOM.VALUE</span><br><span class="line">) <span class="keyword">where</span> rownum <span class="operator">&lt;=</span> <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">rownum num</span></span><br><span class="line"><span class="comment"> 1	   5</span></span><br><span class="line"><span class="comment"> 2	   1</span></span><br><span class="line"><span class="comment"> 3	   4</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<p>You can use  <code>SAMPLE</code>  for select some distinct sample, but which cannot use in a subquery.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--the 20 here is an approximate percentage, not the number of rows desired. In this case, since you have 100 rows, to get approximately 20 rows you ask for a 20% sample.</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> som_edi_asn_header sample(<span class="number">20</span>) <span class="keyword">where</span> rownum <span class="operator">&lt;=</span> <span class="number">3</span>;</span><br></pre></td></tr></table></figure>
+<p>The  <code>SEED(n)</code>  option allows you to get always the same sample</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span></span><br><span class="line">  <span class="keyword">from</span> som_edi_asn_header sample(<span class="number">10</span>) seed(<span class="number">1</span>)</span><br><span class="line"> <span class="keyword">where</span> rownum <span class="operator">&lt;=</span> <span class="number">3</span>;</span><br></pre></td></tr></table></figure>
+      <div class="tags">
+          <a href="/tags/db/" rel="tag"><i class="ic i-tag"></i> db</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2023-04-11 14:15:50" itemprop="dateModified" datetime="2023-04-11T14:15:50+08:00">2023-04-11</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2023/04/11/oracle-rollup-cube-grouping-sets/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;魔笛.jpg" title="Oracle ROLLUP, CUBE, GROUPING Functions and GROUPING SETS">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Oracle ROLLUP, CUBE, GROUPING Functions and GROUPING SETS</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2023/04/11/oracle-generate-series/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;侧耳倾听-2.jpg" title="generate_series an Oracle implementation in light of SQL Design Patterns">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>generate_series an Oracle implementation in light of SQL Design Patterns</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#using-dbms_random"><span class="toc-number">1.</span> <span class="toc-text"> Using DBMS_RANDOM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#summary-of-dbms_random-subprograms"><span class="toc-number">2.</span> <span class="toc-text"> Summary of DBMS_RANDOM subprograms</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#normal-function"><span class="toc-number">2.1.</span> <span class="toc-text"> NORMAL function</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#seed-procedure"><span class="toc-number">2.2.</span> <span class="toc-text"> SEED procedure</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#string-function"><span class="toc-number">2.3.</span> <span class="toc-text"> STRING function</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#terminate-procedure"><span class="toc-number">2.4.</span> <span class="toc-text"> TERMINATE procedure</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#value-function"><span class="toc-number">2.5.</span> <span class="toc-text"> VALUE function</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#comments"><span class="toc-number">3.</span> <span class="toc-text"> Comments</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#random-order"><span class="toc-number">3.1.</span> <span class="toc-text"> Random Order</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#select-sample"><span class="toc-number">3.2.</span> <span class="toc-text"> Select Sample</span></a></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">330</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">45</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
+      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2023/04/11/oracle-rollup-cube-grouping-sets/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2023/04/11/oracle-generate-series/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ D E W</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2023/04/11/oracle-random/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

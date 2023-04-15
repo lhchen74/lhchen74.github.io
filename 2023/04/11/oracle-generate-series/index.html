@@ -1,0 +1,447 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CFira%20Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="db" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2023/04/11/oracle-generate-series/">
+
+
+
+  <title>
+generate_series an Oracle implementation in light of SQL Design Patterns |
+D E W = 露の世</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">generate_series an Oracle implementation in light of SQL Design Patterns
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2023-04-11 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2023-04-11T00:00:00+08:00">2023-04-11</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">D E W</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="/anime/index/进击的巨人.jpg"></li>
+          <li class="item" data-background-image="/anime/index/编舟记.jpg"></li>
+          <li class="item" data-background-image="/anime/index/东京喰种.jpg"></li>
+          <li class="item" data-background-image="/anime/index/岁月的童话.jpg"></li>
+          <li class="item" data-background-image="/anime/index/工作细胞.jpg"></li>
+          <li class="item" data-background-image="/anime/index/王者天下.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2023/04/11/oracle-generate-series/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>转载：<span class="exturl" data-url="aHR0cHM6Ly93d3cuc3BkYmEuY29tLmF1L2dlbmVyYXRlX3Nlcmllcy1hbi1vcmFjbGUtaW1wbGVtZW50YXRpb24taW4tbGlnaHQtb2Ytc3FsLWRlc2lnbi1wYXR0ZXJucy8=">generate_series: an Oracle implementation in light of SQL Design Patterns - The Spatial Database Advisor</span></p>
+</blockquote>
+<h2 id="generate_series"><a class="markdownIt-Anchor" href="#generate_series">#</a> GENERATE_SERIES</h2>
+<p>There is a very useful function in PostgreSQL called generate_series that can be used to generate a series of integer numbers from some start value to an end value with an optional step value.</p>
+<p>Here is the function and its description from the PostgreSQL <span class="exturl" data-url="aHR0cDovL3d3dy5wb3N0Z3Jlc3FsLm9yZy9kb2NzLzguMS9zdGF0aWMvZnVuY3Rpb25zLXNyZi5odG1s">help.</span></p>
+<table>
+<thead>
+<tr>
+<th><strong>Function</strong></th>
+<th><strong>Argument Type</strong></th>
+<th><strong>Return Type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>generate_series(start, stop)</td>
+<td>int or bigint</td>
+<td>setof int or setof bigint (same as argument type)</td>
+<td>Generate a series of values, from start to stop with a step size of one</td>
+</tr>
+<tr>
+<td>generate_series(start, stop, step)</td>
+<td>int or bigint</td>
+<td>setof int or setof bigint (same as argument type)</td>
+<td>Generate a series of values, from start to stop with a step size of step</td>
+</tr>
+</tbody>
+</table>
+<p>There are a number of ways we can code this function in Oracle. Since the original function is a “set returning function”, we need to code generate_series so that it returns a table of numbers:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TYPE t_numbers <span class="keyword">IS</span> <span class="keyword">TABLE</span> <span class="keyword">OF</span> number;</span><br></pre></td></tr></table></figure>
+<p>The most efficient way to do this is via a PIPELINED function, so that is what I will code.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">or</span> replace</span><br><span class="line"> <span class="keyword">function</span> generate_series(p_start <span class="keyword">in</span> pls_integer,</span><br><span class="line">                          p_end   <span class="keyword">in</span> pls_integer,</span><br><span class="line">                          p_step  <span class="keyword">in</span> pls_integer :<span class="operator">=</span> <span class="number">1</span> )</span><br><span class="line">       <span class="keyword">Return</span> t_numbers PIPELINED</span><br><span class="line">   <span class="keyword">As</span></span><br><span class="line">    v_i    PLS_INTEGER :<span class="operator">=</span> <span class="keyword">CASE</span> <span class="keyword">WHEN</span> p_start <span class="keyword">IS</span> <span class="keyword">NULL</span> <span class="keyword">THEN</span> <span class="number">1</span> <span class="keyword">ELSE</span> p_start <span class="keyword">END</span>;</span><br><span class="line">    v_step PLS_INTEGER :<span class="operator">=</span> <span class="keyword">CASE</span> <span class="keyword">WHEN</span> p_step <span class="keyword">IS</span> <span class="keyword">NULL</span> <span class="keyword">OR</span> p_step <span class="operator">=</span> <span class="number">0</span> <span class="keyword">THEN</span> <span class="number">1</span> <span class="keyword">ELSE</span> p_step <span class="keyword">END</span>;</span><br><span class="line">    v_terminating_value PLS_INTEGER :<span class="operator">=</span> p_start <span class="operator">+</span> TRUNC(<span class="built_in">ABS</span>(p_start<span class="operator">-</span>p_end) <span class="operator">/</span> <span class="built_in">abs</span>(v_step) ) <span class="operator">*</span> v_step;</span><br><span class="line">   <span class="keyword">Begin</span></span><br><span class="line">     <span class="comment">-- Check for impossible combinations</span></span><br><span class="line">     If ( p_start <span class="operator">&gt;</span> p_end <span class="keyword">AND</span> SIGN(p_step) <span class="operator">=</span> <span class="number">1</span> )</span><br><span class="line">        <span class="keyword">Or</span></span><br><span class="line">        ( p_start <span class="operator">&lt;</span> p_end <span class="keyword">AND</span> SIGN(p_step) <span class="operator">=</span> <span class="number">-1</span> ) <span class="keyword">Then</span></span><br><span class="line">       <span class="keyword">Return</span>;</span><br><span class="line">     <span class="keyword">End</span> If;</span><br><span class="line">     <span class="comment">-- Generate integers</span></span><br><span class="line">     LOOP</span><br><span class="line">       PIPE <span class="type">ROW</span> ( v_i );</span><br><span class="line">       EXIT <span class="keyword">WHEN</span> ( v_i <span class="operator">=</span> v_terminating_value );</span><br><span class="line">       v_i :<span class="operator">=</span> v_i <span class="operator">+</span> v_step;</span><br><span class="line">     <span class="keyword">End</span> Loop;</span><br><span class="line">     <span class="keyword">Return</span>;</span><br><span class="line">  <span class="keyword">End</span> generate_series;</span><br><span class="line"><span class="operator">/</span></span><br></pre></td></tr></table></figure>
+<p>Now, to run the tests on the PostgreSQL help page:</p>
+<p>Let’s start with a simple, additional, example not on the page.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> g.column_value <span class="keyword">as</span> generate_series</span><br><span class="line">  <span class="keyword">from</span> <span class="keyword">table</span>(generate_series(<span class="number">1</span>,<span class="number">5</span>)) g;</span><br><span class="line"><span class="comment">-- Results</span></span><br><span class="line">GENERATE_SERIES</span><br><span class="line"><span class="comment">----------------------</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">5</span></span><br><span class="line">.</span><br><span class="line"><span class="number">5</span> <span class="keyword">rows</span> selected</span><br><span class="line"><span class="comment">--</span></span><br><span class="line"><span class="comment">-- Now, let&#x27;s execute the ones on the help page.</span></span><br><span class="line"><span class="comment">--</span></span><br><span class="line"><span class="keyword">select</span> g.column_value <span class="keyword">as</span> generate_series</span><br><span class="line">  <span class="keyword">from</span> <span class="keyword">table</span>(generate_series(<span class="number">2</span>,<span class="number">4</span>)) g</span><br><span class="line"><span class="comment">-- Results</span></span><br><span class="line">GENERATE_SERIES</span><br><span class="line"><span class="comment">---------------</span></span><br><span class="line">              <span class="number">2</span></span><br><span class="line">              <span class="number">3</span></span><br><span class="line">              <span class="number">4</span></span><br><span class="line">.</span><br><span class="line"><span class="number">3</span> <span class="keyword">rows</span> selected.</span><br><span class="line"><span class="comment">--</span></span><br><span class="line"><span class="comment">-- Another</span></span><br><span class="line"><span class="comment">--</span></span><br><span class="line"><span class="keyword">select</span> g.column_value <span class="keyword">as</span> generate_series</span><br><span class="line">  <span class="keyword">from</span> <span class="keyword">table</span>(generate_series(<span class="number">5</span>,<span class="number">1</span>,<span class="number">-2</span>)) g</span><br><span class="line"><span class="comment">-- Results</span></span><br><span class="line">GENERATE_SERIES</span><br><span class="line"><span class="comment">---------------</span></span><br><span class="line">              <span class="number">5</span></span><br><span class="line">              <span class="number">3</span></span><br><span class="line">              <span class="number">1</span></span><br><span class="line">.</span><br><span class="line"><span class="number">3</span> <span class="keyword">rows</span> selected.</span><br><span class="line"><span class="comment">--</span></span><br><span class="line"><span class="comment">-- And again</span></span><br><span class="line"><span class="comment">--</span></span><br><span class="line"><span class="keyword">select</span> g.column_value <span class="keyword">as</span> generate_series</span><br><span class="line">  <span class="keyword">from</span> <span class="keyword">table</span>(generate_series(<span class="number">4</span>,<span class="number">3</span>)) g</span><br><span class="line"><span class="comment">-- Results</span></span><br><span class="line"><span class="keyword">no</span> <span class="keyword">rows</span> selected</span><br><span class="line"><span class="comment">--</span></span><br><span class="line"><span class="comment">--With one additional:</span></span><br><span class="line"><span class="comment">--</span></span><br><span class="line"><span class="keyword">select</span> g.column_value <span class="keyword">as</span> generate_series</span><br><span class="line">  <span class="keyword">from</span> <span class="keyword">table</span>(generate_series(<span class="number">-4</span>,<span class="number">-1</span>,<span class="number">1</span>)) g</span><br><span class="line"><span class="comment">-- Results</span></span><br><span class="line">GENERATE_SERIES</span><br><span class="line"><span class="comment">---------------</span></span><br><span class="line">             <span class="number">-4</span></span><br><span class="line">             <span class="number">-3</span></span><br><span class="line">             <span class="number">-2</span></span><br><span class="line">             <span class="number">-1</span></span><br><span class="line">.</span><br><span class="line"><span class="number">4</span> <span class="keyword">rows</span> selected.</span><br><span class="line"><span class="comment">--</span></span><br><span class="line"><span class="comment">-- And finally.</span></span><br><span class="line"><span class="comment">--</span></span><br><span class="line"><span class="keyword">select</span> to_char(<span class="built_in">current_date</span> <span class="operator">+</span> sa.column_value,<span class="string">&#x27;YYYY-MM-DD&#x27;</span>) <span class="keyword">as</span> da</span><br><span class="line">  <span class="keyword">from</span> <span class="keyword">table</span>(generate_series(<span class="number">0</span>,<span class="number">14</span>,<span class="number">7</span>)) sa</span><br><span class="line"><span class="comment">-- Results</span></span><br><span class="line">     DATES</span><br><span class="line"><span class="comment">----------</span></span><br><span class="line"><span class="number">2008</span><span class="number">-11</span><span class="number">-06</span></span><br><span class="line"><span class="number">2008</span><span class="number">-11</span><span class="number">-13</span></span><br><span class="line"><span class="number">2008</span><span class="number">-11</span><span class="number">-20</span></span><br><span class="line">.</span><br><span class="line"><span class="number">3</span> <span class="keyword">rows</span> selected.</span><br></pre></td></tr></table></figure>
+<h2 id="alternative-table-function"><a class="markdownIt-Anchor" href="#alternative-table-function">#</a> Alternative Table Function</h2>
+<p>Now all this is very good, but there is some debate as to implementing a series of integers in this way.</p>
+<p>Vadim Tropashko, in his excellent book, “SQL Design Patterns, The Expert Guide to SQL Programming”, <span class="exturl" data-url="aHR0cDovL3d3dy5yYW1wYW50LWJvb2tzLmNvbS9ib29rXzIwMDZfMV9zcWxfY29kaW5nX3N0eWxlcy5odG0=">Rampart Press</span> has a whole chapter (2) devoted to “Integer Generators in SQL”. In this chapter, Vadmin presents an coding of a simple Integer generating table function called “Integers”. His coding is as follows.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">or</span> replace <span class="keyword">function</span> Integers</span><br><span class="line">       <span class="keyword">return</span> t_integers PIPELINED</span><br><span class="line"><span class="keyword">As</span></span><br><span class="line"><span class="keyword">Begin</span></span><br><span class="line">   Loop</span><br><span class="line">     PIPE <span class="type">ROW</span> ( <span class="number">0</span> );</span><br><span class="line">   <span class="keyword">End</span> Loop;</span><br><span class="line">   <span class="keyword">Return</span>;</span><br><span class="line"><span class="keyword">end</span> Integers;</span><br></pre></td></tr></table></figure>
+<p>We will now use this function to implement the PostgreSQL help examples above.</p>
+<p>Firstly, generating numbers between 1 and 5.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> rownum <span class="keyword">as</span> rin</span><br><span class="line">  <span class="keyword">from</span> <span class="keyword">table</span>(Integers)</span><br><span class="line"> <span class="keyword">where</span> rownum <span class="operator">&lt;=</span> <span class="number">5</span></span><br><span class="line"><span class="comment">-- Results</span></span><br><span class="line">       RIN</span><br><span class="line"><span class="comment">----------</span></span><br><span class="line">         <span class="number">1</span></span><br><span class="line">         <span class="number">2</span></span><br><span class="line">         <span class="number">3</span></span><br><span class="line">         <span class="number">4</span></span><br><span class="line">         <span class="number">5</span></span><br><span class="line">.</span><br><span class="line"><span class="number">5</span> <span class="keyword">rows</span> selected.</span><br><span class="line"><span class="comment">--</span></span><br><span class="line"><span class="comment">-- All numbers between 2 and 4.</span></span><br><span class="line"><span class="comment">--</span></span><br><span class="line"><span class="keyword">select</span> rin</span><br><span class="line">  <span class="keyword">from</span> (<span class="keyword">select</span> rownum <span class="keyword">as</span> rin</span><br><span class="line">          <span class="keyword">from</span> <span class="keyword">table</span>(Integers)</span><br><span class="line">         <span class="keyword">where</span> rownum <span class="operator">&lt;=</span> <span class="number">5</span>)</span><br><span class="line"> <span class="keyword">where</span> rin <span class="keyword">between</span> <span class="number">2</span> <span class="keyword">and</span> <span class="number">4</span></span><br><span class="line"><span class="comment">-- Results</span></span><br><span class="line">       RIN</span><br><span class="line"><span class="comment">----------</span></span><br><span class="line">         <span class="number">2</span></span><br><span class="line">         <span class="number">3</span></span><br><span class="line">         <span class="number">4</span></span><br><span class="line">.</span><br><span class="line"><span class="number">2</span> <span class="keyword">rows</span> selected.</span><br><span class="line"><span class="comment">--</span></span><br><span class="line"><span class="comment">-- Series 5,3,1 using a step of -2.</span></span><br><span class="line"><span class="comment">--</span></span><br><span class="line"><span class="keyword">select</span> rin</span><br><span class="line">  <span class="keyword">from</span> (<span class="keyword">select</span> <span class="number">5</span> <span class="operator">+</span> ((rownum<span class="number">-1</span>) <span class="operator">*</span> <span class="number">-1</span>) <span class="keyword">as</span> rin</span><br><span class="line">          <span class="keyword">from</span> <span class="keyword">table</span>(Integers)</span><br><span class="line">         <span class="keyword">where</span> rownum <span class="operator">&lt;</span> <span class="number">10</span>)</span><br><span class="line"> <span class="keyword">where</span> rin <span class="keyword">between</span> <span class="number">1</span> <span class="keyword">and</span> <span class="number">5</span></span><br><span class="line">   <span class="keyword">and</span> <span class="built_in">mod</span>(rin,<span class="built_in">ABS</span>(<span class="number">-2</span>)) <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line"><span class="comment">-- Results</span></span><br><span class="line">       RIN</span><br><span class="line"><span class="comment">----------</span></span><br><span class="line">         <span class="number">5</span></span><br><span class="line">         <span class="number">3</span></span><br><span class="line">         <span class="number">1</span></span><br><span class="line">.</span><br><span class="line"><span class="number">3</span> <span class="keyword">rows</span> selected</span><br></pre></td></tr></table></figure>
+<p>I won’t code the invalid series. So let’s move on to the negative series.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> rin</span><br><span class="line">  <span class="keyword">from</span> (<span class="keyword">select</span> <span class="number">-1</span> <span class="operator">+</span> (rownum <span class="operator">-</span> <span class="number">1</span> ) <span class="operator">*</span> <span class="number">-1</span> <span class="keyword">as</span> rin</span><br><span class="line">          <span class="keyword">from</span> <span class="keyword">table</span>(Integers)</span><br><span class="line">         <span class="keyword">where</span> rownum <span class="operator">&lt;</span> <span class="number">10</span></span><br><span class="line">         <span class="keyword">order</span> <span class="keyword">by</span> <span class="number">1</span>)</span><br><span class="line"> <span class="keyword">where</span> rin <span class="keyword">between</span> <span class="number">-4</span> <span class="keyword">and</span> <span class="number">-1</span>;</span><br><span class="line"><span class="comment">-- Results</span></span><br><span class="line">       RIN</span><br><span class="line"><span class="comment">----------</span></span><br><span class="line">        <span class="number">-4</span></span><br><span class="line">        <span class="number">-3</span></span><br><span class="line">        <span class="number">-2</span></span><br><span class="line">        <span class="number">-1</span></span><br><span class="line">.</span><br><span class="line"><span class="number">4</span> <span class="keyword">rows</span> selected</span><br><span class="line"><span class="comment">--</span></span><br><span class="line"><span class="comment">-- And finally.</span></span><br><span class="line"><span class="comment">--</span></span><br><span class="line"><span class="keyword">select</span> to_char(<span class="built_in">current_date</span> <span class="operator">+</span> sa.rin,<span class="string">&#x27;YYYY-MM-DD&#x27;</span>) <span class="keyword">as</span> dates</span><br><span class="line">  <span class="keyword">from</span> (<span class="keyword">select</span> (rownum <span class="operator">-</span> <span class="number">1</span>) <span class="keyword">as</span> rin</span><br><span class="line">          <span class="keyword">from</span> <span class="keyword">table</span>(Integers)</span><br><span class="line">         <span class="keyword">where</span> rownum <span class="operator">&lt;=</span> <span class="number">15</span>) sa</span><br><span class="line"> <span class="keyword">where</span> <span class="built_in">mod</span>(rin,<span class="number">7</span>) <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"><span class="comment">-- Results</span></span><br><span class="line">     DATES</span><br><span class="line"><span class="comment">----------</span></span><br><span class="line"><span class="number">2008</span><span class="number">-11</span><span class="number">-06</span></span><br><span class="line"><span class="number">2008</span><span class="number">-11</span><span class="number">-13</span></span><br><span class="line"><span class="number">2008</span><span class="number">-11</span><span class="number">-20</span></span><br><span class="line">.</span><br><span class="line"><span class="number">3</span> <span class="keyword">rows</span> selected.</span><br></pre></td></tr></table></figure>
+<h2 id="hierarchical-queries"><a class="markdownIt-Anchor" href="#hierarchical-queries">#</a> Hierarchical Queries</h2>
+<p>Vadim goes on in his book to describe the use of hierarchical queries for generating integer series. Here is an example of how to generate all even numbers between 5 and 8.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">elect level</span><br><span class="line">  <span class="keyword">from</span> dual</span><br><span class="line"> <span class="keyword">where</span> level <span class="keyword">between</span> <span class="number">5</span> <span class="keyword">and</span> <span class="number">8</span></span><br><span class="line">   <span class="keyword">and</span> <span class="built_in">MOD</span>(level,<span class="number">2</span>) <span class="operator">=</span> <span class="number">0</span></span><br><span class="line">  <span class="keyword">connect</span> <span class="keyword">by</span> level <span class="operator">&lt;=</span> <span class="number">10</span></span><br><span class="line"><span class="comment">-- Results</span></span><br><span class="line">     LEVEL</span><br><span class="line"><span class="comment">----------</span></span><br><span class="line">         <span class="number">6</span></span><br><span class="line">         <span class="number">8</span></span><br><span class="line">.</span><br><span class="line"><span class="number">2</span> <span class="keyword">rows</span> selected.</span><br><span class="line"><span class="comment">--</span></span><br><span class="line"><span class="comment">-- And the negative series -4,-3,-2,-1 above.</span></span><br><span class="line"><span class="comment">--</span></span><br><span class="line"><span class="keyword">select</span> level <span class="operator">*</span> <span class="number">-1</span></span><br><span class="line">  <span class="keyword">from</span> dual</span><br><span class="line"> <span class="keyword">where</span> level <span class="keyword">between</span> <span class="number">1</span> <span class="keyword">and</span> <span class="number">4</span></span><br><span class="line"> <span class="keyword">connect</span> <span class="keyword">by</span> level <span class="operator">&lt;=</span> <span class="number">5</span></span><br><span class="line"> <span class="keyword">order</span> <span class="keyword">by</span> level <span class="keyword">desc</span>;</span><br><span class="line"><span class="comment">-- Results</span></span><br><span class="line">     LEVEL</span><br><span class="line"><span class="comment">----------</span></span><br><span class="line">        <span class="number">-4</span></span><br><span class="line">        <span class="number">-3</span></span><br><span class="line">        <span class="number">-2</span></span><br><span class="line">        <span class="number">-1</span></span><br><span class="line">.</span><br><span class="line"><span class="number">4</span> <span class="keyword">rows</span> selected</span><br></pre></td></tr></table></figure>
+<p>I am a big fan of hierachical queries and have used them a lot in my work but mainly in the area of generating sample data (see other articles in this blog for examples). My personal view is that coding integer ranges with the “connect by level” hierarchical query is simpler to use and code than the Integers() function. However, the “connect by level” usage above does not work in versions of Oracle <strong>before</strong> 10g. So all you 9i users will have to resort to coding a suitable table function.</p>
+<h2 id="application-to-oracle-spatial-data-processing"><a class="markdownIt-Anchor" href="#application-to-oracle-spatial-data-processing">#</a> Application to Oracle Spatial Data Processing</h2>
+<p>Since 11g, Oracle has included a function called SDO_UTIL.EXTRACT that can be used to extract the elements of an SDO_GEOMETRY object. For example, it can be used to extract the linestrings in a multilinestring object or the polygons in a multipolygon object.</p>
+<p>In addition, Oracle has a function called SDO_UTIL.GetNumElem which can return the number of polygons/linestrings in a multipolygon/multilinestring.</p>
+<p>I will show how to use both the generate_series and CONNECT BY LEVEL approaches to extracting single geometries from a multigeometry.</p>
+<p><em>CONNECT BY LEVEL</em></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">WITH</span> mGeom <span class="keyword">AS</span> (</span><br><span class="line"><span class="keyword">SELECT</span> rownum <span class="keyword">as</span> id,</span><br><span class="line">       sdo_geometry(<span class="number">2006</span>,<span class="keyword">null</span>,<span class="keyword">null</span>,</span><br><span class="line">                    sdo_elem_info_array(<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>,</span><br><span class="line">                                        <span class="number">5</span>,<span class="number">2</span>,<span class="number">1</span>,</span><br><span class="line">                                        <span class="number">9</span>,<span class="number">2</span>,<span class="number">1</span>),</span><br><span class="line">                    sdo_ordinate_array(<span class="number">1</span>,<span class="number">1</span>,<span class="number">10</span>,<span class="number">10</span>,</span><br><span class="line">                                       <span class="number">20</span>,<span class="number">1</span>,<span class="number">50</span>,<span class="number">50</span>,</span><br><span class="line">                                       <span class="number">100</span>,<span class="number">0</span>,<span class="number">150</span>,<span class="number">50</span>)) <span class="keyword">as</span> geom</span><br><span class="line">  <span class="keyword">FROM</span> dual</span><br><span class="line">)</span><br><span class="line"><span class="keyword">SELECT</span> id,</span><br><span class="line">       line_id,</span><br><span class="line">       mdsys.sdo_util.GetNumElem(geom) <span class="keyword">as</span> line_Count,</span><br><span class="line">       mdsys.sdo_util.<span class="built_in">Extract</span>(geom,line_id,<span class="number">0</span>) <span class="keyword">as</span> geom</span><br><span class="line">    <span class="keyword">FROM</span> mGeom p,</span><br><span class="line">        (<span class="keyword">select</span> level <span class="keyword">as</span> line_id</span><br><span class="line">          <span class="keyword">from</span> dual</span><br><span class="line">          <span class="keyword">connect</span> <span class="keyword">by</span> level <span class="operator">&lt;=</span> (<span class="keyword">select</span> <span class="built_in">max</span>(mdsys.sdo_util.GetNumElem(geom)) <span class="keyword">from</span> mGeom p ) ) i</span><br><span class="line">   <span class="keyword">WHERE</span> i.line_id <span class="operator">&lt;=</span> mdsys.sdo_util.GetNumElem(geom)</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="number">1</span>,<span class="number">2</span>;</span><br><span class="line"><span class="comment">--</span></span><br><span class="line"><span class="comment">-- Results</span></span><br><span class="line"><span class="comment">--</span></span><br><span class="line">ID LINE_ID LINE_COUNT GEOM</span><br><span class="line"><span class="comment">-- ------- ---------- ----------------------------------------------------------------------------------------</span></span><br><span class="line"><span class="number">1</span>  <span class="number">1</span>       <span class="number">3</span>          SDO_GEOMETRY(<span class="number">2002</span>,<span class="keyword">NULL</span>,<span class="keyword">NULL</span>,SDO_ELEM_INFO_ARRAY(<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>),SDO_ORDINATE_ARRAY(<span class="number">1</span>,<span class="number">1</span>,<span class="number">10</span>,<span class="number">10</span>))</span><br><span class="line"><span class="number">1</span>  <span class="number">2</span>       <span class="number">3</span>          SDO_GEOMETRY(<span class="number">2002</span>,<span class="keyword">NULL</span>,<span class="keyword">NULL</span>,SDO_ELEM_INFO_ARRAY(<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>),SDO_ORDINATE_ARRAY(<span class="number">20</span>,<span class="number">1</span>,<span class="number">50</span>,<span class="number">50</span>))</span><br><span class="line"><span class="number">1</span>  <span class="number">3</span>       <span class="number">3</span>          SDO_GEOMETRY(<span class="number">2002</span>,<span class="keyword">NULL</span>,<span class="keyword">NULL</span>,SDO_ELEM_INFO_ARRAY(<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>),SDO_ORDINATE_ARRAY(<span class="number">100</span>,<span class="number">0</span>,<span class="number">150</span>,<span class="number">50</span>))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>That query, I think, is unnecessarily complicated. Let’s try generate_series.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">WITH</span> mGeom <span class="keyword">AS</span> (</span><br><span class="line"><span class="keyword">SELECT</span> rownum <span class="keyword">as</span> id,</span><br><span class="line">       sdo_geometry(<span class="number">2006</span>,<span class="keyword">null</span>,<span class="keyword">null</span>,</span><br><span class="line">                    sdo_elem_info_array(<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>,</span><br><span class="line">                                        <span class="number">5</span>,<span class="number">2</span>,<span class="number">1</span>,</span><br><span class="line">                                        <span class="number">9</span>,<span class="number">2</span>,<span class="number">1</span>),</span><br><span class="line">                    sdo_ordinate_array(<span class="number">1</span>,<span class="number">1</span>,<span class="number">10</span>,<span class="number">10</span>,</span><br><span class="line">                                       <span class="number">20</span>,<span class="number">1</span>,<span class="number">50</span>,<span class="number">50</span>,</span><br><span class="line">                                       <span class="number">100</span>,<span class="number">0</span>,<span class="number">150</span>,<span class="number">50</span>)) <span class="keyword">as</span> geom</span><br><span class="line">  <span class="keyword">FROM</span> dual</span><br><span class="line">)</span><br><span class="line"><span class="keyword">SELECT</span> id,</span><br><span class="line">       i.column_value <span class="keyword">as</span> line_id,</span><br><span class="line">       mdsys.sdo_util.GetNumElem(geom) <span class="keyword">as</span> Line_Count,</span><br><span class="line">       mdsys.sdo_util.<span class="built_in">Extract</span>(geom,i.column_value,<span class="number">0</span>) <span class="keyword">as</span> geom</span><br><span class="line">    <span class="keyword">FROM</span> mGeom p,</span><br><span class="line">         <span class="keyword">TABLE</span>(geom.generate_series(<span class="number">1</span>,mdsys.sdo_util.GetNumElem(geom),<span class="number">1</span>)) i</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="number">1</span>,<span class="number">2</span>;</span><br><span class="line"><span class="comment">--</span></span><br><span class="line"><span class="comment">-- Results</span></span><br><span class="line"><span class="comment">--</span></span><br><span class="line">ID LINE_ID LINE_COUNT GEOM</span><br><span class="line"><span class="comment">-- ------- ---------- ----------------------------------------------------------------------------------------</span></span><br><span class="line"><span class="number">1</span>  <span class="number">1</span>       <span class="number">3</span>          SDO_GEOMETRY(<span class="number">2002</span>,<span class="keyword">NULL</span>,<span class="keyword">NULL</span>,SDO_ELEM_INFO_ARRAY(<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>),SDO_ORDINATE_ARRAY(<span class="number">1</span>,<span class="number">1</span>,<span class="number">10</span>,<span class="number">10</span>))</span><br><span class="line"><span class="number">1</span>  <span class="number">2</span>       <span class="number">3</span>          SDO_GEOMETRY(<span class="number">2002</span>,<span class="keyword">NULL</span>,<span class="keyword">NULL</span>,SDO_ELEM_INFO_ARRAY(<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>),SDO_ORDINATE_ARRAY(<span class="number">20</span>,<span class="number">1</span>,<span class="number">50</span>,<span class="number">50</span>))</span><br><span class="line"><span class="number">1</span>  <span class="number">3</span>       <span class="number">3</span>          SDO_GEOMETRY(<span class="number">2002</span>,<span class="keyword">NULL</span>,<span class="keyword">NULL</span>,SDO_ELEM_INFO_ARRAY(<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>),SDO_ORDINATE_ARRAY(<span class="number">100</span>,<span class="number">0</span>,<span class="number">150</span>,<span class="number">50</span>))</span><br></pre></td></tr></table></figure>
+<p>Both work nicely, but I rather prefer the cleanliness of the generate_series query.</p>
+<h2 id="conclusion"><a class="markdownIt-Anchor" href="#conclusion">#</a> Conclusion</h2>
+<p>Tropashko’s preference (as also Mikito Harakiri) in coding an integer series generation table function is to code one without parameters, such as Integers(), and not like generate_series. The main reason is that he prefers the use of predicates in SQL SELECT statements (such as “rownum &lt; = 1000”) than parameters passed to a function. This is because they are at a “higher abstraction level”, claiming that “programs with predicate expressions are shorter and cleaner”. Because I am a “SQL man”, preferring a single SQL statement to complex PL/SQL, and because I like things to be done “orthogonally”, “theoretically” and via patterns/templates I am tempted to agree with Tropashko. However, when I look at the SQL above, I find the generate_series implementation much, much cleaner and less complicated.</p>
+<p>The problem with the Integers() function is that it forces me to “reinvent the wheel” each time I need a series of integers. With simple series the SQL Is not too bad. But more complicated series create much more complicated SQL. Now, many of my uses of SQL result in large SQL statements with can result in many uses of generate_series. To integrate multiple calls to the same series generation can be neatly encapsulated using the WITH construct, but even so it does add, to my way of thinking, unnecessary complicated. And complication usually means lots of errors and longer debugging.</p>
+<p>In the end a generate*series function like above allows us to design and algorithm, code and test it and then use it many times without having to remember how to code an integer series every time we need it. This is part of good software engineering: the algorithm is *“encapsulated”_ in a program unit that offers a stable interface. And interfaces are everything.</p>
+<p>I hope that this is of use to someone.</p>
+
+      <div class="tags">
+          <a href="/tags/db/" rel="tag"><i class="ic i-tag"></i> db</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2023-04-11 17:28:49" itemprop="dateModified" datetime="2023-04-11T17:28:49+08:00">2023-04-11</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2023/04/11/oracle-random/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;一人之下.jpg" title="DBMS_RANDOM Get Random Value">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>DBMS_RANDOM Get Random Value</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2023/04/13/edi-ship_date-delivery_date/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;孤独摇滚.jpg" title="Shipping Dates vs. Delivery Dates What&#39;s the Difference?">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Shipping Dates vs. Delivery Dates What's the Difference?</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#generate_series"><span class="toc-number">1.</span> <span class="toc-text"> GENERATE_SERIES</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#alternative-table-function"><span class="toc-number">2.</span> <span class="toc-text"> Alternative Table Function</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hierarchical-queries"><span class="toc-number">3.</span> <span class="toc-text"> Hierarchical Queries</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#application-to-oracle-spatial-data-processing"><span class="toc-number">4.</span> <span class="toc-text"> Application to Oracle Spatial Data Processing</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#conclusion"><span class="toc-number">5.</span> <span class="toc-text"> Conclusion</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">330</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">45</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
+      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2023/04/11/oracle-random/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2023/04/13/edi-ship_date-delivery_date/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ D E W</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2023/04/11/oracle-generate-series/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
