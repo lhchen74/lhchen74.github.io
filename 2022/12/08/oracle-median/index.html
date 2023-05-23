@@ -102,12 +102,12 @@ D E W = 露の世</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="/anime/index/夏日大作战.jpg"></li>
-          <li class="item" data-background-image="/anime/index/凉宫春日.jpg"></li>
-          <li class="item" data-background-image="/anime/index/黑色四叶草.jpg"></li>
-          <li class="item" data-background-image="/anime/index/奇巧计程车.jpg"></li>
-          <li class="item" data-background-image="/anime/index/海贼王.jpg"></li>
-          <li class="item" data-background-image="/anime/index/万国志.jpg"></li>
+          <li class="item" data-background-image="/anime/index/未闻花名.jpg"></li>
+          <li class="item" data-background-image="/anime/index/侧耳倾听-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/JOJO的奇幻冒险.jpg"></li>
+          <li class="item" data-background-image="/anime/index/CAROLE&TUESDAY-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/魔法少女小圆-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/辉夜姬物语-1.jpg"></li>
         </ul>
       </div>
     </header>
@@ -159,6 +159,7 @@ D E W = 露の世</title>
 <h2 id="row_number-window-function"><a class="markdownIt-Anchor" href="#row_number-window-function">#</a> ROW_NUMBER() Window Function</h2>
 <p>对于有限的数集，可以通过把所有观察值高低排序后找出正中间的一个作为中位数。如果观察值有偶数个，则中位数不唯一，通常取最中间的两个数值的平均数作为中位数。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">avg</span>(m.rating)</span><br><span class="line">  <span class="keyword">from</span> (<span class="keyword">select</span> m1.rating,</span><br><span class="line">               <span class="built_in">row_number</span>() <span class="keyword">over</span>(<span class="keyword">order</span> <span class="keyword">by</span> m1.rating) <span class="keyword">as</span> row_num,</span><br><span class="line">               <span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">over</span>() <span class="keyword">as</span> cnt</span><br><span class="line">          <span class="keyword">from</span> movie_ratings m1) m</span><br><span class="line"> <span class="keyword">where</span> m.row_num <span class="keyword">in</span></span><br><span class="line">       (<span class="built_in">floor</span>(cnt <span class="operator">/</span> <span class="number">2</span>) <span class="operator">+</span> <span class="number">1</span>,</span><br><span class="line">        <span class="keyword">case</span> <span class="keyword">when</span> <span class="built_in">mod</span>(cnt, <span class="number">2</span>) <span class="operator">=</span> <span class="number">0</span> <span class="keyword">then</span> cnt <span class="operator">/</span> <span class="number">2</span> <span class="keyword">else</span> <span class="built_in">floor</span>(cnt <span class="operator">/</span> <span class="number">2</span>) <span class="operator">+</span> <span class="number">1</span> <span class="keyword">end</span>);</span><br><span class="line"><span class="comment">--14</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">avg</span>(m.rating)</span><br><span class="line">  <span class="keyword">from</span> (<span class="keyword">select</span> m1.rating,</span><br><span class="line">               <span class="built_in">row_number</span>() <span class="keyword">over</span>(<span class="keyword">order</span> <span class="keyword">by</span> m1.rating) <span class="keyword">as</span> row_num,</span><br><span class="line">               <span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">over</span>() <span class="keyword">as</span> cnt</span><br><span class="line">          <span class="keyword">from</span> movie_ratings m1) m</span><br><span class="line"> <span class="keyword">where</span> m.row_num <span class="keyword">between</span> cnt <span class="operator">/</span> <span class="number">2</span> <span class="keyword">and</span> cnt <span class="operator">/</span> <span class="number">2</span> <span class="operator">+</span> <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--11, 12, 12, 13, 15, 16, 19, 20</span></span><br><span class="line"><span class="keyword">select</span> <span class="built_in">avg</span>(m.rating)</span><br><span class="line">  <span class="keyword">from</span> (<span class="keyword">select</span> m1.rating,</span><br><span class="line">               <span class="built_in">row_number</span>() <span class="keyword">over</span>(<span class="keyword">order</span> <span class="keyword">by</span> m1.rating) <span class="keyword">as</span> row_num1, <span class="comment">--11, 12, 12, 13, 15, 16, 19, 20</span></span><br><span class="line">               <span class="built_in">row_number</span>() <span class="keyword">over</span>(<span class="keyword">order</span> <span class="keyword">by</span> m1.rating <span class="keyword">desc</span>) <span class="keyword">as</span> row_num2, <span class="comment">--20, 19, 16, 15, 13, 12, 12, 11</span></span><br><span class="line">               <span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">over</span>() <span class="keyword">as</span> cnt</span><br><span class="line">          <span class="keyword">from</span> movie_ratings m1) m</span><br><span class="line"> <span class="keyword">where</span> row_num1 <span class="operator">=</span> round(cnt <span class="operator">/</span> <span class="number">2</span>) <span class="comment">--13</span></span><br><span class="line">    <span class="keyword">or</span> row_num2 <span class="operator">=</span> round(cnt <span class="operator">/</span> <span class="number">2</span>); <span class="comment">--15</span></span><br></pre></td></tr></table></figure>
 <h2 id="having-clause"><a class="markdownIt-Anchor" href="#having-clause">#</a> HAVING Clause</h2>
 <p>一个数集中最多有一半的数值小于中位数，也最多有一半的数值大于中位数。</p>
@@ -179,7 +180,7 @@ D E W = 露の世</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2022-12-09 13:03:42" itemprop="dateModified" datetime="2022-12-09T13:03:42+08:00">2022-12-09</time>
+    <time title="Modified: 2023-04-18 16:31:15" itemprop="dateModified" datetime="2023-04-18T16:31:15+08:00">2023-04-18</time>
   </span>
 </div>
 
@@ -196,7 +197,7 @@ D E W = 露の世</title>
     <div class="item left">
       
 
-  <a href="/2022/10/27/javascript-screen-window-page-size/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;借东西的小人阿莉埃蒂-2.jpg" title="How to Get the Screen, Window, and Web Page Sizes in JavaScript">
+  <a href="/2022/10/27/javascript-screen-window-page-size/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;天真与闪电-2.jpg" title="How to Get the Screen, Window, and Web Page Sizes in JavaScript">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>How to Get the Screen, Window, and Web Page Sizes in JavaScript</h3>
@@ -206,7 +207,7 @@ D E W = 露の世</title>
     <div class="item right">
       
 
-  <a href="/2022/12/11/oracle-regexp/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;奇巧计程车.jpg" title="The Complete Guide to Oracle REGEXP Functions">
+  <a href="/2022/12/11/oracle-regexp/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;蔷薇少女.jpg" title="The Complete Guide to Oracle REGEXP Functions">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>The Complete Guide to Oracle REGEXP Functions</h3>
@@ -243,7 +244,7 @@ D E W = 露の世</title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">330</span>
+        <span class="count">335</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -255,7 +256,7 @@ D E W = 露の世</title>
     </div>
     <div class="item tags">
       <a href="/tags/">
-        <span class="count">45</span>
+        <span class="count">46</span>
         <span class="name">tags</span>
       </a>
     </div>

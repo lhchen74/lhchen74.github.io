@@ -1,0 +1,742 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CFira%20Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="perl" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2023/05/07/perl-text-processing/">
+
+
+
+  <title>
+Regular Expressions, File IO & Text Processing |
+D E W = 露の世</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">Regular Expressions, File IO & Text Processing
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2023-05-07 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2023-05-07T00:00:00+08:00">2023-05-07</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">D E W</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="/anime/index/空之境界.jpg"></li>
+          <li class="item" data-background-image="/anime/index/黑色四叶草.jpg"></li>
+          <li class="item" data-background-image="/anime/index/全职猎人.jpg"></li>
+          <li class="item" data-background-image="/anime/index/借东西的小人阿莉埃蒂.jpg"></li>
+          <li class="item" data-background-image="/anime/index/更衣人偶坠入爱河-3.jpg"></li>
+          <li class="item" data-background-image="/anime/index/刻刻.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2023/05/07/perl-text-processing/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>转载：<span class="exturl" data-url="aHR0cHM6Ly93d3czLm50dS5lZHUuc2cvaG9tZS9laGNodWEvcHJvZ3JhbW1pbmcvd2VicHJvZ3JhbW1pbmcvUGVybDJfUmVnZXhlLmh0bWw=">Perl Tutorial: Regular Expressions (Regex), File IO and Text Processing</span></p>
+</blockquote>
+<p>Perl is famous for processing text files via regular expressions.</p>
+<h3 id="1-regular-expressions-in-perl"><a class="markdownIt-Anchor" href="#1-regular-expressions-in-perl">#</a> 1. Regular Expressions in Perl</h3>
+<p>A <em>Regular Expression</em> (or <em>Regex</em>) is a <em>pattern</em> (or <em>filter</em>) that describes a set of strings that matches the pattern. In other words, a regex <em>accepts</em> a certain set of strings and <em>rejects</em> the rest.</p>
+<p>I shall assume that you are familiar with Regex syntax. Otherwise, you could read:</p>
+<ul>
+<li>“<span class="exturl" data-url="aHR0cHM6Ly93d3czLm50dS5lZHUuc2cvaG9tZS9laGNodWEvcHJvZ3JhbW1pbmcvaG93dG8vUmVnZXhlLmh0bWwjc3VtbWFyeQ==">Regex Syntax Summary</span>” for a summary of regex syntax and examples.</li>
+<li>“<span class="exturl" data-url="aHR0cHM6Ly93d3czLm50dS5lZHUuc2cvaG9tZS9laGNodWEvcHJvZ3JhbW1pbmcvaG93dG8vUmVnZXhlLmh0bWw=">Regular Expressions</span>” for full coverage.</li>
+</ul>
+<p>Perl makes extensive use of regular expressions with many built-in syntaxes and operators. In Perl (and JavaScript), a regex is delimited by a pair of forward slashes (default), in the form of  <code>/regex/</code> . You can use built-in operators:</p>
+<ul>
+<li>m/<em>regex</em>/<em>modifier</em>: Match against the  <code>regex</code> .</li>
+<li>s/<em>regex</em>/<em>replacement</em>/<em>modifier</em>: Substitute matched substring(s) by the replacement.</li>
+</ul>
+<h4 id="11-matching-operator-m"><a class="markdownIt-Anchor" href="#11-matching-operator-m">#</a> 1.1 Matching Operator m//</h4>
+<p>You can use <em>matching operator</em>  <code>m//</code>  to check if a regex pattern exists in a string. The syntax is:</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">m/regex/</span><br><span class="line">m/regex/modifiers  <span class="comment"># Optional modifiers</span></span><br><span class="line">/regex/            <span class="comment"># Operator m can be omitted if forward-slashes are used as delimiter</span></span><br><span class="line">/regex/modifiers</span><br></pre></td></tr></table></figure>
+<h5 id="delimiter"><a class="markdownIt-Anchor" href="#delimiter">#</a> Delimiter</h5>
+<p>Instead of using forward-slashes ( <code>/</code> ) as delimiter, you could use other non-alphanumeric characters such as  <code>!</code> ,  <code>@</code>  and  <code>%</code>  in the form of  <code>m!regex!modifiers</code>   <code>m@regex@modifiers</code>  or  <code>m%regex%modifiers</code> . However, if forward-slash ( <code>/</code> ) is used as the delimiter, the operator  <code>m</code>  can be omitted in the form of  <code>/regex/modifiers</code> . Changing the default delimiter is confusing, and not recommended.</p>
+<p><code>m//</code> , by default, operates on the default variable  <code>$_</code> . It returns true if  <code>$_</code>  matches regex; and false otherwise.</p>
+<h5 id="example-1-regex-0-9"><a class="markdownIt-Anchor" href="#example-1-regex-0-9">#</a> Example 1: Regex [0-9]+</h5>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env perl</span></span><br><span class="line"><span class="comment"># try_m_1.pl</span></span><br><span class="line"><span class="keyword">use</span> strict;</span><br><span class="line"><span class="keyword">use</span> warnings;</span><br><span class="line"><span class="keyword">while</span> (&lt;&gt;) &#123;   <span class="comment"># Read input from command-line into default variable $_</span></span><br><span class="line">   <span class="keyword">print</span> <span class="regexp">m/[0-9]+/</span> ? <span class="string">&quot;Accept\n&quot;</span> : <span class="string">&quot;Reject\n&quot;</span>;   <span class="comment"># one or more digits?</span></span><br><span class="line">&#125;</span><br><span class="line">$ ./try_m_1.pl</span><br><span class="line"><span class="number">123</span></span><br><span class="line">Accept</span><br><span class="line"><span class="number">00000</span></span><br><span class="line">Accept</span><br><span class="line">abc</span><br><span class="line">Reject</span><br><span class="line">abc123</span><br><span class="line">Accept</span><br></pre></td></tr></table></figure>
+<h5 id="example-2-extracting-the-matched-substrings"><a class="markdownIt-Anchor" href="#example-2-extracting-the-matched-substrings">#</a> Example 2: Extracting the Matched Substrings</h5>
+<p>The built-in array variables  <code>@-</code>  and  <code>@+</code>  keep the start and end positions of the matched substring, where  <code>$-[0]</code>  and  <code>$+[0]</code>  for the full match, and  <code>$-[n]</code>  and  <code>$+[n]</code>  for back references  <code>$1</code> ,  <code>$2</code> , …,  <code>$n</code> , …</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env perl</span></span><br><span class="line"><span class="comment"># try_m_2.pl</span></span><br><span class="line"><span class="keyword">use</span> strict;</span><br><span class="line"><span class="keyword">use</span> warnings;</span><br><span class="line"><span class="keyword">while</span> (&lt;&gt;) &#123;   <span class="comment"># Read input from command-line into default variable $_</span></span><br><span class="line">   <span class="keyword">if</span> (<span class="regexp">m/[0-9]+/</span>) &#123;</span><br><span class="line">      <span class="keyword">print</span> <span class="string">&#x27;Accept substring: &#x27;</span> . <span class="keyword">substr</span>($_, $-[<span class="number">0</span>], $+[<span class="number">0</span>] - $-[<span class="number">0</span>]) . <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">   &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">print</span> <span class="string">&quot;Reject\n&quot;</span>;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">$ ./try_m_2.pl</span><br><span class="line"><span class="number">123</span></span><br><span class="line">Accept substring: <span class="number">123</span></span><br><span class="line"><span class="number">00000</span></span><br><span class="line">Accept substring: <span class="number">00000</span></span><br><span class="line">abc</span><br><span class="line">Reject</span><br><span class="line">abc123xyz</span><br><span class="line">Accept substring: <span class="number">123</span></span><br><span class="line">abc123xyz456</span><br><span class="line">Accept substring: <span class="number">123</span></span><br></pre></td></tr></table></figure>
+<h5 id="example-3-modifier-g-global"><a class="markdownIt-Anchor" href="#example-3-modifier-g-global">#</a> Example 3: Modifier ‘g’ (global)</h5>
+<p>By default,  <code>m//</code>  finds only the first match. To find all matches, include ‘g’ (global) modifier.</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env perl</span></span><br><span class="line"><span class="comment"># try_m_3.pl</span></span><br><span class="line"><span class="keyword">use</span> strict;</span><br><span class="line"><span class="keyword">use</span> warnings;</span><br><span class="line"></span><br><span class="line"><span class="keyword">my</span> $regex = <span class="string">&#x27;[0-9]+&#x27;</span>;   <span class="comment"># Define regex pattern in non-interpolating string</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> (&lt;&gt;) &#123;   <span class="comment"># Read input from command-line into default variable $_</span></span><br><span class="line">   <span class="comment"># Do m//g and save matched substring into an array</span></span><br><span class="line">   <span class="keyword">my</span> @matches = <span class="regexp">/$regex/g</span>;</span><br><span class="line">   <span class="keyword">print</span> <span class="string">&quot;Matched substrings (in array): @matches\n&quot;</span>;        <span class="comment"># print array</span></span><br><span class="line"></span><br><span class="line">   <span class="comment"># Do m//g in a loop</span></span><br><span class="line">   <span class="keyword">print</span> <span class="string">&#x27;Matched substrings (in loop) : &#x27;</span>;</span><br><span class="line">   <span class="keyword">while</span> (<span class="regexp">/$regex/g</span>) &#123;</span><br><span class="line">      <span class="keyword">print</span> <span class="keyword">substr</span>($_, $-[<span class="number">0</span>], $+[<span class="number">0</span>] - $-[<span class="number">0</span>]), <span class="string">&#x27;,&#x27;</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">print</span> <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line">$ ./try_m_3.pl</span><br><span class="line">abc123xyz456_0_789</span><br><span class="line">Matched substrings (in array): <span class="number">123</span> <span class="number">456</span> <span class="number">0</span> <span class="number">789</span></span><br><span class="line">Matched substrings (in loop) : <span class="number">123</span>,<span class="number">456</span>,<span class="number">0</span>,<span class="number">789</span>,</span><br><span class="line">abc</span><br><span class="line">Matched substrings (in array):</span><br><span class="line">Matched substrings (in loop) :</span><br><span class="line"><span class="number">123</span></span><br><span class="line">Matched substrings (in array): <span class="number">123</span></span><br><span class="line">Matched substrings (in loop) : <span class="number">123</span>,</span><br></pre></td></tr></table></figure>
+<h4 id="12-operators-~-and-~"><a class="markdownIt-Anchor" href="#12-operators-~-and-~">#</a> 1.2 Operators =~ and !~</h4>
+<p>By default, the matching operators operate on the default variable  <code>$_</code> . To operate on other variable instead of  <code>$_</code> , you could use the  <code>=~</code>  and  <code>!~</code>  operators as follows:</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">str =~ <span class="regexp">m/regex/m</span>odifiers    <span class="comment"># Return true if str matches regex.</span></span><br><span class="line">str !~ <span class="regexp">m/regex/m</span>odifiers    <span class="comment"># Return true if str does NOT match regex.</span></span><br></pre></td></tr></table></figure>
+<p>When used with  <code>m//</code> ,  <code>=~</code>  behaves like comparison ( <code>==</code>  or  <code>eq</code> ).</p>
+<h5 id="example-4-~-operator"><a class="markdownIt-Anchor" href="#example-4-~-operator">#</a> Example 4: =~ Operator</h5>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env perl</span></span><br><span class="line"><span class="comment"># try_m_4.pl</span></span><br><span class="line"><span class="keyword">use</span> strict;</span><br><span class="line"><span class="keyword">use</span> warnings;</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="string">&#x27;yes or no? &#x27;</span>;</span><br><span class="line"><span class="keyword">my</span> $reply;</span><br><span class="line"><span class="keyword">chomp</span>($reply = &lt;&gt;);     <span class="comment"># Remove newline</span></span><br><span class="line"><span class="keyword">print</span> $reply =~ <span class="regexp">/^y/i</span> ? <span class="string">&quot;positive!\n&quot;</span> : <span class="string">&quot;negative!\n&quot;</span>;</span><br><span class="line">   <span class="comment"># Begins with &#x27;y&#x27;, case-insensitive</span></span><br></pre></td></tr></table></figure>
+<h4 id="13-substitution-operator-s"><a class="markdownIt-Anchor" href="#13-substitution-operator-s">#</a> 1.3 Substitution Operator s///</h4>
+<p>You can substitute a string (or a portion of a string) with another string using  <code>s///</code>  substitution operator. The syntax is:</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s/regex/replacement/</span><br><span class="line">s/regex/replacement/modifiers  <span class="comment"># Optional modifiers</span></span><br></pre></td></tr></table></figure>
+<p>Similar to  <code>m//</code> ,  <code>s///</code>  operates on the default variable  <code>$_</code>  by default. To operate on other variable, you could use the  <code>=~</code>  and  <code>!~</code>  operators. When used with  <code>s///</code> ,  <code>=~</code>  behaves like assignment ( <code>=</code> ).</p>
+<h5 id="example-5-s"><a class="markdownIt-Anchor" href="#example-5-s">#</a> Example 5: s///</h5>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env perl</span></span><br><span class="line"><span class="comment"># try_s_1.pl</span></span><br><span class="line"><span class="keyword">use</span> strict;</span><br><span class="line"><span class="keyword">use</span> warnings;</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> (&lt;&gt;) &#123;   <span class="comment"># Read input from command-line into default variable $_</span></span><br><span class="line">   s/\w+<span class="regexp">/\*\*\*/g</span>;   <span class="comment"># Match each word</span></span><br><span class="line">   <span class="keyword">print</span> <span class="string">&quot;$_&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line">$ ./try_s_1.pl</span><br><span class="line">this is an apple.</span><br><span class="line">*** *** *** ***.</span><br></pre></td></tr></table></figure>
+<h4 id="14-modifiers"><a class="markdownIt-Anchor" href="#14-modifiers">#</a> 1.4 Modifiers</h4>
+<p><em>Modifiers</em> (such as  <code>/g</code> ,  <code>/i</code> ,  <code>/e</code> ,  <code>/o</code> ,  <code>/s</code>  and  <code>/x</code> ) can be used to control the behavior of  <code>m//</code>  and  <code>s///</code> .</p>
+<ul>
+<li>g (global): By default, only the first occurrence of the matching string of each line is processed. You can use modifier  <code>/g</code>  to specify <em>global</em> operation.</li>
+<li>i (case-insensitive): By default, matching is case-sensitive. You can use the modifier  <code>/i</code>  to enable case in-sensitive matching.</li>
+<li>m (multiline): multiline string, affecting position anchor  <code>^</code> ,  <code>$</code> ,  <code>\A</code> ,  <code>\Z</code> .</li>
+<li>s: permits metacharacter  <code>.</code>  (dot) to match the newline.</li>
+</ul>
+<h4 id="15-parenthesized-back-references-matched-variables-1-9"><a class="markdownIt-Anchor" href="#15-parenthesized-back-references-matched-variables-1-9">#</a> 1.5 Parenthesized Back-References &amp; Matched Variables $1, …, $9</h4>
+<p>Parentheses  <code>( )</code>  serve two purposes in regex:</p>
+<ol>
+<li>Firstly, parentheses  <code>( )</code>  can be used to group sub-expressions for overriding the precedence or applying a repetition operator. For example,  <code>/(a|e|i|o|u)&#123;3,5&#125;/</code>  is the same as  <code>/a&#123;3,5&#125;|e&#123;3,5&#125;|i&#123;3,5&#125;|o&#123;3,5&#125;|u&#123;3,5&#125;/</code> .</li>
+<li>Secondly, parentheses are used to provide the so called <em>back-references</em>. A back-reference contains the matched sub-string. For examples, the regex  <code>/(\S+)/</code>  creates one back-reference  <code>(\S+)</code> , which contains the first word (consecutive non-spaces) in the input string; the regex  <code>/(\S+)\s+(\S+)/</code>  creates two back-references:  <code>(\S+)</code>  and another  <code>(\S+)</code> , containing the first two words, separated by one or more spaces  <code>\s+</code> .</li>
+</ol>
+<p>The back-references are stored in special variables  <code>$1</code> ,  <code>$2</code> , …,  <code>$9</code> , where  <code>$1 </code> contains the substring matched the first pair of parentheses, and so on. For example,  <code>/(\S+)\s+(\S+)/</code>  creates two back-references which matched with the first two words. The matched words are stored in  <code>$1</code>  and  <code>$2</code> , respectively.</p>
+<p>For example, the following expression swap the first and second words:</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s/(\S+) (\S+)/$2 $1/;   <span class="comment"># Swap the first and second words separated by a single space</span></span><br></pre></td></tr></table></figure>
+<p>Back-references can also be referenced in your program.</p>
+<p>For example,</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">my</span> $word) = ($str =~ <span class="regexp">/(\S+)/</span>);</span><br></pre></td></tr></table></figure>
+<p>The parentheses creates one back-reference, which matches the first word of the  <code>$str</code>  if there is one, and is placed inside the scalar variable  <code>$word</code> . If there is no match,  <code>$word</code>  is  <code>UNDEF</code> .</p>
+<p>Another example,</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">my</span> $word1, <span class="keyword">my</span> $word2) = ($str =~ <span class="regexp">/(\S+)\s+(\S+)/</span>);</span><br></pre></td></tr></table></figure>
+<p>The 2 pairs of parentheses place the first two words (separated by one or more white-spaces) of the  <code>$str</code>  into variables  <code>$word1</code>  and  <code>$word2</code>  if there are more than two words; otherwise, both  <code>$word1</code>  and  <code>$word2</code>  are  <code>UNDEF</code> . Note that regular expression matching must be complete and there is no partial matching.</p>
+<p><code>\1</code> ,  <code>\2</code> ,  <code>\3</code>  has the same meaning as  <code>$1</code> ,  <code>$2</code> ,  <code>$3</code> , but are valid only inside the  <code>s///</code>  or  <code>m//</code> . For example,  <code>/(\S+)\s\1/</code>  matches a pair of repeated words, separated by a white-space.</p>
+<h4 id="16-character-translation-operator-tr"><a class="markdownIt-Anchor" href="#16-character-translation-operator-tr">#</a> 1.6 Character Translation Operator tr///</h4>
+<p>You can use <em>translator operator</em> to translate a character into another character. The syntax is:</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">tr</span>/fromchars/tochars/modifiers</span><br></pre></td></tr></table></figure>
+<p>replaces or translates  <code>fromchars</code>  to  <code>tochars</code>  in  <code>$_</code> , and returns the number of characters replaced.</p>
+<p>For examples,</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">tr</span>/a-z/A-Z/         <span class="comment"># converts $_ to uppercase.</span></span><br><span class="line"><span class="keyword">tr</span>/dog/cat/         <span class="comment"># translates d to c, o to a, g to t.</span></span><br><span class="line">$str =~ <span class="regexp">tr/0-9/a-j/</span> <span class="comment"># replace 0 by a, etc in $str.</span></span><br><span class="line"><span class="keyword">tr</span>/A-CG/KX-Z/       <span class="comment"># replace A by K, B by X, C by Y, G by Z.</span></span><br></pre></td></tr></table></figure>
+<p>Instead of forward slash ( <code>/</code> ), you can use parentheses  <code>()</code> , brackets  <code>[]</code> , curly bracket  <code>&#123;&#125;</code>  as delimiter, e.g.,</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">tr</span>[<span class="number">0</span>-<span class="number">9</span>][<span class="comment">##########]  # replace numbers by #.</span></span><br><span class="line"><span class="keyword">tr</span>&#123;!.&#125;(.!)           <span class="comment"># swap ! and ., one pass.</span></span><br></pre></td></tr></table></figure>
+<p>If  <code>tochars</code>  is shorter than  <code>fromchars</code> , the last character of  <code>tochars</code>  is used repeatedly.</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">tr</span>/a-z/A-E/       <span class="comment"># f to z is replaced by E.</span></span><br></pre></td></tr></table></figure>
+<p><code>tr///</code>  returns the number of replaced characters. You can use it to count the occurrence of certain characters. For examples,</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">my</span> $numLetters = ($string =~ <span class="regexp">tr/a-zA-Z/a-zA-Z/</span>);</span><br><span class="line"><span class="keyword">my</span> $numDigits  = ($string =~ <span class="regexp">tr/0-9/0-9/</span>);</span><br><span class="line"><span class="keyword">my</span> $numSpaces  = ($string =~ <span class="regexp">tr/ / /</span>);</span><br></pre></td></tr></table></figure>
+<h5 id="modifiers-c-d-and-s-for-tr"><a class="markdownIt-Anchor" href="#modifiers-c-d-and-s-for-tr">#</a> Modifiers /c, /d and /s for tr///</h5>
+<ul>
+<li><code>/c</code> : complements (inverses)  <code>fromchars</code> .</li>
+<li><code>/d</code> : deletes any matched but un-replaced characters.</li>
+<li><code>/s</code> : squashes duplicate characters into just one.</li>
+</ul>
+<p>For examples,</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">tr</span>/A-Za-z/ /c  <span class="comment"># replaces all non-alphabets with space</span></span><br><span class="line"><span class="keyword">tr</span>/A-Z//d      <span class="comment"># deletes all uppercase (matched with no replacement).</span></span><br><span class="line"><span class="keyword">tr</span>/A-Za-z//dc  <span class="comment"># deletes all non-alphabets</span></span><br><span class="line"><span class="keyword">tr</span>/!<span class="regexp">//s</span>        <span class="comment"># squashes duplicate !</span></span><br></pre></td></tr></table></figure>
+<h4 id="17-string-functions-split-and-join"><a class="markdownIt-Anchor" href="#17-string-functions-split-and-join">#</a> 1.7 String Functions: split and join</h4>
+<p>split(<em>regex</em>, <em>str</em>, [<em>numItems</em>]): Splits the given <em>str</em> using the <em>regex</em>, and return the items in an array. The optional third parameter specifies the maximum items to be processed.</p>
+<p>join(<em>joinStr</em>, <em>strList</em>): Joins the items in <em>strList</em> with the given <em>joinStr</em> (possibly empty).</p>
+<p>For examples,</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env perl</span></span><br><span class="line"><span class="keyword">use</span> strict;</span><br><span class="line"><span class="keyword">use</span> warnings;</span><br><span class="line"></span><br><span class="line"><span class="keyword">my</span> $msg = <span class="string">&#x27;Hello, world again!&#x27;</span>;</span><br><span class="line"><span class="keyword">my</span> @words = <span class="keyword">split</span>(<span class="regexp">/ /</span>, $msg);  <span class="comment"># (&#x27;Hello,&#x27;, &#x27;world&#x27;, &#x27;again!&#x27;)</span></span><br><span class="line"><span class="keyword">for</span> (@words) &#123; <span class="keyword">say</span>; &#125;          <span class="comment"># Use default scalar variable</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">say</span> <span class="keyword">join</span>(<span class="string">&#x27;--&#x27;</span>, @words);        <span class="comment"># &#x27;Hello,--world--again!&#x27;</span></span><br><span class="line"><span class="keyword">my</span> $newMsg = <span class="keyword">join</span> <span class="string">&#x27;&#x27;</span>, @words;  <span class="comment"># &#x27;Hello,worldagain!&#x27;</span></span><br><span class="line"><span class="keyword">say</span> $newMsg;</span><br></pre></td></tr></table></figure>
+<h4 id="18-functions-grep-map"><a class="markdownIt-Anchor" href="#18-functions-grep-map">#</a> 1.8 Functions grep, map</h4>
+<ul>
+<li>grep(<em>regex</em>, <em>array</em>): selects those elements of the  <code>array</code> , that matches  <code>regex</code> .</li>
+<li>map(<em>regex</em>, <em>array</em>): returns a new array constructed by applying  <code>regex</code>  to each element of the  <code>array</code> .</li>
+</ul>
+<h3 id="2-file-inputoutput"><a class="markdownIt-Anchor" href="#2-file-inputoutput">#</a> 2. File Input/Output</h3>
+<h4 id="21-filehandle"><a class="markdownIt-Anchor" href="#21-filehandle">#</a> 2.1 Filehandle</h4>
+<p><em>Filehandles</em> are data structure which your program can use to manipulate files. A <em>filehandle</em> acts as a <em>gate</em> between your program and the <em>files</em>, <em>directories</em>, or other <em>programs</em>. Your program first opens a gate, then sends or receives data through the gate, and finally closes the gate. There are many types of gates: one-way vs. two-way, slow vs. fast, wide vs. narrow.</p>
+<p><strong>Naming Convention</strong>: use uppercase for the name of the filehandle, e.g.,  <code>FILE</code> ,  <code>DIR</code> ,  <code>FILEIN</code> ,  <code>FILEOUT</code> , and etc.</p>
+<p>Once a filehandle is created and connected to a file (or a directory, or a program), you can read or write to the underlying file through the filehandle using angle brackets, e.g.,  <code>&lt;FILEHANDLE&gt;</code> .</p>
+<p><strong>Example</strong>: Read and print the content of a text file via a filehandle.</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env perl</span></span><br><span class="line"><span class="keyword">use</span> strict;</span><br><span class="line"><span class="keyword">use</span> warnings;</span><br><span class="line"></span><br><span class="line"><span class="comment"># FileRead.pl: Read &amp; print the content of a text file.</span></span><br><span class="line"><span class="keyword">my</span> $filename = <span class="keyword">shift</span>;    <span class="comment"># Get the filename from command line.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Create a filehandle called FILE and connect to the file.</span></span><br><span class="line"><span class="keyword">open</span>(FILE, $filename) <span class="keyword">or</span> <span class="keyword">die</span> <span class="string">&quot;Can&#x27;t open $filename: $!&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> (&lt;FILE&gt;) &#123;      <span class="comment"># Set $_ to each line of the file</span></span><br><span class="line">   <span class="keyword">print</span>;             <span class="comment"># Print $_</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>Example</strong>: Search and print lines containing a particular search word.</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env perl</span></span><br><span class="line"><span class="keyword">use</span> strict;</span><br><span class="line"><span class="keyword">use</span> warnings;</span><br><span class="line"></span><br><span class="line"><span class="comment"># FileSearch.pl: Search for lines containing a search word.</span></span><br><span class="line">(<span class="keyword">my</span> $filename, <span class="keyword">my</span> $word) = @ARGV;   <span class="comment"># Get filename &amp; search word.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Create a filehandle called FILE and connect to the file.</span></span><br><span class="line"><span class="keyword">open</span>(FILE, $filename) <span class="keyword">or</span> <span class="keyword">die</span> <span class="string">&quot;Can&#x27;t open $filename: $!&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> (&lt;FILE&gt;) &#123;           <span class="comment"># Set $_ to each line of the file</span></span><br><span class="line">   <span class="keyword">print</span> <span class="keyword">if</span> /\b$word\b/i;  <span class="comment"># Match $_ with word, case insensitive</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>Example</strong>: Print the content of a directory via a directory handle.</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env perl</span></span><br><span class="line"><span class="keyword">use</span> strict;</span><br><span class="line"><span class="keyword">use</span> warnings;</span><br><span class="line"></span><br><span class="line"><span class="comment"># DirPrint.pl: Print the content of a directory.</span></span><br><span class="line"><span class="keyword">my</span> $dirname = <span class="keyword">shift</span>;       <span class="comment"># Get directory name from command-line</span></span><br><span class="line"><span class="keyword">opendir</span>(DIR, $dirname) <span class="keyword">or</span> <span class="keyword">die</span> <span class="string">&quot;Can&#x27;t open directory $dirname: $!&quot;</span>;</span><br><span class="line"><span class="keyword">my</span> @files = <span class="keyword">readdir</span>(DIR);</span><br><span class="line"><span class="keyword">foreach</span> <span class="keyword">my</span> $file (@files) &#123;</span><br><span class="line">  <span class="comment"># Display files not beginning with dot.</span></span><br><span class="line">  <span class="keyword">print</span> <span class="string">&quot;$file\n&quot;</span> <span class="keyword">if</span> ($file !~ <span class="regexp">/^\./</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>You can use C-style’s  <code>printf</code>  for formatted output to file.</p>
+<h4 id="22-file-handling-functions"><a class="markdownIt-Anchor" href="#22-file-handling-functions">#</a> 2.2 File Handling Functions</h4>
+<p><strong>Function open</strong>:  <code>open(filehandle, string)</code>  opens the filename given by <em>string</em> and associates it with the <em>filehandle</em>. It returns true if success and  <code>UNDEF</code>  otherwise.</p>
+<ul>
+<li>If <em>string</em> begins with  <code>&lt;</code>  (or nothing), it is opened for reading.</li>
+<li>If <em>string</em> begins with  <code>&gt;</code> , it is opened for writing.</li>
+<li>If <em>string</em> begins with  <code>&gt;&gt;</code> , it is opened for appending.</li>
+<li>If <em>string</em> begins with  <code>+&lt;</code> ,  <code>+&gt;</code> ,  <code>+&gt;&gt;</code> , it is opened for both reading and writing.</li>
+<li>If <em>string</em> is  <code>-</code> ,  <code>STDIN</code>  is opened.</li>
+<li>If <em>string</em> is  <code>&gt;-</code> ,  <code>STDOUT</code>  is opened.</li>
+<li>If <em>string</em> begins with  <code>-|</code>  or  <code>|-</code> , your process will  <code>fork()</code>  to execute the <em>pipe command</em>.</li>
+</ul>
+<p><strong>Function close</strong>:  <code>close(filehandle)</code>  closes the file associated with the <em>filehandle</em>. When the program exits, Perl closes all opened filehandles. Closing of file flushes the output buffer to the file. You only have to explicitly close the file in case the user aborts the program, to ensure data integrity.</p>
+<p>A common procedure for modifying a file is to:</p>
+<ol>
+<li>Read in the entire file with  <code>open(FILE, $filename)</code>  and  <code>@lines = &lt;FILE&gt;</code> .</li>
+<li>Close the filehandle.</li>
+<li>Operate upon  <code>@lines</code>  (which is in the fast RAM) rather than  <code>FILE</code>  (which is in the slow disk).</li>
+<li>Write the new file contents using  <code>open(FILE, “&gt;$filename”)</code>  and  <code>print FILE @lines</code> .</li>
+<li>Close the file handle.</li>
+</ol>
+<p><strong>Example</strong>: Read the contents of the entire file into memory; modify and write back to disk.</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env perl</span></span><br><span class="line"><span class="keyword">use</span> strict;</span><br><span class="line"><span class="keyword">use</span> warnings;</span><br><span class="line"></span><br><span class="line"><span class="comment"># FileChange.pl</span></span><br><span class="line"><span class="keyword">my</span> $filename = <span class="keyword">shift</span>;       <span class="comment"># Get the filename from command line.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Create a filehandle called FILE and connect to the file.</span></span><br><span class="line"><span class="keyword">open</span>(FILE, $filename) <span class="keyword">or</span> <span class="keyword">die</span> <span class="string">&quot;Can&#x27;t open $filename: $!&quot;</span>;</span><br><span class="line"><span class="comment"># Read the entire file into an array in memory.</span></span><br><span class="line"><span class="keyword">my</span> @lines = &lt;FILE&gt;;</span><br><span class="line"><span class="keyword">close</span>(FILE);</span><br><span class="line"></span><br><span class="line"><span class="keyword">open</span>(FILE, <span class="string">&quot;&gt;$filename&quot;</span>) <span class="keyword">or</span> <span class="keyword">die</span> <span class="string">&quot;Can&#x27;t write to $filename: $!&quot;</span>;</span><br><span class="line"><span class="keyword">foreach</span> <span class="keyword">my</span> $line (@lines) &#123;</span><br><span class="line">   <span class="keyword">print</span> FILE <span class="keyword">uc</span>($line);   <span class="comment"># Change to uppercase</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">close</span>(FILE);</span><br></pre></td></tr></table></figure>
+<p><strong>Example</strong>: Reading from a file</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env perl</span></span><br><span class="line"><span class="keyword">use</span> strict;</span><br><span class="line"><span class="keyword">use</span> warnings;</span><br><span class="line"></span><br><span class="line"><span class="keyword">open</span>(FILEIN, <span class="string">&quot;test.txt&quot;</span>) <span class="keyword">or</span> <span class="keyword">die</span> <span class="string">&quot;Can&#x27;t open file: $!&quot;</span>;</span><br><span class="line"><span class="keyword">while</span> (&lt;FILEIN&gt;) &#123;     <span class="comment"># set $_ to each line of the file.</span></span><br><span class="line">   <span class="keyword">print</span>;              <span class="comment"># print $_</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>Example</strong>: Writing to a file</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env perl</span></span><br><span class="line"><span class="keyword">use</span> strict;</span><br><span class="line"><span class="keyword">use</span> warnings;</span><br><span class="line"></span><br><span class="line"><span class="keyword">my</span> $filename = <span class="keyword">shift</span>;         <span class="comment"># Get the file from command line.</span></span><br><span class="line"><span class="keyword">open</span>(FILE, <span class="string">&quot;&gt;$filename&quot;</span>) <span class="keyword">or</span> <span class="keyword">die</span> <span class="string">&quot;Can&#x27;t write to $filename: $!&quot;</span>;</span><br><span class="line"><span class="keyword">print</span> FILE <span class="string">&quot;This is line 1\n&quot;</span>;    <span class="comment"># no comma after FILE.</span></span><br><span class="line"><span class="keyword">print</span> FILE <span class="string">&quot;This is line 2\n&quot;</span>;</span><br><span class="line"><span class="keyword">print</span> FILE <span class="string">&quot;This is line 3\n&quot;</span>;</span><br></pre></td></tr></table></figure>
+<p><strong>Example</strong>: Appending to a file</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env perl</span></span><br><span class="line"><span class="keyword">use</span> strict;</span><br><span class="line"><span class="keyword">use</span> warnings;</span><br><span class="line"></span><br><span class="line"><span class="keyword">my</span> $filename = <span class="keyword">shift</span>;             <span class="comment"># Get the file from command line.</span></span><br><span class="line"><span class="keyword">open</span>(FILE, <span class="string">&quot;&gt;&gt;$filename&quot;</span>) <span class="keyword">or</span> <span class="keyword">die</span> <span class="string">&quot;Can&#x27;t append to $filename: $!&quot;</span>;</span><br><span class="line"><span class="keyword">print</span> FILE <span class="string">&quot;This is line 4\n&quot;</span>;     <span class="comment"># no comma after FILE.</span></span><br><span class="line"><span class="keyword">print</span> FILE <span class="string">&quot;This is line 5\n&quot;</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="23-in-place-editing"><a class="markdownIt-Anchor" href="#23-in-place-editing">#</a> 2.3 In-Place Editing</h4>
+<p>Instead of reading in one file and write to another file, you could do in-place editing by specifying  <code>–i</code>  flag or use the special variable  <code>$^I</code> .</p>
+<ul>
+<li>The  <code>–ibackupExtension</code>  flag tells Perl to edit files in-place. If a <em>backupExtension</em> is provided, a backup file will be created with the <em>backupExtension</em>.</li>
+<li>The special variable  <code>$^I=backupExtension</code>  does the same thing.</li>
+</ul>
+<p><strong>Example</strong>: In-place editing using  <code>–i</code>  flag</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env perl -i.old     # In-place edit, backup as &#x27;.old&#x27;</span></span><br><span class="line"><span class="keyword">use</span> strict;</span><br><span class="line"><span class="keyword">use</span> warnings;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> (&lt;&gt;) &#123;</span><br><span class="line">  s/line/TEST/g;</span><br><span class="line">  <span class="keyword">print</span>;           <span class="comment"># Print to the file, not STDOUT.</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>Example</strong>: In-place editing using  <code>$^I</code>  special variable.</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env perl</span></span><br><span class="line"><span class="keyword">use</span> strict;</span><br><span class="line"><span class="keyword">use</span> warnings;</span><br><span class="line"></span><br><span class="line">$^I = <span class="string">&#x27;.bak&#x27;</span>;      <span class="comment"># Enable in-place editing, backup in &#x27;.bak&#x27;.</span></span><br><span class="line"><span class="keyword">while</span> (&lt;&gt;) &#123;</span><br><span class="line">  s/TEST/line/g;</span><br><span class="line">  <span class="keyword">print</span>;           <span class="comment"># Print to the file, not STDOUT.</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="24-functions-seek-tell-truncate"><a class="markdownIt-Anchor" href="#24-functions-seek-tell-truncate">#</a> 2.4 Functions seek, tell, truncate</h4>
+<p><code>seek(filehandle, position, whence)</code> : moves the file pointer of the <em>filehandle</em> to <em>position</em>, as measured from <em>whence</em>.  <code>seek()</code>  returns 1 upon success and 0 otherwise. File <em>position</em> is measured in bytes. <em>whence</em> of 0 measured from the beginning of the file; 1 measured from the current position; and 2 measured from the end. For example:</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">seek</span>(FILE, <span class="number">0</span>, <span class="number">2</span>);    <span class="comment"># 0 byte from end-of-file, give file size.</span></span><br><span class="line"><span class="keyword">seek</span>(FILE, -<span class="number">2</span>, <span class="number">2</span>);   <span class="comment"># 2 bytes before end-of-file.</span></span><br><span class="line"><span class="keyword">seek</span>(FILE, -<span class="number">10</span>, <span class="number">1</span>);  <span class="comment"># Move file pointer 10 byte backward.</span></span><br><span class="line"><span class="keyword">seek</span>(FILE, <span class="number">20</span>, <span class="number">0</span>);   <span class="comment"># 20 bytes from the begin-of-file.</span></span><br></pre></td></tr></table></figure>
+<p><code>tell(filehandle)</code> : returns the current file position of <em>filehandle</em>.</p>
+<p><code>truncate(FILE, length)</code> : truncates <em>FILE</em> to <em>length</em> bytes. <em>FILE</em> can be either a filehandle or a file name.</p>
+<p>To find the length of a file, you could:</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">seek</span>(FILE, <span class="number">0</span>, <span class="number">2</span>);   <span class="comment"># Move file point to end of file.</span></span><br><span class="line"><span class="keyword">print</span> <span class="keyword">tell</span>(FILE);   <span class="comment"># Print the file size.</span></span><br></pre></td></tr></table></figure>
+<p><strong>Example</strong>: Truncate the last 2 bytes if they begin with  <code>\x0D</code> ,</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env perl</span></span><br><span class="line"><span class="keyword">use</span> strict;</span><br><span class="line"><span class="keyword">use</span> warnings;</span><br><span class="line"></span><br><span class="line"><span class="keyword">my</span> $filename = <span class="keyword">shift</span>;            <span class="comment"># Get the file from command line.</span></span><br><span class="line"><span class="keyword">open</span>(FILE, <span class="string">&quot;+&lt;$filename&quot;</span>) <span class="keyword">or</span> <span class="keyword">die</span> <span class="string">&quot;Can&#x27;t open $file: $!&quot;</span>;</span><br><span class="line"><span class="keyword">seek</span>(FILE, -<span class="number">2</span>, <span class="number">2</span>);        <span class="comment"># 2 byte before end-of-file.</span></span><br><span class="line"><span class="keyword">my</span> $pos = <span class="keyword">tell</span> FILE;</span><br><span class="line"><span class="keyword">my</span> $data = &lt;FILE&gt;;        <span class="comment"># read moves the file pointer.</span></span><br><span class="line"><span class="keyword">if</span> ($data =~ <span class="regexp">/^\x0D/</span>) &#123;   <span class="comment"># begin with 0D</span></span><br><span class="line">  <span class="keyword">truncate</span> FILE, $pos;    <span class="comment"># truncate last 2 bytes.</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="25-function-eof"><a class="markdownIt-Anchor" href="#25-function-eof">#</a> 2.5 Function eof</h4>
+<p><code>eof(filehandle)</code>  returns 1 if the file pointer is positioned at the end of the file or if the <em>filehandle</em> is not opened.</p>
+<h4 id="26-reading-bytes-instead-of-lines"><a class="markdownIt-Anchor" href="#26-reading-bytes-instead-of-lines">#</a> 2.6 Reading Bytes Instead of Lines</h4>
+<p>The function  <code>read(filehandle, var, length, offset)</code>  reads <em>length</em> bytes from <em>filehandle</em> starting from the current file pointer, and saves into variable <em>var</em> starting from <em>offset</em> (if omitted, default is 0). The bytes includes  <code>\x0A</code> ,  <code>\x0D</code>  etc.</p>
+<h5 id="example"><a class="markdownIt-Anchor" href="#example">#</a> Example</h5>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env perl</span></span><br><span class="line"><span class="keyword">use</span> strict;</span><br><span class="line"><span class="keyword">use</span> warnings;</span><br><span class="line"></span><br><span class="line">(<span class="keyword">my</span> $numbytes, <span class="keyword">my</span> $filename) = @ARGV;</span><br><span class="line"><span class="keyword">open</span>(FILE, $filename) <span class="keyword">or</span> <span class="keyword">die</span> <span class="string">&quot;Can&#x27;t open $filename: $!&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">my</span> $data;</span><br><span class="line"><span class="keyword">read</span>(FILE, $data, $numbytes);</span><br><span class="line"><span class="keyword">print</span> $data, <span class="string">&quot;\n----\n&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">read</span>(FILE, $data, $numbytes);    <span class="comment"># continue from current file ptr</span></span><br><span class="line"><span class="keyword">print</span> $data;</span><br><span class="line"><span class="keyword">print</span> $data, <span class="string">&quot;\n----\n&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">read</span>(FILE, $data, $numbytes, <span class="number">2</span>);  <span class="comment"># save in $data offset 2</span></span><br><span class="line"><span class="keyword">print</span> $data, <span class="string">&quot;\n----\n&quot;</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="27-piping-data-to-and-from-a-process"><a class="markdownIt-Anchor" href="#27-piping-data-to-and-from-a-process">#</a> 2.7 Piping Data To and From a Process</h4>
+<p>If you wish your program to receive data from a process or want your program to send data to a process, you could open a <em>pipe</em> to an external program.</p>
+<ul>
+<li><code>open(handle, &quot;command|&quot;)</code>  lets you read from the output of <em>command</em>.</li>
+<li><code>open(handle, &quot;|command&quot;)</code>  lets you write to the input of <em>command</em>.</li>
+</ul>
+<p>Both of these statements return the Process ID (PID) of the <em>command</em>.</p>
+<p><strong>Example</strong>: The  <code>dir</code>  command lists the current directory. By opening a <em>pipe</em> from  <code>dir</code> , you can access its output.</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env perl</span></span><br><span class="line"><span class="keyword">use</span> strict;</span><br><span class="line"><span class="keyword">use</span> warnings;</span><br><span class="line"></span><br><span class="line"><span class="keyword">open</span>(PIPEFROM, <span class="string">&quot;dir|&quot;</span>) <span class="keyword">or</span> <span class="keyword">die</span> <span class="string">&quot;Pipe failed: $!&quot;</span>;</span><br><span class="line"><span class="keyword">while</span> (&lt;PIPEFROM&gt;) &#123;</span><br><span class="line">   <span class="keyword">print</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">close</span> PIPEFROM;</span><br></pre></td></tr></table></figure>
+<p><strong>Example</strong>: This example shows how you can <em>pipe</em> input into the sendmail program.</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env perl</span></span><br><span class="line"><span class="keyword">use</span> strict;</span><br><span class="line"><span class="keyword">use</span> warnings;</span><br><span class="line"></span><br><span class="line"><span class="keyword">my</span> $my_login = test</span><br><span class="line"><span class="keyword">open</span>(MAIL, <span class="string">&quot;| sendmail –t –f$my_login&quot;</span>) <span class="keyword">or</span> <span class="keyword">die</span> <span class="string">&quot;Pipe failed: $!&quot;</span>;</span><br><span class="line"><span class="keyword">print</span> MAIL, <span class="string">&quot;From: test101@test.com\n&quot;</span>;</span><br><span class="line"><span class="keyword">print</span> MAIL, <span class="string">&quot;To: test102@test.com\n&quot;</span>;</span><br><span class="line"><span class="keyword">print</span> MAIL, <span class="string">&quot;Subject: test\n&quot;</span>;</span><br><span class="line"><span class="keyword">print</span> MAIL, <span class="string">&quot;\n&quot;</span>;</span><br><span class="line"><span class="keyword">print</span> MAIL, <span class="string">&quot;Testing line 1\n&quot;</span>;</span><br><span class="line"><span class="keyword">print</span> MAIL, <span class="string">&quot;Testing line 2\n&quot;</span>;</span><br><span class="line"><span class="keyword">close</span> MAIL;</span><br></pre></td></tr></table></figure>
+<p>You cannot pipe data both to and from a <em>command</em>. If you want to read the output of a <em>command</em> that you have opened with the  <code>|command</code> , send the output to a file. For example,</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">open</span> (PIPETO, <span class="string">&quot;|command &gt; /output.txt&quot;</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="28-deleting-file-function-unlink"><a class="markdownIt-Anchor" href="#28-deleting-file-function-unlink">#</a> 2.8 Deleting file: Function unlink</h4>
+<p><code>unlink(FILES)</code>  deletes the <em>FILES</em>, returning the number of files deleted. Do not use  <code>unlink()</code>  to delete a directory, use  <code>rmdir()</code>  instead. For example,</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">unlink</span> $filename;</span><br><span class="line"><span class="keyword">unlink</span> <span class="string">&quot;/var/adm/message&quot;</span>;</span><br><span class="line"><span class="keyword">unlink</span> <span class="string">&quot;message&quot;</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="29-inspecting-files"><a class="markdownIt-Anchor" href="#29-inspecting-files">#</a> 2.9 Inspecting Files</h4>
+<p>You can inspect a file using  <code>(-test FILE)</code>  condition. The condition returns true if <em>FILE</em> satisfies <em>test</em>. <em>FILE</em> can be a filehandle or filename. The available <em>test</em> are:</p>
+<ul>
+<li><code>-e</code> : exists.</li>
+<li><code>-f</code> : plain file.</li>
+<li><code>-d</code> : directory.</li>
+<li><code>-T</code> : seems to be a text file (data from 0 to 127).</li>
+<li><code>-B</code> : seems to be a binary file (data from 0 to 255).</li>
+<li><code>-r</code> : readable.</li>
+<li><code>-w</code> : writable.</li>
+<li><code>-x</code> : executable.</li>
+<li><code>-s</code> : returns the size of the file in bytes.</li>
+<li><code>-z</code> : empty (zero byte).</li>
+</ul>
+<h5 id="example-2"><a class="markdownIt-Anchor" href="#example-2">#</a> Example</h5>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env perl</span></span><br><span class="line"><span class="keyword">use</span> strict;</span><br><span class="line"><span class="keyword">use</span> warnings;</span><br><span class="line"></span><br><span class="line"><span class="keyword">my</span> $dir = <span class="keyword">shift</span>;</span><br><span class="line"><span class="keyword">opendir</span>(DIR, $dir) <span class="keyword">or</span> <span class="keyword">die</span> <span class="string">&quot;Can&#x27;t open directory: $!&quot;</span>;</span><br><span class="line"><span class="keyword">my</span> @files = <span class="keyword">readdir</span>(DIR);</span><br><span class="line"><span class="keyword">closedir</span>(DIR);</span><br><span class="line"></span><br><span class="line"><span class="keyword">foreach</span> <span class="keyword">my</span> $file (@files) &#123;</span><br><span class="line">   <span class="keyword">if</span> (-f <span class="string">&quot;$dir/$file&quot;</span>) &#123;</span><br><span class="line">      <span class="keyword">print</span> <span class="string">&quot;$file is a file\n&quot;</span>;</span><br><span class="line">      <span class="keyword">print</span> <span class="string">&quot;$file seems to be a text file\n&quot;</span> <span class="keyword">if</span> (-T <span class="string">&quot;$dir/$file&quot;</span>);</span><br><span class="line">      <span class="keyword">print</span> <span class="string">&quot;$file seems to be a binary file\n&quot;</span> <span class="keyword">if</span> (-B <span class="string">&quot;$dir/$file&quot;</span>);</span><br><span class="line">      <span class="keyword">my</span> $size = -s <span class="string">&quot;$dir/$file&quot;</span>;</span><br><span class="line">      <span class="keyword">print</span> <span class="string">&quot;$file size is $size\n&quot;</span>;</span><br><span class="line">      <span class="keyword">print</span> <span class="string">&quot;$file is a empty\n&quot;</span> <span class="keyword">if</span> (-z <span class="string">&quot;$dir/$file&quot;</span>);</span><br><span class="line">   &#125; <span class="keyword">elsif</span> (-d <span class="string">&quot;$dir/$file&quot;</span>) &#123;</span><br><span class="line">      <span class="keyword">print</span> <span class="string">&quot;$file is a directory\n&quot;</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">print</span> <span class="string">&quot;$file is a readable\n&quot;</span> <span class="keyword">if</span> (-r <span class="string">&quot;$dir/$file&quot;</span>);</span><br><span class="line">   <span class="keyword">print</span> <span class="string">&quot;$file is a writable\n&quot;</span> <span class="keyword">if</span> (-w <span class="string">&quot;$dir/$file&quot;</span>);</span><br><span class="line">   <span class="keyword">print</span> <span class="string">&quot;$file is a executable\n&quot;</span> <span class="keyword">if</span> (-<span class="keyword">x</span> <span class="string">&quot;$dir/$file&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="210-function-stat-and-lsstat"><a class="markdownIt-Anchor" href="#210-function-stat-and-lsstat">#</a> 2.10 Function stat and lsstat</h4>
+<p>The function  <code>stat(FILE)</code>  returns a 13-element array giving the vital statistics of <em>FILE</em>.  <code>lsstat(SYMLINK)</code>  returns the same thing for the symbolic link <em>SYMLINK</em>.</p>
+<p>The elements are:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Index</th>
+<th style="text-align:center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">The device</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">The file’s inode</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">The file’s mode</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">The number of hard links to the file</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">The user ID of the file’s owner</td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:center">The group ID of the file</td>
+</tr>
+<tr>
+<td style="text-align:center">6</td>
+<td style="text-align:center">The raw device</td>
+</tr>
+<tr>
+<td style="text-align:center">7</td>
+<td style="text-align:center">The size of the file</td>
+</tr>
+<tr>
+<td style="text-align:center">8</td>
+<td style="text-align:center">The last accessed time</td>
+</tr>
+<tr>
+<td style="text-align:center">9</td>
+<td style="text-align:center">The last modified time</td>
+</tr>
+<tr>
+<td style="text-align:center">10</td>
+<td style="text-align:center">The last time the file’s status changed</td>
+</tr>
+<tr>
+<td style="text-align:center">11</td>
+<td style="text-align:center">The block size of the system</td>
+</tr>
+<tr>
+<td style="text-align:center">12</td>
+<td style="text-align:center">The number of blocks used by the file</td>
+</tr>
+</tbody>
+</table>
+<p>For example: The command</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">perl -e <span class="string">&quot;$size= (stat(&#x27;test.txt&#x27;))[7]; print $size&quot;</span></span><br></pre></td></tr></table></figure>
+<p>prints the file size of “ <code>test.txt</code> ”.</p>
+<h4 id="211-accessing-the-directories"><a class="markdownIt-Anchor" href="#211-accessing-the-directories">#</a> 2.11 Accessing the Directories</h4>
+<ul>
+<li><code>opendir(DIRHANDLE, dirname)</code>  opens the directory <em>dirname</em>.</li>
+<li><code>closedir(DIRHANDLE)</code>  closes the directory handle.</li>
+<li><code>readdir(DIRHANDLE)</code>  returns the next file from <em>DIRHANDLE</em> in a scalar context, or the rest of the files in the array context.</li>
+<li><code>glob(string)</code>  returns an array of filenames matching the wildcard in <em>string</em>, e.g.,  <code>glob('.dat')</code>  and  <code>glob('test??.txt')</code> .</li>
+<li><code>mkdir(dirname, mode)</code>  creates the directory <em>dirname</em> with the protection specified by <em>mode</em>.</li>
+<li><code>rmdir(dirname)</code>  deletes the directory <em>dirname</em>, only if it is empty.</li>
+<li><code>chdir(dirname)</code>  changes the working directory to <em>dirname</em>.</li>
+<li><code>chroot(dirname)</code>  makes <em>dirname</em> the root directory “/” for the current process, used by superuser only.</li>
+</ul>
+<p><strong>Example</strong>: Print the contents of a given directory.</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env perl</span></span><br><span class="line"><span class="keyword">use</span> strict;</span><br><span class="line"><span class="keyword">use</span> warnings;</span><br><span class="line"></span><br><span class="line"><span class="keyword">my</span> $dirname = <span class="keyword">shift</span>;      <span class="comment"># first command-line argument.</span></span><br><span class="line"><span class="keyword">opendir</span>(DIR, $dirname) <span class="keyword">or</span> <span class="keyword">die</span> <span class="string">&quot;can&#x27;t open $dirname: $!\n&quot;</span>;</span><br><span class="line">@files = <span class="keyword">readdir</span>(DIR);</span><br><span class="line"><span class="keyword">closedir</span>(DIR);</span><br><span class="line"><span class="keyword">foreach</span> <span class="keyword">my</span> $file (@files) &#123;</span><br><span class="line">   <span class="keyword">print</span> <span class="string">&quot;$file\n&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>Example</strong>: Removing empty files in a given directory</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env perl</span></span><br><span class="line"><span class="keyword">use</span> strict;</span><br><span class="line"><span class="keyword">use</span> warnings;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">my</span> $dirname = <span class="keyword">shift</span>;</span><br><span class="line"><span class="keyword">opendir</span>(DIR, $dirname) <span class="keyword">or</span> <span class="keyword">die</span> <span class="string">&quot;Can&#x27;t open directory: $!&quot;</span>;</span><br><span class="line"><span class="keyword">my</span> @files = <span class="keyword">readdir</span>(DIR);</span><br><span class="line"><span class="keyword">foreach</span> <span class="keyword">my</span> $file (@files) &#123;</span><br><span class="line">   <span class="keyword">if</span> ((-f <span class="string">&quot;$dir/$file&quot;</span>) &amp;&amp; (-z <span class="string">&quot;$dir/$file&quot;</span>)) &#123;</span><br><span class="line">      <span class="keyword">print</span> <span class="string">&quot;deleting $dir/$file\n&quot;</span>;</span><br><span class="line">      <span class="keyword">unlink</span> <span class="string">&quot;$dir/$file&quot;</span>;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">closedir</span>(DIR);</span><br></pre></td></tr></table></figure>
+<p><strong>Example</strong>: Display files matches “ <code>.txt</code> ”</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">my</span> @files = <span class="keyword">glob</span>(<span class="string">&#x27;*.txt&#x27;</span>);</span><br><span class="line"><span class="keyword">foreach</span> (@files) &#123; <span class="keyword">print</span>; <span class="keyword">print</span> <span class="string">&quot;\n&quot;</span> &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>Example</strong>: Display files matches the command-line pattern.</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$file = <span class="keyword">shift</span>;</span><br><span class="line">@files = <span class="keyword">glob</span>($file);</span><br><span class="line"><span class="keyword">foreach</span> (@files) &#123;</span><br><span class="line">   <span class="keyword">print</span>;</span><br><span class="line">   <span class="keyword">print</span> <span class="string">&quot;\n&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="212-standard-filehandles"><a class="markdownIt-Anchor" href="#212-standard-filehandles">#</a> 2.12 Standard Filehandles</h4>
+<p>Perl defines the following standard filehandles:</p>
+<ul>
+<li><code>STDIN</code>  – Standard Input, usually refers to the keyboard.</li>
+<li><code>STDOUT</code>  – Standard Output, usually refers to the console.</li>
+<li><code>STDERR</code>  – Standard Error, usually refers to the console.</li>
+<li><code>ARGV</code>  – Command-line arguments.</li>
+</ul>
+<p>For example:</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">my</span> $line = &lt;STDIN&gt;    <span class="comment"># Set $line to the next line of user input</span></span><br><span class="line"><span class="keyword">my</span> $item = &lt;ARGV&gt;     <span class="comment"># Set $item to the next command-line argument</span></span><br><span class="line"><span class="keyword">my</span> @items = &lt;ARGV&gt;    <span class="comment"># Put all command-line arguments into the array</span></span><br></pre></td></tr></table></figure>
+<p>When you use an empty angle brackets  <code>&lt;&gt;</code>  to get inputs from user, it uses the  <code>STDIN</code>  filehandle; when you get the inputs from the command-line, it uses  <code>ARGV</code>  filehandle. Perl fills in  <code>STDIN</code>  or  <code>ARGV</code>  for you automatically. Whenever you use  <code>print()</code>  function, it uses the  <code>STDOUT</code>  filehandler.</p>
+<p><code>&lt;&gt;</code>  behaves like  <code>&lt;ARGV&gt;</code>  when there is still data to be read from the command-line files, and behave like  <code>&lt;STDIN&gt;</code>  otherwise.</p>
+<h3 id="3-text-formatting"><a class="markdownIt-Anchor" href="#3-text-formatting">#</a> 3. Text Formatting</h3>
+<h4 id="31-function-write"><a class="markdownIt-Anchor" href="#31-function-write">#</a> 3.1 Function write</h4>
+<p><code>write(filehandle)</code> : printed formatted text to  <code>filehandle</code> , using the format associated with  <code>filehandle</code> . If  <code>filehandle</code>  is omitted,  <code>STDOUT</code>  would be used.</p>
+<h4 id="32-declaring-format"><a class="markdownIt-Anchor" href="#32-declaring-format">#</a> 3.2 Declaring format</h4>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">format</span> name =</span><br><span class="line">text1</span><br><span class="line">text2</span><br><span class="line">.</span><br></pre></td></tr></table></figure>
+<h4 id="33-picture-field"><a class="markdownIt-Anchor" href="#33-picture-field">#</a> 3.3 Picture Field @&lt;, @|, @&gt;</h4>
+<ul>
+<li><code>@&lt;</code> : left-flushes the string on the next line of formatting texts.</li>
+<li><code>@&gt;</code> : right-flushes the string on the next line of formatting texts.</li>
+<li><code>@|</code> : centers the string on the next line of the formatting texts.</li>
+</ul>
+<p><code>@&lt;</code> ,  <code>@&gt;</code> ,  <code>@|</code>  can be repeated to control the number of characters to be formatted. The number of characters to be formatted is same as the length of the picture field.  <code>@###.##</code>  formats numbers by lining up the decimal points under “ <code>.</code> ”.</p>
+<p>For examples,</p>
+<p>[TODO]</p>
+<h4 id="34-printing-formatting-string-printf"><a class="markdownIt-Anchor" href="#34-printing-formatting-string-printf">#</a> 3.4 Printing Formatting String printf</h4>
+<p><code>printf(filehandle, template, array)</code> : prints a formatted string to  <code>filehandle</code>  (similar to C’s  <code>fprintf()</code> ). For example,</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">printf</span>(FILE <span class="string">&quot;The number is %d&quot;</span>, <span class="number">15</span>);</span><br></pre></td></tr></table></figure>
+<p>The available formatting fields are:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Field</th>
+<th style="text-align:center">Expected Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>%s</code></td>
+<td style="text-align:center">String</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>%c</code></td>
+<td style="text-align:center">Character</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>%d</code></td>
+<td style="text-align:center">Decimal number</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>%ld</code></td>
+<td style="text-align:center">Long decimal Number</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>%u</code></td>
+<td style="text-align:center">Unsigned decimal number</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>%x</code></td>
+<td style="text-align:center">Hexadecimal number</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>%lx</code></td>
+<td style="text-align:center">Long hexadecimal number</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>%o</code></td>
+<td style="text-align:center">Octal number</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>%lo</code></td>
+<td style="text-align:center">Long octal number</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>%f</code></td>
+<td style="text-align:center">Fixed-point floating-point number</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>%e</code></td>
+<td style="text-align:center">Exponential floating-point number</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>%g</code></td>
+<td style="text-align:center">Compact floating-point number</td>
+</tr>
+</tbody>
+</table>
+
+      <div class="tags">
+          <a href="/tags/perl/" rel="tag"><i class="ic i-tag"></i> perl</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2023-05-07 14:24:13" itemprop="dateModified" datetime="2023-05-07T14:24:13+08:00">2023-05-07</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2023/05/05/javascript-code-pen-editor/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;男子高校生的日常.jpg" title="Building a CodePen Type Editor from Scratch">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Building a CodePen Type Editor from Scratch</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-regular-expressions-in-perl"><span class="toc-number">1.</span> <span class="toc-text"> 1. Regular Expressions in Perl</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#11-matching-operator-m"><span class="toc-number">1.1.</span> <span class="toc-text"> 1.1 Matching Operator m&#x2F;&#x2F;</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#delimiter"><span class="toc-number">1.1.1.</span> <span class="toc-text"> Delimiter</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#example-1-regex-0-9"><span class="toc-number">1.1.2.</span> <span class="toc-text"> Example 1: Regex [0-9]+</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#example-2-extracting-the-matched-substrings"><span class="toc-number">1.1.3.</span> <span class="toc-text"> Example 2: Extracting the Matched Substrings</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#example-3-modifier-g-global"><span class="toc-number">1.1.4.</span> <span class="toc-text"> Example 3: Modifier ‘g’ (global)</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#12-operators-~-and-~"><span class="toc-number">1.2.</span> <span class="toc-text"> 1.2 Operators &#x3D;~ and !~</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#example-4-~-operator"><span class="toc-number">1.2.1.</span> <span class="toc-text"> Example 4: &#x3D;~ Operator</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#13-substitution-operator-s"><span class="toc-number">1.3.</span> <span class="toc-text"> 1.3 Substitution Operator s&#x2F;&#x2F;&#x2F;</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#example-5-s"><span class="toc-number">1.3.1.</span> <span class="toc-text"> Example 5: s&#x2F;&#x2F;&#x2F;</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#14-modifiers"><span class="toc-number">1.4.</span> <span class="toc-text"> 1.4 Modifiers</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#15-parenthesized-back-references-matched-variables-1-9"><span class="toc-number">1.5.</span> <span class="toc-text"> 1.5 Parenthesized Back-References &amp; Matched Variables $1, …, $9</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#16-character-translation-operator-tr"><span class="toc-number">1.6.</span> <span class="toc-text"> 1.6 Character Translation Operator tr&#x2F;&#x2F;&#x2F;</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#modifiers-c-d-and-s-for-tr"><span class="toc-number">1.6.1.</span> <span class="toc-text"> Modifiers &#x2F;c, &#x2F;d and &#x2F;s for tr&#x2F;&#x2F;&#x2F;</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#17-string-functions-split-and-join"><span class="toc-number">1.7.</span> <span class="toc-text"> 1.7 String Functions: split and join</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#18-functions-grep-map"><span class="toc-number">1.8.</span> <span class="toc-text"> 1.8 Functions grep, map</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-file-inputoutput"><span class="toc-number">2.</span> <span class="toc-text"> 2. File Input&#x2F;Output</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#21-filehandle"><span class="toc-number">2.1.</span> <span class="toc-text"> 2.1 Filehandle</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#22-file-handling-functions"><span class="toc-number">2.2.</span> <span class="toc-text"> 2.2 File Handling Functions</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#23-in-place-editing"><span class="toc-number">2.3.</span> <span class="toc-text"> 2.3 In-Place Editing</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#24-functions-seek-tell-truncate"><span class="toc-number">2.4.</span> <span class="toc-text"> 2.4 Functions seek, tell, truncate</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#25-function-eof"><span class="toc-number">2.5.</span> <span class="toc-text"> 2.5 Function eof</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#26-reading-bytes-instead-of-lines"><span class="toc-number">2.6.</span> <span class="toc-text"> 2.6 Reading Bytes Instead of Lines</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#example"><span class="toc-number">2.6.1.</span> <span class="toc-text"> Example</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#27-piping-data-to-and-from-a-process"><span class="toc-number">2.7.</span> <span class="toc-text"> 2.7 Piping Data To and From a Process</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#28-deleting-file-function-unlink"><span class="toc-number">2.8.</span> <span class="toc-text"> 2.8 Deleting file: Function unlink</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#29-inspecting-files"><span class="toc-number">2.9.</span> <span class="toc-text"> 2.9 Inspecting Files</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#example-2"><span class="toc-number">2.9.1.</span> <span class="toc-text"> Example</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#210-function-stat-and-lsstat"><span class="toc-number">2.10.</span> <span class="toc-text"> 2.10 Function stat and lsstat</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#211-accessing-the-directories"><span class="toc-number">2.11.</span> <span class="toc-text"> 2.11 Accessing the Directories</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#212-standard-filehandles"><span class="toc-number">2.12.</span> <span class="toc-text"> 2.12 Standard Filehandles</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-text-formatting"><span class="toc-number">3.</span> <span class="toc-text"> 3. Text Formatting</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#31-function-write"><span class="toc-number">3.1.</span> <span class="toc-text"> 3.1 Function write</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#32-declaring-format"><span class="toc-number">3.2.</span> <span class="toc-text"> 3.2 Declaring format</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#33-picture-field"><span class="toc-number">3.3.</span> <span class="toc-text"> 3.3 Picture Field @&lt;, @|, @&gt;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#34-printing-formatting-string-printf"><span class="toc-number">3.4.</span> <span class="toc-text"> 3.4 Printing Formatting String printf</span></a></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">335</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">46</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
+      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ D E W</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2023/05/07/perl-text-processing/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

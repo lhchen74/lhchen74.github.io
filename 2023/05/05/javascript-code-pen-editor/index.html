@@ -1,0 +1,410 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CFira%20Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="js,html,css" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2023/05/05/javascript-code-pen-editor/">
+
+
+
+  <title>
+Building a CodePen Type Editor from Scratch |
+D E W = 露の世</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">Building a CodePen Type Editor from Scratch
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2023-05-05 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2023-05-05T00:00:00+08:00">2023-05-05</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">D E W</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="/anime/index/编舟记.jpg"></li>
+          <li class="item" data-background-image="/anime/index/百变狸猫-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/言叶之庭.jpg"></li>
+          <li class="item" data-background-image="/anime/index/刺客伍六七.jpg"></li>
+          <li class="item" data-background-image="/anime/index/紫罗兰永恒花园.jpg"></li>
+          <li class="item" data-background-image="/anime/index/加速世界.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2023/05/05/javascript-code-pen-editor/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>转载: <span class="exturl" data-url="aHR0cHM6Ly9kZWNvZGUuc2gvYnVpbGRpbmctYS1jb2RlLXBlbi10eXBlLWVkaXRvci1mcm9tLXNjcmF0Y2g=">Building a CodePen Type Editor from Scratch</span></p>
+</blockquote>
+<p>Building a CodePen Type Editor from ScratchWanting to show live examples of code on your website is very common, if you want to do it today there are a few services that provide that ability. However, if you are like me, you would rather roll your own. In this tutorial, I will be building my own codepen like editor for this site.</p>
+<p>My goal with this is more complex than most people’s use case because this site uses a markdown compiler called <span class="exturl" data-url="aHR0cHM6Ly93d3cubnBtanMuY29tL3BhY2thZ2UvbWR4dA==">MDXT</span> (this is a custom compiler made for this site); I want to include the code here into the MDXT language. So with that in mind, I will have two versions and review how each works. The first version will cover how to link the  <code>textarea</code>  inputs with the  <code>iframe</code>  and dynamically update it. The second one will keep the core aspects of the first but will be designed to handle multiple editors on the same page.</p>
+<blockquote>
+<p>To keep this document clean, I will not include the boilerplate HTML in the examples, but if you need it, type  <code>doc</code>  into VSCode and paste the examples in the body tag.</p>
+</blockquote>
+<h3 id="stand-alone-editor"><a class="markdownIt-Anchor" href="#stand-alone-editor">#</a> Stand Alone Editor</h3>
+<p>Starting with the editor’s markup, we will have three  <code>&lt;textarea&gt;</code>  tags in the body of the page along with a  <code>&lt;iframe&gt;</code> . If you jump ahead and look below, you can see each textarea has a  <code>data-lang</code>  attribute. This will give us a very sexy method of interacting with the document updater when we get to that point. I am not including styles with this tutorial because I have yet to style my editor. …</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;textarea data-lang=<span class="string">&quot;html&quot;</span> cols=<span class="string">&quot;30&quot;</span> rows=<span class="string">&quot;10&quot;</span>&gt;&lt;/textarea&gt;</span><br><span class="line">&lt;textarea data-lang=<span class="string">&quot;css&quot;</span> cols=<span class="string">&quot;30&quot;</span> rows=<span class="string">&quot;10&quot;</span>&gt;&lt;/textarea&gt;</span><br><span class="line">&lt;textarea data-lang=<span class="string">&quot;js&quot;</span> cols=<span class="string">&quot;30&quot;</span> rows=<span class="string">&quot;10&quot;</span>&gt;&lt;/textarea&gt;</span><br><span class="line">&lt;iframe frameborder=<span class="string">&quot;0&quot;</span>&gt;&lt;/iframe&gt;</span><br></pre></td></tr></table></figure>
+<p>Getting into the Javascript, we will encapsulate everything in a function called  <code>makeEditor</code> . For this snippet, we are not detecting iframes that will be editor previews, so I elected to grab the element  <code>iframe</code>  from the document. The editable code will be stored in an object, and we will update the document values as they are edited. Next, we need to get the textareas, so we use the  <code>[data-lang]</code>  attribute we added to each one. Then we loop over the textarea objects setting the virtual document (the  <code>doc</code>  object) to equal the value of the current state of the textarea. This is important to allow for static rendering on the page load. We are using the  <code>data-lang</code>  attribute’s value as the key for the object; this is (in my opinion) the cleanest way to do it. It removes the need to have if statements checking whether or not we have the correct input.</p>
+<p>We will use the  <code>keyup</code>  event to update the document in the iframe with the changed code. Again we are using the event target’s value and dataset to select and set the document state. Now getting into the part where we create a virtual document, we are using the  <code>update()</code>  function to take the state of the  <code>doc</code>  object that we are keeping up to date with the event listeners and transform the values into an HTML document string. Once we have the HTML document, we can convert the text into a Blob that contains the page. Using the  <code>URL.createObjectURL</code> , we can take the output of the Blob and virtually create a local file that we can take and set to the source of the iframe! We call the  <code>update()</code>  function at the end of the for loop to initially create the iframe preview with the initial state of the textareas. This is what gives us the ability to render the editor statically.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeEditor</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> frame = <span class="built_in">document</span>.querySelector(<span class="string">&quot;iframe&quot;</span>);</span><br><span class="line">  <span class="keyword">let</span> doc = &#123;</span><br><span class="line">    html: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    css: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    js: <span class="string">&quot;&quot;</span>,</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> ta = <span class="built_in">document</span>.querySelectorAll(<span class="string">&quot;[data-lang]&quot;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; ta.length; i++) &#123;</span><br><span class="line">    doc[ta[i].dataset.lang] = ta[i].value;</span><br><span class="line">    ta[i].addEventListener(<span class="string">&quot;keyup&quot;</span>, <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">      doc[e.target.dataset.lang] = e.target.value;</span><br><span class="line">      update();</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">  update();</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">update</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> html = <span class="string">`&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;style&gt;<span class="subst">$&#123;doc.css&#125;</span>&lt;/style&gt;&lt;/head&gt;&lt;body&gt;<span class="subst">$&#123;doc.html&#125;</span>&lt;script&gt;<span class="subst">$&#123;doc.js&#125;</span>&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;`</span>;</span><br><span class="line">    <span class="keyword">const</span> blob = <span class="keyword">new</span> Blob([html], &#123; <span class="attr">type</span>: <span class="string">&quot;text/html&quot;</span> &#125;);</span><br><span class="line">    frame.src = URL.createObjectURL(blob);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">makeEditor();</span><br></pre></td></tr></table></figure>
+<h3 id="creating-an-editor-component"><a class="markdownIt-Anchor" href="#creating-an-editor-component">#</a> Creating an Editor Component</h3>
+<img data-src="/2023/05/05/javascript-code-pen-editor/users_masonwright_desktop_editor_index_html_1_NpcVEKDtC9.png" class="" title="Code Pen like editor">
+<p>I’ll be the first person to admit that I am not the greatest designer. That is why I use CSS libraries for most of my styling. However, above is a screenshot of the editor we will make in this next part. This version will differ from the previous, as we will be looking to render multiple editors within a page without overflowing the data between them.</p>
+<h4 id="the-component"><a class="markdownIt-Anchor" href="#the-component">#</a> The Component</h4>
+<p>Below is the HTML structure of the component; it works the same way as the previous one. This one is more structured, with the textarea’s on the bottom and the iframe on top. The container  <code>div</code>  has a custom  <code>editor</code>  attribute that will let us search for it in the new  <code>makeEditor</code>  function we will create. From this  <code>editor</code>  div, we can style the elements inside; here, we gave the text area labels that tell the user what is what.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">editor</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">iframe</span> <span class="attr">frameborder</span>=<span class="string">&quot;0&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;html&quot;</span>&gt;</span></span><br><span class="line">            HTML</span><br><span class="line">            <span class="tag">&lt;<span class="name">textarea</span> <span class="attr">name</span>=<span class="string">&quot;html&quot;</span> <span class="attr">data-lang</span>=<span class="string">&quot;html&quot;</span> <span class="attr">cols</span>=<span class="string">&quot;30&quot;</span> <span class="attr">rows</span>=<span class="string">&quot;10&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">textarea</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;css&quot;</span>&gt;</span></span><br><span class="line">            CSS</span><br><span class="line">            <span class="tag">&lt;<span class="name">textarea</span> <span class="attr">name</span>=<span class="string">&quot;css&quot;</span> <span class="attr">data-lang</span>=<span class="string">&quot;css&quot;</span> <span class="attr">cols</span>=<span class="string">&quot;30&quot;</span> <span class="attr">rows</span>=<span class="string">&quot;10&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">textarea</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;js&quot;</span>&gt;</span></span><br><span class="line">            JS</span><br><span class="line">            <span class="tag">&lt;<span class="name">textarea</span> <span class="attr">name</span>=<span class="string">&quot;js&quot;</span> <span class="attr">data-lang</span>=<span class="string">&quot;js&quot;</span> <span class="attr">cols</span>=<span class="string">&quot;30&quot;</span> <span class="attr">rows</span>=<span class="string">&quot;10&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">textarea</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>The Javascript works the same way as above, but we use a method of scoping the values inside of functions to keep the global namespace clean. Going line by line, we first grab all elements with an editor attribute, this is the container we defined before. We know what’s inside the editor, so we can pass each into a new function called  <code>spawn</code> . The spawn function is the same code as the previous one, so we can skip most of it, but one significant change we made was to pass the  <code>iframe</code>  and the  <code>doc</code>  into the update function so it knows which document to pull from and where to put it at.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">function makeEditor() &#123;</span><br><span class="line">  const editors = document.querySelectorAll(&quot;[editor]&quot;);</span><br><span class="line">  for (let a = 0; a &lt; editors.length; a++) &#123;</span><br><span class="line">    spawn(editors[a]);</span><br><span class="line">  &#125;</span><br><span class="line">  function spawn(editor) &#123;</span><br><span class="line">    let doc = &#123;</span><br><span class="line">      html: &quot;&quot;,</span><br><span class="line">      css: &quot;&quot;,</span><br><span class="line">      js: &quot;&quot;,</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    let ta = editor.querySelectorAll(&quot;[data-lang]&quot;);</span><br><span class="line">    let frame = editor.querySelector(&quot;iframe&quot;);</span><br><span class="line">    for (let i = 0; i &lt; ta.length; i++) &#123;</span><br><span class="line">      doc[ta[i].dataset.lang] = ta[i].value;</span><br><span class="line">      ta[i].addEventListener(&quot;keyup&quot;, (e) =&gt; &#123;</span><br><span class="line">        doc[e.target.dataset.lang] = e.target.value;</span><br><span class="line">        update(doc, frame);</span><br><span class="line">      &#125;);</span><br><span class="line">      update(doc, frame);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  function update(doc, frame) &#123;</span><br><span class="line">    const html = `<span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span><span class="tag">&lt;<span class="name">html</span>&gt;</span><span class="tag">&lt;<span class="name">head</span>&gt;</span><span class="tag">&lt;<span class="name">style</span>&gt;</span>$&#123;doc.css&#125;<span class="tag">&lt;/<span class="name">style</span>&gt;</span><span class="tag">&lt;/<span class="name">head</span>&gt;</span><span class="tag">&lt;<span class="name">body</span>&gt;</span>$&#123;doc.html&#125;<span class="tag">&lt;<span class="name">script</span>&gt;</span>$&#123;doc.js&#125;<span class="tag">&lt;/<span class="name">script</span>&gt;</span><span class="tag">&lt;/<span class="name">body</span>&gt;</span><span class="tag">&lt;/<span class="name">html</span>&gt;</span>`;</span><br><span class="line">    const blob = new Blob([html], &#123; type: &quot;text/html&quot; &#125;);</span><br><span class="line">    frame.src = URL.createObjectURL(blob);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">makeEditor();</span><br></pre></td></tr></table></figure>
+<p>Here is the CSS used in the screenshot if you want an idea of how I went about styling that one.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-attr">[editor]</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">background</span>: <span class="number">#18232c</span>;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">10px</span>;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">20px</span>;</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">4px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-attr">[editor]</span> &gt; <span class="selector-tag">iframe</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="number">#fff</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">300px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-attr">[editor]</span> &gt; <span class="selector-tag">div</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">justify-content</span>: space-between;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">300px</span>;</span><br><span class="line">  <span class="attribute">padding-top</span>: <span class="number">10px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-attr">[editor]</span> &gt; <span class="selector-tag">div</span> &gt; <span class="selector-tag">label</span> &#123;</span><br><span class="line">  <span class="attribute">margin-bottom</span>: <span class="number">20px</span>;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#fff</span>;</span><br><span class="line">  <span class="attribute">background</span>: <span class="number">#cdcdcd</span>;</span><br><span class="line">  <span class="attribute">font-family</span>: Arial, Helvetica, sans-serif;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-attr">[editor]</span> &gt; <span class="selector-tag">div</span> &gt; <span class="selector-tag">label</span> &gt; <span class="selector-tag">textarea</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="number">#1c2a36</span>;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#cdcdcd</span>;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">10px</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">4px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>To add highlighting into your editor, I have built a second tutorial <span class="exturl" data-url="aHR0cHM6Ly9kZWNvZGUuc2gvYnVpbGRpbmctYS1oaWdobGlnaHRlZC10ZXh0LWVkaXRvci1pbi10aGUtYnJvd3Nlcg==">here</span> that shows the completed product.</p>
+
+      <div class="tags">
+          <a href="/tags/js/" rel="tag"><i class="ic i-tag"></i> js</a>
+          <a href="/tags/html/" rel="tag"><i class="ic i-tag"></i> html</a>
+          <a href="/tags/css/" rel="tag"><i class="ic i-tag"></i> css</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2023-05-05 11:28:37" itemprop="dateModified" datetime="2023-05-05T11:28:37+08:00">2023-05-05</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2023/04/21/postgresql-json-graph/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;穿越时空的少女-2.jpg" title="PostgreSQL JSON Graph">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>PostgreSQL JSON Graph</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2023/05/07/perl-text-processing/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;亚人-3.jpg" title="Regular Expressions, File IO &amp; Text Processing">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Regular Expressions, File IO & Text Processing</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#stand-alone-editor"><span class="toc-number">1.</span> <span class="toc-text"> Stand Alone Editor</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#creating-an-editor-component"><span class="toc-number">2.</span> <span class="toc-text"> Creating an Editor Component</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#the-component"><span class="toc-number">2.1.</span> <span class="toc-text"> The Component</span></a></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">335</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">46</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
+      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2023/04/21/postgresql-json-graph/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2023/05/07/perl-text-processing/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ D E W</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2023/05/05/javascript-code-pen-editor/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

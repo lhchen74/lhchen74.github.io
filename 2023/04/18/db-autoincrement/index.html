@@ -1,0 +1,825 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CFira%20Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="db" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2023/04/18/db-autoincrement/">
+
+
+
+  <title>
+SQL Auto Increment How to Use It in Different Databases |
+D E W = 露の世</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">SQL Auto Increment How to Use It in Different Databases
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2023-04-18 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2023-04-18T00:00:00+08:00">2023-04-18</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">D E W</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="/anime/index/红猪-3.jpg"></li>
+          <li class="item" data-background-image="/anime/index/家庭教师.jpg"></li>
+          <li class="item" data-background-image="/anime/index/春宵苦短，少女前进吧.jpg"></li>
+          <li class="item" data-background-image="/anime/index/死亡笔记-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/鬼灭之刃.jpg"></li>
+          <li class="item" data-background-image="/anime/index/巴克亚罗.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2023/04/18/db-autoincrement/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>转载：<span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9zcWwtYXV0by1pbmNyZW1lbnQv">SQL Auto Increment: How to Use It in Different Databases - Database Star</span></p>
+</blockquote>
+<p>SQL auto-increment is a feature that allows you to generate a unique number when inserting rows.</p>
+<p>Learn how to set this up in SQL Server, MySQL, PostgreSQL, and Oracle in this article.</p>
+<h2 id="what-is-sql-auto-increment"><a class="markdownIt-Anchor" href="#what-is-sql-auto-increment">#</a> What is SQL Auto Increment?</h2>
+<p>Autoincrement is a feature of a database that lets you generate a unique number automatically whenever a new row is inserted into a table.</p>
+<p>Have you ever worked with data in a table and realised you want each row to have a unique ID, but don’t really mind what the ID value is? This is often the case for primary keys.</p>
+<p>Rather than using a spreadsheet or generating a random number, you can use the auto-increment feature of the database to do this. Using this feature is fast, consistent, and pretty simple.</p>
+<p>The way to do it slightly differs between databases:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Database</strong></th>
+<th><strong>Method</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SQL Server</td>
+<td>IDENTITY</td>
+</tr>
+<tr>
+<td>MySQL</td>
+<td>AUTO_INCREMENT</td>
+</tr>
+<tr>
+<td>PostgreSQL</td>
+<td>IDENTITY, SERIAL, or sequence</td>
+</tr>
+<tr>
+<td>Oracle</td>
+<td>Sequence, or Identity column</td>
+</tr>
+</tbody>
+</table>
+<p>Let’s take a look at some examples.</p>
+<h2 id="sql-server-auto-increment"><a class="markdownIt-Anchor" href="#sql-server-auto-increment">#</a> SQL Server Auto Increment</h2>
+<p>Autoincrement is best implemented by specifying it when you create a table.</p>
+<p>This example shows the <span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9zcWwtY3JlYXRlLXRhYmxlLw==">creation of a product table</span> using an auto-increment column as the primary key.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> product (</span><br><span class="line">  product_id <span class="type">INT</span> <span class="keyword">IDENTITY</span> (<span class="number">1</span>, <span class="number">1</span>) <span class="keyword">PRIMARY</span> KEY,</span><br><span class="line">  product_name <span class="type">VARCHAR</span>(<span class="number">200</span>),</span><br><span class="line">  price <span class="type">INT</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>Microsoft <span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9zcWwtc2VydmVyLw==">SQL Server</span> uses the IDENTITY keyword to define an auto-increment for a column. The IDENTITY keyword is used when defining a column and is placed after the data type.</p>
+<p>In this example, we have specified IDENTITY(1, 1). The first parameter defines the starting value, so the first value used is 1. The second parameter defines what the increment is for each new row, which is also 1.</p>
+<p>So, the first row will have a value of 1, the second row has a value of 2, the third row is 3, and so on.</p>
+<p>You can change the starting value and increment if required. For example, to specify a column starts at 100 and increments by 5:</p>
+<p>product_id INT IDENTITY (100, 5) PRIMARY KEY</p>
+<p>Now how do we <span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9zcWwtaW5zZXJ0LWludG8v">insert a new value</span> for this column? <strong>We run an INSERT statement without specifying a value for the column in the statement</strong>.</p>
+<p>For example:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> product (product_name, price)</span><br><span class="line"><span class="keyword">VALUES</span> (<span class="string">&#x27;Desk chair&#x27;</span>, <span class="number">50</span>);</span><br></pre></td></tr></table></figure>
+<p>This value is inserted. We did not specify the product_id, and the database will generate a value for it.</p>
+<p>This is what the table looks like:</p>
+<table>
+<thead>
+<tr>
+<th><strong>PRODUCT_ID</strong></th>
+<th><strong>PRODUCT_NAME</strong></th>
+<th><strong>PRICE</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Desk Chair</td>
+<td>50</td>
+</tr>
+</tbody>
+</table>
+<p>If we insert a second row, the ID is auto-incremented:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> product (product_name, price)</span><br><span class="line"><span class="keyword">VALUES</span> (<span class="string">&#x27;Lounge&#x27;</span>, <span class="number">200</span>);</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>PRODUCT_ID</strong></th>
+<th><strong>PRODUCT_NAME</strong></th>
+<th><strong>PRICE</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Desk Chair</td>
+<td>50</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Lounge</td>
+<td>200</td>
+</tr>
+</tbody>
+</table>
+<p>We can see that the SQL Server auto-increment feature is populating the product_id column with new values.</p>
+<p>If you ever need to reset this value, you can follow the steps in this guide: <span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9yZXNldC1pZGVudGl0eS1jb2x1bW4v">How to Reset IDENTITY Column Values in SQL Server</span></p>
+<h2 id="mysql-auto-increment"><a class="markdownIt-Anchor" href="#mysql-auto-increment">#</a> MySQL Auto Increment</h2>
+<p>This example for <span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9teXNxbC8=">MySQL</span> shows you how to create a table and specify a column as auto-increment:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> product (</span><br><span class="line">  product_id <span class="type">INT</span> AUTO_INCREMENT <span class="keyword">PRIMARY</span> KEY,</span><br><span class="line">  product_name <span class="type">VARCHAR</span>(<span class="number">200</span>),</span><br><span class="line">  price <span class="type">INT</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>Notice that the keyword has an underscore in it. I often forget this. It’s AUTO_INCREMENT.</p>
+<p>By default, the column values start at 1 and increment by 1 each time.</p>
+<p>To insert a record into the table, and have it auto-incremented, <strong>simply insert the record without specifying the auto-increment column</strong>.</p>
+<p>For example:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> product (product_name, price)</span><br><span class="line"><span class="keyword">VALUES</span> (<span class="string">&#x27;Desk chair&#x27;</span>, <span class="number">50</span>);</span><br></pre></td></tr></table></figure>
+<p>This value is inserted. We did not specify the product_id, and the database will generate a value for it.</p>
+<p>This is what the table looks like:</p>
+<table>
+<thead>
+<tr>
+<th><strong>PRODUCT_ID</strong></th>
+<th><strong>PRODUCT_NAME</strong></th>
+<th><strong>PRICE</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Desk Chair</td>
+<td>50</td>
+</tr>
+</tbody>
+</table>
+<p>If we insert a second row, the ID is auto-incremented:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> product (product_name, price)</span><br><span class="line"><span class="keyword">VALUES</span> (<span class="string">&#x27;Lounge&#x27;</span>, <span class="number">200</span>);</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>PRODUCT_ID</strong></th>
+<th><strong>PRODUCT_NAME</strong></th>
+<th><strong>PRICE</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Desk Chair</td>
+<td>50</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Lounge</td>
+<td>200</td>
+</tr>
+</tbody>
+</table>
+<p>We can see that the MySQL auto-increment feature is populating the product_id column with new values.</p>
+<p>If you want to start the auto_increment value at any other number, you can use the <span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9zcWwtYWx0ZXItdGFibGUv">ALTER TABLE</span> statement to change the value.</p>
+<p>For example to change it to 100:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> product <span class="keyword">SET</span> AUTO_INCREMENT<span class="operator">=</span><span class="number">100</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="postgresql-auto-increment"><a class="markdownIt-Anchor" href="#postgresql-auto-increment">#</a> PostgreSQL Auto Increment</h2>
+<p>There are three ways to auto-increment a value in <span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9wb3N0Z3Jlc3FsLw==">PostgreSQL</span>: a serial data type, a sequence, and an identity column.</p>
+<h3 id="using-the-serial-data-type"><a class="markdownIt-Anchor" href="#using-the-serial-data-type">#</a> Using the Serial Data Type</h3>
+<p>The SERIAL data type in PostgreSQL can be used to create an auto-increment column. Behind the scenes, this creates a sequence object, which is an object that is used to generate auto-increment values.</p>
+<p>Here’s an example:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> product (</span><br><span class="line">  product_id <span class="type">INT</span> SERIAL <span class="keyword">PRIMARY</span> KEY,</span><br><span class="line">  product_name <span class="type">VARCHAR</span>(<span class="number">200</span>),</span><br><span class="line">  price <span class="type">INT</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>Behind the scenes, a SERIAL data type does a few things:</p>
+<ol>
+<li>It creates a sequence</li>
+<li>It adds a NOT NULL constraint to the column</li>
+<li>It assigns the owner of the sequence to the column you specified (in this example it’s product_id), so if you drop the column or table the sequence is dropped.</li>
+</ol>
+<p>Now how do we insert a new value for this column? <strong>We run an INSERT statement without specifying a value for the column in the statement</strong>.</p>
+<p>For example:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> product (product_name, price)</span><br><span class="line"><span class="keyword">VALUES</span> (<span class="string">&#x27;Desk chair&#x27;</span>, <span class="number">50</span>);</span><br></pre></td></tr></table></figure>
+<p>This value is inserted. We did not specify the product_id, and the database will generate a value for it.</p>
+<p>This is what the table looks like:</p>
+<table>
+<thead>
+<tr>
+<th><strong>PRODUCT_ID</strong></th>
+<th><strong>PRODUCT_NAME</strong></th>
+<th><strong>PRICE</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Desk Chair</td>
+<td>50</td>
+</tr>
+</tbody>
+</table>
+<p>If we insert a second row, the ID is auto-incremented:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> product (product_name, price)</span><br><span class="line"><span class="keyword">VALUES</span> (<span class="string">&#x27;Lounge&#x27;</span>, <span class="number">200</span>);</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>PRODUCT_ID</strong></th>
+<th><strong>PRODUCT_NAME</strong></th>
+<th><strong>PRICE</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Desk Chair</td>
+<td>50</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Lounge</td>
+<td>200</td>
+</tr>
+</tbody>
+</table>
+<p>We can see that the PostgreSQL auto-increment feature is populating the product_id column with new values.</p>
+<p>If you want to get the name of a sequence from a serial column, you can use the pg_get_serial_sequence function:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> pg_get_serial_sequence(<span class="string">&#x27;product&#x27;</span>, <span class="string">&#x27;product_id&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<p>You can get the current value of the sequence by providing the name to the currval function:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> currval(pg_get_serial_sequence(<span class="string">&#x27;product&#x27;</span>, <span class="string">&#x27;product_id&#x27;</span>));</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>CURRVAL</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p>There are actually three types of SERIAL values, with different storage sizes and lengths:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Data Type</strong></th>
+<th><strong>Storage Size</strong></th>
+<th><strong>Range</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SMALLSERIAL</td>
+<td>2 bytes</td>
+<td>1 to 32,767</td>
+</tr>
+<tr>
+<td>SERIAL</td>
+<td>4 bytes</td>
+<td>1 to 2,147,483,647</td>
+</tr>
+<tr>
+<td>BIGSERIAL</td>
+<td>8 bytes</td>
+<td>1 to 9,223,372,036,854,775,807</td>
+</tr>
+</tbody>
+</table>
+<h3 id="using-a-sequence"><a class="markdownIt-Anchor" href="#using-a-sequence">#</a> Using a Sequence</h3>
+<p>Another way to use auto increment in PostgreSQL is to use a sequence object. This is similar to SERIAL, as SERIAL just generates a sequence behind the scenes anyway.</p>
+<p>You may want to use a sequence if you want more control over the starting value and increment value.</p>
+<p>Here’s how you use a sequence. First, create the sequence:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> SEQUENCE prod_sequence</span><br><span class="line"><span class="keyword">START</span> <span class="number">1</span></span><br><span class="line">INCREMENT <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<p>You can change the start and increment values to other numbers when you run this statement if you need to.</p>
+<p>Now, when we insert a new record into the product table, we use the next value of the sequence by calling nextval(‘prod_sequence’) as our product_id:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> product (product_id, product_name, price)</span><br><span class="line"><span class="keyword">VALUES</span> (nextval(<span class="string">&#x27;prod_sequence), &#x27;</span>Desk chair<span class="string">&#x27;, 50);</span></span><br></pre></td></tr></table></figure>
+<p>The new record is inserted into the table.</p>
+<table>
+<thead>
+<tr>
+<th><strong>PRODUCT_ID</strong></th>
+<th><strong>PRODUCT_NAME</strong></th>
+<th><strong>PRICE</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Desk Chair</td>
+<td>50</td>
+</tr>
+</tbody>
+</table>
+<p>Inserting a second record will auto-increment the column:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> product (product_id, product_name, price)</span><br><span class="line"><span class="keyword">VALUES</span> (nextval(<span class="string">&#x27;prod_sequence), Lounge&#x27;</span>, <span class="number">200</span>);</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>PRODUCT_ID</strong></th>
+<th><strong>PRODUCT_NAME</strong></th>
+<th><strong>PRICE</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Desk Chair</td>
+<td>50</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Lounge</td>
+<td>200</td>
+</tr>
+</tbody>
+</table>
+<p>Just like with the SERIAL method, you can get the current value by using the currval function on the sequence.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> currval(<span class="string">&#x27;prod_sequence&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>CURRVAL</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<h3 id="using-an-identity-column"><a class="markdownIt-Anchor" href="#using-an-identity-column">#</a> Using an Identity Column</h3>
+<p>In PostgreSQL 10, an IDENTITY feature was introduced. It works similar to the SERIAL method above.</p>
+<p>Here’s how to use it:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> product (</span><br><span class="line">  product_id <span class="type">INT</span> GENERATED <span class="keyword">BY</span> <span class="keyword">DEFAULT</span> <span class="keyword">AS</span> <span class="keyword">IDENTITY</span> <span class="keyword">PRIMARY</span> KEY,</span><br><span class="line">  product_name <span class="type">VARCHAR</span>(<span class="number">200</span>),</span><br><span class="line">  price <span class="type">INT</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>The part of the statement that defines the auto-increment is:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GENERATED <span class="keyword">BY</span> <span class="keyword">DEFAULT</span> <span class="keyword">AS</span> <span class="keyword">IDENTITY</span></span><br></pre></td></tr></table></figure>
+<p>Add this to the column and it’s now an identity column.</p>
+<p>Now, to use the auto-increment identity feature, <strong>simply insert a new row without specifying a value for the column</strong>.</p>
+<p>For example:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> product (product_name, price)</span><br><span class="line"><span class="keyword">VALUES</span> (<span class="string">&#x27;Desk chair&#x27;</span>, <span class="number">50</span>);</span><br></pre></td></tr></table></figure>
+<p>This value is inserted. We did not specify the product_id, and the database will generate a value for it.</p>
+<p>This is what the table looks like:</p>
+<table>
+<thead>
+<tr>
+<th><strong>PRODUCT_ID</strong></th>
+<th><strong>PRODUCT_NAME</strong></th>
+<th><strong>PRICE</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Desk Chair</td>
+<td>50</td>
+</tr>
+</tbody>
+</table>
+<p>If we insert a second row, the ID is auto-incremented:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> product (product_name, price)</span><br><span class="line"><span class="keyword">VALUES</span> (<span class="string">&#x27;Lounge&#x27;</span>, <span class="number">200</span>);</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>PRODUCT_ID</strong></th>
+<th><strong>PRODUCT_NAME</strong></th>
+<th><strong>PRICE</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Desk Chair</td>
+<td>50</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Lounge</td>
+<td>200</td>
+</tr>
+</tbody>
+</table>
+<p>We can see that the PostgreSQL IDENTITY feature is populating the product_id column with new values.</p>
+<h3 id="postgresql-serial-vs-identity"><a class="markdownIt-Anchor" href="#postgresql-serial-vs-identity">#</a> PostgreSQL SERIAL vs IDENTITY</h3>
+<p>Which method would you use for your auto-increment columns: SERIAL or IDENTITY?</p>
+<p>The IDENTITY method is recommended as it conforms to the SQL standard. Even though it looks similar, it follows the standard and therefore makes it easier for others to understand and easier if you ever need to migrate databases.</p>
+<p>It also doesn’t have issues with permissions. SERIAL columns generate a sequence owned by the column. This can cause issues with deployments and testing.</p>
+<p>Using IDENTITY is also one less object to manage.</p>
+<h2 id="oracle-auto-increment"><a class="markdownIt-Anchor" href="#oracle-auto-increment">#</a> Oracle Auto Increment</h2>
+<p>There are two ways to create an auto-increment field in <span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9vcmFjbGUtZGF0YWJhc2Uv">Oracle</span>.</p>
+<h3 id="sequence"><a class="markdownIt-Anchor" href="#sequence">#</a> Sequence</h3>
+<p>We have to create a SEQUENCE object. This works similar to one of the PostgreSQL methods, but Oracle doesn’t have an identity feature you can simply add to the column.</p>
+<p>I’ve <span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9vcmFjbGUtc2VxdWVuY2Uv">written about sequences</span> before, but here’s a simple example of how to create one:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> SEQUENCE prod_sequence;</span><br></pre></td></tr></table></figure>
+<p>This will use a default starting value of 1 and increment by 1.</p>
+<p>You can also specify these values or use different values when creating the sequence:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> SEQUENCE prod_sequence</span><br><span class="line">MINVALUE <span class="number">1</span></span><br><span class="line"><span class="keyword">START</span> <span class="keyword">WITH</span> <span class="number">1</span></span><br><span class="line">INCREMENT <span class="keyword">BY</span> <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<p>To use these values as your auto-increment values in a table, simply insert the record and specify the nextval attribute of the sequence.</p>
+<p>For example:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> product (product_id, product_name, price)</span><br><span class="line"><span class="keyword">VALUES</span> (prod_sequence.nextval, <span class="string">&#x27;Desk chair&#x27;</span>, <span class="number">50</span>);</span><br></pre></td></tr></table></figure>
+<p>The new record is inserted into the table.</p>
+<table>
+<thead>
+<tr>
+<th><strong>PRODUCT_ID</strong></th>
+<th><strong>PRODUCT_NAME</strong></th>
+<th><strong>PRICE</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Desk Chair</td>
+<td>50</td>
+</tr>
+</tbody>
+</table>
+<p>Inserting a second record will auto-increment the column:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> product (product_id, product_name, price)</span><br><span class="line"><span class="keyword">VALUES</span> (prod_sequence.nextval, Lounge<span class="string">&#x27;, 200);</span></span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>PRODUCT_ID</strong></th>
+<th><strong>PRODUCT_NAME</strong></th>
+<th><strong>PRICE</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Desk Chair</td>
+<td>50</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Lounge</td>
+<td>200</td>
+</tr>
+</tbody>
+</table>
+<p>You can get the current value of a sequence by calling sequence.currval.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> prod_sequence.currval</span><br><span class="line"><span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>CURRVAL</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<h3 id="identity-column"><a class="markdownIt-Anchor" href="#identity-column">#</a> Identity Column</h3>
+<p>Identity columns were introduced into Oracle in 12c, which was a few years ago now.</p>
+<p>To use them, you simply add a few keywords to the end of your column definition when creating a table.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> product (</span><br><span class="line">  product_id NUMBER(<span class="number">10</span>) GENERATED <span class="keyword">BY</span> <span class="keyword">DEFAULT</span> <span class="keyword">ON</span> <span class="keyword">NULL</span> <span class="keyword">AS</span> <span class="keyword">IDENTITY</span>,</span><br><span class="line">  product_name VARCHAR2(<span class="number">200</span>),</span><br><span class="line">  price <span class="type">INT</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>The part of the statement that defines the auto-increment is:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GENERATED <span class="keyword">BY</span> <span class="keyword">DEFAULT</span> <span class="keyword">ON</span> <span class="keyword">NULL</span> <span class="keyword">AS</span> <span class="keyword">IDENTITY</span></span><br></pre></td></tr></table></figure>
+<p>This statement ensures this is now an identity column, and will have values automatically generated for it.</p>
+<h2 id="conclusion"><a class="markdownIt-Anchor" href="#conclusion">#</a> Conclusion</h2>
+<p>So that’s how you can create an SQL auto-increment column. SQL Server uses IDENTITY, MySQL uses AUTO_INCREMENT, PostgreSQL can use IDENTITY or a sequence, and Oracle uses a sequence.</p>
+<h2 id="comments"><a class="markdownIt-Anchor" href="#comments">#</a> Comments</h2>
+<h3 id="sqlite-auto-increment"><a class="markdownIt-Anchor" href="#sqlite-auto-increment">#</a> SQLite Auto Increment</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> product (</span><br><span class="line">  product_id <span class="type">INTEGER</span> <span class="keyword">PRIMARY</span> KEY AUTOINCREMENT,</span><br><span class="line">  product_name <span class="type">VARCHAR</span>(<span class="number">200</span>),</span><br><span class="line">  price <span class="type">INT</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+      <div class="tags">
+          <a href="/tags/db/" rel="tag"><i class="ic i-tag"></i> db</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2023-04-18 19:59:05" itemprop="dateModified" datetime="2023-04-18T19:59:05+08:00">2023-04-18</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2023/04/17/postgresql/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;我们大家的河合庄-2.jpg" title="PostgreSQL">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>PostgreSQL</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2023/04/21/postgresql-json-graph/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;巴克亚罗.jpg" title="PostgreSQL JSON Graph">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>PostgreSQL JSON Graph</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#what-is-sql-auto-increment"><span class="toc-number">1.</span> <span class="toc-text"> What is SQL Auto Increment?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sql-server-auto-increment"><span class="toc-number">2.</span> <span class="toc-text"> SQL Server Auto Increment</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mysql-auto-increment"><span class="toc-number">3.</span> <span class="toc-text"> MySQL Auto Increment</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#postgresql-auto-increment"><span class="toc-number">4.</span> <span class="toc-text"> PostgreSQL Auto Increment</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#using-the-serial-data-type"><span class="toc-number">4.1.</span> <span class="toc-text"> Using the Serial Data Type</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#using-a-sequence"><span class="toc-number">4.2.</span> <span class="toc-text"> Using a Sequence</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#using-an-identity-column"><span class="toc-number">4.3.</span> <span class="toc-text"> Using an Identity Column</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#postgresql-serial-vs-identity"><span class="toc-number">4.4.</span> <span class="toc-text"> PostgreSQL SERIAL vs IDENTITY</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#oracle-auto-increment"><span class="toc-number">5.</span> <span class="toc-text"> Oracle Auto Increment</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#sequence"><span class="toc-number">5.1.</span> <span class="toc-text"> Sequence</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#identity-column"><span class="toc-number">5.2.</span> <span class="toc-text"> Identity Column</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#conclusion"><span class="toc-number">6.</span> <span class="toc-text"> Conclusion</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#comments"><span class="toc-number">7.</span> <span class="toc-text"> Comments</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#sqlite-auto-increment"><span class="toc-number">7.1.</span> <span class="toc-text"> SQLite Auto Increment</span></a></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">335</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">46</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
+      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2023/04/17/postgresql/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2023/04/21/postgresql-json-graph/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ D E W</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2023/04/18/db-autoincrement/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
