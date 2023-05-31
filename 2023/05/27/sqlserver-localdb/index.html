@@ -1,0 +1,541 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CFira%20Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="db" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2023/05/27/sqlserver-localdb/">
+
+
+
+  <title>
+Getting Started with SQL Server 2017 Express LocalDB |
+D E W = 露の世</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">Getting Started with SQL Server 2017 Express LocalDB
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2023-05-27 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2023-05-27T00:00:00+08:00">2023-05-27</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">D E W</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="/anime/index/春宵苦短，少女前进吧.jpg"></li>
+          <li class="item" data-background-image="/anime/index/凸变英雄LEAF.jpg"></li>
+          <li class="item" data-background-image="/anime/index/我的英雄学院.jpg"></li>
+          <li class="item" data-background-image="/anime/index/红猪-1.jpg"></li>
+          <li class="item" data-background-image="/anime/index/魔女宅急便-1.jpg"></li>
+          <li class="item" data-background-image="/anime/index/fate_zero.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2023/05/27/sqlserver-localdb/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>转载：<span class="exturl" data-url="aHR0cHM6Ly93d3cubXNzcWx0aXBzLmNvbS9zcWxzZXJ2ZXJ0aXAvNTYxMi9nZXR0aW5nLXN0YXJ0ZWQtd2l0aC1zcWwtc2VydmVyLTIwMTctZXhwcmVzcy1sb2NhbGRiLw==">SQL Server LocalDB Getting Started Guide</span></p>
+</blockquote>
+<h2 id="problem"><a class="markdownIt-Anchor" href="#problem">#</a> Problem</h2>
+<p>In a <span class="exturl" data-url="aHR0cHM6Ly93d3cubXNzcWx0aXBzLmNvbS9zcWxzZXJ2ZXJ0aXAvMjY5NC9nZXR0aW5nLXN0YXJ0ZWQtd2l0aC1zcWwtc2VydmVyLTIwMTItZXhwcmVzcy1sb2NhbGRiLw==">previous tip</span>, I walked through installation and some caveats with the first version of SqlLocalDb, which shipped with SQL Server 2012. Well, it’s been several major releases, and some of the aspects have changed, so I thought I would provide a refresh.</p>
+<p>The purpose of SqlLocalDb has remained constant: To provide developers with an easy way to develop with SQL Server locally, on Windows, without the overhead, security, and maintenance of a full-time, proper instance. But for anyone who has used SQL Server and is new to SqlLocalDb, a few of the details are unintuitive.</p>
+<h2 id="solution"><a class="markdownIt-Anchor" href="#solution">#</a> Solution</h2>
+<p>The first step is making sure you’re on a supported operating system (Windows 8 / Server 2012 or above), and then download the SQL Server Express Edition installer <span class="exturl" data-url="aHR0cHM6Ly93d3cubWljcm9zb2Z0LmNvbS9lbi11cy9zcWwtc2VydmVyL3NxbC1zZXJ2ZXItZG93bmxvYWRzLWZyZWUtdHJpYWw=">here</span>. I am using Windows 10 in these examples; if you are using Windows 8 or Windows Server 2012, make sure to consult <span class="exturl" data-url="aHR0cDovL3N1cHBvcnQubWljcm9zb2Z0LmNvbS9rYi8yNjgxNTYy">KB #2681562 : Installing SQL Server on Windows Server 2012 or Windows 8</span>. If you’re using Linux, sorry, but I think you’re out of luck.</p>
+<h2 id="step-1-install-microsoft-sql-server-express-localdb"><a class="markdownIt-Anchor" href="#step-1-install-microsoft-sql-server-express-localdb">#</a> Step 1: Install Microsoft SQL Server Express Localdb</h2>
+<p>To get just the SqlLocalDb MSI (45 MB) vs. the whole enchilada (700+ MB), choose the “Download Media” option to start downloading:</p>
+<img data-src="/2023/05/27/sqlserver-localdb/5612_getting-started-with-sql-server-2017-express-localdb.001.png" class="" title="Express Edition installer">
+<p>Pick your language, choose the LocalDB option, and pick a location to download the MSI:</p>
+<img data-src="/2023/05/27/sqlserver-localdb/5612_getting-started-with-sql-server-2017-express-localdb.002.png" class="" title="Express Edition installer - download option">
+<p>Then you’ll get a very big dialog to indicate success. Choose the Open Folder option:</p>
+<img data-src="/2023/05/27/sqlserver-localdb/5612_getting-started-with-sql-server-2017-express-localdb.003.png" class="" title="Express Edition download - success">
+<p>The folder will open, and you will see SqlLocalDB.msi. Launch this executable to start the wizard:</p>
+<img data-src="/2023/05/27/sqlserver-localdb/5612_getting-started-with-sql-server-2017-express-localdb.004.png" class="" title="SqlLocalDB installer">
+<p>You’ll have to accept a license agreement and then on the next screen click Install:</p>
+<img data-src="/2023/05/27/sqlserver-localdb/5612_getting-started-with-sql-server-2017-express-localdb.005.png" class="" title="SqlLocalDB installer">
+<p>At some point you will probably be prompted by UAC controls:</p>
+<img data-src="/2023/05/27/sqlserver-localdb/5612_getting-started-with-sql-server-2017-express-localdb.006.png" class="" title="UAC prompt">
+<p>Then it will finish:</p>
+<img data-src="/2023/05/27/sqlserver-localdb/5612_getting-started-with-sql-server-2017-express-localdb.007.png" class="" title="SqlLocalDb installer - complete">
+<p>Alternatively, if you already have a valid SQL Server 2017 install media, you can install SqlLocalDb from that installer, and avoid downloading the media above. Run Setup.exe and from the Installation Center choose “New SQL Server stand-alone installation or add features to an existing SQL Server 2017 instance.”</p>
+<img data-src="/2023/05/27/sqlserver-localdb/5612_getting-started-with-sql-server-2017-express-localdb.008.png" class="" title="SQL Server 2017 installation center">
+<p>Next, you’ll be offered to include any important updates (you should check this box unless you are on a very slow Internet connection – but don’t worry, we’re going to patch this installation with the latest Cumulative Update anyway):</p>
+<img data-src="/2023/05/27/sqlserver-localdb/5612_getting-started-with-sql-server-2017-express-localdb.009.png" class="" title="SQL Server 2017 installer - Microsoft Update">
+<p>Next, you’ll choose the type of installation to perform; you want “a new installation of SQL Server 2017,” even though that choice may not be the most intuitive:</p>
+<img data-src="/2023/05/27/sqlserver-localdb/5612_getting-started-with-sql-server-2017-express-localdb.010.png" class="" title="SQL Server 2017 installer - Installation Type">
+<p>You’ll have to accept the license terms in a new dialog, and then you’ll be asked for a product key. Here, just select the free Express Edition (other editions won’t offer a LocalDB installation):</p>
+<img data-src="/2023/05/27/sqlserver-localdb/5612_getting-started-with-sql-server-2017-express-localdb.011.png" class="" title="getting started with sql server 2017 express localdb 011">
+<p>Then on the Feature Selection screen, make sure you un-check the Database Engine Services option, which is selected by default (unless you also want to install a full-on SQL Server 2017 instance).</p>
+<img data-src="/2023/05/27/sqlserver-localdb/5612_getting-started-with-sql-server-2017-express-localdb.012.png" class="" title="SQL Server 2017 installer - Feature Selection">
+<p>Then scroll down and select the LocalDB option (I also selected Client Tools Connectivity).</p>
+<img data-src="/2023/05/27/sqlserver-localdb/5612_getting-started-with-sql-server-2017-express-localdb.013.png" class="" title="SQL Server 2017 installer - Feature Selection">
+<p>Click Next, Install, and then you should have this:</p>
+<img data-src="/2023/05/27/sqlserver-localdb/5612_getting-started-with-sql-server-2017-express-localdb.014.png" class="" title="SQL Server 2017 installer - Success">
+<h2 id="step-2-patch-microsoft-sql-server-2017"><a class="markdownIt-Anchor" href="#step-2-patch-microsoft-sql-server-2017">#</a> Step 2: Patch Microsoft SQL Server 2017</h2>
+<p>Before you get started using SqlLocalDb, you should patch SQL Server 2017 to the latest Cumulative Update. The reason is that there was initially a critical bug that prevented the creation of database files due to a missing slash in the file path.</p>
+<p>This problem was fixed in CU #6 (see <span class="exturl" data-url="aHR0cHM6Ly9zdXBwb3J0Lm1pY3Jvc29mdC5jb20vZW4tdXMvaGVscC80MDk2ODc1L2ZpeC1hY2Nlc3MtaXMtZGVuaWVkLWVycm9yLXdoZW4teW91LXRyeS10by1jcmVhdGUtYS1kYXRhYmFzZS1pbi1zcWwtc2U=">KB #4096875</span>), but at the time of writing, the latest Cumulative Update available was CU #9. You should typically use the latest CU available; you can always <span class="exturl" data-url="aHR0cHM6Ly93d3cubWljcm9zb2Z0LmNvbS9lbi11cy9kb3dubG9hZC9kZXRhaWxzLmFzcHg/aWQ9NTYxMjg=">get the latest CU here</span>.</p>
+<p>At the beginning of the install it will not indicate anything about SqlLocalDb, but just check all the boxes you can and proceed. At the end you will see confirmation that SqlLocalDb has been patched (in this case I also updated a SQL Server 2017 instance from CU #8 to CU #9):</p>
+<img data-src="/2023/05/27/sqlserver-localdb/5612_getting-started-with-sql-server-2017-express-localdb.015.png" class="" title="SQL Server 2017 CU completion">
+<h2 id="step-3-install-client-tools-andor-sqlcmd-andor-powershell"><a class="markdownIt-Anchor" href="#step-3-install-client-tools-andor-sqlcmd-andor-powershell">#</a> Step 3: Install client tools and/or SQLCMD and/or PowerShell</h2>
+<p>If you don’t already have <span class="exturl" data-url="aHR0cHM6Ly93d3cubXNzcWx0aXBzLmNvbS9zcWwtc2VydmVyLXRpcC1jYXRlZ29yeS81Mi9zcWwtc2VydmVyLW1hbmFnZW1lbnQtc3R1ZGlvLw==">SSMS</span>, or another way to connect to the SQL Server database, you’re not going to get very far. Rather than guide through the full installation I’ll just point you to the locations to get the most recent versions:</p>
+<ul>
+<li>Latest version of Management Studio (17.8.1 at time of writing):<br>
+<span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vZW4tdXMvc3FsL3NzbXMvZG93bmxvYWQtc3FsLXNlcnZlci1tYW5hZ2VtZW50LXN0dWRpby1zc21z">https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms</span></li>
+<li>Latest version of SQLCMD (Command Line Utilities 14.0 at time of writing):<br>
+<span class="exturl" data-url="aHR0cHM6Ly93d3cubWljcm9zb2Z0LmNvbS9lbi11cy9kb3dubG9hZC9kZXRhaWxzLmFzcHg/aWQ9NTM1OTE=">https://www.microsoft.com/en-us/download/details.aspx?id=53591</span></li>
+<li>Installing Windows PowerShell:<br>
+<span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vZW4tdXMvcG93ZXJzaGVsbC9zY3JpcHRpbmcvc2V0dXAvaW5zdGFsbGluZy13aW5kb3dzLXBvd2Vyc2hlbGw=">https://docs.microsoft.com/en-us/powershell/scripting/setup/installing-windows-powershell</span></li>
+</ul>
+<h2 id="step-4-create-an-localdb-instance-via-sqllocaldb-command-line"><a class="markdownIt-Anchor" href="#step-4-create-an-localdb-instance-via-sqllocaldb-command-line">#</a> Step 4: Create an localdb instance via SQLLocalDB Command Line</h2>
+<p>At the command line, you can interact using the SqlLocalDb utility to configure the instance of localdb. Start with getting information about the installation:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\&gt; SqlLocalDb info</span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MSSQLLocalDB</span><br></pre></td></tr></table></figure>
+<p>This used to return the localdb version number (in the original article, and with the 2012 release, this returned v11.0).</p>
+<p>Next, you can create an instance with the following command:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\&gt; SqlLocalDb create &quot;MyInstance&quot;</span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LocalDB instance &quot;MyInstance&quot; created with version 14.0.3030.27.</span><br></pre></td></tr></table></figure>
+<p>Check the info:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\&gt; SqlLocalDb info &quot;MyInstance&quot;</span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Name:                MyInstance</span><br><span class="line">Version:             14.0.3030.27</span><br><span class="line">Shared name:</span><br><span class="line">Owner:               PEDRO\aaronbertrand</span><br><span class="line">Auto-create:         No</span><br><span class="line">State:               Running</span><br><span class="line">Last start time:     7/20/18 10:44:51 AM</span><br><span class="line">Instance pipe name:  np:\\.\pipe\LOCALDB#9EBB1CD2\tsql\query</span><br></pre></td></tr></table></figure>
+<p>The Instance pipe name may come in handy later, though I’ve found that a lot of the connectivity issues in earlier versions of this feature have gone away. Also, in older versions you had to explicitly start the instance, but it now starts automatically.</p>
+<p>If you want to stop and drop the instance, use:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">C:\&gt; SqlLocalDb stop &quot;MyInstance&quot;</span><br><span class="line">C:\&gt; SqlLocalDb delete &quot;MyInstance&quot;</span><br></pre></td></tr></table></figure>
+<p>But don’t do that just yet. Evidence that this all works so far:</p>
+<img data-src="/2023/05/27/sqlserver-localdb/5612_getting-started-with-sql-server-2017-express-localdb.016.png" class="" title="Command line interaction with LocalDB">
+<h2 id="connection-string-for-sqlcmd"><a class="markdownIt-Anchor" href="#connection-string-for-sqlcmd">#</a> Connection String for SQLCMD</h2>
+<p>Locate <span class="exturl" data-url="aHR0cHM6Ly93d3cubXNzcWx0aXBzLmNvbS9zcWxzZXJ2ZXJ0aXAvNDkyMy9pbnRyb2R1Y3Rpb24tdG8tc3FsLXNlcnZlcnMtc3FsY21kLXV0aWxpdHkv">SQLCMD</span>, making sure to use the newest version on your machine (your environment path may list an older version first). Look for the highest version in the Binn folders under C:\Program Files\Microsoft SQL Server\Client SDK\ODBC[version]\Tools. You can connect to this instance using Windows authentication with the following code at the command line:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlcmd -S &quot;(localdb)\MyInstance&quot;</span><br></pre></td></tr></table></figure>
+<p>Then we’re greeted with a line number prompt and can enter sql code on-demand. So something like:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> @<span class="variable">@VERSION</span>;</span><br><span class="line">GO</span><br><span class="line"><span class="keyword">CREATE</span> DATABASE blat;</span><br><span class="line">GO</span><br><span class="line">USE blat;</span><br><span class="line">GO</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> dbo.splunge(Mort <span class="type">int</span>);</span><br><span class="line">GO</span><br><span class="line"><span class="keyword">INSERT</span> dbo.Splune(Mort) <span class="keyword">VALUES</span>(<span class="number">1</span>);</span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> dbo.splunge;</span><br><span class="line">GO</span><br></pre></td></tr></table></figure>
+<p>Yields:</p>
+<img data-src="/2023/05/27/sqlserver-localdb/5612_getting-started-with-sql-server-2017-express-localdb.017.png" class="" title="SQLCMD interaction with LocalDB">
+<h2 id="connect-using-microsoft-sql-server-management-studio"><a class="markdownIt-Anchor" href="#connect-using-microsoft-sql-server-management-studio">#</a> Connect using Microsoft SQL Server Management Studio</h2>
+<p>Like with <span class="exturl" data-url="aHR0cHM6Ly93d3cubXNzcWx0aXBzLmNvbS9zcWxzZXJ2ZXJ0aXAvNDkyMy9pbnRyb2R1Y3Rpb24tdG8tc3FsLXNlcnZlcnMtc3FsY21kLXV0aWxpdHkv">SQLCMD</span>, you can connect using (localdb)\MyInstance from SSMS as well (in older versions you needed the pipe name I mentioned above):</p>
+<img data-src="/2023/05/27/sqlserver-localdb/5612_getting-started-with-sql-server-2017-express-localdb.018.png" class="" title="SSMS Connection dialog">
+<p>When you open Object Explorer, you’ll see the database and table we created, and you can interact with the instance just like any other SQL Server instance (with obvious exceptions, for example there is no SQL Server Agent node under Management):</p>
+<img data-src="/2023/05/27/sqlserver-localdb/5612_getting-started-with-sql-server-2017-express-localdb.019.png" class="" title="SSMS Object Explorer">
+<h2 id="connection-string-using-powershell"><a class="markdownIt-Anchor" href="#connection-string-using-powershell">#</a> Connection String using PowerShell</h2>
+<p>Modern versions of <span class="exturl" data-url="aHR0cHM6Ly93d3cubXNzcWx0aXBzLmNvbS9zcWwtc2VydmVyLXRpcC1jYXRlZ29yeS84MS9wb3dlcnNoZWxsLw==">PowerShell</span> are also able to connect to LocalDB instances using the simple instance name format. With my default installation, though, I found I still needed to manually load SMO before it would connect and interact.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[Reflection.Assembly]::LoadWithPartialName(&quot;Microsoft.SqlServer.Smo&quot;) | Out-Null;</span><br><span class="line">$s &#x3D; &quot;(localdb)\MyInstance&quot;;</span><br><span class="line">$srv &#x3D; New-Object -TypeName Microsoft.SqlServer.Management.Smo.Server -ArgumentList $sn;</span><br><span class="line">$srv.ConnectionContext.LoginSecure &#x3D; $true;</span><br><span class="line">$srv.Databases | Select Name;</span><br></pre></td></tr></table></figure>
+<p>Proof it works:</p>
+<img data-src="/2023/05/27/sqlserver-localdb/5612_getting-started-with-sql-server-2017-express-localdb.020.png" class="" title="PowerShell interaction with LocalDB">
+<h2 id="conclusion"><a class="markdownIt-Anchor" href="#conclusion">#</a> Conclusion</h2>
+<p>I hope this gives you a head start into playing with SqlLocalDb for local development. It can be a really useful way to build out a proof of concept or test a query or feature without installing a full-blown SQL Server instance.## Next Steps</p>
+<ul>
+<li>Download and install SQL Server 2017 Express LocalDB.</li>
+<li>Use the standalone engine for local development or proof of concept work.</li>
+<li>See these tips and other resources (some Microsoft links are older, but still relevant):
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cubXNzcWx0aXBzLmNvbS9zcWxzZXJ2ZXJ0aXAvMjY5NC9nZXR0aW5nLXN0YXJ0ZWQtd2l0aC1zcWwtc2VydmVyLTIwMTItZXhwcmVzcy1sb2NhbGRiLw==">Getting Started with SQL Server 2012 Express LocalDB</span></li>
+<li><span class="exturl" data-url="aHR0cDovL3NvY2lhbC50ZWNobmV0Lm1pY3Jvc29mdC5jb20vd2lraS9jb250ZW50cy9hcnRpY2xlcy80NjA5LnRyb3VibGVzaG9vdC1zcWwtc2VydmVyLTIwMTItZXhwcmVzcy1sb2NhbGRiLmFzcHg=">Troubleshoot SQL Server 2012 Express LocalDB</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9ibG9ncy5tc2RuLm1pY3Jvc29mdC5jb20vc3FsZXhwcmVzcy8=">SQL Server Express blog</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cubXNzcWx0aXBzLmNvbS9zcWxzZXJ2ZXJ0aXAvNTU0My9zcWwtc2VydmVyLWV4cHJlc3MtdmVyc2lvbnMv">SQL Server Express Versions</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cubXNzcWx0aXBzLmNvbS9zcWwtc2VydmVyLXRpcC1jYXRlZ29yeS8xMTEvZXhwcmVzcy1lZGl0aW9uLw==">All SQL Server Express Edition Tips</span></li>
+</ul>
+</li>
+</ul>
+<h2 id="comments-dbeaver-connect-sqlserver-localdb"><a class="markdownIt-Anchor" href="#comments-dbeaver-connect-sqlserver-localdb">#</a> Comments DBeaver connect SQLServer LocalDB</h2>
+<blockquote>
+<p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2RiZWF2ZXIvZGJlYXZlci9pc3N1ZXMvMjk1OQ==">LocalDB conections · Issue #2959 · dbeaver/dbeaver</span></p>
+</blockquote>
+<h3 id="jtds-driver"><a class="markdownIt-Anchor" href="#jtds-driver">#</a> jTDS Driver</h3>
+<ol>
+<li>
+<p>Get the pipe name for your LocalDB instance</p>
+<p>run  <code>sqllocaldb info &lt;name&gt;</code>  to find the name of your db instance</p>
+<p>to get Instance pipe name. You want the part that is LOCALDB#xxxxxxx to plug later. (if pipe name is empty and State is Stopped in info, run  <code>sqllocaldb start &lt;name&gt;</code>  then get the info again.</p>
+</li>
+<li>
+<p>Add a new connection in DBeaver and choose the SQL Server (Old driver, jTDS)</p>
+<img data-src="/2023/05/27/sqlserver-localdb/77350323-8effb280-6cf9-11ea-88f9-3746889ba752.png" class="">
+</li>
+<li>
+<p>Download drivers as needed, then open Edit Drivers Settings</p>
+</li>
+<li>
+<p>Remove the sourceforge jtds 1.3.1 driver from the list - it doesn’t support LocalDB named pipes</p>
+</li>
+<li>
+<p>Download the 1.3.3 (or newer) driver that supports LocalDB named pipes from <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL21pbGVzaWJhc3Rvcy9qVERTL3JlbGVhc2Vz">https://github.com/milesibastos/jTDS/releases</span></p>
+</li>
+<li>
+<p>Extract the jtds-1.3.3.jar file from the archive and put somewhere handy (I suggest C:\Program Files\DBeaver\drivers - I created this directory)</p>
+</li>
+<li>
+<p>Back in Driver Settings, click Add File and point to this new jar file, then close the Driver Settings</p>
+<img data-src="/2023/05/27/sqlserver-localdb/77350973-747a0900-6cfa-11ea-95a8-df151bef42d0.png" class="">
+</li>
+<li>
+<p>Set your host name to the format  <code>./dbname;instance=LOCALDB#xxxxxxx</code>  where dbname is the name of your database and the instance is the value found from  <code>sqllocaldb info</code>  command. Technically you don’t need to set the Database/Schema field, but I did anyhow. Blazor3 was my database name, use yours instead of this and of course the hex values after LOCALDB will be different for you as well.</p>
+<img data-src="/2023/05/27/sqlserver-localdb/77350628-09c8cd80-6cfa-11ea-9ae5-c1f5c6797658.png" class="">
+</li>
+<li>
+<p>In Driver Properties tab, set <strong>NAMEDPIPE</strong> to true</p>
+<img data-src="/2023/05/27/sqlserver-localdb/77350358-a2128280-6cf9-11ea-8447-ad3518482b63.png" class="">
+</li>
+<li>
+<p>Try Test Connection… and you should be good to go!</p>
+<img data-src="/2023/05/27/sqlserver-localdb/77350394-b8b8d980-6cf9-11ea-9f48-aeba3a736371.png" class="">
+</li>
+</ol>
+<h3 id="odbc"><a class="markdownIt-Anchor" href="#odbc">#</a> ODBC</h3>
+<p>I found a way to get DBeaver connected to localdb using ODBC, which persists across the localdb pipe name changes. You only need to have an  <code>ODBC Driver -- for SQL Server</code>  installed. Check it out:</p>
+<ol>
+<li>
+<p>First verify you have a SQL Server ODBC driver installed. To do this, go to the Windows Control Panel &gt;&gt; Administrative Tools &gt;&gt; ODBC Data Sources (x64) &gt;&gt; “Drivers” Tab. The driver I have on my machine is  <code>ODBC Driver 17 for SQL Server</code> . If you don’t have the driver, you can download it here: <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vZW4tdXMvc3FsL2Nvbm5lY3Qvb2RiYy9kb3dubG9hZC1vZGJjLWRyaXZlci1mb3Itc3FsLXNlcnZlcj92aWV3PXNxbC1zZXJ2ZXItdmVyMTU=">https://docs.microsoft.com/en-us/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver15</span></p>
+<p>The driver will look like this:</p>
+<img data-src="/2023/05/27/sqlserver-localdb/161351237-2497f2ba-eb0c-45ec-ae76-f0799888c525.PNG" class="">
+</li>
+<li>
+<p>Once you have the ODBC driver, go to DBeaver and create a new connection by choosing the “ODBC” option, and click Next:</p>
+<img data-src="/2023/05/27/sqlserver-localdb/161351516-94711fa6-5ef5-4479-8a47-ee4283ea0798.PNG" class="">
+</li>
+<li>
+<p>Enter in the connection string as follows. Be sure to change the ODBC driver version number to the one that you have installed, as well as the localdb instance name:  <code>Driver=&#123;ODBC Driver 17 for SQL Server&#125;;Server=(localdb)\mssqllocaldb</code></p>
+<img data-src="/2023/05/27/sqlserver-localdb/161351860-7bf6c2cf-4b1f-4670-91db-c3dd67fb91c9.PNG" class="">
+</li>
+<li>
+<p>Click “Test Connection” and see if it works. Hopefully you don’t have any problems. Let me know if this works well for you.</p>
+<img data-src="/2023/05/27/sqlserver-localdb/161352167-8882033d-ff32-4e36-8ee5-81b27f4f757b.PNG" class="">
+</li>
+</ol>
+
+      <div class="tags">
+          <a href="/tags/db/" rel="tag"><i class="ic i-tag"></i> db</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2023-05-27 15:54:27" itemprop="dateModified" datetime="2023-05-27T15:54:27+08:00">2023-05-27</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2023/05/07/perl-text-processing/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;小林家的龙女仆.jpg" title="Regular Expressions, File IO &amp; Text Processing">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Regular Expressions, File IO & Text Processing</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#problem"><span class="toc-number">1.</span> <span class="toc-text"> Problem</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#solution"><span class="toc-number">2.</span> <span class="toc-text"> Solution</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#step-1-install-microsoft-sql-server-express-localdb"><span class="toc-number">3.</span> <span class="toc-text"> Step 1: Install Microsoft SQL Server Express Localdb</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#step-2-patch-microsoft-sql-server-2017"><span class="toc-number">4.</span> <span class="toc-text"> Step 2: Patch Microsoft SQL Server 2017</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#step-3-install-client-tools-andor-sqlcmd-andor-powershell"><span class="toc-number">5.</span> <span class="toc-text"> Step 3: Install client tools and&#x2F;or SQLCMD and&#x2F;or PowerShell</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#step-4-create-an-localdb-instance-via-sqllocaldb-command-line"><span class="toc-number">6.</span> <span class="toc-text"> Step 4: Create an localdb instance via SQLLocalDB Command Line</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#connection-string-for-sqlcmd"><span class="toc-number">7.</span> <span class="toc-text"> Connection String for SQLCMD</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#connect-using-microsoft-sql-server-management-studio"><span class="toc-number">8.</span> <span class="toc-text"> Connect using Microsoft SQL Server Management Studio</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#connection-string-using-powershell"><span class="toc-number">9.</span> <span class="toc-text"> Connection String using PowerShell</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#conclusion"><span class="toc-number">10.</span> <span class="toc-text"> Conclusion</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#comments-dbeaver-connect-sqlserver-localdb"><span class="toc-number">11.</span> <span class="toc-text"> Comments DBeaver connect SQLServer LocalDB</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#jtds-driver"><span class="toc-number">11.1.</span> <span class="toc-text"> jTDS Driver</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#odbc"><span class="toc-number">11.2.</span> <span class="toc-text"> ODBC</span></a></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">337</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">46</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
+      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ D E W</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2023/05/27/sqlserver-localdb/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

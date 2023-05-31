@@ -1,0 +1,1805 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CFira%20Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="db" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2022/12/11/oracle-window-functions/">
+
+
+
+  <title>
+SQL Window Functions |
+D E W = 露の世</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">SQL Window Functions
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2022-12-11 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2022-12-11T00:00:00+08:00">2022-12-11</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">D E W</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="/anime/index/翼年代记.jpg"></li>
+          <li class="item" data-background-image="/anime/index/关于我转生成史莱姆这档事.jpg"></li>
+          <li class="item" data-background-image="/anime/index/fate_zero.jpg"></li>
+          <li class="item" data-background-image="/anime/index/钢之炼金术师.jpg"></li>
+          <li class="item" data-background-image="/anime/index/明日酱的水手服-1.jpg"></li>
+          <li class="item" data-background-image="/anime/index/好想告诉你.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2022/12/11/oracle-window-functions/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>转载：<span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9zcWwtd2luZG93LWZ1bmN0aW9ucy8=">SQL Window Functions: The Ultimate Guide - Database Star</span></p>
+</blockquote>
+<p>What is an SQL window function? Why should you know about it? And what can it help you with?</p>
+<p>You may have heard of SQL window functions before, or they may be completely new to you.</p>
+<p>Learn all about them in this guide.</p>
+<h2 id="what-is-a-window-function"><a class="markdownIt-Anchor" href="#what-is-a-window-function">#</a> What is a Window Function?</h2>
+<p><strong>A window function is a type of SQL function that lets you perform calculations based on data in different rows.</strong></p>
+<p>It’s the same as an SQL analytic function.</p>
+<p>What does this mean? And how is it useful?</p>
+<p>Let’s see an example. A common example is calculating a <span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9zcWwtcnVubmluZy10b3RhbC8=">running total in SQL</span>.</p>
+<p>Let’s say we have a table called orders, and that contains an order data and a total amount of the order. And let’s say we want to calculate the running total of order amounts, or the “total so far” of orders placed. This total would be added to the previous total and keep increasing.</p>
+<p>So, if we have an orders table that looked like this:</p>
+<table>
+<thead>
+<tr>
+<th><strong>order_id</strong></th>
+<th><strong>order_date</strong></th>
+<th><strong>order_total</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2020-04-03</td>
+<td>100</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2020-04-03</td>
+<td>250</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2020-04-04</td>
+<td>80</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2020-04-05</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+<p>We could calculate a running total that would make our results look like this:</p>
+<table>
+<thead>
+<tr>
+<th><strong>order_id</strong></th>
+<th><strong>order_date</strong></th>
+<th><strong>order_total</strong></th>
+<th><strong>running_total</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2020-04-03</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2020-04-03</td>
+<td>250</td>
+<td>350</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2020-04-04</td>
+<td>80</td>
+<td>430</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2020-04-05</td>
+<td>10</td>
+<td>440</td>
+</tr>
+</tbody>
+</table>
+<p>Notice how an extra column is added, called running_total. And this running total is the order_total value of that row plus the previous row’s running total.</p>
+<p>So the first value is 100, then 250 is added in the second row to have a running total of 350. In the third row, 80 is added to 350 to get 430. Finally, the fourth row adds 10 to get a running total of 440.</p>
+<p>This is what window functions let you do. You can use window functions to access values from other rows, to do things such as:</p>
+<ul>
+<li>Calculate running totals</li>
+<li>Calculate sums of groups without using Group By</li>
+<li>Rank values within groups</li>
+<li>And more</li>
+</ul>
+<p>Window functions are separate from <span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9zcWwtZ3JvdXAtYnkv">GROUP BY clauses</span>. You can see in the example above that each row is listed. There is no grouping of orders in any form.</p>
+<h2 id="which-databases-include-window-functions"><a class="markdownIt-Anchor" href="#which-databases-include-window-functions">#</a> Which Databases Include Window Functions?</h2>
+<p>The following databases include the windowing function feature:</p>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9vcmFjbGUtZGF0YWJhc2Uv">Oracle</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9zcWwtc2VydmVyLw==">SQL Server</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9teXNxbC8=">MySQL</span> as of version 8.0</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9wb3N0Z3Jlc3FsLw==">PostgreSQL</span></li>
+</ul>
+<p>There may be others, as this is not a complete list.</p>
+<h2 id="the-basic-syntax-of-a-window-function"><a class="markdownIt-Anchor" href="#the-basic-syntax-of-a-window-function">#</a> The Basic Syntax of a Window Function</h2>
+<p>So how do we use this kind of function? What does an SQL window function look like?</p>
+<p>The syntax of a window function in SQL looks like this:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">window_function (expression)</span><br><span class="line"><span class="keyword">OVER</span> (</span><br><span class="line">  [ <span class="keyword">PARTITION</span> <span class="keyword">BY</span> partition_clause ]</span><br><span class="line">  [ <span class="keyword">ORDER</span> <span class="keyword">BY</span> order_clause ]</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>The square brackets [] indicate that this part of the function is optional.</p>
+<p>The window_function can be one of many functions, such as <span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9zcWwtc3VtLw==">SUM</span>. We’ll see a whole range of examples in this guide.</p>
+<p>The expression after the window function can be a column or other expression you want to apply to the function.</p>
+<p>The OVER keyword indicates that this is to be treated as a window function.</p>
+<p>The PARTITION BY partition clause will let you define the window of data the function looks at. What does this mean? We’ll see some examples shortly to explain this.</p>
+<p>Finally, the ORDER BY clause can be added inside the window function and is used to define the order that the function runs on the data. This is separate to the <span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9zcWwtb3JkZXItYnkv">order the overall results are displayed</span>.</p>
+<h2 id="sql-window-function-example-calculate-a-running-total-with-sum"><a class="markdownIt-Anchor" href="#sql-window-function-example-calculate-a-running-total-with-sum">#</a> SQL Window Function Example: Calculate a Running Total with SUM</h2>
+<p>Now we’ve seen the syntax of a window function, let’s see an example.</p>
+<p>We saw an earlier example output of calculating a running total. The example showed orders:</p>
+<table>
+<thead>
+<tr>
+<th><strong>order_id</strong></th>
+<th><strong>order_date</strong></th>
+<th><strong>order_total</strong></th>
+<th><strong>running_total</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2020-04-03</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2020-04-03</td>
+<td>250</td>
+<td>350</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2020-04-04</td>
+<td>80</td>
+<td>430</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2020-04-05</td>
+<td>10</td>
+<td>440</td>
+</tr>
+</tbody>
+</table>
+<p>How do we write an SQL query to do this?</p>
+<h3 id="set-up-sample-data"><a class="markdownIt-Anchor" href="#set-up-sample-data">#</a> Set Up Sample Data</h3>
+<p>First, let’s create the table and populate it. You’ll probably need to adjust the data types for this depending on the database you’re using.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> orders (</span><br><span class="line">  order_id <span class="type">INT</span>,</span><br><span class="line">  order_date <span class="type">DATE</span>,</span><br><span class="line">  order_total <span class="type">INT</span></span><br><span class="line">);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> orders (order_id, order_date, order_total) <span class="keyword">VALUES</span></span><br><span class="line">(<span class="number">1</span>, <span class="string">&#x27;2020-04-03&#x27;</span>, <span class="number">100</span>),</span><br><span class="line">(<span class="number">2</span>, <span class="string">&#x27;2020-04-03&#x27;</span>, <span class="number">250</span>),</span><br><span class="line">(<span class="number">3</span>, <span class="string">&#x27;2020-04-04&#x27;</span>, <span class="number">80</span>),</span><br><span class="line">(<span class="number">4</span>, <span class="string">&#x27;2020-04-05&#x27;</span>, <span class="number">10</span>);</span><br></pre></td></tr></table></figure>
+<p>Now we can select from the table to see what it looks like:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> order_id, order_date, order_total</span><br><span class="line"><span class="keyword">FROM</span> orders;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>order_id</strong></th>
+<th><strong>order_date</strong></th>
+<th><strong>order_total</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2020-04-03</td>
+<td>100</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2020-04-03</td>
+<td>250</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2020-04-04</td>
+<td>80</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2020-04-05</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+<p>How do we calculate the running total using an SQL window function?</p>
+<h3 id="add-an-sql-window-function"><a class="markdownIt-Anchor" href="#add-an-sql-window-function">#</a> Add an SQL Window Function</h3>
+<p>We can add a function to define the running total. A running total, or any total, will use the SUM function, as it adds numbers together. And in this example, we are adding the order_total value together:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">order_id,</span><br><span class="line">order_date,</span><br><span class="line">order_total,</span><br><span class="line"><span class="built_in">SUM</span>(order_total)</span><br><span class="line"><span class="keyword">FROM</span> orders;</span><br></pre></td></tr></table></figure>
+<p>To use this as a window function, and to calculate a running total, we add the OVER keyword:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">order_id,</span><br><span class="line">order_date,</span><br><span class="line">order_total,</span><br><span class="line"><span class="built_in">SUM</span>(order_total) <span class="keyword">OVER</span> ()</span><br><span class="line"><span class="keyword">FROM</span> orders;</span><br></pre></td></tr></table></figure>
+<p>Now, inside the OVER keyword, we can add two things:</p>
+<ul>
+<li>The partition clause, which defines the window or range or sub-group of data we are looking at</li>
+<li>The order by clause, which defines how the data is ordered for the calculation.</li>
+</ul>
+<p>For the running total, we want to calculate this based on all records, not a specific window or range or sub-group. So, we can leave this optional clause out, as by default it will include all records.</p>
+<p>We want to include the ORDER BY clause though. This will let us define how the running total is calculated. A running total is a total of all of the previous rows.</p>
+<p>But how do we know what a previous row is?</p>
+<p>The previous row is the one with the previous order id. It could also be the order date, but in this example, there are multiple records with the same date. So let’s use the order id.</p>
+<p>We can update our query to use the order by clause within the OVER clause:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">order_id,</span><br><span class="line">order_date,</span><br><span class="line">order_total,</span><br><span class="line"><span class="built_in">SUM</span>(order_total) <span class="keyword">OVER</span> (<span class="keyword">ORDER</span> <span class="keyword">BY</span> order_id <span class="keyword">ASC</span>)</span><br><span class="line"><span class="keyword">FROM</span> orders;</span><br></pre></td></tr></table></figure>
+<p>We’ll also give it a column alias of running_total so we know what it is in the result set. Also, because the order of the result set is not guaranteed when we run <span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9zcWwtc2VsZWN0LXN0YXRlbWVudC8=">a SELECT query</span>, we should add an ORDER BY clause to the overall query.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">order_id,</span><br><span class="line">order_date,</span><br><span class="line">order_total,</span><br><span class="line"><span class="built_in">SUM</span>(order_total) <span class="keyword">OVER</span> (<span class="keyword">ORDER</span> <span class="keyword">BY</span> order_id <span class="keyword">ASC</span>) <span class="keyword">AS</span> running_total</span><br><span class="line"><span class="keyword">FROM</span> orders</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> order_id <span class="keyword">ASC</span>;</span><br></pre></td></tr></table></figure>
+<p>This function should now calculate the SUM of the order_total column, across all records so far, when ordered by the order ID.</p>
+<p>Let’s see the results:</p>
+<table>
+<thead>
+<tr>
+<th><strong>order_id</strong></th>
+<th><strong>order_date</strong></th>
+<th><strong>order_total</strong></th>
+<th><strong>running_total</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2020-04-03</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2020-04-03</td>
+<td>250</td>
+<td>350</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2020-04-04</td>
+<td>80</td>
+<td>430</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2020-04-05</td>
+<td>10</td>
+<td>440</td>
+</tr>
+</tbody>
+</table>
+<p>Woohoo! We’ve successfully calculated a running total using an SQL window function.</p>
+<h2 id="using-the-sql-partition-by-clause-to-create-windows"><a class="markdownIt-Anchor" href="#using-the-sql-partition-by-clause-to-create-windows">#</a> Using the SQL Partition by Clause to Create Windows</h2>
+<p>In the earlier example, the running total calculation was done for all records. Window functions let you specify a window, and we didn’t specify a window for the earlier example so the entire result set was used.</p>
+<p>A window is a set of rows that the function looks at when performing its calculation. You can think of it like a subgroup for the function. It’s also known as a partition.</p>
+<p>To demonstrate the windowing feature of a windowing function, we’ll need a bit more data in our sample table:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> orders (order_id, order_date, order_total) <span class="keyword">VALUES</span></span><br><span class="line">(<span class="number">5</span>, <span class="string">&#x27;2020-04-03&#x27;</span>, <span class="number">120</span>),</span><br><span class="line">(<span class="number">6</span>, <span class="string">&#x27;2020-04-04&#x27;</span>, <span class="number">90</span>),</span><br><span class="line">(<span class="number">7</span>, <span class="string">&#x27;2020-04-04&#x27;</span>, <span class="number">50</span>),</span><br><span class="line">(<span class="number">8</span>, <span class="string">&#x27;2020-04-04&#x27;</span>, <span class="number">15</span>);</span><br></pre></td></tr></table></figure>
+<p>Now we can select from the table to see what it looks like:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> order_id, order_date, order_total</span><br><span class="line"><span class="keyword">FROM</span> orders;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>order_id</strong></th>
+<th><strong>order_date</strong></th>
+<th><strong>order_total</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2020-04-03</td>
+<td>100</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2020-04-03</td>
+<td>250</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2020-04-04</td>
+<td>80</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2020-04-05</td>
+<td>10</td>
+</tr>
+<tr>
+<td>5</td>
+<td>2020-04-03</td>
+<td>120</td>
+</tr>
+<tr>
+<td>6</td>
+<td>2020-04-04</td>
+<td>90</td>
+</tr>
+<tr>
+<td>7</td>
+<td>2020-04-04</td>
+<td>50</td>
+</tr>
+<tr>
+<td>8</td>
+<td>2020-04-04</td>
+<td>15</td>
+</tr>
+</tbody>
+</table>
+<p>Now, how do we use the windowing feature? We use the PARTITION BY clause as part of the function.</p>
+<p>The PARTITION BY clause lets us specify a column to use as a window, partition, or subgroup.</p>
+<p>In this example, we want to see a running total for each day. Instead of seeing an overall running total, we want to see the total for each day, and for it to reset each day.</p>
+<p>We can do this:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">order_id,</span><br><span class="line">order_date,</span><br><span class="line">order_total,</span><br><span class="line"><span class="built_in">SUM</span>(order_total) <span class="keyword">OVER</span> (</span><br><span class="line">  <span class="keyword">PARTITION</span> <span class="keyword">BY</span> order_date</span><br><span class="line">  <span class="keyword">ORDER</span> <span class="keyword">BY</span> order_id <span class="keyword">ASC</span>) <span class="keyword">AS</span> running_total</span><br><span class="line"><span class="keyword">FROM</span> orders</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> order_id <span class="keyword">ASC</span>;</span><br></pre></td></tr></table></figure>
+<p>Notice the only change made was adding PARTITION BY order_date. This means that the SUM function is used to calculate a running total, but it’s calculated for each set of different order_dates.</p>
+<p>If we run the query, we’ll get this result:</p>
+<table>
+<thead>
+<tr>
+<th><strong>order_id</strong></th>
+<th><strong>order_date</strong></th>
+<th><strong>order_total</strong></th>
+<th><strong>running_total</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2020-04-03</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2020-04-03</td>
+<td>250</td>
+<td>350</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2020-04-04</td>
+<td>80</td>
+<td>80</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2020-04-05</td>
+<td>10</td>
+<td>10</td>
+</tr>
+<tr>
+<td>5</td>
+<td>2020-04-03</td>
+<td>120</td>
+<td>470</td>
+</tr>
+<tr>
+<td>6</td>
+<td>2020-04-04</td>
+<td>90</td>
+<td>170</td>
+</tr>
+<tr>
+<td>7</td>
+<td>2020-04-04</td>
+<td>50</td>
+<td>220</td>
+</tr>
+<tr>
+<td>8</td>
+<td>2020-04-04</td>
+<td>15</td>
+<td>235</td>
+</tr>
+</tbody>
+</table>
+<p>We can see the running_total is different. The number changes with each row and isn’t really in order.</p>
+<p>The problem here is that we are ordering by the order_id field. It makes it harder to read when the data is ordered in a different order to the partition.</p>
+<p>Let’s order by the order_date instead.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">order_id,</span><br><span class="line">order_date,</span><br><span class="line">order_total,</span><br><span class="line"><span class="built_in">SUM</span>(order_total) <span class="keyword">OVER</span> (</span><br><span class="line">  <span class="keyword">PARTITION</span> <span class="keyword">BY</span> order_date</span><br><span class="line">  <span class="keyword">ORDER</span> <span class="keyword">BY</span> order_id <span class="keyword">ASC</span>) <span class="keyword">AS</span> running_total</span><br><span class="line"><span class="keyword">FROM</span> orders</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> order_date <span class="keyword">ASC</span>;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>order_id</strong></th>
+<th><strong>order_date</strong></th>
+<th><strong>order_total</strong></th>
+<th><strong>running_total</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2020-04-03</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2020-04-03</td>
+<td>250</td>
+<td>350</td>
+</tr>
+<tr>
+<td>5</td>
+<td>2020-04-03</td>
+<td>120</td>
+<td>470</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2020-04-04</td>
+<td>80</td>
+<td>80</td>
+</tr>
+<tr>
+<td>6</td>
+<td>2020-04-04</td>
+<td>90</td>
+<td>170</td>
+</tr>
+<tr>
+<td>7</td>
+<td>2020-04-04</td>
+<td>50</td>
+<td>220</td>
+</tr>
+<tr>
+<td>8</td>
+<td>2020-04-04</td>
+<td>15</td>
+<td>235</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2020-04-05</td>
+<td>10</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+<p>These results look better. We can see in rows 1-3 (order ID 1, 2, 5), the running total increases, as these values have the same order_date.</p>
+<p>When we get to row 4 (order ID 3), the order_date is different, so the running_total is reset to 80 which is the order total value of that row.</p>
+<p>Rows 5 to 7 (order ID 6, 7, 8) increase the running total because they have the same order_date, and the running_total is reset on row 8 (order ID 4) because the order_date changes.</p>
+<p>So, that’s how you can use the PARTITION BY in a query. You can use it to calculate the result of a function on a group of records.</p>
+<p>Notice how all of the rows from the table are shown. You don’t need to use the GROUP BY clause to get this kind of function working. This can be helpful in many situations.</p>
+<h2 id="count-example"><a class="markdownIt-Anchor" href="#count-example">#</a> COUNT Example</h2>
+<p>In our examples so far, we’ve used the SUM function. There are many more functions we can use as window functions and using the SQL partition by keyword. One of <span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9zcWwtY291bnQv">those functions is COUNT</span>.</p>
+<h3 id="count-as-a-window-function"><a class="markdownIt-Anchor" href="#count-as-a-window-function">#</a> COUNT as a Window Function</h3>
+<p>Let’s say we are working on the orders database and we had a question from one of the users:</p>
+<p>“How can I see the running count of the number of orders? I want to see the order details, but I also want to see how many orders have been placed for each day.”</p>
+<p>We can do this in the same way as using SUM, except we use the COUNT function. The COUNT function will count the number of records, and it can be used as a window function.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">order_id,</span><br><span class="line">order_date,</span><br><span class="line">order_total,</span><br><span class="line"><span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="keyword">OVER</span> (<span class="keyword">ORDER</span> <span class="keyword">BY</span> order_date <span class="keyword">ASC</span>) <span class="keyword">AS</span> running_count</span><br><span class="line"><span class="keyword">FROM</span> orders</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> order_date <span class="keyword">ASC</span>;</span><br></pre></td></tr></table></figure>
+<p>In this example, we have selected some columns from the orders table, and also used the COUNT(*) function to count rows. We have ordered by the order_date column as well.</p>
+<p>Here are the results:</p>
+<table>
+<thead>
+<tr>
+<th><strong>order_id</strong></th>
+<th><strong>order_date</strong></th>
+<th><strong>order_total</strong></th>
+<th><strong>running_count</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2020-04-03</td>
+<td>100</td>
+<td>3</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2020-04-03</td>
+<td>250</td>
+<td>3</td>
+</tr>
+<tr>
+<td>5</td>
+<td>2020-04-03</td>
+<td>120</td>
+<td>3</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2020-04-04</td>
+<td>80</td>
+<td>7</td>
+</tr>
+<tr>
+<td>6</td>
+<td>2020-04-04</td>
+<td>90</td>
+<td>7</td>
+</tr>
+<tr>
+<td>7</td>
+<td>2020-04-04</td>
+<td>50</td>
+<td>7</td>
+</tr>
+<tr>
+<td>8</td>
+<td>2020-04-04</td>
+<td>15</td>
+<td>7</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2020-04-05</td>
+<td>10</td>
+<td>8</td>
+</tr>
+</tbody>
+</table>
+<p>The results show the order details and the running count of orders for each day. The count increases with each day: showing 3 on the first day, then 7 on the second day (original 3 plus 4 from the day), then 8 on the third day (the 7 from previously plus the 1 from the day).</p>
+<h3 id="count-with-partition-by"><a class="markdownIt-Anchor" href="#count-with-partition-by">#</a> COUNT with PARTITION BY</h3>
+<p>What if the user saw this and said, “actually, I would prefer to see the number of orders just for that day, not the count overall”.</p>
+<p>We could change our query by adding a PARTITION BY clause, so that the COUNT only looks at the rows for that order date and not all records.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">order_id,</span><br><span class="line">order_date,</span><br><span class="line">order_total,</span><br><span class="line"><span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="keyword">OVER</span> (</span><br><span class="line">  <span class="keyword">PARTITION</span> <span class="keyword">BY</span> order_date</span><br><span class="line">  <span class="keyword">ORDER</span> <span class="keyword">BY</span> order_date <span class="keyword">ASC</span>) <span class="keyword">AS</span> day_count</span><br><span class="line"><span class="keyword">FROM</span> orders</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> order_date <span class="keyword">ASC</span>;</span><br></pre></td></tr></table></figure>
+<p>I’ve also renamed the column alias to day_count as I think this describes the data better.</p>
+<p>Here’s the result:</p>
+<table>
+<thead>
+<tr>
+<th><strong>order_id</strong></th>
+<th><strong>order_date</strong></th>
+<th><strong>order_total</strong></th>
+<th><strong>day_count</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2020-04-03</td>
+<td>100</td>
+<td>3</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2020-04-03</td>
+<td>250</td>
+<td>3</td>
+</tr>
+<tr>
+<td>5</td>
+<td>2020-04-03</td>
+<td>120</td>
+<td>3</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2020-04-04</td>
+<td>80</td>
+<td>4</td>
+</tr>
+<tr>
+<td>6</td>
+<td>2020-04-04</td>
+<td>90</td>
+<td>4</td>
+</tr>
+<tr>
+<td>7</td>
+<td>2020-04-04</td>
+<td>50</td>
+<td>4</td>
+</tr>
+<tr>
+<td>8</td>
+<td>2020-04-04</td>
+<td>15</td>
+<td>4</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2020-04-05</td>
+<td>10</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>We can see that using the SQL PARTITION BY clause has caused the COUNT value to only be calculated on records for that date.</p>
+<p>This example is similar to the SUM example in that it uses an aggregate function for each row.</p>
+<h3 id="count-with-partition-by-different-to-order-by"><a class="markdownIt-Anchor" href="#count-with-partition-by-different-to-order-by">#</a> COUNT with PARTITION BY Different to ORDER BY</h3>
+<p>In the example earlier we had the same column for PARTITION BY and ORDER BY. What if we used different columns? We can partition by the order date, to calculate the COUNT based on the order date, but order by the order_id?</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">order_id,</span><br><span class="line">order_date,</span><br><span class="line">order_total,</span><br><span class="line"><span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="keyword">OVER</span> (</span><br><span class="line">  <span class="keyword">PARTITION</span> <span class="keyword">BY</span> order_date</span><br><span class="line">  <span class="keyword">ORDER</span> <span class="keyword">BY</span> order_id <span class="keyword">ASC</span>) <span class="keyword">AS</span> day_count</span><br><span class="line"><span class="keyword">FROM</span> orders</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> order_date <span class="keyword">ASC</span>;</span><br></pre></td></tr></table></figure>
+<p>Here are the results:</p>
+<table>
+<thead>
+<tr>
+<th><strong>order_id</strong></th>
+<th><strong>order_date</strong></th>
+<th><strong>order_total</strong></th>
+<th><strong>day_count</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2020-04-03</td>
+<td>100</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2020-04-03</td>
+<td>250</td>
+<td>2</td>
+</tr>
+<tr>
+<td>5</td>
+<td>2020-04-03</td>
+<td>120</td>
+<td>3</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2020-04-04</td>
+<td>80</td>
+<td>1</td>
+</tr>
+<tr>
+<td>6</td>
+<td>2020-04-04</td>
+<td>90</td>
+<td>2</td>
+</tr>
+<tr>
+<td>7</td>
+<td>2020-04-04</td>
+<td>50</td>
+<td>3</td>
+</tr>
+<tr>
+<td>8</td>
+<td>2020-04-04</td>
+<td>15</td>
+<td>4</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2020-04-05</td>
+<td>10</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>We can see the COUNT value is different for each row and is actually incremented. So, when the order_id changes, the COUNT changes, but the COUNT is only operating on the records that have the same order_date.</p>
+<p>So this is how you can change some of the parameters of the window functions to get different results.</p>
+<h2 id="avg-example"><a class="markdownIt-Anchor" href="#avg-example">#</a> AVG Example</h2>
+<p>We’ve seen examples of using SUM and COUNT. Can we do the same with other aggregate functions <span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9zcWwtYXZnLw==">such as AVG</span>?</p>
+<p>Yes, we can write a window function with AVG.</p>
+<p>This can answer the question of, “how can I see the average order total so far with the order details?”</p>
+<h3 id="avg-window-function-example"><a class="markdownIt-Anchor" href="#avg-window-function-example">#</a> AVG Window Function Example</h3>
+<p>To do that, we can write the following query:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">order_id,</span><br><span class="line">order_date,</span><br><span class="line">order_total,</span><br><span class="line"><span class="built_in">AVG</span>(order_total) <span class="keyword">OVER</span> (<span class="keyword">ORDER</span> <span class="keyword">BY</span> order_date <span class="keyword">ASC</span>) <span class="keyword">AS</span> running_avg</span><br><span class="line"><span class="keyword">FROM</span> orders</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> order_date <span class="keyword">ASC</span>;</span><br></pre></td></tr></table></figure>
+<p>This calculates the average of the order total for each order_date and displays it in a separate column.</p>
+<p>Here are the results:</p>
+<table>
+<thead>
+<tr>
+<th><strong>order_id</strong></th>
+<th><strong>order_date</strong></th>
+<th><strong>order_total</strong></th>
+<th><strong>running_avg</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2020-04-03</td>
+<td>100</td>
+<td>156</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2020-04-03</td>
+<td>250</td>
+<td>156</td>
+</tr>
+<tr>
+<td>5</td>
+<td>2020-04-03</td>
+<td>120</td>
+<td>156</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2020-04-04</td>
+<td>80</td>
+<td>100</td>
+</tr>
+<tr>
+<td>6</td>
+<td>2020-04-04</td>
+<td>90</td>
+<td>100</td>
+</tr>
+<tr>
+<td>7</td>
+<td>2020-04-04</td>
+<td>50</td>
+<td>100</td>
+</tr>
+<tr>
+<td>8</td>
+<td>2020-04-04</td>
+<td>15</td>
+<td>100</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2020-04-05</td>
+<td>10</td>
+<td>89</td>
+</tr>
+</tbody>
+</table>
+<p>What do these results mean? It shows the average of the order total for each day and all of the days before it.</p>
+<ul>
+<li>On 2020-04-03, the average is 156, as it includes the values of 100, 250, and 120)</li>
+<li>On 2020-04-04, the average changes to 100. The order totals for this day are all under 100 (80, 90, 50), but the average includes all values before it, which are the values from 2020-04-03.</li>
+<li>On 2020-04-05, the average is 89, as it includes all values before it as well.</li>
+</ul>
+<h3 id="avg-window-function-with-partition-by"><a class="markdownIt-Anchor" href="#avg-window-function-with-partition-by">#</a> AVG Window Function with PARTITION BY</h3>
+<p>What if we want to see the average for the day only, not the running average?</p>
+<p>We can do that using the PARTITION BY clause. We can add the order_date as a partition, which should show us the average for each date rather than a running average.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">order_id,</span><br><span class="line">order_date,</span><br><span class="line">order_total,</span><br><span class="line"><span class="built_in">AVG</span>(order_total) <span class="keyword">OVER</span> (</span><br><span class="line">  <span class="keyword">PARTITION</span> <span class="keyword">BY</span> order_date</span><br><span class="line">  <span class="keyword">ORDER</span> <span class="keyword">BY</span> order_date <span class="keyword">ASC</span>) <span class="keyword">AS</span> day_avg</span><br><span class="line"><span class="keyword">FROM</span> orders</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> order_date <span class="keyword">ASC</span>;</span><br></pre></td></tr></table></figure>
+<p>Here are the results:</p>
+<table>
+<thead>
+<tr>
+<th><strong>order_id</strong></th>
+<th><strong>order_date</strong></th>
+<th><strong>order_total</strong></th>
+<th><strong>day_avg</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2020-04-03</td>
+<td>100</td>
+<td>156</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2020-04-03</td>
+<td>250</td>
+<td>156</td>
+</tr>
+<tr>
+<td>5</td>
+<td>2020-04-03</td>
+<td>120</td>
+<td>156</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2020-04-04</td>
+<td>80</td>
+<td>58</td>
+</tr>
+<tr>
+<td>6</td>
+<td>2020-04-04</td>
+<td>90</td>
+<td>58</td>
+</tr>
+<tr>
+<td>7</td>
+<td>2020-04-04</td>
+<td>50</td>
+<td>58</td>
+</tr>
+<tr>
+<td>8</td>
+<td>2020-04-04</td>
+<td>15</td>
+<td>58</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2020-04-05</td>
+<td>10</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+<p>We can see the numbers are different. The average is calculated as an average just for that day, not the entire result set so far, because we used the PARTITION BY clause.</p>
+<h2 id="row_number-example"><a class="markdownIt-Anchor" href="#row_number-example">#</a> ROW_NUMBER Example</h2>
+<p>Another use of window functions is to find the row number.</p>
+<p>SQL has a function called ROW_NUMBER which returns the row’s number in the result set. It exists in Oracle, SQL Server, PostgreSQL, and MySQL as of version 8.0.</p>
+<h3 id="basic-row_number"><a class="markdownIt-Anchor" href="#basic-row_number">#</a> Basic ROW_NUMBER</h3>
+<p>To see the ROW_NUMBER function, we can try to use this function when querying a table.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">order_id,</span><br><span class="line">order_date,</span><br><span class="line">order_total,</span><br><span class="line"><span class="built_in">ROW_NUMBER</span>()</span><br><span class="line"><span class="keyword">FROM</span> orders</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> order_date <span class="keyword">ASC</span>;</span><br></pre></td></tr></table></figure>
+<p>When we run this error, we’ll get an error. The exact error depends on the database, and in SQL Server it displays this error:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">The function &#39;ROW_NUMBER&#39; must have an OVER clause.</span><br></pre></td></tr></table></figure>
+<p>This means we can’t just call the function, we need to have an OVER clause.</p>
+<h3 id="row_number-as-a-window-function"><a class="markdownIt-Anchor" href="#row_number-as-a-window-function">#</a> ROW_NUMBER as a Window Function</h3>
+<p>Let’s try adding an OVER clause to the <span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9yb3dfbnVtYmVyLXNxbC1zZXJ2ZXIv">ROW_NUMBER function</span>:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">order_id,</span><br><span class="line">order_date,</span><br><span class="line">order_total,</span><br><span class="line"><span class="built_in">ROW_NUMBER</span>() <span class="keyword">OVER</span>(<span class="keyword">ORDER</span> <span class="keyword">BY</span> order_date <span class="keyword">ASC</span>) <span class="keyword">AS</span> row_num</span><br><span class="line"><span class="keyword">FROM</span> orders</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> order_date <span class="keyword">ASC</span>;</span><br></pre></td></tr></table></figure>
+<p>This looks similar to other window functions. We’ve added an ORDER BY clause inside the OVER clause of the ROW_NUMBER function, so the function knows how to calculate the row number.</p>
+<p>Here are the results:</p>
+<table>
+<thead>
+<tr>
+<th><strong>order_id</strong></th>
+<th><strong>order_date</strong></th>
+<th><strong>order_total</strong></th>
+<th><strong>row_num</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2020-04-03</td>
+<td>100</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2020-04-03</td>
+<td>250</td>
+<td>2</td>
+</tr>
+<tr>
+<td>5</td>
+<td>2020-04-03</td>
+<td>120</td>
+<td>3</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2020-04-04</td>
+<td>80</td>
+<td>4</td>
+</tr>
+<tr>
+<td>6</td>
+<td>2020-04-04</td>
+<td>90</td>
+<td>5</td>
+</tr>
+<tr>
+<td>7</td>
+<td>2020-04-04</td>
+<td>50</td>
+<td>6</td>
+</tr>
+<tr>
+<td>8</td>
+<td>2020-04-04</td>
+<td>15</td>
+<td>7</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2020-04-05</td>
+<td>10</td>
+<td>8</td>
+</tr>
+</tbody>
+</table>
+<p>We can see the ROW_NUMBER function (in the column called rownum, different to the <span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9vcmFjbGUtcm93bnVtLw==">Oracle rownum function</span>) is incremented by 1 for each row, effectively showing the number of the row. This is useful if you ever need to return this in an SQL query rather than calculate it programmatically.</p>
+<p>For example, if you want to display a ladder or standings of a sporting competition, you could use the ROW_NUMBER function to calculate their ranking or ladder position.</p>
+<h3 id="row_number-with-partition-by"><a class="markdownIt-Anchor" href="#row_number-with-partition-by">#</a> ROW_NUMBER with PARTITION BY</h3>
+<p>What if you want to calculate the row number within a certain partition or window of data? You can do that with the SQL PARTITION BY clause.</p>
+<p>This query will show the row number of each row that has the same order_date.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">order_id,</span><br><span class="line">order_date,</span><br><span class="line">order_total,</span><br><span class="line"><span class="built_in">ROW_NUMBER</span>() <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> order_date <span class="keyword">ORDER</span> <span class="keyword">BY</span> order_id <span class="keyword">ASC</span>) <span class="keyword">AS</span> rownum</span><br><span class="line"><span class="keyword">FROM</span> orders</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> order_date <span class="keyword">ASC</span>;</span><br></pre></td></tr></table></figure>
+<p>Here are the results:</p>
+<table>
+<thead>
+<tr>
+<th><strong>order_id</strong></th>
+<th><strong>order_date</strong></th>
+<th><strong>order_total</strong></th>
+<th><strong>rownum</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2020-04-03</td>
+<td>100</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2020-04-03</td>
+<td>250</td>
+<td>2</td>
+</tr>
+<tr>
+<td>5</td>
+<td>2020-04-03</td>
+<td>120</td>
+<td>3</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2020-04-04</td>
+<td>80</td>
+<td>1</td>
+</tr>
+<tr>
+<td>6</td>
+<td>2020-04-04</td>
+<td>90</td>
+<td>2</td>
+</tr>
+<tr>
+<td>7</td>
+<td>2020-04-04</td>
+<td>50</td>
+<td>3</td>
+</tr>
+<tr>
+<td>8</td>
+<td>2020-04-04</td>
+<td>15</td>
+<td>4</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2020-04-05</td>
+<td>10</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>Notice how the rownum column (which is from the ROW_NUMBER function) is reset to 1 each time the order_date changes. This means the row number is calculated separately for each order_date.</p>
+<p>As with all of these functions, you can change the parameters to give you the ordering and calculations you want.</p>
+<h2 id="ranking-results-with-rank-and-dense_rank"><a class="markdownIt-Anchor" href="#ranking-results-with-rank-and-dense_rank">#</a> Ranking results with RANK and DENSE_RANK</h2>
+<p>There are two more functions that allow you to see the number of a row: <span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9zcWwtcmFuay8=">RANK and DENSE_RANK</span>.</p>
+<p>RANK allows you to find the rank or position of a row in a group of rows. DENSE_RANK is a similar function and allows you to find the rank of a row.</p>
+<p>Sounds similar to ROW_NUMBER, right?</p>
+<p>Well, the differences between ROW_NUMBER, RANK, and DENSE_RANK are:</p>
+<ul>
+<li>ROW_NUMBER will give every row a unique sequential number</li>
+<li>RANK will give matching rows the same number and skip numbers</li>
+<li>DENSE_RANK will give matching rows the same number but doesn’t skip numbers</li>
+</ul>
+<p>Let’s see an example of these functions.</p>
+<h3 id="example-of-rank"><a class="markdownIt-Anchor" href="#example-of-rank">#</a> Example of RANK</h3>
+<p>Let’s say we wanted to find the rank of our orders based on the order_amount.</p>
+<p>First, let’s insert a couple of rows that have the same order_amount to see how they impact our output.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> orders (order_id, order_date, order_total)</span><br><span class="line"><span class="keyword">VALUES</span> (<span class="number">9</span>, <span class="string">&#x27;2020-04-04&#x27;</span>, <span class="number">100</span>),</span><br><span class="line"><span class="keyword">VALUES</span> (<span class="number">10</span>, <span class="string">&#x27;2020-04-05&#x27;</span>, <span class="number">100</span>);</span><br></pre></td></tr></table></figure>
+<p>Next, our SELECT query would look like this. We’ve ordered by the order_amount to make it easier to follow.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">order_id,</span><br><span class="line">order_date,</span><br><span class="line">order_total,</span><br><span class="line"><span class="built_in">RANK</span>() <span class="keyword">OVER</span>(<span class="keyword">ORDER</span> <span class="keyword">BY</span> order_total <span class="keyword">DESC</span>) <span class="keyword">AS</span> row_rank</span><br><span class="line"><span class="keyword">FROM</span> orders</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> order_total <span class="keyword">DESC</span>;</span><br></pre></td></tr></table></figure>
+<p>The results are:</p>
+<table>
+<thead>
+<tr>
+<th><strong>order_id</strong></th>
+<th><strong>order_date</strong></th>
+<th><strong>order_total</strong></th>
+<th><strong>row_rank</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>2020-04-03</td>
+<td>250</td>
+<td>1</td>
+</tr>
+<tr>
+<td>5</td>
+<td>2020-04-03</td>
+<td>120</td>
+<td>2</td>
+</tr>
+<tr>
+<td>9</td>
+<td>2020-04-04</td>
+<td>100</td>
+<td>3</td>
+</tr>
+<tr>
+<td>10</td>
+<td>2020-04-05</td>
+<td>100</td>
+<td>3</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2020-04-03</td>
+<td>100</td>
+<td>3</td>
+</tr>
+<tr>
+<td>6</td>
+<td>2020-04-04</td>
+<td>90</td>
+<td>6</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2020-04-04</td>
+<td>80</td>
+<td>7</td>
+</tr>
+<tr>
+<td>7</td>
+<td>2020-04-04</td>
+<td>50</td>
+<td>8</td>
+</tr>
+<tr>
+<td>8</td>
+<td>2020-04-04</td>
+<td>15</td>
+<td>9</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2020-04-05</td>
+<td>10</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+<p>We can see the rows have been ordered by the order_total column in descending order. The row_rank shows the ranking of the rows.</p>
+<p>Notice that there are three records with the same order_total, which all have the rank 3. The next row that follows has the rank of 6, because the ranks of 4 and 5 are skipped. This is part of how the RANK function works.</p>
+<h3 id="example-of-rank-with-a-partition"><a class="markdownIt-Anchor" href="#example-of-rank-with-a-partition">#</a> Example of RANK With a Partition</h3>
+<p>We can use the PARTITION BY clause with the RANK function. This will allow us to see the rank of a row within a partition or group of other rows.</p>
+<p>For example, partitioning on the order_date column will give us this query:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">order_id,</span><br><span class="line">order_date,</span><br><span class="line">order_total,</span><br><span class="line"><span class="built_in">RANK</span>() <span class="keyword">OVER</span>(</span><br><span class="line">  <span class="keyword">PARTITION</span> <span class="keyword">BY</span> order_date</span><br><span class="line">  <span class="keyword">ORDER</span> <span class="keyword">BY</span> order_total <span class="keyword">DESC</span>) <span class="keyword">AS</span> row_rank</span><br><span class="line"><span class="keyword">FROM</span> orders</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> order_total <span class="keyword">DESC</span>;</span><br></pre></td></tr></table></figure>
+<p>The results are:</p>
+<table>
+<thead>
+<tr>
+<th><strong>order_id</strong></th>
+<th><strong>order_date</strong></th>
+<th><strong>order_total</strong></th>
+<th><strong>row_rank</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>2020-04-03</td>
+<td>250</td>
+<td>1</td>
+</tr>
+<tr>
+<td>5</td>
+<td>2020-04-03</td>
+<td>120</td>
+<td>2</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2020-04-03</td>
+<td>100</td>
+<td>3</td>
+</tr>
+<tr>
+<td>9</td>
+<td>2020-04-04</td>
+<td>100</td>
+<td>1</td>
+</tr>
+<tr>
+<td>10</td>
+<td>2020-04-05</td>
+<td>100</td>
+<td>1</td>
+</tr>
+<tr>
+<td>6</td>
+<td>2020-04-04</td>
+<td>90</td>
+<td>2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2020-04-04</td>
+<td>80</td>
+<td>3</td>
+</tr>
+<tr>
+<td>7</td>
+<td>2020-04-04</td>
+<td>50</td>
+<td>4</td>
+</tr>
+<tr>
+<td>8</td>
+<td>2020-04-04</td>
+<td>15</td>
+<td>5</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2020-04-05</td>
+<td>10</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p>The row_rank is incremented for each order_date. The results are shown in a different order: we can see order ID 9 has a rank of 1, and order id 6 has a rank of 2. They are both on the same date but order ID 10 is showing in between them. This is because the ordering of the result set is different to the partitioning.</p>
+<p>So, this shows that you can order by one column for your result set and another inside your window function.</p>
+<h3 id="example-of-dense_rank"><a class="markdownIt-Anchor" href="#example-of-dense_rank">#</a> Example of DENSE_RANK</h3>
+<p>Now let’s see the same example but using DENSE_RANK.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">order_id,</span><br><span class="line">order_date,</span><br><span class="line">order_total,</span><br><span class="line"><span class="built_in">DENSE_RANK</span>() <span class="keyword">OVER</span>(<span class="keyword">ORDER</span> <span class="keyword">BY</span> order_total <span class="keyword">DESC</span>) <span class="keyword">AS</span> row_rank</span><br><span class="line"><span class="keyword">FROM</span> orders</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> order_total <span class="keyword">DESC</span>;</span><br></pre></td></tr></table></figure>
+<p>The results are:</p>
+<table>
+<thead>
+<tr>
+<th><strong>order_id</strong></th>
+<th><strong>order_date</strong></th>
+<th><strong>order_total</strong></th>
+<th><strong>row_rank</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>2020-04-03</td>
+<td>250</td>
+<td>1</td>
+</tr>
+<tr>
+<td>5</td>
+<td>2020-04-03</td>
+<td>120</td>
+<td>2</td>
+</tr>
+<tr>
+<td>9</td>
+<td>2020-04-04</td>
+<td>100</td>
+<td>3</td>
+</tr>
+<tr>
+<td>10</td>
+<td>2020-04-05</td>
+<td>100</td>
+<td>3</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2020-04-03</td>
+<td>100</td>
+<td>3</td>
+</tr>
+<tr>
+<td>6</td>
+<td>2020-04-04</td>
+<td>90</td>
+<td>4</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2020-04-04</td>
+<td>80</td>
+<td>5</td>
+</tr>
+<tr>
+<td>7</td>
+<td>2020-04-04</td>
+<td>50</td>
+<td>6</td>
+</tr>
+<tr>
+<td>8</td>
+<td>2020-04-04</td>
+<td>15</td>
+<td>7</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2020-04-05</td>
+<td>10</td>
+<td>8</td>
+</tr>
+</tbody>
+</table>
+<p>This is a similar output to the RANK function. However, possible RANK values are not skipped. After order ID 9, 10, and 1, the next order ID of 6 has a rank of 4.</p>
+<h3 id="rank-dense_rank-and-row_number"><a class="markdownIt-Anchor" href="#rank-dense_rank-and-row_number">#</a> RANK, DENSE_RANK, and ROW_NUMBER</h3>
+<p>We mentioned the differences between RANK, DENSE_RANK, and ROW_NUMBER earlier. Let’s see an example of these functions:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">order_id,</span><br><span class="line">order_date,</span><br><span class="line">order_total,</span><br><span class="line"><span class="built_in">ROW_NUMBER</span>() <span class="keyword">OVER</span>(<span class="keyword">ORDER</span> <span class="keyword">BY</span> order_total <span class="keyword">DESC</span>) <span class="keyword">AS</span> row_num,</span><br><span class="line"><span class="built_in">RANK</span>() <span class="keyword">OVER</span>(<span class="keyword">ORDER</span> <span class="keyword">BY</span> order_total <span class="keyword">DESC</span>) <span class="keyword">AS</span> row_rank,</span><br><span class="line"><span class="built_in">DENSE_RANK</span>() <span class="keyword">OVER</span>(<span class="keyword">ORDER</span> <span class="keyword">BY</span> order_total <span class="keyword">DESC</span>) <span class="keyword">AS</span> row_denserank</span><br><span class="line"><span class="keyword">FROM</span> orders</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> order_total <span class="keyword">DESC</span>;</span><br></pre></td></tr></table></figure>
+<p>We can see the query uses multiple window functions in the same query. This is possible in SQL. We could have even used different parameters in our functions.</p>
+<p>The results are:</p>
+<table>
+<thead>
+<tr>
+<th><strong>order_id</strong></th>
+<th><strong>order_date</strong></th>
+<th><strong>order_total</strong></th>
+<th><strong>row_num</strong></th>
+<th><strong>row_rank</strong></th>
+<th><strong>row_denserank</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>2020-04-03</td>
+<td>250</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>5</td>
+<td>2020-04-03</td>
+<td>120</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>9</td>
+<td>2020-04-04</td>
+<td>100</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>10</td>
+<td>2020-04-05</td>
+<td>100</td>
+<td>4</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2020-04-03</td>
+<td>100</td>
+<td>5</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>6</td>
+<td>2020-04-04</td>
+<td>90</td>
+<td>6</td>
+<td>6</td>
+<td>4</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2020-04-04</td>
+<td>80</td>
+<td>7</td>
+<td>7</td>
+<td>5</td>
+</tr>
+<tr>
+<td>7</td>
+<td>2020-04-04</td>
+<td>50</td>
+<td>8</td>
+<td>8</td>
+<td>6</td>
+</tr>
+<tr>
+<td>8</td>
+<td>2020-04-04</td>
+<td>15</td>
+<td>9</td>
+<td>9</td>
+<td>7</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2020-04-05</td>
+<td>10</td>
+<td>10</td>
+<td>10</td>
+<td>8</td>
+</tr>
+</tbody>
+</table>
+<p>There are a few things to notice here:</p>
+<ul>
+<li>ROW_NUMBER gives each row a unique number from 1-10.</li>
+<li>RANK gives the same number to rows with the same order_total, skipping over numbers they would have gotten (e.g. 4, 5)</li>
+<li>DENSE_RANK gives the same number to rows with the same order_total, but does not skip any numbers.</li>
+</ul>
+<h2 id="other-window-functions"><a class="markdownIt-Anchor" href="#other-window-functions">#</a> Other Window Functions</h2>
+<p>There are many other functions that can be used as window functions that we have not covered here:</p>
+<ul>
+<li>MAX</li>
+<li>MIN</li>
+<li>LAG</li>
+<li>LEAD</li>
+<li>FIRST_VALUE</li>
+<li>LAST_VALUE</li>
+<li>CUME_DIST</li>
+<li>NTILE</li>
+<li>PERCENT_RANK</li>
+</ul>
+<h2 id="frequently-asked-questions"><a class="markdownIt-Anchor" href="#frequently-asked-questions">#</a> Frequently Asked Questions</h2>
+<p>Here are some frequently asked questions, or things you should know, about SQL window functions.</p>
+<h3 id="why-cant-i-just-use-subqueries"><a class="markdownIt-Anchor" href="#why-cant-i-just-use-subqueries">#</a> Why Can’t I Just Use Subqueries?</h3>
+<p>You might have noticed that you can get the same results using subqueries and <span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9zcWwtam9pbnMv">joins</span>.</p>
+<p>This is true. But, there are some advantages of using SQL window/analytic functions instead of subqueries and joins to get this result.</p>
+<ul>
+<li><strong>Easier to write</strong>. Once you understand how window functions work, they are easier to write than subqueries and joins to get the same result.</li>
+<li><strong>Easier to maintain</strong>. If you have a complex query, it can be harder to maintain it if you are using subqueries to get the same result that a window function would.</li>
+<li><strong>May be faster</strong>. Most of the time, using the database’s built-in functionality is faster than writing your own. Using these window functions will likely make your code run faster than using subqueries.</li>
+</ul>
+<h3 id="when-are-window-functions-performed"><a class="markdownIt-Anchor" href="#when-are-window-functions-performed">#</a> When Are Window Functions Performed?</h3>
+<p>When the database processes a query, the window functions are the last set of operations performed, except for the ORDER BY clause. This means that the joins, the WHERE clause, GROUP BY clause, and HAVING clause are all performed first, and then the window functions are performed.</p>
+<p>This also means that the window functions can only appear in the SELECT list or the ORDER BY clause.</p>
+<h3 id="can-you-nest-window-functions"><a class="markdownIt-Anchor" href="#can-you-nest-window-functions">#</a> Can You Nest Window Functions?</h3>
+<p>Yes and no.</p>
+<p>While aggregate functions allow you to nest functions, you can’t do the same thing with window functions.</p>
+<p>However, you can specify a window function inside a subquery, and then perform another window function on that column inside your main query.</p>
+<h3 id="can-you-use-multiple-window-functions-in-the-same-query"><a class="markdownIt-Anchor" href="#can-you-use-multiple-window-functions-in-the-same-query">#</a> Can You Use Multiple Window Functions in the Same Query?</h3>
+<p>Yes, you can.</p>
+<p>You can have different window functions in the same SELECT statement, and they can have the same query_partition_clause or different query_partition_clause values.</p>
+<p>You can also have the same window functions but use different query_partition_clause values as well.</p>
+<h3 id="what-is-the-order_by_clause-within-window-functions"><a class="markdownIt-Anchor" href="#what-is-the-order_by_clause-within-window-functions">#</a> What Is The ORDER_BY_Clause Within Window Functions?</h3>
+<p>The order_by_clause within a window function is different from the ORDER BY clause for the entire query.</p>
+<p>This clause specifies how data is ordered within a partition.</p>
+<p>For some analytic functions, such as <span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9zcWwtY291bnQv">COUNT</span> and <span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9zcWwtbWF4Lw==">MAX</span>, the order does not matter.</p>
+<p>However, in other functions such as <span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9zcWwtbGVhZC8=">LEAD</span>, LAG, and <span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9zcWwtcmFuay8=">RANK</span>, the order does matter. So, this is how the ordering is done for those functions.</p>
+<p>The order_by_clause looks like this:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> expression [<span class="keyword">ASC</span> <span class="operator">|</span> <span class="keyword">DESC</span>] [NULLS [<span class="keyword">FIRST</span> <span class="operator">|</span> <span class="keyword">LAST</span> ] ]</span><br></pre></td></tr></table></figure>
+<p>In this clause:</p>
+<ul>
+<li><strong>expression</strong>: This is the expression or column to order by.</li>
+<li><strong>ASC|DESC</strong>: This specifies that the expr should be ordered in ascending or descending order. The default is ascending.</li>
+<li><strong>NULLS FIRST|LAST</strong>: This specifies where rows with NULL values should appear – either first in the list, or last. For ascending order sorts, NULLS LAST is the default. For descending order sorts, NULLS FIRST is the default.</li>
+</ul>
+<h3 id="what-is-the-windowing-clause"><a class="markdownIt-Anchor" href="#what-is-the-windowing-clause">#</a> What Is The Windowing Clause?</h3>
+<p>The windowing_clause allows you to specify a range of rows that are used to perform the calculations for the current row. This is part of the <span class="exturl" data-url="aHR0cHM6Ly93d3cuZGF0YWJhc2VzdGFyLmNvbS9zcWwtd2luZG93LWZ1bmN0aW9ucy8=">window function syntax</span>.</p>
+<p>The syntax of the windowing_clause is quite complicated, but here it is:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ROWS</span><span class="operator">|</span><span class="keyword">RANGE</span> <span class="keyword">BETWEEN</span> start_expression <span class="keyword">AND</span> end_expression</span><br></pre></td></tr></table></figure>
+<p>The start_expression can be any of:</p>
+<ul>
+<li>UNBOUNDED_PRECEDING</li>
+<li>CURRENT ROW</li>
+<li>expression PRECEDING|FOLLOWING</li>
+</ul>
+<p>And the end_expression can be any of:</p>
+<ul>
+<li>UNBOUNDED_FOLLOWING</li>
+<li>CURRENT ROW</li>
+<li>expression PRECEDING|FOLLOWING</li>
+</ul>
+<p>The ROWS and RANGE keywords specify the window for each row for calculating the result of the function. ROWS specifies the window using rows, and RANGE specifies the window as a logical offset.</p>
+<p>Let’s take a look at an example using the ROW type syntax.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> first_name,</span><br><span class="line">last_name,</span><br><span class="line">address_state,</span><br><span class="line"><span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="keyword">OVER</span> (<span class="keyword">PARTITION</span> <span class="keyword">BY</span> address_state</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> address_state <span class="keyword">ROWS</span> <span class="keyword">BETWEEN</span> <span class="number">2</span> PRECEDING <span class="keyword">AND</span> <span class="number">1</span> FOLLOWING) <span class="keyword">AS</span> state_count</span><br><span class="line"><span class="keyword">FROM</span> student;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>FIRST_NAME</strong></th>
+<th><strong>LAST_NAME</strong></th>
+<th><strong>ADDRESS_STATE</strong></th>
+<th><strong>STATE_COUNT</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Robert</td>
+<td>Pickering</td>
+<td>Colorado</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Susan</td>
+<td>Johnson</td>
+<td>Colorado</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Michelle</td>
+<td>Randall</td>
+<td>Florida</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Tom</td>
+<td>Capper</td>
+<td>Nevada</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Mark</td>
+<td>Holloway</td>
+<td>New York</td>
+<td>2</td>
+</tr>
+<tr>
+<td>John</td>
+<td>Smith</td>
+<td>New York</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Steven</td>
+<td>Webber</td>
+<td>New York</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Andrew</td>
+<td>Cooper</td>
+<td>Texas</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Tanya</td>
+<td>Hall</td>
+<td>Texas</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Julie</td>
+<td>Armstrong</td>
+<td>Texas</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<p>You can see here that the state_count column is a little different. It only counts the records in the range that has been mentioned in the ROWS clause.</p>
+<p>The ROWS BETWEEN 2 PRECEDING AND 1 FOLLOWING means that rows are only counted where the address_state equals the current records address_state, and only for the two rows before it and the one row after it.</p>
+<p>This is why some of the Texas rows have a state_count of 2 and others are 3.</p>
+<h2 id="conclusion"><a class="markdownIt-Anchor" href="#conclusion">#</a> Conclusion</h2>
+<p>SQL window functions are quite powerful once you know how they work. It’s not something you’ll use in every query, but once you know what they can be used for, you’ll find yourself remembering them when you need to use them for a query.</p>
+
+      <div class="tags">
+          <a href="/tags/db/" rel="tag"><i class="ic i-tag"></i> db</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2023-05-29 19:25:29" itemprop="dateModified" datetime="2023-05-29T19:25:29+08:00">2023-05-29</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2022/12/08/oracle-median/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;东京暗鸦-2.jpg" title="Oracle Calculate Median">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Oracle Calculate Median</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2022/12/11/oracle-regexp/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;东方project-2.jpg" title="The Complete Guide to Oracle REGEXP Functions">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>The Complete Guide to Oracle REGEXP Functions</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#what-is-a-window-function"><span class="toc-number">1.</span> <span class="toc-text"> What is a Window Function?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#which-databases-include-window-functions"><span class="toc-number">2.</span> <span class="toc-text"> Which Databases Include Window Functions?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#the-basic-syntax-of-a-window-function"><span class="toc-number">3.</span> <span class="toc-text"> The Basic Syntax of a Window Function</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sql-window-function-example-calculate-a-running-total-with-sum"><span class="toc-number">4.</span> <span class="toc-text"> SQL Window Function Example: Calculate a Running Total with SUM</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#set-up-sample-data"><span class="toc-number">4.1.</span> <span class="toc-text"> Set Up Sample Data</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#add-an-sql-window-function"><span class="toc-number">4.2.</span> <span class="toc-text"> Add an SQL Window Function</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#using-the-sql-partition-by-clause-to-create-windows"><span class="toc-number">5.</span> <span class="toc-text"> Using the SQL Partition by Clause to Create Windows</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#count-example"><span class="toc-number">6.</span> <span class="toc-text"> COUNT Example</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#count-as-a-window-function"><span class="toc-number">6.1.</span> <span class="toc-text"> COUNT as a Window Function</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#count-with-partition-by"><span class="toc-number">6.2.</span> <span class="toc-text"> COUNT with PARTITION BY</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#count-with-partition-by-different-to-order-by"><span class="toc-number">6.3.</span> <span class="toc-text"> COUNT with PARTITION BY Different to ORDER BY</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#avg-example"><span class="toc-number">7.</span> <span class="toc-text"> AVG Example</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#avg-window-function-example"><span class="toc-number">7.1.</span> <span class="toc-text"> AVG Window Function Example</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#avg-window-function-with-partition-by"><span class="toc-number">7.2.</span> <span class="toc-text"> AVG Window Function with PARTITION BY</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#row_number-example"><span class="toc-number">8.</span> <span class="toc-text"> ROW_NUMBER Example</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#basic-row_number"><span class="toc-number">8.1.</span> <span class="toc-text"> Basic ROW_NUMBER</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#row_number-as-a-window-function"><span class="toc-number">8.2.</span> <span class="toc-text"> ROW_NUMBER as a Window Function</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#row_number-with-partition-by"><span class="toc-number">8.3.</span> <span class="toc-text"> ROW_NUMBER with PARTITION BY</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ranking-results-with-rank-and-dense_rank"><span class="toc-number">9.</span> <span class="toc-text"> Ranking results with RANK and DENSE_RANK</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#example-of-rank"><span class="toc-number">9.1.</span> <span class="toc-text"> Example of RANK</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#example-of-rank-with-a-partition"><span class="toc-number">9.2.</span> <span class="toc-text"> Example of RANK With a Partition</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#example-of-dense_rank"><span class="toc-number">9.3.</span> <span class="toc-text"> Example of DENSE_RANK</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rank-dense_rank-and-row_number"><span class="toc-number">9.4.</span> <span class="toc-text"> RANK, DENSE_RANK, and ROW_NUMBER</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#other-window-functions"><span class="toc-number">10.</span> <span class="toc-text"> Other Window Functions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#frequently-asked-questions"><span class="toc-number">11.</span> <span class="toc-text"> Frequently Asked Questions</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#why-cant-i-just-use-subqueries"><span class="toc-number">11.1.</span> <span class="toc-text"> Why Can’t I Just Use Subqueries?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#when-are-window-functions-performed"><span class="toc-number">11.2.</span> <span class="toc-text"> When Are Window Functions Performed?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#can-you-nest-window-functions"><span class="toc-number">11.3.</span> <span class="toc-text"> Can You Nest Window Functions?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#can-you-use-multiple-window-functions-in-the-same-query"><span class="toc-number">11.4.</span> <span class="toc-text"> Can You Use Multiple Window Functions in the Same Query?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#what-is-the-order_by_clause-within-window-functions"><span class="toc-number">11.5.</span> <span class="toc-text"> What Is The ORDER_BY_Clause Within Window Functions?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#what-is-the-windowing-clause"><span class="toc-number">11.6.</span> <span class="toc-text"> What Is The Windowing Clause?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#conclusion"><span class="toc-number">12.</span> <span class="toc-text"> Conclusion</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">337</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">46</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
+      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2022/12/08/oracle-median/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2022/12/11/oracle-regexp/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ D E W</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2022/12/11/oracle-window-functions/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

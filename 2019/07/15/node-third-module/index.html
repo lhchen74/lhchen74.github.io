@@ -102,12 +102,12 @@ D E W = 露の世</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="/anime/index/剑网3·侠肝义胆沈剑心.jpg"></li>
-          <li class="item" data-background-image="/anime/index/死神少爷与黑女仆.jpg"></li>
-          <li class="item" data-background-image="/anime/index/黑礁.jpg"></li>
-          <li class="item" data-background-image="/anime/index/clannad.jpg"></li>
-          <li class="item" data-background-image="/anime/index/异度侵入-2.jpg"></li>
-          <li class="item" data-background-image="/anime/index/三月的狮子-3.jpg"></li>
+          <li class="item" data-background-image="/anime/index/怪物之子-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/魔女宅急便-1.jpg"></li>
+          <li class="item" data-background-image="/anime/index/魔法少女小圆-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/南家三姐妹.jpg"></li>
+          <li class="item" data-background-image="/anime/index/东京暗鸦-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/从零开始的异世界生活.jpg"></li>
         </ul>
       </div>
     </header>
@@ -151,7 +151,9 @@ D E W = 露の世</title>
   <div class="body md" itemprop="articleBody">
     
 
-    <h3 id="cheerio"><a class="markdownIt-Anchor" href="#cheerio">#</a> <span class="exturl" data-url="aHR0cHM6Ly93d3cubnBtanMuY29tL3BhY2thZ2UvY2hlZXJpbw==">cheerio</span></h3>
+    <h3 id="nodejs-toolbox"><a class="markdownIt-Anchor" href="#nodejs-toolbox">#</a> <span class="exturl" data-url="aHR0cHM6Ly9ub2RlanN0b29sYm94LmNvbS8=">Node.js Toolbox</span></h3>
+<p>Find actively maintained and popular libraries in the Node.js ecosystem.</p>
+<h3 id="cheerio"><a class="markdownIt-Anchor" href="#cheerio">#</a> <span class="exturl" data-url="aHR0cHM6Ly93d3cubnBtanMuY29tL3BhY2thZ2UvY2hlZXJpbw==">cheerio</span></h3>
 <p>Fast, flexible &amp; lean implementation of core jQuery designed specifically for the server.</p>
 <p>Parse HTML Content to File</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">&quot;http&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> cheerio = <span class="built_in">require</span>(<span class="string">&quot;cheerio&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&quot;fs&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> url = <span class="string">&quot;http://sports.sina.com.cn/nba/1.shtml&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">httpGet</span>(<span class="params">url, cb</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> html = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    http.get(url, <span class="function"><span class="keyword">function</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">        res.on(<span class="string">&quot;data&quot;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">chunk</span>) </span>&#123;</span><br><span class="line">            html += chunk;</span><br><span class="line">        &#125;);</span><br><span class="line">        res.on(<span class="string">&quot;end&quot;</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            cb(html);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;).on(<span class="string">&quot;error&quot;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(e.message);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> html;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">httpGet(url, <span class="function"><span class="keyword">function</span> (<span class="params">html</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> $ = cheerio.load(html);</span><br><span class="line">    $(<span class="string">&quot;#right a&quot;</span>).each(<span class="function"><span class="keyword">function</span> (<span class="params">index</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">const</span> newUrl = $(<span class="built_in">this</span>).attr(<span class="string">&quot;href&quot;</span>);</span><br><span class="line">        httpGet(newUrl, <span class="function"><span class="keyword">function</span> (<span class="params">body</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">const</span> jq = cheerio.load(body);</span><br><span class="line">            fs.writeFile(</span><br><span class="line">                <span class="string">`./news/<span class="subst">$&#123;index&#125;</span>.txt`</span>,</span><br><span class="line">                jq(<span class="string">&quot;#artibody&quot;</span>).text(),</span><br><span class="line">                <span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</span><br><span class="line">                    <span class="keyword">if</span> (err) &#123;</span><br><span class="line">                        <span class="built_in">console</span>.log(err.message);</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="built_in">console</span>.log(<span class="string">&quot;success&quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            );</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
@@ -192,6 +194,12 @@ D E W = 露の世</title>
 <h3 id="retypeappretype"><a class="markdownIt-Anchor" href="#retypeappretype">#</a> <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3JldHlwZWFwcC9yZXR5cGU=">retypeapp/retype</span></h3>
 <p><span class="exturl" data-url="aHR0cHM6Ly9yZXR5cGUuY29tLw==">Retype</span> is an ✨ ultra-high-performance ✨ generator that builds a website based on simple text files. Focus on your writing while Retype builds the rest.</p>
 <p><strong>! A Retype Pro license would be required to unlock &gt;100 pages.</strong></p>
+<h3 id="sboudriasinquirerjs"><a class="markdownIt-Anchor" href="#sboudriasinquirerjs">#</a> <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL1NCb3Vkcmlhcy9JbnF1aXJlci5qcw==">SBoudrias/Inquirer.js</span></h3>
+<p>A collection of common interactive command line user interfaces.</p>
+<h3 id="haversnailinquirer-date-prompt"><a class="markdownIt-Anchor" href="#haversnailinquirer-date-prompt">#</a> <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2hhdmVyc25haWwvaW5xdWlyZXItZGF0ZS1wcm9tcHQ=">haversnail/inquirer-date-prompt</span></h3>
+<p>A date prompt plugin for Inquirer.js.</p>
+<h3 id="eduardoboucasinquirer-table-prompt"><a class="markdownIt-Anchor" href="#eduardoboucasinquirer-table-prompt">#</a> <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2VkdWFyZG9ib3VjYXMvaW5xdWlyZXItdGFibGUtcHJvbXB0">eduardoboucas/inquirer-table-prompt</span></h3>
+<p>A table-like prompt for Inquirer.</p>
 
       <div class="tags">
           <a href="/tags/node/" rel="tag"><i class="ic i-tag"></i> node</a>
@@ -206,7 +214,7 @@ D E W = 露の世</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2023-02-09 11:27:22" itemprop="dateModified" datetime="2023-02-09T11:27:22+08:00">2023-02-09</time>
+    <time title="Modified: 2023-05-30 20:00:05" itemprop="dateModified" datetime="2023-05-30T20:00:05+08:00">2023-05-30</time>
   </span>
 </div>
 
@@ -223,7 +231,7 @@ D E W = 露の世</title>
     <div class="item left">
       
 
-  <a href="/2019/07/15/python-async/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;魔法少女小圆-1.jpg" title="Python Async">
+  <a href="/2019/07/15/python-async/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;文豪野犬-2.jpg" title="Python Async">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Python Async</h3>
@@ -233,10 +241,10 @@ D E W = 露の世</title>
     <div class="item right">
       
 
-  <a href="/2019/07/15/node-satatic-file-server/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;一周的朋友.jpg" title="Node Static File Server">
+  <a href="/2019/07/15/node-testing/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;GOSICK.jpg" title="Node Test">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
-  <h3>Node Static File Server</h3>
+  <h3>Node Test</h3>
   </a>
 
     </div>
@@ -255,7 +263,7 @@ D E W = 露の世</title>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="Contents">
-          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#cheerio"><span class="toc-number">1.</span> <span class="toc-text"> cheerio</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#chartjs"><span class="toc-number">2.</span> <span class="toc-text"> Chart.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#colors"><span class="toc-number">3.</span> <span class="toc-text"> colors</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#chalk"><span class="toc-number">4.</span> <span class="toc-text"> chalk</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mockjs"><span class="toc-number">5.</span> <span class="toc-text"> mockjs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pm2"><span class="toc-number">6.</span> <span class="toc-text"> pm2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#lowdb"><span class="toc-number">7.</span> <span class="toc-text"> lowdb</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#chokidar"><span class="toc-number">8.</span> <span class="toc-text"> chokidar</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#yrm"><span class="toc-number">9.</span> <span class="toc-text"> yrm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#prism"><span class="toc-number">10.</span> <span class="toc-text"> Prism</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#furigana-markdown-it"><span class="toc-number">11.</span> <span class="toc-text"> furigana-markdown-it</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#case-police"><span class="toc-number">12.</span> <span class="toc-text"> case-police: 🚨</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#slidev"><span class="toc-number">13.</span> <span class="toc-text"> Slidev</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#retypeappretype"><span class="toc-number">14.</span> <span class="toc-text"> retypeapp&#x2F;retype</span></a></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#nodejs-toolbox"><span class="toc-number">1.</span> <span class="toc-text"> Node.js Toolbox</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cheerio"><span class="toc-number">2.</span> <span class="toc-text"> cheerio</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#chartjs"><span class="toc-number">3.</span> <span class="toc-text"> Chart.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#colors"><span class="toc-number">4.</span> <span class="toc-text"> colors</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#chalk"><span class="toc-number">5.</span> <span class="toc-text"> chalk</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mockjs"><span class="toc-number">6.</span> <span class="toc-text"> mockjs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pm2"><span class="toc-number">7.</span> <span class="toc-text"> pm2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#lowdb"><span class="toc-number">8.</span> <span class="toc-text"> lowdb</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#chokidar"><span class="toc-number">9.</span> <span class="toc-text"> chokidar</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#yrm"><span class="toc-number">10.</span> <span class="toc-text"> yrm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#prism"><span class="toc-number">11.</span> <span class="toc-text"> Prism</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#furigana-markdown-it"><span class="toc-number">12.</span> <span class="toc-text"> furigana-markdown-it</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#case-police"><span class="toc-number">13.</span> <span class="toc-text"> case-police: 🚨</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#slidev"><span class="toc-number">14.</span> <span class="toc-text"> Slidev</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#retypeappretype"><span class="toc-number">15.</span> <span class="toc-text"> retypeapp&#x2F;retype</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sboudriasinquirerjs"><span class="toc-number">16.</span> <span class="toc-text"> SBoudrias&#x2F;Inquirer.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#haversnailinquirer-date-prompt"><span class="toc-number">17.</span> <span class="toc-text"> haversnail&#x2F;inquirer-date-prompt</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#eduardoboucasinquirer-table-prompt"><span class="toc-number">18.</span> <span class="toc-text"> eduardoboucas&#x2F;inquirer-table-prompt</span></a></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
       </div>
@@ -270,7 +278,7 @@ D E W = 露の世</title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">335</span>
+        <span class="count">337</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -352,7 +360,7 @@ D E W = 露の世</title>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
     <li class="next pjax">
-        <a href="/2019/07/15/node-satatic-file-server/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+        <a href="/2019/07/15/node-testing/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
     </li>
     <li class="percent"></li>
   </ul>
