@@ -1,0 +1,432 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CFira%20Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="db,excel" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2023/06/08/excel-vba-connect-sqlserver/">
+
+
+
+  <title>
+How to connect to Microsoft SQL Server using VBA? |
+D E W = 露の世</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">How to connect to Microsoft SQL Server using VBA?
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2023-06-08 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2023-06-08T00:00:00+08:00">2023-06-08</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">D E W</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="/anime/index/言叶之庭.jpg"></li>
+          <li class="item" data-background-image="/anime/index/endro!.jpg"></li>
+          <li class="item" data-background-image="/anime/index/幻灵镇魂曲.jpg"></li>
+          <li class="item" data-background-image="/anime/index/狼与香辛料.jpg"></li>
+          <li class="item" data-background-image="/anime/index/宝石之国.jpg"></li>
+          <li class="item" data-background-image="/anime/index/记录的地平线.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2023/06/08/excel-vba-connect-sqlserver/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>转载：<span class="exturl" data-url="aHR0cHM6Ly9zaW1wbGVleGNlbHZiYS5jb20vaG93LXRvLWNvbm5lY3QtdG8tbWljcm9zb2Z0LXNxbC1zZXJ2ZXItdXNpbmctdmJhLw==">How to connect to Microsoft SQL Server using VBA? - Simple Excel VBA</span></p>
+</blockquote>
+<p>When it comes to big amount of data, Excel application is not the best solution to work with, in case of storage. Much better fit would be a database like Access or MSSM. In this article I’m going to show You how to connect to Microsoft SQL Server using VBA.</p>
+<img data-src="/2023/06/08/excel-vba-connect-sqlserver/image-12-1686217427695.png" class="" title="img">
+<h2 id="database-server"><a class="markdownIt-Anchor" href="#database-server">#</a> Database &amp; server</h2>
+<p>In my case I got <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vZW4tdXMvc3FsL3NhbXBsZXMvYWR2ZW50dXJld29ya3MtaW5zdGFsbC1jb25maWd1cmU/dmlldz1zcWwtc2VydmVyLXZlcjE1JmFtcDt0YWJzPXNzbXM=">AdventureWorks2016 database</span> installed on my PC. I connected to that base and the view of Object Explorer in Managament Studio looks like this.</p>
+<img data-src="/2023/06/08/excel-vba-connect-sqlserver/image-7-1686217427698.png" class="" title="img">
+<p>Here You can see the server name, database name and tables name in Tables folder, which all will be necessary in further steps.</p>
+<h2 id="references"><a class="markdownIt-Anchor" href="#references">#</a> References</h2>
+<p>To be able to create connection and then operate on pulled data from database, You need to check in the <strong>Tools/References</strong> 2 checkboxes: <strong>Microsoft ActiveX Data Objects Library</strong> and <strong>Microsoft ActiveX Data Objects Recordset Library</strong>.</p>
+<img data-src="/2023/06/08/excel-vba-connect-sqlserver/image-8-1686217427700.png" class="" title="img">
+<p>It doesn’t have to be the version 2.8, just like in the screen above. You have much more possibilities.</p>
+<img data-src="/2023/06/08/excel-vba-connect-sqlserver/image-9-1686217427706.png" class="" title="img">
+<p>When choosing the references try to think about the future users (ot their Office version) of this code You create.</p>
+<h2 id="adodb-connection"><a class="markdownIt-Anchor" href="#adodb-connection">#</a> ADODB Connection</h2>
+<p>After setting up the references You can declare connection of ADODB library.</p>
+<figure class="highlight vb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Dim</span> connection <span class="keyword">As</span> ADODB.connection</span><br><span class="line"><span class="keyword">Set</span> connection = <span class="built_in">New</span> ADODB.connection</span><br></pre></td></tr></table></figure>
+<h2 id="connection-string"><a class="markdownIt-Anchor" href="#connection-string">#</a> Connection String</h2>
+<p>This is the main thing of ADODB connection, to be able to connect to the database. You need to know at least the provider, server name, database name and authentication method.</p>
+<p>For MS SQL use <strong>SQLOLEDB.1</strong> as provider. That should always work, unless You know that the provider for your database is different.</p>
+<p>The server name You can see at the top of the object explorer.</p>
+<img data-src="/2023/06/08/excel-vba-connect-sqlserver/image-10-1686217427702.png" class="" title="img">
+<p>So in my case it is <strong>(LocalDb)\LocalDbTest</strong>.</p>
+<figure class="highlight vb"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Let</span> server_name = <span class="string">&quot;(LocalDb)\LocalDbTest&quot;</span></span><br></pre></td></tr></table></figure>
+<p>The database name is the name under the <strong>Databases</strong> folder tree in <strong>Object Explorer</strong>.</p>
+<img data-src="/2023/06/08/excel-vba-connect-sqlserver/image-11-1686217427705.png" class="" title="img">
+<p>In my case this is <strong>AdventureWorks2016</strong>.</p>
+<figure class="highlight vb"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Let</span> database_name = <span class="string">&quot;AdventureWorks2016&quot;</span></span><br></pre></td></tr></table></figure>
+<p>The <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vZW4tdXMvZG90bmV0L2ZyYW1ld29yay9kYXRhL2Fkb25ldC9jb25uZWN0aW9uLXN0cmluZy1zeW50YXg=">authentication method depends on</span> that if You pass the credentials in the connection string or use windows authentication and on provider. You can choose from the values: <strong>true</strong> , <strong>false</strong>, <strong>yes</strong>, <strong>no</strong> and <strong>sspi</strong>.</p>
+<p>So putting all together it can look like this.</p>
+<figure class="highlight vb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.ConnectionString = <span class="string">&quot;Provider=SQLOLEDB.1;Server=&quot;</span> &amp; server_name &amp; _</span><br><span class="line">    <span class="string">&quot;;database=&quot;</span> &amp; database_name &amp; <span class="string">&quot;;Integrated Security=SSPI;&quot;</span></span><br></pre></td></tr></table></figure>
+<h2 id="solution-to-connect-local-database"><a class="markdownIt-Anchor" href="#solution-to-connect-local-database">#</a> Solution to connect local database</h2>
+<p>In case of MS SQL use <strong>SQLOLEDB.1</strong> as provider, but if You got your database locally, as I have, go with <strong>SQLNCLI11</strong>. This is something I was fighting with and looking for hours to connect.</p>
+<figure class="highlight vb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.ConnectionString = <span class="string">&quot;Provider=SQLNCLI11;Server=&quot;</span> &amp; server_name &amp; _</span><br><span class="line">    <span class="string">&quot;;database=&quot;</span> &amp; database_name &amp; <span class="string">&quot;;Integrated Security=SSPI;&quot;</span></span><br></pre></td></tr></table></figure>
+<h2 id="open-connection-state-check"><a class="markdownIt-Anchor" href="#open-connection-state-check">#</a> Open connection &amp; state check</h2>
+<p>After completing the connection string, You can also set other properties like timeout. In the end open the connection using <strong>.Open</strong>.</p>
+<figure class="highlight vb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">With</span> connection</span><br><span class="line">    .ConnectionString = <span class="string">&quot;Provider=SQLNCLI11;Server=&quot;</span> &amp; server_name &amp; _</span><br><span class="line">        <span class="string">&quot;;database=&quot;</span> &amp; database_name &amp; <span class="string">&quot;;Integrated Security=SSPI;&quot;</span></span><br><span class="line">    .ConnectionTimeout = <span class="number">10</span></span><br><span class="line">    .Open</span><br><span class="line"><span class="keyword">End</span> <span class="keyword">With</span></span><br></pre></td></tr></table></figure>
+<p>If there was no error check the state of database You connected.</p>
+<figure class="highlight vb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">If</span> connection.State = <span class="number">1</span> <span class="keyword">Then</span></span><br><span class="line">    Debug.Print <span class="string">&quot;Connected!&quot;</span></span><br><span class="line"><span class="keyword">End</span> <span class="keyword">If</span></span><br></pre></td></tr></table></figure>
+<h2 id="sql-query"><a class="markdownIt-Anchor" href="#sql-query">#</a> SQL query</h2>
+<p>Having opened database connection You need to ask for data, I mean to build SQL query. In my case I just want to take all (<strong>*</strong>) data from <strong>TestTable</strong> table. The database name in this query is not really needed, because it is already in the connection string.</p>
+<figure class="highlight vb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Dim</span> sqlQuery <span class="keyword">As</span> <span class="type">String</span></span><br><span class="line">sqlQuery = <span class="string">&quot;Select * from [AdventureWorks2016].[dbo].[TestTable]&quot;</span></span><br></pre></td></tr></table></figure>
+<p>If You are not familiar with SQL I can say that the basics are even easier than VBA. As I said, basics of SQL.</p>
+<h2 id="recordset-copy-paste-data-from-database"><a class="markdownIt-Anchor" href="#recordset-copy-paste-data-from-database">#</a> Recordset – copy paste data from database</h2>
+<p>If You want to get the data from the query, You need to create <strong>Recordset</strong> of <strong>ADODB</strong> library. There are 2 main things – <strong>sqlQuery</strong> and <strong>connection</strong>. About the rest of properties You can read <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vZW4tdXMvc3FsL2Fkby9yZWZlcmVuY2UvYWRvLWFwaS9yZWNvcmRzZXQtb2JqZWN0LWFkbz92aWV3PXNxbC1zZXJ2ZXItdmVyMTU=">here</span>.</p>
+<figure class="highlight vb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Dim</span> rsSql <span class="keyword">As</span> <span class="built_in">New</span> ADODB.Recordset</span><br><span class="line">rsSql.CursorLocation = adUseClient</span><br><span class="line">rsSql.Open sqlQuery, connection, adOpenStatic</span><br></pre></td></tr></table></figure>
+<p>After You <strong>.Open</strong> the recordset – get the data from database with SQL query using created connection, You can paste everything in chosen location.</p>
+<figure class="highlight vb"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ThisWorkbook.Sheets(<span class="number">1</span>).Range(<span class="string">&quot;A1&quot;</span>).CopyFromRecordset rsSql</span><br></pre></td></tr></table></figure>
+<img data-src="/2023/06/08/excel-vba-connect-sqlserver/image-13-1686217427704.png" class="" title="img">
+<p>And just like that all the data from the specified table is in the chosen range of your Workbook.</p>
+<img data-src="/2023/06/08/excel-vba-connect-sqlserver/image-14-1686217427703.png" class="" title="img">
+<p>And remember that this method is not pasting headers, only the values of the columns below headline!</p>
+<h2 id="connect-to-ms-sql-code"><a class="markdownIt-Anchor" href="#connect-to-ms-sql-code">#</a> Connect to MS SQL code</h2>
+<figure class="highlight vb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Option</span> <span class="keyword">Explicit</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">Sub</span> connect2mssql()</span><br><span class="line"></span><br><span class="line"><span class="keyword">Dim</span> connection <span class="keyword">As</span> ADODB.connection</span><br><span class="line"><span class="keyword">Set</span> connection = <span class="built_in">New</span> ADODB.connection</span><br><span class="line"></span><br><span class="line"><span class="keyword">Dim</span> server_name <span class="keyword">As</span> <span class="type">String</span>, database_name <span class="keyword">As</span> <span class="type">String</span></span><br><span class="line"><span class="keyword">Let</span> server_name = <span class="string">&quot;(LocalDb)\LocalDbTest&quot;</span></span><br><span class="line"><span class="keyword">Let</span> database_name = <span class="string">&quot;AdventureWorks2016&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">With</span> connection</span><br><span class="line">    .ConnectionString = <span class="string">&quot;Provider=SQLNCLI11;Server=&quot;</span> &amp; server_name &amp; _</span><br><span class="line">        <span class="string">&quot;;database=&quot;</span> &amp; database_name &amp; <span class="string">&quot;;Integrated Security=SSPI;&quot;</span></span><br><span class="line">    <span class="comment">&#x27;SQLOLEDB.1</span></span><br><span class="line">    .ConnectionTimeout = <span class="number">10</span></span><br><span class="line">    .Open</span><br><span class="line"><span class="keyword">End</span> <span class="keyword">With</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">If</span> connection.State = <span class="number">1</span> <span class="keyword">Then</span></span><br><span class="line">    Debug.Print <span class="string">&quot;Connected!&quot;</span></span><br><span class="line"><span class="keyword">End</span> <span class="keyword">If</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">Dim</span> sqlQuery <span class="keyword">As</span> <span class="type">String</span></span><br><span class="line">sqlQuery = <span class="string">&quot;Select * from [AdventureWorks2016].[dbo].[TestTable]&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">Dim</span> rsSql <span class="keyword">As</span> <span class="built_in">New</span> ADODB.Recordset</span><br><span class="line">rsSql.CursorLocation = adUseClient</span><br><span class="line">rsSql.Open sqlQuery, connection, adOpenStatic</span><br><span class="line"></span><br><span class="line">ThisWorkbook.Sheets(<span class="number">1</span>).Range(<span class="string">&quot;A1&quot;</span>).CopyFromRecordset rsSql</span><br><span class="line"></span><br><span class="line"><span class="keyword">End</span> <span class="keyword">Sub</span></span><br></pre></td></tr></table></figure>
+<p>So, this is how You connect to Microsoft SQL Server using Excel VBA!</p>
+<p>At first sight it seems like complex stuff, but in the end it is not that hard and it opens wide range of possibilities to automate data from other sources than only Excel workbooks. Combining the VBA knowledge with some more complex SQL queries can lead to really big tools dealing with tons of data. It is much easier to connect to the source than converting the data to Excel format and then start the macro. Also it speeds up the whole work a lot.</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9zaW1wbGVleGNlbHZiYS5jb20vI2ZhY2Vib29r">Facebook</span><span class="exturl" data-url="aHR0cHM6Ly9zaW1wbGVleGNlbHZiYS5jb20vI2xpbmtlZGlu">LinkedIn</span><span class="exturl" data-url="aHR0cHM6Ly9zaW1wbGVleGNlbHZiYS5jb20vI3BpbnRlcmVzdA==">Pinterest</span><span class="exturl" data-url="aHR0cHM6Ly9zaW1wbGVleGNlbHZiYS5jb20vI3R3aXR0ZXI=">Twitter</span></p>
+
+      <div class="tags">
+          <a href="/tags/db/" rel="tag"><i class="ic i-tag"></i> db</a>
+          <a href="/tags/excel/" rel="tag"><i class="ic i-tag"></i> excel</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2023-06-08 17:46:52" itemprop="dateModified" datetime="2023-06-08T17:46:52+08:00">2023-06-08</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2023/06/08/excel-vba-convert-xml/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;灰与幻想的格林姆迦尔.jpg" title="Easy way to convert XML into Excel">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Easy way to convert XML into Excel</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#database-server"><span class="toc-number">1.</span> <span class="toc-text"> Database &amp; server</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#references"><span class="toc-number">2.</span> <span class="toc-text"> References</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#adodb-connection"><span class="toc-number">3.</span> <span class="toc-text"> ADODB Connection</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#connection-string"><span class="toc-number">4.</span> <span class="toc-text"> Connection String</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#solution-to-connect-local-database"><span class="toc-number">5.</span> <span class="toc-text"> Solution to connect local database</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#open-connection-state-check"><span class="toc-number">6.</span> <span class="toc-text"> Open connection &amp; state check</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sql-query"><span class="toc-number">7.</span> <span class="toc-text"> SQL query</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#recordset-copy-paste-data-from-database"><span class="toc-number">8.</span> <span class="toc-text"> Recordset – copy paste data from database</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#connect-to-ms-sql-code"><span class="toc-number">9.</span> <span class="toc-text"> Connect to MS SQL code</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">336</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">46</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
+      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ D E W</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2023/06/08/excel-vba-connect-sqlserver/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
