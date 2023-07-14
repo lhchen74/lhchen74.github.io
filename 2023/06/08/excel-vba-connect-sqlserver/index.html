@@ -102,12 +102,12 @@ D E W = 露の世</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="/anime/index/clannad-3.jpg"></li>
           <li class="item" data-background-image="/anime/index/酷爱电影的庞波小姐.jpg"></li>
-          <li class="item" data-background-image="/anime/index/孤独摇滚-2.jpg"></li>
-          <li class="item" data-background-image="/anime/index/魔女宅急便-1.jpg"></li>
-          <li class="item" data-background-image="/anime/index/怪物之子-1.jpg"></li>
-          <li class="item" data-background-image="/anime/index/迷域行者.jpg"></li>
+          <li class="item" data-background-image="/anime/index/火影忍者.jpg"></li>
+          <li class="item" data-background-image="/anime/index/辉夜大小姐想让我告白.jpg"></li>
+          <li class="item" data-background-image="/anime/index/空之境界.jpg"></li>
+          <li class="item" data-background-image="/anime/index/文学少女-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/辉夜姬物语-1.jpg"></li>
         </ul>
       </div>
     </header>
@@ -208,7 +208,6 @@ D E W = 露の世</title>
 <figure class="highlight vb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Option</span> <span class="keyword">Explicit</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">Sub</span> connect2mssql()</span><br><span class="line"></span><br><span class="line"><span class="keyword">Dim</span> connection <span class="keyword">As</span> ADODB.connection</span><br><span class="line"><span class="keyword">Set</span> connection = <span class="built_in">New</span> ADODB.connection</span><br><span class="line"></span><br><span class="line"><span class="keyword">Dim</span> server_name <span class="keyword">As</span> <span class="type">String</span>, database_name <span class="keyword">As</span> <span class="type">String</span></span><br><span class="line"><span class="keyword">Let</span> server_name = <span class="string">&quot;(LocalDb)\LocalDbTest&quot;</span></span><br><span class="line"><span class="keyword">Let</span> database_name = <span class="string">&quot;AdventureWorks2016&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">With</span> connection</span><br><span class="line">    .ConnectionString = <span class="string">&quot;Provider=SQLNCLI11;Server=&quot;</span> &amp; server_name &amp; _</span><br><span class="line">        <span class="string">&quot;;database=&quot;</span> &amp; database_name &amp; <span class="string">&quot;;Integrated Security=SSPI;&quot;</span></span><br><span class="line">    <span class="comment">&#x27;SQLOLEDB.1</span></span><br><span class="line">    .ConnectionTimeout = <span class="number">10</span></span><br><span class="line">    .Open</span><br><span class="line"><span class="keyword">End</span> <span class="keyword">With</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">If</span> connection.State = <span class="number">1</span> <span class="keyword">Then</span></span><br><span class="line">    Debug.Print <span class="string">&quot;Connected!&quot;</span></span><br><span class="line"><span class="keyword">End</span> <span class="keyword">If</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">Dim</span> sqlQuery <span class="keyword">As</span> <span class="type">String</span></span><br><span class="line">sqlQuery = <span class="string">&quot;Select * from [AdventureWorks2016].[dbo].[TestTable]&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">Dim</span> rsSql <span class="keyword">As</span> <span class="built_in">New</span> ADODB.Recordset</span><br><span class="line">rsSql.CursorLocation = adUseClient</span><br><span class="line">rsSql.Open sqlQuery, connection, adOpenStatic</span><br><span class="line"></span><br><span class="line">ThisWorkbook.Sheets(<span class="number">1</span>).Range(<span class="string">&quot;A1&quot;</span>).CopyFromRecordset rsSql</span><br><span class="line"></span><br><span class="line"><span class="keyword">End</span> <span class="keyword">Sub</span></span><br></pre></td></tr></table></figure>
 <p>So, this is how You connect to Microsoft SQL Server using Excel VBA!</p>
 <p>At first sight it seems like complex stuff, but in the end it is not that hard and it opens wide range of possibilities to automate data from other sources than only Excel workbooks. Combining the VBA knowledge with some more complex SQL queries can lead to really big tools dealing with tons of data. It is much easier to connect to the source than converting the data to Excel format and then start the macro. Also it speeds up the whole work a lot.</p>
-<p><span class="exturl" data-url="aHR0cHM6Ly9zaW1wbGVleGNlbHZiYS5jb20vI2ZhY2Vib29r">Facebook</span><span class="exturl" data-url="aHR0cHM6Ly9zaW1wbGVleGNlbHZiYS5jb20vI2xpbmtlZGlu">LinkedIn</span><span class="exturl" data-url="aHR0cHM6Ly9zaW1wbGVleGNlbHZiYS5jb20vI3BpbnRlcmVzdA==">Pinterest</span><span class="exturl" data-url="aHR0cHM6Ly9zaW1wbGVleGNlbHZiYS5jb20vI3R3aXR0ZXI=">Twitter</span></p>
 
       <div class="tags">
           <a href="/tags/db/" rel="tag"><i class="ic i-tag"></i> db</a>
@@ -224,7 +223,7 @@ D E W = 露の世</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2023-06-08 17:46:52" itemprop="dateModified" datetime="2023-06-08T17:46:52+08:00">2023-06-08</time>
+    <time title="Modified: 2023-06-09 14:40:33" itemprop="dateModified" datetime="2023-06-09T14:40:33+08:00">2023-06-09</time>
   </span>
 </div>
 
@@ -241,7 +240,7 @@ D E W = 露の世</title>
     <div class="item left">
       
 
-  <a href="/2023/06/08/excel-vba-create-xml/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;死亡笔记.jpg" title="How to create XML file from scratch?">
+  <a href="/2023/06/08/excel-vba-create-xml/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;动物狂想曲-2.jpg" title="How to create XML file from scratch?">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>How to create XML file from scratch?</h3>
@@ -251,10 +250,10 @@ D E W = 露の世</title>
     <div class="item right">
       
 
-  <a href="/2023/06/08/excel-vba-convert-xml/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;排球少年-1.jpg" title="Easy way to convert XML into Excel">
+  <a href="/2023/06/10/excerpt-kushufu/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;千与千寻-3.jpg" title="枯树赋 - 庾信">
   <span class="type">Next Post</span>
-  <span class="category"><i class="ic i-flag"></i> </span>
-  <h3>Easy way to convert XML into Excel</h3>
+  <span class="category"><i class="ic i-flag"></i> excerpt</span>
+  <h3>枯树赋 - 庾信</h3>
   </a>
 
     </div>
@@ -288,7 +287,7 @@ D E W = 露の世</title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">336</span>
+        <span class="count">342</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -300,7 +299,7 @@ D E W = 露の世</title>
     </div>
     <div class="item tags">
       <a href="/tags/">
-        <span class="count">46</span>
+        <span class="count">47</span>
         <span class="name">tags</span>
       </a>
     </div>
@@ -370,7 +369,7 @@ D E W = 露の世</title>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
     <li class="next pjax">
-        <a href="/2023/06/08/excel-vba-convert-xml/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+        <a href="/2023/06/10/excerpt-kushufu/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
     </li>
     <li class="percent"></li>
   </ul>

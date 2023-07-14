@@ -1,0 +1,574 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CFira%20Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="python" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2023/07/13/pyside6-model-view/">
+
+
+
+  <title>
+The ModelView Architecture Qt's MVC-like interface for displaying data in views |
+D E W = 露の世</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">The ModelView Architecture Qt's MVC-like interface for displaying data in views
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2023-07-13 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2023-07-13T00:00:00+08:00">2023-07-13</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">D E W</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="/anime/index/怪物之子-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/元气囝仔.jpg"></li>
+          <li class="item" data-background-image="/anime/index/派对浪客诸葛孔明-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/编舟记.jpg"></li>
+          <li class="item" data-background-image="/anime/index/奇诺之旅.jpg"></li>
+          <li class="item" data-background-image="/anime/index/fate_stay_night.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2023/07/13/pyside6-model-view/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>转载: <span class="exturl" data-url="aHR0cHM6Ly93d3cucHl0aG9uZ3Vpcy5jb20vdHV0b3JpYWxzL3B5c2lkZTYtbW9kZWx2aWV3LWFyY2hpdGVjdHVyZS8=">Using the PySide6 ModelView Architecture to build a simple Todo app</span></p>
+</blockquote>
+<p>As you start to build more complex applications with PySide6 you’ll likely come across issues keeping widgets in sync with your data. Data stored in widgets (e.g. a simple  <code>QListWidget</code> ) is not readily available to manipulate from Python — changes require you to get an item, get the data, and then set it back. The default solution to this is to keep an external data representation in Python, and then either duplicate updates to the both the data and the widget, or simply rewrite the whole widget from the data. This can get ugly quickly, and results in a lot of boilerplate just for fiddling the data.</p>
+<p>Thankfully Qt has a solution for this — ModelViews. ModelViews are a powerful alternative to the standard display widgets, which use a regular model interface to interact with data sources — from simple data structures to external databases. This isolates your data, allowing it to be kept in any structure you like, while the view takes care of presentation and updates.</p>
+<p>This tutorial introduces the key aspects of Qt’s ModelView architecture and uses it to build simple desktop Todo application in PySide.</p>
+<h2 id="model-view-controller"><a class="markdownIt-Anchor" href="#model-view-controller">#</a> Model View Controller</h2>
+<p><strong>Model–View–Controller</strong> (MVC) is an architectural pattern used for developing user interfaces which divides an application into three interconnected parts. This separates the internal representation of data from how information is presented to and accepted from the user.</p>
+<p>The MVC design pattern decouples three major components —</p>
+<ul>
+<li><strong>Model</strong> holds the data structure which the app is working with.</li>
+<li><strong>View</strong> is any representation of information as shown to the user, whether graphical or tables. Multiple views of the same data model are allowed.</li>
+<li><strong>Controller</strong> accepts input from the user, transforming it into commands to for the model or view.</li>
+</ul>
+<p>It Qt land the distinction between the View &amp; Controller gets a little murky. Qt accepts input events from the user (via the OS) and delegates these to the widgets (Controller) to handle. However, widgets also handle presentation of the current state to the user, putting them squarely in the View. Rather than agonize over where to draw the line, in Qt-speak the View and Controller are instead merged together creating a Model/ViewController architecture — called “Model View” for simplicity sake.</p>
+<p>Importantly, the distinction between the <em>data</em> and <em>how it is presented</em> is preserved.</p>
+<h2 id="the-model-view"><a class="markdownIt-Anchor" href="#the-model-view">#</a> The Model View</h2>
+<p>The Model acts as the interface between the data store and the ViewController. The Model holds the data (or a reference to it) and presents this data through a standardised API which Views then consume and present to the user. Multiple Views can share the same data, presenting it in completely different ways.</p>
+<p>You can use any “data store” for your model, including for example a standard Python list or dictionary, or a database (via e.g. SQLAlchemy) — it’s entirely up to you.</p>
+<p>The two parts are essentially responsible for —</p>
+<ol>
+<li>The <strong>model</strong> stores the data, or a reference to it and returns individual or ranges of records, and associated metadata or <em>display</em> instructions.</li>
+<li>The <strong>view</strong> requests data from the model and displays what is returned on the widget.</li>
+</ol>
+<h2 id="a-simple-model-view-a-todo-list"><a class="markdownIt-Anchor" href="#a-simple-model-view-a-todo-list">#</a> A simple Model View — a Todo List</h2>
+<p>To demonstrate how to use the ModelViews in practise, we’ll put together a very simple implementation of a desktop Todo List. This will consist of a  <code>QListView</code>  for the list of items, a  <code>QLineEdit</code>  to enter new items, and a set of buttons to add, delete, or mark items as done.</p>
+<h3 id="the-ui"><a class="markdownIt-Anchor" href="#the-ui">#</a> The UI</h3>
+<p>The simple UI was laid out using Qt Creator and saved as  <code>mainwindow.ui</code> . The  <code>.ui</code>  file and all the other parts can be downloaded below.</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly93d3cucHl0aG9uZ3Vpcy5jb20vZC90b2RvLnppcA==">Todo application Source Code</span></p>
+<img data-src="/2023/07/13/pyside6-model-view/qt-creator.png" class="" title="Designing a Simple Todo app in Qt Creator">_Designing a Simple Todo app in Qt Creator_
+<p>The running app is shown below.</p>
+<p><img data-src="https://www.pythonguis.com/tutorials/pyqt6-modelview-architecture/mainwindow.png" alt="The running Todo GUI (pyside6-model-view/mainwindow.png)"><em>The running Todo GUI (nothing works yet)</em></p>
+<p>The widgets available in the interface were given the IDs shown in the table below.</p>
+<table>
+<thead>
+<tr>
+<th>objectName</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>todoView</code></td>
+<td><code>QListView</code></td>
+<td>The list of current todos</td>
+</tr>
+<tr>
+<td><code>todoEdit</code></td>
+<td><code>QLineEdit</code></td>
+<td>The text input for creating a new todo item</td>
+</tr>
+<tr>
+<td><code>addButton</code></td>
+<td><code>QPushButton</code></td>
+<td>Create the new todo, adding it to the todos list</td>
+</tr>
+<tr>
+<td><code>deleteButton</code></td>
+<td><code>QPushButton</code></td>
+<td>Delete the current selected todo, removing it from the todos list</td>
+</tr>
+<tr>
+<td><code>completeButton</code></td>
+<td><code>QPushButton</code></td>
+<td>Mark the current selected todo as done</td>
+</tr>
+</tbody>
+</table>
+<p>We’ll use these identifiers to hook up the application logic later.</p>
+<h3 id="the-model"><a class="markdownIt-Anchor" href="#the-model">#</a> The Model</h3>
+<p>We define our custom model by subclassing from a base implementation, allowing us to focus on the parts unique to our model. Qt provides a number of different model bases, including lists, trees and tables (ideal for spreadsheets).</p>
+<p>For this example we are displaying the result to a  <code>QListView</code> . The matching base model for this is  <code>QAbstractListModel</code> . The outline definition for our model is shown below.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TodoModel</span>(<span class="params">QtCore.QAbstractListModel</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, *args, todos=<span class="literal">None</span>, **kwargs</span>):</span></span><br><span class="line">        <span class="built_in">super</span>(TodoModel, self).__init__(*args, **kwargs)</span><br><span class="line">        self.todos = todos <span class="keyword">or</span> []</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">data</span>(<span class="params">self, index, role</span>):</span></span><br><span class="line">        <span class="keyword">if</span> role == Qt.DisplayRole:</span><br><span class="line">            <span class="comment"># See below for the data structure.</span></span><br><span class="line">            status, text = self.todos[index.row()]</span><br><span class="line">            <span class="comment"># Return the todo text only.</span></span><br><span class="line">            <span class="keyword">return</span> text</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">rowCount</span>(<span class="params">self, index</span>):</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">len</span>(self.todos)</span><br></pre></td></tr></table></figure>
+<p>The <code>.todos</code>  variable is our data store and the two methods  <code>rowcount()</code>  and  <code>data()</code>  are standard Model methods we must implement for a list model. We’ll go through these in turn below.</p>
+<h4 id="todos-list"><a class="markdownIt-Anchor" href="#todos-list">#</a> .todos list</h4>
+<p>The data store for our model is  <code>.todos</code> , a simple Python list in which we’ll store a  <code>tuple</code>  of values in the format  <code>[(bool, str), (bool, str), (bool, str)]</code>  where  <code>bool</code>  is the <em>done</em> state of a given entry, and  <code>str</code>  is the text of the todo.</p>
+<p>We initialise  <code>self.todo</code>  to an empty list on startup, unless a list is passed in via the  <code>todos</code>  keyword argument.</p>
+<p><code>self.todos = todos or []</code>  will set  <code>self.todos</code>  to the provided todos value if it is <em>truthy</em> (i.e. anything other than an empty list, the boolean  <code>False</code>  or  <code>None</code>  the default value), otherwise it will be set to the empty list  <code>[]</code> .</p>
+<p>To create an instance of this model we can simply do —</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">model = TodoModel()   <span class="comment"># create an empty todo list</span></span><br></pre></td></tr></table></figure>
+<p>Or to pass in an existing list —</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">todos = [(<span class="literal">False</span>, <span class="string">&#x27;an item&#x27;</span>), (<span class="literal">False</span>, <span class="string">&#x27;another item&#x27;</span>)]</span><br><span class="line">model = TodoModel(todos)</span><br></pre></td></tr></table></figure>
+<h4 id="rowcount"><a class="markdownIt-Anchor" href="#rowcount">#</a> .rowcount()</h4>
+<p>The  <code>.rowcount()</code>  method is called by the view to get the number of rows in the current data. This is required for the view to know the maximum index it can request from the data store ( <code>row count-1</code> ). Since we’re using a Python list as our data store, the return value for this is simply the  <code>len()</code>  of the list.</p>
+<h4 id="data"><a class="markdownIt-Anchor" href="#data">#</a> .data()</h4>
+<p>This is the core of your model, which handles requests for data from the view and returns the appropriate result. It receives two parameters  <code>index</code>  and  <code>role.</code></p>
+<p><code>index</code>  is the position/coordinates of the data which the view is requesting, accessible by two methods  <code>.row()</code>  and  <code>.column()</code>  which give the position in each dimension.</p>
+<p>For our  <code>QListView</code>  the column is always 0 and can be ignored, but you would need to use this for 2D data in a spreadsheet view.</p>
+<p><code>role</code>  is a flag indicating the <em>type</em> of data the view is requesting. This is because the  <code>.data()</code>  method actually has more responsibility than just the core data. It also handles requests for style information, tooltips, status bars, etc. — basically anything that could be informed by the data itself.</p>
+<p>The naming of  <code>Qt.DisplayRole</code>  is a bit weird, but this indicates that the <em>view</em> is asking us “please give me data for display”. There are other <em>roles</em> which the  <code>data</code>  can receive for styling requests or requesting data in “edit-ready” format.</p>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Qt.DisplayRole</code></td>
+<td><code>0</code></td>
+<td>The key data to be rendered in the form of text. (<span class="exturl" data-url="aHR0cHM6Ly9kb2MucXQuaW8vcXQtNS9xc3RyaW5nLmh0bWw=">QString</span>)</td>
+</tr>
+<tr>
+<td><code>Qt.DecorationRole</code></td>
+<td><code>1</code></td>
+<td>The data to be rendered as a decoration in the form of an icon. (<span class="exturl" data-url="aHR0cHM6Ly9kb2MucXQuaW8vcXQtNS9xY29sb3IuaHRtbA==">QColor</span>, <span class="exturl" data-url="aHR0cHM6Ly9kb2MucXQuaW8vcXQtNS9xaWNvbi5odG1s">QIcon</span> or <span class="exturl" data-url="aHR0cHM6Ly9kb2MucXQuaW8vcXQtNS9xcGl4bWFwLmh0bWw=">QPixmap</span>)</td>
+</tr>
+<tr>
+<td><code>Qt.EditRole</code></td>
+<td><code>2</code></td>
+<td>The data in a form suitable for editing in an editor. (<span class="exturl" data-url="aHR0cHM6Ly9kb2MucXQuaW8vcXQtNS9xc3RyaW5nLmh0bWw=">QString</span>)</td>
+</tr>
+<tr>
+<td><code>Qt.ToolTipRole</code></td>
+<td><code>3</code></td>
+<td>The data displayed in the item’s tooltip. (<span class="exturl" data-url="aHR0cHM6Ly9kb2MucXQuaW8vcXQtNS9xc3RyaW5nLmh0bWw=">QString</span>)</td>
+</tr>
+<tr>
+<td><code>Qt.StatusTipRole</code></td>
+<td><code>4</code></td>
+<td>The data displayed in the status bar. (<span class="exturl" data-url="aHR0cHM6Ly9kb2MucXQuaW8vcXQtNS9xc3RyaW5nLmh0bWw=">QString</span>)</td>
+</tr>
+<tr>
+<td><code>Qt.WhatsThisRole</code></td>
+<td><code>5</code></td>
+<td>The data displayed for the item in “What’s This?” mode. (<span class="exturl" data-url="aHR0cHM6Ly9kb2MucXQuaW8vcXQtNS9xc3RyaW5nLmh0bWw=">QString</span>)</td>
+</tr>
+<tr>
+<td><code>Qt.SizeHintRole</code></td>
+<td><code>13</code></td>
+<td>The size hint for the item that will be supplied to views. (<span class="exturl" data-url="aHR0cHM6Ly9kb2MucXQuaW8vcXQtNS9xc2l6ZS5odG1s">QSize</span>)</td>
+</tr>
+</tbody>
+</table>
+<p>For a full list of available <em>roles</em> that you can receive see <span class="exturl" data-url="aHR0cHM6Ly9kb2MucXQuaW8vcXQtNS9xdC5odG1sI0l0ZW1EYXRhUm9sZS1lbnVt">the Qt ItemDataRole documentation</span>. Our todo list will only be using  <code>Qt.DisplayRole</code>  and  <code>Qt.DecorationRole</code> .</p>
+<h3 id="basic-implementation"><a class="markdownIt-Anchor" href="#basic-implementation">#</a> Basic implementation</h3>
+<p>Below is the basic stub application needed to load the UI and display it. We’ll add our model code and application logic to this base.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> PySide6 <span class="keyword">import</span> QtCore, QtGui, QtWidgets</span><br><span class="line"><span class="keyword">from</span> PySide6.QtCore <span class="keyword">import</span> Qt</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> MainWindow <span class="keyword">import</span> Ui_MainWindow</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TodoModel</span>(<span class="params">QtCore.QAbstractListModel</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, todos=<span class="literal">None</span></span>):</span></span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        self.todos = todos <span class="keyword">or</span> []</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">data</span>(<span class="params">self, index, role</span>):</span></span><br><span class="line">        <span class="keyword">if</span> role == Qt.DisplayRole:</span><br><span class="line">            status, text = self.todos[index.row()]</span><br><span class="line">            <span class="keyword">return</span> text</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">rowCount</span>(<span class="params">self, index</span>):</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">len</span>(self.todos)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainWindow</span>(<span class="params">QtWidgets.QMainWindow, Ui_MainWindow</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        self.setupUi(self)</span><br><span class="line">        self.model = TodoModel()</span><br><span class="line">        self.todoView.setModel(self.model)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">app = QtWidgets.QApplication(sys.argv)</span><br><span class="line">window = MainWindow()</span><br><span class="line">window.show()</span><br><span class="line">app.exec_()</span><br></pre></td></tr></table></figure>
+<p>We define our  <code>TodoModel</code>  as before, and initialise the  <code>MainWindow</code>  object. In the  <code>__init__</code>  for the MainWindow we create an instance of our todo model and set this model on the  <code>todo_view</code> . Save this file as  <code>todo.py</code>  and run it with —</p>
+<p>BASH</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 todo.py</span><br></pre></td></tr></table></figure>
+<p>While there isn’t much to see yet, the  <code>QListView</code>  and our model are actually working — if you add some default data you’ll see it appear in the list.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">self.model = TodoModel(todos=[(<span class="literal">False</span>, <span class="string">&#x27;my first todo&#x27;</span>)])</span><br></pre></td></tr></table></figure>
+<img data-src="/2023/07/13/pyside6-model-view/my-first-todo.png" class="" title="QListView showing hard-coded todo item">_QListView showing hard-coded todo item_
+<p>You can keep adding items manually like this and they will show up in order in the  <code>QListView</code> . Next we’ll make it possible to add items from within the application.</p>
+<p>First create a new method on the  <code>MainWindow</code>  named  <code>add</code> . This is our callback which will take care of adding the current text from the input as a new todo. Connect this method to the  <code>addButton.pressed</code>  signal at the end of the  <code>__init__</code>  block.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainWindow</span>(<span class="params">QtWidgets.QMainWindow, Ui_MainWindow</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        QtWidgets.QMainWindow.__init__(self)</span><br><span class="line">        Ui_MainWindow.__init__(self)</span><br><span class="line">        self.setupUi(self)</span><br><span class="line">        self.model = TodoModel()</span><br><span class="line">        self.todoView.setModel(self.model)</span><br><span class="line">        <span class="comment"># Connect the button.</span></span><br><span class="line">            self.addButton.pressed.connect(self.add)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">add</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        Add an item to our todo list, getting the text from the QLineEdit .todoEdit</span></span><br><span class="line"><span class="string">        and then clearing it.</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        text = self.todoEdit.text()</span><br><span class="line">        <span class="keyword">if</span> text: <span class="comment"># Don&#x27;t add empty strings.</span></span><br><span class="line">            <span class="comment"># Access the list via the model.</span></span><br><span class="line">            self.model.todos.append((<span class="literal">False</span>, text))</span><br><span class="line">            <span class="comment"># Trigger refresh.</span></span><br><span class="line">            self.model.layoutChanged.emit()</span><br><span class="line">            <span class="comment"># Empty the input</span></span><br><span class="line">            self.todoEdit.setText(<span class="string">&quot;&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>In the  <code>add</code>  block notice the line  <code>self.model.layoutChanged.emit()</code> . Here we’re emitting a model signal  <code>.layoutChanged</code>  to let the view know that the <em>shape</em> of the data has been altered. This triggers a refresh of the entirety of the view. If you omit this line, the todo will still be added but the  <code>QListView</code>  won’t update.</p>
+<p>If just the data is altered, but the number of rows/columns are unaffected you can use the  <code>.dataChanged()</code>  signal instead. This also defines an altered region in the data using a top-left and bottom-right location to avoid redrawing the entire view.</p>
+<h3 id="hooking-up-the-other-actions"><a class="markdownIt-Anchor" href="#hooking-up-the-other-actions">#</a> Hooking up the other actions</h3>
+<p>We can now connect the rest of the button’s signals and add helper functions for performing the <em>delete</em> and <em>complete</em> operations. We add the button signals to the  <code>__init__</code>  block as before.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">self.addButton.pressed.connect(self.add)</span><br><span class="line">self.deleteButton.pressed.connect(self.delete)</span><br><span class="line">self.completeButton.pressed.connect(self.complete)</span><br></pre></td></tr></table></figure>
+<p>Then define a new  <code>delete</code>  method as follows —</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">delete</span>(<span class="params">self</span>):</span></span><br><span class="line">    indexes = self.todoView.selectedIndexes()</span><br><span class="line">    <span class="keyword">if</span> indexes:</span><br><span class="line">        <span class="comment"># Indexes is a list of a single item in single-select mode.</span></span><br><span class="line">        index = indexes[<span class="number">0</span>]</span><br><span class="line">        <span class="comment"># Remove the item and refresh.</span></span><br><span class="line">        <span class="keyword">del</span> self.model.todos[index.row()]</span><br><span class="line">        self.model.layoutChanged.emit()</span><br><span class="line">        <span class="comment"># Clear the selection (as it is no longer valid).</span></span><br><span class="line">        self.todoView.clearSelection()</span><br></pre></td></tr></table></figure>
+<p>We use  <code>self.todoView.selectedIndexes</code>  to get the indexes (actually a list of a single item, as we’re in single-selection mode) and then use the  <code>.row()</code>  as an index into our list of todos on our model. We delete the indexed item using Python’s  <code>del</code>  operator, and then trigger a  <code>layoutChanged</code>  signal because the shape of the data has been modified.</p>
+<p>Finally, we clear the active selection since the item it relates to may now out of bounds (if you had selected the last item).</p>
+<p>You could try make this smarter, and select the last item in the list instead</p>
+<p>The  <code>complete</code>  method looks like this —</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">complete</span>(<span class="params">self</span>):</span></span><br><span class="line">    indexes = self.todoView.selectedIndexes()</span><br><span class="line">    <span class="keyword">if</span> indexes:</span><br><span class="line">        index = indexes[<span class="number">0</span>]</span><br><span class="line">        row = index.row()</span><br><span class="line">        status, text = self.model.todos[row]</span><br><span class="line">        self.model.todos[row] = (<span class="literal">True</span>, text)</span><br><span class="line">        <span class="comment"># .dataChanged takes top-left and bottom right, which are equal</span></span><br><span class="line">        <span class="comment"># for a single selection.</span></span><br><span class="line">        self.model.dataChanged.emit(index, index)</span><br><span class="line">        <span class="comment"># Clear the selection (as it is no longer valid).</span></span><br><span class="line">        self.todoView.clearSelection()</span><br></pre></td></tr></table></figure>
+<p>This uses the same indexing as for delete, but this time we fetch the item from the model  <code>.todos</code>  list and then replace the status with  <code>True</code> .</p>
+<p>We have to do this fetch-and-replace, as our data is stored as Python tuples which cannot be modified.</p>
+<p>The key difference here vs. standard Qt widgets is that we make changes directly to our data, and simply need to notify Qt that some change has occurred — updating the widget state is handled automatically.</p>
+<h3 id="using-qtdecorationrole"><a class="markdownIt-Anchor" href="#using-qtdecorationrole">#</a> Using Qt.DecorationRole</h3>
+<p>If you run the application now you should find that adding and deleting both work, but while completing items is working, there is no indication of it in the view. We need to update our model to provide the view with an indicator to display when an item is complete. The updated model is shown below.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">tick = QtGui.QImage(<span class="string">&#x27;tick.png&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TodoModel</span>(<span class="params">QtCore.QAbstractListModel</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, *args, todos=<span class="literal">None</span>, **kwargs</span>):</span></span><br><span class="line">        <span class="built_in">super</span>(TodoModel, self).__init__(*args, **kwargs)</span><br><span class="line">        self.todos = todos <span class="keyword">or</span> []</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">data</span>(<span class="params">self, index, role</span>):</span></span><br><span class="line">        <span class="keyword">if</span> role == Qt.DisplayRole:</span><br><span class="line">            _, text = self.todos[index.row()]</span><br><span class="line">            <span class="keyword">return</span> text</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> role == Qt.DecorationRole:</span><br><span class="line">            status, _ = self.todos[index.row()]</span><br><span class="line">            <span class="keyword">if</span> status:</span><br><span class="line">                <span class="keyword">return</span> tick</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">rowCount</span>(<span class="params">self, index</span>):</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">len</span>(self.todos)</span><br></pre></td></tr></table></figure>
+<p>We’re using a tick icon  <code>tick.png</code>  to indicate completed items, which we load into a  <code>QImage</code>  object named  <code>tick</code> . In the model we’ve implemented a handler for the  <code>Qt.DecorationRole</code>  which returns the tick icon for rows who’s  <code>status</code>  is  <code>True</code>  (for complete).</p>
+<p>The icon I’m using is taken from the Fugue set by <span class="exturl" data-url="aHR0cDovL3AueXVzdWtla2FtaXlhbWFuZS5jb20v">p.yusukekamiyamane</span></p>
+<p>Instead of an icon you can also return a color, e.g.  <code>QtGui.QColor('green')</code>  which will be drawn as solid square.</p>
+<p>Running the app you should now be able to mark items as complete.</p>
+<img data-src="/2023/07/13/pyside6-model-view/todos_complete.png" class="" title="Todos Marked Complete">_Todos Marked Complete_
+<h2 id="a-persistent-data-store"><a class="markdownIt-Anchor" href="#a-persistent-data-store">#</a> A persistent data store</h2>
+<p>Our todo app works nicely, but it has one fatal flaw — it forgets your todos as soon as you close the application While thinking you have nothing to do when you do may help to contribute to short-term feelings of Zen, long term it’s probably a bad idea.</p>
+<p>The solution is to implement some sort of persistent data store. The simplest approach is a simple file store, where we load items from a JSON or Pickle file at startup, and write back on changes.</p>
+<p>To do this we define two new methods on our  <code>MainWindow</code>  class —  <code>load</code>  and  <code>save</code> . These load data from a JSON file name  <code>data.json</code>  (if it exists, ignoring the error if it doesn’t) to  <code>self.model.todos</code>  and write the current  <code>self.model.todos</code>  out to the same file, respectively.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">load</span>(<span class="params">self</span>):</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;data.json&#x27;</span>, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">            self.model.todos = json.load(f)</span><br><span class="line">    <span class="keyword">except</span> Exception:</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">save</span>(<span class="params">self</span>):</span></span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;data.json&#x27;</span>, <span class="string">&#x27;w&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        data = json.dump(self.model.todos, f)</span><br></pre></td></tr></table></figure>
+<p>To persist the changes to the data we need to add the  <code>.save()</code>  handler to the end of any method that modifies the data, and the  <code>.load()</code>  handler to the  <code>__init__</code>  block after the model has been created.</p>
+<p>The final code looks like this —</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> PySide6 <span class="keyword">import</span> QtCore, QtGui, QtWidgets</span><br><span class="line"><span class="keyword">from</span> PySide6.QtCore <span class="keyword">import</span> Qt</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> MainWindow <span class="keyword">import</span> Ui_MainWindow</span><br><span class="line"></span><br><span class="line">tick = QtGui.QImage(<span class="string">&quot;tick.png&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TodoModel</span>(<span class="params">QtCore.QAbstractListModel</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, todos=<span class="literal">None</span></span>):</span></span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        self.todos = todos <span class="keyword">or</span> []</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">data</span>(<span class="params">self, index, role</span>):</span></span><br><span class="line">        <span class="keyword">if</span> role == Qt.DisplayRole:</span><br><span class="line">            _, text = self.todos[index.row()]</span><br><span class="line">            <span class="keyword">return</span> text</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> role == Qt.DecorationRole:</span><br><span class="line">            status, _ = self.todos[index.row()]</span><br><span class="line">            <span class="keyword">if</span> status:</span><br><span class="line">                <span class="keyword">return</span> tick</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">rowCount</span>(<span class="params">self, index</span>):</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">len</span>(self.todos)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainWindow</span>(<span class="params">QtWidgets.QMainWindow, Ui_MainWindow</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line"></span><br><span class="line">        self.setupUi(self)</span><br><span class="line">        self.model = TodoModel()</span><br><span class="line">        self.load()</span><br><span class="line">        self.todoView.setModel(self.model)</span><br><span class="line">        self.addButton.pressed.connect(self.add)</span><br><span class="line">        self.deleteButton.pressed.connect(self.delete)</span><br><span class="line">        self.completeButton.pressed.connect(self.complete)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">add</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        Add an item to our todo list, getting the text from the QLineEdit .todoEdit</span></span><br><span class="line"><span class="string">        and then clearing it.</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        text = self.todoEdit.text()</span><br><span class="line">        <span class="keyword">if</span> text:  <span class="comment"># Don&#x27;t add empty strings.</span></span><br><span class="line">            <span class="comment"># Access the list via the model.</span></span><br><span class="line">            self.model.todos.append((<span class="literal">False</span>, text))</span><br><span class="line">            <span class="comment"># Trigger refresh.</span></span><br><span class="line">            self.model.layoutChanged.emit()</span><br><span class="line">            <span class="comment"># Empty the input</span></span><br><span class="line">            self.todoEdit.setText(<span class="string">&quot;&quot;</span>)</span><br><span class="line">            self.save()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">delete</span>(<span class="params">self</span>):</span></span><br><span class="line">        indexes = self.todoView.selectedIndexes()</span><br><span class="line">        <span class="keyword">if</span> indexes:</span><br><span class="line">            <span class="comment"># Indexes is a list of a single item in single-select mode.</span></span><br><span class="line">            index = indexes[<span class="number">0</span>]</span><br><span class="line">            <span class="comment"># Remove the item and refresh.</span></span><br><span class="line">            <span class="keyword">del</span> self.model.todos[index.row()]</span><br><span class="line">            self.model.layoutChanged.emit()</span><br><span class="line">            <span class="comment"># Clear the selection (as it is no longer valid).</span></span><br><span class="line">            self.todoView.clearSelection()</span><br><span class="line">            self.save()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">complete</span>(<span class="params">self</span>):</span></span><br><span class="line">        indexes = self.todoView.selectedIndexes()</span><br><span class="line">        <span class="keyword">if</span> indexes:</span><br><span class="line">            index = indexes[<span class="number">0</span>]</span><br><span class="line">            row = index.row()</span><br><span class="line">            status, text = self.model.todos[row]</span><br><span class="line">            self.model.todos[row] = (<span class="literal">True</span>, text)</span><br><span class="line">            <span class="comment"># .dataChanged takes top-left and bottom right, which are equal</span></span><br><span class="line">            <span class="comment"># for a single selection.</span></span><br><span class="line">            self.model.dataChanged.emit(index, index)</span><br><span class="line">            <span class="comment"># Clear the selection (as it is no longer valid).</span></span><br><span class="line">            self.todoView.clearSelection()</span><br><span class="line">            self.save()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">load</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;data.json&quot;</span>, <span class="string">&quot;r&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">                self.model.todos = json.load(f)</span><br><span class="line">        <span class="keyword">except</span> Exception:</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">save</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;data.json&quot;</span>, <span class="string">&quot;w&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">            data = json.dump(self.model.todos, f)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">app = QtWidgets.QApplication(sys.argv)</span><br><span class="line">window = MainWindow()</span><br><span class="line">window.show()</span><br><span class="line">app.exec_()</span><br></pre></td></tr></table></figure>
+<p>If the data in your application has the potential to get large or more complex, you may prefer to use an actual database to store it. In this case the model will wrap the interface to the database and query it directly for data to display. I’ll cover how to do this in an upcoming tutorial.</p>
+<p>For another interesting example of a  <code>QListView</code>  see <span class="exturl" data-url="aHR0cHM6Ly93d3cucHl0aG9uZ3Vpcy5jb20vZXhhbXBsZXMvZmFpbGFtcC1tdWx0aW1lZGlhLXBsYXllci8=">this example media player application</span>. It uses the Qt built-in  <code>QMediaPlaylist</code>  as the datastore, with the contents displayed to a  <code>QListView</code> .</p>
+<h2 id="coments"><a class="markdownIt-Anchor" href="#coments">#</a> Coments</h2>
+<p><span class="exturl" data-url="aHR0cDovL3RvZG8ucHk=">todo.py</span></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">from</span> PySide6 <span class="keyword">import</span> QtCore, QtGui, QtWidgets</span><br><span class="line"><span class="keyword">from</span> PySide6.QtCore <span class="keyword">import</span> Qt</span><br><span class="line"><span class="keyword">from</span> qt_material <span class="keyword">import</span> apply_stylesheet</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> Ui_todo <span class="keyword">import</span> Ui_MainWindow</span><br><span class="line"></span><br><span class="line">tick = QtGui.QImage(<span class="string">&quot;tick.png&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TodoModel</span>(<span class="params">QtCore.QAbstractListModel</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, todos=<span class="literal">None</span></span>):</span></span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        self.todos = todos <span class="keyword">or</span> []</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">data</span>(<span class="params">self, index, role</span>):</span></span><br><span class="line">        <span class="keyword">if</span> role == Qt.DisplayRole:</span><br><span class="line">            _, text = self.todos[index.row()]</span><br><span class="line">            <span class="keyword">return</span> text</span><br><span class="line">        <span class="keyword">if</span> role == Qt.DecorationRole:</span><br><span class="line">            status, _ = self.todos[index.row()]</span><br><span class="line">            <span class="keyword">if</span> status:</span><br><span class="line">                <span class="keyword">return</span> tick</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">rowCount</span>(<span class="params">self, index</span>):</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">len</span>(self.todos)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainWindow</span>(<span class="params">QtWidgets.QMainWindow, Ui_MainWindow</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        self.setupUi(self)</span><br><span class="line">        self.model = TodoModel()</span><br><span class="line">        self.load()</span><br><span class="line">        self.todoView.setModel(self.model)</span><br><span class="line">        <span class="comment"># Connect the button.</span></span><br><span class="line">        self.addButton.pressed.connect(self.add)</span><br><span class="line">        self.deleteButton.pressed.connect(self.delete)</span><br><span class="line">        self.completeButton.pressed.connect(self.complete)</span><br><span class="line">        self.save()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">add</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        Add an item to our todo list, getting the text from the QLineEdit .todoEdit</span></span><br><span class="line"><span class="string">        and then clearing it.</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        text = self.todoEdit.text()</span><br><span class="line">        <span class="keyword">if</span> text:  <span class="comment"># Don&#x27;t add empty strings.</span></span><br><span class="line">            <span class="comment"># Access the list via the model.</span></span><br><span class="line">            self.model.todos.append((<span class="literal">False</span>, text))</span><br><span class="line">            <span class="comment"># Trigger refresh.</span></span><br><span class="line">            self.model.layoutChanged.emit()</span><br><span class="line">            <span class="comment"># Empty the input</span></span><br><span class="line">            self.todoEdit.setText(<span class="string">&quot;&quot;</span>)</span><br><span class="line">        self.save()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">delete</span>(<span class="params">self</span>):</span></span><br><span class="line">        indexes = self.todoView.selectedIndexes()</span><br><span class="line">        <span class="keyword">if</span> indexes:</span><br><span class="line">            <span class="comment"># Indexes is a list of a single item in single-select mode.</span></span><br><span class="line">            index = indexes[<span class="number">0</span>]</span><br><span class="line">            <span class="comment"># Remove the item and refresh.</span></span><br><span class="line">            <span class="keyword">del</span> self.model.todos[index.row()]</span><br><span class="line">            self.model.layoutChanged.emit()</span><br><span class="line">            <span class="comment"># Clear the selection (as it is no longer valid).</span></span><br><span class="line">            self.todoView.clearSelection()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">complete</span>(<span class="params">self</span>):</span></span><br><span class="line">        indexes = self.todoView.selectedIndexes()</span><br><span class="line">        <span class="keyword">if</span> indexes:</span><br><span class="line">            index = indexes[<span class="number">0</span>]</span><br><span class="line">            row = index.row()</span><br><span class="line">            status, text = self.model.todos[row]</span><br><span class="line">            self.model.todos[row] = (<span class="literal">True</span>, text)</span><br><span class="line">            <span class="comment"># .dataChanged takes top-left and bottom right, which are equal</span></span><br><span class="line">            <span class="comment"># for a single selection.</span></span><br><span class="line">            self.model.dataChanged.emit(index, index)</span><br><span class="line">            <span class="comment"># Clear the selection (as it is no longer valid).</span></span><br><span class="line">            self.todoView.clearSelection()</span><br><span class="line">        self.save()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">load</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;data.json&quot;</span>, <span class="string">&quot;r&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">                self.model.todos = json.load(f)</span><br><span class="line">        <span class="keyword">except</span> Exception:</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">save</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;data.json&quot;</span>, <span class="string">&quot;w&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">            data = json.dump(self.model.todos, f)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">app = QtWidgets.QApplication(sys.argv)</span><br><span class="line"></span><br><span class="line"><span class="comment"># setup stylesheet</span></span><br><span class="line">apply_stylesheet(app, theme=<span class="string">&quot;dark_amber.xml&quot;</span>)</span><br><span class="line"></span><br><span class="line">window = MainWindow()</span><br><span class="line">window.show()</span><br><span class="line">app.exec()</span><br></pre></td></tr></table></figure>
+<p>tick.png</p>
+<img data-src="/2023/07/13/pyside6-model-view/tick.png" class="" title="tick">todo.ui
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ui</span> <span class="attr">version</span>=<span class="string">&quot;4.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">class</span>&gt;</span>MainWindow<span class="tag">&lt;/<span class="name">class</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">widget</span> <span class="attr">class</span>=<span class="string">&quot;QMainWindow&quot;</span> <span class="attr">name</span>=<span class="string">&quot;MainWindow&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;geometry&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">rect</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">x</span>&gt;</span>0<span class="tag">&lt;/<span class="name">x</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">y</span>&gt;</span>0<span class="tag">&lt;/<span class="name">y</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">width</span>&gt;</span>275<span class="tag">&lt;/<span class="name">width</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">height</span>&gt;</span>314<span class="tag">&lt;/<span class="name">height</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">rect</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;windowTitle&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">string</span>&gt;</span>Todo<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">widget</span> <span class="attr">class</span>=<span class="string">&quot;QWidget&quot;</span> <span class="attr">name</span>=<span class="string">&quot;centralwidget&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">layout</span> <span class="attr">class</span>=<span class="string">&quot;QVBoxLayout&quot;</span> <span class="attr">name</span>=<span class="string">&quot;verticalLayout&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">item</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">widget</span> <span class="attr">class</span>=<span class="string">&quot;QListView&quot;</span> <span class="attr">name</span>=<span class="string">&quot;todoView&quot;</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;selectionMode&quot;</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">enum</span>&gt;</span>QAbstractItemView::SingleSelection<span class="tag">&lt;/<span class="name">enum</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">widget</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">item</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">widget</span> <span class="attr">class</span>=<span class="string">&quot;QWidget&quot;</span> <span class="attr">name</span>=<span class="string">&quot;widget&quot;</span> <span class="attr">native</span>=<span class="string">&quot;true&quot;</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">layout</span> <span class="attr">class</span>=<span class="string">&quot;QHBoxLayout&quot;</span> <span class="attr">name</span>=<span class="string">&quot;horizontalLayout&quot;</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">item</span>&gt;</span></span><br><span class="line">                                <span class="tag">&lt;<span class="name">widget</span> <span class="attr">class</span>=<span class="string">&quot;QPushButton&quot;</span> <span class="attr">name</span>=<span class="string">&quot;deleteButton&quot;</span>&gt;</span></span><br><span class="line">                                    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;text&quot;</span>&gt;</span></span><br><span class="line">                                        <span class="tag">&lt;<span class="name">string</span>&gt;</span>Delete<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">                                    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">                                <span class="tag">&lt;/<span class="name">widget</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">item</span>&gt;</span></span><br><span class="line">                                <span class="tag">&lt;<span class="name">widget</span> <span class="attr">class</span>=<span class="string">&quot;QPushButton&quot;</span> <span class="attr">name</span>=<span class="string">&quot;completeButton&quot;</span>&gt;</span></span><br><span class="line">                                    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;text&quot;</span>&gt;</span></span><br><span class="line">                                        <span class="tag">&lt;<span class="name">string</span>&gt;</span>Complete<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">                                    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">                                <span class="tag">&lt;/<span class="name">widget</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;/<span class="name">layout</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">widget</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">item</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">widget</span> <span class="attr">class</span>=<span class="string">&quot;QLineEdit&quot;</span> <span class="attr">name</span>=<span class="string">&quot;todoEdit&quot;</span>/&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">item</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">widget</span> <span class="attr">class</span>=<span class="string">&quot;QPushButton&quot;</span> <span class="attr">name</span>=<span class="string">&quot;addButton&quot;</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;text&quot;</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">string</span>&gt;</span>Add Todo<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">widget</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">layout</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">widget</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">widget</span> <span class="attr">class</span>=<span class="string">&quot;QMenuBar&quot;</span> <span class="attr">name</span>=<span class="string">&quot;menubar&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;geometry&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">rect</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">x</span>&gt;</span>0<span class="tag">&lt;/<span class="name">x</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">y</span>&gt;</span>0<span class="tag">&lt;/<span class="name">y</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">width</span>&gt;</span>275<span class="tag">&lt;/<span class="name">width</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">height</span>&gt;</span>22<span class="tag">&lt;/<span class="name">height</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">rect</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">widget</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">widget</span> <span class="attr">class</span>=<span class="string">&quot;QStatusBar&quot;</span> <span class="attr">name</span>=<span class="string">&quot;statusbar&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">widget</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">resources</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">connections</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ui</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Ui_todo.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="comment">################################################################################</span></span><br><span class="line"><span class="comment">## Form generated from reading UI file &#x27;todo.ui&#x27;</span></span><br><span class="line"><span class="comment">##</span></span><br><span class="line"><span class="comment">## Created by: Qt User Interface Compiler version 6.5.1</span></span><br><span class="line"><span class="comment">##</span></span><br><span class="line"><span class="comment">## WARNING! All changes made in this file will be lost when recompiling UI file!</span></span><br><span class="line"><span class="comment">################################################################################</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> PySide6.QtCore <span class="keyword">import</span> (</span><br><span class="line">    QCoreApplication,</span><br><span class="line">    QDate,</span><br><span class="line">    QDateTime,</span><br><span class="line">    QLocale,</span><br><span class="line">    QMetaObject,</span><br><span class="line">    QObject,</span><br><span class="line">    QPoint,</span><br><span class="line">    QRect,</span><br><span class="line">    QSize,</span><br><span class="line">    QTime,</span><br><span class="line">    QUrl,</span><br><span class="line">    Qt,</span><br><span class="line">)</span><br><span class="line"><span class="keyword">from</span> PySide6.QtGui <span class="keyword">import</span> (</span><br><span class="line">    QBrush,</span><br><span class="line">    QColor,</span><br><span class="line">    QConicalGradient,</span><br><span class="line">    QCursor,</span><br><span class="line">    QFont,</span><br><span class="line">    QFontDatabase,</span><br><span class="line">    QGradient,</span><br><span class="line">    QIcon,</span><br><span class="line">    QImage,</span><br><span class="line">    QKeySequence,</span><br><span class="line">    QLinearGradient,</span><br><span class="line">    QPainter,</span><br><span class="line">    QPalette,</span><br><span class="line">    QPixmap,</span><br><span class="line">    QRadialGradient,</span><br><span class="line">    QTransform,</span><br><span class="line">)</span><br><span class="line"><span class="keyword">from</span> PySide6.QtWidgets <span class="keyword">import</span> (</span><br><span class="line">    QAbstractItemView,</span><br><span class="line">    QApplication,</span><br><span class="line">    QHBoxLayout,</span><br><span class="line">    QLineEdit,</span><br><span class="line">    QListView,</span><br><span class="line">    QMainWindow,</span><br><span class="line">    QMenuBar,</span><br><span class="line">    QPushButton,</span><br><span class="line">    QSizePolicy,</span><br><span class="line">    QStatusBar,</span><br><span class="line">    QVBoxLayout,</span><br><span class="line">    QWidget,</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Ui_MainWindow</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">setupUi</span>(<span class="params">self, MainWindow</span>):</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> MainWindow.objectName():</span><br><span class="line">            MainWindow.setObjectName(<span class="string">&quot;MainWindow&quot;</span>)</span><br><span class="line">        MainWindow.resize(<span class="number">275</span>, <span class="number">314</span>)</span><br><span class="line">        self.centralwidget = QWidget(MainWindow)</span><br><span class="line">        self.centralwidget.setObjectName(<span class="string">&quot;centralwidget&quot;</span>)</span><br><span class="line">        self.verticalLayout = QVBoxLayout(self.centralwidget)</span><br><span class="line">        self.verticalLayout.setObjectName(<span class="string">&quot;verticalLayout&quot;</span>)</span><br><span class="line">        self.todoView = QListView(self.centralwidget)</span><br><span class="line">        self.todoView.setObjectName(<span class="string">&quot;todoView&quot;</span>)</span><br><span class="line">        self.todoView.setSelectionMode(QAbstractItemView.SingleSelection)</span><br><span class="line"></span><br><span class="line">        self.verticalLayout.addWidget(self.todoView)</span><br><span class="line"></span><br><span class="line">        self.widget = QWidget(self.centralwidget)</span><br><span class="line">        self.widget.setObjectName(<span class="string">&quot;widget&quot;</span>)</span><br><span class="line">        self.horizontalLayout = QHBoxLayout(self.widget)</span><br><span class="line">        self.horizontalLayout.setObjectName(<span class="string">&quot;horizontalLayout&quot;</span>)</span><br><span class="line">        self.deleteButton = QPushButton(self.widget)</span><br><span class="line">        self.deleteButton.setObjectName(<span class="string">&quot;deleteButton&quot;</span>)</span><br><span class="line"></span><br><span class="line">        self.horizontalLayout.addWidget(self.deleteButton)</span><br><span class="line"></span><br><span class="line">        self.completeButton = QPushButton(self.widget)</span><br><span class="line">        self.completeButton.setObjectName(<span class="string">&quot;completeButton&quot;</span>)</span><br><span class="line"></span><br><span class="line">        self.horizontalLayout.addWidget(self.completeButton)</span><br><span class="line"></span><br><span class="line">        self.verticalLayout.addWidget(self.widget)</span><br><span class="line"></span><br><span class="line">        self.todoEdit = QLineEdit(self.centralwidget)</span><br><span class="line">        self.todoEdit.setObjectName(<span class="string">&quot;todoEdit&quot;</span>)</span><br><span class="line"></span><br><span class="line">        self.verticalLayout.addWidget(self.todoEdit)</span><br><span class="line"></span><br><span class="line">        self.addButton = QPushButton(self.centralwidget)</span><br><span class="line">        self.addButton.setObjectName(<span class="string">&quot;addButton&quot;</span>)</span><br><span class="line"></span><br><span class="line">        self.verticalLayout.addWidget(self.addButton)</span><br><span class="line"></span><br><span class="line">        MainWindow.setCentralWidget(self.centralwidget)</span><br><span class="line">        self.menubar = QMenuBar(MainWindow)</span><br><span class="line">        self.menubar.setObjectName(<span class="string">&quot;menubar&quot;</span>)</span><br><span class="line">        self.menubar.setGeometry(QRect(<span class="number">0</span>, <span class="number">0</span>, <span class="number">275</span>, <span class="number">22</span>))</span><br><span class="line">        MainWindow.setMenuBar(self.menubar)</span><br><span class="line">        self.statusbar = QStatusBar(MainWindow)</span><br><span class="line">        self.statusbar.setObjectName(<span class="string">&quot;statusbar&quot;</span>)</span><br><span class="line">        MainWindow.setStatusBar(self.statusbar)</span><br><span class="line"></span><br><span class="line">        self.retranslateUi(MainWindow)</span><br><span class="line"></span><br><span class="line">        QMetaObject.connectSlotsByName(MainWindow)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># setupUi</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">retranslateUi</span>(<span class="params">self, MainWindow</span>):</span></span><br><span class="line">        MainWindow.setWindowTitle(</span><br><span class="line">            QCoreApplication.translate(<span class="string">&quot;MainWindow&quot;</span>, <span class="string">&quot;Todo&quot;</span>, <span class="literal">None</span>)</span><br><span class="line">        )</span><br><span class="line">        self.deleteButton.setText(</span><br><span class="line">            QCoreApplication.translate(<span class="string">&quot;MainWindow&quot;</span>, <span class="string">&quot;Delete&quot;</span>, <span class="literal">None</span>)</span><br><span class="line">        )</span><br><span class="line">        self.completeButton.setText(</span><br><span class="line">            QCoreApplication.translate(<span class="string">&quot;MainWindow&quot;</span>, <span class="string">&quot;Complete&quot;</span>, <span class="literal">None</span>)</span><br><span class="line">        )</span><br><span class="line">        self.addButton.setText(</span><br><span class="line">            QCoreApplication.translate(<span class="string">&quot;MainWindow&quot;</span>, <span class="string">&quot;Add Todo&quot;</span>, <span class="literal">None</span>)</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">    <span class="comment"># retranslateUi</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      <div class="tags">
+          <a href="/tags/python/" rel="tag"><i class="ic i-tag"></i> python</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2023-07-13 10:57:46" itemprop="dateModified" datetime="2023-07-13T10:57:46+08:00">2023-07-13</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2023/06/10/excerpt-kushufu/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;转生成蜘蛛又怎样.jpg" title="枯树赋 - 庾信">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> excerpt</span>
+  <h3>枯树赋 - 庾信</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2023/07/13/pyside6-qml/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;辉夜姬物语-2.jpg" title="Qt for Python - Building an Application - 《Qt6 QML Book》">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Qt for Python - Building an Application - 《Qt6 QML Book》</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#model-view-controller"><span class="toc-number">1.</span> <span class="toc-text"> Model View Controller</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#the-model-view"><span class="toc-number">2.</span> <span class="toc-text"> The Model View</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#a-simple-model-view-a-todo-list"><span class="toc-number">3.</span> <span class="toc-text"> A simple Model View — a Todo List</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#the-ui"><span class="toc-number">3.1.</span> <span class="toc-text"> The UI</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#the-model"><span class="toc-number">3.2.</span> <span class="toc-text"> The Model</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#todos-list"><span class="toc-number">3.2.1.</span> <span class="toc-text"> .todos list</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#rowcount"><span class="toc-number">3.2.2.</span> <span class="toc-text"> .rowcount()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#data"><span class="toc-number">3.2.3.</span> <span class="toc-text"> .data()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#basic-implementation"><span class="toc-number">3.3.</span> <span class="toc-text"> Basic implementation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hooking-up-the-other-actions"><span class="toc-number">3.4.</span> <span class="toc-text"> Hooking up the other actions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#using-qtdecorationrole"><span class="toc-number">3.5.</span> <span class="toc-text"> Using Qt.DecorationRole</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#a-persistent-data-store"><span class="toc-number">4.</span> <span class="toc-text"> A persistent data store</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#coments"><span class="toc-number">5.</span> <span class="toc-text"> Coments</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">342</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">47</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
+      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2023/06/10/excerpt-kushufu/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2023/07/13/pyside6-qml/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ D E W</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2023/07/13/pyside6-model-view/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
