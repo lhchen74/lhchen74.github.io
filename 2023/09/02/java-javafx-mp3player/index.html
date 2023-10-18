@@ -1,0 +1,412 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CFira%20Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="java,gui" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2023/09/02/java-javafx-mp3player/">
+
+
+
+  <title>
+JavaFx Simple MP3 Player |
+D E W = 露の世</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">JavaFx Simple MP3 Player
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2023-09-02 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2023-09-02T00:00:00+08:00">2023-09-02</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">D E W</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="/anime/index/火影忍者.jpg"></li>
+          <li class="item" data-background-image="/anime/index/AngelBeats.jpg"></li>
+          <li class="item" data-background-image="/anime/index/全职猎人.jpg"></li>
+          <li class="item" data-background-image="/anime/index/迷域行者.jpg"></li>
+          <li class="item" data-background-image="/anime/index/关于前辈很烦人的事.jpg"></li>
+          <li class="item" data-background-image="/anime/index/捉妖小红娘-2.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2023/09/02/java-javafx-mp3player/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>repost: <span class="exturl" data-url="aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj05WEppY1J0X0ZhSQ==">JavaFX GUI Full Course ☕【𝙁𝙧𝙚𝙚】 - YouTube</span></p>
+</blockquote>
+<h2 id="enviroment-set-up-in-vscode"><a class="markdownIt-Anchor" href="#enviroment-set-up-in-vscode">#</a> Enviroment set up in VSCode</h2>
+<ol>
+<li>
+<p>Install <strong>Extension Pack for Java</strong></p>
+</li>
+<li>
+<p><strong>Ctrl + Shift + P</strong>   input  <em>Java: Cretate Java Project</em>  and then select the project type <em>No build tools</em>.</p>
+</li>
+<li>
+<p>Download JavaFX SDK jar and add to <strong>Referenced Libraries</strong>.</p>
+<img data-src="/2023/09/02/java-javafx-mp3player/add-lib.png" class="">
+</li>
+<li>
+<p>Run debug and config launch.json.</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="comment">// Use IntelliSense to learn about possible attributes.</span></span><br><span class="line">  <span class="comment">// Hover to view descriptions of existing attributes.</span></span><br><span class="line">  <span class="comment">// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387</span></span><br><span class="line">  <span class="attr">&quot;version&quot;</span>: <span class="string">&quot;0.2.0&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;configurations&quot;</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">&quot;type&quot;</span>: <span class="string">&quot;java&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;Main&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;request&quot;</span>: <span class="string">&quot;launch&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;mainClass&quot;</span>: <span class="string">&quot;com.jbn.mp3player.Main&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;vmArgs&quot;</span>: <span class="string">&quot;--module-path D:/study/java/javafx/javafx-sdk-17.0.8/lib --add-modules javafx.controls,javafx.fxml --add-modules javafx.media,javafx.web&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="define-layout-and-control-in-fxml-use-scene-builder"><a class="markdownIt-Anchor" href="#define-layout-and-control-in-fxml-use-scene-builder">#</a> Define Layout and Control in FXML use Scene Builder</h2>
+<img data-src="/2023/09/02/java-javafx-mp3player/scene-fxml.png" class="">
+<h2 id="define-logic-in-controller"><a class="markdownIt-Anchor" href="#define-logic-in-controller">#</a> Define Logic in Controller</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jbn.mp3player;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.net.URL;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.ResourceBundle;</span><br><span class="line"><span class="keyword">import</span> java.util.Timer;</span><br><span class="line"><span class="keyword">import</span> java.util.TimerTask;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javafx.beans.value.ChangeListener;</span><br><span class="line"><span class="keyword">import</span> javafx.beans.value.ObservableValue;</span><br><span class="line"><span class="keyword">import</span> javafx.event.ActionEvent;</span><br><span class="line"><span class="keyword">import</span> javafx.fxml.FXML;</span><br><span class="line"><span class="keyword">import</span> javafx.fxml.Initializable;</span><br><span class="line"><span class="keyword">import</span> javafx.scene.control.Button;</span><br><span class="line"><span class="keyword">import</span> javafx.scene.control.ComboBox;</span><br><span class="line"><span class="keyword">import</span> javafx.scene.control.Label;</span><br><span class="line"><span class="keyword">import</span> javafx.scene.control.ProgressBar;</span><br><span class="line"><span class="keyword">import</span> javafx.scene.control.Slider;</span><br><span class="line"><span class="keyword">import</span> javafx.scene.media.Media;</span><br><span class="line"><span class="keyword">import</span> javafx.scene.media.MediaPlayer;</span><br><span class="line"><span class="keyword">import</span> javafx.util.Duration;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Controller</span> <span class="keyword">implements</span> <span class="title">Initializable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@FXML</span></span><br><span class="line">    <span class="keyword">private</span> Label songLabel;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@FXML</span></span><br><span class="line">    <span class="keyword">private</span> ProgressBar sonProgressBar;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@FXML</span></span><br><span class="line">    <span class="keyword">private</span> Button playButton;</span><br><span class="line">    <span class="meta">@FXML</span></span><br><span class="line">    <span class="keyword">private</span> Button pauseButton;</span><br><span class="line">    <span class="meta">@FXML</span></span><br><span class="line">    <span class="keyword">private</span> Button resetButton;</span><br><span class="line">    <span class="meta">@FXML</span></span><br><span class="line">    <span class="keyword">private</span> Button preButton;</span><br><span class="line">    <span class="meta">@FXML</span></span><br><span class="line">    <span class="keyword">private</span> Button nextButton;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@FXML</span></span><br><span class="line">    <span class="keyword">private</span> ComboBox&lt;String&gt; speedBox;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@FXML</span></span><br><span class="line">    <span class="keyword">private</span> Slider volumeSlider;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> File directory;</span><br><span class="line">    <span class="keyword">private</span> File[] files;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> ArrayList&lt;File&gt; songs;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> songNumber;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span>[] speeds = &#123; <span class="number">50</span>, <span class="number">75</span>, <span class="number">100</span>, <span class="number">125</span>, <span class="number">150</span>, <span class="number">175</span>, <span class="number">200</span> &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Timer timer;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> TimerTask timerTask;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> running;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Media media;</span><br><span class="line">    <span class="keyword">private</span> MediaPlayer mediaPlayer;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">initialize</span><span class="params">(URL location, ResourceBundle resources)</span> </span>&#123;</span><br><span class="line">        songs = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        directory = <span class="keyword">new</span> File(<span class="string">&quot;D:/study/java/javafx/hellofx/src/com/jbn/mp3player/music&quot;</span>);</span><br><span class="line">        files = directory.listFiles();</span><br><span class="line">        <span class="keyword">if</span> (files != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">for</span> (File file : files) &#123;</span><br><span class="line">                songs.add(file);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        changeSong();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; speeds.length; i++) &#123;</span><br><span class="line">            speedBox.getItems().add(Integer.toString(speeds[i]) + <span class="string">&quot;%&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        speedBox.setOnAction(<span class="keyword">this</span>::changeSpeed);</span><br><span class="line"></span><br><span class="line">        volumeSlider.valueProperty().addListener(<span class="keyword">new</span> ChangeListener&lt;Number&gt;() &#123;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">changed</span><span class="params">(ObservableValue&lt;? extends Number&gt; arg0, Number arg1, Number arg2)</span> </span>&#123;</span><br><span class="line">                mediaPlayer.setVolume(volumeSlider.getValue() * <span class="number">0.01</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        sonProgressBar.setStyle(<span class="string">&quot;-fx-accent: #0F0&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">changeSong</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        media = <span class="keyword">new</span> Media(songs.get(songNumber).toURI().toString());</span><br><span class="line">        mediaPlayer = <span class="keyword">new</span> MediaPlayer(media);</span><br><span class="line">        songLabel.setText(songs.get(songNumber).getName());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">playMedia</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        beginTimer();</span><br><span class="line">        changeSpeed(<span class="keyword">null</span>);</span><br><span class="line">        mediaPlayer.play();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">pauseMedia</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        cancelTimer();</span><br><span class="line">        mediaPlayer.pause();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">resetMedia</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        sonProgressBar.setProgress(<span class="number">0.0</span>);</span><br><span class="line">        mediaPlayer.seek(Duration.seconds(<span class="number">0.0</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">preMedia</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (songNumber &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            songNumber--;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            songNumber = songs.size() - <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        stopMedia();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (running) &#123;</span><br><span class="line">            cancelTimer();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        changeSong();</span><br><span class="line">        playMedia();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">nextMedia</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (songNumber &lt; songs.size() - <span class="number">1</span>) &#123;</span><br><span class="line">            songNumber++;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            songNumber = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        stopMedia();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (running) &#123;</span><br><span class="line">            cancelTimer();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        changeSong();</span><br><span class="line">        playMedia();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">stopMedia</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        mediaPlayer.stop();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">changeSpeed</span><span class="params">(ActionEvent event)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (speedBox.getValue() == <span class="keyword">null</span>) &#123;</span><br><span class="line">            mediaPlayer.setRate(<span class="number">1</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            String value = speedBox.getValue().substring(<span class="number">0</span>, speedBox.getValue().length() - <span class="number">1</span>);</span><br><span class="line">            mediaPlayer.setRate(Integer.parseInt(value) * <span class="number">0.01</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">beginTimer</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        timer = <span class="keyword">new</span> Timer();</span><br><span class="line"></span><br><span class="line">        timerTask = <span class="keyword">new</span> TimerTask() &#123;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                running = <span class="keyword">true</span>;</span><br><span class="line">                <span class="keyword">double</span> current = mediaPlayer.getCurrentTime().toSeconds();</span><br><span class="line">                <span class="keyword">double</span> end = mediaPlayer.getTotalDuration().toSeconds();</span><br><span class="line">                sonProgressBar.setProgress(current / end);</span><br><span class="line">                <span class="keyword">if</span> (current / end == <span class="number">1</span>) &#123;</span><br><span class="line">                    cancelTimer();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        timer.schedule(timerTask, <span class="number">1000</span>, <span class="number">1000</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">cancelTimer</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        running = <span class="keyword">false</span>;</span><br><span class="line">        timer.cancel();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="load-fxml-and-run-program-in-main"><a class="markdownIt-Anchor" href="#load-fxml-and-run-program-in-main">#</a> Load FXML and run program in Main</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jbn.mp3player;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javafx.application.Application;</span><br><span class="line"><span class="keyword">import</span> javafx.fxml.FXMLLoader;</span><br><span class="line"><span class="keyword">import</span> javafx.scene.Parent;</span><br><span class="line"><span class="keyword">import</span> javafx.scene.Scene;</span><br><span class="line"><span class="keyword">import</span> javafx.stage.Stage;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> <span class="keyword">extends</span> <span class="title">Application</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">(Stage stage)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        Parent root = FXMLLoader.load(getClass().getResource(<span class="string">&quot;Scene.fxml&quot;</span>));</span><br><span class="line">        stage.setScene(<span class="keyword">new</span> Scene(root));</span><br><span class="line">        stage.show();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        launch(args);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="run-program"><a class="markdownIt-Anchor" href="#run-program">#</a> Run program</h2>
+<p>In VSCode, click Debug and select defined Main in launch.json then execute.</p>
+<img data-src="/2023/09/02/java-javafx-mp3player/player.png" class=""> 
+      <div class="tags">
+          <a href="/tags/java/" rel="tag"><i class="ic i-tag"></i> java</a>
+          <a href="/tags/gui/" rel="tag"><i class="ic i-tag"></i> gui</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2023-09-02 17:21:55" itemprop="dateModified" datetime="2023-09-02T17:21:55+08:00">2023-09-02</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2023/08/10/pyside6-example/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;赌博默示录.jpg" title="PySide6 Practice Example">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>PySide6 Practice Example</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2023/09/02/csharp-wpf-basics/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;黑执事.jpg" title="C# WPF Basics">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>C# WPF Basics</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#enviroment-set-up-in-vscode"><span class="toc-number">1.</span> <span class="toc-text"> Enviroment set up in VSCode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#define-layout-and-control-in-fxml-use-scene-builder"><span class="toc-number">2.</span> <span class="toc-text"> Define Layout and Control in FXML use Scene Builder</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#define-logic-in-controller"><span class="toc-number">3.</span> <span class="toc-text"> Define Logic in Controller</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#load-fxml-and-run-program-in-main"><span class="toc-number">4.</span> <span class="toc-text"> Load FXML and run program in Main</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#run-program"><span class="toc-number">5.</span> <span class="toc-text"> Run program</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">345</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">49</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
+      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2023/08/10/pyside6-example/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2023/09/02/csharp-wpf-basics/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ D E W</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2023/09/02/java-javafx-mp3player/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
