@@ -1,0 +1,439 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CFira%20Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="js" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2023/10/20/javascript-blob/">
+
+
+
+  <title>
+What is a Blob object in JavaScript? |
+D E W = 露の世</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">What is a Blob object in JavaScript?
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2023-10-20 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2023-10-20T00:00:00+08:00">2023-10-20</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">D E W</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="/anime/index/伪恋.jpg"></li>
+          <li class="item" data-background-image="/anime/index/未来日记.jpg"></li>
+          <li class="item" data-background-image="/anime/index/四月是你的谎言.jpg"></li>
+          <li class="item" data-background-image="/anime/index/明日酱的水手服-3.jpg"></li>
+          <li class="item" data-background-image="/anime/index/辉夜姬物语-1.jpg"></li>
+          <li class="item" data-background-image="/anime/index/奇诺之旅.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2023/10/20/javascript-blob/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>repost: <span class="exturl" data-url="aHR0cHM6Ly9vcGVuamF2YXNjcmlwdC5pbmZvLzIwMjIvMTAvMTcvd2hhdC1pcy1hLWJsb2Itb2JqZWN0LWluLWphdmFzY3JpcHQv">What is a Blob object in JavaScript?</span></p>
+</blockquote>
+<p>A Blob object is a versatile container for files and data.</p>
+<p>Though it stands for <strong>B</strong>inary <strong>L</strong>arge <strong>Ob</strong>ject, it is also used to contain small amounts of data.</p>
+<p>By placing files or file-like objects in a Blob, various methods become available that can be useful for accessing, encoding and transferring the data.</p>
+<h2 id="why-use-a-blob"><a class="markdownIt-Anchor" href="#why-use-a-blob">#</a> Why use a Blob?</h2>
+<p>In itself, a Blob isn’t particularly interesting or useful.</p>
+<p>The main reason storing data inside a Blob is useful is because of the methods available on it that make it useful for making the data accessible and passing it around.</p>
+<p>Here are some common examples:</p>
+<ul>
+<li>Create a <strong>data URL</strong> to the data using the FileReader API</li>
+<li>Create an <strong>object URL</strong> to the data in memory using  <code>URL.createObjectURL()</code></li>
+<li>Create <strong>readable stream</strong> ( <code>readableStream</code> ) using the Streams API</li>
+<li>Enable use of the  <code>slice</code>  method to <strong>get a subset of the data</strong></li>
+</ul>
+<p>We’ll take a look at some examples soon. But first…</p>
+<h2 id="how-to-create-a-blob"><a class="markdownIt-Anchor" href="#how-to-create-a-blob">#</a> How to create a Blob</h2>
+<p>You can create a new Blob by calling the  <code>Blob</code>  constructor object.</p>
+<p>To use it to create a new Blob object, use the  <code>new</code>  operator before calling Blob and pass the data into the parentheses inside an array (even if there is only one item!).</p>
+<p>As a second argument, you should specify a MIME type (e.g. ‘text/plain’, ‘application/json’) as the type property inside an object . This is technically optional but if you do not specify a type, a receiving server may not know how to read the contents of the Blob.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> text = <span class="string">&quot;I&#x27;m a little bit of data&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> blob = <span class="keyword">new</span> Blob([text], &#123; <span class="attr">type</span>: <span class="string">&quot;text/plain&quot;</span> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(blob);</span><br><span class="line"><span class="comment">// Blob &#123;size: 24, type: &#x27;text/plain&#x27;&#125;</span></span><br></pre></td></tr></table></figure>
+<p>As you can see, a Blob object has two properties:  <code>size</code>  (in bytes) and  <code>type</code>  (MIME type).</p>
+<p>Apart from this, a Blob object is opaque about its contents.</p>
+<h3 id="download-data-to-blob-format"><a class="markdownIt-Anchor" href="#download-data-to-blob-format">#</a> Download data to Blob format</h3>
+<p>You can use the <span class="exturl" data-url="aHR0cHM6Ly9vcGVuamF2YXNjcmlwdC5pbmZvLzIwMjIvMDEvMDMvdXNpbmctZmV0Y2gtdG8tbWFrZS1nZXQtcG9zdC1wdXQtYW5kLWRlbGV0ZS1yZXF1ZXN0cy8=">Fetch function</span> to download data so that it is stored in a Blob object.</p>
+<p>Just call the  <code>blob()</code>  method on the response object:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fetch(<span class="string">&quot;https://picsum.photos/400/400&quot;</span>)</span><br><span class="line">  .then(<span class="function">(<span class="params">res</span>) =&gt;</span> res.blob())</span><br><span class="line">  .then(<span class="function">(<span class="params">res</span>) =&gt;</span> <span class="built_in">console</span>.log(res)); <span class="comment">// e.g. Blob &#123;size: 54892, type: &#x27;image/jpeg&#x27;&#125;</span></span><br></pre></td></tr></table></figure>
+<h2 id="useful-things-you-can-do-with-a-blob"><a class="markdownIt-Anchor" href="#useful-things-you-can-do-with-a-blob">#</a> Useful things you can do with a Blob</h2>
+<h3 id="1-create-a-data-url"><a class="markdownIt-Anchor" href="#1-create-a-data-url">#</a> #1: Create a data URL</h3>
+<p>Using the FileReader API, you can create a data URL to a Blob object. A data URL is a string-encoded reference to the contents of the Blob that functions like a regular URL.</p>
+<p>For example, in the following snippet, a data URL is created for the JSON string:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">  name: <span class="string">&quot;User&quot;</span>,</span><br><span class="line">  occupation: <span class="string">&quot;A User&quot;</span>,</span><br><span class="line">  address: <span class="string">&quot;1 User Road&quot;</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> json = <span class="built_in">JSON</span>.stringify(user);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> fr = <span class="keyword">new</span> FileReader();</span><br><span class="line"><span class="comment">// Creates new FileReader instance</span></span><br><span class="line"></span><br><span class="line">fr.readAsDataURL(<span class="keyword">new</span> Blob([json], &#123; <span class="attr">type</span>: <span class="string">&quot;application/json&quot;</span> &#125;));</span><br><span class="line"><span class="comment">// Places JSON string in Blob and read contents as data URL</span></span><br><span class="line"></span><br><span class="line">fr.addEventListener(<span class="string">&quot;load&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// Waits for file reading to complete...</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(fr.result);</span><br><span class="line">  <span class="comment">// data:application/json;base64,eyJuYW1lIjoiVXNlciIsIm9jY3VwYXRpb24iOiJBIFVzZXIiLCJhZGRyZXNzIjoiMSBVc2VyIFJvYWQifQ==</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>Just like a regular URL to a JSON file, if you enter it in your browser, you will see the JSON object.</p>
+<p>The difference to a regular URL is that it does not link to an external resource. <strong>The data is contained in the URL</strong>!</p>
+<p>A data URL is of type string but doesn’t have to contain string data.</p>
+<p>For example, you can create a data URL to an image:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=<span class="string">&quot;file&quot;</span> accept=<span class="string">&quot;image/png&quot;</span>&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> input = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;input&#x27;</span>);</span><br><span class="line"></span><br><span class="line">input.addEventListener(<span class="string">&#x27;change&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line"><span class="comment">// Fires when users select a file</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> fr = <span class="keyword">new</span> FileReader();</span><br><span class="line"></span><br><span class="line">    fr.readAsDataURL(input.files[<span class="number">0</span>]);</span><br><span class="line">    <span class="comment">// A single file will always be located at 0 on the files array</span></span><br><span class="line"></span><br><span class="line">    fr.addEventListener(<span class="string">&#x27;load&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">console</span>.log(fr.result);</span><br><span class="line">        <span class="comment">// data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABRIAAATQCAYAAACP9rm5AAAAAXNSR0I...</span></span><br><span class="line"></span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">&#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>In the above example, the  <code>Blob</code>  constructor was not called because a  <code>File</code>  object is also a Blob.</p>
+<p>A useful feature of stringifying data in this way is that it can then be stored in <span class="exturl" data-url="aHR0cHM6Ly9vcGVuamF2YXNjcmlwdC5pbmZvLzIwMjIvMDYvMjkvc2F2ZS1kYXRhLXRvLXRoZS1icm93c2VyLXdpdGgtbG9jYWxzdG9yYWdlLWFuZC1zZXNzaW9uc3RvcmFnZS8=">localStorage</span> or sent to a URL (another page or server) as a <span class="exturl" data-url="aHR0cHM6Ly9vcGVuamF2YXNjcmlwdC5pbmZvLzIwMjIvMTAvMTAvaG93LXRvLWNyZWF0ZS1hbmQtZGVjb2RlLWEtcXVlcnktc3RyaW5nLWluLWphdmFzY3JpcHQv">URL parameter</span>.</p>
+<h3 id="2-create-an-object-url"><a class="markdownIt-Anchor" href="#2-create-an-object-url">#</a> #2: Create an object URL</h3>
+<p>An object URL also functions like a regular URL, pointing to the contents of a Blob object.</p>
+<p>You can create one by calling the globally available  <code>URL.createObjectURL()</code>  method, passing in as an argument a Blob object:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">fetch(<span class="string">&quot;https://picsum.photos/500/500&quot;</span>)</span><br><span class="line">  .then(<span class="function">(<span class="params">res</span>) =&gt;</span> res.blob())</span><br><span class="line">  .then(<span class="function">(<span class="params">res</span>) =&gt;</span> generateURL(res));</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">generateURL</span>(<span class="params">blob</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> url = URL.createObjectURL(blob);</span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(url); <span class="comment">// e.g. blob:null/ac27e970-43f0-41d1-a662-9268c0849f40</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Unlike a data URL, an object URL does not contain the file data. Instead, it points to the file contents stored in browser memory.</p>
+<p>Therefore, anything that clears browser memory will make an object URL invalid (e.g. does not survive a page refresh!).</p>
+<p>One example of where you may want to use an object URL instead of a data URI is to <span class="exturl" data-url="aHR0cHM6Ly9vcGVuamF2YXNjcmlwdC5pbmZvLzIwMjIvMDcvMjUvY3JlYXRlLWEtY2xpZW50LXNpZGUtZG93bmxvYWQtd2l0aC1qYXZhc2NyaXB0Lw==">create a client-side file download</span>, like below. By using an object URL, no conversion to string format is necessary:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> data = <span class="string">&quot;Please download me!&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> myBlob = <span class="keyword">new</span> Blob([data], &#123; <span class="attr">type</span>: <span class="string">&quot;text/plain&quot;</span> &#125;);</span><br><span class="line">blobURL = URL.createObjectURL(myBlob);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> a = <span class="built_in">document</span>.createElement(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">a.setAttribute(<span class="string">&quot;href&quot;</span>, blobURL);</span><br><span class="line">a.setAttribute(<span class="string">&quot;download&quot;</span>, <span class="string">&quot;blob-test.txt&quot;</span>);</span><br><span class="line"></span><br><span class="line">a.style.display = <span class="string">&quot;none&quot;</span>;</span><br><span class="line"><span class="built_in">document</span>.body.appendChild(a);</span><br><span class="line"></span><br><span class="line">a.click();</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.body.removeChild(a);</span><br><span class="line">URL.revokeObjectURL(blobURL);</span><br></pre></td></tr></table></figure>
+<p>Because a file will always exist in memory as long as an object URL exists pointing to it, it is good practice to use  <code>revokeObjectURL()</code>  to clear it if it is no longer necessary.</p>
+<h3 id="3-split-a-file-into-parts"><a class="markdownIt-Anchor" href="#3-split-a-file-into-parts">#</a> #3: Split a file into parts</h3>
+<p>Using the  <code>slice()</code>  method on a Blob, you can retrieve specified bytes from a Blob:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  name: <span class="string">&quot;Bateman&quot;</span>,</span><br><span class="line">  job: <span class="string">&quot;Mergers &amp; Aquisitions&quot;</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> json = <span class="built_in">JSON</span>.stringify(obj);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> blob = <span class="keyword">new</span> Blob([json], &#123; <span class="attr">type</span>: <span class="string">&quot;application/json&quot;</span> &#125;);</span><br><span class="line"><span class="built_in">console</span>.log(blob); <span class="comment">// Blob &#123;size: 48, type: &#x27;application/json&#x27;&#125;</span></span><br><span class="line"></span><br><span class="line">blobSlice(blob, <span class="number">0</span>, <span class="number">10</span>); <span class="comment">// Blob &#123;size: 10, type: &#x27;&#x27;&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">blobSlice</span>(<span class="params">blob, start, end</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> blob.slice(start, end);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-create-a-readable-stream"><a class="markdownIt-Anchor" href="#4-create-a-readable-stream">#</a> #4: Create a readable stream</h3>
+<p>For larger file objects, it can useful to create a readable stream for them. This enables methods to be used that make the file easier to read and write.</p>
+<p>You can easily turn a Blob object into an object of type  <code>ReadableStream</code>  by calling  <code>stream()</code>  on the Blob itself:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> text = <span class="string">&quot;Some text to Blobbify&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> blob = <span class="keyword">new</span> Blob([text], &#123; <span class="attr">type</span>: <span class="string">&quot;plain/text&quot;</span> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> readableStream = blob.stream(); <span class="comment">// ReadableStream &#123;locked: false&#125;</span></span><br></pre></td></tr></table></figure>
+
+      <div class="tags">
+          <a href="/tags/js/" rel="tag"><i class="ic i-tag"></i> js</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2023-10-20 12:40:09" itemprop="dateModified" datetime="2023-10-20T12:40:09+08:00">2023-10-20</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2023/09/02/csharp-wpf-basics/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;白兔糖.jpg" title="C# WPF Basics">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>C# WPF Basics</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2023/10/20/edi-sscc-18-barcodes/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;辉夜大小姐想让我告白.jpg" title="SSCC-18 Barcodes">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>SSCC-18 Barcodes</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#why-use-a-blob"><span class="toc-number">1.</span> <span class="toc-text"> Why use a Blob?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#how-to-create-a-blob"><span class="toc-number">2.</span> <span class="toc-text"> How to create a Blob</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#download-data-to-blob-format"><span class="toc-number">2.1.</span> <span class="toc-text"> Download data to Blob format</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#useful-things-you-can-do-with-a-blob"><span class="toc-number">3.</span> <span class="toc-text"> Useful things you can do with a Blob</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-create-a-data-url"><span class="toc-number">3.1.</span> <span class="toc-text"> #1: Create a data URL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-create-an-object-url"><span class="toc-number">3.2.</span> <span class="toc-text"> #2: Create an object URL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-split-a-file-into-parts"><span class="toc-number">3.3.</span> <span class="toc-text"> #3: Split a file into parts</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-create-a-readable-stream"><span class="toc-number">3.4.</span> <span class="toc-text"> #4: Create a readable stream</span></a></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">347</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">50</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
+      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2023/09/02/csharp-wpf-basics/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2023/10/20/edi-sscc-18-barcodes/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ D E W</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2023/10/20/javascript-blob/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
