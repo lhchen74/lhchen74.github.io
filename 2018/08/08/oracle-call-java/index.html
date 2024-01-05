@@ -102,12 +102,12 @@ D E W = 露の世</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="/anime/index/终结的炽天使.jpg"></li>
-          <li class="item" data-background-image="/anime/index/空之境界.jpg"></li>
-          <li class="item" data-background-image="/anime/index/蔷薇少女.jpg"></li>
-          <li class="item" data-background-image="/anime/index/白兔糖.jpg"></li>
-          <li class="item" data-background-image="/anime/index/死神.jpg"></li>
-          <li class="item" data-background-image="/anime/index/言叶之庭.jpg"></li>
+          <li class="item" data-background-image="/anime/index/我们大家的河合庄.jpg"></li>
+          <li class="item" data-background-image="/anime/index/间谍过家家.jpg"></li>
+          <li class="item" data-background-image="/anime/index/龙猫-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/奇诺之旅.jpg"></li>
+          <li class="item" data-background-image="/anime/index/男子高校生的日常.jpg"></li>
+          <li class="item" data-background-image="/anime/index/百变狸猫-1.jpg"></li>
         </ul>
       </div>
     </header>
@@ -174,6 +174,11 @@ D E W = 露の世</title>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">or</span> replace package body som_edi_morrison_pkg <span class="keyword">is</span></span><br><span class="line">  <span class="keyword">function</span> clean_csv_line(content varchar2, separator varchar2) <span class="keyword">return</span> varchar2;</span><br><span class="line"><span class="keyword">end</span> som_edi_custom_utils_pkg;</span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">or</span> replace package body som_edi_custom_utils_pkg <span class="keyword">is</span></span><br><span class="line">  <span class="keyword">function</span> clean_csv_line(content varchar2, separator varchar2) <span class="keyword">return</span> varchar2 </span><br><span class="line">  <span class="keyword">as</span></span><br><span class="line">  <span class="keyword">LANGUAGE</span> JAVA NAME <span class="string">&#x27;EDIJavaUtils.cleanCSVLine(java.lang.String, java.lang.String) return java.lang.String&#x27;</span>;</span><br><span class="line"><span class="keyword">end</span> som_edi_custom_utils_pkg;</span><br></pre></td></tr></table></figure>
 <p>Test</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> som_edi_custom_utils_pkg.clean_csv_line(<span class="string">&#x27;ab/95&quot;508/&quot;AP&quot;PLE&quot;&quot;/&quot;10/FEB/12&quot;&#x27;</span>, <span class="string">&#x27;/&#x27;</span>) </span><br><span class="line">  <span class="keyword">from</span> dual;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- ab</span></span><br><span class="line"><span class="comment">-- 95&quot;508</span></span><br><span class="line"><span class="comment">-- AP&quot;PLE&quot;</span></span><br><span class="line"><span class="comment">-- 10/FEB/12</span></span><br></pre></td></tr></table></figure>
+<h3 id="return-an-array-from-java-to-plsql"><a class="markdownIt-Anchor" href="#return-an-array-from-java-to-plsql">#</a> Return an array from Java to PL/SQL</h3>
+<blockquote>
+<p>Reference: <span class="exturl" data-url="aHR0cHM6Ly9zdGFja292ZXJmbG93LmNvbS9xdWVzdGlvbnMvNzg3MjY4OC9ob3ctdG8tcmV0dXJuLWFuLWFycmF5LWZyb20tamF2YS10by1wbC1zcWw=">oracle - How to return an array from Java to PL/SQL? - Stack Overflow</span></p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> type edi_varchar_list_type <span class="keyword">is</span> <span class="keyword">table</span> <span class="keyword">of</span> varchar2(<span class="number">32767</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">or</span> replace <span class="keyword">and</span> compile java source named edi_java_test <span class="keyword">as</span></span><br><span class="line">import java.lang.<span class="operator">*</span>;</span><br><span class="line">public class edi_java_test &#123;</span><br><span class="line">    public static java.sql.Array split_str(String str, String separator) throws java.sql.SQLException &#123;</span><br><span class="line">        String[] elements <span class="operator">=</span> str.split(separator);</span><br><span class="line">        </span><br><span class="line">        oracle.jdbc.OracleDriver driver <span class="operator">=</span> <span class="keyword">new</span> oracle.jdbc.OracleDriver();</span><br><span class="line">        java.sql.Connection conn <span class="operator">=</span> driver.defaultConnection();</span><br><span class="line">        oracle.jdbc.OracleConnection oracleConn <span class="operator">=</span> (oracle.jdbc.OracleConnection)conn;</span><br><span class="line">        </span><br><span class="line">        String typeName <span class="operator">=</span> &quot;edi_varchar_list_type&quot;;</span><br><span class="line">        <span class="comment">/* Yeah - typeName have to be UPPERCASE, really. */</span></span><br><span class="line">        java.sql.Array sqlArr <span class="operator">=</span> oracleConn.createARRAY(typeName.toUpperCase(), elements);</span><br><span class="line">        <span class="keyword">return</span> sqlArr;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">or</span> replace <span class="keyword">function</span> edi_split_str(p_str varchar2, p_separator varchar2) <span class="keyword">return</span> edi_varchar_list_type <span class="keyword">as</span></span><br><span class="line"><span class="keyword">language</span> java name <span class="string">&#x27;edi_java_test.split_str(java.lang.String, java.lang.String) return java.sql.Array&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">declare</span></span><br><span class="line">  l_elements edi_varchar_list_type :<span class="operator">=</span> edi_split_str(<span class="string">&#x27;Babb,18,IT,Male&#x27;</span>, <span class="string">&#x27;,&#x27;</span>);</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  <span class="keyword">for</span> i <span class="keyword">in</span> l_elements.first .. l_elements.last loop</span><br><span class="line">    dbms_output.put_line(l_elements(i));</span><br><span class="line">  <span class="keyword">end</span> loop;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> <span class="keyword">table</span>(edi_split_str(<span class="string">&#x27;Babb,,18,,IT,,Male&#x27;</span>, <span class="string">&#x27;,,&#x27;</span>));</span><br></pre></td></tr></table></figure>
 
       <div class="tags">
           <a href="/tags/db/" rel="tag"><i class="ic i-tag"></i> db</a>
@@ -188,7 +193,7 @@ D E W = 露の世</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2022-04-07 17:19:32" itemprop="dateModified" datetime="2022-04-07T17:19:32+08:00">2022-04-07</time>
+    <time title="Modified: 2023-12-22 17:15:46" itemprop="dateModified" datetime="2023-12-22T17:15:46+08:00">2023-12-22</time>
   </span>
 </div>
 
@@ -205,20 +210,20 @@ D E W = 露の世</title>
     <div class="item left">
       
 
-  <a href="/2018/08/08/oracle-join/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;魔法少女小圆-1.jpg" title="Oracle Join">
+  <a href="/2018/08/08/oracle-common-sql/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;孤独摇滚.jpg" title="Oracle Common SQL">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
-  <h3>Oracle Join</h3>
+  <h3>Oracle Common SQL</h3>
   </a>
 
     </div>
     <div class="item right">
       
 
-  <a href="/2018/08/08/oracle-common-sql/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;只有我不存在的城市.jpg" title="Oracle Common SQL">
+  <a href="/2018/08/08/oracle-kill-session/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;冰菓.jpg" title="Oracle Kill Session">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
-  <h3>Oracle Common SQL</h3>
+  <h3>Oracle Kill Session</h3>
   </a>
 
     </div>
@@ -237,7 +242,7 @@ D E W = 露の世</title>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="Contents">
-          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#create-java-source"><span class="toc-number">1.</span> <span class="toc-text"> Create Java Source</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#create-call-function"><span class="toc-number">2.</span> <span class="toc-text"> Create Call Function</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#test"><span class="toc-number">3.</span> <span class="toc-text"> Test</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#drop-java-source"><span class="toc-number">4.</span> <span class="toc-text"> Drop Java Source</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#comments"><span class="toc-number">5.</span> <span class="toc-text"> Comments</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#clean-csv-line"><span class="toc-number">5.1.</span> <span class="toc-text"> Clean CSV Line</span></a></li></ol></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#create-java-source"><span class="toc-number">1.</span> <span class="toc-text"> Create Java Source</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#create-call-function"><span class="toc-number">2.</span> <span class="toc-text"> Create Call Function</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#test"><span class="toc-number">3.</span> <span class="toc-text"> Test</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#drop-java-source"><span class="toc-number">4.</span> <span class="toc-text"> Drop Java Source</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#comments"><span class="toc-number">5.</span> <span class="toc-text"> Comments</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#clean-csv-line"><span class="toc-number">5.1.</span> <span class="toc-text"> Clean CSV Line</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#return-an-array-from-java-to-plsql"><span class="toc-number">5.2.</span> <span class="toc-text"> Return an array from Java to PL&#x2F;SQL</span></a></li></ol></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
       </div>
@@ -252,7 +257,7 @@ D E W = 露の世</title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">347</span>
+        <span class="count">350</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -329,12 +334,12 @@ D E W = 露の世</title>
 
   <ul id="quick">
     <li class="prev pjax">
-        <a href="/2018/08/08/oracle-join/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+        <a href="/2018/08/08/oracle-common-sql/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
     </li>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
     <li class="next pjax">
-        <a href="/2018/08/08/oracle-common-sql/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+        <a href="/2018/08/08/oracle-kill-session/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
     </li>
     <li class="percent"></li>
   </ul>
@@ -355,7 +360,7 @@ D E W = 露の世</title>
   <div class="copyright">
     
     &copy; 2010 – 
-    <span itemprop="copyrightYear">2023</span>
+    <span itemprop="copyrightYear">2024</span>
     <span class="with-love">
       <i class="ic i-sakura rotate"></i>
     </span>
