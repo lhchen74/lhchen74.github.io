@@ -1,0 +1,414 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CFira%20Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="python" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2024/03/25/python-streamlit-gradio/">
+
+
+
+  <title>
+Python Streamlit and Gradio |
+D E W = 露の世</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">Python Streamlit and Gradio
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2024-03-25 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2024-03-25T00:00:00+08:00">2024-03-25</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">D E W</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="/anime/index/徒然喜欢你.jpg"></li>
+          <li class="item" data-background-image="/anime/index/河童之夏.jpg"></li>
+          <li class="item" data-background-image="/anime/index/游戏人生.jpg"></li>
+          <li class="item" data-background-image="/anime/index/冰海战记-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/记录的地平线.jpg"></li>
+          <li class="item" data-background-image="/anime/index/哈尔的移动城堡.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2024/03/25/python-streamlit-gradio/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h2 id="streamlit"><a class="markdownIt-Anchor" href="#streamlit">#</a> Streamlit</h2>
+<blockquote>
+<p><span class="exturl" data-url="aHR0cHM6Ly9zdHJlYW1saXQuaW8v">Streamlit • A faster way to build and share data apps</span></p>
+<p>Streamlit turns data scripts into shareable web apps in minutes.<br>
+All in pure Python. No front‑end experience required.</p>
+</blockquote>
+<h3 id="timezone-converter"><a class="markdownIt-Anchor" href="#timezone-converter">#</a> Timezone Converter</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"><span class="keyword">import</span> pytz</span><br><span class="line"><span class="keyword">import</span> tzlocal</span><br><span class="line"><span class="keyword">import</span> streamlit <span class="keyword">as</span> st</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">convert_timezone</span>(<span class="params">input_datetime, from_timezone, to_timezone</span>):</span></span><br><span class="line">    <span class="keyword">if</span> input_datetime <span class="keyword">and</span> from_timezone <span class="keyword">and</span> to_timezone:        </span><br><span class="line">        from_timezone = pytz.timezone(from_timezone)</span><br><span class="line">        to_timezone = pytz.timezone(to_timezone)</span><br><span class="line"></span><br><span class="line">        output_datetime = from_timezone.localize(input_datetime).astimezone(to_timezone)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> output_datetime</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">st.title(<span class="string">&quot;Timezone Converter&quot;</span>)</span><br><span class="line">st.write(<span class="string">&quot;*Convert time from one timezone to another.*&quot;</span>)</span><br><span class="line"></span><br><span class="line">col1, col2 = st.columns(<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> col1:</span><br><span class="line">    local_timezone = tzlocal.get_localzone_name()</span><br><span class="line">    from_timezone = st.selectbox(<span class="string">&#x27;From Timezone&#x27;</span>, pytz.all_timezones, pytz.all_timezones.index(local_timezone))</span><br><span class="line">    </span><br><span class="line"><span class="keyword">with</span> col2:</span><br><span class="line">    to_timezone = st.selectbox(<span class="string">&#x27;To Timezone&#x27;</span>, pytz.all_timezones)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> col1:</span><br><span class="line">    input_date = st.date_input(<span class="string">&quot;Input Date&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> col2:</span><br><span class="line">    input_time = st.time_input(<span class="string">&quot;Input Time&quot;</span>)</span><br><span class="line"></span><br><span class="line">input_datetime = datetime.combine(input_date, input_time)</span><br><span class="line">output_datetime = convert_timezone(input_datetime, from_timezone, to_timezone)</span><br><span class="line"></span><br><span class="line">st.write(<span class="string">f&quot;The time in <span class="subst">&#123;from_timezone&#125;</span> is <span class="subst">&#123;input_datetime.strftime(<span class="string">&#x27;%Y-%m-%d %H:%M:%S %Z&#x27;</span>)&#125;</span> and the time in <span class="subst">&#123;to_timezone&#125;</span> is **<span class="subst">&#123;output_datetime.strftime(<span class="string">&#x27;%Y-%m-%d %H:%M:%S %Z&#x27;</span>)&#125;</span>**.&quot;</span>)</span><br></pre></td></tr></table></figure>
+<img data-src="/2024/03/25/python-streamlit-gradio/1711363340259.png" class="">
+<h3 id="url-shorten"><a class="markdownIt-Anchor" href="#url-shorten">#</a> URL Shorten</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> streamlit <span class="keyword">as</span> st</span><br><span class="line"><span class="keyword">import</span> pyshorteners</span><br><span class="line"></span><br><span class="line">external_style = <span class="built_in">open</span>(<span class="string">&quot;./shorten_url_style.css&quot;</span>).read()</span><br><span class="line">st.markdown(<span class="string">f&quot;&lt;style&gt;<span class="subst">&#123;external_style&#125;</span>&lt;/style&gt;&quot;</span>, unsafe_allow_html=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">st.markdown(<span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">&lt;style&gt;</span></span><br><span class="line"><span class="string">    .title &#123;</span></span><br><span class="line"><span class="string">        background: linear-gradient(to bottom, orangered, orange);</span></span><br><span class="line"><span class="string">        color: white;</span></span><br><span class="line"><span class="string">        border-radius: 10px;</span></span><br><span class="line"><span class="string">        margin-bottom: 20px;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">&lt;/style&gt;</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span>, unsafe_allow_html=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">st.markdown(<span class="string">&quot;&lt;h1 style=&#x27;text-align:center&#x27; class=&#x27;title&#x27;&gt;URL SHORTENER&lt;/h1&gt;&quot;</span>, unsafe_allow_html=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> st.form(<span class="string">&quot;Shorten Form&quot;</span>):</span><br><span class="line">    original_url = st.text_input(<span class="string">&#x27;Enter the URL to shorten&#x27;</span>)</span><br><span class="line">    shortened = st.form_submit_button(<span class="string">&quot;Shorten&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">shorten_url</span>(<span class="params">url</span>):</span></span><br><span class="line">    s = pyshorteners.Shortener()</span><br><span class="line">    <span class="keyword">return</span> s.tinyurl.short(url)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> shortened <span class="keyword">and</span> original_url:</span><br><span class="line">    shortened_url = shorten_url(original_url)</span><br><span class="line">    st.success(<span class="string">&#x27;Shortened URL: &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(shortened_url))</span><br></pre></td></tr></table></figure>
+<p>shorten_url_style.css</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Hidden Menu */</span></span><br><span class="line"><span class="selector-tag">div</span><span class="selector-attr">[data-testid=<span class="string">&quot;stToolbar&quot;</span>]</span> &#123;</span><br><span class="line">	<span class="attribute">visibility</span>: hidden;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Hidden Footer */</span></span><br><span class="line"><span class="selector-tag">footer</span> &#123;</span><br><span class="line">	<span class="attribute">visibility</span>: hidden;    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="selector-tag">div</span><span class="selector-attr">[data-testid=<span class="string">&quot;stForm&quot;</span>]</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">rgba</span>(<span class="number">255</span>, <span class="number">165</span>, <span class="number">0</span>, <span class="number">0.8</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<img data-src="/2024/03/25/python-streamlit-gradio/1711363772394.png" class="">
+<h3 id="image-editor"><a class="markdownIt-Anchor" href="#image-editor">#</a> Image Editor</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> streamlit <span class="keyword">as</span> st</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image, ImageFilter</span><br><span class="line"></span><br><span class="line">st.markdown(<span class="string">&quot;&lt;h1 style=&#x27;text-align:center&#x27;&gt;Image Editor&lt;/h1&gt;&quot;</span>, unsafe_allow_html=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">uploaded_image = st.file_uploader(<span class="string">&quot;Choose an image&quot;</span>, <span class="built_in">type</span>=[<span class="string">&quot;jpg&quot;</span>, <span class="string">&quot;png&quot;</span>])</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> uploaded_image:</span><br><span class="line">    image = Image.<span class="built_in">open</span>(uploaded_image)</span><br><span class="line"></span><br><span class="line">    original_tab, edited_tab = st.tabs([<span class="string">&quot;Original Image&quot;</span>, <span class="string">&quot;Edited Image&quot;</span>])</span><br><span class="line"></span><br><span class="line">    <span class="keyword">with</span> original_tab:</span><br><span class="line">        st.image(image, caption=<span class="string">&#x27;Original Image&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    st.sidebar.markdown(<span class="string">&quot;&lt;h2 style=&#x27;text-align:center&#x27;&gt;Resize&lt;/h2&gt;&quot;</span>, unsafe_allow_html=<span class="literal">True</span>)</span><br><span class="line">    col1, col2 = st.sidebar.columns(<span class="number">2</span>)</span><br><span class="line">    <span class="keyword">with</span> col1:</span><br><span class="line">        width = st.sidebar.number_input(<span class="string">&quot;Width&quot;</span>, value=image.width)</span><br><span class="line">    <span class="keyword">with</span> col2:   </span><br><span class="line">        height = st.sidebar.number_input(<span class="string">&quot;Height&quot;</span>, value=image.height)</span><br><span class="line">        </span><br><span class="line">    st.sidebar.markdown(<span class="string">&quot;&lt;h2 style=&#x27;text-align:center&#x27;&gt;Rotate&lt;/h2&gt;&quot;</span>, unsafe_allow_html=<span class="literal">True</span>)</span><br><span class="line">    rotation_angle = st.sidebar.slider(<span class="string">&#x27;Rotate&#x27;</span>, -<span class="number">180</span>, <span class="number">180</span>, <span class="number">0</span>)</span><br><span class="line">        </span><br><span class="line">    st.sidebar.markdown(<span class="string">&quot;&lt;h2 style=&#x27;text-align:center&#x27;&gt;Filter&lt;/h2&gt;&quot;</span>, unsafe_allow_html=<span class="literal">True</span>)</span><br><span class="line">    filter_type = st.sidebar.selectbox(<span class="string">&#x27;Filter&#x27;</span>, (<span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;BLUR&#x27;</span>, <span class="string">&#x27;CONTOUR&#x27;</span>, <span class="string">&#x27;DETAIL&#x27;</span>, <span class="string">&#x27;SHARPEN&#x27;</span>), index=<span class="number">0</span>)</span><br><span class="line">    </span><br><span class="line">    image = image.resize((<span class="built_in">int</span>(width), <span class="built_in">int</span>(height))).rotate(rotation_angle)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> filter_type != <span class="string">&#x27;&#x27;</span>:</span><br><span class="line">        image = image.<span class="built_in">filter</span>(<span class="built_in">getattr</span>(ImageFilter, filter_type))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">with</span> edited_tab: </span><br><span class="line">        st.image(image, caption=<span class="string">&#x27;Edited Image&#x27;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<img data-src="/2024/03/25/python-streamlit-gradio/1711366689212.png" class="">
+<h3 id="web-scraper"><a class="markdownIt-Anchor" href="#web-scraper">#</a> Web Scraper</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> streamlit <span class="keyword">as</span> st</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> webbrowser</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line">st.set_page_config(</span><br><span class="line">    page_title=<span class="string">&quot;Web Scraper&quot;</span>,</span><br><span class="line">    page_icon=<span class="string">&quot;🧊&quot;</span>,</span><br><span class="line">    layout=<span class="string">&quot;wide&quot;</span></span><br><span class="line">    <span class="comment"># initial_sidebar_state=&quot;expanded&quot;,</span></span><br><span class="line">    <span class="comment"># menu_items=&#123;</span></span><br><span class="line">    <span class="comment">#     &#x27;Get Help&#x27;: &#x27;https://www.extremelycoolapp.com/help&#x27;,</span></span><br><span class="line">    <span class="comment">#     &#x27;Report a bug&#x27;: &quot;https://www.extremelycoolapp.com/bug&quot;,</span></span><br><span class="line">    <span class="comment">#     &#x27;About&#x27;: &quot;# This is a header. This is an *extremely* cool app!&quot;</span></span><br><span class="line">    <span class="comment"># &#125;</span></span><br><span class="line">)</span><br><span class="line">st.markdown(<span class="string">&quot;&lt;h1 style=&#x27;text-align:center&#x27;&gt;Web Scraper&lt;/h1&gt;&quot;</span>, unsafe_allow_html=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> st.form(<span class="string">&quot;Search&quot;</span>):</span><br><span class="line">    keyword = st.text_input(<span class="string">&quot;Enter keyword&quot;</span>)</span><br><span class="line">    search = st.form_submit_button(<span class="string">&quot;Search&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># !IMPORTANT</span></span><br><span class="line">placeholder = st.empty()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> keyword:</span><br><span class="line">    page = requests.get(<span class="string">f&quot;https://unsplash.com/s/photos/<span class="subst">&#123;keyword&#125;</span>&quot;</span>)</span><br><span class="line">    soup = BeautifulSoup(page.content, <span class="string">&quot;lxml&quot;</span>)</span><br><span class="line">    rows = soup.find_all(<span class="string">&quot;div&quot;</span>, class_= <span class="string">&quot;ripi6&quot;</span>)</span><br><span class="line">    </span><br><span class="line">    col1, col2 = placeholder.columns(<span class="number">2</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> index, row <span class="keyword">in</span> <span class="built_in">enumerate</span>(rows):</span><br><span class="line">        figures = row.find_all(<span class="string">&quot;figure&quot;</span>)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(figures)):</span><br><span class="line">            img = figures[i].find(<span class="string">&quot;img&quot;</span>, class_=<span class="string">&quot;tB6UZ&quot;</span>)[<span class="string">&quot;srcset&quot;</span>].split(<span class="string">&quot;?&quot;</span>)[<span class="number">0</span>]</span><br><span class="line">            anchor_href = figures[i].find(<span class="string">&quot;a&quot;</span>, class_=<span class="string">&quot;rEAWd&quot;</span>)[<span class="string">&quot;href&quot;</span>]</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> i % <span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">                col1.image(img)</span><br><span class="line">                <span class="comment"># !IMPORTANT key=str(index) + str(i)</span></span><br><span class="line">                <span class="comment"># When a widget is created, it&#x27;s assigned an internal key based on its structure. </span></span><br><span class="line">                <span class="comment"># Multiple widgets with an identical structure will result in the same internal key, which causes this error.</span></span><br><span class="line">                btn = col1.button(<span class="string">&quot;Download&quot;</span>, key=<span class="built_in">str</span>(index) + <span class="built_in">str</span>(i))</span><br><span class="line">                <span class="keyword">if</span> btn:</span><br><span class="line">                    webbrowser.open_new_tab(<span class="string">f&quot;https://unsplash.com<span class="subst">&#123;anchor_href&#125;</span>&quot;</span>)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                col2.image(img)</span><br><span class="line">                btn = col2.button(<span class="string">&quot;Download&quot;</span>, key=<span class="built_in">str</span>(index) + <span class="built_in">str</span>(i))</span><br><span class="line">                <span class="keyword">if</span> btn:</span><br><span class="line">                    webbrowser.open_new_tab(<span class="string">f&quot;https://unsplash.com<span class="subst">&#123;anchor_href&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
+<img data-src="/2024/03/25/python-streamlit-gradio/1711366988677.png" class="">
+<h3 id="upload-file-data-to-oracle"><a class="markdownIt-Anchor" href="#upload-file-data-to-oracle">#</a> Upload File Data to Oracle</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> streamlit <span class="keyword">as</span> st</span><br><span class="line"><span class="keyword">from</span> sqlalchemy <span class="keyword">import</span> create_engine</span><br><span class="line"><span class="keyword">from</span> sqlalchemy.dialects.oracle <span class="keyword">import</span> VARCHAR2, NUMBER</span><br><span class="line"></span><br><span class="line">st.markdown(<span class="string">&quot;&lt;h4 style=&#x27;text-align:center&#x27;&gt;Upload CSV/XML/Excel to Oracle&lt;/h4&gt;&quot;</span>, unsafe_allow_html=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> st.sidebar:</span><br><span class="line">    env = st.selectbox(label=<span class="string">&#x27;Select Oracle Enviroment&#x27;</span>, options=(<span class="string">&#x27;DEV&#x27;</span>, <span class="string">&#x27;TEST&#x27;</span>, <span class="string">&#x27;PROD&#x27;</span>))</span><br><span class="line"></span><br><span class="line">    tablename = st.text_input(label=<span class="string">&#x27;Table Name&#x27;</span>, value=<span class="string">&#x27;edi_test&#x27;</span>)</span><br><span class="line">    </span><br><span class="line">    col1, col2 = st.columns(<span class="number">2</span>)</span><br><span class="line">    <span class="keyword">with</span> col1:</span><br><span class="line">        csv_separator = st.selectbox(label=<span class="string">&#x27;CSV Separator&#x27;</span>, options=(<span class="string">&#x27;,&#x27;</span>, <span class="string">&#x27;|&#x27;</span>, <span class="string">&#x27;:&#x27;</span>))</span><br><span class="line">    <span class="keyword">with</span> col2:</span><br><span class="line">        xpath = st.text_input(label=<span class="string">&#x27;XPath&#x27;</span>, value=<span class="string">&#x27;.//record&#x27;</span>)</span><br><span class="line"></span><br><span class="line">uploaded_files = st.file_uploader(<span class="string">&#x27;&#x27;</span>, accept_multiple_files=<span class="literal">True</span>, <span class="built_in">type</span>=[<span class="string">&quot;csv&quot;</span>, <span class="string">&quot;xml&quot;</span>, <span class="string">&quot;xls&quot;</span>, <span class="string">&quot;xlsx&quot;</span>])</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> uploaded_files:</span><br><span class="line">    uploaded = st.button(<span class="string">&#x27;Upload Data to Oracle&#x27;</span>)</span><br><span class="line">    <span class="comment"># button default style</span></span><br><span class="line">    <span class="comment"># &lt;div class=&#x27;row-widget stButton&#x27;&gt;</span></span><br><span class="line">    <span class="comment">#   &lt;button kind=&#x27;primary&#x27; class=&#x27;css-1cpxqw2 edgvbvh1&#x27;&gt;Upload&lt;/button&gt;</span></span><br><span class="line">    <span class="comment"># &lt;/div&gt;</span></span><br><span class="line">    st.markdown(<span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    &lt;style&gt;</span></span><br><span class="line"><span class="string">    div.stButton button:first-child &#123;</span></span><br><span class="line"><span class="string">        background-color: rgb(204, 49, 49);</span></span><br><span class="line"><span class="string">        width: 100%;</span></span><br><span class="line"><span class="string">        color: #fff;</span></span><br><span class="line"><span class="string">        padding: 8px;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">    &lt;/style&gt;&#x27;&#x27;&#x27;</span>, unsafe_allow_html=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">    placeholder = st.empty()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> uploaded:</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="keyword">if</span> env <span class="keyword">in</span> (<span class="string">&#x27;DEV&#x27;</span>, <span class="string">&#x27;TEST&#x27;</span>):</span><br><span class="line">                conn_string = <span class="string">f&#x27;oracle+cx_oracle://username:password@<span class="subst">&#123;env&#125;</span>&#x27;</span></span><br><span class="line">            <span class="keyword">elif</span> env <span class="keyword">in</span> (<span class="string">&#x27;PROD&#x27;</span>):</span><br><span class="line">                conn_string = <span class="string">f&#x27;oracle+cx_oracle://username:password@<span class="subst">&#123;env&#125;</span>&#x27;</span></span><br><span class="line">            engine = create_engine(conn_string, echo=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> uploaded_file <span class="keyword">in</span> uploaded_files:</span><br><span class="line">                filename = uploaded_file.name</span><br><span class="line">                basename, extension = os.path.splitext(filename)</span><br><span class="line">                </span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">not</span> tablename:</span><br><span class="line">                    tablename = basename.lower()</span><br><span class="line"></span><br><span class="line">                placeholder.write(<span class="string">f&#x27;💜 Upload `<span class="subst">&#123;filename&#125;</span>`&#x27;</span>)</span><br><span class="line">                start_time = time.time()</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> extension <span class="keyword">in</span> (<span class="string">&#x27;.xls&#x27;</span>, <span class="string">&#x27;.xlsx&#x27;</span>):</span><br><span class="line">                    df = pd.read_excel(uploaded_file, keep_default_na=<span class="literal">False</span>, engine=<span class="string">&#x27;openpyxl&#x27;</span>)</span><br><span class="line">                <span class="keyword">elif</span> extension <span class="keyword">in</span> (<span class="string">&#x27;.csv&#x27;</span>, <span class="string">&#x27;.txt&#x27;</span>):</span><br><span class="line">                    df = pd.read_csv(uploaded_file, keep_default_na=<span class="literal">False</span>, sep=csv_separator)</span><br><span class="line">                <span class="keyword">elif</span> extension <span class="keyword">in</span> (<span class="string">&#x27;.xml&#x27;</span>):</span><br><span class="line">                    df = pd.read_xml(uploaded_file, xpath=xpath)</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">not</span> df.empty:</span><br><span class="line">                    st.write(df.head())</span><br><span class="line"></span><br><span class="line">                    <span class="keyword">with</span> st.spinner(<span class="string">&quot;Please wait...&quot;</span>):</span><br><span class="line">                        <span class="comment"># Oracle Database prior to version 12.2 limit identifier names, such as table names, column names, and primary key names, to 30 characters. </span></span><br><span class="line">                        df.columns = df.columns.<span class="built_in">map</span>(<span class="keyword">lambda</span> name: name[:<span class="number">30</span>])</span><br><span class="line">                        dtype = &#123;c: VARCHAR2(df[c].<span class="built_in">str</span>.<span class="built_in">len</span>().<span class="built_in">max</span>()) <span class="keyword">for</span> c <span class="keyword">in</span> df.columns[df.dtypes == <span class="string">&#x27;object&#x27;</span>].tolist()&#125;</span><br><span class="line">                        dtype.update(&#123;c: NUMBER <span class="keyword">for</span> c <span class="keyword">in</span> df.columns[df.dtypes == <span class="string">&#x27;float64&#x27;</span>].tolist()&#125;)</span><br><span class="line">                        df.to_sql(tablename, con=engine, index=<span class="literal">False</span>, if_exists=<span class="string">&#x27;append&#x27;</span>, dtype=dtype, chunksize=<span class="number">10</span>**<span class="number">4</span>)</span><br><span class="line">                    </span><br><span class="line">                    placeholder.write(<span class="string">f&#x27;❤️ Upload `<span class="subst">&#123;filename&#125;</span>` cost time: `<span class="subst">&#123;time.time() - start_time&#125;</span>`&#x27;</span>)</span><br><span class="line">                    st.balloons()</span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            placeholder.error(<span class="string">f&#x27;💔 <span class="subst">&#123;e&#125;</span>&#x27;</span>)</span><br><span class="line">            <span class="keyword">raise</span> e</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<img data-src="/2024/03/25/python-streamlit-gradio/1711424043657.png" class="">
+<h2 id="gradio"><a class="markdownIt-Anchor" href="#gradio">#</a> Gradio</h2>
+<blockquote>
+<p><span class="exturl" data-url="aHR0cHM6Ly93d3cuZ3JhZGlvLmFwcC8=">Gradio Build &amp; Share Delightful Machine Learning Apps</span></p>
+<p>Gradio is the fastest way to demo your machine learning model with a friendly web interface so that anyone can use it, anywhere!</p>
+</blockquote>
+<h3 id="timezone-converter-use-interface"><a class="markdownIt-Anchor" href="#timezone-converter-use-interface">#</a> Timezone Converter use Interface</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pytz</span><br><span class="line"><span class="keyword">import</span> tzlocal</span><br><span class="line"><span class="keyword">import</span> gradio <span class="keyword">as</span> gr</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">all_timezones = pytz.all_timezones</span><br><span class="line">local_timezone = tzlocal.get_localzone_name()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">convert_timezone</span>(<span class="params">time_str, from_tz, to_tz</span>):</span></span><br><span class="line">    <span class="keyword">if</span> time_str <span class="keyword">and</span> from_tz <span class="keyword">and</span> to_tz:</span><br><span class="line">        input_time = datetime.strptime(time_str, <span class="string">&quot;%Y-%m-%d %H:%M:%S&quot;</span>)</span><br><span class="line">        </span><br><span class="line">        from_timezone = pytz.timezone(from_tz)</span><br><span class="line">        to_timezone = pytz.timezone(to_tz)</span><br><span class="line">        </span><br><span class="line">        converted_time = from_timezone.localize(input_time).astimezone(to_timezone)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> converted_time.strftime(<span class="string">&quot;%Y-%m-%d %H:%M:%S&quot;</span>)</span><br><span class="line"></span><br><span class="line">iface = gr.Interface(fn=convert_timezone, </span><br><span class="line">                     inputs=[gr.Textbox(label=<span class="string">&quot;Input Time (YYYY-MM-DD HH:MM:SS)&quot;</span>),</span><br><span class="line">                             gr.Dropdown(choices=all_timezones, label=<span class="string">&quot;From Timezone&quot;</span>),</span><br><span class="line">                             gr.Dropdown(choices=all_timezones, label=<span class="string">&quot;To Timezone&quot;</span>, value=local_timezone)], </span><br><span class="line">                     outputs=gr.Textbox(label=<span class="string">&quot;Output Time&quot;</span>),</span><br><span class="line">                     examples=[[<span class="string">&quot;2024-03-21 14:00:00&quot;</span>, <span class="string">&quot;EST&quot;</span>, <span class="string">&quot;Asia/Shanghai&quot;</span>],</span><br><span class="line">                               [<span class="string">&quot;2024-03-21 14:00:00&quot;</span>, <span class="string">&quot;Asia/Shanghai&quot;</span>, <span class="string">&quot;EST&quot;</span>]],</span><br><span class="line">                     title=<span class="string">&quot;Timezone Converter&quot;</span>,</span><br><span class="line">                     description=<span class="string">&quot;Convert time from one timezone to another&quot;</span>,</span><br><span class="line">                     allow_flagging=<span class="string">&quot;never&quot;</span>,</span><br><span class="line">                     live=<span class="literal">True</span>,</span><br><span class="line">                     theme=gr.themes.Glass()</span><br><span class="line">                    )</span><br><span class="line"></span><br><span class="line">iface.launch()</span><br></pre></td></tr></table></figure>
+<img data-src="/2024/03/25/python-streamlit-gradio/1711362103211.png" class="">
+<h3 id="timezone-converter-use-blocks"><a class="markdownIt-Anchor" href="#timezone-converter-use-blocks">#</a> Timezone Converter use Blocks</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"><span class="keyword">import</span> pytz</span><br><span class="line"><span class="keyword">import</span> tzlocal</span><br><span class="line"><span class="keyword">import</span> gradio <span class="keyword">as</span> gr</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">all_timezones = pytz.all_timezones</span><br><span class="line">local_timezone = tzlocal.get_localzone_name()</span><br><span class="line">now = datetime.strftime(datetime.now(), <span class="string">&quot;%Y-%m-%d %H:%M:%S&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">convert_timezone</span>(<span class="params">time_str, from_tz, to_tz</span>):</span></span><br><span class="line">    input_time = datetime.strptime(time_str, <span class="string">&quot;%Y-%m-%d %H:%M:%S&quot;</span>)</span><br><span class="line">    </span><br><span class="line">    from_timezone = pytz.timezone(from_tz)</span><br><span class="line">    to_timezone = pytz.timezone(to_tz)</span><br><span class="line">    </span><br><span class="line">    converted_time = from_timezone.localize(input_time).astimezone(to_timezone)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> converted_time.strftime(<span class="string">&quot;%Y-%m-%d %H:%M:%S&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># with gr.Blocks(theme=gr.themes.Glass()) as interface:</span></span><br><span class="line"><span class="keyword">with</span> gr.Blocks() <span class="keyword">as</span> interface:</span><br><span class="line">    gr.Markdown(<span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">                ## Timezone Converter</span></span><br><span class="line"><span class="string">                *Convert time from one timezone to another.*</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">with</span> gr.Row():</span><br><span class="line">        input_time = gr.Textbox(label=<span class="string">&quot;Input Time (YYYY-MM-DD HH:MM:SS)&quot;</span>, value=now)</span><br><span class="line">        output_time = gr.Textbox(label=<span class="string">&quot;Output Time&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">with</span> gr.Row():</span><br><span class="line">        from_timezone = gr.Dropdown(choices=all_timezones, label=<span class="string">&quot;From Timezone&quot;</span>) </span><br><span class="line">        to_timezone = gr.Dropdown(choices=all_timezones, label=<span class="string">&quot;To Timezone&quot;</span>, value=local_timezone)</span><br><span class="line">   </span><br><span class="line">    <span class="comment"># convert_btn = gr.Button(&quot;Convert&quot;, variant=&quot;primary&quot;)</span></span><br><span class="line">    <span class="comment"># convert_btn.click(fn=convert_timezone, inputs = [input_time, from_timezone, to_timezone], outputs=[output_time])</span></span><br><span class="line">    [item.change(fn=convert_timezone, inputs=[input_time, from_timezone, to_timezone], outputs=[output_time]) <span class="keyword">for</span> item <span class="keyword">in</span> [input_time, from_timezone, to_timezone]]</span><br><span class="line"></span><br><span class="line">    gr.Examples([[<span class="string">&quot;2024-03-21 14:00:00&quot;</span>, <span class="string">&quot;EST&quot;</span>, <span class="string">&quot;Asia/Shanghai&quot;</span>],</span><br><span class="line">                 [<span class="string">&quot;2024-03-21 14:00:00&quot;</span>, <span class="string">&quot;Asia/Shanghai&quot;</span>, <span class="string">&quot;EST&quot;</span>]], [input_time, from_timezone, to_timezone])</span><br><span class="line"></span><br><span class="line">interface.launch()</span><br></pre></td></tr></table></figure>
+<img data-src="/2024/03/25/python-streamlit-gradio/1711362362081.png" class="">
+<h3 id="common-layout"><a class="markdownIt-Anchor" href="#common-layout">#</a> Common Layout</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gradio <span class="keyword">as</span> gr</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> gr.Blocks(css=<span class="string">&quot;style.css&quot;</span>) <span class="keyword">as</span> inferface:</span><br><span class="line">    <span class="keyword">with</span> gr.Tab(label=<span class="string">&quot;txt.img&quot;</span>):</span><br><span class="line">        <span class="keyword">with</span> gr.Row():</span><br><span class="line">            <span class="keyword">with</span> gr.Column(scale=<span class="number">15</span>):</span><br><span class="line">                txt1 = gr.Textbox(lines=<span class="number">2</span>, label=<span class="string">&quot;&quot;</span>)</span><br><span class="line">                txt2 = gr.Textbox(lines=<span class="number">2</span>, label=<span class="string">&quot;&quot;</span>)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">with</span> gr.Column(scale=<span class="number">1</span>, min_width=<span class="number">1</span>):</span><br><span class="line">                button1 = gr.Button(value=<span class="string">&quot;1&quot;</span>)</span><br><span class="line">                button2 = gr.Button(value=<span class="string">&quot;2&quot;</span>)</span><br><span class="line">                button3 = gr.Button(value=<span class="string">&quot;3&quot;</span>)</span><br><span class="line">                button4 = gr.Button(value=<span class="string">&quot;4&quot;</span>)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">with</span> gr.Column(scale=<span class="number">6</span>):</span><br><span class="line">                generate_button = gr.Button(value=<span class="string">&quot;Generator&quot;</span>, variant=<span class="string">&quot;primary&quot;</span>, scale=<span class="number">1</span>)</span><br><span class="line">                <span class="keyword">with</span> gr.Row():</span><br><span class="line">                    dropdown1 = gr.Dropdown([<span class="string">&quot;1&quot;</span>, <span class="string">&quot;2&quot;</span>, <span class="string">&quot;3&quot;</span>, <span class="string">&quot;4&quot;</span>], label=<span class="string">&quot;Style1&quot;</span>, min_width=<span class="number">1</span>)</span><br><span class="line">                    dropdown2 = gr.Dropdown([<span class="string">&quot;1&quot;</span>, <span class="string">&quot;2&quot;</span>, <span class="string">&quot;3&quot;</span>, <span class="string">&quot;4&quot;</span>], label=<span class="string">&quot;Style2&quot;</span>, min_width=<span class="number">1</span>)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">with</span> gr.Row():</span><br><span class="line">            <span class="keyword">with</span> gr.Column():</span><br><span class="line">                <span class="keyword">with</span> gr.Row():</span><br><span class="line">                    dropdown3 = gr.Dropdown([<span class="string">&quot;1&quot;</span>, <span class="string">&quot;2&quot;</span>, <span class="string">&quot;3&quot;</span>, <span class="string">&quot;4&quot;</span>], label=<span class="string">&quot;Sampling method&quot;</span>)</span><br><span class="line">                    slider1 = gr.Slider(minimum=<span class="number">0</span>, maximum=<span class="number">100</span>, label=<span class="string">&quot;Sampling step&quot;</span>)</span><br><span class="line">                checkboxgroup = gr.CheckboxGroup([<span class="string">&quot;1&quot;</span>, <span class="string">&quot;2&quot;</span>, <span class="string">&quot;3&quot;</span>, <span class="string">&quot;4&quot;</span>], label=<span class="string">&quot;&quot;</span>)</span><br><span class="line">                <span class="keyword">with</span> gr.Row():</span><br><span class="line">                    slider2 = gr.Slider(minimum=<span class="number">0</span>, maximum=<span class="number">100</span>, label=<span class="string">&quot;Width&quot;</span>)</span><br><span class="line">                    slider3 = gr.Slider(minimum=<span class="number">0</span>, maximum=<span class="number">100</span>, label=<span class="string">&quot;Batch count&quot;</span>)</span><br><span class="line">                <span class="keyword">with</span> gr.Row():</span><br><span class="line">                    slider4 = gr.Slider(minimum=<span class="number">0</span>, maximum=<span class="number">100</span>, label=<span class="string">&quot;Height&quot;</span>)</span><br><span class="line">                    slider5 = gr.Slider(minimum=<span class="number">0</span>, maximum=<span class="number">100</span>, label=<span class="string">&quot;Batch size&quot;</span>)</span><br><span class="line">                slider6 = gr.Slider(minimum=<span class="number">0</span>, maximum=<span class="number">100</span>, label=<span class="string">&quot;CFG scale&quot;</span>)</span><br><span class="line">                <span class="keyword">with</span> gr.Row(elem_classes=<span class="string">&quot;row-group&quot;</span>):</span><br><span class="line">                    number1 = gr.Number(label=<span class="string">&quot;Seed&quot;</span>, scale=<span class="number">5</span>)</span><br><span class="line">                    button5 = gr.Button(value=<span class="string">&quot;Randomize&quot;</span>, min_width=<span class="number">1</span>, elem_classes=<span class="string">&quot;btn&quot;</span>)</span><br><span class="line">                    button6 = gr.Button(value=<span class="string">&quot;Reset&quot;</span>, min_width=<span class="number">1</span>, elem_classes=<span class="string">&quot;btn&quot;</span>)</span><br><span class="line">                    checkbox1 = gr.Checkbox(label=<span class="string">&quot;Extra&quot;</span>, scale=<span class="number">1</span>)</span><br><span class="line">                dropdown4 = gr.Dropdown([<span class="string">&quot;1&quot;</span>, <span class="string">&quot;2&quot;</span>, <span class="string">&quot;3&quot;</span>, <span class="string">&quot;4&quot;</span>], label=<span class="string">&quot;Script&quot;</span>)</span><br><span class="line">            <span class="keyword">with</span> gr.Column():</span><br><span class="line">                <span class="keyword">with</span> gr.Accordion():</span><br><span class="line">                    gallery = gr.Gallery([</span><br><span class="line">                        <span class="string">&quot;https://picsum.photos/300?id=1&quot;</span>,</span><br><span class="line">                        <span class="string">&quot;https://picsum.photos/300?id=2&quot;</span>,</span><br><span class="line">                        <span class="string">&quot;https://picsum.photos/300?id=3&quot;</span>,</span><br><span class="line">                        <span class="string">&quot;https://picsum.photos/300?id=4&quot;</span>,</span><br><span class="line">                        <span class="string">&quot;https://picsum.photos/300?id=5&quot;</span></span><br><span class="line">                    ], columns=<span class="number">3</span>)</span><br><span class="line">                <span class="keyword">with</span> gr.Row():</span><br><span class="line">                    button7 = gr.Button(value=<span class="string">&quot;Save&quot;</span>, min_width=<span class="number">1</span>)</span><br><span class="line">                    button8 = gr.Button(value=<span class="string">&quot;Zip&quot;</span>, min_width=<span class="number">1</span>)</span><br><span class="line">                    button9 = gr.Button(value=<span class="string">&quot;Save&quot;</span>, min_width=<span class="number">1</span>)</span><br><span class="line">                    button10 = gr.Button(value=<span class="string">&quot;Zip&quot;</span>, min_width=<span class="number">1</span>)</span><br><span class="line">                    <span class="keyword">with</span> gr.Group():</span><br><span class="line">                        button11 = gr.Button(value=<span class="string">&quot;Save to image&quot;</span>, min_width=<span class="number">1</span>)</span><br><span class="line">                        button12 = gr.Button(value=<span class="string">&quot;Save to extras&quot;</span>, min_width=<span class="number">1</span>)</span><br><span class="line">                txt3 = gr.Text(lines=<span class="number">4</span>, label=<span class="string">&quot;&quot;</span>)</span><br><span class="line">               </span><br><span class="line">    <span class="keyword">with</span> gr.Tab(label=<span class="string">&quot;img.img&quot;</span>):</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">inferface.launch()</span><br></pre></td></tr></table></figure>
+<p>style.css</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">gradio-app &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(to bottom right, skyblue, dodgerblue) <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.row-group</span> &#123;</span><br><span class="line">  <span class="attribute">align-items</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.btn</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(to bottom right, dodgerblue, skyblue);</span><br><span class="line">  <span class="attribute">border</span>: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<img data-src="/2024/03/25/python-streamlit-gradio/gradio_layout.png" class="">
+<h3 id="gradio-in-notebook"><a class="markdownIt-Anchor" href="#gradio-in-notebook">#</a> Gradio in Notebook</h3>
+<p>Gradio can used in Python Notebook dirctlty.</p>
+
+      <div class="tags">
+          <a href="/tags/python/" rel="tag"><i class="ic i-tag"></i> python</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2024-03-26 14:11:35" itemprop="dateModified" datetime="2024-03-26T14:11:35+08:00">2024-03-26</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2024/02/19/oracle-utlfile/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;八犬传.jpg" title="Oracle PL&#x2F;SQL UTL_FILE">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Oracle PL/SQL UTL_FILE</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#streamlit"><span class="toc-number">1.</span> <span class="toc-text"> Streamlit</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#timezone-converter"><span class="toc-number">1.1.</span> <span class="toc-text"> Timezone Converter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#url-shorten"><span class="toc-number">1.2.</span> <span class="toc-text"> URL Shorten</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#image-editor"><span class="toc-number">1.3.</span> <span class="toc-text"> Image Editor</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#web-scraper"><span class="toc-number">1.4.</span> <span class="toc-text"> Web Scraper</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#upload-file-data-to-oracle"><span class="toc-number">1.5.</span> <span class="toc-text"> Upload File Data to Oracle</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gradio"><span class="toc-number">2.</span> <span class="toc-text"> Gradio</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#timezone-converter-use-interface"><span class="toc-number">2.1.</span> <span class="toc-text"> Timezone Converter use Interface</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#timezone-converter-use-blocks"><span class="toc-number">2.2.</span> <span class="toc-text"> Timezone Converter use Blocks</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#common-layout"><span class="toc-number">2.3.</span> <span class="toc-text"> Common Layout</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gradio-in-notebook"><span class="toc-number">2.4.</span> <span class="toc-text"> Gradio in Notebook</span></a></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">352</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">50</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
+      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ D E W</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2024/03/25/python-streamlit-gradio/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

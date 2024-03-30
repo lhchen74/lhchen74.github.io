@@ -102,12 +102,12 @@ D E W = 露の世</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="/anime/index/三月的狮子.jpg"></li>
-          <li class="item" data-background-image="/anime/index/伪恋.jpg"></li>
-          <li class="item" data-background-image="/anime/index/东京喰种.jpg"></li>
-          <li class="item" data-background-image="/anime/index/蜂蜜与四叶草.jpg"></li>
-          <li class="item" data-background-image="/anime/index/此花亭奇谭.jpg"></li>
-          <li class="item" data-background-image="/anime/index/只有我不存在的城市.jpg"></li>
+          <li class="item" data-background-image="/anime/index/绝园的暴风雨.jpg"></li>
+          <li class="item" data-background-image="/anime/index/大剑.jpg"></li>
+          <li class="item" data-background-image="/anime/index/碧蓝之海.jpg"></li>
+          <li class="item" data-background-image="/anime/index/文豪野犬-1.jpg"></li>
+          <li class="item" data-background-image="/anime/index/动物狂想曲-3.jpg"></li>
+          <li class="item" data-background-image="/anime/index/龙与虎.jpg"></li>
         </ul>
       </div>
     </header>
@@ -151,16 +151,745 @@ D E W = 露の世</title>
   <div class="body md" itemprop="articleBody">
     
 
-    <h3 id="创建-temp-table"><a class="markdownIt-Anchor" href="#创建-temp-table">#</a> 创建 temp table</h3>
+    <h2 id="constraint"><a class="markdownIt-Anchor" href="#constraint">#</a> Constraint</h2>
+<ol>
+<li><strong>sys.key_constraints</strong>: 这个视图包含了主键约束和唯一键约束的信息。</li>
+<li><strong>sys.check_constraints</strong>: 这个视图包含了检查约束的信息。</li>
+<li><strong>sys.default_constraints</strong>: 这个视图包含了默认约束的信息。</li>
+<li><strong>sys.foreign_keys</strong>: 这个视图包含了外键约束的信息。</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查询表的主键约束信息</span></span><br><span class="line"><span class="keyword">SELECT</span> kc.name <span class="keyword">AS</span> constraint_name,</span><br><span class="line">       col.name <span class="keyword">AS</span> column_name</span><br><span class="line"><span class="keyword">FROM</span> sys.key_constraints kc</span><br><span class="line"><span class="keyword">JOIN</span> sys.index_columns ic <span class="keyword">ON</span> kc.parent_object_id <span class="operator">=</span> ic.object_id <span class="keyword">AND</span> kc.unique_index_id <span class="operator">=</span> ic.index_id</span><br><span class="line"><span class="keyword">JOIN</span> sys.columns col <span class="keyword">ON</span> ic.object_id <span class="operator">=</span> col.object_id <span class="keyword">AND</span> ic.column_id <span class="operator">=</span> col.column_id</span><br><span class="line"><span class="keyword">WHERE</span> kc.parent_object_id <span class="operator">=</span> OBJECT_ID(<span class="string">&#x27;your_table_name&#x27;</span>) <span class="keyword">AND</span> kc.type <span class="operator">=</span> <span class="string">&#x27;PK&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查询表的唯一键约束信息</span></span><br><span class="line"><span class="keyword">SELECT</span> kc.name <span class="keyword">AS</span> constraint_name,</span><br><span class="line">       col.name <span class="keyword">AS</span> column_name</span><br><span class="line"><span class="keyword">FROM</span> sys.key_constraints kc</span><br><span class="line"><span class="keyword">JOIN</span> sys.index_columns ic <span class="keyword">ON</span> kc.parent_object_id <span class="operator">=</span> ic.object_id <span class="keyword">AND</span> kc.unique_index_id <span class="operator">=</span> ic.index_id</span><br><span class="line"><span class="keyword">JOIN</span> sys.columns col <span class="keyword">ON</span> ic.object_id <span class="operator">=</span> col.object_id <span class="keyword">AND</span> ic.column_id <span class="operator">=</span> col.column_id</span><br><span class="line"><span class="keyword">WHERE</span> kc.parent_object_id <span class="operator">=</span> OBJECT_ID(<span class="string">&#x27;your_table_name&#x27;</span>) <span class="keyword">AND</span> kc.type <span class="operator">=</span> <span class="string">&#x27;UQ&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查询表的检查约束信息</span></span><br><span class="line"><span class="keyword">SELECT</span> cc.name <span class="keyword">AS</span> constraint_name,</span><br><span class="line">       OBJECT_NAME(parent_object_id) <span class="keyword">AS</span> table_name,</span><br><span class="line">       cc.definition <span class="keyword">AS</span> check_definition</span><br><span class="line"><span class="keyword">FROM</span> sys.check_constraints cc</span><br><span class="line"><span class="keyword">WHERE</span> cc.parent_object_id <span class="operator">=</span> OBJECT_ID(<span class="string">&#x27;your_table_name&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查询表的默认约束信息</span></span><br><span class="line"><span class="keyword">SELECT</span> dc.name <span class="keyword">AS</span> constraint_name,</span><br><span class="line">       OBJECT_NAME(parent_object_id) <span class="keyword">AS</span> table_name,</span><br><span class="line">       col.name <span class="keyword">AS</span> column_name,</span><br><span class="line">       dc.definition <span class="keyword">AS</span> default_definition</span><br><span class="line"><span class="keyword">FROM</span> sys.default_constraints dc</span><br><span class="line"><span class="keyword">JOIN</span> sys.columns col <span class="keyword">ON</span> dc.parent_object_id <span class="operator">=</span> col.object_id <span class="keyword">AND</span> dc.parent_column_id <span class="operator">=</span> col.column_id</span><br><span class="line"><span class="keyword">WHERE</span> dc.parent_object_id <span class="operator">=</span> OBJECT_ID(<span class="string">&#x27;your_table_name&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查询表的外键约束信息</span></span><br><span class="line"><span class="keyword">SELECT</span> fk.name <span class="keyword">AS</span> constraint_name,</span><br><span class="line">       OBJECT_NAME(fk.parent_object_id) <span class="keyword">AS</span> parent_table,</span><br><span class="line">       col.name <span class="keyword">AS</span> parent_column,</span><br><span class="line">       OBJECT_NAME(fk.referenced_object_id) <span class="keyword">AS</span> referenced_table,</span><br><span class="line">       rcol.name <span class="keyword">AS</span> referenced_column</span><br><span class="line"><span class="keyword">FROM</span> sys.foreign_keys fk</span><br><span class="line"><span class="keyword">JOIN</span> sys.foreign_key_columns fkc <span class="keyword">ON</span> fk.object_id <span class="operator">=</span> fkc.constraint_object_id</span><br><span class="line"><span class="keyword">JOIN</span> sys.columns col <span class="keyword">ON</span> fkc.parent_object_id <span class="operator">=</span> col.object_id <span class="keyword">AND</span> fkc.parent_column_id <span class="operator">=</span> col.column_id</span><br><span class="line"><span class="keyword">JOIN</span> sys.columns rcol <span class="keyword">ON</span> fkc.referenced_object_id <span class="operator">=</span> rcol.object_id <span class="keyword">AND</span> fkc.referenced_column_id <span class="operator">=</span> rcol.column_id</span><br><span class="line"><span class="keyword">WHERE</span> fk.parent_object_id <span class="operator">=</span> OBJECT_ID(<span class="string">&#x27;your_table_name&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<p>In SQLServer  <code>not null</code>  constraint can not find by view and  <code>default</code>  is a constraint.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> edi_test(</span><br><span class="line">  a <span class="type">varchar</span>(<span class="number">100</span>) <span class="keyword">not</span> <span class="keyword">null</span>,</span><br><span class="line">  b <span class="type">varchar</span>(<span class="number">100</span>) <span class="keyword">default</span>(<span class="string">&#x27;-&#x27;</span>),</span><br><span class="line">  c <span class="type">varchar</span>(<span class="number">100</span>)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> dc.name <span class="keyword">AS</span> constraint_name,</span><br><span class="line">       OBJECT_NAME(parent_object_id) <span class="keyword">AS</span> table_name,</span><br><span class="line">       col.name <span class="keyword">AS</span> column_name,</span><br><span class="line">       dc.definition <span class="keyword">AS</span> default_definition</span><br><span class="line"><span class="keyword">FROM</span> sys.default_constraints dc</span><br><span class="line"><span class="keyword">JOIN</span> sys.columns col <span class="keyword">ON</span> dc.parent_object_id <span class="operator">=</span> col.object_id <span class="keyword">AND</span> dc.parent_column_id <span class="operator">=</span> col.column_id</span><br><span class="line"><span class="keyword">WHERE</span> dc.parent_object_id <span class="operator">=</span> OBJECT_ID(<span class="string">&#x27;edi_test&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>constraint_name</th>
+<th>table_name</th>
+<th>column_name</th>
+<th>default_definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DF__edi_test__b__2E1BDC42</code></td>
+<td>edi_test</td>
+<td>b</td>
+<td>(’-’)</td>
+</tr>
+</tbody>
+</table>
+<p>Drop column need drop  <code>default</code>  constraint firstly but not null constraint not need.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> dbo.edi_test <span class="keyword">drop</span> <span class="keyword">column</span> b; <span class="comment">--SQL Error [5074] [S1000]: The object &#x27;DF__edi_test__b__2E1BDC42&#x27; is dependent on column &#x27;b&#x27;.</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> dbo.edi_test <span class="keyword">drop</span> <span class="keyword">constraint</span> DF__edi_test__b__2E1BDC42;</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> dbo.edi_test <span class="keyword">drop</span> <span class="keyword">column</span> b; </span><br><span class="line"></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> dbo.edi_test <span class="keyword">drop</span> <span class="keyword">column</span> a;</span><br></pre></td></tr></table></figure>
+<p>In Oracle  <code>not null</code>  constraint can not find by view and  <code>default</code>  is not a constraint.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> edi_test(</span><br><span class="line">  a varchar2(<span class="number">100</span>) <span class="keyword">not</span> <span class="keyword">null</span>,</span><br><span class="line">  b varchar2(<span class="number">100</span>) <span class="keyword">default</span>(<span class="string">&#x27;-&#x27;</span>),</span><br><span class="line">  c varchar2(<span class="number">100</span>)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> user_constraints <span class="keyword">where</span> table_name <span class="operator">=</span> <span class="string">&#x27;EDI_TEST&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>OWNER</th>
+<th>CONSTRAINT_NAME</th>
+<th>CONSTRAINT_TYPE</th>
+<th>TABLE_NAME</th>
+<th>SEARCH_CONDITION</th>
+<th>R_OWNER</th>
+<th>R_CONSTRAINT_NAME</th>
+<th>DELETE_RULE</th>
+<th>STATUS</th>
+<th>DEFERRABLE</th>
+<th>DEFERRED</th>
+<th>VALIDATED</th>
+<th>GENERATED</th>
+<th>BAD</th>
+<th>RELY</th>
+<th>LAST_CHANGE</th>
+<th>INDEX_OWNER</th>
+<th>INDEX_NAME</th>
+<th>INVALID</th>
+<th>VIEW_RELATED</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>APPS</td>
+<td>SYS_C001485655</td>
+<td>C</td>
+<td>EDI_TEST</td>
+<td>“A” IS NOT NULL</td>
+<td></td>
+<td></td>
+<td></td>
+<td>ENABLED</td>
+<td>NOT DEFERRABLE</td>
+<td>IMMEDIATE</td>
+<td>VALIDATED</td>
+<td>GENERATED NAME</td>
+<td></td>
+<td></td>
+<td>2024-03-30 03:52:07 PM</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Drop column not need drop  <code>not null</code>  constraint firstly.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> edi_test <span class="keyword">drop</span> <span class="keyword">column</span> b; </span><br><span class="line"></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> edi_test <span class="keyword">drop</span> <span class="keyword">column</span> a; </span><br></pre></td></tr></table></figure>
+<h2 id="custom-types"><a class="markdownIt-Anchor" href="#custom-types">#</a> Custom Types</h2>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> TYPE dbo.String <span class="keyword">FROM</span> <span class="type">VARCHAR</span>(<span class="number">255</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">DECLARE</span> <span class="variable">@StringValue</span> dbo.String <span class="operator">=</span> <span class="string">&#x27;some value less than 256 characters&#x27;</span>;</span><br><span class="line"><span class="keyword">SELECT</span>  <span class="variable">@StringValue</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> sys.types;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>system_type_id</th>
+<th>user_type_id</th>
+<th>schema_id</th>
+<th>principal_id</th>
+<th>max_length</th>
+<th>precision</th>
+<th>scale</th>
+<th>collation_name</th>
+<th>is_nullable</th>
+<th>is_user_defined</th>
+<th>is_assembly_type</th>
+<th>default_object_id</th>
+<th>rule_object_id</th>
+<th>is_table_type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>image</td>
+<td>34</td>
+<td>34</td>
+<td>4</td>
+<td></td>
+<td>16</td>
+<td>0</td>
+<td>0</td>
+<td></td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>text</td>
+<td>35</td>
+<td>35</td>
+<td>4</td>
+<td></td>
+<td>16</td>
+<td>0</td>
+<td>0</td>
+<td>SQL_Latin1_General_CP1_CI_AS</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>uniqueidentifier</td>
+<td>36</td>
+<td>36</td>
+<td>4</td>
+<td></td>
+<td>16</td>
+<td>0</td>
+<td>0</td>
+<td></td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>date</td>
+<td>40</td>
+<td>40</td>
+<td>4</td>
+<td></td>
+<td>3</td>
+<td>10</td>
+<td>0</td>
+<td></td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>time</td>
+<td>41</td>
+<td>41</td>
+<td>4</td>
+<td></td>
+<td>5</td>
+<td>16</td>
+<td>7</td>
+<td></td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>datetime2</td>
+<td>42</td>
+<td>42</td>
+<td>4</td>
+<td></td>
+<td>8</td>
+<td>27</td>
+<td>7</td>
+<td></td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>datetimeoffset</td>
+<td>43</td>
+<td>43</td>
+<td>4</td>
+<td></td>
+<td>10</td>
+<td>34</td>
+<td>7</td>
+<td></td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>tinyint</td>
+<td>48</td>
+<td>48</td>
+<td>4</td>
+<td></td>
+<td>1</td>
+<td>3</td>
+<td>0</td>
+<td></td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>smallint</td>
+<td>52</td>
+<td>52</td>
+<td>4</td>
+<td></td>
+<td>2</td>
+<td>5</td>
+<td>0</td>
+<td></td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>int</td>
+<td>56</td>
+<td>56</td>
+<td>4</td>
+<td></td>
+<td>4</td>
+<td>10</td>
+<td>0</td>
+<td></td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>smalldatetime</td>
+<td>58</td>
+<td>58</td>
+<td>4</td>
+<td></td>
+<td>4</td>
+<td>16</td>
+<td>0</td>
+<td></td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>real</td>
+<td>59</td>
+<td>59</td>
+<td>4</td>
+<td></td>
+<td>4</td>
+<td>24</td>
+<td>0</td>
+<td></td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>money</td>
+<td>60</td>
+<td>60</td>
+<td>4</td>
+<td></td>
+<td>8</td>
+<td>19</td>
+<td>4</td>
+<td></td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>datetime</td>
+<td>61</td>
+<td>61</td>
+<td>4</td>
+<td></td>
+<td>8</td>
+<td>23</td>
+<td>3</td>
+<td></td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>float</td>
+<td>62</td>
+<td>62</td>
+<td>4</td>
+<td></td>
+<td>8</td>
+<td>53</td>
+<td>0</td>
+<td></td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>sql_variant</td>
+<td>98</td>
+<td>98</td>
+<td>4</td>
+<td></td>
+<td>8016</td>
+<td>0</td>
+<td>0</td>
+<td></td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>ntext</td>
+<td>99</td>
+<td>99</td>
+<td>4</td>
+<td></td>
+<td>16</td>
+<td>0</td>
+<td>0</td>
+<td>SQL_Latin1_General_CP1_CI_AS</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>bit</td>
+<td>104</td>
+<td>104</td>
+<td>4</td>
+<td></td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td></td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>decimal</td>
+<td>106</td>
+<td>106</td>
+<td>4</td>
+<td></td>
+<td>17</td>
+<td>38</td>
+<td>38</td>
+<td></td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>numeric</td>
+<td>108</td>
+<td>108</td>
+<td>4</td>
+<td></td>
+<td>17</td>
+<td>38</td>
+<td>38</td>
+<td></td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>smallmoney</td>
+<td>122</td>
+<td>122</td>
+<td>4</td>
+<td></td>
+<td>4</td>
+<td>10</td>
+<td>4</td>
+<td></td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>bigint</td>
+<td>127</td>
+<td>127</td>
+<td>4</td>
+<td></td>
+<td>8</td>
+<td>19</td>
+<td>0</td>
+<td></td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>hierarchyid</td>
+<td>240</td>
+<td>128</td>
+<td>4</td>
+<td></td>
+<td>892</td>
+<td>0</td>
+<td>0</td>
+<td></td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>geometry</td>
+<td>240</td>
+<td>129</td>
+<td>4</td>
+<td></td>
+<td>-1</td>
+<td>0</td>
+<td>0</td>
+<td></td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>geography</td>
+<td>240</td>
+<td>130</td>
+<td>4</td>
+<td></td>
+<td>-1</td>
+<td>0</td>
+<td>0</td>
+<td></td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>varbinary</td>
+<td>165</td>
+<td>165</td>
+<td>4</td>
+<td></td>
+<td>8000</td>
+<td>0</td>
+<td>0</td>
+<td></td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>varchar</code></td>
+<td><code>167</code></td>
+<td>167</td>
+<td>4</td>
+<td></td>
+<td>8000</td>
+<td>0</td>
+<td>0</td>
+<td>SQL_Latin1_General_CP1_CI_AS</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>binary</td>
+<td>173</td>
+<td>173</td>
+<td>4</td>
+<td></td>
+<td>8000</td>
+<td>0</td>
+<td>0</td>
+<td></td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>char</td>
+<td>175</td>
+<td>175</td>
+<td>4</td>
+<td></td>
+<td>8000</td>
+<td>0</td>
+<td>0</td>
+<td>SQL_Latin1_General_CP1_CI_AS</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>189</td>
+<td>189</td>
+<td>4</td>
+<td></td>
+<td>8</td>
+<td>0</td>
+<td>0</td>
+<td></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>nvarchar</td>
+<td>231</td>
+<td>231</td>
+<td>4</td>
+<td></td>
+<td>8000</td>
+<td>0</td>
+<td>0</td>
+<td>SQL_Latin1_General_CP1_CI_AS</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>nchar</td>
+<td>239</td>
+<td>239</td>
+<td>4</td>
+<td></td>
+<td>8000</td>
+<td>0</td>
+<td>0</td>
+<td>SQL_Latin1_General_CP1_CI_AS</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>xml</td>
+<td>241</td>
+<td>241</td>
+<td>4</td>
+<td></td>
+<td>-1</td>
+<td>0</td>
+<td>0</td>
+<td></td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>sysname</td>
+<td>231</td>
+<td>256</td>
+<td>4</td>
+<td></td>
+<td>256</td>
+<td>0</td>
+<td>0</td>
+<td>SQL_Latin1_General_CP1_CI_AS</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>String</code></td>
+<td><code>167</code></td>
+<td>257</td>
+<td>1</td>
+<td></td>
+<td>255</td>
+<td>0</td>
+<td>0</td>
+<td>SQL_Latin1_General_CP1_CI_AS</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>  SelectedType.[name] <span class="keyword">AS</span> SelectedTypeName</span><br><span class="line">        , BaseType.[name] <span class="keyword">AS</span> BaseTypeName</span><br><span class="line">        , SelectedType.max_length <span class="keyword">AS</span> SelectedTypeMaxBytes</span><br><span class="line">        , SelectedType.[<span class="keyword">precision</span>] <span class="keyword">AS</span> SelectedTypePrecision</span><br><span class="line">        , SelectedType.scale <span class="keyword">AS</span> SelectedTypeScale</span><br><span class="line">        , SelectedType.default_object_id <span class="keyword">AS</span> SelectedTypeId</span><br><span class="line">        , BaseType.default_object_id <span class="keyword">AS</span> BaseTypeId</span><br><span class="line">  <span class="keyword">FROM</span>  sys.types SelectedType </span><br><span class="line">  <span class="keyword">JOIN</span>  sys.types BaseType</span><br><span class="line">    <span class="keyword">ON</span>  BaseType.system_type_id <span class="operator">=</span> SelectedType.system_type_id</span><br><span class="line"> <span class="keyword">WHERE</span>  BaseType.is_user_defined <span class="operator">=</span> <span class="number">0</span> </span><br><span class="line">   <span class="keyword">AND</span>  SelectedType.is_user_defined <span class="operator">=</span> <span class="number">1</span></span><br><span class="line">   <span class="keyword">AND</span>  BaseType.[name] <span class="operator">&lt;&gt;</span> <span class="string">&#x27;sysname&#x27;</span></span><br><span class="line"> <span class="keyword">ORDER</span> <span class="keyword">BY</span> SelectedType.[name];</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>SelectedTypeName</th>
+<th>BaseTypeName</th>
+<th>SelectedTypeMaxBytes</th>
+<th>SelectedTypePrecision</th>
+<th>SelectedTypeScale</th>
+<th>SelectedTypeId</th>
+<th>BaseTypeId</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>String</td>
+<td>varchar</td>
+<td>255</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="创建-temp-table"><a class="markdownIt-Anchor" href="#创建-temp-table">#</a> 创建 temp table</h2>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> #edi_temp (</span><br><span class="line">	head_id <span class="type">varchar</span>(<span class="number">25</span>),</span><br><span class="line">	transfer_time <span class="type">varchar</span>(<span class="number">100</span>)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> #edi_temp;</span><br></pre></td></tr></table></figure>
-<h3 id="批量插入数据"><a class="markdownIt-Anchor" href="#批量插入数据">#</a> 批量插入数据</h3>
+<h2 id="批量插入数据"><a class="markdownIt-Anchor" href="#批量插入数据">#</a> 批量插入数据</h2>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> #edi_temp <span class="keyword">values</span></span><br><span class="line">(<span class="string">&#x27;H00039827&#x27;</span>, <span class="string">&#x27;2019/3/27 14:15:13&#x27;</span>),</span><br><span class="line">(<span class="string">&#x27;H00039871&#x27;</span>, <span class="string">&#x27;2019/5/13 13:10:49&#x27;</span>),</span><br><span class="line">(<span class="string">&#x27;H00039872&#x27;</span>, <span class="string">&#x27;2019/5/13 13:10:49&#x27;</span>),</span><br><span class="line">(<span class="string">&#x27;H00039873&#x27;</span>, <span class="string">&#x27;2019/5/13 13:10:49&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<h3 id="多表联合更新"><a class="markdownIt-Anchor" href="#多表联合更新">#</a> 多表联合更新</h3>
+<h2 id="多表联合更新"><a class="markdownIt-Anchor" href="#多表联合更新">#</a> 多表联合更新</h2>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">update edi_head</span><br><span class="line">   <span class="keyword">set</span> transfer_time <span class="operator">=</span> <span class="built_in">cast</span>(b.transfer_time <span class="keyword">as</span> datetime) <span class="keyword">from</span> edi_head a, #edi_temp b</span><br><span class="line"> <span class="keyword">where</span> a.head_id <span class="operator">=</span> b.head_id;</span><br></pre></td></tr></table></figure>
-<h3 id="常用函数"><a class="markdownIt-Anchor" href="#常用函数">#</a> 常用函数</h3>
-<h4 id="isnull"><a class="markdownIt-Anchor" href="#isnull">#</a> ISNULL</h4>
+<h2 id="常用函数"><a class="markdownIt-Anchor" href="#常用函数">#</a> 常用函数</h2>
+<h3 id="isnull"><a class="markdownIt-Anchor" href="#isnull">#</a> ISNULL</h3>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--isnull 类似于 Oracle nvl</span></span><br><span class="line"><span class="keyword">select</span> isnull(<span class="keyword">null</span>, <span class="string">&#x27;S&#x27;</span>); <span class="comment">--S</span></span><br><span class="line"><span class="keyword">select</span> isnull(<span class="string">&#x27;R&#x27;</span>, <span class="string">&#x27;S&#x27;</span>);  <span class="comment">--R</span></span><br></pre></td></tr></table></figure>
-<h4 id="getdate"><a class="markdownIt-Anchor" href="#getdate">#</a> GETDATE</h4>
+<h3 id="getdate"><a class="markdownIt-Anchor" href="#getdate">#</a> GETDATE</h3>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--getdate() 类似于 Oracle sysdate</span></span><br><span class="line"><span class="comment">--如下类似于 Oracle: select sysdate from dual;</span></span><br><span class="line"><span class="keyword">select</span> getdate();</span><br></pre></td></tr></table></figure>
 
       <div class="tags">
@@ -176,7 +905,7 @@ D E W = 露の世</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2021-10-18 13:27:20" itemprop="dateModified" datetime="2021-10-18T13:27:20+08:00">2021-10-18</time>
+    <time title="Modified: 2024-03-30 16:10:04" itemprop="dateModified" datetime="2024-03-30T16:10:04+08:00">2024-03-30</time>
   </span>
 </div>
 
@@ -193,7 +922,7 @@ D E W = 露の世</title>
     <div class="item left">
       
 
-  <a href="/2019/12/11/oracle-testdata/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;寄生兽.jpg" title="Oracle Test Data Generate">
+  <a href="/2019/12/11/oracle-testdata/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;萤火之森-2.jpg" title="Oracle Test Data Generate">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Oracle Test Data Generate</h3>
@@ -203,7 +932,7 @@ D E W = 露の世</title>
     <div class="item right">
       
 
-  <a href="/2019/12/20/java-httpclient/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;龙猫-3.jpg" title="Java 11 HttpClient Examples">
+  <a href="/2019/12/20/java-httpclient/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;辉夜大小姐想让我告白.jpg" title="Java 11 HttpClient Examples">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Java 11 HttpClient Examples</h3>
@@ -225,7 +954,7 @@ D E W = 露の世</title>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="Contents">
-          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA-temp-table"><span class="toc-number">1.</span> <span class="toc-text"> 创建 temp table</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE"><span class="toc-number">2.</span> <span class="toc-text"> 批量插入数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E8%A1%A8%E8%81%94%E5%90%88%E6%9B%B4%E6%96%B0"><span class="toc-number">3.</span> <span class="toc-text"> 多表联合更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0"><span class="toc-number">4.</span> <span class="toc-text"> 常用函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#isnull"><span class="toc-number">4.1.</span> <span class="toc-text"> ISNULL</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#getdate"><span class="toc-number">4.2.</span> <span class="toc-text"> GETDATE</span></a></li></ol></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#constraint"><span class="toc-number">1.</span> <span class="toc-text"> Constraint</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#custom-types"><span class="toc-number">2.</span> <span class="toc-text"> Custom Types</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA-temp-table"><span class="toc-number">3.</span> <span class="toc-text"> 创建 temp table</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE"><span class="toc-number">4.</span> <span class="toc-text"> 批量插入数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E8%A1%A8%E8%81%94%E5%90%88%E6%9B%B4%E6%96%B0"><span class="toc-number">5.</span> <span class="toc-text"> 多表联合更新</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0"><span class="toc-number">6.</span> <span class="toc-text"> 常用函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#isnull"><span class="toc-number">6.1.</span> <span class="toc-text"> ISNULL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#getdate"><span class="toc-number">6.2.</span> <span class="toc-text"> GETDATE</span></a></li></ol></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
       </div>
@@ -240,7 +969,7 @@ D E W = 露の世</title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">351</span>
+        <span class="count">352</span>
         <span class="name">posts</span>
       </a>
     </div>
