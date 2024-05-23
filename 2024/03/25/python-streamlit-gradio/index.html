@@ -102,12 +102,12 @@ D E W = 露の世</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="/anime/index/徒然喜欢你.jpg"></li>
-          <li class="item" data-background-image="/anime/index/河童之夏.jpg"></li>
-          <li class="item" data-background-image="/anime/index/游戏人生.jpg"></li>
-          <li class="item" data-background-image="/anime/index/冰海战记-2.jpg"></li>
-          <li class="item" data-background-image="/anime/index/记录的地平线.jpg"></li>
-          <li class="item" data-background-image="/anime/index/哈尔的移动城堡.jpg"></li>
+          <li class="item" data-background-image="/anime/index/紫罗兰永恒花园-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/文学少女.jpg"></li>
+          <li class="item" data-background-image="/anime/index/真实之泪.jpg"></li>
+          <li class="item" data-background-image="/anime/index/刺客伍六七.jpg"></li>
+          <li class="item" data-background-image="/anime/index/文学少女-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/刀剑神域.jpg"></li>
         </ul>
       </div>
     </header>
@@ -162,8 +162,7 @@ All in pure Python. No front‑end experience required.</p>
 <img data-src="/2024/03/25/python-streamlit-gradio/1711363340259.png" class="">
 <h3 id="url-shorten"><a class="markdownIt-Anchor" href="#url-shorten">#</a> URL Shorten</h3>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> streamlit <span class="keyword">as</span> st</span><br><span class="line"><span class="keyword">import</span> pyshorteners</span><br><span class="line"></span><br><span class="line">external_style = <span class="built_in">open</span>(<span class="string">&quot;./shorten_url_style.css&quot;</span>).read()</span><br><span class="line">st.markdown(<span class="string">f&quot;&lt;style&gt;<span class="subst">&#123;external_style&#125;</span>&lt;/style&gt;&quot;</span>, unsafe_allow_html=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">st.markdown(<span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">&lt;style&gt;</span></span><br><span class="line"><span class="string">    .title &#123;</span></span><br><span class="line"><span class="string">        background: linear-gradient(to bottom, orangered, orange);</span></span><br><span class="line"><span class="string">        color: white;</span></span><br><span class="line"><span class="string">        border-radius: 10px;</span></span><br><span class="line"><span class="string">        margin-bottom: 20px;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">&lt;/style&gt;</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span>, unsafe_allow_html=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">st.markdown(<span class="string">&quot;&lt;h1 style=&#x27;text-align:center&#x27; class=&#x27;title&#x27;&gt;URL SHORTENER&lt;/h1&gt;&quot;</span>, unsafe_allow_html=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> st.form(<span class="string">&quot;Shorten Form&quot;</span>):</span><br><span class="line">    original_url = st.text_input(<span class="string">&#x27;Enter the URL to shorten&#x27;</span>)</span><br><span class="line">    shortened = st.form_submit_button(<span class="string">&quot;Shorten&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">shorten_url</span>(<span class="params">url</span>):</span></span><br><span class="line">    s = pyshorteners.Shortener()</span><br><span class="line">    <span class="keyword">return</span> s.tinyurl.short(url)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> shortened <span class="keyword">and</span> original_url:</span><br><span class="line">    shortened_url = shorten_url(original_url)</span><br><span class="line">    st.success(<span class="string">&#x27;Shortened URL: &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(shortened_url))</span><br></pre></td></tr></table></figure>
-<p>shorten_url_style.css</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Hidden Menu */</span></span><br><span class="line"><span class="selector-tag">div</span><span class="selector-attr">[data-testid=<span class="string">&quot;stToolbar&quot;</span>]</span> &#123;</span><br><span class="line">	<span class="attribute">visibility</span>: hidden;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Hidden Footer */</span></span><br><span class="line"><span class="selector-tag">footer</span> &#123;</span><br><span class="line">	<span class="attribute">visibility</span>: hidden;    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="selector-tag">div</span><span class="selector-attr">[data-testid=<span class="string">&quot;stForm&quot;</span>]</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">rgba</span>(<span class="number">255</span>, <span class="number">165</span>, <span class="number">0</span>, <span class="number">0.8</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><figcaption><span>shorten_url_style.css</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Hidden Menu */</span></span><br><span class="line"><span class="selector-tag">div</span><span class="selector-attr">[data-testid=<span class="string">&quot;stToolbar&quot;</span>]</span> &#123;</span><br><span class="line">	<span class="attribute">visibility</span>: hidden;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Hidden Footer */</span></span><br><span class="line"><span class="selector-tag">footer</span> &#123;</span><br><span class="line">	<span class="attribute">visibility</span>: hidden;    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="selector-tag">div</span><span class="selector-attr">[data-testid=<span class="string">&quot;stForm&quot;</span>]</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">rgba</span>(<span class="number">255</span>, <span class="number">165</span>, <span class="number">0</span>, <span class="number">0.8</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <img data-src="/2024/03/25/python-streamlit-gradio/1711363772394.png" class="">
 <h3 id="image-editor"><a class="markdownIt-Anchor" href="#image-editor">#</a> Image Editor</h3>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> streamlit <span class="keyword">as</span> st</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image, ImageFilter</span><br><span class="line"></span><br><span class="line">st.markdown(<span class="string">&quot;&lt;h1 style=&#x27;text-align:center&#x27;&gt;Image Editor&lt;/h1&gt;&quot;</span>, unsafe_allow_html=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">uploaded_image = st.file_uploader(<span class="string">&quot;Choose an image&quot;</span>, <span class="built_in">type</span>=[<span class="string">&quot;jpg&quot;</span>, <span class="string">&quot;png&quot;</span>])</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> uploaded_image:</span><br><span class="line">    image = Image.<span class="built_in">open</span>(uploaded_image)</span><br><span class="line"></span><br><span class="line">    original_tab, edited_tab = st.tabs([<span class="string">&quot;Original Image&quot;</span>, <span class="string">&quot;Edited Image&quot;</span>])</span><br><span class="line"></span><br><span class="line">    <span class="keyword">with</span> original_tab:</span><br><span class="line">        st.image(image, caption=<span class="string">&#x27;Original Image&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    st.sidebar.markdown(<span class="string">&quot;&lt;h2 style=&#x27;text-align:center&#x27;&gt;Resize&lt;/h2&gt;&quot;</span>, unsafe_allow_html=<span class="literal">True</span>)</span><br><span class="line">    col1, col2 = st.sidebar.columns(<span class="number">2</span>)</span><br><span class="line">    <span class="keyword">with</span> col1:</span><br><span class="line">        width = st.sidebar.number_input(<span class="string">&quot;Width&quot;</span>, value=image.width)</span><br><span class="line">    <span class="keyword">with</span> col2:   </span><br><span class="line">        height = st.sidebar.number_input(<span class="string">&quot;Height&quot;</span>, value=image.height)</span><br><span class="line">        </span><br><span class="line">    st.sidebar.markdown(<span class="string">&quot;&lt;h2 style=&#x27;text-align:center&#x27;&gt;Rotate&lt;/h2&gt;&quot;</span>, unsafe_allow_html=<span class="literal">True</span>)</span><br><span class="line">    rotation_angle = st.sidebar.slider(<span class="string">&#x27;Rotate&#x27;</span>, -<span class="number">180</span>, <span class="number">180</span>, <span class="number">0</span>)</span><br><span class="line">        </span><br><span class="line">    st.sidebar.markdown(<span class="string">&quot;&lt;h2 style=&#x27;text-align:center&#x27;&gt;Filter&lt;/h2&gt;&quot;</span>, unsafe_allow_html=<span class="literal">True</span>)</span><br><span class="line">    filter_type = st.sidebar.selectbox(<span class="string">&#x27;Filter&#x27;</span>, (<span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;BLUR&#x27;</span>, <span class="string">&#x27;CONTOUR&#x27;</span>, <span class="string">&#x27;DETAIL&#x27;</span>, <span class="string">&#x27;SHARPEN&#x27;</span>), index=<span class="number">0</span>)</span><br><span class="line">    </span><br><span class="line">    image = image.resize((<span class="built_in">int</span>(width), <span class="built_in">int</span>(height))).rotate(rotation_angle)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> filter_type != <span class="string">&#x27;&#x27;</span>:</span><br><span class="line">        image = image.<span class="built_in">filter</span>(<span class="built_in">getattr</span>(ImageFilter, filter_type))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">with</span> edited_tab: </span><br><span class="line">        st.image(image, caption=<span class="string">&#x27;Edited Image&#x27;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -206,7 +205,7 @@ All in pure Python. No front‑end experience required.</p>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2024-03-26 14:11:35" itemprop="dateModified" datetime="2024-03-26T14:11:35+08:00">2024-03-26</time>
+    <time title="Modified: 2024-04-20 15:48:06" itemprop="dateModified" datetime="2024-04-20T15:48:06+08:00">2024-04-20</time>
   </span>
 </div>
 
@@ -223,7 +222,7 @@ All in pure Python. No front‑end experience required.</p>
     <div class="item left">
       
 
-  <a href="/2024/02/19/oracle-utlfile/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;八犬传.jpg" title="Oracle PL&#x2F;SQL UTL_FILE">
+  <a href="/2024/02/19/oracle-utlfile/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;三月的狮子-2.jpg" title="Oracle PL&#x2F;SQL UTL_FILE">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Oracle PL/SQL UTL_FILE</h3>
@@ -231,6 +230,14 @@ All in pure Python. No front‑end experience required.</p>
 
     </div>
     <div class="item right">
+      
+
+  <a href="/2024/04/24/bun-web-framework/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;千与千寻-2.jpg" title="Bun Web Framework TODO">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Bun Web Framework TODO</h3>
+  </a>
+
     </div>
 </div>
 
@@ -262,7 +269,7 @@ All in pure Python. No front‑end experience required.</p>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">352</span>
+        <span class="count">359</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -339,10 +346,12 @@ All in pure Python. No front‑end experience required.</p>
 
   <ul id="quick">
     <li class="prev pjax">
+        <a href="/2024/02/19/oracle-utlfile/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
     </li>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
     <li class="next pjax">
+        <a href="/2024/04/24/bun-web-framework/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
     </li>
     <li class="percent"></li>
   </ul>

@@ -1,0 +1,473 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CFira%20Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="js" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2024/04/28/bun-express/">
+
+
+
+  <title>
+How To Build a Web API using Express.js, Bun and MongoDB? |
+D E W = 露の世</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">How To Build a Web API using Express.js, Bun and MongoDB?
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2024-04-28 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2024-04-28T00:00:00+08:00">2024-04-28</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">D E W</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="/anime/index/黑执事.jpg"></li>
+          <li class="item" data-background-image="/anime/index/加速世界.jpg"></li>
+          <li class="item" data-background-image="/anime/index/进击的巨人.jpg"></li>
+          <li class="item" data-background-image="/anime/index/魔笛.jpg"></li>
+          <li class="item" data-background-image="/anime/index/电锯人-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/言叶之庭.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2024/04/28/bun-express/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <p>Web APIs serve as the central components of modern software, seamlessly connecting applications across the expansive landscape of the internet.</p>
+<p>If you’re working with Node.js, you’re most likely familiar with the MER(A)N stack:</p>
+<ol>
+<li>MongoDB</li>
+<li>Express</li>
+<li>React/Angular</li>
+<li>Node</li>
+</ol>
+<p>But, ever since Bun has come to the picture, building high performing APIs haven’t been challenging. So, this article will aim on building an Express.js API backed with MongoDB, powered by Bun!</p>
+<h1 id="understanding-the-tools"><a class="markdownIt-Anchor" href="#understanding-the-tools">#</a> Understanding the Tools</h1>
+<p>If you’re not familiar with any of these tools, don’t worry. Let’s dive into these one by one and understand what we’re going to be working with:</p>
+<ul>
+<li><strong>Express.js:</strong> It is a sleek and straightforward web framework seamlessly integrated with Node.js. It lets users build APIs with ease.</li>
+<li><strong>MongoDB</strong>: NoSQL database excels in versatility and effortlessly manages large data loads.</li>
+<li><strong>Bun</strong>: Bun is a JavaScript runtime that serves to be the replacement for Node.js</li>
+</ul>
+<h1 id="step-01-setting-up-the-application-and-building-the-api"><a class="markdownIt-Anchor" href="#step-01-setting-up-the-application-and-building-the-api">#</a> Step 01: Setting Up the Application and Building the API</h1>
+<h2 id="1-installing-bun"><a class="markdownIt-Anchor" href="#1-installing-bun">#</a> 1. Installing Bun</h2>
+<p>First and foremost, let’s install Bun! To do so, run the command:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl https:<span class="comment">//bun.sh/install | bash</span></span><br></pre></td></tr></table></figure>
+<p>You can verify the installation by running  <code>bun --version</code>  .</p>
+<h2 id="2-creating-a-bun-project"><a class="markdownIt-Anchor" href="#2-creating-a-bun-project">#</a> 2. Creating a Bun Project</h2>
+<p>Let’s initialize our Bun project with:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir blog-api</span><br><span class="line">cd blog-api</span><br><span class="line">bun init</span><br></pre></td></tr></table></figure>
+<p>You can adopt a folder directry structure as below:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;blog-api</span><br><span class="line">│</span><br><span class="line">├── src</span><br><span class="line">│   ├── models</span><br><span class="line">│   ├── controllers</span><br><span class="line">│   ├── routes</span><br><span class="line">│   └── index.ts</span><br><span class="line">│</span><br><span class="line">├── dist</span><br><span class="line">│</span><br><span class="line">├── node_modules</span><br><span class="line">│</span><br><span class="line">├── .bunrc</span><br><span class="line">├── .env</span><br><span class="line">├── package.json</span><br><span class="line">└── tsconfig.json</span><br></pre></td></tr></table></figure>
+<h2 id="3-installing-the-libraries-expressjs-mongodb-and-typescript"><a class="markdownIt-Anchor" href="#3-installing-the-libraries-expressjs-mongodb-and-typescript">#</a> 3. Installing the libraries: Express.js, MongoDB, and Typescript</h2>
+<p>Now that you have Bun, you can install all the required packages using the Bun Package Manager itself using the commands:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bun install express mongoose</span><br><span class="line">bun install @types/express @types/mongoose -d</span><br></pre></td></tr></table></figure>
+<p>These scripts will install Express.js for our server, MongoDB through Mongoose for the database, and Typescript to keep our code clean and safe.</p>
+<h2 id="4-brewing-the-basic-server-potion"><a class="markdownIt-Anchor" href="#4-brewing-the-basic-server-potion">#</a> 4. Brewing the Basic Server Potion</h2>
+<p>Inside,  <code>src/app.ts</code>  create an Express.js server:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> express <span class="keyword">from</span> <span class="string">&quot;express&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = express();</span><br><span class="line"></span><br><span class="line">app.use(express.json());</span><br><span class="line"></span><br><span class="line">app.get(<span class="string">&quot;/ping&quot;</span>, <span class="function">(<span class="params">_, res</span>) =&gt;</span> &#123;</span><br><span class="line">  res.send(<span class="string">&quot;🏓 pong!&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3000</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;The magic happens on port 3000!&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>This is your basic Express.js app definitition.</p>
+<p>Now, let’s ensure that our API is spun up using Bun . We’ll do this by tweaking our npm start script in  <code>package.json</code> :</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;start&quot;</span>: <span class="string">&quot;bun run src/app.ts&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;dev&quot;</span>: <span class="string">&quot;bun run --watch src/app.ts&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>You can kickstart your application into action with this simple command</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bun dev</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>The  <code>--watch</code>  mode in Bun offers an ultra-fast, native file-watching experience, sharply contrasting with Node.js, which requires external tools like <span class="exturl" data-url="aHR0cHM6Ly9ub2RlbW9uLmlvLw==">Nodemon</span> to achieve similar functionality for development convenience.</p>
+</blockquote>
+<p>You can check if the server is up and responsive by making a GET request to the  <code>/ping</code>  route, which will reply with a playful “🏓 pong!”.</p>
+<h2 id="5-designing-the-mongoose-schema"><a class="markdownIt-Anchor" href="#5-designing-the-mongoose-schema">#</a> 5. Designing the Mongoose Schema</h2>
+<p>In the  <code>src/models</code>  folder, let’s create  <code>Post.ts</code>  :</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Schema, InferSchemaType, model &#125; <span class="keyword">from</span> <span class="string">&quot;mongoose&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> postSchema = <span class="keyword">new</span> Schema(&#123;</span><br><span class="line">  title: &#123; <span class="attr">type</span>: <span class="built_in">String</span>, <span class="attr">required</span>: <span class="literal">true</span> &#125;,</span><br><span class="line">  content: &#123; <span class="attr">type</span>: <span class="built_in">String</span>, <span class="attr">required</span>: <span class="literal">true</span> &#125;,</span><br><span class="line">  author: <span class="built_in">String</span>,</span><br><span class="line">  createdAt: &#123; <span class="attr">type</span>: <span class="built_in">Date</span>, <span class="attr">default</span>: <span class="built_in">Date</span>.now &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> type Post = InferSchemaType&lt;<span class="keyword">typeof</span> postSchema&gt;;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> Post = model(<span class="string">&quot;Post&quot;</span>, postSchema);</span><br></pre></td></tr></table></figure>
+<h2 id="6-controllers-defining-business-logic"><a class="markdownIt-Anchor" href="#6-controllers-defining-business-logic">#</a> 6. Controllers: Defining Business Logic</h2>
+<p>Each route needs a corresponding controller function.</p>
+<p>For instance, in your  <code>controllers</code>  folder, you could have  <code>postController.ts</code>  :</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Request, Response &#125; <span class="keyword">from</span> <span class="string">&quot;express&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> createPost = <span class="keyword">async</span> (req: Request, <span class="attr">res</span>: Response) =&gt; &#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; author, title, content &#125; = req.body;</span><br><span class="line">    <span class="keyword">const</span> post = <span class="keyword">new</span> Post(&#123; author, title, content &#125;);</span><br><span class="line">    <span class="keyword">await</span> post.save();</span><br><span class="line">    res.status(<span class="number">201</span>).send(post);</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    res.status(<span class="number">400</span>).send(error);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> readPost = <span class="keyword">async</span> (req: Request, <span class="attr">res</span>: Response) =&gt; &#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> posts = <span class="keyword">await</span> Post.find(&#123;&#125;);</span><br><span class="line">    res.status(<span class="number">200</span>).send(posts);</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    res.status(<span class="number">500</span>).send(error);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> readPosts = <span class="keyword">async</span> (req: Request, <span class="attr">res</span>: Response) =&gt; &#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; id &#125; = req.params;</span><br><span class="line">    <span class="keyword">const</span> post = <span class="keyword">await</span> Post.findById(id);</span><br><span class="line">    <span class="keyword">if</span> (!post) &#123;</span><br><span class="line">      res.status(<span class="number">404</span>).send();</span><br><span class="line">    &#125;</span><br><span class="line">    res.status(<span class="number">200</span>).send(post);</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    res.status(<span class="number">500</span>).send(error);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> updatePost = <span class="keyword">async</span> (req: Request, <span class="attr">res</span>: Response) =&gt; &#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; id &#125; = req.params;</span><br><span class="line">    <span class="keyword">const</span> post = <span class="keyword">await</span> Post.findByIdAndUpdate(id, req.body, &#123;</span><br><span class="line">      <span class="keyword">new</span>: <span class="literal">true</span>,</span><br><span class="line">      runValidators: <span class="literal">true</span>,</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">if</span> (!post) &#123;</span><br><span class="line">      res.status(<span class="number">404</span>).send();</span><br><span class="line">    &#125;</span><br><span class="line">    res.status(<span class="number">200</span>).send(post);</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    res.status(<span class="number">400</span>).send(error);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> deletePost = <span class="keyword">async</span> (req: Request, <span class="attr">res</span>: Response) =&gt; &#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; id &#125; = req.params;</span><br><span class="line">    <span class="keyword">const</span> post = <span class="keyword">await</span> Post.findByIdAndDelete(id);</span><br><span class="line">    <span class="keyword">if</span> (!post) &#123;</span><br><span class="line">      res.status(<span class="number">404</span>).send(<span class="string">&quot;Post wasn&#x27;t found&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    res.status(<span class="number">200</span>).send(post);</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    res.status(<span class="number">500</span>).send(error);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Remember to manage errors with care. Encase your controllers in try-catch blocks and send informative responses to the client. Subsequently, import these functions into your routes and incorporate them as needed.</p>
+<h2 id="7-adding-routes-to-the-business-functions"><a class="markdownIt-Anchor" href="#7-adding-routes-to-the-business-functions">#</a> 7. Adding Routes to the Business Functions</h2>
+<p>For a Blog API, you’ll want these CRUD-necessary routes:</p>
+<ul>
+<li>Create a post</li>
+<li>Read a post</li>
+<li>Update a post</li>
+<li>Delete a post</li>
+</ul>
+<p>Inside your  <code>src/routes</code>  directory, you’ll create  <code>blogRoutes.ts</code>  with the following:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> express <span class="keyword">from</span> <span class="string">&quot;express&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;</span><br><span class="line">  createPost,</span><br><span class="line">  readPost,</span><br><span class="line">  readPosts,</span><br><span class="line">  updatePost,</span><br><span class="line">  deletePost,</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">&quot;../controllers/postController&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> router = express.Router();</span><br><span class="line"></span><br><span class="line">router.post(<span class="string">&quot;/&quot;</span>, createPost);</span><br><span class="line">router.get(<span class="string">&quot;/&quot;</span>, readPosts);</span><br><span class="line">router.get(<span class="string">&quot;/:id&quot;</span>, readPost);</span><br><span class="line">router.put(<span class="string">&quot;/:id&quot;</span>, updatePost);</span><br><span class="line">router.delete(<span class="string">&quot;/:id&quot;</span>, deletePost);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> router;</span><br></pre></td></tr></table></figure>
+<h2 id="8-configuring-mongodb"><a class="markdownIt-Anchor" href="#8-configuring-mongodb">#</a> 8. Configuring MongoDB</h2>
+<p>It’s time to bring to life the database connection. Add the following to your  <code>src/config/db.ts</code>  :</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> mongoose <span class="keyword">from</span> <span class="string">&quot;mongoose&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">connectDB</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> mongoURI =</span><br><span class="line">    process.env.MONGODB_URI ?? <span class="string">&quot;mongodb://localhost:27017/mydatabase&quot;</span>;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    mongoose.connect(mongoURI);</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    <span class="keyword">const</span> castedError = error <span class="keyword">as</span> <span class="built_in">Error</span>;</span><br><span class="line">    <span class="built_in">console</span>.error(castedError.message);</span><br><span class="line">    process.exit(<span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  mongoose.connection.once(<span class="string">&quot;open&quot;</span>, <span class="function">(<span class="params">_</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`Database connected`</span>);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  mongoose.connection.on(<span class="string">&quot;error&quot;</span>, <span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.error(<span class="string">`Database connection error: <span class="subst">$&#123;err&#125;</span>`</span>);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Now, create a <strong>.env</strong> file in your project’s root and add your settings, like the  <code>MONGODB_URI</code> , right in there.</p>
+<p>In this configuration, we access environment variables directly without depending on utilities like <span class="exturl" data-url="aHR0cHM6Ly93d3cubnBtanMuY29tL3BhY2thZ2UvZG90ZW52">dotenv</span>, a common choice for Node.js projects. This is achievable because Bun inherently supports the exposure of these variables through .env files by default.</p>
+<h2 id="9-stitching-all-together"><a class="markdownIt-Anchor" href="#9-stitching-all-together">#</a> 9. Stitching all together</h2>
+<p>After preparing your Models, Routes, and Controllers, incorporate them into the  <code>index.ts</code>  file. Following this integration, your application is primed for launch.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> express <span class="keyword">from</span> <span class="string">&quot;express&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> postRoute <span class="keyword">from</span> <span class="string">&quot;./routes/postRoute&quot;</span></span><br><span class="line"><span class="keyword">import</span> connectDB <span class="keyword">from</span> <span class="string">&quot;./config/db&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = express();</span><br><span class="line"><span class="keyword">const</span> port = process.env.APP_PORT || <span class="number">8080</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// connect to database</span></span><br><span class="line">connectDB();</span><br><span class="line"></span><br><span class="line"><span class="comment">// middleware</span></span><br><span class="line">app.use(express.json());</span><br><span class="line">app.use(express.urlencoded(&#123; <span class="attr">extended</span>: <span class="literal">true</span> &#125;));</span><br><span class="line"></span><br><span class="line">app.get(<span class="string">&quot;/ping&quot;</span>, <span class="function">(<span class="params">_, res</span>) =&gt;</span> &#123;</span><br><span class="line"> res.send(<span class="string">&quot;🏓 pong!&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// routes</span></span><br><span class="line">app.use(<span class="string">&#x27;/api/posts&#x27;</span>, postRoute);</span><br><span class="line"></span><br><span class="line">app.listen(port, <span class="function">() =&gt;</span> &#123;</span><br><span class="line"> <span class="built_in">console</span>.log(Listening on port: $&#123;port&#125; );</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>And just like that, your API powered by Bun is ready.</p>
+<h1 id="adding-monitoring-to-expressjs-applications"><a class="markdownIt-Anchor" href="#adding-monitoring-to-expressjs-applications">#</a> Adding Monitoring to Express.js Applications</h1>
+<h2 id="logging-requests-in-express"><a class="markdownIt-Anchor" href="#logging-requests-in-express">#</a> <strong>Logging requests in Express</strong></h2>
+<p>Logging is essential for monitoring, debugging, and keeping track of application activity. <span class="exturl" data-url="aHR0cHM6Ly93d3cubnBtanMuY29tL3BhY2thZ2UvbW9yZ2Fu">Morgan</span> is versatile and customizable, making it a valuable tool for developers looking to gain insights into their Express applications.</p>
+<p>First, you’ll need to install Morgan. You can do this through bun:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bun add morganbun add @types/morgan -d</span><br></pre></td></tr></table></figure>
+<p>You’ll want to add Morgan as middleware in your Express application. This is done using  <code>app.use()</code> . Morgan has various predefined logging formats like  <code>dev</code> ,  <code>tiny</code> ,  <code>combined</code> ,  <code>common</code> , etc. You can also create your own format. Let’s add a custom format to the  <code>index.ts</code>  file.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.use(morgan(<span class="string">&quot;:method :url :status :response-time ms&quot;</span>));</span><br></pre></td></tr></table></figure>
+<p>Morgan is hooked up with your Express app, ready to log all those HTTP requests. Logging comes super handy for keeping an eye on things and squashing bugs. Morgan’s flexibility means you can tweak it to fit your needs perfectly.</p>
+<h2 id="data-validation-in-express"><a class="markdownIt-Anchor" href="#data-validation-in-express">#</a> <strong>Data validation in Express</strong></h2>
+<p>To guarantee that the incoming data for your application is clean and structured to your specifications, <span class="exturl" data-url="aHR0cHM6Ly9leHByZXNzLXZhbGlkYXRvci5naXRodWIuaW8vZG9jcy8=">the express-validator</span> is an essential tool. It’s an excellent middleware option that simplifies validating and sanitizing your request data. Explore how to implement <strong>an express validator</strong> within your project.</p>
+<p>First off, you’d install it in your project like so:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bun add express-validatorbun add -d @types/express-validator</span><br></pre></td></tr></table></figure>
+<p>Then, in your route  <code>postRoute.ts</code>  file, you’ll need to import and use it like this:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> router = express.Router();</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> postValidator = [</span><br><span class="line">  body(<span class="string">&quot;title&quot;</span>).notEmpty(),</span><br><span class="line">  body(<span class="string">&quot;content&quot;</span>).notEmpty(),</span><br><span class="line">  body(<span class="string">&quot;author&quot;</span>).notEmpty(),</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">router.post(<span class="string">&quot;/post&quot;</span>, postValidator, createPost); <span class="comment">// other routes</span></span><br></pre></td></tr></table></figure>
+<p>So, with the above code, before we ever hit the route handler  <code>/post</code>  , the express-validator checks the username, email, and password fields to ensure they meet our criteria. To test the validation, you can make a POST request without passing the required  <code>author</code>  key or by passing an empty string for one of the fields. This will trigger an error response indicating the missing or empty field.</p>
+<p>Now that you’ve gained the skills to build an application using Bun, Express, and MongoDB, several additional considerations exist to elevate your project to a production-grade status. To guide you through this advancement, we have curated a collection of tutorials, authoritative documentation, and helpful community contributions.</p>
+<h1 id="wrapping-up"><a class="markdownIt-Anchor" href="#wrapping-up">#</a> Wrapping Up</h1>
+<p>If you’re keen on exploring further, the official documentation for <span class="exturl" data-url="aHR0cHM6Ly9leHByZXNzanMuY29tLw==">Express.js</span>, <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1vbmdvZGIuY29tLw==">MongoDB</span>, and <span class="exturl" data-url="aHR0cHM6Ly9idW4uc2gv">Bun</span> is an excellent starting point.</p>
+<p>But, this article should be enough to get you started with building a production ready application using Bun.</p>
+<p>I hope you found this article helpful.</p>
+<p>Thank you for reading.</p>
+
+      <div class="tags">
+          <a href="/tags/js/" rel="tag"><i class="ic i-tag"></i> js</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2024-04-28 20:25:10" itemprop="dateModified" datetime="2024-04-28T20:25:10+08:00">2024-04-28</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2024/04/28/db-connect/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;阴晴不定大哥哥.jpg" title="DB Connect">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>DB Connect</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2024/04/28/bun-elysia/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;死亡笔记.jpg" title="Untitled">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Untitled</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#understanding-the-tools"><span class="toc-number">1.</span> <span class="toc-text"> Understanding the Tools</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#step-01-setting-up-the-application-and-building-the-api"><span class="toc-number">2.</span> <span class="toc-text"> Step 01: Setting Up the Application and Building the API</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-installing-bun"><span class="toc-number">2.1.</span> <span class="toc-text"> 1. Installing Bun</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-creating-a-bun-project"><span class="toc-number">2.2.</span> <span class="toc-text"> 2. Creating a Bun Project</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-installing-the-libraries-expressjs-mongodb-and-typescript"><span class="toc-number">2.3.</span> <span class="toc-text"> 3. Installing the libraries: Express.js, MongoDB, and Typescript</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-brewing-the-basic-server-potion"><span class="toc-number">2.4.</span> <span class="toc-text"> 4. Brewing the Basic Server Potion</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-designing-the-mongoose-schema"><span class="toc-number">2.5.</span> <span class="toc-text"> 5. Designing the Mongoose Schema</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-controllers-defining-business-logic"><span class="toc-number">2.6.</span> <span class="toc-text"> 6. Controllers: Defining Business Logic</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-adding-routes-to-the-business-functions"><span class="toc-number">2.7.</span> <span class="toc-text"> 7. Adding Routes to the Business Functions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-configuring-mongodb"><span class="toc-number">2.8.</span> <span class="toc-text"> 8. Configuring MongoDB</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-stitching-all-together"><span class="toc-number">2.9.</span> <span class="toc-text"> 9. Stitching all together</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#adding-monitoring-to-expressjs-applications"><span class="toc-number">3.</span> <span class="toc-text"> Adding Monitoring to Express.js Applications</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#logging-requests-in-express"><span class="toc-number">3.1.</span> <span class="toc-text"> Logging requests in Express</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#data-validation-in-express"><span class="toc-number">3.2.</span> <span class="toc-text"> Data validation in Express</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#wrapping-up"><span class="toc-number">4.</span> <span class="toc-text"> Wrapping Up</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">359</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">50</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
+      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2024/04/28/db-connect/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2024/04/28/bun-elysia/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ D E W</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2024/04/28/bun-express/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

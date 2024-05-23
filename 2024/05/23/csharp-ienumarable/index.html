@@ -1,0 +1,440 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CFira%20Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="c#" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2024/05/23/csharp-ienumarable/">
+
+
+
+  <title>
+How to use IEnumerable, ICollection, IList, and IQueryable in C# |
+D E W = 露の世</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">How to use IEnumerable, ICollection, IList, and IQueryable in C#
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2024-05-23 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2024-05-23T00:00:00+08:00">2024-05-23</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">D E W</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="/anime/index/辉夜姬物语-1.jpg"></li>
+          <li class="item" data-background-image="/anime/index/花牌情缘.jpg"></li>
+          <li class="item" data-background-image="/anime/index/在下坂本有何贵干.jpg"></li>
+          <li class="item" data-background-image="/anime/index/秒速五厘米-5.jpg"></li>
+          <li class="item" data-background-image="/anime/index/明日酱的水手服-3.jpg"></li>
+          <li class="item" data-background-image="/anime/index/蜂蜜与四叶草.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2024/05/23/csharp-ienumarable/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>repost: <span class="exturl" data-url="aHR0cHM6Ly93d3cuaW5mb3dvcmxkLmNvbS9hcnRpY2xlLzM3MTE4MDUvaG93LXRvLXVzZS1pZW51bWVyYWJsZS1pY29sbGVjdGlvbi1pbGlzdC1hbmQtaXF1ZXJ5YWJsZS1pbi1jLXNoYXJwLmh0bWw=">How to use IEnumerable, ICollection, IList, and IQueryable in C# | InfoWorld</span></p>
+</blockquote>
+<p>The <span class="exturl" data-url="aHR0cHM6Ly93d3cuaW5mb3dvcmxkLmNvbS9hcnRpY2xlLzM3MTE3MjAvdGhlLWJlc3QtbmV3LWZlYXR1cmVzLWluLWMtc2hhcnAtMTIuaHRtbA==">C# programming language</span> provides excellent support for working with collections of data. C# includes several classes and interfaces that can help you query collections of data efficiently. The most commonly used interfaces for working with collections are IEnumerable, ICollection, IList, and IQueryable.</p>
+<p>In this article we will examine each of these interfaces and discuss how we can work with them in <span class="exturl" data-url="aHR0cHM6Ly93d3cuaW5mb3dvcmxkLmNvbS9hcnRpY2xlLzM3MTE0MjIvdGhlLWJlc3QtbmV3LWZlYXR1cmVzLWluLW1pY3Jvc29mdC1uZXQtOC5odG1s">.NET 8</span>, illustrated with code examples.</p>
+<h2 id="create-a-console-application-project-in-visual-studio"><a class="markdownIt-Anchor" href="#create-a-console-application-project-in-visual-studio">#</a> Create a console application project in Visual Studio</h2>
+<p>First off, let’s create a .NET Core console application project in Visual Studio. Assuming Visual Studio 2022 is installed in your system, follow the steps outlined below to create a new .NET Core console application project.</p>
+<ol>
+<li>Launch the Visual Studio IDE.</li>
+<li>Click on “Create new project.”</li>
+<li>In the “Create new project” window, select “Console App (.NET Core)” from the list of templates displayed.</li>
+<li>Click Next.</li>
+<li>In the “Configure your new project” window, specify the name and location for the new project.</li>
+<li>Click Next.</li>
+<li>In the “Additional information” window shown next, choose “.NET 8.0 (Long Term Support)” as the framework version you would like to use.</li>
+<li>Click Create.</li>
+</ol>
+<p>We’ll use this .NET 8 console application project to work with the IEnumerable, ICollection, IList, and IQueryable interfaces in the subsequent sections of this article.</p>
+<h2 id="the-ienumerable-interface-in-c"><a class="markdownIt-Anchor" href="#the-ienumerable-interface-in-c">#</a> The IEnumerable interface in C#</h2>
+<p>The IEnumerable interface in C# allows you to iterate over a collection of elements. It contains one method called GetEnumerator that returns an instance of type IEnumerable<T>. You can use this instance to iterate a collection of elements in a read-only, forward-only manner. You cannot use IEnumerable to iterate backwards.</p>
+<p>The IEnumerable<T> interface is defined in the System.Collections namespace as shown below.</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">IEnumerable</span>&lt;<span class="keyword">out</span> <span class="title">T</span>&gt; : <span class="title">IEnumerable</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">new</span> <span class="function">IEnumerator&lt;T&gt; <span class="title">GetEnumerator</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The following code snippet illustrates how you can work with IEnumerable<T> in C#.</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">List&lt;<span class="built_in">string</span>&gt; cities = <span class="keyword">new</span> List&lt;<span class="built_in">string</span>&gt;() &#123; <span class="string">&quot;New York&quot;</span>, <span class="string">&quot;London&quot;</span>, <span class="string">&quot;Tokyo&quot;</span>, <span class="string">&quot;Lisbon&quot;</span>, <span class="string">&quot;Hyderabad&quot;</span>, <span class="string">&quot;Chicago&quot;</span> &#125;;</span><br><span class="line">IEnumerable&lt;<span class="built_in">string</span>&gt; query = cities.Where(x =&gt; x.StartsWith(<span class="string">&quot;L&quot;</span>));</span><br><span class="line"><span class="keyword">foreach</span> (<span class="keyword">var</span> city <span class="keyword">in</span> query)</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(city);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>When you execute the preceding piece of code, the names of the cities that start with the letter “L” will be displayed at the console window.</p>
+<h2 id="the-icollection-interface-in-c"><a class="markdownIt-Anchor" href="#the-icollection-interface-in-c">#</a> The ICollection interface in C#</h2>
+<p>The ICollection interface is the base interface of all classes pertaining to the System.Collections namespace. It provides a generic collection of objects where the elements of the collection are accessible using an index.</p>
+<p>The ICollection<T> interface is the generic equivalent of the ICollection interface. It extends the IEnumerable<T> interface, which in turn extends the IEnumerable interface as shown in the code snippet given below.</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">ICollection</span>&lt;<span class="title">T</span>&gt; : <span class="title">IEnumerable</span>&lt;<span class="title">T</span>&gt;</span><br><span class="line">&#123;</span><br><span class="line">        <span class="built_in">int</span> Count &#123; <span class="keyword">get</span>; &#125;</span><br><span class="line">        <span class="built_in">bool</span> IsReadOnly &#123; <span class="keyword">get</span>; &#125;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">Add</span>(<span class="params">T item</span>)</span>;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">Clear</span>(<span class="params"></span>)</span>;</span><br><span class="line">        <span class="function"><span class="built_in">bool</span> <span class="title">Contains</span>(<span class="params">T item</span>)</span>;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">CopyTo</span>(<span class="params">T[] array, <span class="built_in">int</span> arrayIndex</span>)</span>;</span><br><span class="line">        <span class="function"><span class="built_in">bool</span> <span class="title">Remove</span>(<span class="params">T item</span>)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Unlike the IEnumerable interface, the ICollection interface allows you to add or remove elements from a collection. The following code snippet shows how you can use the ICollection interface in C#.</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ICollection&lt;<span class="built_in">string</span>&gt; countries = <span class="keyword">new</span> Collection&lt;<span class="built_in">string</span>&gt;();</span><br><span class="line">countries.Add(<span class="string">&quot;USA&quot;</span>);</span><br><span class="line">countries.Add(<span class="string">&quot;India&quot;</span>);</span><br><span class="line">countries.Add(<span class="string">&quot;England&quot;</span>);</span><br><span class="line">countries.Add(<span class="string">&quot;Japan&quot;</span>);</span><br><span class="line"><span class="keyword">foreach</span> (<span class="built_in">string</span> country <span class="keyword">in</span> countries)</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(country);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>When you execute the above code, the country names added to the collection will be displayed at the console window.</p>
+<h2 id="the-ilist-interface-in-c"><a class="markdownIt-Anchor" href="#the-ilist-interface-in-c">#</a> The IList interface in C#</h2>
+<p>The IList interface is available in the System.Collections namespace. It represents a strongly typed collection in which the elements of the collection are accessible using an index. IList extends the ICollection interface and contains additional methods such as IndexOf, Insert, and RemoveAt for working with collections.</p>
+<p>The following code snippet shows how the IList<T> interface is defined in the System.Collections namespace.</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">IList</span> : <span class="title">ICollection</span></span><br><span class="line">    &#123;</span><br><span class="line">        Object <span class="keyword">this</span>[<span class="built_in">int</span> index] &#123;</span><br><span class="line">            <span class="keyword">get</span>;</span><br><span class="line">            <span class="keyword">set</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="built_in">int</span> <span class="title">Add</span>(<span class="params">Object <span class="keyword">value</span></span>)</span>;</span><br><span class="line">        <span class="function"><span class="built_in">bool</span> <span class="title">Contains</span>(<span class="params">Object <span class="keyword">value</span></span>)</span>;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">Clear</span>(<span class="params"></span>)</span>;</span><br><span class="line">        <span class="built_in">bool</span> IsReadOnly</span><br><span class="line">        &#123; <span class="keyword">get</span>; &#125;</span><br><span class="line">         <span class="built_in">bool</span> IsFixedSize</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">get</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="built_in">int</span> <span class="title">IndexOf</span>(<span class="params">Object <span class="keyword">value</span></span>)</span>;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">Insert</span>(<span class="params"><span class="built_in">int</span> index, Object <span class="keyword">value</span></span>)</span>;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">Remove</span>(<span class="params">Object <span class="keyword">value</span></span>)</span>;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">RemoveAt</span>(<span class="params"><span class="built_in">int</span> index</span>)</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>The code snippet below shows how you can create an instance of type IList and add and remove elements to and from the collection.</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">IList&lt;<span class="built_in">string</span>&gt; customers = <span class="keyword">new</span> List&lt;<span class="built_in">string</span>&gt;();</span><br><span class="line">customers.Add(<span class="string">&quot;Joydip&quot;</span>);</span><br><span class="line">customers.Add(<span class="string">&quot;Steve&quot;</span>);</span><br><span class="line">customers.Add(<span class="string">&quot;Peter&quot;</span>);</span><br><span class="line">customers.Insert(<span class="number">2</span>, <span class="string">&quot;Michael&quot;</span>);</span><br><span class="line">customers.RemoveAt(<span class="number">0</span>);</span><br><span class="line"><span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; customers.Count; i++)</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(customers[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Note how a customer name has been inserted to the collection and the customer name at the beginning of the collection has been deleted. When you execute the preceding piece of code, the names present in the updated collection will be displayed at the console window as shown in Figure 1.</p>
+<img data-src="/2024/05/23/csharp-ienumarable/ilist-in-c-sharp-100950706-large.jpg" class="" title="ilist in c sharp">
+<h2 id="the-iqueryable-interface-in-c"><a class="markdownIt-Anchor" href="#the-iqueryable-interface-in-c">#</a> The IQueryable interface in C#</h2>
+<p>The IQueryable interface pertaining to the System.Linq namespace extends the IEnumerable interface and can be used to query data from data sources that implement IQueryable providers. The IQueryable<T>interface extends the IEnumerable<T> interface and is defined as shown in the code snippet given below.</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">IQueryable</span>&lt;<span class="keyword">out</span> <span class="title">T</span>&gt; : <span class="title">IEnumerable</span>&lt;<span class="title">T</span>&gt;, <span class="title">IQueryable</span></span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Whereas the IEnumerable<T> interface can be used for working with in-memory collections of data, the IQueryable<T> interface can be used with external data sources such as a web service or a database. Consider the following class.</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Author</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> Id &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> FirstName &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> LastName &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">bool</span> IsActive &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The following code snippet demonstrates how you can work with the IQueryable interface in C#.</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Author&gt; authors = <span class="keyword">new</span> List&lt;Author&gt;()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">new</span> Author()&#123;Id = <span class="number">1</span>, FirstName = <span class="string">&quot;Joydip&quot;</span>, LastName = <span class="string">&quot;Kanjilal&quot;</span>, IsActive = <span class="literal">true</span>&#125;,</span><br><span class="line">    <span class="keyword">new</span> Author()&#123;Id = <span class="number">2</span>, FirstName = <span class="string">&quot;Michael&quot;</span>, LastName = <span class="string">&quot;Smith&quot;</span>, IsActive = <span class="literal">false</span>&#125;,</span><br><span class="line">    <span class="keyword">new</span> Author()&#123;Id = <span class="number">3</span>, FirstName = <span class="string">&quot;Steve&quot;</span>, LastName = <span class="string">&quot;Jones&quot;</span>, IsActive = <span class="literal">true</span>&#125;</span><br><span class="line">&#125;;</span><br><span class="line">IQueryable&lt;Author&gt; query = authors.AsQueryable()</span><br><span class="line">                                 .Where(a =&gt; a.IsActive == <span class="literal">true</span>);</span><br><span class="line"><span class="keyword">foreach</span> (<span class="keyword">var</span> author <span class="keyword">in</span> query)</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(<span class="string">$&quot;Id : <span class="subst">&#123;author.Id&#125;</span>  FirstName : <span class="subst">&#123;author.FirstName&#125;</span>    LastName : <span class="subst">&#123;author.LastName&#125;</span>&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The IQueryable interface is appropriate for working with large datasets, particularly when you need to implement paging to retrieve only the data you need.</p>
+<h2 id="which-collection-interface-should-you-use"><a class="markdownIt-Anchor" href="#which-collection-interface-should-you-use">#</a> Which collection interface should you use?</h2>
+<p>Here’s a quick recap of the features of the IEnumerable, ICollection, IList, and IQueryable interfaces.</p>
+<ul>
+<li>IEnumerable allows you to access elements of a collection in a read-only, forward-only manner. No adding, deleting, or modifying the elements.</li>
+<li>ICollection inherits from the IEnumerable interface and provides additional functionality including adding, deleting, and modifying elements.</li>
+<li>IList extends the ICollection interface and represents strongly typed collections that are accessible via index. So in addition to adding, deleting, and modifying, you can insert or remove items using index values.</li>
+<li>IQueryable extends the IEnumerable interface, provides support for LINQ, and is well-suited for working with large datasets. When you use IQueryable with LINQ to SQL or LINQ to Entities, it generates a LINQ to SQL expression that is executed in the data layer of your application.</li>
+</ul>
+<p>The choice of collection interface in C# will depend on the requirements of your application. If you want to query data from a database, use IQueryable. If you want to query data from memory, then use IEnumerable, ICollection, or IList, depending on what you want to do with the elements of the collection.</p>
+
+      <div class="tags">
+          <a href="/tags/c/" rel="tag"><i class="ic i-tag"></i> c#</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2024-05-23 17:31:11" itemprop="dateModified" datetime="2024-05-23T17:31:11+08:00">2024-05-23</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2024/05/23/csharp-wpf-crud/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;春宵苦短，少女前进吧.jpg" title="CRUD Operations in WPF using EntityFrameworkCore and SQLite">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>CRUD Operations in WPF using EntityFrameworkCore and SQLite</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2024/05/23/csharp-datatable/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;虫师.jpg" title="C# DataTable (How It Works For Developers Tutorial)">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>C# DataTable (How It Works For Developers Tutorial)</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#create-a-console-application-project-in-visual-studio"><span class="toc-number">1.</span> <span class="toc-text"> Create a console application project in Visual Studio</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#the-ienumerable-interface-in-c"><span class="toc-number">2.</span> <span class="toc-text"> The IEnumerable interface in C#</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#the-icollection-interface-in-c"><span class="toc-number">3.</span> <span class="toc-text"> The ICollection interface in C#</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#the-ilist-interface-in-c"><span class="toc-number">4.</span> <span class="toc-text"> The IList interface in C#</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#the-iqueryable-interface-in-c"><span class="toc-number">5.</span> <span class="toc-text"> The IQueryable interface in C#</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#which-collection-interface-should-you-use"><span class="toc-number">6.</span> <span class="toc-text"> Which collection interface should you use?</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">359</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">50</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
+      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2024/05/23/csharp-wpf-crud/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2024/05/23/csharp-datatable/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ D E W</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2024/05/23/csharp-ienumarable/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

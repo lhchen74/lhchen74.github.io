@@ -1,0 +1,437 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CFira%20Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="c#" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2024/05/23/csharp-datatable/">
+
+
+
+  <title>
+C# DataTable (How It Works For Developers Tutorial) |
+D E W = 露の世</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">C# DataTable (How It Works For Developers Tutorial)
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2024-05-23 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2024-05-23T00:00:00+08:00">2024-05-23</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">D E W</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="/anime/index/龙猫-4.jpg"></li>
+          <li class="item" data-background-image="/anime/index/起风了.jpg"></li>
+          <li class="item" data-background-image="/anime/index/十二大战.jpg"></li>
+          <li class="item" data-background-image="/anime/index/三月的狮子.jpg"></li>
+          <li class="item" data-background-image="/anime/index/食梦者.jpg"></li>
+          <li class="item" data-background-image="/anime/index/文豪野犬-2.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2024/05/23/csharp-datatable/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>repost: <span class="exturl" data-url="aHR0cHM6Ly9pcm9ucGRmLmNvbS9ibG9nL25ldC1oZWxwL2NzaGFycC1kYXRhdGFibGUtdHV0b3JpYWwv">C# Datatable (How It Works For Developers Tutorial) | IronPDF</span></p>
+</blockquote>
+<p>Welcome to this tutorial on C# DataTables. A  <code>DataTable</code>  is a powerful data structure provided by the .NET framework, which allows you to store, manipulate, and query data in a tabular format. In this tutorial, we will explore the basics of DataTables in C#, including creating and modifying  <code>DataTables</code> , adding columns and rows, querying data, and using  <code>DataView</code>  for filtering and sorting.</p>
+<p>By the end of this tutorial, you will have a good understanding of how to use  <code>DataTables</code>  in your C# applications. Let’s get started!</p>
+<h2 id="creating-a-datatable"><a class="markdownIt-Anchor" href="#creating-a-datatable">#</a> Creating a DataTable</h2>
+<p>To create a  <code>DataTable</code>  in C#, you first need to import the  <code>System.Data</code>  namespace. This namespace contains various classes and methods related to data manipulation, including the  <code>DataTable</code>  class.</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Data;</span><br></pre></td></tr></table></figure>
+<p>Next, you can create an instance of the  <code>DataTable</code>  class. The simplest way to do this is by using the default constructor, like so:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DataTable dt = <span class="keyword">new</span> DataTable();</span><br></pre></td></tr></table></figure>
+<p>You can also create a  <code>DataTable</code>  with a specific name by passing a string parameter to the constructor:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DataTable dt = <span class="keyword">new</span> DataTable(<span class="string">&quot;Employees&quot;</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="datatable-methods"><a class="markdownIt-Anchor" href="#datatable-methods">#</a> DataTable Methods</h2>
+<h3 id="adding-columns"><a class="markdownIt-Anchor" href="#adding-columns">#</a> Adding Columns</h3>
+<p>Once you have created a DataTable, you can start adding columns to it. To add a column, you first need to create an instance of the  <code>DataColumn</code>  class and set its properties, such as  <code>ColumnName</code>  and  <code>DataType</code> .</p>
+<p>Here’s an example of how to add three columns to a DataTable:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">DataColumn idColumn = <span class="keyword">new</span> DataColumn(<span class="string">&quot;Id&quot;</span>, <span class="keyword">typeof</span>(<span class="built_in">int</span>));</span><br><span class="line">DataColumn nameColumn = <span class="keyword">new</span> DataColumn(<span class="string">&quot;Name&quot;</span>, <span class="keyword">typeof</span>(<span class="built_in">string</span>));</span><br><span class="line">DataColumn ageColumn = <span class="keyword">new</span> DataColumn(<span class="string">&quot;Age&quot;</span>, <span class="keyword">typeof</span>(<span class="built_in">int</span>));</span><br><span class="line"></span><br><span class="line">dt.Columns.Add(idColumn);</span><br><span class="line">dt.Columns.Add(nameColumn);</span><br><span class="line">dt.Columns.Add(ageColumn);</span><br></pre></td></tr></table></figure>
+<p>You can add multiple columns like the  <code>Id</code>  column in the data table.</p>
+<h3 id="adding-data-rows"><a class="markdownIt-Anchor" href="#adding-data-rows">#</a> Adding Data Rows</h3>
+<p>After defining the columns, you can start adding rows to the  <code>DataTable</code> . To add a row, you need to create a new instance of the  <code>DataRow</code>  class and populate its fields with the required data.</p>
+<p>Here’s an example of how to add a new row to a  <code>DataTable</code> :</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">DataRow newRow = dt.NewRow();</span><br><span class="line"></span><br><span class="line">newRow[<span class="string">&quot;Id&quot;</span>] = <span class="number">1</span>;</span><br><span class="line">newRow[<span class="string">&quot;Name&quot;</span>] = <span class="string">&quot;John Doe&quot;</span>;</span><br><span class="line">newRow[<span class="string">&quot;Age&quot;</span>] = <span class="number">30</span>;</span><br><span class="line"></span><br><span class="line">dt.Rows.Add(newRow);</span><br></pre></td></tr></table></figure>
+<p>You can also add multiple  <code>DataTable</code>  rows at once using the same method in a loop.</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">3</span>; i++)</span><br><span class="line">&#123;</span><br><span class="line">    DataRow row = dt.NewRow();</span><br><span class="line">    row[<span class="string">&quot;Id&quot;</span>] = i;</span><br><span class="line">    row[<span class="string">&quot;Name&quot;</span>] = <span class="string">&quot;Employee &quot;</span> + i;</span><br><span class="line">    row[<span class="string">&quot;Age&quot;</span>] = <span class="number">20</span> + i;</span><br><span class="line">    dt.Rows.Add(row);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>In the above code, we added three data rows.</p>
+<h3 id="accessing-data"><a class="markdownIt-Anchor" href="#accessing-data">#</a> Accessing Data</h3>
+<p>You can access the data stored in a  <code>DataTable</code>  by iterating through its  <code>Rows</code>  and  <code>Columns</code>  collections. Here’s an example of how to display the contents of a  <code>DataTable</code>  in the console:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">foreach</span> (DataRow row <span class="keyword">in</span> dt.Rows)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">foreach</span> (DataColumn col <span class="keyword">in</span> dt.Columns)</span><br><span class="line">    &#123;</span><br><span class="line">        Console.Write(row[col] + <span class="string">&quot;\t&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    Console.WriteLine();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="modifying-data"><a class="markdownIt-Anchor" href="#modifying-data">#</a> Modifying Data</h3>
+<p>You can modify the data in a  <code>DataTable</code>  by updating the values in its  <code>DataRow</code>  objects. Here’s an example of how to update the age of a specific employee:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">DataRow employeeRow = dt.Rows.Find(<span class="number">1</span>); <span class="comment">// Find the row with the specified primary key</span></span><br><span class="line"><span class="keyword">if</span> (employeeRow != <span class="literal">null</span>)</span><br><span class="line">&#123;</span><br><span class="line">    employeeRow[<span class="string">&quot;Age&quot;</span>] = <span class="number">35</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="deleting-rows"><a class="markdownIt-Anchor" href="#deleting-rows">#</a> Deleting Rows</h3>
+<p>You can delete a row from a DataTable by calling the Delete method on a  <code>DataRow</code>  object:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">DataRow employeeRow = dt.Rows.Find(<span class="number">1</span>);</span><br><span class="line"><span class="keyword">if</span> (employeeRow != <span class="literal">null</span>)</span><br><span class="line">&#123;</span><br><span class="line">    employeeRow.Delete();</span><br><span class="line">    dt.AcceptChanges(); <span class="comment">// Commit the deletion</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Keep in mind that calling  <code>Delete</code>  on a  <code>DataRow</code>  only marks the row for deletion. You need to call the  <code>AcceptChanges</code>  method on the  <code>DataTable</code>  to permanently remove the deleted rows.</p>
+<h3 id="managing-multiple-tables"><a class="markdownIt-Anchor" href="#managing-multiple-tables">#</a> Managing Multiple Tables</h3>
+<p>In some cases, you might need to work with multiple data tables simultaneously. You can create a dataset variable to store several DataTable objects and manage the relationships between them.</p>
+<h3 id="querying-data-with-linq"><a class="markdownIt-Anchor" href="#querying-data-with-linq">#</a> Querying Data with LINQ</h3>
+<p>LINQ (Language Integrated Query) is a powerful feature in C# that allows you to query data from various data sources, including  <code>DataTable</code>  objects. To use LINQ with DataTables, you need to import the  <code>System.Linq</code>  namespace. Here’s an example of how to filter employees older than 25 using LINQ:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Linq;</span><br><span class="line"><span class="keyword">var</span> filteredRows = dt.AsEnumerable().Where(row =&gt; row.Field&lt;<span class="built_in">int</span>&gt;(<span class="string">&quot;Age&quot;</span>) &gt; <span class="number">25</span>);</span><br><span class="line"><span class="keyword">foreach</span> (DataRow row <span class="keyword">in</span> filteredRows)</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(row[<span class="string">&quot;Name&quot;</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="dataview-sorting-and-filtering"><a class="markdownIt-Anchor" href="#dataview-sorting-and-filtering">#</a> DataView: Sorting and Filtering</h3>
+<p><code>DataView</code>  is another useful class provided by the  <code>System.Data</code>  namespace that allows you to create a sorted or filtered view of a  <code>DataTable</code> . This is especially useful when you need to display the data in a UI control like a  <code>DataGridView</code> . We can also do data binding to add data to the  <code>DataGridView</code>  control from a  <code>DataTable</code> .</p>
+<p>Here’s an example of how to create a DataView to filter and sort the employees based on their age:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">DataView view = <span class="keyword">new</span> DataView(dt);</span><br><span class="line"><span class="comment">// Filter employees older than 25</span></span><br><span class="line">view.RowFilter = <span class="string">&quot;Age &gt; 25&quot;</span>;</span><br><span class="line"><span class="comment">// Sort by age in descending order</span></span><br><span class="line">view.Sort = <span class="string">&quot;Age DESC&quot;</span>;</span><br><span class="line"><span class="comment">// Display the filtered and sorted data</span></span><br><span class="line"><span class="keyword">foreach</span> (DataRowView rowView <span class="keyword">in</span> view)</span><br><span class="line">&#123;</span><br><span class="line">    DataRow row = rowView.Row;</span><br><span class="line">    Console.WriteLine(row[<span class="string">&quot;Name&quot;</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="exporting-datatable-to-pdf-with-ironpdf"><a class="markdownIt-Anchor" href="#exporting-datatable-to-pdf-with-ironpdf">#</a> Exporting DataTable to PDF with IronPDF</h2>
+<p><span class="exturl" data-url="aHR0cHM6Ly9pcm9ucGRmLmNvbS8=">IronPDF</span> is a powerful <span class="exturl" data-url="aHR0cHM6Ly9pcm9ucGRmLmNvbS90dXRvcmlhbHMvaHRtbC10by1wZGYv">HTML to PDF</span> converter, replete with user-friendly PDF-manipulation features enables developers to create, read, and edit PDF documents within .NET applications.</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> IronPdf;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">var</span> renderer = <span class="keyword">new</span> ChromePdfRenderer();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 1. Convert HTML String to PDF</span></span><br><span class="line">        <span class="keyword">var</span> htmlContent = <span class="string">&quot;&lt;h1&gt;Hello, IronPDF!&lt;/h1&gt;&lt;p&gt;This is a PDF from an HTML string.&lt;/p&gt;&quot;</span>;</span><br><span class="line">        <span class="keyword">var</span> pdfFromHtmlString = renderer.RenderHtmlAsPdf(htmlContent);</span><br><span class="line">        pdfFromHtmlString.SaveAs(<span class="string">&quot;HTMLStringToPDF.pdf&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 2. Convert HTML File to PDF</span></span><br><span class="line">        <span class="keyword">var</span> htmlFilePath = <span class="string">&quot;path_to_your_html_file.html&quot;</span>; <span class="comment">// Specify the path to your HTML file</span></span><br><span class="line">        <span class="keyword">var</span> pdfFromHtmlFile = renderer.RenderHtmlFileAsPdf(htmlFilePath);</span><br><span class="line">        pdfFromHtmlFile.SaveAs(<span class="string">&quot;HTMLFileToPDF.pdf&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 3. Convert URL to PDF</span></span><br><span class="line">        <span class="keyword">var</span> url = <span class="string">&quot;http://ironpdf.com&quot;</span>; <span class="comment">// Specify the URL</span></span><br><span class="line">        <span class="keyword">var</span> pdfFromUrl = renderer.RenderUrlAsPdf(url);</span><br><span class="line">        pdfFromUrl.SaveAs(<span class="string">&quot;URLToPDF.pdf&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>In this section, we will learn how to export a  <code>DataTable</code>  to a PDF document using IronPDF.</p>
+<p>First, you need to install the IronPDF NuGet package. Open the Package Manager Console in Visual Studio and run the following command:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Install-Package IronPdf</span><br></pre></td></tr></table></figure>
+<p>Once the package is installed, you can start by importing the necessary namespaces in your code:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> IronPdf;</span><br><span class="line"><span class="keyword">using</span> System.IO;</span><br></pre></td></tr></table></figure>
+<p>Next, create a helper method that converts the DataTable into an HTML table, as IronPDF uses HTML to render content in PDF documents:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">string</span> <span class="title">ConvertDataTableToHtml</span>(<span class="params">DataTable dt</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    StringBuilder htmlBuilder = <span class="keyword">new</span> StringBuilder();</span><br><span class="line"></span><br><span class="line">    htmlBuilder.AppendLine(<span class="string">&quot;&lt;table border=&#x27;1&#x27; cellpadding=&#x27;5&#x27; cellspacing=&#x27;0&#x27;&gt;&quot;</span>);</span><br><span class="line">    htmlBuilder.AppendLine(<span class="string">&quot;&lt;tr&gt;&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Add column headers</span></span><br><span class="line">    <span class="keyword">foreach</span> (DataColumn col <span class="keyword">in</span> dt.Columns)</span><br><span class="line">    &#123;</span><br><span class="line">        htmlBuilder.AppendFormat(<span class="string">&quot;&lt;th&gt;&#123;0&#125;&lt;/th&gt;&quot;</span>, col.ColumnName);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    htmlBuilder.AppendLine(<span class="string">&quot;&lt;/tr&gt;&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Add rows</span></span><br><span class="line">    <span class="keyword">foreach</span> (DataRow row <span class="keyword">in</span> dt.Rows)</span><br><span class="line">    &#123;</span><br><span class="line">        htmlBuilder.AppendLine(<span class="string">&quot;&lt;tr&gt;&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">foreach</span> (DataColumn col <span class="keyword">in</span> dt.Columns)</span><br><span class="line">        &#123;</span><br><span class="line">            htmlBuilder.AppendFormat(<span class="string">&quot;&lt;td&gt;&#123;0&#125;&lt;/td&gt;&quot;</span>, row[col]);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        htmlBuilder.AppendLine(<span class="string">&quot;&lt;/tr&gt;&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    htmlBuilder.AppendLine(<span class="string">&quot;&lt;/table&gt;&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> htmlBuilder.ToString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Now, you can use the <a target="_blank" rel="noopener" href="https://ironpdf.com/tutorials/html-to-pdf/"> <code>HtmlToPdf</code> </a> class provided by IronPDF to render the HTML table and save it as a PDF file:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">ExportDataTableToPdf</span>(<span class="params">DataTable dt, <span class="built_in">string</span> outputPath</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// Convert DataTable to HTML</span></span><br><span class="line">    <span class="built_in">string</span> htmlTable = ConvertDataTableToHtml(dt);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Create a new HTML to PDF renderer</span></span><br><span class="line">    <span class="keyword">var</span> renderer = <span class="keyword">new</span> ChromePdfRenderer();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Set global styles for the table</span></span><br><span class="line">    renderer.RenderingOptions.CssMediaType = PdfPrintOptions.PdfCssMediaType.Print;</span><br><span class="line">    renderer.RenderingOptions.FirstPageNumber = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Render the HTML table as a PDF document</span></span><br><span class="line">    PdfDocument pdf = renderer.RenderHtmlAsPdf(htmlTable);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Save the PDF file</span></span><br><span class="line">    pdf.SaveAs(outputPath);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The  <code>ExportDataTableToPdf</code>  method creates a  <code>DataTable</code>  from the HTML table and saves it to the PDF file.</p>
+<p>Finally, call the  <code>ExportDataTableToPdf</code>  method with the appropriate parameters to export your  <code>DataTable</code> :</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span> pdfOutputPath = <span class="string">&quot;Employees.pdf&quot;</span>;</span><br><span class="line">ExportDataTableToPdf(dt, pdfOutputPath);</span><br></pre></td></tr></table></figure>
+<p>This will create a PDF file named “Employees.pdf” containing the contents of your  <code>DataTable</code>  in a tabular format.</p>
+<p><img data-src="https://ironpdf.com/static-assets/pdf/blog/csharp-datatable-tutorial/csharp-datatable-tutorial-1.webp" alt="C# DataTable (csharp-datatable/csharp-datatable-tutorial-1.webp) - Figure 1"></p>
+<h2 id="conclusion"><a class="markdownIt-Anchor" href="#conclusion">#</a> Conclusion</h2>
+<p>In this tutorial, you’ve learned the basics of DataTables in C# and how to export a  <code>DataTable</code>  to a PDF document using the IronPDF library. By incorporating the primary key column, dataset variables, and DataView for filtering and sorting, you will have greater control and flexibility over your data. Now you should have a good understanding of DataTables and how to use IronPDF in conjunction with DataTables to create professional-looking PDF reports in your C# applications.</p>
+<p>IronPDF offers a <span class="exturl" data-url="aHR0cHM6Ly9pcm9ucGRmLmNvbS9ibG9nL25ldC1oZWxwL2NzaGFycC1kYXRhdGFibGUtdHV0b3JpYWwvI3RyaWFsLWxpY2Vuc2U=">free trial</span>, allowing you to explore its features and capabilities before committing to a purchase.</p>
+
+      <div class="tags">
+          <a href="/tags/c/" rel="tag"><i class="ic i-tag"></i> c#</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2024-05-23 17:39:11" itemprop="dateModified" datetime="2024-05-23T17:39:11+08:00">2024-05-23</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2024/05/23/csharp-ienumarable/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;穿越时空的少女-2.jpg" title="How to use IEnumerable, ICollection, IList, and IQueryable in C#">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>How to use IEnumerable, ICollection, IList, and IQueryable in C#</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#creating-a-datatable"><span class="toc-number">1.</span> <span class="toc-text"> Creating a DataTable</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#datatable-methods"><span class="toc-number">2.</span> <span class="toc-text"> DataTable Methods</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#adding-columns"><span class="toc-number">2.1.</span> <span class="toc-text"> Adding Columns</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#adding-data-rows"><span class="toc-number">2.2.</span> <span class="toc-text"> Adding Data Rows</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#accessing-data"><span class="toc-number">2.3.</span> <span class="toc-text"> Accessing Data</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#modifying-data"><span class="toc-number">2.4.</span> <span class="toc-text"> Modifying Data</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#deleting-rows"><span class="toc-number">2.5.</span> <span class="toc-text"> Deleting Rows</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#managing-multiple-tables"><span class="toc-number">2.6.</span> <span class="toc-text"> Managing Multiple Tables</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#querying-data-with-linq"><span class="toc-number">2.7.</span> <span class="toc-text"> Querying Data with LINQ</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dataview-sorting-and-filtering"><span class="toc-number">2.8.</span> <span class="toc-text"> DataView: Sorting and Filtering</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#exporting-datatable-to-pdf-with-ironpdf"><span class="toc-number">3.</span> <span class="toc-text"> Exporting DataTable to PDF with IronPDF</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#conclusion"><span class="toc-number">4.</span> <span class="toc-text"> Conclusion</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">359</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">50</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
+      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ D E W</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2024/05/23/csharp-datatable/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

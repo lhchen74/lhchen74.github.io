@@ -102,12 +102,12 @@ D E W = 露の世</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="/anime/index/棋魂.jpg"></li>
-          <li class="item" data-background-image="/anime/index/此花亭奇谭.jpg"></li>
-          <li class="item" data-background-image="/anime/index/你的名字.jpg"></li>
-          <li class="item" data-background-image="/anime/index/校园迷糊大王.jpg"></li>
-          <li class="item" data-background-image="/anime/index/电锯人-1.jpg"></li>
-          <li class="item" data-background-image="/anime/index/死亡笔记.jpg"></li>
+          <li class="item" data-background-image="/anime/index/巴克亚罗.jpg"></li>
+          <li class="item" data-background-image="/anime/index/灰与幻想的格林姆迦尔.jpg"></li>
+          <li class="item" data-background-image="/anime/index/物语系列.jpg"></li>
+          <li class="item" data-background-image="/anime/index/乒乓.jpg"></li>
+          <li class="item" data-background-image="/anime/index/你看起来好像很好吃.jpg"></li>
+          <li class="item" data-background-image="/anime/index/侧耳倾听-2.jpg"></li>
         </ul>
       </div>
     </header>
@@ -151,7 +151,10 @@ D E W = 露の世</title>
   <div class="body md" itemprop="articleBody">
     
 
-    <h2 id="select-alternate-records"><a class="markdownIt-Anchor" href="#select-alternate-records">#</a> Select alternate records</h2>
+    <blockquote>
+<p>from: <span class="exturl" data-url="aHR0cHM6Ly93d3cueW91dHViZS5jb20vcGxheWxpc3Q/bGlzdD1QTGIxcVZTeDFrMVZwRXFBWGdvRm41cDdrRlZ6Z3N2VWdN">oracle sql practice exercises with solutions - YouTube</span></p>
+</blockquote>
+<h2 id="select-alternate-records"><a class="markdownIt-Anchor" href="#select-alternate-records">#</a> Select alternate records</h2>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span></span><br><span class="line">  <span class="keyword">from</span> (<span class="keyword">select</span> empno, sal, rownum <span class="keyword">as</span> rn <span class="keyword">from</span> scott.emp <span class="keyword">order</span> <span class="keyword">by</span> empno)</span><br><span class="line"> <span class="keyword">where</span> <span class="built_in">mod</span>(rn, <span class="number">2</span>) <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span></span><br><span class="line">  <span class="keyword">from</span> (<span class="keyword">select</span> empno, sal, rownum <span class="keyword">as</span> rn <span class="keyword">from</span> scott.emp <span class="keyword">order</span> <span class="keyword">by</span> empno)</span><br><span class="line"> <span class="keyword">where</span> <span class="built_in">mod</span>(rn, <span class="number">2</span>) <span class="operator">=</span> <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
 <h2 id="find-unique-route-cost"><a class="markdownIt-Anchor" href="#find-unique-route-cost">#</a> Find unique route cost</h2>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> edi_route_details(</span><br><span class="line">  src varchar2(<span class="number">100</span>),</span><br><span class="line">  dest varchar2(<span class="number">100</span>),</span><br><span class="line">  cost number</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> edi_route_details <span class="keyword">values</span> (<span class="string">&#x27;CHN&#x27;</span>, <span class="string">&#x27;BNG&#x27;</span>, <span class="number">500</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> edi_route_details <span class="keyword">values</span> (<span class="string">&#x27;BNG&#x27;</span>, <span class="string">&#x27;CHN&#x27;</span>, <span class="number">500</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> edi_route_details <span class="keyword">values</span> (<span class="string">&#x27;HYB&#x27;</span>, <span class="string">&#x27;MUMB&#x27;</span>,<span class="number">2500</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> edi_route_details <span class="keyword">values</span> (<span class="string">&#x27;MUMB&#x27;</span>, <span class="string">&#x27;HYB&#x27;</span>,<span class="number">2500</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> edi_route_details <span class="keyword">values</span> (<span class="string">&#x27;PUNE&#x27;</span>, <span class="string">&#x27;UP&#x27;</span>,<span class="number">4500</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">distinct</span> least(src, dest), greatest(src, dest), cost</span><br><span class="line">  <span class="keyword">from</span> edi_route_details;</span><br><span class="line">  </span><br><span class="line"><span class="comment">--drop table edi_route_details;</span></span><br></pre></td></tr></table></figure>
@@ -5247,7 +5250,7 @@ D E W = 露の世</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2024-02-18 15:23:23" itemprop="dateModified" datetime="2024-02-18T15:23:23+08:00">2024-02-18</time>
+    <time title="Modified: 2024-05-11 14:15:44" itemprop="dateModified" datetime="2024-05-11T14:15:44+08:00">2024-05-11</time>
   </span>
 </div>
 
@@ -5264,7 +5267,7 @@ D E W = 露の世</title>
     <div class="item left">
       
 
-  <a href="/2024/01/05/oracle-model-clause/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;一拳超人.jpg" title="Oracle MODEL Clause">
+  <a href="/2024/01/05/oracle-model-clause/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;酷爱电影的庞波小姐.jpg" title="Oracle MODEL Clause">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Oracle MODEL Clause</h3>
@@ -5274,7 +5277,7 @@ D E W = 露の世</title>
     <div class="item right">
       
 
-  <a href="/2024/02/19/oracle-utlfile/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;明日酱的水手服-1.jpg" title="Oracle PL&#x2F;SQL UTL_FILE">
+  <a href="/2024/02/19/oracle-utlfile/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;风之谷.jpg" title="Oracle PL&#x2F;SQL UTL_FILE">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Oracle PL/SQL UTL_FILE</h3>
@@ -5311,7 +5314,7 @@ D E W = 露の世</title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">352</span>
+        <span class="count">359</span>
         <span class="name">posts</span>
       </a>
     </div>

@@ -1,0 +1,418 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CFira%20Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="db" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2024/04/28/db-connect/">
+
+
+
+  <title>
+DB Connect |
+D E W = 露の世</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">DB Connect
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2024-04-28 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2024-04-28T00:00:00+08:00">2024-04-28</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">D E W</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="/anime/index/刺客伍六七.jpg"></li>
+          <li class="item" data-background-image="/anime/index/神的记事本.jpg"></li>
+          <li class="item" data-background-image="/anime/index/起风了.jpg"></li>
+          <li class="item" data-background-image="/anime/index/明日酱的水手服-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/千与千寻-4.jpg"></li>
+          <li class="item" data-background-image="/anime/index/AngelBeats.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2024/04/28/db-connect/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h2 id="node-oracle"><a class="markdownIt-Anchor" href="#node-oracle">#</a> Node Oracle</h2>
+<h3 id="resource"><a class="markdownIt-Anchor" href="#resource">#</a> Resource</h3>
+<blockquote>
+<p><span class="exturl" data-url="aHR0cHM6Ly9vcmFjbGUuZ2l0aHViLmlvL25vZGUtb3JhY2xlZGIv">node-oracledb: Node.js module for Oracle Database</span></p>
+</blockquote>
+<blockquote>
+<p><span class="exturl" data-url="aHR0cHM6Ly9tZWRpdW0uY29tL29yYWNsZWRldnMvbm9kZS1qcy1zZXF1ZWxpemUtd2l0aC1vcmFjbGUtZGF0YWJhc2UtaXRzLW9mZmljaWFsLWRiYmFkMjQyZmY0Yw==">Node.js Sequelize with Oracle Database — it’s official | by Christopher Jones | Oracle Developers | Medium</span></p>
+</blockquote>
+<h3 id="oracle-set-up"><a class="markdownIt-Anchor" href="#oracle-set-up">#</a> Oracle Set Up</h3>
+<p>Create table in Oracle 11g.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> posts (</span><br><span class="line">  id number,</span><br><span class="line">  title varchar2(<span class="number">100</span>),</span><br><span class="line">  content varchar2(<span class="number">4000</span>)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> sequence posts_seq;</span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">trigger</span> posts_id_trg</span><br><span class="line">  before <span class="keyword">insert</span> <span class="keyword">on</span> posts</span><br><span class="line">  <span class="keyword">for</span> <span class="keyword">each</span> <span class="type">row</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  <span class="keyword">select</span> posts_seq.nextval</span><br><span class="line">    <span class="keyword">into</span> :new.id</span><br><span class="line">    <span class="keyword">from</span> dual;</span><br><span class="line"><span class="keyword">end</span>; </span><br></pre></td></tr></table></figure>
+<h3 id="express-crud"><a class="markdownIt-Anchor" href="#express-crud">#</a> Express CRUD</h3>
+<blockquote>
+<p>npm i express oracledb -S</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> oracledb = <span class="built_in">require</span>(<span class="string">&#x27;oracledb&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> app = express();</span><br><span class="line"><span class="keyword">const</span> PORT = process.env.PORT || <span class="number">3000</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Database connection settings</span></span><br><span class="line"><span class="keyword">const</span> dbConfig = &#123;</span><br><span class="line">    user: <span class="string">&#x27;apps&#x27;</span>,</span><br><span class="line">    password: <span class="string">&#x27;apps&#x27;</span>,</span><br><span class="line">    connectString: <span class="string">&#x27;erpdev.sercomm.com:1523/DEV&#x27;</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Thick Mode</span></span><br><span class="line"><span class="keyword">if</span> (process.platform === <span class="string">&#x27;win32&#x27;</span> || (process.platform === <span class="string">&#x27;darwin&#x27;</span> &amp;&amp; process.arch === <span class="string">&#x27;x64&#x27;</span>)) &#123;</span><br><span class="line">    oracledb.initOracleClient(&#123; <span class="attr">libDir</span>: <span class="string">&#x27;C:/Program Files/instantclient_11_2&#x27;</span> &#125;);  <span class="comment">// enable node-oracledb Thick mode</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Connect to Oracle Database</span></span><br><span class="line"><span class="comment">// async function getConnection () &#123;</span></span><br><span class="line"><span class="comment">//     const connection = await oracledb.getConnection(dbConfig);</span></span><br><span class="line"><span class="comment">//     return connection</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Middleware</span></span><br><span class="line">app.use(express.json());</span><br><span class="line"></span><br><span class="line"><span class="comment">// <span class="doctag">TODO:</span> Every request is executed. the best way is use the global connection</span></span><br><span class="line">app.use(<span class="keyword">async</span> (req, res, next) =&gt; &#123;</span><br><span class="line">    req.db = <span class="keyword">await</span> oracledb.getConnection(dbConfig);</span><br><span class="line">    next();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Route to get all posts</span></span><br><span class="line">app.get(<span class="string">&#x27;/api/posts&#x27;</span>, <span class="keyword">async</span> (req, res) =&gt; &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> result = <span class="keyword">await</span> req.db.execute(</span><br><span class="line">            <span class="string">`SELECT * FROM posts`</span>,</span><br><span class="line">            [],</span><br><span class="line">            &#123; <span class="attr">outFormat</span>: oracledb.OUT_FORMAT_OBJECT &#125;</span><br><span class="line">        );</span><br><span class="line">        res.json(result.rows);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">        <span class="built_in">console</span>.error(err.message);</span><br><span class="line">        res.status(<span class="number">500</span>).send(<span class="string">&#x27;Server Error&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// Route to find Post by ID</span></span><br><span class="line">app.get(<span class="string">&#x27;/api/posts/:id&#x27;</span>, <span class="keyword">async</span> (req, res) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; id &#125; = req.params;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> result = <span class="keyword">await</span> req.db.execute(</span><br><span class="line">            <span class="string">`SELECT * FROM posts WHERE id = :id`</span>,</span><br><span class="line">            [id],</span><br><span class="line">            &#123; <span class="attr">outFormat</span>: oracledb.OUT_FORMAT_OBJECT &#125;</span><br><span class="line">        );</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (result.rows.length === <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> res.status(<span class="number">404</span>).json(&#123; <span class="attr">message</span>: <span class="string">&#x27;Post not found&#x27;</span> &#125;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        res.json(result.rows[<span class="number">0</span>]);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">        <span class="built_in">console</span>.error(err.message);</span><br><span class="line">        res.status(<span class="number">500</span>).send(<span class="string">&#x27;Server Error&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Route to create a post</span></span><br><span class="line">app.post(<span class="string">&#x27;/api/posts&#x27;</span>, <span class="keyword">async</span> (req, res) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; title, content &#125; = req.body;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">await</span> req.db.execute(</span><br><span class="line">            <span class="string">`INSERT INTO posts (title, content) VALUES (:title, :content)`</span>,</span><br><span class="line">            [title, content],</span><br><span class="line">            &#123; <span class="attr">autoCommit</span>: <span class="literal">true</span> &#125;</span><br><span class="line">        );</span><br><span class="line">        res.send(<span class="string">&#x27;Post created successfully&#x27;</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">        <span class="built_in">console</span>.error(err.message);</span><br><span class="line">        res.status(<span class="number">500</span>).send(<span class="string">&#x27;Server Error&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Route to update a post</span></span><br><span class="line">app.put(<span class="string">&#x27;/api/posts/:id&#x27;</span>, <span class="keyword">async</span> (req, res) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; title, content &#125; = req.body;</span><br><span class="line">    <span class="keyword">const</span> &#123; id &#125; = req.params;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">await</span> req.db.execute(</span><br><span class="line">            <span class="string">`UPDATE posts SET title = :title, content = :content WHERE id = :id`</span>,</span><br><span class="line">            [title, content, id],</span><br><span class="line">            &#123; <span class="attr">autoCommit</span>: <span class="literal">true</span> &#125;</span><br><span class="line">        );</span><br><span class="line">        res.send(<span class="string">&#x27;Post updated successfully&#x27;</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">        <span class="built_in">console</span>.error(err.message);</span><br><span class="line">        res.status(<span class="number">500</span>).send(<span class="string">&#x27;Server Error&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Route to delete a post</span></span><br><span class="line">app.delete(<span class="string">&#x27;/api/posts/:id&#x27;</span>, <span class="keyword">async</span> (req, res) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; id &#125; = req.params;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">await</span> req.db.execute(</span><br><span class="line">            <span class="string">`DELETE FROM posts WHERE id = :id`</span>,</span><br><span class="line">            [id],</span><br><span class="line">            &#123; <span class="attr">autoCommit</span>: <span class="literal">true</span> &#125;</span><br><span class="line">        );</span><br><span class="line">        res.send(<span class="string">&#x27;Post deleted successfully&#x27;</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">        <span class="built_in">console</span>.error(err.message);</span><br><span class="line">        res.status(<span class="number">500</span>).send(<span class="string">&#x27;Server Error&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Start server</span></span><br><span class="line">app.listen(PORT, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`Server running on port <span class="subst">$&#123;PORT&#125;</span>`</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="curl-test"><a class="markdownIt-Anchor" href="#curl-test">#</a> Curl Test</h3>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">##</span></span></span><br><span class="line">curl http://localhost:3000/api/posts</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">##</span></span> </span><br><span class="line">curl http://localhost:3000/api/posts/1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">##</span></span> </span><br><span class="line">curl -X POST \</span><br><span class="line">     -H &quot;Content-Type: application/json&quot; </span><br><span class="line">     -d &#x27;&#123;&quot;title&quot;: &quot;Learn Bun&quot;, &quot;content&quot;: &quot;Bun!!!&quot;&#125;&#x27;\</span><br><span class="line">    http://localhost:3000/api/posts</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">##</span></span> </span><br><span class="line">curl -X PUT \</span><br><span class="line">     -H &quot;Content-Type: application/json&quot; </span><br><span class="line">     -d &#x27;&#123;&quot;title&quot;: &quot;Learn Bun&quot;, &quot;content&quot;: &quot;Bun Bun Bun!!!&quot;&#125;&#x27;\</span><br><span class="line">    http://localhost:3000/api/posts/3</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">##</span></span> </span><br><span class="line">curl -X DELETE http://localhost:3000/api/posts/2</span><br></pre></td></tr></table></figure>
+<h2 id="net-core-oracle"><a class="markdownIt-Anchor" href="#net-core-oracle">#</a> .Net Core + Oracle</h2>
+<h3 id="systemdataoracleclient"><a class="markdownIt-Anchor" href="#systemdataoracleclient">#</a> System.Data.OracleClient</h3>
+<blockquote>
+<p>dotnet add package System.Data.OracleClient</p>
+</blockquote>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Data.OracleClient;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="comment">// Not configuration in NETWORK\ADMIN\tnsnames.ora</span></span><br><span class="line">        <span class="comment">// const string connectionString = @&quot;Data Source=(DESCRIPTION=</span></span><br><span class="line">        <span class="comment">//                                                         (ADDRESS=(PROTOCOL=tcp)(HOST=&#123;host&#125;)(PORT=1523))</span></span><br><span class="line">        <span class="comment">//                                                     (CONNECT_DATA=</span></span><br><span class="line">        <span class="comment">//                                                         (SERVICE_NAME = DEV)</span></span><br><span class="line">        <span class="comment">//                                                     )</span></span><br><span class="line">        <span class="comment">//                                                 );User ID=&#123;username&#125;;Password=&#123;password&#125;;&quot;;</span></span><br><span class="line">        <span class="comment">// Configured in NETWORK\ADMIN\tnsnames.ora</span></span><br><span class="line">        <span class="keyword">const</span> <span class="built_in">string</span> connectionString = <span class="string">@&quot;Data Source=DEV;User ID=&#123;username&#125;;Password=&#123;password&#125;;&quot;</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">// Do not add a semicolon at end of the table name or you will get ORA-00911: invalid character</span></span><br><span class="line">        <span class="keyword">const</span> <span class="built_in">string</span> queryString = <span class="string">&quot;select empno, ename from scott.emp&quot;</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">using</span> OracleConnection connection = <span class="keyword">new</span>(connectionString);</span><br><span class="line">        OracleCommand command = connection.CreateCommand();</span><br><span class="line">        command.CommandText = queryString;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span></span><br><span class="line">        &#123;</span><br><span class="line">            connection.Open();</span><br><span class="line"></span><br><span class="line">            OracleDataReader reader = command.ExecuteReader();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span> (reader.Read())</span><br><span class="line">            &#123;</span><br><span class="line">                Console.WriteLine(<span class="string">&quot;\t&#123;0&#125;\t&#123;1&#125;&quot;</span>, reader[<span class="number">0</span>], reader[<span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">            reader.Close();</span><br><span class="line">        &#125;</span><br><span class="line">        catch (Exception ex)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(ex.Message);</span><br><span class="line">            <span class="keyword">throw</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="oraclemanageddataaccessclient"><a class="markdownIt-Anchor" href="#oraclemanageddataaccessclient">#</a> Oracle.ManagedDataAccess.Client</h3>
+<blockquote>
+<p>dotnet add package Oracle.ManagedDataAccess.Client</p>
+</blockquote>
+<p>.Net Core connect oracle 11g using Oracle.ManagedDataAccess.Core 23.4.0 needs config  <code>sqlnet.allowed_logon_version_server=11</code>  and  <code>sqlnet.allowed_logon_version_client=11</code>  in sqlnet.ora, or you will get ORA-28040: The database does not accept your client’s authentication protocol; login denied.</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Data;</span><br><span class="line"><span class="keyword">using</span> Oracle.ManagedDataAccess.Client;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title">GettingStarted</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//Prerequisite: This app assumes the user has already been created with the</span></span><br><span class="line">        <span class="comment">// necessary privileges</span></span><br><span class="line">        <span class="comment">//Set the demo user id, such as DEMODOTNET and password</span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">string</span> user = <span class="string">&quot;apps&quot;</span>;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">string</span> pwd = <span class="string">&quot;apps&quot;</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//Set the net service name, Easy Connect, or connect descriptor of the pluggable DB, </span></span><br><span class="line">        <span class="comment">// such as &quot;localhost/XEPDB1&quot; for 18c XE or higher</span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">string</span> db = <span class="string">&quot;&#123;hostname&#125;:1523/DEV&quot;</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// # .Net Core connect oracle 11g using Oracle.ManagedDataAccess.Core 23.4.0 needs config sqlnet.allowed_logon_version_server and sqlnet.allowed_logon_version_client=11 in sqlnet.ora, </span></span><br><span class="line">        <span class="comment">// # or you will get ORA-28040: The database does not accept your client&#x27;s authentication protocol; login denied.	</span></span><br><span class="line">        <span class="comment">// sqlnet.allowed_logon_version_server=11</span></span><br><span class="line">        <span class="comment">// sqlnet.allowed_logon_version_client=11</span></span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            <span class="built_in">string</span> conStringUser = <span class="string">&quot;User Id=&quot;</span> + user + <span class="string">&quot;;Password=&quot;</span> + pwd + <span class="string">&quot;;Data Source=&quot;</span> + db + <span class="string">&quot;;&quot;</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">using</span> OracleConnection con = <span class="keyword">new</span>(conStringUser);</span><br><span class="line">            <span class="keyword">using</span> OracleCommand cmd = con.CreateCommand();</span><br><span class="line">            <span class="keyword">try</span></span><br><span class="line">            &#123;</span><br><span class="line">                con.Open();</span><br><span class="line">                Console.WriteLine(<span class="string">&quot;Successfully connected to Oracle Database as &quot;</span> + user);</span><br><span class="line">                Console.WriteLine();</span><br><span class="line"></span><br><span class="line">                <span class="comment">//Retrieve sample data</span></span><br><span class="line">                <span class="comment">// Do not add a semicolon at end of the table name or you will get ORA-00911: invalid character</span></span><br><span class="line">                cmd.CommandText = <span class="string">&quot;select empno, ename from scott.emp&quot;</span>;</span><br><span class="line">                OracleDataReader reader = cmd.ExecuteReader();</span><br><span class="line">                <span class="keyword">while</span> (reader.Read())</span><br><span class="line">                &#123;</span><br><span class="line">                    Console.WriteLine(<span class="string">&quot;&#123;0&#125;\t&#123;1&#125;&quot;</span>, reader.GetString(<span class="number">0</span>), reader.GetString(<span class="number">1</span>));</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                reader.Dispose();</span><br><span class="line">            &#125;</span><br><span class="line">            catch (Exception ex)</span><br><span class="line">            &#123;</span><br><span class="line">                Console.WriteLine(ex.Message);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="net-core-mssql-localdb"><a class="markdownIt-Anchor" href="#net-core-mssql-localdb">#</a> .Net Core + MSSQL LocalDB</h2>
+<blockquote>
+<p>dotnet add package Microsoft.Data.SqlClient</p>
+</blockquote>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> Microsoft.Data.SqlClient;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="comment">// CreateTable();</span></span><br><span class="line">        <span class="comment">// Insert();</span></span><br><span class="line">        <span class="comment">// Read();</span></span><br><span class="line">        <span class="comment">// Delete();</span></span><br><span class="line">        Oracle.Run();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">CreateTable</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">try</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">using</span> SqlConnection con = <span class="keyword">new</span>(<span class="string">&quot;Server=(localdb)\\SQLCourse;Database=Student;&quot;</span>);</span><br><span class="line"></span><br><span class="line">            SqlCommand cm = <span class="keyword">new</span>(<span class="string">@&quot;create table student(</span></span><br><span class="line"><span class="string">                                    id int not null,</span></span><br><span class="line"><span class="string">                                    name varchar(100), </span></span><br><span class="line"><span class="string">                                    email varchar(50), </span></span><br><span class="line"><span class="string">                                    join_date date)&quot;</span>, con);</span><br><span class="line"></span><br><span class="line">            con.Open();</span><br><span class="line"></span><br><span class="line">            cm.ExecuteNonQuery();</span><br><span class="line"></span><br><span class="line">            Console.WriteLine(<span class="string">&quot;Table created Successfully&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        catch (Exception e)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(<span class="string">&quot;OOPs, something went wrong.&quot;</span> + e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Insert</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">try</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">using</span> SqlConnection con = <span class="keyword">new</span>(<span class="string">&quot;Server=(localdb)\\SQLCourse;Database=Student;&quot;</span>);</span><br><span class="line"></span><br><span class="line">            SqlCommand cm = <span class="keyword">new</span>(<span class="string">@&quot;insert into student (id, name, email, join_date) </span></span><br><span class="line"><span class="string">                                            values (&#x27;101&#x27;, &#x27;Ronald Trump&#x27;, &#x27;ronald@example.com&#x27;, &#x27;1/12/2017&#x27;)&quot;</span>, con);</span><br><span class="line"></span><br><span class="line">            con.Open();</span><br><span class="line"></span><br><span class="line">            cm.ExecuteNonQuery();</span><br><span class="line"></span><br><span class="line">            Console.WriteLine(<span class="string">&quot;Record Inserted Successfully&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        catch (Exception e)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(<span class="string">&quot;OOPs, something went wrong.&quot;</span> + e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Read</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">try</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">using</span> SqlConnection con = <span class="keyword">new</span>(<span class="string">&quot;Server=(localdb)\\SQLCourse;Database=Student;&quot;</span>);</span><br><span class="line"></span><br><span class="line">            SqlCommand cm = <span class="keyword">new</span>(<span class="string">@&quot;select * from student&quot;</span>, con);</span><br><span class="line"></span><br><span class="line">            con.Open();</span><br><span class="line"></span><br><span class="line">            SqlDataReader dataReader = cm.ExecuteReader();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span> (dataReader.Read())</span><br><span class="line">            &#123;</span><br><span class="line">                Console.WriteLine(dataReader[<span class="string">&quot;id&quot;</span>] + <span class="string">&quot; &quot;</span> + dataReader[<span class="string">&quot;name&quot;</span>] + <span class="string">&quot; &quot;</span> + dataReader[<span class="string">&quot;email&quot;</span>]);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            Console.WriteLine(<span class="string">&quot;Record Inserted Successfully&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        catch (Exception e)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(<span class="string">&quot;OOPs, something went wrong.&quot;</span> + e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Delete</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">try</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">using</span> SqlConnection con = <span class="keyword">new</span>(<span class="string">&quot;Server=(localdb)\\SQLCourse;Database=Student;&quot;</span>);</span><br><span class="line"></span><br><span class="line">            SqlCommand cm = <span class="keyword">new</span>(<span class="string">&quot;delete from student where id = &#x27;101&#x27;&quot;</span>, con);</span><br><span class="line"></span><br><span class="line">            con.Open();</span><br><span class="line"></span><br><span class="line">            cm.ExecuteNonQuery();</span><br><span class="line"></span><br><span class="line">            Console.WriteLine(<span class="string">&quot;Record Deleted Successfully&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        catch (Exception e)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(<span class="string">&quot;OOPs, something went wrong.&quot;</span> + e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      <div class="tags">
+          <a href="/tags/db/" rel="tag"><i class="ic i-tag"></i> db</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2024-05-23 17:16:03" itemprop="dateModified" datetime="2024-05-23T17:16:03+08:00">2024-05-23</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2024/04/24/bun-web-framework/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;幽灵公主-2.jpg" title="Bun Web Framework TODO">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Bun Web Framework TODO</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2024/04/28/bun-express/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;侧耳倾听-1.jpg" title="How To Build a Web API using Express.js, Bun and MongoDB?">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>How To Build a Web API using Express.js, Bun and MongoDB?</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#node-oracle"><span class="toc-number">1.</span> <span class="toc-text"> Node Oracle</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#resource"><span class="toc-number">1.1.</span> <span class="toc-text"> Resource</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#oracle-set-up"><span class="toc-number">1.2.</span> <span class="toc-text"> Oracle Set Up</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#express-crud"><span class="toc-number">1.3.</span> <span class="toc-text"> Express CRUD</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#curl-test"><span class="toc-number">1.4.</span> <span class="toc-text"> Curl Test</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#net-core-oracle"><span class="toc-number">2.</span> <span class="toc-text"> .Net Core + Oracle</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#systemdataoracleclient"><span class="toc-number">2.1.</span> <span class="toc-text"> System.Data.OracleClient</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#oraclemanageddataaccessclient"><span class="toc-number">2.2.</span> <span class="toc-text"> Oracle.ManagedDataAccess.Client</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#net-core-mssql-localdb"><span class="toc-number">3.</span> <span class="toc-text"> .Net Core + MSSQL LocalDB</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">359</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">50</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
+      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2024/04/24/bun-web-framework/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2024/04/28/bun-express/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ D E W</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2024/04/28/db-connect/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
