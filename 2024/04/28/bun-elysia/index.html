@@ -24,13 +24,15 @@
 <link rel="stylesheet" href="/css/app.css?v=0.2.5">
 
   
+  <meta name="keywords" content="js" />
+
 
 <link rel="canonical" href="https://lhchen74.github.io/2024/04/28/bun-elysia/">
 
 
 
   <title>
- |
+Create a CRUD App with Bun and Elysia.js |
 D E W = 露の世</title>
 <meta name="generator" content="Hexo 5.4.0"></head>
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -58,16 +60,16 @@ D E W = 露の世</title>
         <div id="brand">
           <div class="pjax">
           
-  <h1 itemprop="name headline">
+  <h1 itemprop="name headline">Create a CRUD App with Bun and Elysia.js
   </h1>
   
 <div class="meta">
-  <span class="item" title="Created: 2024-04-28 20:02:20">
+  <span class="item" title="Created: 2024-04-28 00:00:00">
     <span class="icon">
       <i class="ic i-calendar"></i>
     </span>
     <span class="text">Posted on</span>
-    <time itemprop="dateCreated datePublished" datetime="2024-04-28T20:02:20+08:00">2024-04-28</time>
+    <time itemprop="dateCreated datePublished" datetime="2024-04-28T00:00:00+08:00">2024-04-28</time>
   </span>
 </div>
 
@@ -100,12 +102,12 @@ D E W = 露の世</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="/anime/index/东京教父-2.jpg"></li>
-          <li class="item" data-background-image="/anime/index/好想告诉你.jpg"></li>
-          <li class="item" data-background-image="/anime/index/灰与幻想的格林姆迦尔.jpg"></li>
-          <li class="item" data-background-image="/anime/index/秒速五厘米-3.jpg"></li>
-          <li class="item" data-background-image="/anime/index/我们的重置人生.jpg"></li>
-          <li class="item" data-background-image="/anime/index/弹丸论破.jpg"></li>
+          <li class="item" data-background-image="/anime/index/游戏人生.jpg"></li>
+          <li class="item" data-background-image="/anime/index/凹凸世界.jpg"></li>
+          <li class="item" data-background-image="/anime/index/ACCA13区监察课.jpg"></li>
+          <li class="item" data-background-image="/anime/index/更衣人偶坠入爱河-3.jpg"></li>
+          <li class="item" data-background-image="/anime/index/七大罪.jpg"></li>
+          <li class="item" data-background-image="/anime/index/东京暗鸦-2.jpg"></li>
         </ul>
       </div>
     </header>
@@ -149,10 +151,7 @@ D E W = 露の世</title>
   <div class="body md" itemprop="articleBody">
     
 
-    <p>title: Create a CRUD App with Bun and Elysia.js<br>
-tags: js<br>
-date: 2024-04-28</p>
-<blockquote>
+    <blockquote>
 <p>repost: <span class="exturl" data-url="aHR0cHM6Ly9kZXYudG8vZ2F1cmlzaGhzL2NyZWF0ZS1hLWNydWQtYXBwLXdpdGgtYnVuLWFuZC1lbHlzaWFqcy1nam4=">Create a CRUD App with Bun and Elysia.js - DEV Community</span></p>
 </blockquote>
 <p>In this article we will be creating a crud web application with <span class="exturl" data-url="aHR0cHM6Ly9idW4uc2gv">Bun</span> and <span class="exturl" data-url="aHR0cHM6Ly9lbHlzaWFqcy5jb20v">Elysia.js</span></p>
@@ -192,7 +191,7 @@ date: 2024-04-28</p>
 <p>Create a new Elysia instance, Inject the html plugin and add a new  <code>db</code>  property which can accessed by our route handlers.</p>
 <p>Now, let’s start creating the routes</p>
 <p>First, Let’s create a  <code>index.html</code>  file which will contain our main site</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>My Bookstore<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;/script.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h1</span>&gt;</span>My Bookstore<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">&quot;addNewBook()&quot;</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span>&gt;</span>Add Book<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">&quot;deleteBook()&quot;</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span>&gt;</span>Remove Book<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">&quot;updateBook()&quot;</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span>&gt;</span>Update Book<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">&quot;bookList&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>My Bookstore<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;/script.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>My Bookstore<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">&quot;addNewBook()&quot;</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span>&gt;</span>Add Book<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">&quot;deleteBook()&quot;</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span>&gt;</span>Remove Book<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">&quot;updateBook()&quot;</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span>&gt;</span>Update Book<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">&quot;bookList&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>This is a simple overview of how the file will look, Make sure to add  <code>&lt;!DOCTYPE html&gt;</code>  in the starting of the file so that the html plugin can add the Content type header.</p>
 <p>Now, moving back to our  <code>index.ts</code>  we create a route to serve this  <code>index.html</code> . Elysia provides a static plugin as well which we won’t use since we have only 2 static files.</p>
 <p>Create a new  <code>GET</code>  route which will read  <code>index.html</code>  file and send the text</p>
@@ -222,6 +221,10 @@ date: 2024-04-28</p>
 <p>Head to  <code>localhost:3000</code></p>
 <p>This is what you should see:</p>
 <img data-src="/2024/04/28/bun-elysia/ix7yoy4msb14oakhb15w.png" class="">
+
+      <div class="tags">
+          <a href="/tags/js/" rel="tag"><i class="ic i-tag"></i> js</a>
+      </div>
   </div>
 
    <footer>
@@ -232,7 +235,7 @@ date: 2024-04-28</p>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2024-04-28 20:10:44" itemprop="dateModified" datetime="2024-04-28T20:10:44+08:00">2024-04-28</time>
+    <time title="Modified: 2024-05-27 10:18:24" itemprop="dateModified" datetime="2024-05-27T10:18:24+08:00">2024-05-27</time>
   </span>
 </div>
 
@@ -249,20 +252,20 @@ date: 2024-04-28</p>
     <div class="item left">
       
 
-  <a href="/2024/04/28/bun-express/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;宝石之国.jpg" title="How To Build a Web API using Express.js, Bun and MongoDB?">
+  <a href="/2024/04/28/db-connect/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;动物狂想曲-2.jpg" title="DB Connect">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
-  <h3>How To Build a Web API using Express.js, Bun and MongoDB?</h3>
+  <h3>DB Connect</h3>
   </a>
 
     </div>
     <div class="item right">
       
 
-  <a href="/2024/05/23/csharp-wpf-crud/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;绝园的暴风雨.jpg" title="CRUD Operations in WPF using EntityFrameworkCore and SQLite">
+  <a href="/2024/04/28/bun-express/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;千与千寻-2.jpg" title="How To Build a Web API using Express.js, Bun and MongoDB?">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
-  <h3>CRUD Operations in WPF using EntityFrameworkCore and SQLite</h3>
+  <h3>How To Build a Web API using Express.js, Bun and MongoDB?</h3>
   </a>
 
     </div>
@@ -373,12 +376,12 @@ date: 2024-04-28</p>
 
   <ul id="quick">
     <li class="prev pjax">
-        <a href="/2024/04/28/bun-express/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+        <a href="/2024/04/28/db-connect/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
     </li>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
     <li class="next pjax">
-        <a href="/2024/05/23/csharp-wpf-crud/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+        <a href="/2024/04/28/bun-express/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
     </li>
     <li class="percent"></li>
   </ul>

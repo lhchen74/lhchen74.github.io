@@ -1,0 +1,503 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CFira%20Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="html,css" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2024/08/30/css-table/">
+
+
+
+  <title>
+Styling Tables the Modern CSS Way |
+D E W = 露の世</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">Styling Tables the Modern CSS Way
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2024-08-30 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2024-08-30T00:00:00+08:00">2024-08-30</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">D E W</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="/anime/index/OVERLOAD.jpg"></li>
+          <li class="item" data-background-image="/anime/index/千与千寻-3.jpg"></li>
+          <li class="item" data-background-image="/anime/index/花田少年史.jpg"></li>
+          <li class="item" data-background-image="/anime/index/棋魂.jpg"></li>
+          <li class="item" data-background-image="/anime/index/真实之泪.jpg"></li>
+          <li class="item" data-background-image="/anime/index/尸鬼.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2024/08/30/css-table/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>repost: <span class="exturl" data-url="aHR0cHM6Ly9waWNjYWxpbC5saS9ibG9nL3N0eWxpbmctdGFibGVzLXRoZS1tb2Rlcm4tY3NzLXdheS8=">Styling Tables the Modern CSS Way</span></p>
+</blockquote>
+<p>HTML tables are almost as old as the web itself, and have been used — and abused — for decades. Once upon a time, intrepid web designers hacked together complex layouts using tables, in the absence of other suitable methods. Thankfully that’s no longer common practice today, but tables are still a vital part of the web, and are crucial for displaying tabular data — two-dimensional data, organised in rows and columns.</p>
+<img data-src="/2024/08/30/css-table/table-01.jpg" class="" title="A nicely styled HTML table showing average temperature changes for the United Kingdom, Afghanistan, Australia, Kenya, Honduras and Canada along with a global average">
+<p>Our table context for this article.</p>
+<p>Creating good-looking tables on the web can be fiddly at times. We’re going to run through some tips and gotchas for building simple and complex tables in HTML and CSS, and where modern CSS can help us.</p>
+<h2 id="elements-of-a-table"><a class="markdownIt-Anchor" href="#elements-of-a-table">#</a> Elements of a table</h2>
+<p>The data we want to display shows average temperature changes from the baseline in 2022 for different countries around the world. (Source: <span class="exturl" data-url="aHR0cHM6Ly9jbGltYXRlZGF0YS5pbWYub3JnLw==">International Monetary Foundation</span>.)</p>
+<p>Like any good Piccalilli article, we’re going to start with solid markup. This means that even without any additional styling, our table will be visually understandable, and parsable by screen readers.</p>
+<p>The  <code>&lt;table&gt;</code>  element is vital for wrapping our table content. The  <code>&lt;thead&gt;</code>  and  <code>&lt;tbody&gt;</code>  elements contain the table’s header and body rows respectively.  <code>&lt;tr&gt;</code>  elements form the rows, which contain  <code>&lt;th&gt;</code>  (header) and  <code>&lt;td&gt;</code>  (body) cells. We’re also using a  <code>&lt;tfoot&gt;</code>  (footer) element to show the global average temperature change at the bottom of the table.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">thead</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">th</span>&gt;</span>Country<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">th</span>&gt;</span>Mean temperature change (°C)<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">thead</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">tbody</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">th</span>&gt;</span>United Kingdom<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>1.912<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">th</span>&gt;</span>Afghanistan<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>2.154<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">th</span>&gt;</span>Australia<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>0.681<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">th</span>&gt;</span>Kenya<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>1.162<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">th</span>&gt;</span>Honduras<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>0.945<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">th</span>&gt;</span>Canada<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>1.284<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">tfoot</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">th</span>&gt;</span>Global average<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>1.4<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">tfoot</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Both our rows <em>and</em> columns have headers (the  <code>&lt;th&gt;</code>  element). To ensure our content can be easily interpreted by assistive technologies, we can include the  <code>scope</code>  attribute with a value of  <code>row</code>  or  <code>column</code> , to infer which axis the heading belongs to. This might not be <em>strictly</em> necessary for a simple table such as this, but will certainly be useful when we extend our table to become more complex.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">thead</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">th</span> <span class="attr">scope</span>=<span class="string">&quot;column&quot;</span>&gt;</span>Country<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">th</span> <span class="attr">scope</span>=<span class="string">&quot;column&quot;</span>&gt;</span>Mean temperature change (°C)<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">thead</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">tbody</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">th</span> <span class="attr">scope</span>=<span class="string">&quot;row&quot;</span>&gt;</span>United Kingdom<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>1.912<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">th</span> <span class="attr">scope</span>=<span class="string">&quot;row&quot;</span>&gt;</span>Afghanistan<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>2.154<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">th</span> <span class="attr">scope</span>=<span class="string">&quot;row&quot;</span>&gt;</span>Australia<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>0.681<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">th</span> <span class="attr">scope</span>=<span class="string">&quot;row&quot;</span>&gt;</span>Kenya<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>1.162<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">th</span> <span class="attr">scope</span>=<span class="string">&quot;row&quot;</span>&gt;</span>Honduras<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>0.945<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">th</span> <span class="attr">scope</span>=<span class="string">&quot;row&quot;</span>&gt;</span>Canada<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>1.284<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">tfoot</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">th</span> <span class="attr">scope</span>=<span class="string">&quot;row&quot;</span>&gt;</span>Global average<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>1.4<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">tfoot</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Lastly, let’s add a caption to our table to summarise its content. We’ll use the  <code>&lt;caption&gt;</code>  element for this, which <strong>must be the first child</strong> of a  <code>&lt;table&gt;</code>  element.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">caption</span>&gt;</span></span><br><span class="line">    Annual surface temperature change in 2022</span><br><span class="line">  <span class="tag">&lt;/<span class="name">caption</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">thead</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">th</span> <span class="attr">scope</span>=<span class="string">&quot;column&quot;</span>&gt;</span>Country<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">th</span> <span class="attr">scope</span>=<span class="string">&quot;column&quot;</span>&gt;</span>Mean temperature change (°C)<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">thead</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">tbody</span>&gt;</span></span><br><span class="line">    ...</span><br><span class="line">  <span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">tfoot</span>&gt;</span></span><br><span class="line">    ...</span><br><span class="line">  <span class="tag">&lt;/<span class="name">tfoot</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>The W3C Web Accessibility Initiative (WAI) provides different examples of ways to accessibly <span class="exturl" data-url="aHR0cHM6Ly93d3cudzMub3JnL1dBSS90dXRvcmlhbHMvdGFibGVzL2NhcHRpb24tc3VtbWFyeS8=">add more complex summaries</span> to a table.</p>
+<h2 id="user-agent-styles"><a class="markdownIt-Anchor" href="#user-agent-styles">#</a> User agent styles</h2>
+<p>If we view our table in a browser, it doesn’t look too great just yet. Our headings and caption all centre-aligned, and there’s no way to differentiate between the header, footer and body rows.</p>
+<img data-src="/2024/08/30/css-table/table-02.jpg" class="" title="An unstyled HTML table showing average temperature changes for the United Kingdom, Afghanistan, Australia, Kenya, Honduras and Canada along with a global average">
+<p>These days, browsers are fairly consistent in their <span class="exturl" data-url="aHR0cHM6Ly9waWNjYWxpbC5saS9ibG9nL2EtcHJpbWVyLW9uLXRoZS1jYXNjYWRlLWFuZC1zcGVjaWZpY2l0eSN1c2VyLWFnZW50LWJhc2Utc3R5bGVz">default table styles</span>. If we inspect our  <code>&lt;table&gt;</code>  element in the browser’s developer tools, we can see the following styles applied:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">table</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: table;</span><br><span class="line">  <span class="attribute">border-spacing</span>: <span class="number">2px</span>;</span><br><span class="line">  <span class="attribute">border-collapse</span>: separate;</span><br><span class="line">  <span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">  <span class="attribute">text-indent</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Some of these properties are useful to us. For example, browsers apply  <code>font-weight: bold</code>  to  <code>&lt;th&gt;</code>  elements, which differentiates the headings from body cells before any other styles are applied. Without any custom CSS at all, we can see a clear relationship between the row and column headings and their corresponding data, giving users a good <span class="exturl" data-url="aHR0cHM6Ly9waWNjYWxpbC5saS9ibG9nL2l0cy1hYm91dC10aW1lLWktdHJpZWQtdG8tZXhwbGFpbi13aGF0LXByb2dyZXNzaXZlLWVuaGFuY2VtZW50LWFjdHVhbGx5LWlz">minimum viable experience</span>.</p>
+<p>Other user agent styles are less helpful. Let’s apply some base CSS to “reset” our table and make it a little easier to style.</p>
+<p>FYI</p>
+<hr>
+<p>Whatever you do, don’t be tempted to change the table’s  <code>display</code>  property value to  <code>grid</code> , just to make styling easier. You’ll break the baked-in accessibility that browsers provide for free, rendering your table inaccessible to users of assistive technologies.</p>
+<h2 id="modern-css-reset-for-tables"><a class="markdownIt-Anchor" href="#modern-css-reset-for-tables">#</a> Modern CSS reset for tables</h2>
+<p>Let’s assume we’re setting a font on the  <code>&lt;body&gt;</code>  in our CSS file. Our table will inherit those font styles, so that improves the look of our table somewhat.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">font-family</span>: <span class="string">&quot;Open Sans&quot;</span>, sans-serif;</span><br><span class="line">  <span class="attribute">line-height</span>: <span class="number">1.5</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<img data-src="/2024/08/30/css-table/table-03.jpg" class="" title="An basically styled HTML table showing average temperature changes for the United Kingdom, Afghanistan, Australia, Kenya, Honduras and Canada along with a global average">
+<p>Aligning the text to the left is another way to instantly improve the readability of our table (seriously, why would you centre-align row headings?!). Setting the  <code>text-align</code>  property on the whole table takes care of that, and allows for the option of changing the alignment of individual table columns or cells later on. I’m a big fan of leaning on <span class="exturl" data-url="aHR0cHM6Ly9waWNjYWxpbC5saS9ibG9nL2Nzcy1pbmhlcml0YW5jZS8=">inheritance</span> when it’s useful to us.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">table</span> &#123;</span><br><span class="line">  <span class="attribute">text-align</span>: left;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<img data-src="/2024/08/30/css-table/table-04.jpg" class="" title="An basically styled HTML table showing average temperature changes for the United Kingdom, Afghanistan, Australia, Kenya, Honduras and Canada along with a global average">
+<p>Now let’s imagine for a second we’d like some grid lines between our table cells. We can’t simply add a border to every table row.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* This won’t work yet */</span></span><br><span class="line"><span class="selector-tag">tr</span> &#123;</span><br><span class="line">  <span class="attribute">border-bottom</span>: <span class="number">1px</span> solid;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>If we add a border to every table cell, we can see by default there is a small space between them.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">th</span>,</span><br><span class="line"><span class="selector-tag">td</span> &#123;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<img data-src="/2024/08/30/css-table/table-05.jpg" class="" title="An HTML table showing average temperature changes for the United Kingdom, Afghanistan, Australia, Kenya, Honduras and Canada along with a global average. Each cell has a 1px border.">
+<p>This isn’t particularly helpful for creating nice looking tables. We’ll set the  <code>border-collapse</code>  property on our table to  <code>collapse</code>  instead of the default value:  <code>separate</code> . This will result in our table cells sharing their borders with one another, looking much more like we’d expect a table to look.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">table</span> &#123;</span><br><span class="line">  <span class="attribute">text-align</span>: left;</span><br><span class="line">  <span class="attribute">border-collapse</span>: collapse;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<img data-src="/2024/08/30/css-table/table-06.jpg" class="" title="An HTML table showing average temperature changes for the United Kingdom, Afghanistan, Australia, Kenya, Honduras and Canada along with a global average. There is a consistent border between columns and rows.">
+<p>One handy symptom of this change is we can now also set a border on the table rows — rather than just individual cells if we wish.</p>
+<h2 id="design-considerations"><a class="markdownIt-Anchor" href="#design-considerations">#</a> Design considerations</h2>
+<p>When it comes to bespoke table styles, there are a few design considerations we should be aware of.</p>
+<h3 id="text-alignment"><a class="markdownIt-Anchor" href="#text-alignment">#</a> Text alignment</h3>
+<p>In languages written from left to right (such as English), text is generally easier to read when aligned to the left, while the reverse is true for right-to-left languages. Numeric data, on the other hand might make more sense right-aligned in some cases, as it can be easier to compare values against each other or a sum total.</p>
+<p>To account for languages that may have a different written direction to the default, we could use <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvQ1NTL0NTU19sb2dpY2FsX3Byb3BlcnRpZXNfYW5kX3ZhbHVlcw==">logical</span> values for the  <code>text-align</code>  property.  <code>text-align: start</code>  will ensure that if a different direction is set on the table (or on the document) the text alignment makes sense.</p>
+<p>Applying  <code>text-align: start</code>  to the  <code>&lt;table&gt;</code>  element doesn’t work across all browsers, but we can set it on our table headers and caption. As the rest of our table cells contain numerical values, we’ll align those (and their corresponding column headers) to the end:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">th</span>,</span><br><span class="line"><span class="selector-tag">caption</span> &#123;</span><br><span class="line">  <span class="attribute">text-align</span>: start;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">thead</span> <span class="selector-tag">th</span><span class="selector-pseudo">:not</span>(<span class="selector-pseudo">:first</span>-child),</span><br><span class="line"><span class="selector-tag">td</span> &#123;</span><br><span class="line">  <span class="attribute">text-align</span>: end;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="headers-and-footers"><a class="markdownIt-Anchor" href="#headers-and-footers">#</a> Headers and footers</h3>
+<p>Row and column headers are already differentiated by their bold font weight, but marking out the header and footer rows more clearly would make this table easier for users to understand. We could do this by adding a heavier border to those rows, or changing the background colour (or both).</p>
+<img data-src="/2024/08/30/css-table/table-07.jpg" class="" title="An HTML table showing average temperature changes for the United Kingdom, Afghanistan, Australia, Kenya, Honduras and Canada along with a global average. Borders are now more subtle with better contrast between header sections and content.">
+<p>We can use the logical  <code>border-block</code>  properties to style the borders on the block axis only. (We’re adding some padding to our cells here too.)</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">thead</span> &#123;</span><br><span class="line">  <span class="attribute">border</span>-block-end: <span class="number">2px</span> solid;</span><br><span class="line">  <span class="attribute">background</span>: whitesmoke;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">tfoot</span> &#123;</span><br><span class="line">  <span class="attribute">border</span>-block: <span class="number">2px</span> solid;</span><br><span class="line">  <span class="attribute">background</span>: whitesmoke;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">th</span>,</span><br><span class="line"><span class="selector-tag">td</span> &#123;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid lightgrey;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">0.25rem</span> <span class="number">0.75rem</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Borders between columns might not always be necessary, as the alignment of the cell content naturally helps our brains to discern a column relationship. It might help readability for large or complex tables though. I generally incline towards knocking back cell borders to a lighter colour compared to the header and footer, to avoid the table feeling overcrowded.</p>
+<h3 id="colouring-rows-and-columns"><a class="markdownIt-Anchor" href="#colouring-rows-and-columns">#</a> Colouring rows and columns</h3>
+<p>Alternately colouring the table row backgrounds is another way to assist with the readability of a table as an alternative to borders. In this example we’re setting a theme colour as a custom property on the table, and creating a transparentised variant of the same colour to subtly colour alternate rows, using the CSS  <code>color-mix()</code>  function.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">table</span> &#123;</span><br><span class="line">  --<span class="attribute">color</span>: <span class="number">#d0d0f5</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">thead</span>,</span><br><span class="line"><span class="selector-tag">tfoot</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">var</span>(--color);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">tbody</span> <span class="selector-tag">tr</span><span class="selector-pseudo">:nth-child</span>(even) &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">color-mix</span>(in srgb, <span class="built_in">var</span>(--color), transparent <span class="number">60%</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<img data-src="/2024/08/30/css-table/table-08.jpg" class="" title="An HTML table showing average temperature changes for the United Kingdom, Afghanistan, Australia, Kenya, Honduras and Canada along with a global average. Striped colours provide contrast.">
+<h2 id="styling-with-css"><a class="markdownIt-Anchor" href="#styling-with-css">#</a> Styling with CSS</h2>
+<p>Beyond these design considerations, there are some practical things to consider for a user navigating our table. Let’s look at how CSS can help us here.</p>
+<h3 id="caption-position"><a class="markdownIt-Anchor" href="#caption-position">#</a> Caption position</h3>
+<p>Perhaps we would prefer our table caption to be positioned after the table content? We can use  <code>caption-side</code>  property for this, which will ensure the visual order still reflects the order in which table elements are perceived by assistive technologies.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">table</span> &#123;</span><br><span class="line">  <span class="attribute">caption-side</span>: bottom;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="managing-overflow"><a class="markdownIt-Anchor" href="#managing-overflow">#</a> Managing overflow</h3>
+<p>Adding many more columns to our table (or viewing in a narrow viewport) could cause horizontal overflow of our webpage. In this second table example, which uses a larger dataset, we can see this more clearly.</p>
+<p>See the Pen <span class="exturl" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL3BpY2NhbGlsbGkvcGVuL05XVlFZZ1EvODQ3NGNiZDEwNDgyMGU2MzA3YTg0ZTZhZmVjYzY5YjMv">Managing table overflow</span> by piccalilli (<span class="exturl" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL3BpY2NhbGlsbGkv">@piccalilli</span>) on <span class="exturl" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvLw==">CodePen</span>.</p>
+<p>We can avoid the need for users to scroll the entire webpage in order to view our table columns by wrapping the table in an element with  <code>overflow: auto</code>  or  <code>overflow: scroll</code>  applied.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;wrapper&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">table</span>&gt;</span></span><br><span class="line">    ...</span><br><span class="line">  <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.wrapper</span> &#123;</span><br><span class="line">  <span class="attribute">overflow</span>: scroll;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>See the Pen <span class="exturl" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL3BpY2NhbGlsbGkvcGVuL2VZYXFNR0IvODk5ZjFkODA2NjM5MmM2NDVmNmU5NDdmNzI2NGM4NDkv">Managing table overflow with scroll</span> by piccalilli (<span class="exturl" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL3BpY2NhbGlsbGkv">@piccalilli</span>) on <span class="exturl" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvLw==">CodePen</span>.</p>
+<p>Now users can see all the data in our table by scrolling the table itself. It’s not a great experience though, as they would still need to scroll all the way back to the start to see the row header names. That’s pretty annoying, and they could easily lose their place in the table.</p>
+<h3 id="sticky-rows-and-columns"><a class="markdownIt-Anchor" href="#sticky-rows-and-columns">#</a> Sticky rows and columns</h3>
+<p>We can ensure our row headers stay visible as the user scrolls with sticky positioning.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">th</span><span class="selector-pseudo">:first</span>-child &#123;</span><br><span class="line">  <span class="attribute">position</span>: sticky;</span><br><span class="line">  inset-inline-start: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>FYI</p>
+<hr>
+<p><code>inset-inline-start</code>  is the <span class="exturl" data-url="aHR0cHM6Ly9waWNjYWxpbC5saS9ibG9nL2dldHRpbmctc3RhcnRlZC13aXRoLWNzcy1jdXN0b20tcHJvcGVydGllcy8=">logical property equivalent</span> to  <code>left</code>  in the left-to-right writing mode so you could use  <code>left: 0</code>  instead.</p>
+<p>We’ll also need to give those table cells their own background colour because currently only the row background is styled and the row content will be visible beneath the row headers as the user scrolls.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">tbody</span> <span class="selector-tag">th</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: white;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">thead</span> <span class="selector-tag">th</span>,</span><br><span class="line"><span class="selector-tag">tfoot</span> <span class="selector-tag">th</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: whitesmoke;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>A slightly inconvenient side-effect of this behaviour is that the right hand border of our row headers disappears under the header content when the table is scrolled. We can fix this with a workaround, albeit one that feels a little hacky.</p>
+<p>First we’ll remove the right-hand border of our header cells using the  <code>border-inline-end</code>  logical property (equivalent to  <code>border-right</code>  in left-to-right writing mode).</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">th</span><span class="selector-pseudo">:first</span>-child &#123;</span><br><span class="line">  <span class="attribute">position</span>: sticky;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">border</span>-inline-end: none;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">td</span><span class="selector-pseudo">:first</span>-of-type,</span><br><span class="line"><span class="selector-pseudo">:where</span>(<span class="selector-tag">thead</span>, <span class="selector-tag">tfoot</span>) <span class="selector-tag">th</span><span class="selector-pseudo">:nth-child</span>(<span class="number">2</span>) &#123;</span><br><span class="line">  <span class="attribute">border</span>-inline-start: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>In the code above, we’re using the  <code>:where()</code>  pseudo-class to reduce the number of lines of code. This says “select the second  <code>&lt;th&gt;</code>  that is a child of either  <code>&lt;thead&gt;</code>  or  <code>&lt;tfoot&gt;</code> ”. Otherwise, we could write both selectors separately:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:where</span>(<span class="selector-tag">thead</span>, <span class="selector-tag">tfoot</span>) <span class="selector-tag">th</span><span class="selector-pseudo">:nth-child</span>(<span class="number">2</span>) &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Equivalent to: */</span></span><br><span class="line"><span class="selector-tag">thead</span> <span class="selector-tag">th</span><span class="selector-pseudo">:nth-child</span>(<span class="number">2</span>),</span><br><span class="line"><span class="selector-tag">tfoot</span> <span class="selector-tag">th</span><span class="selector-pseudo">:nth-child</span>(<span class="number">2</span>) &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Then we’ll style the  <code>::after</code>  pseudo-element, positioning it along the right-hand edge of the row headers.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">th</span><span class="selector-pseudo">:first</span>-child<span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  inset-block-start: <span class="number">0</span>;</span><br><span class="line">  inset-inline-end: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">1px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">background</span>: lightgrey;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>See the Pen <span class="exturl" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL3BpY2NhbGlsbGkvcGVuL1l6Ym1hcmovMjZhZDVkNTVjMmE4MDg4MTdjOWRmY2QxOWY3NmIwMWUv">Fixing the table border</span> by piccalilli (<span class="exturl" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL3BpY2NhbGlsbGkv">@piccalilli</span>) on <span class="exturl" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvLw==">CodePen</span>.</p>
+<h3 id="accessibility"><a class="markdownIt-Anchor" href="#accessibility">#</a> Accessibility</h3>
+<p><span class="exturl" data-url="aHR0cHM6Ly9hZHJpYW5yb3NlbGxpLmNvbS8=">Adrian Roselli</span> kindly made me aware that this solution as it stands isn’t accessible to keyboard users and screen readers. To improve upon this, we need to give our scrollable area a role and an accessible name for screen readers to announce, as well as making it focusable for keyboard users. We can use  <code>aria-labelledby</code> , with the table’s caption ID as its value.</p>
+<p>Giving the wrapper element (the scroll container) a  <code>tabindex</code>  of 0 satisfies the latter requirement.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;div</span><br><span class="line">  class=&quot;wrapper&quot;</span><br><span class="line">  tabindex=&quot;0&quot;</span><br><span class="line">  role=&quot;region&quot;</span><br><span class="line">  aria-labelledby=&quot;tableCaption_01&quot;</span><br><span class="line">&gt;</span><br><span class="line">  <span class="tag">&lt;<span class="name">table</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">caption</span> <span class="attr">id</span>=<span class="string">&quot;tableCaption_01&quot;</span>&gt;</span></span><br><span class="line">      ...</span><br><span class="line">    <span class="tag">&lt;/<span class="name">caption</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>We should also use CSS to provide a visually distinct style when the scroll container is focused. I like Adrian’s solution of using attribute selectors to style</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-attr">[role=<span class="string">&quot;region&quot;</span>]</span><span class="selector-attr">[aria-labelledby]</span><span class="selector-attr">[tabindex]</span><span class="selector-pseudo">:focus</span> &#123;</span><br><span class="line">  <span class="attribute">outline</span>: <span class="number">0.1em</span> solid <span class="built_in">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>As Adrian notes in his article, <span class="exturl" data-url="aHR0cHM6Ly9hZHJpYW5yb3NlbGxpLmNvbS8yMDIwLzExL3VuZGVyLWVuZ2luZWVyZWQtcmVzcG9uc2l2ZS10YWJsZXMuaHRtbA==">Under-Engineered Responsive Tables</span>:</p>
+<blockquote>
+<p>This selector ensures the table will not be clipped <em>unless</em> the HTML is properly marked up to be accessible to keyboard and screen reader users.</p>
+</blockquote>
+<p>Adrian also recommends adding shadows as visual scroll cues, as on some browsers the scrollbars disappear. He suggests a technique <span class="exturl" data-url="aHR0cHM6Ly9sZWEudmVyb3UubWUvYmxvZy8yMDEyLzA0L2JhY2tncm91bmQtYXR0YWNobWVudC1sb2NhbC8=">adapted from Lea Verou</span>, using  <code>background-attachment: local</code> . Here’s the code snippet, which is also included in the final demo — you can read the full details in <span class="exturl" data-url="aHR0cHM6Ly9hZHJpYW5yb3NlbGxpLmNvbS8yMDIwLzAxL2ZpeGVkLXRhYmxlLWhlYWRlcnMuaHRtbA==">Adrian’s article</span>.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span><span class="selector-attr">[tabindex=<span class="string">&quot;0&quot;</span>]</span><span class="selector-attr">[aria-labelledby]</span><span class="selector-attr">[role=<span class="string">&quot;region&quot;</span>]</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(</span><br><span class="line">      to right,</span><br><span class="line">      transparent <span class="number">30%</span>,</span><br><span class="line">      <span class="built_in">rgba</span>(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">0</span>)</span><br><span class="line">    ), <span class="built_in">linear-gradient</span>(to right, <span class="built_in">rgba</span>(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">0</span>), white <span class="number">70%</span>) <span class="number">0</span> <span class="number">100%</span>, <span class="built_in">radial-gradient</span>(</span><br><span class="line">      farthest-side at <span class="number">0%</span> <span class="number">50%</span>,</span><br><span class="line">      <span class="built_in">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.2</span>),</span><br><span class="line">      <span class="built_in">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">    ), <span class="built_in">radial-gradient</span>(</span><br><span class="line">        farthest-side at <span class="number">100%</span> <span class="number">50%</span>,</span><br><span class="line">        <span class="built_in">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.2</span>),</span><br><span class="line">        <span class="built_in">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">      ) <span class="number">0</span> <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">background-repeat</span>: no-repeat;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#fff</span>;</span><br><span class="line">  <span class="attribute">background-size</span>: <span class="number">4em</span> <span class="number">100%</span>, <span class="number">4em</span> <span class="number">100%</span>, <span class="number">1.4em</span> <span class="number">100%</span>, <span class="number">1.4em</span> <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">background-position</span>: <span class="number">0</span> <span class="number">0</span>, <span class="number">100%</span>, <span class="number">0</span> <span class="number">0</span>, <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">background-attachment</span>: local, local, scroll, scroll;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Now users can see all the data in our table by scrolling the table itself. It’s not a great experience though, as they would still need to scroll all the way back to the start to see the row header names. That’s pretty annoying, and they could easily lose their place in the table.</p>
+<h3 id="vertical-alignment"><a class="markdownIt-Anchor" href="#vertical-alignment">#</a> Vertical alignment</h3>
+<p>When our table columns are narrower than the content, the text will wrap. By default cell content is center-aligned vertically. This can sometimes be desirable, but for some types of data it can make the table harder to read. With text content it could be more appropriate to align horizontally with the baseline.</p>
+<p>Column headings, on the other hand, might benefit from being positioned at the lower end of the table cell, so we don’t end up with some headings floating high above our table data.</p>
+<p>How you choose to align your table content depends on the design and user requirements, but we can control the vertical position using the  <code>vertical-align</code>  property on our table cells. Let’s align our column headings to the bottom and our table body cells to the baseline.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">th</span>,</span><br><span class="line"><span class="selector-tag">td</span> &#123;</span><br><span class="line">  <span class="attribute">vertical-align</span>: baseline;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">thead</span> <span class="selector-tag">th</span> &#123;</span><br><span class="line">  <span class="attribute">vertical-align</span>: bottom;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<img data-src="/2024/08/30/css-table/table-09.jpg" class="" title="A very complext table with many rows and many columns. It shows maximum and minimimum temperature along with frost, sunshine, rainfall, days of rainfall and monthly mean wind speed. Each column is headed as a month name.">
+<h3 id="column-sizes"><a class="markdownIt-Anchor" href="#column-sizes">#</a> Column sizes</h3>
+<p>You might notice that our table columns are unequal widths. Here the width of each column is determined by the length of its heading, which is longer than the content in the body cells. Our table would be much easier to read if the widths of the body columns were equal.</p>
+<p>To begin with, the width of our table is determined by the content. If we set a width on our table, it starts to look a it better, but our column widths are still uneven. We could address this by setting the width of each header cell apart from the first one:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">thead</span> <span class="selector-tag">th</span><span class="selector-pseudo">:not</span>(<span class="selector-pseudo">:first</span>-child) &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">9rem</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>When the viewport is narrower, we’re still left width uneven column widths, so more control of column sizes is needed.</p>
+<p>For more control over column sizes, we can change which algorithm the browser uses to determine the table layout using the  <code>table-layout</code>  property.</p>
+<p>Changing this to  <code>fixed</code>  (from the default  <code>auto</code> ) causes the browser to ignore cell content and instead use the widths defined on columns or cells for the first table row to resolve the column widths.</p>
+<p>FYI</p>
+<hr>
+<p>If this sounds a little complicated, <span class="exturl" data-url="aHR0cHM6Ly9jc3MtdHJpY2tzLmNvbS9hbG1hbmFjL3Byb3BlcnRpZXMvdC90YWJsZS1sYXlvdXQv">CSS Tricks covers it in a lot more detail</span>, with handy demos to illustrate.</p>
+<p>For a fixed table layout to work in browsers today, we also need to set the  <code>width</code>  property of the affected table. We’re using the  <code>max()</code>  function here, which tells the browser to pick the largest value of the two arguments — 65rem, or 100%. This means our table will be at least 65rem at small viewport sizes — which is fine as it’s scrollable — while in larger viewports it will take up the entire width available.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">table</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="built_in">max</span>(<span class="number">65rem</span>, <span class="number">100%</span>);</span><br><span class="line">  <span class="attribute">table-layout</span>: fixed;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Our table columns should now all have equal widths, but we might want our a different size for our first column (which contains the row headers). If we set a width on the first  <code>&lt;th&gt;</code>  element, we can then see that the remaining horizontal space will be distributed evenly between the rest of the columns.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">th</span><span class="selector-pseudo">:first</span>-of-type &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">10rem</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<img data-src="/2024/08/30/css-table/table-10.jpg" class="" title="A very complext table with many rows and many columns. It shows maximum and minimimum temperature along with frost, sunshine, rainfall, days of rainfall and monthly mean wind speed. Each column is headed as a month name.">
+<h2 id="final-demo"><a class="markdownIt-Anchor" href="#final-demo">#</a> Final demo</h2>
+<p>Go ahead and toggle the HTML or CSS panel to see how our table responds, responsively.</p>
+<p>See the Pen <span class="exturl" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL3BpY2NhbGlsbGkvcGVuL1l6Ym1hcmovMjZhZDVkNTVjMmE4MDg4MTdjOWRmY2QxOWY3NmIwMWUv">Our final demo!</span> by piccalilli (<span class="exturl" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL3BpY2NhbGlsbGkv">@piccalilli</span>) on <span class="exturl" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvLw==">CodePen</span>.</p>
+<h2 id="learn-more"><a class="markdownIt-Anchor" href="#learn-more">#</a> Learn more</h2>
+<p>We’ve mainly focused on CSS for styling a (relatively) simple table. Tables perhaps aren’t the most exciting things to build on the web, but they’re important for certain types of data, and full of little quirks that can trip you up — as well as interesting things to learn!</p>
+<p>To learn more about structuring HTML for complex tables, including column and row groups, and spanning multiple cells, visit <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvSFRNTC9FbGVtZW50L3RhYmxl">MDN’s table guide</span>.</p>
+
+      <div class="tags">
+          <a href="/tags/html/" rel="tag"><i class="ic i-tag"></i> html</a>
+          <a href="/tags/css/" rel="tag"><i class="ic i-tag"></i> css</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2024-08-30 19:33:20" itemprop="dateModified" datetime="2024-08-30T19:33:20+08:00">2024-08-30</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2024/05/28/csharp-wpf-excel2xml/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;辉夜大小姐想让我告白.jpg" title="WPF Excel to XML">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>WPF Excel to XML</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#elements-of-a-table"><span class="toc-number">1.</span> <span class="toc-text"> Elements of a table</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#user-agent-styles"><span class="toc-number">2.</span> <span class="toc-text"> User agent styles</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#modern-css-reset-for-tables"><span class="toc-number">3.</span> <span class="toc-text"> Modern CSS reset for tables</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#design-considerations"><span class="toc-number">4.</span> <span class="toc-text"> Design considerations</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#text-alignment"><span class="toc-number">4.1.</span> <span class="toc-text"> Text alignment</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#headers-and-footers"><span class="toc-number">4.2.</span> <span class="toc-text"> Headers and footers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#colouring-rows-and-columns"><span class="toc-number">4.3.</span> <span class="toc-text"> Colouring rows and columns</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#styling-with-css"><span class="toc-number">5.</span> <span class="toc-text"> Styling with CSS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#caption-position"><span class="toc-number">5.1.</span> <span class="toc-text"> Caption position</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#managing-overflow"><span class="toc-number">5.2.</span> <span class="toc-text"> Managing overflow</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sticky-rows-and-columns"><span class="toc-number">5.3.</span> <span class="toc-text"> Sticky rows and columns</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#accessibility"><span class="toc-number">5.4.</span> <span class="toc-text"> Accessibility</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vertical-alignment"><span class="toc-number">5.5.</span> <span class="toc-text"> Vertical alignment</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#column-sizes"><span class="toc-number">5.6.</span> <span class="toc-text"> Column sizes</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#final-demo"><span class="toc-number">6.</span> <span class="toc-text"> Final demo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#learn-more"><span class="toc-number">7.</span> <span class="toc-text"> Learn more</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">359</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">50</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
+      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ D E W</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2024/08/30/css-table/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

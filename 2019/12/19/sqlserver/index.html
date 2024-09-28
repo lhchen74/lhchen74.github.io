@@ -102,12 +102,12 @@ D E W = 露の世</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="/anime/index/秦时明月-1.jpg"></li>
-          <li class="item" data-background-image="/anime/index/死神少爷与黑女仆.jpg"></li>
-          <li class="item" data-background-image="/anime/index/凸变英雄LEAF.jpg"></li>
-          <li class="item" data-background-image="/anime/index/巴克亚罗.jpg"></li>
-          <li class="item" data-background-image="/anime/index/幻灵镇魂曲.jpg"></li>
-          <li class="item" data-background-image="/anime/index/三月的狮子-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/超能力女儿.jpg"></li>
+          <li class="item" data-background-image="/anime/index/从零开始的异世界生活.jpg"></li>
+          <li class="item" data-background-image="/anime/index/侧耳倾听-1.jpg"></li>
+          <li class="item" data-background-image="/anime/index/交响情人梦.jpg"></li>
+          <li class="item" data-background-image="/anime/index/相合之物.jpg"></li>
+          <li class="item" data-background-image="/anime/index/三月的狮子-3.jpg"></li>
         </ul>
       </div>
     </header>
@@ -151,7 +151,423 @@ D E W = 露の世</title>
   <div class="body md" itemprop="articleBody">
     
 
-    <h2 id="constraint"><a class="markdownIt-Anchor" href="#constraint">#</a> Constraint</h2>
+    <h2 id="database"><a class="markdownIt-Anchor" href="#database">#</a> Database</h2>
+<h3 id="create"><a class="markdownIt-Anchor" href="#create">#</a> Create</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> database MarketManagement;</span><br></pre></td></tr></table></figure>
+<h3 id="use"><a class="markdownIt-Anchor" href="#use">#</a> Use</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use MarketManagement;</span><br></pre></td></tr></table></figure>
+<h2 id="table"><a class="markdownIt-Anchor" href="#table">#</a> Table</h2>
+<h3 id="create-2"><a class="markdownIt-Anchor" href="#create-2">#</a> Create</h3>
+<ul>
+<li>
+<p>If the column name includes a keyword or includes a space, enclose it in brackets, such as [Launch Date].</p>
+</li>
+<li>
+<p>A primary key constraint can be located after the column definition or can be defined separately after all the column definitions.</p>
+</li>
+<li>
+<p>Char is fixed length. If the inserted data length is less than the fixed length, it will pad space at the end. Such as the Category is char(6) , if you insert  <code>'MEAT'</code>  which is only 4 characters, the data will be stored as  <code>'MEAT  '</code> .</p>
+</li>
+<li>
+<p>decimal [ ( <em>p</em> [ , <em>s</em> ] ) ] and numeric [ ( <em>p</em> [ , <em>s</em> ] ) ]</p>
+<ul>
+<li>
+<p><em>p</em> (precision)</p>
+<p>The maximum total number of decimal digits to be stored. This number includes both the left and the right sides of the decimal point. The precision must be a value from 1 through the maximum precision of 38. The default precision is 18.</p>
+</li>
+<li>
+<p><em>s</em> (scale)</p>
+<p>The number of decimal digits that are stored to the right of the decimal point. This number is subtracted from <em>p</em> to determine the maximum number of digits to the left of the decimal point. Scale must be a value from 0 through <em>p</em>, and can only be specified if precision is specified. The default scale is  <code>0</code> , and so  <code>0 &lt;= s &lt;= p</code> . Maximum storage sizes vary, based on the precision.</p>
+</li>
+</ul>
+<p>If  <code>99.9999</code>  is inserted into a column with type Decimal (18,2), the data will be rounded up to  <code>100.00</code> . Conversely, if  <code>99.444</code> ， is inserted, the data will be rounded down to  <code>99.44</code> .</p>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> Products (</span><br><span class="line">	<span class="comment">--ProductId int identity(1, 1) primary key,</span></span><br><span class="line">    ProductId <span class="type">int</span> <span class="keyword">identity</span>(<span class="number">1</span>, <span class="number">1</span>),</span><br><span class="line">	Category <span class="type">char</span>(<span class="number">6</span>) <span class="keyword">not</span> <span class="keyword">null</span>,</span><br><span class="line"> 	Name <span class="type">varchar</span>(<span class="number">50</span>) <span class="keyword">unique</span> <span class="keyword">not</span> <span class="keyword">null</span>,</span><br><span class="line"> 	Weight <span class="type">float</span> <span class="keyword">check</span> (Weight <span class="operator">&gt;=</span> <span class="number">0</span>),</span><br><span class="line"> 	Price <span class="type">decimal</span>(<span class="number">18</span>, <span class="number">2</span>),</span><br><span class="line"> 	[Launch <span class="type">Date</span>] <span class="type">Date</span>,</span><br><span class="line"> 	<span class="keyword">constraint</span> PK_Products <span class="keyword">primary</span> key (ProductId)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h4 id="get-create-table-script"><a class="markdownIt-Anchor" href="#get-create-table-script">#</a> Get Create Table Script</h4>
+<img data-src="/2019/12/19/sqlserver/1717147527769.png" class="">
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">USE [MarketManagement]</span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line"><span class="comment">/****** Object:  Table [dbo].[Products]    Script Date: 5/31/2024 5:25:15 PM ******/</span></span><br><span class="line"><span class="keyword">SET</span> ANSI_NULLS <span class="keyword">ON</span></span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line"><span class="keyword">SET</span> QUOTED_IDENTIFIER <span class="keyword">ON</span></span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line"><span class="keyword">SET</span> ANSI_PADDING <span class="keyword">ON</span></span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> [dbo].[Products](</span><br><span class="line">	[ProductId] [<span class="type">int</span>] <span class="keyword">IDENTITY</span>(<span class="number">1</span>,<span class="number">1</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">	[Category] [<span class="type">char</span>](<span class="number">6</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">	[Name] [<span class="type">varchar</span>](<span class="number">50</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">	[Weight] [<span class="type">float</span>] <span class="keyword">NULL</span>,</span><br><span class="line">	[Price] [<span class="type">decimal</span>](<span class="number">18</span>, <span class="number">2</span>) <span class="keyword">NULL</span>,</span><br><span class="line">	[Launch <span class="type">Date</span>] [<span class="type">date</span>] <span class="keyword">NULL</span>,</span><br><span class="line"> <span class="keyword">CONSTRAINT</span> [PK_Products] <span class="keyword">PRIMARY</span> KEY CLUSTERED</span><br><span class="line">(</span><br><span class="line">	[ProductId] <span class="keyword">ASC</span></span><br><span class="line">)<span class="keyword">WITH</span> (PAD_INDEX <span class="operator">=</span> OFF, STATISTICS_NORECOMPUTE <span class="operator">=</span> OFF, IGNORE_DUP_KEY <span class="operator">=</span> OFF, ALLOW_ROW_LOCKS <span class="operator">=</span> <span class="keyword">ON</span>, ALLOW_PAGE_LOCKS <span class="operator">=</span> <span class="keyword">ON</span>) <span class="keyword">ON</span> [<span class="keyword">PRIMARY</span>],</span><br><span class="line"><span class="keyword">UNIQUE</span> NONCLUSTERED</span><br><span class="line">(</span><br><span class="line">	[Name] <span class="keyword">ASC</span></span><br><span class="line">)<span class="keyword">WITH</span> (PAD_INDEX <span class="operator">=</span> OFF, STATISTICS_NORECOMPUTE <span class="operator">=</span> OFF, IGNORE_DUP_KEY <span class="operator">=</span> OFF, ALLOW_ROW_LOCKS <span class="operator">=</span> <span class="keyword">ON</span>, ALLOW_PAGE_LOCKS <span class="operator">=</span> <span class="keyword">ON</span>) <span class="keyword">ON</span> [<span class="keyword">PRIMARY</span>]</span><br><span class="line">) <span class="keyword">ON</span> [<span class="keyword">PRIMARY</span>]</span><br><span class="line"></span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line"><span class="keyword">SET</span> ANSI_PADDING OFF</span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> [dbo].[Products]  <span class="keyword">WITH</span> <span class="keyword">CHECK</span> <span class="keyword">ADD</span>  <span class="keyword">CONSTRAINT</span> [check_price] <span class="keyword">CHECK</span>  (([price]<span class="operator">&gt;=</span>(<span class="number">0</span>)))</span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> [dbo].[Products] <span class="keyword">CHECK</span> <span class="keyword">CONSTRAINT</span> [check_price]</span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> [dbo].[Products]  <span class="keyword">WITH</span> <span class="keyword">CHECK</span> <span class="keyword">ADD</span> <span class="keyword">CHECK</span>  (([Weight]<span class="operator">&gt;=</span>(<span class="number">0</span>)))</span><br><span class="line">GO</span><br></pre></td></tr></table></figure>
+<h4 id="view-table-details"><a class="markdownIt-Anchor" href="#view-table-details">#</a> View Table Details</h4>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">exec</span> sp_help Products;</span><br></pre></td></tr></table></figure>
+<img data-src="/2019/12/19/sqlserver/1717056031847.png" class="">
+<h3 id="insert"><a class="markdownIt-Anchor" href="#insert">#</a> Insert</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Products</span><br><span class="line"><span class="keyword">values</span> (<span class="string">&#x27;MEAT&#x27;</span>, <span class="string">&#x27;Beef&#x27;</span>, <span class="number">99.9999</span>, <span class="number">99.9999</span>, <span class="string">&#x27;2024-05-30&#x27;</span>),</span><br><span class="line">       (<span class="string">&#x27;MEAT&#x27;</span>, <span class="string">&#x27;Pork&#x27;</span>, <span class="number">99.9999</span>, <span class="number">99.99</span>, <span class="string">&#x27;2024-05-30&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="select"><a class="markdownIt-Anchor" href="#select">#</a> Select</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> Products;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>ProductId</th>
+<th>Category</th>
+<th>Name</th>
+<th>Weight</th>
+<th>Price</th>
+<th>Launch Date</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>MEAT  </code></td>
+<td>Beef</td>
+<td>99.9999</td>
+<td><code>100.00</code></td>
+<td>2024-05-30</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>MEAT  </code></td>
+<td>Pork</td>
+<td>99.9999</td>
+<td>99.99</td>
+<td>2024-05-30</td>
+</tr>
+</tbody>
+</table>
+<h4 id="select-expand"><a class="markdownIt-Anchor" href="#select-expand">#</a> Select * Expand</h4>
+<p>select  <code>Columns</code>  and drag to the destination.</p>
+<img data-src="/2019/12/19/sqlserver/1718095102013.png" class="">
+<img data-src="/2019/12/19/sqlserver/1718095206883.png" class="">
+<h4 id="top"><a class="markdownIt-Anchor" href="#top">#</a> Top</h4>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> top <span class="number">1</span> <span class="operator">*</span> <span class="keyword">from</span> Products;</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> top <span class="number">50</span> <span class="keyword">percent</span> <span class="operator">*</span> <span class="keyword">from</span> Products;</span><br></pre></td></tr></table></figure>
+<h4 id="union-and-order-by"><a class="markdownIt-Anchor" href="#union-and-order-by">#</a> Union and Order by</h4>
+<p>order by execute after union.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="number">2</span></span><br><span class="line"><span class="keyword">union</span> <span class="keyword">all</span></span><br><span class="line"><span class="keyword">select</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">--2</span></span><br><span class="line"><span class="comment">--1</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="number">2</span></span><br><span class="line"><span class="keyword">union</span> <span class="keyword">all</span></span><br><span class="line"><span class="keyword">select</span> <span class="number">1</span></span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">--1</span></span><br><span class="line"><span class="comment">--2</span></span><br></pre></td></tr></table></figure>
+<h4 id="join"><a class="markdownIt-Anchor" href="#join">#</a> Join</h4>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> IF <span class="keyword">EXISTS</span> LeftTable</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> LeftTable</span><br><span class="line">(</span><br><span class="line">    Id <span class="type">INT</span>,</span><br><span class="line">    Name NVARCHAR(<span class="number">10</span>)</span><br><span class="line">)</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> LeftTable</span><br><span class="line">(</span><br><span class="line">    Id,</span><br><span class="line">    Name</span><br><span class="line">)</span><br><span class="line"><span class="keyword">VALUES</span></span><br><span class="line">(<span class="number">1</span>, <span class="string">&#x27;Red&#x27;</span>), (<span class="number">2</span>, <span class="string">&#x27;Green&#x27;</span>), (<span class="number">3</span>, <span class="string">&#x27;Blue&#x27;</span>), (<span class="number">4</span>, <span class="string">&#x27;Yellow&#x27;</span>), (<span class="number">5</span>, <span class="string">&#x27;Purple&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> IF <span class="keyword">EXISTS</span> RightTable;</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> RightTable</span><br><span class="line">(</span><br><span class="line">    Id <span class="type">INT</span>,</span><br><span class="line">    ReferenceId <span class="type">INT</span>,</span><br><span class="line">    Name NVARCHAR(<span class="number">10</span>)</span><br><span class="line">)</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> RightTable</span><br><span class="line">(</span><br><span class="line">    Id,</span><br><span class="line">    ReferenceId,</span><br><span class="line">    Name</span><br><span class="line">)</span><br><span class="line"><span class="keyword">VALUES</span></span><br><span class="line">(<span class="number">1</span>, <span class="number">1</span>, <span class="string">&#x27;Dog&#x27;</span>), (<span class="number">2</span>, <span class="number">1</span>, <span class="string">&#x27;Cat&#x27;</span>), (<span class="number">3</span>, <span class="number">2</span>, <span class="string">&#x27;Bird&#x27;</span>), (<span class="number">4</span>, <span class="number">4</span>, <span class="string">&#x27;Horse&#x27;</span>), (<span class="number">5</span>, <span class="number">3</span>, <span class="string">&#x27;Bear&#x27;</span>), (<span class="number">6</span>, <span class="number">1</span>, <span class="string">&#x27;Deer&#x27;</span>), (<span class="number">7</span>, <span class="number">7</span>, <span class="string">&#x27;Fish&#x27;</span>);</span><br><span class="line">GO</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> LeftTable</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>Id</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Red</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Green</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Blue</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Yellow</td>
+</tr>
+<tr>
+<td><strong>5</strong></td>
+<td><strong>Purple</strong></td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> RightTable</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>Id</th>
+<th>ReferenceId</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>Dog</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1</td>
+<td>Cat</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2</td>
+<td>Bird</td>
+</tr>
+<tr>
+<td>4</td>
+<td>4</td>
+<td>Horse</td>
+</tr>
+<tr>
+<td>5</td>
+<td>3</td>
+<td>Bear</td>
+</tr>
+<tr>
+<td>6</td>
+<td>1</td>
+<td>Deer</td>
+</tr>
+<tr>
+<td><strong>7</strong></td>
+<td><strong>7</strong></td>
+<td><strong>Fish</strong></td>
+</tr>
+</tbody>
+</table>
+<h5 id="inner-join"><a class="markdownIt-Anchor" href="#inner-join">#</a> Inner Join</h5>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> L.Name,</span><br><span class="line">       R.Name</span><br><span class="line"><span class="keyword">FROM</span> LeftTable L</span><br><span class="line">    <span class="keyword">INNER</span> <span class="keyword">JOIN</span> RightTable R</span><br><span class="line">        <span class="keyword">ON</span> R.ReferenceId <span class="operator">=</span> L.Id;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Red</td>
+<td>Dog</td>
+</tr>
+<tr>
+<td>Red</td>
+<td>Cat</td>
+</tr>
+<tr>
+<td>Green</td>
+<td>Bird</td>
+</tr>
+<tr>
+<td>Yellow</td>
+<td>Horse</td>
+</tr>
+<tr>
+<td>Blue</td>
+<td>Bear</td>
+</tr>
+<tr>
+<td>Red</td>
+<td>Deer</td>
+</tr>
+</tbody>
+</table>
+<h5 id="left-outer-join"><a class="markdownIt-Anchor" href="#left-outer-join">#</a> Left Outer Join</h5>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> L.Name,</span><br><span class="line">       R.Name</span><br><span class="line"><span class="keyword">FROM</span> LeftTable L</span><br><span class="line">    <span class="keyword">LEFT</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> RightTable R</span><br><span class="line">        <span class="keyword">ON</span> R.ReferenceId <span class="operator">=</span> L.Id;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Red</td>
+<td>Dog</td>
+</tr>
+<tr>
+<td>Red</td>
+<td>Cat</td>
+</tr>
+<tr>
+<td>Red</td>
+<td>Deer</td>
+</tr>
+<tr>
+<td>Green</td>
+<td>Bird</td>
+</tr>
+<tr>
+<td>Blue</td>
+<td>Bear</td>
+</tr>
+<tr>
+<td>Yellow</td>
+<td>Horse</td>
+</tr>
+<tr>
+<td><strong>Purple</strong></td>
+<td><strong>NULL</strong></td>
+</tr>
+</tbody>
+</table>
+<h5 id="right-outer-join"><a class="markdownIt-Anchor" href="#right-outer-join">#</a> Right Outer Join</h5>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> L.Name,</span><br><span class="line">       R.Name</span><br><span class="line"><span class="keyword">FROM</span> LeftTable L</span><br><span class="line">    <span class="keyword">RIGHT</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> RightTable R</span><br><span class="line">        <span class="keyword">ON</span> R.ReferenceId <span class="operator">=</span> L.Id;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Red</td>
+<td>Dog</td>
+</tr>
+<tr>
+<td>Red</td>
+<td>Cat</td>
+</tr>
+<tr>
+<td>Red</td>
+<td>Deer</td>
+</tr>
+<tr>
+<td>Green</td>
+<td>Bird</td>
+</tr>
+<tr>
+<td>Blue</td>
+<td>Bear</td>
+</tr>
+<tr>
+<td>Yellow</td>
+<td>Horse</td>
+</tr>
+<tr>
+<td><strong>NULL</strong></td>
+<td><strong>Fish</strong></td>
+</tr>
+</tbody>
+</table>
+<h5 id="full-outer-join"><a class="markdownIt-Anchor" href="#full-outer-join">#</a> Full Outer Join</h5>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> L.Name,</span><br><span class="line">       R.Name</span><br><span class="line"><span class="keyword">FROM</span> LeftTable L</span><br><span class="line">    <span class="keyword">FULL</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> RightTable R</span><br><span class="line">        <span class="keyword">ON</span> R.ReferenceId <span class="operator">=</span> L.Id;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Red</td>
+<td>Dog</td>
+</tr>
+<tr>
+<td>Red</td>
+<td>Cat</td>
+</tr>
+<tr>
+<td>Red</td>
+<td>Deer</td>
+</tr>
+<tr>
+<td>Green</td>
+<td>Bird</td>
+</tr>
+<tr>
+<td>Blue</td>
+<td>Bear</td>
+</tr>
+<tr>
+<td>Yellow</td>
+<td>Horse</td>
+</tr>
+<tr>
+<td><strong>Purple</strong></td>
+<td><strong>NULL</strong></td>
+</tr>
+<tr>
+<td><strong>NULL</strong></td>
+<td><strong>Fish</strong></td>
+</tr>
+</tbody>
+</table>
+<h5 id="cross-apply"><a class="markdownIt-Anchor" href="#cross-apply">#</a> Cross Apply</h5>
+<p>Cross Apply is similar to Inner Join.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> L.Name,</span><br><span class="line">       R.Name</span><br><span class="line"><span class="keyword">FROM</span> LeftTable L</span><br><span class="line">    <span class="keyword">CROSS</span> APPLY</span><br><span class="line">(<span class="keyword">SELECT</span> Name <span class="keyword">FROM</span> RightTable R <span class="keyword">WHERE</span> R.ReferenceId <span class="operator">=</span> L.Id) R;</span><br></pre></td></tr></table></figure>
+<p>Cross Apply with a Table Expression.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> LeftTable L</span><br><span class="line">    <span class="keyword">CROSS</span> APPLY</span><br><span class="line">(</span><br><span class="line">    <span class="keyword">SELECT</span> TOP <span class="number">2</span></span><br><span class="line">        R.Name</span><br><span class="line">    <span class="keyword">FROM</span> RightTable R</span><br><span class="line">    <span class="keyword">WHERE</span> R.ReferenceId <span class="operator">=</span> L.Id</span><br><span class="line">    <span class="keyword">ORDER</span> <span class="keyword">BY</span> R.Id <span class="keyword">DESC</span></span><br><span class="line">) R;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>Id</th>
+<th>Name</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1</strong></td>
+<td><strong>Red</strong></td>
+<td><strong>Deer</strong></td>
+</tr>
+<tr>
+<td><strong>1</strong></td>
+<td><strong>Red</strong></td>
+<td><strong>Cat</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Green</td>
+<td>Bird</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Blue</td>
+<td>Bear</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Yellow</td>
+<td>Horse</td>
+</tr>
+</tbody>
+</table>
+<p>Cross Apply with a Table-valued Functions.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> <span class="keyword">ALTER</span> <span class="keyword">FUNCTION</span> dbo.GetTopAnimal</span><br><span class="line">(</span><br><span class="line">    <span class="variable">@Id</span> <span class="keyword">AS</span> <span class="type">INT</span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">RETURNS</span> <span class="keyword">TABLE</span></span><br><span class="line"><span class="keyword">AS</span></span><br><span class="line"><span class="keyword">RETURN</span></span><br><span class="line">     (<span class="keyword">SELECT</span> TOP <span class="number">2</span> Name</span><br><span class="line">      <span class="keyword">FROM</span> RightTable R</span><br><span class="line">      <span class="keyword">WHERE</span> R.ReferenceId <span class="operator">=</span> <span class="variable">@Id</span></span><br><span class="line">      <span class="keyword">ORDER</span> <span class="keyword">BY</span> R.Id <span class="keyword">DESC</span>);</span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> L.Id, L.Name, R.Name</span><br><span class="line"><span class="keyword">FROM</span> LeftTable L</span><br><span class="line">  <span class="keyword">Cross</span> APPLY dbo.GetTopAnimal(L.Id) R;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>Id</th>
+<th>Name</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1</strong></td>
+<td><strong>Red</strong></td>
+<td><strong>Deer</strong></td>
+</tr>
+<tr>
+<td><strong>1</strong></td>
+<td><strong>Red</strong></td>
+<td><strong>Cat</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Green</td>
+<td>Bird</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Blue</td>
+<td>Bear</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Yellow</td>
+<td>Horse</td>
+</tr>
+</tbody>
+</table>
+<h5 id="outer-apply"><a class="markdownIt-Anchor" href="#outer-apply">#</a> Outer Apply</h5>
+<p>Outer Apply is similar to Left Outer Join.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> L.Name,</span><br><span class="line">       R.Name</span><br><span class="line"><span class="keyword">FROM</span> LeftTable L</span><br><span class="line">    <span class="keyword">OUTER</span> APPLY</span><br><span class="line">(<span class="keyword">SELECT</span> Name <span class="keyword">FROM</span> RightTable R <span class="keyword">WHERE</span> R.ReferenceId <span class="operator">=</span> L.Id) R;</span><br></pre></td></tr></table></figure>
+<h3 id="update"><a class="markdownIt-Anchor" href="#update">#</a> Update</h3>
+<h4 id="multi-table-join-update"><a class="markdownIt-Anchor" href="#multi-table-join-update">#</a> Multi Table Join Update</h4>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">update edi_head</span><br><span class="line">   <span class="keyword">set</span> transfer_time <span class="operator">=</span> <span class="built_in">cast</span>(b.transfer_time <span class="keyword">as</span> datetime) <span class="keyword">from</span> edi_head a, #edi_temp b</span><br><span class="line"> <span class="keyword">where</span> a.head_id <span class="operator">=</span> b.head_id;</span><br></pre></td></tr></table></figure>
+<h3 id="alter"><a class="markdownIt-Anchor" href="#alter">#</a> Alter</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">exec</span> sp_rename Products,Product; <span class="comment">--rename table name</span></span><br><span class="line"><span class="keyword">exec</span> sp_rename Product,Products;</span><br><span class="line"></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> Products <span class="keyword">add</span> extra_column <span class="type">int</span> <span class="keyword">null</span>;</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> Products <span class="keyword">drop</span> <span class="keyword">column</span> extra_column;</span><br><span class="line"></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> Products <span class="keyword">alter</span> <span class="keyword">column</span> [Launch <span class="type">Date</span>] datetime;</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> Products <span class="keyword">alter</span> <span class="keyword">column</span> [Launch <span class="type">Date</span>] <span class="type">date</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> Products <span class="keyword">add</span> <span class="keyword">constraint</span> check_price <span class="keyword">check</span> (price <span class="operator">&gt;=</span> <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="table-relation"><a class="markdownIt-Anchor" href="#table-relation">#</a> Table Relation</h3>
+<h4 id="many-to-many"><a class="markdownIt-Anchor" href="#many-to-many">#</a> Many to Many</h4>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> Movies</span><br><span class="line">(</span><br><span class="line">	MovieId <span class="type">int</span> <span class="keyword">identity</span>(<span class="number">1</span>,<span class="number">1</span>) <span class="keyword">primary</span> key,</span><br><span class="line">	Title nvarchar(<span class="number">100</span>) <span class="keyword">not</span> <span class="keyword">null</span>,</span><br><span class="line">	Description nvarchar(max),</span><br><span class="line">	LaunchDate <span class="type">Date</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> Actors</span><br><span class="line">(</span><br><span class="line">    ActorId <span class="type">int</span> <span class="keyword">identity</span>(<span class="number">1</span>,<span class="number">1</span>) <span class="keyword">primary</span> key,</span><br><span class="line">	Name nvarchar(<span class="number">200</span>) <span class="keyword">not</span> <span class="keyword">null</span>,</span><br><span class="line">	Country <span class="type">varchar</span>(<span class="number">100</span>)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> MovieActor</span><br><span class="line">(</span><br><span class="line">    MovieActorId <span class="type">int</span> <span class="keyword">identity</span>(<span class="number">1</span>,<span class="number">1</span>) <span class="keyword">primary</span> key,</span><br><span class="line">	MovieId <span class="type">int</span> <span class="keyword">foreign</span> key <span class="keyword">references</span> Movies(MovieId),</span><br><span class="line">	ActorId <span class="type">int</span> <span class="keyword">foreign</span> key <span class="keyword">references</span> Actors(ActorId),</span><br><span class="line">	PaymentRate <span class="type">decimal</span>(<span class="number">10</span>, <span class="number">2</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h3 id="temp-table-table-variables"><a class="markdownIt-Anchor" href="#temp-table-table-variables">#</a> Temp Table &amp; Table Variables</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> #edi_temp (</span><br><span class="line">	head_id <span class="type">varchar</span>(<span class="number">25</span>),</span><br><span class="line">	transfer_time <span class="type">varchar</span>(<span class="number">100</span>)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> #edi_temp</span><br><span class="line"><span class="keyword">values</span> (<span class="string">&#x27;H00039827&#x27;</span>, <span class="string">&#x27;2019/3/27 14:15:13&#x27;</span>),</span><br><span class="line">       (<span class="string">&#x27;H00039871&#x27;</span>, <span class="string">&#x27;2019/5/13 13:10:49&#x27;</span>),</span><br><span class="line">       (<span class="string">&#x27;H00039872&#x27;</span>, <span class="string">&#x27;2019/5/13 13:10:49&#x27;</span>),</span><br><span class="line">       (<span class="string">&#x27;H00039873&#x27;</span>, <span class="string">&#x27;2019/5/13 13:10:49&#x27;</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span></span><br><span class="line">  <span class="keyword">into</span> #products</span><br><span class="line">  <span class="keyword">from</span> Products;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span> <span class="variable">@emp</span> <span class="keyword">table</span> (</span><br><span class="line">  empno <span class="type">INT</span> <span class="keyword">PRIMARY</span> KEY,</span><br><span class="line">  ename NVARCHAR(<span class="number">10</span>),</span><br><span class="line">  job NVARCHAR(<span class="number">9</span>)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="variable">@emp</span></span><br><span class="line"><span class="keyword">select</span> top <span class="number">2</span> empno, ename, job <span class="keyword">from</span> emp</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> <span class="variable">@emp</span></span><br></pre></td></tr></table></figure>
+<h3 id="constraint"><a class="markdownIt-Anchor" href="#constraint">#</a> Constraint</h3>
 <ol>
 <li><strong>sys.key_constraints</strong>: 这个视图包含了主键约束和唯一键约束的信息。</li>
 <li><strong>sys.check_constraints</strong>: 这个视图包含了检查约束的信息。</li>
@@ -180,7 +596,7 @@ D E W = 露の世</title>
 </tbody>
 </table>
 <p>Drop column need drop  <code>default</code>  constraint firstly but not null constraint not need.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> dbo.edi_test <span class="keyword">drop</span> <span class="keyword">column</span> b; <span class="comment">--SQL Error [5074] [S1000]: The object &#x27;DF__edi_test__b__2E1BDC42&#x27; is dependent on column &#x27;b&#x27;.</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> dbo.edi_test <span class="keyword">drop</span> <span class="keyword">constraint</span> DF__edi_test__b__2E1BDC42;</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> dbo.edi_test <span class="keyword">drop</span> <span class="keyword">column</span> b; </span><br><span class="line"></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> dbo.edi_test <span class="keyword">drop</span> <span class="keyword">column</span> a;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> dbo.edi_test <span class="keyword">drop</span> <span class="keyword">column</span> b; <span class="comment">--SQL Error [5074] [S1000]: The object &#x27;DF__edi_test__b__2E1BDC42&#x27; is dependent on column &#x27;b&#x27;.</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> dbo.edi_test <span class="keyword">drop</span> <span class="keyword">constraint</span> DF__edi_test__b__2E1BDC42;</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> dbo.edi_test <span class="keyword">drop</span> <span class="keyword">column</span> b;</span><br><span class="line"></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> dbo.edi_test <span class="keyword">drop</span> <span class="keyword">column</span> a;</span><br></pre></td></tr></table></figure>
 <p>In Oracle  <code>not null</code>  constraint can not find by view and  <code>default</code>  is not a constraint.</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> edi_test(</span><br><span class="line">  a varchar2(<span class="number">100</span>) <span class="keyword">not</span> <span class="keyword">null</span>,</span><br><span class="line">  b varchar2(<span class="number">100</span>) <span class="keyword">default</span>(<span class="string">&#x27;-&#x27;</span>),</span><br><span class="line">  c varchar2(<span class="number">100</span>)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> user_constraints <span class="keyword">where</span> table_name <span class="operator">=</span> <span class="string">&#x27;EDI_TEST&#x27;</span>;</span><br></pre></td></tr></table></figure>
 <table>
@@ -234,8 +650,325 @@ D E W = 露の世</title>
 </tbody>
 </table>
 <p>Drop column not need drop  <code>not null</code>  constraint firstly.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> edi_test <span class="keyword">drop</span> <span class="keyword">column</span> b; </span><br><span class="line"></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> edi_test <span class="keyword">drop</span> <span class="keyword">column</span> a; </span><br></pre></td></tr></table></figure>
-<h2 id="custom-types"><a class="markdownIt-Anchor" href="#custom-types">#</a> Custom Types</h2>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> edi_test <span class="keyword">drop</span> <span class="keyword">column</span> b;</span><br><span class="line"></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> edi_test <span class="keyword">drop</span> <span class="keyword">column</span> a;</span><br></pre></td></tr></table></figure>
+<h2 id="function-procedure"><a class="markdownIt-Anchor" href="#function-procedure">#</a> Function &amp; Procedure</h2>
+<h3 id="user-defined-procedure"><a class="markdownIt-Anchor" href="#user-defined-procedure">#</a> User Defined Procedure</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> GetEmpInfo</span><br><span class="line">	<span class="variable">@empno</span> <span class="type">int</span></span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">	<span class="keyword">select</span> <span class="operator">*</span></span><br><span class="line">	  <span class="keyword">from</span> emp</span><br><span class="line">	 <span class="keyword">where</span> empno <span class="operator">=</span> <span class="variable">@empno</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">go</span><br><span class="line"></span><br><span class="line"><span class="keyword">exec</span> GetEmpInfo <span class="number">7369</span></span><br></pre></td></tr></table></figure>
+<h3 id="user-defined-function"><a class="markdownIt-Anchor" href="#user-defined-function">#</a> User Defined Function</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">function</span> GetHighSalEmp(<span class="variable">@sal</span> <span class="type">decimal</span>(<span class="number">7</span>, <span class="number">2</span>))</span><br><span class="line"><span class="keyword">returns</span> <span class="keyword">table</span></span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">return</span></span><br><span class="line">(</span><br><span class="line">  <span class="keyword">select</span> <span class="operator">*</span></span><br><span class="line">    <span class="keyword">from</span> emp</span><br><span class="line">   <span class="keyword">where</span> sal <span class="operator">&gt;</span> <span class="variable">@sal</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">go</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> GetHighSalEmp(<span class="number">3000</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="isnull"><a class="markdownIt-Anchor" href="#isnull">#</a> isnull</h3>
+<p><code>isnull</code>  fucntion is similar to Oracle  <code>nvl</code>  function.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> isnull(<span class="keyword">null</span>, <span class="string">&#x27;S&#x27;</span>); <span class="comment">--S</span></span><br><span class="line"><span class="keyword">select</span> isnull(<span class="string">&#x27;R&#x27;</span>, <span class="string">&#x27;S&#x27;</span>);  <span class="comment">--R</span></span><br></pre></td></tr></table></figure>
+<h3 id="charindex"><a class="markdownIt-Anchor" href="#charindex">#</a> charindex</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> charindex(<span class="string">&#x27;home&#x27;</span>, <span class="string">&#x27;welcome home&#x27;</span>); <span class="comment">--9</span></span><br></pre></td></tr></table></figure>
+<h3 id="cast"><a class="markdownIt-Anchor" href="#cast">#</a> cast</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="string">&#x27;abc&#x27;</span> <span class="operator">+</span> <span class="built_in">cast</span>(<span class="number">123</span> <span class="keyword">as</span> <span class="type">varchar</span>(<span class="number">10</span>)); <span class="comment">--abc123</span></span><br></pre></td></tr></table></figure>
+<h3 id="getdate"><a class="markdownIt-Anchor" href="#getdate">#</a> getdate</h3>
+<p><code>getdate</code>  function is similar to Oracle  <code>sysdate</code>  function.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> getdate();</span><br></pre></td></tr></table></figure>
+<h3 id="dateadd"><a class="markdownIt-Anchor" href="#dateadd">#</a> dateadd</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> dateadd(<span class="keyword">day</span>, <span class="number">2</span>, <span class="string">&#x27;2024-06-04&#x27;</span>); <span class="comment">--2024-06-06 00:00:00.000</span></span><br></pre></td></tr></table></figure>
+<h3 id="datediff"><a class="markdownIt-Anchor" href="#datediff">#</a> datediff</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> datediff(<span class="keyword">day</span>, getdate(), dateadd(<span class="keyword">day</span>, <span class="number">2</span>, getdate())); <span class="comment">--2</span></span><br></pre></td></tr></table></figure>
+<h3 id="datepart"><a class="markdownIt-Anchor" href="#datepart">#</a> datepart</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> datepart(<span class="keyword">year</span>, getdate()), datepart(week, getdate()); <span class="comment">--2024 23</span></span><br></pre></td></tr></table></figure>
+<h2 id="t-sql"><a class="markdownIt-Anchor" href="#t-sql">#</a> T-SQL</h2>
+<p>Example Table</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- Create table similar to scott.emp in SQL Server</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> emp (</span><br><span class="line">    empno <span class="type">INT</span> <span class="keyword">PRIMARY</span> KEY,</span><br><span class="line">    ename NVARCHAR(<span class="number">10</span>),</span><br><span class="line">    job NVARCHAR(<span class="number">9</span>),</span><br><span class="line">    mgr <span class="type">INT</span>,</span><br><span class="line">    hiredate <span class="type">DATE</span>,</span><br><span class="line">    sal <span class="type">DECIMAL</span>(<span class="number">7</span>, <span class="number">2</span>),</span><br><span class="line">    comm <span class="type">DECIMAL</span>(<span class="number">7</span>, <span class="number">2</span>),</span><br><span class="line">    deptno <span class="type">INT</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- Insert sample data into the emp table</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> emp (empno, ename, job, mgr, hiredate, sal, comm, deptno) <span class="keyword">VALUES</span></span><br><span class="line">(<span class="number">7369</span>, <span class="string">&#x27;SMITH&#x27;</span>, <span class="string">&#x27;CLERK&#x27;</span>, <span class="number">7902</span>, <span class="string">&#x27;1980-12-17&#x27;</span>, <span class="number">800</span>, <span class="keyword">NULL</span>, <span class="number">20</span>),</span><br><span class="line">(<span class="number">7499</span>, <span class="string">&#x27;ALLEN&#x27;</span>, <span class="string">&#x27;SALESMAN&#x27;</span>, <span class="number">7698</span>, <span class="string">&#x27;1981-02-20&#x27;</span>, <span class="number">1600</span>, <span class="number">300</span>, <span class="number">30</span>),</span><br><span class="line">(<span class="number">7521</span>, <span class="string">&#x27;WARD&#x27;</span>, <span class="string">&#x27;SALESMAN&#x27;</span>, <span class="number">7698</span>, <span class="string">&#x27;1981-02-22&#x27;</span>, <span class="number">1250</span>, <span class="number">500</span>, <span class="number">30</span>),</span><br><span class="line">(<span class="number">7566</span>, <span class="string">&#x27;JONES&#x27;</span>, <span class="string">&#x27;MANAGER&#x27;</span>, <span class="number">7839</span>, <span class="string">&#x27;1981-04-02&#x27;</span>, <span class="number">2975</span>, <span class="keyword">NULL</span>, <span class="number">20</span>),</span><br><span class="line">(<span class="number">7698</span>, <span class="string">&#x27;BLAKE&#x27;</span>, <span class="string">&#x27;MANAGER&#x27;</span>, <span class="number">7839</span>, <span class="string">&#x27;1981-05-01&#x27;</span>, <span class="number">2850</span>, <span class="keyword">NULL</span>, <span class="number">30</span>),</span><br><span class="line">(<span class="number">7782</span>, <span class="string">&#x27;CLARK&#x27;</span>, <span class="string">&#x27;MANAGER&#x27;</span>, <span class="number">7839</span>, <span class="string">&#x27;1981-06-09&#x27;</span>, <span class="number">2450</span>, <span class="keyword">NULL</span>, <span class="number">10</span>),</span><br><span class="line">(<span class="number">7788</span>, <span class="string">&#x27;SCOTT&#x27;</span>, <span class="string">&#x27;ANALYST&#x27;</span>, <span class="number">7566</span>, <span class="string">&#x27;1982-12-09&#x27;</span>, <span class="number">3000</span>, <span class="keyword">NULL</span>, <span class="number">20</span>),</span><br><span class="line">(<span class="number">7839</span>, <span class="string">&#x27;KING&#x27;</span>, <span class="string">&#x27;PRESIDENT&#x27;</span>, <span class="keyword">NULL</span>, <span class="string">&#x27;1981-11-17&#x27;</span>, <span class="number">5000</span>, <span class="keyword">NULL</span>, <span class="number">10</span>),</span><br><span class="line">(<span class="number">7844</span>, <span class="string">&#x27;TURNER&#x27;</span>, <span class="string">&#x27;SALESMAN&#x27;</span>, <span class="number">7698</span>, <span class="string">&#x27;1981-09-08&#x27;</span>, <span class="number">1500</span>, <span class="number">0</span>, <span class="number">30</span>),</span><br><span class="line">(<span class="number">7876</span>, <span class="string">&#x27;ADAMS&#x27;</span>, <span class="string">&#x27;CLERK&#x27;</span>, <span class="number">7788</span>, <span class="string">&#x27;1983-01-12&#x27;</span>, <span class="number">1100</span>, <span class="keyword">NULL</span>, <span class="number">20</span>),</span><br><span class="line">(<span class="number">7900</span>, <span class="string">&#x27;JAMES&#x27;</span>, <span class="string">&#x27;CLERK&#x27;</span>, <span class="number">7698</span>, <span class="string">&#x27;1981-12-03&#x27;</span>, <span class="number">950</span>, <span class="keyword">NULL</span>, <span class="number">30</span>),</span><br><span class="line">(<span class="number">7934</span>, <span class="string">&#x27;MILLER&#x27;</span>, <span class="string">&#x27;CLERK&#x27;</span>, <span class="number">7782</span>, <span class="string">&#x27;1982-01-23&#x27;</span>, <span class="number">1300</span>, <span class="keyword">NULL</span>, <span class="number">10</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- Verify the data is inserted</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> emp;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>empno</th>
+<th>ename</th>
+<th>job</th>
+<th>mgr</th>
+<th>hiredate</th>
+<th>sal</th>
+<th>comm</th>
+<th>deptno</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7369</td>
+<td>SMITH</td>
+<td>CLERK</td>
+<td>7902</td>
+<td>1980-12-17</td>
+<td>800.00</td>
+<td>NULL</td>
+<td>20</td>
+</tr>
+<tr>
+<td>7499</td>
+<td>ALLEN</td>
+<td>SALESMAN</td>
+<td>7698</td>
+<td>1981-02-20</td>
+<td>1600.00</td>
+<td>300.00</td>
+<td>30</td>
+</tr>
+<tr>
+<td>7521</td>
+<td>WARD</td>
+<td>SALESMAN</td>
+<td>7698</td>
+<td>1981-02-22</td>
+<td>1250.00</td>
+<td>500.00</td>
+<td>30</td>
+</tr>
+<tr>
+<td>7566</td>
+<td>JONES</td>
+<td>MANAGER</td>
+<td>7839</td>
+<td>1981-04-02</td>
+<td>2975.00</td>
+<td>NULL</td>
+<td>20</td>
+</tr>
+<tr>
+<td>7698</td>
+<td>BLAKE</td>
+<td>MANAGER</td>
+<td>7839</td>
+<td>1981-05-01</td>
+<td>2850.00</td>
+<td>NULL</td>
+<td>30</td>
+</tr>
+<tr>
+<td>7782</td>
+<td>CLARK</td>
+<td>MANAGER</td>
+<td>7839</td>
+<td>1981-06-09</td>
+<td>2450.00</td>
+<td>NULL</td>
+<td>10</td>
+</tr>
+<tr>
+<td>7788</td>
+<td>SCOTT</td>
+<td>ANALYST</td>
+<td>7566</td>
+<td>1982-12-09</td>
+<td>3000.00</td>
+<td>NULL</td>
+<td>20</td>
+</tr>
+<tr>
+<td>7839</td>
+<td>KING</td>
+<td>PRESIDENT</td>
+<td>NULL</td>
+<td>1981-11-17</td>
+<td>5000.00</td>
+<td>NULL</td>
+<td>10</td>
+</tr>
+<tr>
+<td>7844</td>
+<td>TURNER</td>
+<td>SALESMAN</td>
+<td>7698</td>
+<td>1981-09-08</td>
+<td>1500.00</td>
+<td>0.00</td>
+<td>30</td>
+</tr>
+<tr>
+<td>7876</td>
+<td>ADAMS</td>
+<td>CLERK</td>
+<td>7788</td>
+<td>1983-01-12</td>
+<td>1100.00</td>
+<td>NULL</td>
+<td>20</td>
+</tr>
+<tr>
+<td>7900</td>
+<td>JAMES</td>
+<td>CLERK</td>
+<td>7698</td>
+<td>1981-12-03</td>
+<td>950.00</td>
+<td>NULL</td>
+<td>30</td>
+</tr>
+<tr>
+<td>7934</td>
+<td>MILLER</td>
+<td>CLERK</td>
+<td>7782</td>
+<td>1982-01-23</td>
+<td>1300.00</td>
+<td>NULL</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+<h3 id="variables"><a class="markdownIt-Anchor" href="#variables">#</a> Variables</h3>
+<h4 id="set-assignment"><a class="markdownIt-Anchor" href="#set-assignment">#</a> Set Assignment</h4>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span> <span class="variable">@num</span> <span class="type">int</span></span><br><span class="line"><span class="keyword">set</span> <span class="variable">@num</span> <span class="operator">=</span> <span class="number">5</span></span><br><span class="line">print <span class="variable">@num</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">declare</span> <span class="variable">@count</span> <span class="type">int</span></span><br><span class="line"><span class="keyword">set</span> <span class="variable">@count</span> <span class="operator">=</span> (</span><br><span class="line">   <span class="keyword">select</span> <span class="built_in">count</span>(<span class="operator">*</span>)</span><br><span class="line">     <span class="keyword">from</span> emp</span><br><span class="line">)</span><br><span class="line">print <span class="variable">@count</span></span><br></pre></td></tr></table></figure>
+<h4 id="select-assignment"><a class="markdownIt-Anchor" href="#select-assignment">#</a> Select Assignment</h4>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span> <span class="variable">@num</span> <span class="type">int</span></span><br><span class="line"><span class="keyword">select</span> <span class="variable">@num</span> <span class="operator">=</span> <span class="number">5</span></span><br><span class="line">print <span class="variable">@num</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span> <span class="variable">@avg</span>_sal <span class="type">decimal</span>(<span class="number">7</span>, <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="variable">@avg</span>_sal <span class="operator">=</span> <span class="built_in">avg</span>(sal)</span><br><span class="line"><span class="keyword">from</span> emp</span><br><span class="line"><span class="comment">--or</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">set @avg_sal = (</span></span><br><span class="line"><span class="comment">  select avg(sal)</span></span><br><span class="line"><span class="comment">  from emp</span></span><br><span class="line"><span class="comment">)</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">from</span> emp</span><br><span class="line"><span class="keyword">where</span> sal <span class="operator">&gt;</span> <span class="variable">@avg</span>_sal</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>empno</th>
+<th>ename</th>
+<th>job</th>
+<th>mgr</th>
+<th>hiredate</th>
+<th>sal</th>
+<th>comm</th>
+<th>deptno</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7566</td>
+<td>JONES</td>
+<td>MANAGER</td>
+<td>7839</td>
+<td>1981-04-02</td>
+<td>2975.00</td>
+<td>NULL</td>
+<td>20</td>
+</tr>
+<tr>
+<td>7698</td>
+<td>BLAKE</td>
+<td>MANAGER</td>
+<td>7839</td>
+<td>1981-05-01</td>
+<td>2850.00</td>
+<td>NULL</td>
+<td>30</td>
+</tr>
+<tr>
+<td>7782</td>
+<td>CLARK</td>
+<td>MANAGER</td>
+<td>7839</td>
+<td>1981-06-09</td>
+<td>2450.00</td>
+<td>NULL</td>
+<td>10</td>
+</tr>
+<tr>
+<td>7788</td>
+<td>SCOTT</td>
+<td>ANALYST</td>
+<td>7566</td>
+<td>1982-12-09</td>
+<td>3000.00</td>
+<td>NULL</td>
+<td>20</td>
+</tr>
+<tr>
+<td>7839</td>
+<td>KING</td>
+<td>PRESIDENT</td>
+<td>NULL</td>
+<td>1981-11-17</td>
+<td>5000.00</td>
+<td>NULL</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+<h4 id="update-assignment"><a class="markdownIt-Anchor" href="#update-assignment">#</a> Update Assignment</h4>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span> <span class="variable">@name</span> nvarchar(<span class="number">50</span>)</span><br><span class="line">update emp <span class="keyword">set</span> <span class="variable">@name</span> <span class="operator">=</span> ename <span class="keyword">where</span> empno <span class="operator">=</span> <span class="number">7369</span></span><br><span class="line">print <span class="variable">@name</span></span><br></pre></td></tr></table></figure>
+<h4 id="table-variables"><a class="markdownIt-Anchor" href="#table-variables">#</a> Table Variables</h4>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span> <span class="variable">@emp</span> <span class="keyword">table</span> (</span><br><span class="line">  empno <span class="type">INT</span> <span class="keyword">PRIMARY</span> KEY,</span><br><span class="line">  ename NVARCHAR(<span class="number">10</span>),</span><br><span class="line">  job NVARCHAR(<span class="number">9</span>)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="variable">@emp</span></span><br><span class="line"><span class="keyword">select</span> top <span class="number">2</span> empno, ename, job <span class="keyword">from</span> emp</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> <span class="variable">@emp</span></span><br></pre></td></tr></table></figure>
+<h3 id="condition-statement"><a class="markdownIt-Anchor" href="#condition-statement">#</a> Condition Statement</h3>
+<h4 id="if-else"><a class="markdownIt-Anchor" href="#if-else">#</a> IF ELSE</h4>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span> <span class="variable">@price</span> <span class="type">decimal</span>(<span class="number">18</span>,<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">set</span> <span class="variable">@price</span> <span class="operator">=</span> <span class="number">60</span></span><br><span class="line"></span><br><span class="line">if <span class="variable">@price</span> <span class="operator">&lt;</span> <span class="number">10</span></span><br><span class="line">	<span class="keyword">select</span> <span class="string">&#x27;Cheap&#x27;</span></span><br><span class="line"><span class="keyword">else</span> if <span class="variable">@price</span> <span class="keyword">between</span> <span class="number">10</span> <span class="keyword">and</span> <span class="number">50</span></span><br><span class="line">	<span class="keyword">select</span> <span class="string">&#x27;Affordable&#x27;</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">	<span class="keyword">select</span> <span class="string">&#x27;Expansive&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--Expansive</span></span><br></pre></td></tr></table></figure>
+<h4 id="when-then"><a class="markdownIt-Anchor" href="#when-then">#</a> WHEN THEN</h4>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span> <span class="variable">@today</span> <span class="type">int</span></span><br><span class="line"><span class="keyword">declare</span> <span class="variable">@week</span> <span class="type">varchar</span>(<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">set</span> <span class="variable">@today</span><span class="operator">=</span><span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">set</span> <span class="variable">@week</span><span class="operator">=</span><span class="keyword">case</span></span><br><span class="line"><span class="keyword">when</span> <span class="variable">@today</span><span class="operator">=</span><span class="number">1</span> <span class="keyword">then</span> <span class="string">&#x27;Monday&#x27;</span></span><br><span class="line"><span class="keyword">when</span> <span class="variable">@today</span><span class="operator">=</span><span class="number">2</span> <span class="keyword">then</span> <span class="string">&#x27;Tuesday&#x27;</span></span><br><span class="line"><span class="keyword">when</span> <span class="variable">@today</span><span class="operator">=</span><span class="number">3</span> <span class="keyword">then</span> <span class="string">&#x27;Wednesday&#x27;</span></span><br><span class="line"><span class="keyword">when</span> <span class="variable">@today</span><span class="operator">=</span><span class="number">4</span> <span class="keyword">then</span> <span class="string">&#x27;Thursday&#x27;</span></span><br><span class="line"><span class="keyword">when</span> <span class="variable">@today</span><span class="operator">=</span><span class="number">5</span> <span class="keyword">then</span> <span class="string">&#x27;Fridy&#x27;</span></span><br><span class="line"><span class="keyword">when</span> <span class="variable">@today</span><span class="operator">=</span><span class="number">6</span> <span class="keyword">then</span> <span class="string">&#x27;Saturday&#x27;</span></span><br><span class="line"><span class="keyword">when</span> <span class="variable">@today</span><span class="operator">=</span><span class="number">7</span> <span class="keyword">then</span> <span class="string">&#x27;Sunday&#x27;</span></span><br><span class="line"><span class="keyword">else</span> <span class="string">&#x27;Error&#x27;</span> <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">print <span class="variable">@week</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--Wednesday</span></span><br></pre></td></tr></table></figure>
+<h4 id="exisits"><a class="markdownIt-Anchor" href="#exisits">#</a> EXISITS</h4>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span> <span class="variable">@empno</span> <span class="type">int</span> <span class="operator">=</span> <span class="number">7839</span></span><br><span class="line"></span><br><span class="line">if <span class="keyword">not</span> <span class="keyword">exists</span> (<span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> emp <span class="keyword">where</span> empno <span class="operator">=</span> <span class="variable">@empno</span>)</span><br><span class="line">	<span class="keyword">select</span> <span class="string">&#x27;The emp does not exists&#x27;</span></span><br><span class="line"><span class="keyword">else</span> if <span class="keyword">exists</span> (<span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> emp <span class="keyword">where</span> empno <span class="operator">=</span> <span class="variable">@empno</span> <span class="keyword">and</span> mgr <span class="keyword">is</span> <span class="keyword">null</span>)</span><br><span class="line">	<span class="keyword">select</span> <span class="string">&#x27;The emp is mgr&#x27;</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">	<span class="keyword">select</span> <span class="string">&#x27;The emp is not mgr&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--The emp is mgr</span></span><br></pre></td></tr></table></figure>
+<h3 id="while-loop"><a class="markdownIt-Anchor" href="#while-loop">#</a> While Loop</h3>
+<h4 id="calculate-the-sum-from-1-to-100"><a class="markdownIt-Anchor" href="#calculate-the-sum-from-1-to-100">#</a> Calculate the sum from 1 to 100.</h4>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span> <span class="variable">@a</span> <span class="type">int</span></span><br><span class="line"><span class="keyword">declare</span> <span class="variable">@sum</span> <span class="type">int</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">set</span> <span class="variable">@a</span><span class="operator">=</span><span class="number">1</span></span><br><span class="line"><span class="keyword">set</span> <span class="variable">@sum</span><span class="operator">=</span><span class="number">0</span></span><br><span class="line"></span><br><span class="line">while <span class="variable">@a</span><span class="operator">&lt;=</span><span class="number">100</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">set</span> <span class="variable">@sum</span><span class="operator">+</span><span class="operator">=</span><span class="variable">@a</span></span><br><span class="line">    <span class="keyword">set</span> <span class="variable">@a</span><span class="operator">+</span><span class="operator">=</span><span class="number">1</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">print <span class="variable">@sum</span></span><br></pre></td></tr></table></figure>
+<h4 id="mock-test-data"><a class="markdownIt-Anchor" href="#mock-test-data">#</a> Mock Test Data</h4>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span> <span class="variable">@RowCount</span> <span class="type">int</span> <span class="operator">=</span> <span class="number">0</span></span><br><span class="line"><span class="keyword">declare</span> <span class="variable">@RandomNumber</span> <span class="type">int</span></span><br><span class="line"></span><br><span class="line">while <span class="variable">@RowCount</span> <span class="operator">&lt;</span> <span class="number">10</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  <span class="keyword">set</span> <span class="variable">@RandomNumber</span> <span class="operator">=</span> <span class="built_in">floor</span>(rand() <span class="operator">*</span> <span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">select</span> dateadd(<span class="keyword">day</span>, <span class="operator">-</span><span class="built_in">floor</span>(rand() <span class="operator">*</span> <span class="number">365</span>), getdate()),</span><br><span class="line">	     <span class="string">&#x27;Customer&#x27;</span> <span class="operator">+</span> <span class="built_in">cast</span>(<span class="built_in">floor</span>(rand() <span class="operator">*</span> <span class="number">20</span>) <span class="operator">+</span> <span class="number">1</span> <span class="keyword">as</span> <span class="type">varchar</span>(<span class="number">10</span>)) <span class="operator">+</span> <span class="string">&#x27;@gmail.com&#x27;</span>,</span><br><span class="line">		 <span class="keyword">case</span></span><br><span class="line">			<span class="keyword">when</span> <span class="variable">@RandomNumber</span> <span class="operator">=</span> <span class="number">0</span> <span class="keyword">then</span> <span class="string">&#x27;Pending&#x27;</span></span><br><span class="line">			<span class="keyword">when</span> <span class="variable">@RandomNumber</span> <span class="operator">=</span> <span class="number">1</span> <span class="keyword">then</span> <span class="string">&#x27;Shipped&#x27;</span></span><br><span class="line">			<span class="keyword">when</span> <span class="variable">@RandomNumber</span> <span class="operator">=</span> <span class="number">2</span> <span class="keyword">then</span> <span class="string">&#x27;Canceled&#x27;</span></span><br><span class="line">		 <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">set</span> <span class="variable">@RowCount</span> <span class="operator">=</span> <span class="variable">@RowCount</span> <span class="operator">+</span> <span class="number">1</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<h3 id="cursor"><a class="markdownIt-Anchor" href="#cursor">#</a> Cursor</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span> <span class="variable">@empno</span> <span class="type">int</span></span><br><span class="line"><span class="keyword">declare</span> <span class="variable">@ename</span> nvarchar(<span class="number">10</span>)</span><br><span class="line"><span class="keyword">declare</span> <span class="variable">@job</span> nvarchar(<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">declare</span> emp_cur <span class="keyword">cursor</span> <span class="keyword">for</span> <span class="keyword">select</span> empno, ename, job <span class="keyword">from</span> emp</span><br><span class="line"></span><br><span class="line"><span class="keyword">open</span> emp_cur</span><br><span class="line">while @<span class="variable">@fetch</span>_status<span class="operator">=</span><span class="number">0</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">	<span class="keyword">fetch</span> next <span class="keyword">from</span> emp_cur <span class="keyword">into</span> <span class="variable">@empno</span>, <span class="variable">@ename</span>, <span class="variable">@job</span></span><br><span class="line">	print <span class="built_in">cast</span>(<span class="variable">@empno</span> <span class="keyword">as</span> <span class="type">varchar</span>(<span class="number">10</span>)) <span class="operator">+</span> <span class="string">&#x27;-&#x27;</span> <span class="operator">+</span> <span class="variable">@ename</span> <span class="operator">+</span> <span class="string">&#x27;-&#x27;</span> <span class="operator">+</span> <span class="variable">@job</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">close</span> emp_cur</span><br><span class="line"></span><br><span class="line"><span class="keyword">deallocate</span> emp_cur</span><br><span class="line"></span><br><span class="line"><span class="comment">--7369-SMITH-CLERK</span></span><br><span class="line"><span class="comment">--7499-ALLEN-SALESMAN</span></span><br><span class="line"><span class="comment">--...</span></span><br></pre></td></tr></table></figure>
+<h3 id="trigger"><a class="markdownIt-Anchor" href="#trigger">#</a> Trigger</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> #log</span><br><span class="line">(</span><br><span class="line">  msg nvarchar(<span class="number">200</span>)</span><br><span class="line">)</span><br><span class="line">go</span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">trigger</span> emp_onupdate_trg</span><br><span class="line"><span class="keyword">on</span> emp</span><br><span class="line"><span class="keyword">for</span> update</span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">declare</span> <span class="variable">@msg</span> nvarchar(<span class="number">50</span>)</span><br><span class="line"><span class="keyword">select</span> <span class="variable">@msg</span> <span class="operator">=</span> deleted.ename <span class="operator">+</span> <span class="string">&#x27;-&gt;&#x27;</span> <span class="operator">+</span> inserted.ename <span class="keyword">from</span> inserted, deleted</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> #log <span class="keyword">values</span>(<span class="variable">@msg</span>)</span><br><span class="line"></span><br><span class="line">go</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> #log;</span><br><span class="line">update emp <span class="keyword">set</span> ename <span class="operator">=</span> <span class="string">&#x27;SMITHX&#x27;</span> <span class="keyword">where</span> ename <span class="operator">=</span> <span class="string">&#x27;SMITH&#x27;</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> #log;</span><br><span class="line"><span class="comment">--SMITH-&gt;SMITHX</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">trigger</span> emp_onupdate_trg</span><br></pre></td></tr></table></figure>
+<h3 id="custom-procedure"><a class="markdownIt-Anchor" href="#custom-procedure">#</a> Custom Procedure</h3>
+<h4 id="with-output-parameter"><a class="markdownIt-Anchor" href="#with-output-parameter">#</a> With Output Parameter</h4>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> CalculateSum</span><br><span class="line">	<span class="variable">@a</span> <span class="type">int</span>,</span><br><span class="line">	<span class="variable">@b</span> <span class="type">int</span>,</span><br><span class="line">	<span class="variable">@sum</span> <span class="type">int</span> output</span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">	<span class="keyword">set</span> <span class="variable">@sum</span><span class="operator">=</span><span class="variable">@a</span><span class="operator">+</span><span class="variable">@b</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">go</span><br><span class="line"></span><br><span class="line"><span class="keyword">declare</span> <span class="variable">@sum</span> <span class="type">int</span></span><br><span class="line"><span class="keyword">exec</span> CalculateSum <span class="number">1</span>, <span class="number">2</span>, <span class="variable">@sum</span> output</span><br><span class="line">print <span class="variable">@sum</span></span><br><span class="line"><span class="comment">--3</span></span><br></pre></td></tr></table></figure>
+<h4 id="return"><a class="markdownIt-Anchor" href="#return">#</a> Return</h4>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> CalculateSum</span><br><span class="line">	<span class="variable">@a</span> <span class="type">int</span>,</span><br><span class="line">	<span class="variable">@b</span> <span class="type">int</span></span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">	<span class="keyword">return</span> <span class="variable">@a</span><span class="operator">+</span><span class="variable">@b</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">go</span><br><span class="line"></span><br><span class="line"><span class="keyword">declare</span> <span class="variable">@sum</span> <span class="type">int</span></span><br><span class="line"><span class="keyword">exec</span> <span class="variable">@sum</span> <span class="operator">=</span> CalculateSum <span class="number">1</span>, <span class="number">2</span></span><br><span class="line">print <span class="variable">@sum</span></span><br><span class="line"><span class="comment">--3</span></span><br></pre></td></tr></table></figure>
+<h3 id="custom-function"><a class="markdownIt-Anchor" href="#custom-function">#</a> Custom Function</h3>
+<h4 id="scalar-function"><a class="markdownIt-Anchor" href="#scalar-function">#</a> Scalar Function</h4>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">function</span> CalculateSum(<span class="variable">@a</span> <span class="type">int</span>, <span class="variable">@b</span> <span class="type">int</span>) <span class="keyword">returns</span> <span class="type">int</span></span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">	<span class="keyword">return</span> <span class="variable">@a</span><span class="operator">+</span><span class="variable">@b</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">go</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">declare</span> <span class="variable">@sum</span> <span class="type">int</span></span><br><span class="line"><span class="keyword">set</span> <span class="variable">@sum</span> <span class="operator">=</span> dbo.CalculateSum(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line">print <span class="variable">@sum</span></span><br><span class="line"><span class="comment">--3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> dbo.CalculateSum(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line"><span class="comment">--3</span></span><br></pre></td></tr></table></figure>
+<h4 id="table-valued-function"><a class="markdownIt-Anchor" href="#table-valued-function">#</a> Table-valued Function</h4>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">function</span> GetHighSalEmp(<span class="variable">@sal</span> <span class="type">decimal</span>(<span class="number">7</span>, <span class="number">2</span>))</span><br><span class="line"><span class="keyword">returns</span> <span class="keyword">table</span></span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">return</span></span><br><span class="line">(</span><br><span class="line">  <span class="keyword">select</span> <span class="operator">*</span></span><br><span class="line">    <span class="keyword">from</span> emp</span><br><span class="line">   <span class="keyword">where</span> sal <span class="operator">&gt;</span> <span class="variable">@sal</span></span><br><span class="line">)</span><br><span class="line">go</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> dbo.GetHighSalEmp(<span class="number">3000</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">function</span> GetHighSalEmp(<span class="variable">@sal</span> <span class="type">decimal</span>(<span class="number">7</span>, <span class="number">2</span>))</span><br><span class="line"><span class="keyword">returns</span> <span class="variable">@emp</span> <span class="keyword">table</span></span><br><span class="line">(</span><br><span class="line">	empno <span class="type">INT</span> <span class="keyword">PRIMARY</span> KEY,</span><br><span class="line">    ename NVARCHAR(<span class="number">10</span>),</span><br><span class="line">    job NVARCHAR(<span class="number">9</span>),</span><br><span class="line">    mgr <span class="type">INT</span>,</span><br><span class="line">    hiredate <span class="type">DATE</span>,</span><br><span class="line">    sal <span class="type">DECIMAL</span>(<span class="number">7</span>, <span class="number">2</span>),</span><br><span class="line">    comm <span class="type">DECIMAL</span>(<span class="number">7</span>, <span class="number">2</span>),</span><br><span class="line">    deptno <span class="type">INT</span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">	<span class="keyword">insert</span> <span class="keyword">into</span> <span class="variable">@emp</span> <span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> emp <span class="keyword">where</span> sal <span class="operator">&gt;</span> <span class="variable">@sal</span></span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">go</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> dbo.GetHighSalEmp(<span class="number">3000</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="set-nocount"><a class="markdownIt-Anchor" href="#set-nocount">#</a> SET NOCOUNT</h3>
+<p>Controls whether a message that shows the number of rows affected by a Transact-SQL statement or stored procedure is returned after the result set. This message is an additional result set.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> nocount off</span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> emp</span><br><span class="line"></span><br><span class="line"><span class="comment">--Messages</span></span><br><span class="line"><span class="comment">--(12 row(s) affected)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--(1 row(s) affected)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">set</span> nocount <span class="keyword">on</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> emp</span><br><span class="line"><span class="comment">--Messages</span></span><br><span class="line">Command(s) completed successfully.</span><br></pre></td></tr></table></figure>
+<h2 id="misc"><a class="markdownIt-Anchor" href="#misc">#</a> Misc.</h2>
+<h3 id="for-xml-path"><a class="markdownIt-Anchor" href="#for-xml-path">#</a> For XML Path</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> empno, ename, sal</span><br><span class="line">  <span class="keyword">from</span> emp</span><br><span class="line"> <span class="keyword">where</span> sal <span class="operator">&gt;=</span> <span class="number">3000</span></span><br><span class="line"><span class="keyword">for</span> xml path (<span class="string">&#x27;emp&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">emp</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">empno</span>&gt;</span>7788<span class="tag">&lt;/<span class="name">empno</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ename</span>&gt;</span>SCOTT<span class="tag">&lt;/<span class="name">ename</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">sal</span>&gt;</span>3000.00<span class="tag">&lt;/<span class="name">sal</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">emp</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">emp</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">empno</span>&gt;</span>7839<span class="tag">&lt;/<span class="name">empno</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ename</span>&gt;</span>KING<span class="tag">&lt;/<span class="name">ename</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">sal</span>&gt;</span>5000.00<span class="tag">&lt;/<span class="name">sal</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">emp</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="string">&#x27;,&#x27;</span> <span class="operator">+</span> ename</span><br><span class="line">  <span class="keyword">from</span> emp</span><br><span class="line"><span class="keyword">for</span> xml path (<span class="string">&#x27;&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">,SMITH,ALLEN,WARD,JONES,BLAKE,CLARK,SCOTT,KING,TURNER,ADAMS,JAMES,MILLER</span><br></pre></td></tr></table></figure>
+<h4 id="for-xml-path-stuff-implements-string_agg"><a class="markdownIt-Anchor" href="#for-xml-path-stuff-implements-string_agg">#</a> For XML Path + STUFF Implements STRING_AGG</h4>
+<p><code>STRING_AGG</code>  is provided in  <code>SQL Server 2017 (14.x) and later </code></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> string_agg(ename, <span class="string">&#x27;,&#x27;</span>)</span><br><span class="line">  <span class="keyword">from</span> emp;</span><br></pre></td></tr></table></figure>
+<p><code>STUFF(character_expression, start, length, replace_with_expression)</code></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> stuff(</span><br><span class="line">	(<span class="keyword">select</span> <span class="string">&#x27;, &#x27;</span> <span class="operator">+</span> ename</span><br><span class="line">	  <span class="keyword">from</span> emp</span><br><span class="line">	<span class="keyword">for</span> xml path (<span class="string">&#x27;&#x27;</span>)),</span><br><span class="line">	<span class="number">1</span>,</span><br><span class="line">	<span class="number">2</span>,</span><br><span class="line">	<span class="string">&#x27;&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SMITH, ALLEN, WARD, JONES, BLAKE, CLARK, SCOTT, KING, TURNER, ADAMS, JAMES, MILLER</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">distinct</span></span><br><span class="line">    o.job,</span><br><span class="line">	stuff(</span><br><span class="line">		(<span class="keyword">select</span> <span class="string">&#x27;, &#x27;</span> <span class="operator">+</span> i.ename</span><br><span class="line">		  <span class="keyword">from</span> emp <span class="keyword">as</span> i</span><br><span class="line">		 <span class="keyword">where</span> i.job <span class="operator">=</span> o.job</span><br><span class="line">		 <span class="keyword">for</span> xml path (<span class="string">&#x27;&#x27;</span>)),</span><br><span class="line">		<span class="number">1</span>,</span><br><span class="line">		<span class="number">2</span>,</span><br><span class="line">		<span class="string">&#x27;&#x27;</span>) enames</span><br><span class="line"><span class="keyword">from</span> emp <span class="keyword">as</span> o</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>job</th>
+<th>enames</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ANALYST</td>
+<td>SCOTT</td>
+<td></td>
+</tr>
+<tr>
+<td>CLERK</td>
+<td>SMITH, ADAMS, JAMES, MILLER</td>
+<td></td>
+</tr>
+<tr>
+<td>MANAGER</td>
+<td>JONES, BLAKE, CLARK</td>
+<td></td>
+</tr>
+<tr>
+<td>PRESIDENT</td>
+<td>KING</td>
+<td></td>
+</tr>
+<tr>
+<td>SALESMAN</td>
+<td>ALLEN, WARD, TURNER</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="dynamic-sql"><a class="markdownIt-Anchor" href="#dynamic-sql">#</a> Dynamic SQL</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">exec</span>(<span class="string">&#x27;select * from emp&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="custom-types"><a class="markdownIt-Anchor" href="#custom-types">#</a> Custom Types</h3>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> TYPE dbo.String <span class="keyword">FROM</span> <span class="type">VARCHAR</span>(<span class="number">255</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">DECLARE</span> <span class="variable">@StringValue</span> dbo.String <span class="operator">=</span> <span class="string">&#x27;some value less than 256 characters&#x27;</span>;</span><br><span class="line"><span class="keyword">SELECT</span>  <span class="variable">@StringValue</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> sys.types;</span><br></pre></td></tr></table></figure>
 <table>
 <thead>
@@ -855,7 +1588,7 @@ D E W = 露の世</title>
 </tr>
 </tbody>
 </table>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>  SelectedType.[name] <span class="keyword">AS</span> SelectedTypeName</span><br><span class="line">        , BaseType.[name] <span class="keyword">AS</span> BaseTypeName</span><br><span class="line">        , SelectedType.max_length <span class="keyword">AS</span> SelectedTypeMaxBytes</span><br><span class="line">        , SelectedType.[<span class="keyword">precision</span>] <span class="keyword">AS</span> SelectedTypePrecision</span><br><span class="line">        , SelectedType.scale <span class="keyword">AS</span> SelectedTypeScale</span><br><span class="line">        , SelectedType.default_object_id <span class="keyword">AS</span> SelectedTypeId</span><br><span class="line">        , BaseType.default_object_id <span class="keyword">AS</span> BaseTypeId</span><br><span class="line">  <span class="keyword">FROM</span>  sys.types SelectedType </span><br><span class="line">  <span class="keyword">JOIN</span>  sys.types BaseType</span><br><span class="line">    <span class="keyword">ON</span>  BaseType.system_type_id <span class="operator">=</span> SelectedType.system_type_id</span><br><span class="line"> <span class="keyword">WHERE</span>  BaseType.is_user_defined <span class="operator">=</span> <span class="number">0</span> </span><br><span class="line">   <span class="keyword">AND</span>  SelectedType.is_user_defined <span class="operator">=</span> <span class="number">1</span></span><br><span class="line">   <span class="keyword">AND</span>  BaseType.[name] <span class="operator">&lt;&gt;</span> <span class="string">&#x27;sysname&#x27;</span></span><br><span class="line"> <span class="keyword">ORDER</span> <span class="keyword">BY</span> SelectedType.[name];</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>  SelectedType.[name] <span class="keyword">AS</span> SelectedTypeName</span><br><span class="line">        , BaseType.[name] <span class="keyword">AS</span> BaseTypeName</span><br><span class="line">        , SelectedType.max_length <span class="keyword">AS</span> SelectedTypeMaxBytes</span><br><span class="line">        , SelectedType.[<span class="keyword">precision</span>] <span class="keyword">AS</span> SelectedTypePrecision</span><br><span class="line">        , SelectedType.scale <span class="keyword">AS</span> SelectedTypeScale</span><br><span class="line">        , SelectedType.default_object_id <span class="keyword">AS</span> SelectedTypeId</span><br><span class="line">        , BaseType.default_object_id <span class="keyword">AS</span> BaseTypeId</span><br><span class="line">  <span class="keyword">FROM</span>  sys.types SelectedType</span><br><span class="line">  <span class="keyword">JOIN</span>  sys.types BaseType</span><br><span class="line">    <span class="keyword">ON</span>  BaseType.system_type_id <span class="operator">=</span> SelectedType.system_type_id</span><br><span class="line"> <span class="keyword">WHERE</span>  BaseType.is_user_defined <span class="operator">=</span> <span class="number">0</span></span><br><span class="line">   <span class="keyword">AND</span>  SelectedType.is_user_defined <span class="operator">=</span> <span class="number">1</span></span><br><span class="line">   <span class="keyword">AND</span>  BaseType.[name] <span class="operator">&lt;&gt;</span> <span class="string">&#x27;sysname&#x27;</span></span><br><span class="line"> <span class="keyword">ORDER</span> <span class="keyword">BY</span> SelectedType.[name];</span><br></pre></td></tr></table></figure>
 <table>
 <thead>
 <tr>
@@ -880,17 +1613,8 @@ D E W = 露の世</title>
 </tr>
 </tbody>
 </table>
-<h2 id="创建-temp-table"><a class="markdownIt-Anchor" href="#创建-temp-table">#</a> 创建 temp table</h2>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> #edi_temp (</span><br><span class="line">	head_id <span class="type">varchar</span>(<span class="number">25</span>),</span><br><span class="line">	transfer_time <span class="type">varchar</span>(<span class="number">100</span>)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> #edi_temp;</span><br></pre></td></tr></table></figure>
-<h2 id="批量插入数据"><a class="markdownIt-Anchor" href="#批量插入数据">#</a> 批量插入数据</h2>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> #edi_temp <span class="keyword">values</span></span><br><span class="line">(<span class="string">&#x27;H00039827&#x27;</span>, <span class="string">&#x27;2019/3/27 14:15:13&#x27;</span>),</span><br><span class="line">(<span class="string">&#x27;H00039871&#x27;</span>, <span class="string">&#x27;2019/5/13 13:10:49&#x27;</span>),</span><br><span class="line">(<span class="string">&#x27;H00039872&#x27;</span>, <span class="string">&#x27;2019/5/13 13:10:49&#x27;</span>),</span><br><span class="line">(<span class="string">&#x27;H00039873&#x27;</span>, <span class="string">&#x27;2019/5/13 13:10:49&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="多表联合更新"><a class="markdownIt-Anchor" href="#多表联合更新">#</a> 多表联合更新</h2>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">update edi_head</span><br><span class="line">   <span class="keyword">set</span> transfer_time <span class="operator">=</span> <span class="built_in">cast</span>(b.transfer_time <span class="keyword">as</span> datetime) <span class="keyword">from</span> edi_head a, #edi_temp b</span><br><span class="line"> <span class="keyword">where</span> a.head_id <span class="operator">=</span> b.head_id;</span><br></pre></td></tr></table></figure>
-<h2 id="常用函数"><a class="markdownIt-Anchor" href="#常用函数">#</a> 常用函数</h2>
-<h3 id="isnull"><a class="markdownIt-Anchor" href="#isnull">#</a> ISNULL</h3>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--isnull 类似于 Oracle nvl</span></span><br><span class="line"><span class="keyword">select</span> isnull(<span class="keyword">null</span>, <span class="string">&#x27;S&#x27;</span>); <span class="comment">--S</span></span><br><span class="line"><span class="keyword">select</span> isnull(<span class="string">&#x27;R&#x27;</span>, <span class="string">&#x27;S&#x27;</span>);  <span class="comment">--R</span></span><br></pre></td></tr></table></figure>
-<h3 id="getdate"><a class="markdownIt-Anchor" href="#getdate">#</a> GETDATE</h3>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--getdate() 类似于 Oracle sysdate</span></span><br><span class="line"><span class="comment">--如下类似于 Oracle: select sysdate from dual;</span></span><br><span class="line"><span class="keyword">select</span> getdate();</span><br></pre></td></tr></table></figure>
+<h3 id="include-execution-plan"><a class="markdownIt-Anchor" href="#include-execution-plan">#</a> Include Execution Plan</h3>
+<img data-src="/2019/12/19/sqlserver/1717575917302.png" class="">
 
       <div class="tags">
           <a href="/tags/db/" rel="tag"><i class="ic i-tag"></i> db</a>
@@ -905,7 +1629,7 @@ D E W = 露の世</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2024-03-30 16:10:04" itemprop="dateModified" datetime="2024-03-30T16:10:04+08:00">2024-03-30</time>
+    <time title="Modified: 2024-06-17 14:56:04" itemprop="dateModified" datetime="2024-06-17T14:56:04+08:00">2024-06-17</time>
   </span>
 </div>
 
@@ -922,7 +1646,7 @@ D E W = 露の世</title>
     <div class="item left">
       
 
-  <a href="/2019/12/11/oracle-testdata/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;龙猫-1.jpg" title="Oracle Test Data Generate">
+  <a href="/2019/12/11/oracle-testdata/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;钢之炼金术师.jpg" title="Oracle Test Data Generate">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Oracle Test Data Generate</h3>
@@ -932,7 +1656,7 @@ D E W = 露の世</title>
     <div class="item right">
       
 
-  <a href="/2019/12/20/java-httpclient/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;狼的孩子雨和雪.jpg" title="Java 11 HttpClient Examples">
+  <a href="/2019/12/20/java-httpclient/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;我们大家的河合庄.jpg" title="Java 11 HttpClient Examples">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Java 11 HttpClient Examples</h3>
@@ -954,7 +1678,7 @@ D E W = 露の世</title>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="Contents">
-          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#constraint"><span class="toc-number">1.</span> <span class="toc-text"> Constraint</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#custom-types"><span class="toc-number">2.</span> <span class="toc-text"> Custom Types</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA-temp-table"><span class="toc-number">3.</span> <span class="toc-text"> 创建 temp table</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE"><span class="toc-number">4.</span> <span class="toc-text"> 批量插入数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E8%A1%A8%E8%81%94%E5%90%88%E6%9B%B4%E6%96%B0"><span class="toc-number">5.</span> <span class="toc-text"> 多表联合更新</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0"><span class="toc-number">6.</span> <span class="toc-text"> 常用函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#isnull"><span class="toc-number">6.1.</span> <span class="toc-text"> ISNULL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#getdate"><span class="toc-number">6.2.</span> <span class="toc-text"> GETDATE</span></a></li></ol></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#database"><span class="toc-number">1.</span> <span class="toc-text"> Database</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#create"><span class="toc-number">1.1.</span> <span class="toc-text"> Create</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#use"><span class="toc-number">1.2.</span> <span class="toc-text"> Use</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#table"><span class="toc-number">2.</span> <span class="toc-text"> Table</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#create-2"><span class="toc-number">2.1.</span> <span class="toc-text"> Create</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#get-create-table-script"><span class="toc-number">2.1.1.</span> <span class="toc-text"> Get Create Table Script</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#view-table-details"><span class="toc-number">2.1.2.</span> <span class="toc-text"> View Table Details</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#insert"><span class="toc-number">2.2.</span> <span class="toc-text"> Insert</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#select"><span class="toc-number">2.3.</span> <span class="toc-text"> Select</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#select-expand"><span class="toc-number">2.3.1.</span> <span class="toc-text"> Select * Expand</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#top"><span class="toc-number">2.3.2.</span> <span class="toc-text"> Top</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#union-and-order-by"><span class="toc-number">2.3.3.</span> <span class="toc-text"> Union and Order by</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#join"><span class="toc-number">2.3.4.</span> <span class="toc-text"> Join</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#inner-join"><span class="toc-number">2.3.4.1.</span> <span class="toc-text"> Inner Join</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#left-outer-join"><span class="toc-number">2.3.4.2.</span> <span class="toc-text"> Left Outer Join</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#right-outer-join"><span class="toc-number">2.3.4.3.</span> <span class="toc-text"> Right Outer Join</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#full-outer-join"><span class="toc-number">2.3.4.4.</span> <span class="toc-text"> Full Outer Join</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#cross-apply"><span class="toc-number">2.3.4.5.</span> <span class="toc-text"> Cross Apply</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#outer-apply"><span class="toc-number">2.3.4.6.</span> <span class="toc-text"> Outer Apply</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#update"><span class="toc-number">2.4.</span> <span class="toc-text"> Update</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#multi-table-join-update"><span class="toc-number">2.4.1.</span> <span class="toc-text"> Multi Table Join Update</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#alter"><span class="toc-number">2.5.</span> <span class="toc-text"> Alter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#table-relation"><span class="toc-number">2.6.</span> <span class="toc-text"> Table Relation</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#many-to-many"><span class="toc-number">2.6.1.</span> <span class="toc-text"> Many to Many</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#temp-table-table-variables"><span class="toc-number">2.7.</span> <span class="toc-text"> Temp Table &amp; Table Variables</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#constraint"><span class="toc-number">2.8.</span> <span class="toc-text"> Constraint</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#function-procedure"><span class="toc-number">3.</span> <span class="toc-text"> Function &amp; Procedure</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#user-defined-procedure"><span class="toc-number">3.1.</span> <span class="toc-text"> User Defined Procedure</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#user-defined-function"><span class="toc-number">3.2.</span> <span class="toc-text"> User Defined Function</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#isnull"><span class="toc-number">3.3.</span> <span class="toc-text"> isnull</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#charindex"><span class="toc-number">3.4.</span> <span class="toc-text"> charindex</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cast"><span class="toc-number">3.5.</span> <span class="toc-text"> cast</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#getdate"><span class="toc-number">3.6.</span> <span class="toc-text"> getdate</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dateadd"><span class="toc-number">3.7.</span> <span class="toc-text"> dateadd</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#datediff"><span class="toc-number">3.8.</span> <span class="toc-text"> datediff</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#datepart"><span class="toc-number">3.9.</span> <span class="toc-text"> datepart</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#t-sql"><span class="toc-number">4.</span> <span class="toc-text"> T-SQL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#variables"><span class="toc-number">4.1.</span> <span class="toc-text"> Variables</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#set-assignment"><span class="toc-number">4.1.1.</span> <span class="toc-text"> Set Assignment</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#select-assignment"><span class="toc-number">4.1.2.</span> <span class="toc-text"> Select Assignment</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#update-assignment"><span class="toc-number">4.1.3.</span> <span class="toc-text"> Update Assignment</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#table-variables"><span class="toc-number">4.1.4.</span> <span class="toc-text"> Table Variables</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#condition-statement"><span class="toc-number">4.2.</span> <span class="toc-text"> Condition Statement</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#if-else"><span class="toc-number">4.2.1.</span> <span class="toc-text"> IF ELSE</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#when-then"><span class="toc-number">4.2.2.</span> <span class="toc-text"> WHEN THEN</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#exisits"><span class="toc-number">4.2.3.</span> <span class="toc-text"> EXISITS</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#while-loop"><span class="toc-number">4.3.</span> <span class="toc-text"> While Loop</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#calculate-the-sum-from-1-to-100"><span class="toc-number">4.3.1.</span> <span class="toc-text"> Calculate the sum from 1 to 100.</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mock-test-data"><span class="toc-number">4.3.2.</span> <span class="toc-text"> Mock Test Data</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cursor"><span class="toc-number">4.4.</span> <span class="toc-text"> Cursor</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#trigger"><span class="toc-number">4.5.</span> <span class="toc-text"> Trigger</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#custom-procedure"><span class="toc-number">4.6.</span> <span class="toc-text"> Custom Procedure</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#with-output-parameter"><span class="toc-number">4.6.1.</span> <span class="toc-text"> With Output Parameter</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#return"><span class="toc-number">4.6.2.</span> <span class="toc-text"> Return</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#custom-function"><span class="toc-number">4.7.</span> <span class="toc-text"> Custom Function</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#scalar-function"><span class="toc-number">4.7.1.</span> <span class="toc-text"> Scalar Function</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#table-valued-function"><span class="toc-number">4.7.2.</span> <span class="toc-text"> Table-valued Function</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#set-nocount"><span class="toc-number">4.8.</span> <span class="toc-text"> SET NOCOUNT</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#misc"><span class="toc-number">5.</span> <span class="toc-text"> Misc.</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#for-xml-path"><span class="toc-number">5.1.</span> <span class="toc-text"> For XML Path</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#for-xml-path-stuff-implements-string_agg"><span class="toc-number">5.1.1.</span> <span class="toc-text"> For XML Path + STUFF Implements STRING_AGG</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dynamic-sql"><span class="toc-number">5.2.</span> <span class="toc-text"> Dynamic SQL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#custom-types"><span class="toc-number">5.3.</span> <span class="toc-text"> Custom Types</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#include-execution-plan"><span class="toc-number">5.4.</span> <span class="toc-text"> Include Execution Plan</span></a></li></ol></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
       </div>
