@@ -1,0 +1,602 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CFira%20Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="other" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2024/08/23/duckdb/">
+
+
+
+  <title>
+Command Line Data Processing Using DuckDB as a Unix Tool |
+D E W = 露の世</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">Command Line Data Processing Using DuckDB as a Unix Tool
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2024-08-23 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2024-08-23T00:00:00+08:00">2024-08-23</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">D E W</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="/anime/index/黑色四叶草.jpg"></li>
+          <li class="item" data-background-image="/anime/index/灼眼的夏娜.jpg"></li>
+          <li class="item" data-background-image="/anime/index/another.jpg"></li>
+          <li class="item" data-background-image="/anime/index/校园迷糊大王.jpg"></li>
+          <li class="item" data-background-image="/anime/index/好想告诉你.jpg"></li>
+          <li class="item" data-background-image="/anime/index/秦时明月-2.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2024/08/23/duckdb/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>repost: <span class="exturl" data-url="aHR0cHM6Ly9kdWNrZGIub3JnLzIwMjQvMDYvMjAvY2xpLWRhdGEtcHJvY2Vzc2luZy11c2luZy1kdWNrZGItYXMtYS11bml4LXRvb2wuaHRtbA==">Command Line Data Processing: Using DuckDB as a Unix Tool</span></p>
+</blockquote>
+<p><em>TL;DR: DuckDB’s CLI client is portable to many platforms and architectures. It handles CSV files conveniently and offers users the same rich SQL syntax everywhere. These characteristics make DuckDB an ideal tool to complement traditional Unix tools for data processing in the command line.</em></p>
+<p>In this blog post, we dive into the terminal to compare DuckDB with traditional tools used in Unix shells (Bash, Zsh, etc.). We solve several problems requiring operations such as projection and filtering to demonstrate the differences between using SQL queries in DuckDB versus specialized command line tools. In the process, we will show off some cool features such as DuckDB’s <span class="exturl" data-url="aHR0cHM6Ly9kdWNrZGIub3JnL2RvY3MvZGF0YS9jc3Yvb3ZlcnZpZXcuaHRtbA==">powerful CSV reader</span> and the <span class="exturl" data-url="aHR0cHM6Ly9kdWNrZGIub3JnLzIwMjQvMDYvMjAvY2xpLWRhdGEtcHJvY2Vzc2luZy11c2luZy1kdWNrZGItYXMtYS11bml4LXRvb2wuaHRtbCNkdWNrZGItcG9zaXRpb25hbC1qb2lu">positional join operator</span>. Let’s get started!</p>
+<h2 id="table-of-contents"><a class="markdownIt-Anchor" href="#table-of-contents">#</a> <span class="exturl" data-url="aHR0cHM6Ly9kdWNrZGIub3JnLzIwMjQvMDYvMjAvY2xpLWRhdGEtcHJvY2Vzc2luZy11c2luZy1kdWNrZGItYXMtYS11bml4LXRvb2wuaHRtbCN0YWJsZS1vZi1jb250ZW50cw==">Table of Contents</span></h2>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kdWNrZGIub3JnLzIwMjQvMDYvMjAvY2xpLWRhdGEtcHJvY2Vzc2luZy11c2luZy1kdWNrZGItYXMtYS11bml4LXRvb2wuaHRtbCN0YWJsZS1vZi1jb250ZW50cw==">Table of Contents</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kdWNrZGIub3JnLzIwMjQvMDYvMjAvY2xpLWRhdGEtcHJvY2Vzc2luZy11c2luZy1kdWNrZGItYXMtYS11bml4LXRvb2wuaHRtbCN0aGUtdW5peC1waGlsb3NvcGh5">The Unix Philosophy</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kdWNrZGIub3JnLzIwMjQvMDYvMjAvY2xpLWRhdGEtcHJvY2Vzc2luZy11c2luZy1kdWNrZGItYXMtYS11bml4LXRvb2wuaHRtbCNwb3J0YWJpbGl0eS1hbmQtdXNhYmlsaXR5">Portability and Usability</span></li>
+<li>Data Processing with Unix Tools and DuckDB
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kdWNrZGIub3JnLzIwMjQvMDYvMjAvY2xpLWRhdGEtcHJvY2Vzc2luZy11c2luZy1kdWNrZGItYXMtYS11bml4LXRvb2wuaHRtbCNkYXRhc2V0cw==">Datasets</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kdWNrZGIub3JnLzIwMjQvMDYvMjAvY2xpLWRhdGEtcHJvY2Vzc2luZy11c2luZy1kdWNrZGItYXMtYS11bml4LXRvb2wuaHRtbCNwcm9qZWN0aW5nLWNvbHVtbnM=">Projecting Columns</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kdWNrZGIub3JnLzIwMjQvMDYvMjAvY2xpLWRhdGEtcHJvY2Vzc2luZy11c2luZy1kdWNrZGItYXMtYS11bml4LXRvb2wuaHRtbCNzb3J0aW5nLWZpbGVz">Sorting Files</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kdWNrZGIub3JnLzIwMjQvMDYvMjAvY2xpLWRhdGEtcHJvY2Vzc2luZy11c2luZy1kdWNrZGItYXMtYS11bml4LXRvb2wuaHRtbCNpbnRlcnNlY3RpbmctY29sdW1ucw==">Intersecting Columns</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kdWNrZGIub3JnLzIwMjQvMDYvMjAvY2xpLWRhdGEtcHJvY2Vzc2luZy11c2luZy1kdWNrZGItYXMtYS11bml4LXRvb2wuaHRtbCNwYXN0aW5nLXJvd3MtdG9nZXRoZXI=">Pasting Rows Together</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kdWNrZGIub3JnLzIwMjQvMDYvMjAvY2xpLWRhdGEtcHJvY2Vzc2luZy11c2luZy1kdWNrZGItYXMtYS11bml4LXRvb2wuaHRtbCNmaWx0ZXJpbmc=">Filtering</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kdWNrZGIub3JnLzIwMjQvMDYvMjAvY2xpLWRhdGEtcHJvY2Vzc2luZy11c2luZy1kdWNrZGItYXMtYS11bml4LXRvb2wuaHRtbCNqb2luaW5nLWZpbGVz">Joining Files</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kdWNrZGIub3JnLzIwMjQvMDYvMjAvY2xpLWRhdGEtcHJvY2Vzc2luZy11c2luZy1kdWNrZGItYXMtYS11bml4LXRvb2wuaHRtbCNyZXBsYWNpbmctc3RyaW5ncw==">Replacing Strings</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kdWNrZGIub3JnLzIwMjQvMDYvMjAvY2xpLWRhdGEtcHJvY2Vzc2luZy11c2luZy1kdWNrZGItYXMtYS11bml4LXRvb2wuaHRtbCNyZWFkaW5nLWpzb24=">Reading JSON</span></li>
+</ul>
+</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kdWNrZGIub3JnLzIwMjQvMDYvMjAvY2xpLWRhdGEtcHJvY2Vzc2luZy11c2luZy1kdWNrZGItYXMtYS11bml4LXRvb2wuaHRtbCNwZXJmb3JtYW5jZQ==">Performance</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kdWNrZGIub3JnLzIwMjQvMDYvMjAvY2xpLWRhdGEtcHJvY2Vzc2luZy11c2luZy1kdWNrZGItYXMtYS11bml4LXRvb2wuaHRtbCNzdW1tYXJ5">Summary</span></li>
+</ul>
+<h2 id="the-unix-philosophy"><a class="markdownIt-Anchor" href="#the-unix-philosophy">#</a> <span class="exturl" data-url="aHR0cHM6Ly9kdWNrZGIub3JnLzIwMjQvMDYvMjAvY2xpLWRhdGEtcHJvY2Vzc2luZy11c2luZy1kdWNrZGItYXMtYS11bml4LXRvb2wuaHRtbCN0aGUtdW5peC1waGlsb3NvcGh5">The Unix Philosophy</span></h2>
+<p>To set the stage, let’s recall the <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvVW5peF9waGlsb3NvcGh5">Unix philosophy</span>. This states that programs should:</p>
+<ul>
+<li>do one thing and do it well,</li>
+<li>work together, and</li>
+<li>handle text streams.</li>
+</ul>
+<p>Unix-like systems such as macOS, Linux and <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvV2luZG93c19TdWJzeXN0ZW1fZm9yX0xpbnV4">WSL in Windows</span> have embraced this philosophy. Tools such as <a target="_blank" rel="noopener" href="https://man7.org/linux/man-pages/man1/grep.1.html"> <code>grep</code> </a>, <a target="_blank" rel="noopener" href="https://man7.org/linux/man-pages/man1/sed.1.html"> <code>sed</code> </a>, and <a target="_blank" rel="noopener" href="https://man7.org/linux/man-pages/man1/sort.1.html"> <code>sort</code> </a> are ubiquitious and widely used in <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvU2hlbGxfc2NyaXB0">shell scripts</span>.</p>
+<p>As a purpose-built data processing tool, DuckDB fits the Unix philosophy quite well. First, it was designed to be a fast in-process analytical SQL database system <em>(do one thing and do it well).</em> Second, it has a standalone <span class="exturl" data-url="aHR0cHM6Ly9kdWNrZGIub3JnL2RvY3MvYXBpL2NsaS9vdmVydmlldy5odG1s">command line client</span>, which can consume and produce CSV files <em>(work together),</em> and also supports reading and writing text streams <em>(handle text streams)</em>. Thanks to these, DuckDB works well in the ecosystem of Unix CLI tools, as shown <span class="exturl" data-url="aHR0cHM6Ly94LmNvbS9qb29vbi9zdGF0dXMvMTc4MTQwMTg1ODQxMTU2NTQ3Mw==">in</span> <span class="exturl" data-url="aHR0cHM6Ly93d3cucGdycy5uZXQvMjAyNC8wMy8yMS9kdWNrZGItYXMtdGhlLW5ldy1qcS8=">several</span> <span class="exturl" data-url="aHR0cHM6Ly94LmNvbS9NYXJnaW5hbGlhTnUvc3RhdHVzLzE3MDE1MzIzNDEyMjU1ODMwNDQ=">posts</span>.</p>
+<h2 id="portability-and-usability"><a class="markdownIt-Anchor" href="#portability-and-usability">#</a> <span class="exturl" data-url="aHR0cHM6Ly9kdWNrZGIub3JnLzIwMjQvMDYvMjAvY2xpLWRhdGEtcHJvY2Vzc2luZy11c2luZy1kdWNrZGItYXMtYS11bml4LXRvb2wuaHRtbCNwb3J0YWJpbGl0eS1hbmQtdXNhYmlsaXR5">Portability and Usability</span></h2>
+<p>While Unix CLI tools are fast, robust, and available on all major platforms, they often have cumbersome syntax that’s difficult to remember. To make matters worse, these tools often come with slight differences between systems – think of the <a target="_blank" rel="noopener" href="https://unix.stackexchange.com/a/131940/315847">differences between GNU  <code>sed</code>  and macOS’s  <code>sed</code> </a> or the differences between regex syntax among programs, which is aptly captured by Donald Knuth’s quip <a target="_blank" rel="noopener" href="https://en.wikiquote.org/wiki/Donald_Knuth#Quotes"><em>“I define Unix as 30 definitions of regular expressions living under one roof.”</em></a></p>
+<p>While there are shells specialized specifically for dataframe processing, such as the <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL251c2hlbGwvbnVzaGVsbA==">Nushell project</span>, older Unix shells (e.g., the Bourne shell  <code>sh</code>  and Bash) are still the most wide-spread, especially on servers.</p>
+<p>At the same time, we have DuckDB, an extremely portable database system which uses the same SQL syntax on all platforms. With <span class="exturl" data-url="aHR0cHM6Ly9kdWNrZGIub3JnLzIwMjQvMDYvMDMvYW5ub3VuY2luZy1kdWNrZGItMTAwLmh0bWw=">version 1.0.0 released recently</span>, DuckDB’s syntax – based on the proven and widely used PostgeSQL dialect – is now in a stable state. Another attractive feature of DuckDB is that it offers an interactive shell, which aids quick debugging. Moreover, DuckDB is available in <span class="exturl" data-url="aHR0cHM6Ly9kdWNrZGIub3JnL2RvY3MvYXBpL292ZXJ2aWV3Lmh0bWw=">several host languages</span> as well as in the browser <span class="exturl" data-url="aHR0cHM6Ly9zaGVsbC5kdWNrZGIub3JnLw==">via WebAssembly</span>, so if you ever decide to use your SQL scripts outside of the shell, DuckDB SQL scripts can be ported to a wide variety of environments without any changes.</p>
+<hr>
+<h2 id="data-processing-with-unix-tools-and-duckdb"><a class="markdownIt-Anchor" href="#data-processing-with-unix-tools-and-duckdb">#</a> <span class="exturl" data-url="aHR0cHM6Ly9kdWNrZGIub3JnLzIwMjQvMDYvMjAvY2xpLWRhdGEtcHJvY2Vzc2luZy11c2luZy1kdWNrZGItYXMtYS11bml4LXRvb2wuaHRtbCNkYXRhLXByb2Nlc3Npbmctd2l0aC11bml4LXRvb2xzLWFuZC1kdWNrZGI=">Data Processing with Unix Tools and DuckDB</span></h2>
+<p>In the following, we give examples for implementing simple data processing tasks using the CLI tools provided in most Unix shells and using DuckDB SQL queries. We use DuckDB v1.0.0 and run it in <span class="exturl" data-url="aHR0cHM6Ly9kdWNrZGIub3JnL2RvY3MvY29ubmVjdC9vdmVydmlldy5odG1sI2luLW1lbW9yeS1kYXRhYmFzZQ==">in-memory mode</span>. This mode makes sense for the problems we are tackling, as we do not create any tables and the operations are not memory-intensive, so there is no data to persist or to spill on disk.</p>
+<hr>
+<h3 id="datasets"><a class="markdownIt-Anchor" href="#datasets">#</a> <span class="exturl" data-url="aHR0cHM6Ly9kdWNrZGIub3JnLzIwMjQvMDYvMjAvY2xpLWRhdGEtcHJvY2Vzc2luZy11c2luZy1kdWNrZGItYXMtYS11bml4LXRvb2wuaHRtbCNkYXRhc2V0cw==">Datasets</span></h3>
+<p>We use the four input files capturing information on cities and airports in the Netherlands.</p>
+<details style="box-sizing: border-box; display: block; color: rgb(0, 0, 0); font-family: SuisseIntl, Helvetica, Arial, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 450; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="box-sizing: border-box; display: list-item;"><a target="_blank" rel="noopener" href="https://duckdb.org/data/cli/pop.csv" style="box-sizing: border-box; outline: none; text-decoration: none; color: black; text-shadow: none; transition: text-shadow 0.5s;"><code class="language-plaintext highlighter-rouge" style="box-sizing: border-box; font-family: JetBrainsMono-Bold, &quot;Lucida Console&quot;, monospace; font-size: 16px; font-variant-ligatures: none; border-radius: 3px; line-height: 1.4; padding: 0px 2px; margin: 0px 0px 20px; background-color: rgb(245, 245, 245); border: 1px solid rgb(229, 229, 229);">pop.csv</code></a>, the population of each of the top-10 most populous cities.</summary><pre style="box-sizing: border-box; margin: 1em 0px; font-family: JetBrainsMono-Regular, &quot;Lucida Console&quot;, monospace; font-size: 16px; white-space: pre-wrap; overflow-wrap: break-word; border-radius: 10px; line-height: 1.4; padding: 10px; overflow: auto; background-color: rgb(245, 245, 245);"><code class="language-csv" style="box-sizing: border-box; font-family: JetBrainsMono-Regular, &quot;Lucida Console&quot;, monospace; font-size: 16px; font-variant-ligatures: none; border-radius: 2px; line-height: 1.4; padding: 1px 0px; margin: 0px 3px; display: block; box-shadow: none;"></code></pre></details>
+<details style="box-sizing: border-box; display: block; color: rgb(0, 0, 0); font-family: SuisseIntl, Helvetica, Arial, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 450; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="box-sizing: border-box; display: list-item;"><a target="_blank" rel="noopener" href="https://duckdb.org/data/cli/area.csv" style="box-sizing: border-box; outline: none; text-decoration: none; color: black; text-shadow: none; transition: text-shadow 0.5s;"><code class="language-plaintext highlighter-rouge" style="box-sizing: border-box; font-family: JetBrainsMono-Bold, &quot;Lucida Console&quot;, monospace; font-size: 16px; font-variant-ligatures: none; border-radius: 3px; line-height: 1.4; padding: 0px 2px; margin: 0px 0px 20px; background-color: rgb(245, 245, 245); border: 1px solid rgb(229, 229, 229);">area.csv</code></a>, the area of each of the top-10 most populous cities.</summary><pre style="box-sizing: border-box; margin: 1em 0px; font-family: JetBrainsMono-Regular, &quot;Lucida Console&quot;, monospace; font-size: 16px; white-space: pre-wrap; overflow-wrap: break-word; border-radius: 10px; line-height: 1.4; padding: 10px; overflow: auto; background-color: rgb(245, 245, 245);"><code class="language-csv" style="box-sizing: border-box; font-family: JetBrainsMono-Regular, &quot;Lucida Console&quot;, monospace; font-size: 16px; font-variant-ligatures: none; border-radius: 2px; line-height: 1.4; padding: 1px 0px; margin: 0px 3px; display: block; box-shadow: none;"></code></pre></details>
+<details style="box-sizing: border-box; display: block; color: rgb(0, 0, 0); font-family: SuisseIntl, Helvetica, Arial, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 450; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="box-sizing: border-box; display: list-item;"><a target="_blank" rel="noopener" href="https://duckdb.org/data/cli/cities-airports.csv" style="box-sizing: border-box; outline: none; text-decoration: none; color: black; text-shadow: none; transition: text-shadow 0.5s;"><code class="language-plaintext highlighter-rouge" style="box-sizing: border-box; font-family: JetBrainsMono-Bold, &quot;Lucida Console&quot;, monospace; font-size: 16px; font-variant-ligatures: none; border-radius: 3px; line-height: 1.4; padding: 0px 2px; margin: 0px 0px 20px; background-color: rgb(245, 245, 245); border: 1px solid rgb(229, 229, 229);">cities-airports.csv</code></a>, the<span>&nbsp;</span><span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvSUFUQV9haXJwb3J0X2NvZGU=">IATA codes</span><span>&nbsp;</span>of civilian airports serving given cities.</summary><pre style="box-sizing: border-box; margin: 1em 0px; font-family: JetBrainsMono-Regular, &quot;Lucida Console&quot;, monospace; font-size: 16px; white-space: pre-wrap; overflow-wrap: break-word; border-radius: 10px; line-height: 1.4; padding: 10px; overflow: auto; background-color: rgb(245, 245, 245);"><code class="language-csv" style="box-sizing: border-box; font-family: JetBrainsMono-Regular, &quot;Lucida Console&quot;, monospace; font-size: 16px; font-variant-ligatures: none; border-radius: 2px; line-height: 1.4; padding: 1px 0px; margin: 0px 3px; display: block; box-shadow: none;"></code></pre></details>
+<details style="box-sizing: border-box; display: block; color: rgb(0, 0, 0); font-family: SuisseIntl, Helvetica, Arial, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 450; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="box-sizing: border-box; display: list-item;"><a target="_blank" rel="noopener" href="https://duckdb.org/data/cli/airport-names.csv" style="box-sizing: border-box; outline: none; text-decoration: none; color: black; text-shadow: none; transition: text-shadow 0.5s;"><code class="language-plaintext highlighter-rouge" style="box-sizing: border-box; font-family: JetBrainsMono-Bold, &quot;Lucida Console&quot;, monospace; font-size: 16px; font-variant-ligatures: none; border-radius: 3px; line-height: 1.4; padding: 0px 2px; margin: 0px 0px 20px; background-color: rgb(245, 245, 245); border: 1px solid rgb(229, 229, 229);">airport-names.csv</code></a>, the airport names belonging to given IATA codes.</summary><pre style="box-sizing: border-box; margin: 1em 0px; font-family: JetBrainsMono-Regular, &quot;Lucida Console&quot;, monospace; font-size: 16px; white-space: pre-wrap; overflow-wrap: break-word; border-radius: 10px; line-height: 1.4; padding: 10px; overflow: auto; background-color: rgb(245, 245, 245);"><code class="language-csv" style="box-sizing: border-box; font-family: JetBrainsMono-Regular, &quot;Lucida Console&quot;, monospace; font-size: 16px; font-variant-ligatures: none; border-radius: 2px; line-height: 1.4; padding: 1px 0px; margin: 0px 3px; display: block; box-shadow: none;"></code></pre></details>
+You can download all input files as a [single zip file](https://duckdb.org/data/cli/duckdb-cli-data.zip).
+<hr>
+<h3 id="projecting-columns"><a class="markdownIt-Anchor" href="#projecting-columns">#</a> <span class="exturl" data-url="aHR0cHM6Ly9kdWNrZGIub3JnLzIwMjQvMDYvMjAvY2xpLWRhdGEtcHJvY2Vzc2luZy11c2luZy1kdWNrZGItYXMtYS11bml4LXRvb2wuaHRtbCNwcm9qZWN0aW5nLWNvbHVtbnM=">Projecting Columns</span></h3>
+<p>Projecting columns is a very common data processing step. Let’s take the  <code>pop.csv</code>  file and project the first and last columns,  <code>city</code>  and  <code>population</code> .</p>
+<h4 id="unix-shell"><a class="markdownIt-Anchor" href="#unix-shell">#</a> <a target="_blank" rel="noopener" href="https://duckdb.org/2024/06/20/cli-data-processing-using-duckdb-as-a-unix-tool.html#unix-shell-cut">Unix Shell:  <code>cut</code> </a></h4>
+<p>In the Unix shell, we use the <a target="_blank" rel="noopener" href="https://man7.org/linux/man-pages/man1/cut.1.html"> <code>cut</code>  command</a> and specify the file’s delimiter ( <code>-d</code> ) and the columns to be projected ( <code>-f</code> ).</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cut -d , -f 1,3 pop.csv</span><br></pre></td></tr></table></figure>
+<p>This produces the following output:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">city,population</span><br><span class="line">Amsterdam,905234</span><br><span class="line">Rotterdam,656050</span><br><span class="line">The Hague,552995</span><br><span class="line">Utrecht,361924</span><br><span class="line">Eindhoven,238478</span><br><span class="line">Groningen,234649</span><br><span class="line">Tilburg,224702</span><br><span class="line">Almere,218096</span><br><span class="line">Breda,184716</span><br><span class="line">Nijmegen,179073</span><br></pre></td></tr></table></figure>
+<h4 id="duckdb"><a class="markdownIt-Anchor" href="#duckdb">#</a> <a target="_blank" rel="noopener" href="https://duckdb.org/2024/06/20/cli-data-processing-using-duckdb-as-a-unix-tool.html#duckdb-select">DuckDB:  <code>SELECT</code> </a></h4>
+<p>In DuckDB, we can use the CSV reader to load the data, then use the  <code>SELECT</code>  clause with column indexes ( <code>#i</code> ) to designate the columns to be projected:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT #1, #3 FROM &#x27;pop.csv&#x27;;</span><br></pre></td></tr></table></figure>
+<p>Note that we did not have to define any schema or load the data to a table. Instead, we simply used  <code>'pop.csv'</code>  in the  <code>FROM</code>  clause as we would do with a regular table. DuckDB detects that this is a CSV file and invokes the <a target="_blank" rel="noopener" href="https://duckdb.org/docs/data/csv/overview.html#csv-functions"> <code>read_csv</code>  function</a>, which automatically infers the CSV file’s dialect (delimiter, presence of quotes, etc.) as well as the schema of the table. This allows us to simply project columns using  <code>SELECT #1, #3</code> . We could also use the more readable syntax  <code>SELECT city, population</code> .</p>
+<p>To make the output of the solutions using Unix tools and DuckDB equivalent, we wrap the query into a <a target="_blank" rel="noopener" href="https://duckdb.org/docs/sql/statements/copy.html#copy--to"> <code>COPY ... TO</code>  statement</a>:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">COPY (</span><br><span class="line">    SELECT #1, #3 FROM &#x27;pop.csv&#x27;</span><br><span class="line">  ) TO &#x27;/dev/stdout/&#x27;;</span><br></pre></td></tr></table></figure>
+<p>This query produces the same result as the Unix command’s output shown <span class="exturl" data-url="aHR0cHM6Ly9kdWNrZGIub3JnLzIwMjQvMDYvMjAvY2xpLWRhdGEtcHJvY2Vzc2luZy11c2luZy1kdWNrZGItYXMtYS11bml4LXRvb2wuaHRtbCN1bml4LXNoZWxsLWN1dA==">above</span>.</p>
+<p>To turn this into a standalone CLI command, we can invoke the DuckDB command line client with the  <code>-c ⟨query⟩</code>  argument, which runs the SQL query and exits once it’s finished. Using this technique, the query above can be turned into the following one-liner:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">duckdb -c &quot;COPY (SELECT #1, #3 FROM &#x27;pop.csv&#x27;) TO &#x27;/dev/stdout/&#x27;&quot;</span><br></pre></td></tr></table></figure>
+<p>In the following, we’ll omit the code blocks using the standalone  <code>duckdb</code>  command: all solutions can be executed in the  <code>duckdb -c ⟨query⟩</code>  template and yield the same result as the solutions using Unix tools.</p>
+<hr>
+<h3 id="sorting-files"><a class="markdownIt-Anchor" href="#sorting-files">#</a> <span class="exturl" data-url="aHR0cHM6Ly9kdWNrZGIub3JnLzIwMjQvMDYvMjAvY2xpLWRhdGEtcHJvY2Vzc2luZy11c2luZy1kdWNrZGItYXMtYS11bml4LXRvb2wuaHRtbCNzb3J0aW5nLWZpbGVz">Sorting Files</span></h3>
+<p>Another common task is to sort files based on given columns. Let’s rank the cities within provinces based on their populations. To do so, we need to sort the  <code>pop.csv</code>  file first based on the name of the  <code>province</code>  using an ascending order, then on the  <code>population</code>  using a descending order. We then return the  <code>province</code>  column first, followed by the  <code>city</code>  and the  <code>population</code>  columns.</p>
+<h4 id="unix-shell-2"><a class="markdownIt-Anchor" href="#unix-shell-2">#</a> <a target="_blank" rel="noopener" href="https://duckdb.org/2024/06/20/cli-data-processing-using-duckdb-as-a-unix-tool.html#unix-shell-sort">Unix Shell:  <code>sort</code> </a></h4>
+<p>In the Unix shell, we rely on the <a target="_blank" rel="noopener" href="https://man7.org/linux/man-pages/man1/sort.1.html"> <code>sort</code> </a> tool. We specify the CSV file’s separator with the  <code>-t</code>  argument and set the keys to sort on using  <code>-k</code>  arguments. We first sort on the second column ( <code>province</code> ) with  <code>-k 2,2</code> . Then, we sort on the third column ( <code>population</code> ), setting the ordering to be reversed ( <code>r</code> ) and numeric ( <code>n</code> ) with  <code>-k 3rn</code> . Note that we need to handle the header of the file separately: we take the first row with  <code>head -n 1</code>  and the rest of the rows with  <code>tail -n +2</code> , sort the latter, and glue them back together with the header. Finally, we perform a projection to reorder the columns. Unfortunately, the <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/2129123/rearrange-columns-using-cut"> <code>cut</code>  command cannot reorder the columns</a>, so we use <a target="_blank" rel="noopener" href="https://man7.org/linux/man-pages/man1/awk.1p.html"> <code>awk</code> </a> instead:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(head -n 1 pop.csv; tail -n +2 pop.csv \</span><br><span class="line">    | sort -t , -k 2,2 -k 3rn) \</span><br><span class="line">    | awk -F , &#39;&#123; print $2 &quot;,&quot; $1 &quot;,&quot; $3&#125;&#39;</span><br></pre></td></tr></table></figure>
+<p>The result is the following:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">province,city,population</span><br><span class="line">Flevoland,Almere,218096</span><br><span class="line">Gelderland,Nijmegen,179073</span><br><span class="line">Groningen,Groningen,234649</span><br><span class="line">North Brabant,Eindhoven,238478</span><br><span class="line">North Brabant,Tilburg,224702</span><br><span class="line">North Brabant,Breda,184716</span><br><span class="line">North Holland,Amsterdam,905234</span><br><span class="line">South Holland,Rotterdam,656050</span><br><span class="line">South Holland,The Hague,552995</span><br><span class="line">Utrecht,Utrecht,361924</span><br></pre></td></tr></table></figure>
+<h4 id="duckdb-2"><a class="markdownIt-Anchor" href="#duckdb-2">#</a> <a target="_blank" rel="noopener" href="https://duckdb.org/2024/06/20/cli-data-processing-using-duckdb-as-a-unix-tool.html#duckdb-order-by">DuckDB:  <code>ORDER BY</code> </a></h4>
+<p>In DuckDB, we simply load the CSV and specify the column ordering via  <code>SELECT province, city, population</code> , then set the sorting criteria on the selected columns ( <code>province ASC</code>  and  <code>population DESC</code> ). The CSV reader automatically detects types, so the sorting is numeric by default. Finally, we surround the query with a  <code>COPY</code>  statement to print the results to the standard output.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">COPY (</span><br><span class="line">    SELECT province, city, population</span><br><span class="line">    FROM &#x27;pop.csv&#x27;</span><br><span class="line">    ORDER BY province ASC, population DESC</span><br><span class="line">  ) TO &#x27;/dev/stdout/&#x27;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="intersecting-columns"><a class="markdownIt-Anchor" href="#intersecting-columns">#</a> <span class="exturl" data-url="aHR0cHM6Ly9kdWNrZGIub3JnLzIwMjQvMDYvMjAvY2xpLWRhdGEtcHJvY2Vzc2luZy11c2luZy1kdWNrZGItYXMtYS11bml4LXRvb2wuaHRtbCNpbnRlcnNlY3RpbmctY29sdW1ucw==">Intersecting Columns</span></h3>
+<p>A common task is to calculate the intersection of two columns, i.e., to find entities that are present in both. Let’s find the cities that are both in the top-10 most populous cities and have their own airports.</p>
+<h4 id="unix-shell-3"><a class="markdownIt-Anchor" href="#unix-shell-3">#</a> <a target="_blank" rel="noopener" href="https://duckdb.org/2024/06/20/cli-data-processing-using-duckdb-as-a-unix-tool.html#unix-shell-comm">Unix Shell:  <code>comm</code> </a></h4>
+<p>The Unix solution for intersection uses the <a target="_blank" rel="noopener" href="https://linux.die.net/man/1/comm"> <code>comm</code>  tool</a>, intended to compare two <em>sorted</em> files line-by-line. We first  <code>cut</code>  the relevant colum from both files. Due to the sorting requirement, we apply  <code>sort</code>  on both inputs before performing the intersection. The intersection is performed using  <code>comm -12</code>  where the argument  <code>-12</code>  means that we only want to keep lines that are in both files. We again rely on  <code>head</code>  and  <code>tail</code>  to treat the headers and the rest of the files separately during processing and glue them together at the end.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">head -n 1 pop.csv | cut -d , -f 1; \</span><br><span class="line">  comm -12 \</span><br><span class="line">    &lt;(tail -n +2 pop.csv | cut -d , -f 1 | sort) \</span><br><span class="line">    &lt;(tail -n +2 cities-airports.csv | cut -d , -f 1 | sort)</span><br></pre></td></tr></table></figure>
+<p>The script produces the following output:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">city</span><br><span class="line">Amsterdam</span><br><span class="line">Eindhoven</span><br><span class="line">Groningen</span><br><span class="line">Rotterdam</span><br><span class="line">The Hague</span><br></pre></td></tr></table></figure>
+<h4 id="duckdb-3"><a class="markdownIt-Anchor" href="#duckdb-3">#</a> <a target="_blank" rel="noopener" href="https://duckdb.org/2024/06/20/cli-data-processing-using-duckdb-as-a-unix-tool.html#duckdb-intersect-all">DuckDB:  <code>INTERSECT ALL</code> </a></h4>
+<p>The DuckDB solution reads the CSV files, projects the  <code>city</code>  fields and applies the <a target="_blank" rel="noopener" href="https://duckdb.org/docs/sql/query_syntax/setops.html#intersect-all-bag-semantics"> <code>INTERSECT ALL</code>  clause</a> to calculate the intersection:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">COPY (</span><br><span class="line">    SELECT city FROM &#x27;pop.csv&#x27;</span><br><span class="line">    INTERSECT ALL</span><br><span class="line">    SELECT city FROM &#x27;cities-airports.csv&#x27;</span><br><span class="line">  ) TO &#x27;/dev/stdout/&#x27;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="pasting-rows-together"><a class="markdownIt-Anchor" href="#pasting-rows-together">#</a> <span class="exturl" data-url="aHR0cHM6Ly9kdWNrZGIub3JnLzIwMjQvMDYvMjAvY2xpLWRhdGEtcHJvY2Vzc2luZy11c2luZy1kdWNrZGItYXMtYS11bml4LXRvb2wuaHRtbCNwYXN0aW5nLXJvd3MtdG9nZXRoZXI=">Pasting Rows Together</span></h3>
+<p>Pasting rows together line-by-line is a recurring task. In our example, we know that the  <code>pop.csv</code>  and the  <code>area.csv</code>  files have an equal number of rows, so we can produce a single file that contains both the population and the area of every city in the dataset.</p>
+<h4 id="unix-shell-4"><a class="markdownIt-Anchor" href="#unix-shell-4">#</a> <a target="_blank" rel="noopener" href="https://duckdb.org/2024/06/20/cli-data-processing-using-duckdb-as-a-unix-tool.html#unix-shell-paste">Unix Shell:  <code>paste</code> </a></h4>
+<p>In the Unix shell, we use the <a target="_blank" rel="noopener" href="https://man7.org/linux/man-pages/man1/paste.1.html"> <code>paste</code> </a> command and remove the duplicate  <code>city</code>  field using  <code>cut</code> :</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">paste -d , pop.csv area.csv | cut -d , -f 1,2,3,5</span><br></pre></td></tr></table></figure>
+<p>The output is the following:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">city,province,population,area</span><br><span class="line">Amsterdam,North Holland,905234,219.32</span><br><span class="line">Rotterdam,South Holland,656050,324.14</span><br><span class="line">The Hague,South Holland,552995,98.13</span><br><span class="line">Utrecht,Utrecht,361924,99.21</span><br><span class="line">Eindhoven,North Brabant,238478,88.92</span><br><span class="line">Groningen,Groningen,234649,197.96</span><br><span class="line">Tilburg,North Brabant,224702,118.13</span><br><span class="line">Almere,Flevoland,218096,248.77</span><br><span class="line">Breda,North Brabant,184716,128.68</span><br><span class="line">Nijmegen,Gelderland,179073,57.63</span><br></pre></td></tr></table></figure>
+<h4 id="duckdb-4"><a class="markdownIt-Anchor" href="#duckdb-4">#</a> <a target="_blank" rel="noopener" href="https://duckdb.org/2024/06/20/cli-data-processing-using-duckdb-as-a-unix-tool.html#duckdb-positional-join">DuckDB:  <code>POSITIONAL JOIN</code> </a></h4>
+<p>In DuckDB, we can use a <a target="_blank" rel="noopener" href="https://duckdb.org/docs/sql/query_syntax/from.html#positional-joins"> <code>POSITIONAL JOIN</code> </a>. This join type is one of DuckDB’s <span class="exturl" data-url="aHR0cHM6Ly9kdWNrZGIub3JnL2RvY3Mvc3FsL2RpYWxlY3QvZnJpZW5kbHlfc3FsLmh0bWw=">SQL extensions</span> and it provides a concise syntax to combine tables row-by-row based on each row’s position in the table. Joining the two tables together using  <code>POSITIONAL JOIN</code>  results in two  <code>city</code>  columns – we use the <a target="_blank" rel="noopener" href="https://duckdb.org/docs/sql/expressions/star.html#exclude-clause"> <code>EXCLUDE</code>  clause</a> to remove the duplicate column:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">COPY (</span><br><span class="line">    SELECT pop.*, area.* EXCLUDE city</span><br><span class="line">    FROM &#x27;pop.csv&#x27;</span><br><span class="line">    POSITIONAL JOIN &#x27;area.csv&#x27;</span><br><span class="line">  ) TO &#x27;/dev/stdout/&#x27;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="filtering"><a class="markdownIt-Anchor" href="#filtering">#</a> <span class="exturl" data-url="aHR0cHM6Ly9kdWNrZGIub3JnLzIwMjQvMDYvMjAvY2xpLWRhdGEtcHJvY2Vzc2luZy11c2luZy1kdWNrZGItYXMtYS11bml4LXRvb2wuaHRtbCNmaWx0ZXJpbmc=">Filtering</span></h3>
+<p>Filtering is another very common operation. For this, we’ll use <a target="_blank" rel="noopener" href="https://duckdb.org/data/cli/cities-airports.csv"> <code>cities-airports.csv</code>  file</a>. For each airport, this file contains its  <code>IATA</code>  code and the main cities that it serves:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">city,IATA</span><br><span class="line">Amsterdam,AMS</span><br><span class="line">Haarlemmermeer,AMS</span><br><span class="line">Eindhoven,EIN</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>Let’s try to formulate two queries:</p>
+<ol>
+<li>Find all cities whose name ends in  <code>dam</code> .</li>
+<li>Find all airports whose IATA code is equivalent to the first three letters of a served city’s name, but the city’s name does <em>not</em> end in  <code>dam</code> .</li>
+</ol>
+<h4 id="unix-shell-5"><a class="markdownIt-Anchor" href="#unix-shell-5">#</a> <a target="_blank" rel="noopener" href="https://duckdb.org/2024/06/20/cli-data-processing-using-duckdb-as-a-unix-tool.html#unix-shell-grep">Unix Shell:  <code>grep</code> </a></h4>
+<p>To answer the first question in the Unix shell, we use  <code>grep</code>  and the regular expression  <code>^[^,]*dam,</code> :</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep &quot;^[^,]*dam,&quot; cities-airports.csv</span><br></pre></td></tr></table></figure>
+<p>In this expression,  <code>^</code>  denotes the start of the line,  <code>[^,]*</code>  searches for a string that does not contain the comma character (the separator). The expression  <code>dam,</code>  ensures that the end of the string in the first field is  <code>dam</code> . The output is:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Amsterdam,AMS</span><br><span class="line">Rotterdam,RTM</span><br></pre></td></tr></table></figure>
+<p>Let’s try to answer the second question. For this, we need to match the first three characters in the  <code>city</code>  field to the  <code>IATA</code>  field but we need to do so in a case-insensitive manner. We also need to use a negative condition to exclude the lines where the city’s name ends in  <code>dam</code> . Both of these requirements are difficult to achieve with a single  <code>grep</code>  or  <code>egrep</code>  command as they lack support for two features. First, they do not support case-insensitive matching <em>using a backreference</em> ( <code>grep -i</code>  alone is not sufficient to ensure this). Second, they do not support <span class="exturl" data-url="aHR0cHM6Ly93d3cucmVndWxhci1leHByZXNzaW9ucy5pbmZvL2xvb2thcm91bmQuaHRtbA==">negative lookbehinds</span>. Therefore, we use <a target="_blank" rel="noopener" href="https://man7.org/linux/man-pages/man1/pcregrep.1.html"> <code>pcregrep</code> </a>, and formulate our question as follows:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pcregrep -i &#x27;^([a-z]&#123;3&#125;).*?(?&lt;!dam),\1$&#x27; cities-airports.csv</span><br></pre></td></tr></table></figure>
+<p>Here, we call  <code>pcregrep</code>  with the case-insensitive flag ( <code>-i</code> ), which in  <code>pcregrep</code>  also affects backreferences such as  <code>\1</code> . We capture the first three letters with  <code>([a-z]&#123;3&#125;)</code>  (e.g.,  <code>Ams</code> ) and match it to the second field with the backreference:  <code>,\1$</code> . We use a non-greedy  <code>.*?</code>  to seek to the end of the first field, then apply a negative lookbehind with the  <code>(?&lt;!dam)</code>  expression to ensure that the field does not end in  <code>dam</code> . The result is a single line:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Eindhoven,EIN</span><br></pre></td></tr></table></figure>
+<h4 id="duckdb-5"><a class="markdownIt-Anchor" href="#duckdb-5">#</a> <a target="_blank" rel="noopener" href="https://duckdb.org/2024/06/20/cli-data-processing-using-duckdb-as-a-unix-tool.html#duckdb-where--like">DuckDB:  <code>WHERE ... LIKE</code> </a></h4>
+<p>Let’s answer the questions now in DuckDB. To answer the first question, we can use <a target="_blank" rel="noopener" href="https://duckdb.org/docs/sql/functions/pattern_matching.html"> <code>LIKE</code>  for pattern matching</a>. The header should not be part of the output, so we disable it with  <code>HEADER false</code> . The complete query looks like follows:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">COPY (</span><br><span class="line">    FROM &#x27;cities-airports.csv&#x27;</span><br><span class="line">    WHERE city LIKE &#x27;%dam&#x27;</span><br><span class="line">  ) TO &#x27;/dev/stdout/&#x27; (HEADER false);</span><br></pre></td></tr></table></figure>
+<p>For the second question, we use <span class="exturl" data-url="aHR0cHM6Ly9kdWNrZGIub3JnL2RvY3Mvc3FsL2Z1bmN0aW9ucy9jaGFyLmh0bWwjc3RyaW5nYmVnaW5lbmQ=">string slicing</span> to extract the first three characters, <a target="_blank" rel="noopener" href="https://duckdb.org/docs/sql/functions/char.html#upperstring"> <code>upper</code> </a> to ensure case-insensitivity, and  <code>NOT LIKE</code>  for the negative condition:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">COPY (</span><br><span class="line">    FROM &#x27;cities-airports.csv&#x27;</span><br><span class="line">    WHERE upper(city[1:3]) = IATA</span><br><span class="line">      AND city NOT LIKE &#x27;%dam&#x27;</span><br><span class="line">  ) TO &#x27;/dev/stdout/&#x27; (HEADER false);</span><br></pre></td></tr></table></figure>
+<p>These queries return exactly the same results as the solutions using  <code>grep</code>  and  <code>pcregrep</code> .</p>
+<p>In both of these queries, we used the <a target="_blank" rel="noopener" href="https://duckdb.org/docs/sql/query_syntax/from.html#from-first-syntax"> <code>FROM</code> -first syntax</a>. If the  <code>SELECT</code>  clause is omitted, the query is executed as if  <code>SELECT *</code>  was used, i.e., it returns all columns.</p>
+<hr>
+<h3 id="joining-files"><a class="markdownIt-Anchor" href="#joining-files">#</a> <span class="exturl" data-url="aHR0cHM6Ly9kdWNrZGIub3JnLzIwMjQvMDYvMjAvY2xpLWRhdGEtcHJvY2Vzc2luZy11c2luZy1kdWNrZGItYXMtYS11bml4LXRvb2wuaHRtbCNqb2luaW5nLWZpbGVz">Joining Files</span></h3>
+<p>Joining tables is an essential task in data processing. Our next example is going to use a join to return city name–airport name combinations. This is achieved by joining the  <code>cities-airports.csv</code>  and the  <code>airport-names.csv</code>  files on their IATA code fields.</p>
+<h4 id="unix-shell-6"><a class="markdownIt-Anchor" href="#unix-shell-6">#</a> <a target="_blank" rel="noopener" href="https://duckdb.org/2024/06/20/cli-data-processing-using-duckdb-as-a-unix-tool.html#unix-shell-join">Unix Shell:  <code>join</code> </a></h4>
+<p>Unix tools support joining files via the <a target="_blank" rel="noopener" href="https://man7.org/linux/man-pages/man1/join.1.html"> <code>join</code>  command</a>, which joins lines of two <em>sorted</em> inputs on a common field. To make this work, we sort the files based on their  <code>IATA</code>  fields, then perform the join on the first file’s 2nd column ( <code>-1 2</code> ) and the second file’s 1st column ( <code>-2 1</code> ). We have to omit the header for the  <code>join</code>  command to work, so we do just that and construct a new header with an  <code>echo</code>  command:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;IATA,city,airport name&quot;; \</span><br><span class="line">  join -t , -1 2 -2 1 \</span><br><span class="line">    &lt;(tail -n +2 cities-airports.csv | sort -t , -k 2,2) \</span><br><span class="line">    &lt;(tail -n +2 airport-names.csv   | sort -t , -k 1,1)</span><br></pre></td></tr></table></figure>
+<p>The result is the following:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">IATA,city,airport name</span><br><span class="line">AMS,Amsterdam,Amsterdam Airport Schiphol</span><br><span class="line">AMS,Haarlemmermeer,Amsterdam Airport Schiphol</span><br><span class="line">EIN,Eindhoven,Eindhoven Airport</span><br><span class="line">GRQ,Eelde,Groningen Airport Eelde</span><br><span class="line">GRQ,Groningen,Groningen Airport Eelde</span><br><span class="line">MST,Beek,Maastricht Aachen Airport</span><br><span class="line">MST,Maastricht,Maastricht Aachen Airport</span><br><span class="line">RTM,Rotterdam,Rotterdam The Hague Airport</span><br><span class="line">RTM,The Hague,Rotterdam The Hague Airport</span><br></pre></td></tr></table></figure>
+<h4 id="duckdb-6"><a class="markdownIt-Anchor" href="#duckdb-6">#</a> <span class="exturl" data-url="aHR0cHM6Ly9kdWNrZGIub3JnLzIwMjQvMDYvMjAvY2xpLWRhdGEtcHJvY2Vzc2luZy11c2luZy1kdWNrZGItYXMtYS11bml4LXRvb2wuaHRtbCNkdWNrZGI=">DuckDB</span></h4>
+<p>In DuckDB, we load the CSV files and connect them using the <a target="_blank" rel="noopener" href="https://duckdb.org/docs/sql/query_syntax/from.html#natural-joins"> <code>NATURAL JOIN</code>  clause</a>, which joins on column(s) with the same name. To ensure that the result matches with that of the Unix solution, we use the <a target="_blank" rel="noopener" href="https://duckdb.org/docs/sql/query_syntax/orderby.html#order-by-all"> <code>ORDER BY ALL</code>  clause</a>, which sorts the result on all columns, starting from the first one, and stepping through them for tie-breaking to the last column.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">COPY (</span><br><span class="line">    SELECT &quot;IATA&quot;, &quot;city&quot;, &quot;airport name&quot;</span><br><span class="line">    FROM &#x27;cities-airports.csv&#x27;</span><br><span class="line">    NATURAL JOIN &#x27;airport-names.csv&#x27;</span><br><span class="line">    ORDER BY ALL</span><br><span class="line">  ) TO &#x27;/dev/stdout/&#x27;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="replacing-strings"><a class="markdownIt-Anchor" href="#replacing-strings">#</a> <span class="exturl" data-url="aHR0cHM6Ly9kdWNrZGIub3JnLzIwMjQvMDYvMjAvY2xpLWRhdGEtcHJvY2Vzc2luZy11c2luZy1kdWNrZGItYXMtYS11bml4LXRvb2wuaHRtbCNyZXBsYWNpbmctc3RyaW5ncw==">Replacing Strings</span></h3>
+<p>You may have noticed that we are using very clean datasets. This is of course very unrealistic, so in an evil twist, let’s reduce the data quality a bit:</p>
+<ul>
+<li>Replace the space in the province’s name with an underscore, e.g., turning  <code>North Holland</code>  to  <code>North_Holland</code> .</li>
+<li>Add thousand separating commas, e.g., turning  <code>905234</code>  to  <code>905,234</code> .</li>
+<li>Change the CSV’s separator to the semicolon character ( <code>;</code> ).</li>
+</ul>
+<p>And while we’re at it, also fetch the data set via HTTPS this time, using the URL <a target="_blank" rel="noopener" href="https://duckdb.org/data/cli/pop.csv"> <code>https://duckdb.org/data/cli/pop.csv</code> </a>.</p>
+<h4 id="unix-shell-7"><a class="markdownIt-Anchor" href="#unix-shell-7">#</a> <a target="_blank" rel="noopener" href="https://duckdb.org/2024/06/20/cli-data-processing-using-duckdb-as-a-unix-tool.html#unix-shell-curl-and-sed">Unix Shell:  <code>curl</code>  and  <code>sed</code> </a></h4>
+<p>In Unix, remote data sets are typically fetched via <a target="_blank" rel="noopener" href="https://man7.org/linux/man-pages/man1/curl.1.html"> <code>curl</code> </a>. The output of  <code>curl</code>  is piped into the subsequent processing steps, in this case, a bunch of <a target="_blank" rel="noopener" href="https://man7.org/linux/man-pages/man1/sed.1.html"> <code>sed</code> </a> commands.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">curl -s https://duckdb.org/data/cli/pop.csv \</span><br><span class="line">    | sed &#x27;s/\([^,]*,.*\) \(.*,[^,]*\)/\1_\2/g&#x27; \</span><br><span class="line">    | sed &#x27;s/,/;/g&#x27; \</span><br><span class="line">    | sed &#x27;s/\([0-9][0-9][0-9]\)$/,\1/&#x27;</span><br></pre></td></tr></table></figure>
+<p>This results in the following output:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">city;province;population</span><br><span class="line">Amsterdam;North_Holland;905,234</span><br><span class="line">Rotterdam;South_Holland;656,050</span><br><span class="line">The Hague;South_Holland;552,995</span><br><span class="line">Utrecht;Utrecht;361,924</span><br><span class="line">Eindhoven;North_Brabant;238,478</span><br><span class="line">Groningen;Groningen;234,649</span><br><span class="line">Tilburg;North_Brabant;224,702</span><br><span class="line">Almere;Flevoland;218,096</span><br><span class="line">Breda;North_Brabant;184,716</span><br><span class="line">Nijmegen;Gelderland;179,073</span><br></pre></td></tr></table></figure>
+<h4 id="duckdb-7"><a class="markdownIt-Anchor" href="#duckdb-7">#</a> <a target="_blank" rel="noopener" href="https://duckdb.org/2024/06/20/cli-data-processing-using-duckdb-as-a-unix-tool.html#duckdb-httpfs-and-regexp_replace">DuckDB:  <code>httpfs</code>  and  <code>regexp_replace</code> </a></h4>
+<p>In DuckDB, we use the following query:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">COPY (</span><br><span class="line">    SELECT</span><br><span class="line">        city,</span><br><span class="line">        replace(province, &#x27; &#x27;, &#x27;_&#x27;) AS province,</span><br><span class="line">        regexp_replace(population::VARCHAR, &#x27;([0-9][0-9][0-9])$&#x27;, &#x27;,\1&#x27;)</span><br><span class="line">            AS population</span><br><span class="line">    FROM &#x27;https://duckdb.org/data/cli/pop.csv&#x27;</span><br><span class="line">  ) TO &#x27;/dev/stdout/&#x27; (DELIMITER &#x27;;&#x27;);</span><br></pre></td></tr></table></figure>
+<p>Note that the  <code>FROM</code>  clause now has an HTTPS URL instead of a simple CSV file. The presence of the  <code>https://</code>  prefix triggers DuckDB to load the <a target="_blank" rel="noopener" href="https://duckdb.org/docs/extensions/httpfs/overview.html"> <code>httpfs</code>  extension</a> and use it to fetch the JSON document. We use the <a target="_blank" rel="noopener" href="https://duckdb.org/docs/sql/functions/char.html#replacestring-source-target"> <code>replace</code>  function</a> to substitute the spaces with underscores, and the <a target="_blank" rel="noopener" href="https://duckdb.org/docs/sql/functions/char.html#regexp_replacestring-pattern-replacement"> <code>regexp_replace</code>  function</a> for the replacement using a regular expression. (We could have also used string formatting functions such as <a target="_blank" rel="noopener" href="https://duckdb.org/docs/sql/functions/char.html#fmt-syntax"> <code>format</code> </a> and <a target="_blank" rel="noopener" href="https://duckdb.org/docs/sql/functions/char.html#printf-syntax"> <code>printf</code> </a>). To change the separator to a semicolon, we serialize the file using the  <code>COPY</code>  statement with the  <code>DELIMITER ';'</code>  option.</p>
+<hr>
+<h3 id="reading-json"><a class="markdownIt-Anchor" href="#reading-json">#</a> <span class="exturl" data-url="aHR0cHM6Ly9kdWNrZGIub3JnLzIwMjQvMDYvMjAvY2xpLWRhdGEtcHJvY2Vzc2luZy11c2luZy1kdWNrZGItYXMtYS11bml4LXRvb2wuaHRtbCNyZWFkaW5nLWpzb24=">Reading JSON</span></h3>
+<p>As a final exercise, let’s query the number of stars given to the <a target="_blank" rel="noopener" href="https://github.com/duckdb/duckdb"> <code>duckdb/duckdb</code>  repository on GitHub</a>.</p>
+<h4 id="unix-shell-8"><a class="markdownIt-Anchor" href="#unix-shell-8">#</a> <a target="_blank" rel="noopener" href="https://duckdb.org/2024/06/20/cli-data-processing-using-duckdb-as-a-unix-tool.html#unix-shell-curl-and-jq">Unix Shell:  <code>curl</code>  and  <code>jq</code> </a></h4>
+<p>In Unix tools, we can use  <code>curl</code>  to get the JSON file from  <code>https://api.github.com</code>  and pipe its output to <a target="_blank" rel="noopener" href="https://jqlang.github.io/jq/manual/"> <code>jq</code> </a> to query the JSON object.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -s https://api.github.com/repos/duckdb/duckdb \</span><br><span class="line">    | jq &quot;.stargazers_count&quot;</span><br></pre></td></tr></table></figure>
+<h4 id="duckdb-8"><a class="markdownIt-Anchor" href="#duckdb-8">#</a> <a target="_blank" rel="noopener" href="https://duckdb.org/2024/06/20/cli-data-processing-using-duckdb-as-a-unix-tool.html#duckdb-read_json">DuckDB:  <code>read_json</code> </a></h4>
+<p>In DuckDB, we use the <a target="_blank" rel="noopener" href="https://duckdb.org/docs/data/json/overview.html"> <code>read_json</code>  function</a>, invoking it with the remote HTTPS endpoint’s URL. The schema of the JSON file is detected automatically, so we can simply use  <code>SELECT</code>  to return the required field.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT stargazers_count</span><br><span class="line">  FROM read_json(&#x27;https://api.github.com/repos/duckdb/duckdb&#x27;);</span><br></pre></td></tr></table></figure>
+<h4 id="output"><a class="markdownIt-Anchor" href="#output">#</a> <span class="exturl" data-url="aHR0cHM6Ly9kdWNrZGIub3JnLzIwMjQvMDYvMjAvY2xpLWRhdGEtcHJvY2Vzc2luZy11c2luZy1kdWNrZGItYXMtYS11bml4LXRvb2wuaHRtbCNvdXRwdXQ=">Output</span></h4>
+<p>Both of these commands return the current number of stars of the repository.</p>
+<hr>
+<h2 id="performance"><a class="markdownIt-Anchor" href="#performance">#</a> <span class="exturl" data-url="aHR0cHM6Ly9kdWNrZGIub3JnLzIwMjQvMDYvMjAvY2xpLWRhdGEtcHJvY2Vzc2luZy11c2luZy1kdWNrZGItYXMtYS11bml4LXRvb2wuaHRtbCNwZXJmb3JtYW5jZQ==">Performance</span></h2>
+<p>At this point, you might be wondering about the performance of the DuckDB solutions. After all, all of our prior examples have only consisted of a few lines, so benchmarking them against each other will not result in any measurable performance differences. So, let’s switch to the Dutch railway services dataset that we used in a <span class="exturl" data-url="aHR0cHM6Ly9kdWNrZGIub3JnLzIwMjQvMDUvMzEvYW5hbHl6aW5nLXJhaWx3YXktdHJhZmZpYy1pbi10aGUtbmV0aGVybGFuZHMuaHRtbA==">previous blog post</span> and formulate a different problem.</p>
+<p>We’ll use the <a target="_blank" rel="noopener" href="https://blobs.duckdb.org/nl-railway/services-2023.csv.gz">2023 railway services file ( <code>services-2023.csv.gz</code> )</a> and count the number of Intercity services that operated in that year.</p>
+<p>In Unix, we can use the <a target="_blank" rel="noopener" href="https://www.unix.com/man-page/osf1/1/gzcat/"> <code>gzcat</code> </a> command to decompress the  <code>csv.gz</code>  file into a pipeline. Then, we can use  <code>grep</code>  or  <code>pcregrep</code>  (which is more performant), and top it off with the <a target="_blank" rel="noopener" href="https://man7.org/linux/man-pages/man1/wc.1.html"> <code>wc</code> </a> command to count the number of lines ( <code>-l</code> ). In DuckDB, the built-in CSV reader also supports <span class="exturl" data-url="aHR0cHM6Ly9kdWNrZGIub3JnL2RvY3MvZGF0YS9jc3Yvb3ZlcnZpZXcuaHRtbCNwYXJhbWV0ZXJz">compressed CSV files</span>, so we can use that without any extra configuration.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gzcat services-2023.csv.gz | grep &#x27;^[^,]*,[^,]*,Intercity,&#x27; | wc -l</span><br><span class="line">gzcat services-2023.csv.gz | pcregrep &#x27;^[^,]*,[^,]*,Intercity,&#x27; | wc -l</span><br><span class="line">duckdb -c &quot;SELECT count(*) FROM &#x27;services-2023.csv.gz&#x27; WHERE \&quot;Service:Type\&quot; = &#x27;Intercity&#x27;;&quot;</span><br></pre></td></tr></table></figure>
+<p>We also test the tools on uncompressed input:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">gunzip -k services-2023.csv.gz</span><br><span class="line">grep &#x27;^[^,]*,[^,]*,Intercity,&#x27; services-2023.csv | wc -l</span><br><span class="line">pcregrep &#x27;^[^,]*,[^,]*,Intercity,&#x27; services-2023.csv | wc -l</span><br><span class="line">duckdb -c &quot;SELECT count(*) FROM &#x27;services-2023.csv&#x27; WHERE \&quot;Service:Type\&quot; = &#x27;Intercity&#x27;;&quot;</span><br></pre></td></tr></table></figure>
+<p>To reduce the noise in the measurements, we used the <a target="_blank" rel="noopener" href="https://github.com/sharkdp/hyperfine"> <code>hyperfine</code> </a> benchmarking tool and took the mean execution time of 10 runs. The experiments were carried out on a MacBook Pro with a 12-core M2 Pro CPU and 32 GB RAM, running macOS Sonoma 14.5. To reproduce them, run the <a target="_blank" rel="noopener" href="https://duckdb.org/microbenchmarks/grep-vs-duckdb-microbenchmark.sh"> <code>grep-vs-duckdb-microbenchmark.sh</code>  script</a>. The following table shows the runtimes of the solutions on both compressed and uncompressed inputs:</p>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th style="text-align:right">Runtime (compressed)</th>
+<th style="text-align:right">Runtime (uncompressed)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>grep 2.6.0-FreeBSD</td>
+<td style="text-align:right">20.9 s</td>
+<td style="text-align:right">20.5 s</td>
+</tr>
+<tr>
+<td>pcregrep 8.45</td>
+<td style="text-align:right">3.1 s</td>
+<td style="text-align:right">2.9 s</td>
+</tr>
+<tr>
+<td>DuckDB 1.0.0</td>
+<td style="text-align:right">4.2 s</td>
+<td style="text-align:right">1.2 s</td>
+</tr>
+</tbody>
+</table>
+<p>The results show that on compressed input,  <code>grep</code>  was the slowest, while DuckDB is slightly edged out by  <code>gzcat</code> + <code>pcregrep</code> , which ran in 3.1 seconds compared to DuckDB’s 4.2 seconds. On uncompressed input, DuckDB can utilize all CPU cores from the get-go (instead of starting with a single-threaded decompression step), allowing it to outperform both  <code>grep</code>  and  <code>pcregrep</code>  by a significant margin: 2.5× faster than  <code>pcregrep</code>  and more than 15× faster than  <code>grep</code> .</p>
+<p>While this example is quite simple, as queries get more complex, there are more opportunities for optimization and larger intermediate dataset may be produced. While both of these can be tackled within a shell script (by manually implementing optimizations and writing the intermediate datasets to disk), these will likely be less efficient than what a DBMS can come up with. Shell scripts implementing complex pipelines can also be very brittle and need to be rethought even for small changes, making the performance advantage of using a database even more significant for more complex problems.</p>
+<hr>
+<h2 id="summary"><a class="markdownIt-Anchor" href="#summary">#</a> <span class="exturl" data-url="aHR0cHM6Ly9kdWNrZGIub3JnLzIwMjQvMDYvMjAvY2xpLWRhdGEtcHJvY2Vzc2luZy11c2luZy1kdWNrZGItYXMtYS11bml4LXRvb2wuaHRtbCNzdW1tYXJ5">Summary</span></h2>
+<p>In this post, we used DuckDB as a standalone CLI application, and explored its abilities to complement or substitute existing command line tools ( <code>sort</code> ,  <code>grep</code> ,  <code>comm</code> ,  <code>join</code> , etc.). While we obviously like DuckDB a lot and prefer to use it in many cases, we also believe Unix tools have their place: on most systems, they are already pre-installed and a well-chosen toolchain of Unix commands <em>can</em> be <span class="exturl" data-url="aHR0cHM6Ly9hZGFtZHJha2UuY29tL2NvbW1hbmQtbGluZS10b29scy1jYW4tYmUtMjM1eC1mYXN0ZXItdGhhbi15b3VyLWhhZG9vcC1jbHVzdGVyLmh0bWw=">fast</span>, <span class="exturl" data-url="aHR0cHM6Ly9wZXNpbi5zcGFjZS9wb3N0cy8yMDE5LTA3LTAyLw==">efficient</span>, and portable (thanks to <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvUE9TSVgjUE9TSVgtb3JpZW50ZWRfb3BlcmF0aW5nX3N5c3RlbXM=">POSIX-compliance</span>). Additionally, they can be very concise for certain problems. However, to reap their benefits, you will need to learn the syntax and quirks of each tool such as  <code>grep</code>  variants, <a target="_blank" rel="noopener" href="https://man7.org/linux/man-pages/man1/awk.1p.html"> <code>awk</code> </a> as well as advanced ones such as <a target="_blank" rel="noopener" href="https://man7.org/linux/man-pages/man1/xargs.1.html"> <code>xargs</code> </a> and <a target="_blank" rel="noopener" href="https://www.gnu.org/software/parallel/"> <code>parallel</code> </a>. In the meantime, DuckDB’s SQL is easy-to-learn (you likely know quite a bit of it already) and DuckDB handles most of the optimization for you.</p>
+<p>If you have a favorite CLI use case for DuckDB, let us know on social media or submit it to <span class="exturl" data-url="aHR0cHM6Ly9kdWNrZGJzbmlwcGV0cy5jb20v">DuckDB snippets</span>. Happy hacking!</p>
+<hr>
+<h2 id="comments"><a class="markdownIt-Anchor" href="#comments">#</a> Comments</h2>
+<h3 id="join"><a class="markdownIt-Anchor" href="#join">#</a> Join</h3>
+<p>Output to Shell</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">duckdb</span><br><span class="line">D select * from &#x27;pop.csv&#x27; p left outer join &#x27;cities-airports.csv&#x27; c on p.city = c.city;   </span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">┌───────────┬───────────────┬────────────┬───────────┬─────────┐</span><br><span class="line">│   city    │   province    │ population │   city    │  IATA   │</span><br><span class="line">│  varchar  │    varchar    │   int64    │  varchar  │ varchar │</span><br><span class="line">├───────────┼───────────────┼────────────┼───────────┼─────────┤</span><br><span class="line">│ Amsterdam │ North Holland │     905234 │ Amsterdam │ AMS     │</span><br><span class="line">│ Rotterdam │ South Holland │     656050 │ Rotterdam │ RTM     │</span><br><span class="line">│ The Hague │ South Holland │     552995 │ The Hague │ RTM     │</span><br><span class="line">│ Eindhoven │ North Brabant │     238478 │ Eindhoven │ EIN     │</span><br><span class="line">│ Groningen │ Groningen     │     234649 │ Groningen │ GRQ     │</span><br><span class="line">│ Utrecht   │ Utrecht       │     361924 │           │         │</span><br><span class="line">│ Tilburg   │ North Brabant │     224702 │           │         │</span><br><span class="line">│ Almere    │ Flevoland     │     218096 │           │         │</span><br><span class="line">│ Breda     │ North Brabant │     184716 │           │         │</span><br><span class="line">│ Nijmegen  │ Gelderland    │     179073 │           │         │</span><br><span class="line">├───────────┴───────────────┴────────────┴───────────┴─────────┤</span><br><span class="line">│ 10 rows                                            5 columns │</span><br><span class="line">└──────────────────────────────────────────────────────────────┘</span><br></pre></td></tr></table></figure>
+<p>Output to File</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">duckdb -c &quot;copy (select * from &#x27;pop.csv&#x27; p left outer join &#x27;cities-airports.csv&#x27; c on p.city = c.city) to &#x27;result.csv&#x27;&quot;</span><br></pre></td></tr></table></figure>
+<p>result.csv</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">city,province,population,city_1,IATA</span><br><span class="line">Amsterdam,North Holland,905234,Amsterdam,AMS</span><br><span class="line">Rotterdam,South Holland,656050,Rotterdam,RTM</span><br><span class="line">The Hague,South Holland,552995,The Hague,RTM</span><br><span class="line">Eindhoven,North Brabant,238478,Eindhoven,EIN</span><br><span class="line">Groningen,Groningen,234649,Groningen,GRQ</span><br><span class="line">Utrecht,Utrecht,361924,,</span><br><span class="line">Tilburg,North Brabant,224702,,</span><br><span class="line">Almere,Flevoland,218096,,</span><br><span class="line">Breda,North Brabant,184716,,</span><br><span class="line">Nijmegen,Gelderland,179073,,</span><br></pre></td></tr></table></figure>
+<h3 id="reading-json-2"><a class="markdownIt-Anchor" href="#reading-json-2">#</a> Reading JSON</h3>
+<p>include sub object field owner.login</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">duckdb</span><br><span class="line">D select id, node_id, owner.login, owner.id from &#39;test.json&#39;;</span><br><span class="line">┌───────────┬──────────────────────────────────┬─────────┬──────────┐</span><br><span class="line">│    id     │             node_id              │  login  │    id    │</span><br><span class="line">│   int64   │             varchar              │ varchar │  int64   │</span><br><span class="line">├───────────┼──────────────────────────────────┼─────────┼──────────┤</span><br><span class="line">│ 138754790 │ MDEwOlJlcG9zaXRvcnkxMzg3NTQ3OTA&#x3D; │ duckdb  │ 82039556 │</span><br><span class="line">└───────────┴──────────────────────────────────┴─────────┴──────────┘</span><br></pre></td></tr></table></figure>
+      <div class="tags">
+          <a href="/tags/other/" rel="tag"><i class="ic i-tag"></i> other</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2024-09-28 14:59:38" itemprop="dateModified" datetime="2024-09-28T14:59:38+08:00">2024-09-28</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2024/05/28/csharp-wpf-excel2xml/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;罗小黑战记.jpg" title="WPF Excel to XML">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>WPF Excel to XML</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2024/08/30/css-table/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;乒乓.jpg" title="Styling Tables the Modern CSS Way">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Styling Tables the Modern CSS Way</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#table-of-contents"><span class="toc-number">1.</span> <span class="toc-text"> Table of Contents</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#the-unix-philosophy"><span class="toc-number">2.</span> <span class="toc-text"> The Unix Philosophy</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#portability-and-usability"><span class="toc-number">3.</span> <span class="toc-text"> Portability and Usability</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#data-processing-with-unix-tools-and-duckdb"><span class="toc-number">4.</span> <span class="toc-text"> Data Processing with Unix Tools and DuckDB</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#datasets"><span class="toc-number">4.1.</span> <span class="toc-text"> Datasets</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#projecting-columns"><span class="toc-number">4.2.</span> <span class="toc-text"> Projecting Columns</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#unix-shell"><span class="toc-number">4.2.1.</span> <span class="toc-text"> Unix Shell:  cut </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#duckdb"><span class="toc-number">4.2.2.</span> <span class="toc-text"> DuckDB:  SELECT </span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sorting-files"><span class="toc-number">4.3.</span> <span class="toc-text"> Sorting Files</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#unix-shell-2"><span class="toc-number">4.3.1.</span> <span class="toc-text"> Unix Shell:  sort </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#duckdb-2"><span class="toc-number">4.3.2.</span> <span class="toc-text"> DuckDB:  ORDER BY </span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#intersecting-columns"><span class="toc-number">4.4.</span> <span class="toc-text"> Intersecting Columns</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#unix-shell-3"><span class="toc-number">4.4.1.</span> <span class="toc-text"> Unix Shell:  comm </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#duckdb-3"><span class="toc-number">4.4.2.</span> <span class="toc-text"> DuckDB:  INTERSECT ALL </span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pasting-rows-together"><span class="toc-number">4.5.</span> <span class="toc-text"> Pasting Rows Together</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#unix-shell-4"><span class="toc-number">4.5.1.</span> <span class="toc-text"> Unix Shell:  paste </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#duckdb-4"><span class="toc-number">4.5.2.</span> <span class="toc-text"> DuckDB:  POSITIONAL JOIN </span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#filtering"><span class="toc-number">4.6.</span> <span class="toc-text"> Filtering</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#unix-shell-5"><span class="toc-number">4.6.1.</span> <span class="toc-text"> Unix Shell:  grep </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#duckdb-5"><span class="toc-number">4.6.2.</span> <span class="toc-text"> DuckDB:  WHERE ... LIKE </span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#joining-files"><span class="toc-number">4.7.</span> <span class="toc-text"> Joining Files</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#unix-shell-6"><span class="toc-number">4.7.1.</span> <span class="toc-text"> Unix Shell:  join </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#duckdb-6"><span class="toc-number">4.7.2.</span> <span class="toc-text"> DuckDB</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#replacing-strings"><span class="toc-number">4.8.</span> <span class="toc-text"> Replacing Strings</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#unix-shell-7"><span class="toc-number">4.8.1.</span> <span class="toc-text"> Unix Shell:  curl  and  sed </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#duckdb-7"><span class="toc-number">4.8.2.</span> <span class="toc-text"> DuckDB:  httpfs  and  regexp_replace </span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#reading-json"><span class="toc-number">4.9.</span> <span class="toc-text"> Reading JSON</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#unix-shell-8"><span class="toc-number">4.9.1.</span> <span class="toc-text"> Unix Shell:  curl  and  jq </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#duckdb-8"><span class="toc-number">4.9.2.</span> <span class="toc-text"> DuckDB:  read_json </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#output"><span class="toc-number">4.9.3.</span> <span class="toc-text"> Output</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#performance"><span class="toc-number">5.</span> <span class="toc-text"> Performance</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#summary"><span class="toc-number">6.</span> <span class="toc-text"> Summary</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#comments"><span class="toc-number">7.</span> <span class="toc-text"> Comments</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#join"><span class="toc-number">7.1.</span> <span class="toc-text"> Join</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#reading-json-2"><span class="toc-number">7.2.</span> <span class="toc-text"> Reading JSON</span></a></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">361</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">50</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
+      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2024/05/28/csharp-wpf-excel2xml/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2024/08/30/css-table/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ D E W</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2024/08/23/duckdb/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
