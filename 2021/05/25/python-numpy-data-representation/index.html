@@ -27,14 +27,14 @@
   <meta name="keywords" content="python" />
 
 
-<link rel="canonical" href="https://lhchen74.github.io/2021/05/25/python-numpy/">
+<link rel="canonical" href="https://lhchen74.github.io/2021/05/25/python-numpy-data-representation/">
 
 
 
   <title>
 A Visual Intro to NumPy and Data Representation |
 D E W = 露の世</title>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.2"></head>
 <body itemscope itemtype="http://schema.org/WebPage">
   <div id="loading">
     <div class="cat">
@@ -102,12 +102,12 @@ D E W = 露の世</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="/anime/index/文豪野犬-1.jpg"></li>
-          <li class="item" data-background-image="/anime/index/怪物之子-2.jpg"></li>
-          <li class="item" data-background-image="/anime/index/相合之物.jpg"></li>
-          <li class="item" data-background-image="/anime/index/宝石之国.jpg"></li>
-          <li class="item" data-background-image="/anime/index/白箱.jpg"></li>
-          <li class="item" data-background-image="/anime/index/千与千寻-3.jpg"></li>
+          <li class="item" data-background-image="/anime/index/萤火虫之墓-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/三月的狮子.jpg"></li>
+          <li class="item" data-background-image="/anime/index/龙猫-1.jpg"></li>
+          <li class="item" data-background-image="/anime/index/刻刻.jpg"></li>
+          <li class="item" data-background-image="/anime/index/我的英雄学院.jpg"></li>
+          <li class="item" data-background-image="/anime/index/七大罪.jpg"></li>
         </ul>
       </div>
     </header>
@@ -136,7 +136,7 @@ D E W = 露の世</title>
 </div>
 
     <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
-  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2021/05/25/python-numpy/">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2021/05/25/python-numpy-data-representation/">
 
   <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="image" content="/images/avatar.jpg">
@@ -152,89 +152,89 @@ D E W = 露の世</title>
     
 
     <blockquote>
-<p>转载：<span class="exturl" data-url="aHR0cHM6Ly9qYWxhbW1hci5naXRodWIuaW8vdmlzdWFsLW51bXB5Lw==">A Visual Intro to NumPy and Data Representation – Jay Alammar – Visualizing machine learning one concept at a time.</span></p>
+<p>repost：<span class="exturl" data-url="aHR0cHM6Ly9qYWxhbW1hci5naXRodWIuaW8vdmlzdWFsLW51bXB5Lw==">A Visual Intro to NumPy and Data Representation – Jay Alammar – Visualizing machine learning one concept at a time.</span></p>
 </blockquote>
-
+<img data-src="/2021/05/25/python-numpy-data-representation/numpy-array.png" class="">
 <p>The <span class="exturl" data-url="aHR0cHM6Ly93d3cubnVtcHkub3JnLw==">NumPy</span> package is the workhorse of data analysis, machine learning, and scientific computing in the python ecosystem. It vastly simplifies manipulating and crunching vectors and matrices. Some of python’s leading package rely on NumPy as a fundamental piece of their infrastructure (examples include scikit-learn, SciPy, pandas, and tensorflow). Beyond the ability to slice and dice numeric data, mastering numpy will give you an edge when dealing and debugging with advanced usecases in these libraries.</p>
 <p>In this post, we’ll look at some of the main ways to use NumPy and how it can represent different types of data (tables, images, text…etc) before we can serve them to machine learning models.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure>
 <h2 id="creating-arrays"><a class="markdownIt-Anchor" href="#creating-arrays">#</a> Creating Arrays</h2>
 <p>We can create a NumPy array (a.k.a. the mighty <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLnNjaXB5Lm9yZy9kb2MvbnVtcHkvcmVmZXJlbmNlL2FycmF5cy5uZGFycmF5Lmh0bWw=">ndarray</span>) by passing a python list to it and using  <code> np.array()</code> . In this case, python creates the array we can see on the right here:</p>
-
+<img data-src="/2021/05/25/python-numpy-data-representation/create-numpy-array-1.png" class="">
 <p>There are often cases when we want NumPy to initialize the values of the array for us. NumPy provides methods like ones(), zeros(), and random.random() for these cases. We just pass them the number of elements we want it to generate:</p>
-
+<img data-src="/2021/05/25/python-numpy-data-representation/create-numpy-array-ones-zeros-random.png" class="">
 <p>Once we’ve created our arrays, we can start to manipulate them in interesting ways.</p>
 <h2 id="array-arithmetic"><a class="markdownIt-Anchor" href="#array-arithmetic">#</a> Array Arithmetic</h2>
 <p>Let’s create two NumPy arrays to showcase their usefulness. We’ll call them  <code>data</code>  and  <code>ones</code> :</p>
-
+<img data-src="/2021/05/25/python-numpy-data-representation/numpy-arrays-example-1.png" class="">
 <p>Adding them up position-wise (i.e. adding the values of each row) is as simple as typing  <code>data + ones</code> :</p>
-
+<img data-src="/2021/05/25/python-numpy-data-representation/numpy-arrays-adding-1.png" class="">
 <p>When I started learning such tools, I found it refreshing that an abstraction like this makes me not have to program such a calculation in loops. It’s a wonderful abstraction that allows you to think about problems at a higher level.</p>
 <p>And it’s not only addition that we can do this way:</p>
-
+<img data-src="/2021/05/25/python-numpy-data-representation/numpy-array-subtract-multiply-divide.png" class="">
 <p>There are often cases when we want to carry out an operation between an array and a single number (we can also call this an operation between a vector and a scalar). Say, for example, our array represents distance in miles, and we want to convert it to kilometers. We simply say  <code>data * 1.6</code> :</p>
-
+<img data-src="/2021/05/25/python-numpy-data-representation/numpy-array-broadcast.png" class="">
 <p>See how NumPy understood that operation to mean that the multiplication should happen with each cell? That concept is called <em>broadcasting</em>, and it’s very useful.</p>
 <h2 id="indexing"><a class="markdownIt-Anchor" href="#indexing">#</a> Indexing</h2>
 <p>We can index and slice NumPy arrays in all the ways we can slice python lists:</p>
-
+<img data-src="/2021/05/25/python-numpy-data-representation/numpy-array-slice.png" class="">
 <h2 id="aggregation"><a class="markdownIt-Anchor" href="#aggregation">#</a> Aggregation</h2>
 <p>Additional benefits NumPy gives us are aggregation functions:</p>
-
+<img data-src="/2021/05/25/python-numpy-data-representation/numpy-array-aggregation.png" class="">
 <p>In addition to  <code>min</code> ,  <code>max</code> , and  <code>sum</code> , you get all the greats like  <code>mean</code>  to get the average,  <code>prod</code>  to get the result of multiplying all the elements together,  <code>std</code>  to get standard deviation, and <span class="exturl" data-url="aHR0cHM6Ly9qYWtldmRwLmdpdGh1Yi5pby9QeXRob25EYXRhU2NpZW5jZUhhbmRib29rLzAyLjA0LWNvbXB1dGF0aW9uLW9uLWFycmF5cy1hZ2dyZWdhdGVzLmh0bWw=">plenty of others</span>.</p>
 <h2 id="in-more-dimensions"><a class="markdownIt-Anchor" href="#in-more-dimensions">#</a> In more dimensions</h2>
 <p>All the examples we’ve looked at deal with vectors in one dimension. A key part of the beauty of NumPy is its ability to apply everything we’ve looked at so far to any number of dimensions.</p>
 <h3 id="creating-matrices"><a class="markdownIt-Anchor" href="#creating-matrices">#</a> Creating Matrices</h3>
 <p>We can pass python lists of lists in the following shape to have NumPy create a matrix to represent them:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.array([[<span class="number">1</span>,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">4</span>]])</span><br></pre></td></tr></table></figure>
-
+<img data-src="/2021/05/25/python-numpy-data-representation/numpy-array-create-2d.png" class="">
 <p>We can also use the same methods we mentioned above ( <code>ones()</code> ,  <code>zeros()</code> , and  <code>random.random()</code> ) as long as we give them a tuple describing the dimensions of the matrix we are creating:</p>
-
+<img data-src="/2021/05/25/python-numpy-data-representation/numpy-matrix-ones-zeros-random.png" class="">
 <h3 id="matrix-arithmetic"><a class="markdownIt-Anchor" href="#matrix-arithmetic">#</a> Matrix Arithmetic</h3>
 <p>We can add and multiply matrices using arithmetic operators ( <code>+-*/</code> ) if the two matrices are the same size. NumPy handles those as position-wise operations:</p>
-
+<img data-src="/2021/05/25/python-numpy-data-representation/numpy-matrix-arithmetic.png" class="">
 <p>We can get away with doing these arithmetic operations on matrices of different size only if the different dimension is one (e.g. the matrix has only one column or one row), in which case NumPy uses its broadcast rules for that operation:</p>
-
+<img data-src="/2021/05/25/python-numpy-data-representation/numpy-matrix-broadcast.png" class="">
 <h3 id="dot-product"><a class="markdownIt-Anchor" href="#dot-product">#</a> Dot Product</h3>
 <p>A key distinction to make with arithmetic is the case of <span class="exturl" data-url="aHR0cHM6Ly93d3cubWF0aHNpc2Z1bi5jb20vYWxnZWJyYS9tYXRyaXgtbXVsdGlwbHlpbmcuaHRtbA==">matrix multiplication</span> using the dot product. NumPy gives every matrix a  <code>dot()</code>  method we can use to carry-out dot product operations with other matrices:</p>
-
+<img data-src="/2021/05/25/python-numpy-data-representation/numpy-matrix-dot-product-1.png" class="">
 <p>I’ve added matrix dimensions at the bottom of this figure to stress that the two matrices have to have the same dimension on the side they face each other with. You can visualize this operation as looking like this:</p>
-
+<img data-src="/2021/05/25/python-numpy-data-representation/numpy-matrix-dot-product-2.png" class="">
 <h3 id="matrix-indexing"><a class="markdownIt-Anchor" href="#matrix-indexing">#</a> Matrix Indexing</h3>
 <p>Indexing and slicing operations become even more useful when we’re manipulating matrices:</p>
-
+<img data-src="/2021/05/25/python-numpy-data-representation/numpy-matrix-indexing.png" class="">
 <h3 id="matrix-aggregation"><a class="markdownIt-Anchor" href="#matrix-aggregation">#</a> Matrix Aggregation</h3>
 <p>We can aggregate matrices the same way we aggregated vectors:</p>
-
+<img data-src="/2021/05/25/python-numpy-data-representation/numpy-matrix-aggregation-1.png" class="">
 <p>Not only can we aggregate all the values in a matrix, but we can also aggregate across the rows or columns by using the  <code>axis</code>  parameter:</p>
-
+<img data-src="/2021/05/25/python-numpy-data-representation/numpy-matrix-aggregation-4.png" class="">
 <h2 id="transposing-and-reshaping"><a class="markdownIt-Anchor" href="#transposing-and-reshaping">#</a> Transposing and Reshaping</h2>
 <p>A common need when dealing with matrices is the need to rotate them. This is often the case when we need to take the dot product of two matrices and need to align the dimension they share. NumPy arrays have a convenient property called  <code>T</code>  to get the transpose of a matrix:</p>
-
+<img data-src="/2021/05/25/python-numpy-data-representation/numpy-transpose.png" class="">
 <p>In more advanced use case, you may find yourself needing to switch the dimensions of a certain matrix. This is often the case in machine learning applications where a certain model expects a certain shape for the inputs that is different from your dataset. NumPy’s  <code>reshape()</code>  method is useful in these cases. You just pass it the new dimensions you want for the matrix. You can pass -1 for a dimension and NumPy can infer the correct dimension based on your matrix:</p>
-
+<img data-src="/2021/05/25/python-numpy-data-representation/numpy-reshape.png" class="">
 <h2 id="yet-more-dimensions"><a class="markdownIt-Anchor" href="#yet-more-dimensions">#</a> Yet More Dimensions</h2>
 <p>NumPy can do everything we’ve mentioned in any number of dimensions. Its central data structure is called ndarray (N-Dimensional Array) for a reason.</p>
-
+<img data-src="/2021/05/25/python-numpy-data-representation/numpy-3d-array.png" class="">
 <p>In a lot of ways, dealing with a new dimension is just adding a comma to the parameters of a NumPy function:</p>
-
+<img data-src="/2021/05/25/python-numpy-data-representation/numpy-3d-array-creation.png" class="">
 <p>Note: Keep in mind that when you print a 3-dimensional NumPy array, the text output visualizes the array differently than shown here. NumPy’s order for printing n-dimensional arrays is that the last axis is looped over the fastest, while the first is the slowest. Which means that  <code>np.ones((4,3,2))</code>  would be printed as:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">array([[[<span class="number">1.</span>, <span class="number">1.</span>],</span><br><span class="line">        [<span class="number">1.</span>, <span class="number">1.</span>],</span><br><span class="line">        [<span class="number">1.</span>, <span class="number">1.</span>]],</span><br><span class="line"></span><br><span class="line">       [[<span class="number">1.</span>, <span class="number">1.</span>],</span><br><span class="line">        [<span class="number">1.</span>, <span class="number">1.</span>],</span><br><span class="line">        [<span class="number">1.</span>, <span class="number">1.</span>]],</span><br><span class="line"></span><br><span class="line">       [[<span class="number">1.</span>, <span class="number">1.</span>],</span><br><span class="line">        [<span class="number">1.</span>, <span class="number">1.</span>],</span><br><span class="line">        [<span class="number">1.</span>, <span class="number">1.</span>]],</span><br><span class="line"></span><br><span class="line">       [[<span class="number">1.</span>, <span class="number">1.</span>],</span><br><span class="line">        [<span class="number">1.</span>, <span class="number">1.</span>],</span><br><span class="line">        [<span class="number">1.</span>, <span class="number">1.</span>]]])</span><br></pre></td></tr></table></figure>
 <h2 id="practical-usage"><a class="markdownIt-Anchor" href="#practical-usage">#</a> Practical Usage</h2>
 <p>And now for the payoff. Here are some examples of the useful things NumPy will help you through.</p>
 <h3 id="formulas"><a class="markdownIt-Anchor" href="#formulas">#</a> Formulas</h3>
 <p>Implementing mathematical formulas that work on matrices and vectors is a key use case to consider NumPy for. It’s why NumPy is the darling of the scientific python community. For example, consider the mean square error formula that is central to supervised machine learning models tackling regression problems:</p>
-
+<img data-src="/2021/05/25/python-numpy-data-representation/mean-square-error-formula.png" class="">
 <p>Implementing this is a breeze in NumPy:</p>
-
+<img data-src="/2021/05/25/python-numpy-data-representation/numpy-mean-square-error-formula.png" class="">
 <p>The beauty of this is that numpy does not care if  <code>predictions</code>  and  <code>labels</code>  contain one or a thousand values (as long as they’re both the same size). We can walk through an example stepping sequentially through the four operations in that line of code:</p>
-
+<img data-src="/2021/05/25/python-numpy-data-representation/numpy-mse-1.png" class="">
 <p>Both the predictions and labels vectors contain three values. Which means n has a value of three. After we carry out the subtraction, we end up with the values looking like this:</p>
-
+<img data-src="/2021/05/25/python-numpy-data-representation/numpy-mse-2.png" class="">
 <p>Then we can square the values in the vector:</p>
-
+<img data-src="/2021/05/25/python-numpy-data-representation/numpy-mse-3.png" class="">
 <p>Now we sum these values:</p>
-
+<img data-src="/2021/05/25/python-numpy-data-representation/numpy-mse-4.png" class="">
 <p>Which results in the error value for that prediction and a score for the quality of the model.</p>
 <h3 id="data-representation"><a class="markdownIt-Anchor" href="#data-representation">#</a> Data Representation</h3>
 <p>Think of all the data types you’ll need to crunch and build models around (spreadsheets, images, audio…etc). So many of them are perfectly suited for representation in an n-dimensional array:</p>
@@ -242,13 +242,13 @@ D E W = 露の世</title>
 <ul>
 <li>A spreadsheet or a table of values is a two dimensional matrix. Each sheet in a spreadsheet can be its own variable. The most popular abstraction in python for those is the <span class="exturl" data-url="aHR0cHM6Ly9qYWxhbW1hci5naXRodWIuaW8vZ2VudGxlLXZpc3VhbC1pbnRyby10by1kYXRhLWFuYWx5c2lzLXB5dGhvbi1wYW5kYXMv">pandas dataframe</span>, which actually uses NumPy and builds on top of it.</li>
 </ul>
-
+<img data-src="/2021/05/25/python-numpy-data-representation/excel-to-pandas.png" class="">
 <h4 id="audio-and-timeseries"><a class="markdownIt-Anchor" href="#audio-and-timeseries">#</a> Audio and Timeseries</h4>
 <ul>
 <li>An audio file is a one-dimensional array of samples. Each sample is a number representing a tiny chunk of the audio signal. CD-quality audio may have 44,100 samples per second and each sample is an integer between -32767 and 32768. Meaning if you have a ten-seconds WAVE file of CD-quality, you can load it in a NumPy array with length 10 * 44,100 = 441,000 samples. Want to extract the first second of audio? simply load the file into a NumPy array that we’ll call  <code>audio</code> , and get  <code>audio[:44100]</code> .</li>
 </ul>
 <p>Here’s a look at a slice of an audio file:</p>
-
+<img data-src="/2021/05/25/python-numpy-data-representation/numpy-audio.png" class="">
 <p>The same goes for time-series data (for example, the price of a stock over time).</p>
 <h4 id="images"><a class="markdownIt-Anchor" href="#images">#</a> Images</h4>
 <p>An image is a matrix of pixels of size (height x width).</p>
@@ -256,26 +256,26 @@ D E W = 露の世</title>
 <li>
 <p>If the image is black and white (a.k.a. grayscale), each pixel can be represented by a single number (commonly between 0 (black) and 255 (white)). Want to crop the top left 10 x 10 pixel part of the image? Just tell NumPy to get you  <code>image[:10,:10]</code> .</p>
 <p>Here’s a look at a slice of an image file:</p>
-
+<img data-src="/2021/05/25/python-numpy-data-representation/numpy-grayscale-image.png" class="">
 </li>
 <li>
 <p>If the image is colored, then each pixel is represented by three numbers - a value for each of red, green, and blue. In that case we need a 3rd dimension (because each cell can only contain one number). So a colored image is represented by an ndarray of dimensions: (height x width x 3).</p>
-
+<img data-src="/2021/05/25/python-numpy-data-representation/numpy-color-image-1621924817177.png" class="">
 </li>
 </ul>
 <h4 id="language"><a class="markdownIt-Anchor" href="#language">#</a> Language</h4>
 <p>If we’re dealing with text, the story is a little different. The numeric representation of text requires a step of building a vocabulary (an inventory of all the unique words the model knows) and an <span class="exturl" data-url="aHR0cHM6Ly9qYWxhbW1hci5naXRodWIuaW8vaWxsdXN0cmF0ZWQtd29yZDJ2ZWMv">embedding step</span>. Let us see the steps of numerically representing this (translated) quote by an ancient spirit:</p>
 <p>“Have the bards who preceded me left any theme unsung?”</p>
 <p>A model needs to look at a large amount of text before it can numerically represent the anxious words of this warrior poet. We can proceed to have it process a <span class="exturl" data-url="aHR0cDovL21hdHRtYWhvbmV5Lm5ldC9kYy90ZXh0ZGF0YS5odG1s">small dataset</span> and use it to build a vocabulary (of 71,290 words):</p>
-
+<img data-src="/2021/05/25/python-numpy-data-representation/numpy-nlp-vocabulary.png" class="">
 <p>The sentence can then be broken into an array of tokens (words or parts of words based on common rules):</p>
-
+<img data-src="/2021/05/25/python-numpy-data-representation/numpy-nlp-tokenization.png" class="">
 <p>We then replace each word by its id in the vocabulary table:</p>
-
+<img data-src="/2021/05/25/python-numpy-data-representation/numpy-nlp-ids.png" class="">
 <p>These ids still don’t provide much information value to a model. So before feeding a sequence of words to a model, the tokens/words need to be replaced with their embeddings (50 dimension <span class="exturl" data-url="aHR0cHM6Ly9qYWxhbW1hci5naXRodWIuaW8vaWxsdXN0cmF0ZWQtd29yZDJ2ZWMv">word2vec embedding</span> in this case):</p>
-
+<img data-src="/2021/05/25/python-numpy-data-representation/numpy-nlp-embeddings.png" class="">
 <p>You can see that this NumPy array has the dimensions [embedding_dimension x sequence_length]. In practice these would be the other way around, but I’m presenting it this way for visual consistency. For performance reasons, deep learning models tend to preserve the first dimension for batch size (because the model can be trained faster if multiple examples are trained in parallel). This is a clear case where  <code>reshape()</code>  becomes super useful. A model like <span class="exturl" data-url="aHR0cHM6Ly9qYWxhbW1hci5naXRodWIuaW8vaWxsdXN0cmF0ZWQtYmVydC8=">BERT</span>, for example, would expect its inputs in the shape: [batch_size, sequence_length, embedding_size].</p>
-
+<img data-src="/2021/05/25/python-numpy-data-representation/numpy-nlp-bert-shape.png" class="">
 <p>This is now a numeric volume that a model can crunch and do useful things with. I left the other rows empty, but they’d be filled with other examples for the model to train on (or predict).</p>
 <p>(It turned out the <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpc291cmNlLm9yZy93aWtpL1RoZV9Qb2VtX29mX0FudGFyYQ==">poet’s words</span> in our example were immortalized more so than those of the other poets which trigger his anxieties. Born a slave owned by his father, <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvQW50YXJhaF9pYm5fU2hhZGRhZA==">Antarah’s</span> valor and command of language gained him his freedom and the mythical status of having his poem as one of <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvTXUnYWxsYXFhdA==">seven poems suspended in the kaaba</span> in pre-Islamic Arabia).</p>
 
@@ -292,7 +292,7 @@ D E W = 露の世</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2021-10-18 13:27:18" itemprop="dateModified" datetime="2021-10-18T13:27:18+08:00">2021-10-18</time>
+    <time title="Modified: 2024-10-15 17:26:13" itemprop="dateModified" datetime="2024-10-15T17:26:13+08:00">2024-10-15</time>
   </span>
 </div>
 
@@ -309,7 +309,7 @@ D E W = 露の世</title>
     <div class="item left">
       
 
-  <a href="/2021/05/20/etl/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;邻座的怪同学.jpg" title="ETL">
+  <a href="/2021/05/20/etl/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;轻音少女.jpg" title="ETL">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>ETL</h3>
@@ -319,7 +319,7 @@ D E W = 露の世</title>
     <div class="item right">
       
 
-  <a href="/2021/05/25/oracle-read-file/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;刻刻.jpg" title="UTL_FILE - Random Access of Files">
+  <a href="/2021/05/25/oracle-read-file/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;怪物之子-1.jpg" title="UTL_FILE - Random Access of Files">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>UTL_FILE - Random Access of Files</h3>
@@ -356,7 +356,7 @@ D E W = 露の世</title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">361</span>
+        <span class="count">363</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -368,7 +368,7 @@ D E W = 露の世</title>
     </div>
     <div class="item tags">
       <a href="/tags/">
-        <span class="count">50</span>
+        <span class="count">52</span>
         <span class="name">tags</span>
       </a>
     </div>
@@ -475,7 +475,7 @@ D E W = 露の世</title>
   </div>
 <script data-config type="text/javascript">
   var LOCAL = {
-    path: '2021/05/25/python-numpy/',
+    path: '2021/05/25/python-numpy-data-representation/',
     favicon: {
       show: "（●´3｀●）Goooood",
       hide: "(´Д｀)Booooom"

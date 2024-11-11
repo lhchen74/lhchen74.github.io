@@ -1,0 +1,428 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CFira%20Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="python" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2024/10/15/python-opencv/">
+
+
+
+  <title>
+OpenCV Tutorial with Python |
+D E W = 露の世</title>
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">OpenCV Tutorial with Python
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2024-10-15 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2024-10-15T00:00:00+08:00">2024-10-15</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">D E W</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="/anime/index/强风吹拂.jpg"></li>
+          <li class="item" data-background-image="/anime/index/神的记事本.jpg"></li>
+          <li class="item" data-background-image="/anime/index/晨曦公主.jpg"></li>
+          <li class="item" data-background-image="/anime/index/名侦探柯南.jpg"></li>
+          <li class="item" data-background-image="/anime/index/血意少年.jpg"></li>
+          <li class="item" data-background-image="/anime/index/巴克亚罗.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2024/10/15/python-opencv/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>From: <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2phc21jYXVzL29wZW5jdi1jb3Vyc2U=">opencv-course</span></p>
+</blockquote>
+<h2 id="reading-images-video"><a class="markdownIt-Anchor" href="#reading-images-video">#</a> Reading Images &amp; Video</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2 <span class="keyword">as</span> cv</span><br><span class="line"></span><br><span class="line"><span class="comment"># Reading Image</span></span><br><span class="line"><span class="comment"># img = cv.imread(&#x27;./Resources/Photos/cat.jpg&#x27;)</span></span><br><span class="line"><span class="comment"># img = cv.imread(&#x27;./Resources/Photos/cat.jpg&#x27;, cv.IMREAD_GRAYSCALE) # Read as Gray directly</span></span><br><span class="line"><span class="comment"># cv.imshow(&#x27;Cats&#x27;, img)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># cv.waitKey(0)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Reading Video</span></span><br><span class="line">capture = cv.VideoCapture(<span class="string">&#x27;./Resources/Videos/dog.mp4&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    has_frame, frame = capture.read()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> has_frame:</span><br><span class="line">        cv.imshow(<span class="string">&#x27;Video&#x27;</span>, frame)</span><br><span class="line">        <span class="keyword">if</span> cv.waitKey(<span class="number">20</span>) &amp; <span class="number">0xFF</span>==<span class="built_in">ord</span>(<span class="string">&#x27;d&#x27;</span>):</span><br><span class="line">            <span class="keyword">break</span>  </span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">capture.release()</span><br><span class="line"></span><br><span class="line">cv.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+<h3 id="write-images"><a class="markdownIt-Anchor" href="#write-images">#</a> Write Images</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2 <span class="keyword">as</span> cv</span><br><span class="line">img = cv.imread(<span class="string">&#x27;./Resources/Photos/cats.jpg&#x27;</span>, cv.IMREAD_GRAYSCALE)</span><br><span class="line"></span><br><span class="line">cv.imwrite(<span class="string">&#x27;cats.jpg&#x27;</span>, img)</span><br><span class="line"></span><br><span class="line"><span class="comment"># JPG is lossy compression</span></span><br><span class="line"><span class="comment"># The quality of JPG image is 0-100, where 0 being the worst quality and the most compressed</span></span><br><span class="line">cv.imwrite(<span class="string">&#x27;cats_compress.jpg&#x27;</span>, img, [cv.IMWRITE_JPEG_QUALITY, <span class="number">0</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># PNG is lossless compression</span></span><br><span class="line"><span class="comment"># The PNG image compression is 0-9, and 9 being the most compressed</span></span><br><span class="line">cv.imwrite(<span class="string">&#x27;cats_compress.png&#x27;</span>, img, [cv.IMWRITE_PNG_COMPRESSION, <span class="number">9</span>])</span><br></pre></td></tr></table></figure>
+<img data-src="/2024/10/15/python-opencv/1728983282834.png" class="">
+<h2 id="resizing-and-rescaling-frames"><a class="markdownIt-Anchor" href="#resizing-and-rescaling-frames">#</a> Resizing and Rescaling Frames</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2 <span class="keyword">as</span> cv</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">rescale_frame</span>(<span class="params">frame, scale=<span class="number">0.75</span></span>):</span></span><br><span class="line">    <span class="comment"># height, width = frame.shape[0], frame.shape[1]</span></span><br><span class="line">    <span class="comment"># [height, width] = frame.shape[:2]</span></span><br><span class="line">    (height, width) = frame.shape[:<span class="number">2</span>]</span><br><span class="line">    dimensions = (<span class="built_in">int</span>(width * scale), <span class="built_in">int</span>(height * scale))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> cv.resize(frame, dimensions, interpolation=cv.INTER_AREA)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Rescale Image</span></span><br><span class="line"><span class="comment"># img = cv.imread(&#x27;./Resources/Photos/cat.jpg&#x27;)</span></span><br><span class="line"><span class="comment"># cv.imshow(&#x27;Cats&#x27;, img)</span></span><br><span class="line"><span class="comment"># rescaled_img = rescale_frame(img)</span></span><br><span class="line"><span class="comment"># cv.imshow(&#x27;Rescaled Cats&#x27;, rescaled_img)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># cv.waitKey(0)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Rescale Video</span></span><br><span class="line">capture = cv.VideoCapture(<span class="string">&#x27;./Resources/Videos/dog.mp4&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    has_frame, frame = capture.read()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> has_frame:</span><br><span class="line">        cv.imshow(<span class="string">&#x27;Video&#x27;</span>, frame)</span><br><span class="line">        rescaled_frame = rescale_frame(frame, <span class="number">0.5</span>)</span><br><span class="line">        cv.imshow(<span class="string">&#x27;Rescaled Video&#x27;</span>, rescaled_frame)</span><br><span class="line">        <span class="keyword">if</span> cv.waitKey(<span class="number">20</span>) &amp; <span class="number">0xFF</span>==<span class="built_in">ord</span>(<span class="string">&#x27;d&#x27;</span>):</span><br><span class="line">            <span class="keyword">break</span>  </span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">capture.release()</span><br><span class="line">cv.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+<h2 id="drawing-shapes-putting-text"><a class="markdownIt-Anchor" href="#drawing-shapes-putting-text">#</a> Drawing Shapes &amp; Putting Text</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2 <span class="keyword">as</span> cv</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">blank = np.zeros((<span class="number">500</span>,<span class="number">500</span>,<span class="number">3</span>), dtype=<span class="string">&#x27;uint8&#x27;</span>)</span><br><span class="line">cv.imshow(<span class="string">&#x27;Blank&#x27;</span>, blank)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. Paint the image a certain colour</span></span><br><span class="line">blank[<span class="number">200</span>:<span class="number">300</span>, <span class="number">300</span>:<span class="number">400</span>] = <span class="number">0</span>,<span class="number">0</span>,<span class="number">255</span></span><br><span class="line">cv.imshow(<span class="string">&#x27;Green&#x27;</span>, blank)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. Draw a Rectangle</span></span><br><span class="line">cv.rectangle(blank, (<span class="number">0</span>,<span class="number">0</span>), (blank.shape[<span class="number">1</span>]//<span class="number">2</span>, blank.shape[<span class="number">0</span>]//<span class="number">2</span>), (<span class="number">0</span>,<span class="number">255</span>,<span class="number">0</span>), thickness=-<span class="number">1</span>)</span><br><span class="line">cv.imshow(<span class="string">&#x27;Rectangle&#x27;</span>, blank)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. Draw A circle</span></span><br><span class="line">cv.circle(blank, (blank.shape[<span class="number">1</span>]//<span class="number">2</span>, blank.shape[<span class="number">0</span>]//<span class="number">2</span>), <span class="number">40</span>, (<span class="number">0</span>,<span class="number">0</span>,<span class="number">255</span>), thickness=-<span class="number">1</span>)</span><br><span class="line">cv.imshow(<span class="string">&#x27;Circle&#x27;</span>, blank)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. Draw a line</span></span><br><span class="line">cv.line(blank, (<span class="number">100</span>,<span class="number">250</span>), (<span class="number">300</span>,<span class="number">400</span>), (<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>), thickness=<span class="number">3</span>)</span><br><span class="line">cv.imshow(<span class="string">&#x27;Line&#x27;</span>, blank)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 5. Write text</span></span><br><span class="line">cv.putText(blank, <span class="string">&#x27;Hello World!&#x27;</span>, (<span class="number">0</span>,<span class="number">225</span>), cv.FONT_HERSHEY_TRIPLEX, <span class="number">1.0</span>, (<span class="number">0</span>,<span class="number">255</span>,<span class="number">0</span>), <span class="number">2</span>)</span><br><span class="line">cv.imshow(<span class="string">&#x27;Text&#x27;</span>, blank)</span><br><span class="line"></span><br><span class="line">cv.waitKey(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="essential-functions"><a class="markdownIt-Anchor" href="#essential-functions">#</a> Essential Functions</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2 <span class="keyword">as</span> cv</span><br><span class="line"></span><br><span class="line"><span class="comment"># Read in an image</span></span><br><span class="line">img = cv.imread(<span class="string">&#x27;./Resources/Photos/park.jpg&#x27;</span>)</span><br><span class="line">cv.imshow(<span class="string">&#x27;Park&#x27;</span>, img)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Converting to grayscale</span></span><br><span class="line">gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)</span><br><span class="line">cv.imshow(<span class="string">&#x27;Gray&#x27;</span>, gray)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Blur </span></span><br><span class="line">blur = cv.GaussianBlur(img, (<span class="number">7</span>,<span class="number">7</span>), cv.BORDER_DEFAULT)</span><br><span class="line">cv.imshow(<span class="string">&#x27;Blur&#x27;</span>, blur)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Edge Cascade</span></span><br><span class="line">canny = cv.Canny(blur, <span class="number">125</span>, <span class="number">175</span>)</span><br><span class="line">cv.imshow(<span class="string">&#x27;Canny Edges&#x27;</span>, canny)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Dilating the image</span></span><br><span class="line">dilated = cv.dilate(canny, (<span class="number">7</span>,<span class="number">7</span>), iterations=<span class="number">3</span>)</span><br><span class="line">cv.imshow(<span class="string">&#x27;Dilated&#x27;</span>, dilated)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Eroding</span></span><br><span class="line">eroded = cv.erode(dilated, (<span class="number">7</span>,<span class="number">7</span>), iterations=<span class="number">3</span>)</span><br><span class="line">cv.imshow(<span class="string">&#x27;Eroded&#x27;</span>, eroded)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Resize</span></span><br><span class="line">resized = cv.resize(img, (<span class="number">500</span>,<span class="number">500</span>), interpolation=cv.INTER_CUBIC)</span><br><span class="line">cv.imshow(<span class="string">&#x27;Resized&#x27;</span>, resized)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Cropping</span></span><br><span class="line">cropped = img[<span class="number">50</span>:<span class="number">200</span>, <span class="number">200</span>:<span class="number">400</span>]</span><br><span class="line">cv.imshow(<span class="string">&#x27;Cropped&#x27;</span>, cropped)</span><br></pre></td></tr></table></figure>
+<img data-src="/2024/10/15/python-opencv/1728979698146.png" class="">
+<h2 id="image-transformations"><a class="markdownIt-Anchor" href="#image-transformations">#</a> Image Transformations</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2 <span class="keyword">as</span> cv</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">img = cv.imread(<span class="string">&#x27;./Resources/Photos/park.jpg&#x27;</span>)</span><br><span class="line">cv.imshow(<span class="string">&#x27;Park&#x27;</span>, img)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Translation</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">translate</span>(<span class="params">img, x, y</span>):</span></span><br><span class="line">    transMat = np.float32([[<span class="number">1</span>,<span class="number">0</span>,x],[<span class="number">0</span>,<span class="number">1</span>,y]])</span><br><span class="line">    dimensions = (img.shape[<span class="number">1</span>], img.shape[<span class="number">0</span>])</span><br><span class="line">    <span class="keyword">return</span> cv.warpAffine(img, transMat, dimensions)</span><br><span class="line"></span><br><span class="line">translated = translate(img, -<span class="number">100</span>, <span class="number">100</span>)</span><br><span class="line">cv.imshow(<span class="string">&#x27;Translated&#x27;</span>, translated)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Rotation</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">rotate</span>(<span class="params">img, angle, rotPoint=<span class="literal">None</span></span>):</span></span><br><span class="line">    (height,width) = img.shape[:<span class="number">2</span>]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> rotPoint <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        rotPoint = (width//<span class="number">2</span>,height//<span class="number">2</span>)</span><br><span class="line">    </span><br><span class="line">    rotMat = cv.getRotationMatrix2D(rotPoint, angle, <span class="number">1.0</span>)</span><br><span class="line">    dimensions = (width,height)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> cv.warpAffine(img, rotMat, dimensions)</span><br><span class="line"></span><br><span class="line">rotated = rotate(img, -<span class="number">45</span>)</span><br><span class="line">cv.imshow(<span class="string">&#x27;Rotated&#x27;</span>, rotated)</span><br><span class="line"></span><br><span class="line">rotated_rotated = rotate(img, -<span class="number">90</span>)</span><br><span class="line">cv.imshow(<span class="string">&#x27;Rotated Rotated&#x27;</span>, rotated_rotated)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Resizing</span></span><br><span class="line">resized = cv.resize(img, (<span class="number">500</span>,<span class="number">500</span>), interpolation=cv.INTER_CUBIC)</span><br><span class="line">cv.imshow(<span class="string">&#x27;Resized&#x27;</span>, resized)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Flipping</span></span><br><span class="line">flip = cv.flip(img, -<span class="number">1</span>)</span><br><span class="line">cv.imshow(<span class="string">&#x27;Flip&#x27;</span>, flip)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Cropping</span></span><br><span class="line">cropped = img[<span class="number">200</span>:<span class="number">400</span>, <span class="number">300</span>:<span class="number">400</span>]</span><br><span class="line">cv.imshow(<span class="string">&#x27;Cropped&#x27;</span>, cropped)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">cv.waitKey(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="contour-detection"><a class="markdownIt-Anchor" href="#contour-detection">#</a> Contour Detection</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2 <span class="keyword">as</span> cv</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">img = cv.imread(<span class="string">&#x27;./Resources/Photos/cats.jpg&#x27;</span>)</span><br><span class="line">cv.imshow(<span class="string">&#x27;Cats&#x27;</span>, img)</span><br><span class="line"></span><br><span class="line">blank = np.zeros(img.shape, dtype=<span class="string">&#x27;uint8&#x27;</span>)</span><br><span class="line">cv.imshow(<span class="string">&#x27;Blank&#x27;</span>, blank)</span><br><span class="line"></span><br><span class="line">gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)</span><br><span class="line">cv.imshow(<span class="string">&#x27;Gray&#x27;</span>, gray)</span><br><span class="line"></span><br><span class="line">blur = cv.GaussianBlur(gray, (<span class="number">5</span>,<span class="number">5</span>), cv.BORDER_DEFAULT)</span><br><span class="line">cv.imshow(<span class="string">&#x27;Blur&#x27;</span>, blur)</span><br><span class="line"></span><br><span class="line">canny = cv.Canny(blur, <span class="number">125</span>, <span class="number">175</span>)</span><br><span class="line">cv.imshow(<span class="string">&#x27;Canny Edges&#x27;</span>, canny)</span><br><span class="line"></span><br><span class="line"><span class="comment"># ret, thresh = cv.threshold(gray, 125, 255, cv.THRESH_BINARY)</span></span><br><span class="line"><span class="comment"># cv.imshow(&#x27;Thresh&#x27;, thresh)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># contours, hierarchies = cv.findContours(thresh, cv.RETR_LIST, cv.CHAIN_APPROX_SIMPLE)</span></span><br><span class="line">contours, hierarchies = cv.findContours(canny, cv.RETR_LIST, cv.CHAIN_APPROX_SIMPLE)</span><br><span class="line">print(<span class="string">f&#x27;<span class="subst">&#123;<span class="built_in">len</span>(contours)&#125;</span> contour(s) found!&#x27;</span>)</span><br><span class="line"></span><br><span class="line">cv.drawContours(blank, contours, -<span class="number">1</span>, (<span class="number">0</span>,<span class="number">0</span>,<span class="number">255</span>), <span class="number">1</span>)</span><br><span class="line">cv.imshow(<span class="string">&#x27;Contours Drawn&#x27;</span>, blank) <span class="comment"># 380 contour(s) found!</span></span><br><span class="line"></span><br><span class="line">cv.waitKey(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<img data-src="/2024/10/15/python-opencv/1728979920563.png" class="">
+<h2 id="color-spaces"><a class="markdownIt-Anchor" href="#color-spaces">#</a> Color Spaces</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2 <span class="keyword">as</span> cv</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">img = cv.imread(<span class="string">&#x27;./Resources/Photos/park.jpg&#x27;</span>)</span><br><span class="line">cv.imshow(<span class="string">&#x27;BGR&#x27;</span>, img)</span><br><span class="line"></span><br><span class="line"><span class="comment"># plt.imshow(img)</span></span><br><span class="line"><span class="comment"># plt.show()</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># BGR to RGB</span></span><br><span class="line">rgb = cv.cvtColor(img, cv.COLOR_BGR2RGB)</span><br><span class="line">cv.imshow(<span class="string">&#x27;RGB&#x27;</span>, rgb)</span><br><span class="line"></span><br><span class="line"><span class="comment"># plt.imshow(rgb)</span></span><br><span class="line"><span class="comment"># plt.show()</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># BGR to Grayscale</span></span><br><span class="line">gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)</span><br><span class="line">cv.imshow(<span class="string">&#x27;Gray&#x27;</span>, gray)</span><br><span class="line"></span><br><span class="line"><span class="comment"># BGR to HSV</span></span><br><span class="line">hsv = cv.cvtColor(img, cv.COLOR_BGR2HSV)</span><br><span class="line">cv.imshow(<span class="string">&#x27;HSV&#x27;</span>, hsv)</span><br><span class="line"></span><br><span class="line"><span class="comment"># BGR to L*a*b</span></span><br><span class="line">lab = cv.cvtColor(img, cv.COLOR_BGR2LAB)</span><br><span class="line">cv.imshow(<span class="string">&#x27;LAB&#x27;</span>, lab)</span><br><span class="line"></span><br><span class="line"><span class="comment"># HSV to BGR</span></span><br><span class="line">lab_bgr = cv.cvtColor(lab, cv.COLOR_LAB2BGR)</span><br><span class="line">cv.imshow(<span class="string">&#x27;LAB -&gt; BGR&#x27;</span>, lab_bgr)</span><br><span class="line"></span><br><span class="line">cv.waitKey(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<img data-src="/2024/10/15/python-opencv/1728980391280.png" class="">
+<h2 id="color-channels"><a class="markdownIt-Anchor" href="#color-channels">#</a> Color Channels</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2 <span class="keyword">as</span> cv</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">img = cv.imread(<span class="string">&#x27;./Resources/Photos/park.jpg&#x27;</span>)</span><br><span class="line">cv.imshow(<span class="string">&#x27;Park&#x27;</span>, img)</span><br><span class="line"></span><br><span class="line">blank = np.zeros(img.shape[:<span class="number">2</span>], dtype=<span class="string">&#x27;uint8&#x27;</span>)</span><br><span class="line"></span><br><span class="line">b,g,r = cv.split(img)</span><br><span class="line">cv.imshow(<span class="string">&#x27;B&#x27;</span>, b)</span><br><span class="line">cv.imshow(<span class="string">&#x27;G&#x27;</span>, g)</span><br><span class="line">cv.imshow(<span class="string">&#x27;R&#x27;</span>, r)</span><br><span class="line"></span><br><span class="line">blue = cv.merge([b,blank,blank])</span><br><span class="line">green = cv.merge([blank,g,blank])</span><br><span class="line">red = cv.merge([blank,blank,r])</span><br><span class="line">cv.imshow(<span class="string">&#x27;Blue&#x27;</span>, blue)</span><br><span class="line">cv.imshow(<span class="string">&#x27;Green&#x27;</span>, green)</span><br><span class="line">cv.imshow(<span class="string">&#x27;Red&#x27;</span>, red)</span><br><span class="line"></span><br><span class="line">print(img.shape) <span class="comment"># (427, 640, 3)</span></span><br><span class="line">print(b.shape) <span class="comment"># (427, 640)</span></span><br><span class="line">print(g.shape) <span class="comment"># (427, 640)</span></span><br><span class="line">print(r.shape) <span class="comment"># (427, 640)</span></span><br><span class="line"></span><br><span class="line">merged = cv.merge([b,g,r])</span><br><span class="line">cv.imshow(<span class="string">&#x27;Merged Image&#x27;</span>, merged)</span><br><span class="line"></span><br><span class="line">cv.waitKey(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<img data-src="/2024/10/15/python-opencv/1728980669911.png" class="">
+<h2 id="blurring"><a class="markdownIt-Anchor" href="#blurring">#</a> Blurring</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">img = cv.imread(<span class="string">&#x27;./Resources/Photos/cats.jpg&#x27;</span>)</span><br><span class="line">cv.imshow(<span class="string">&#x27;Cats&#x27;</span>, img)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Averaging</span></span><br><span class="line">average = cv.blur(img, (<span class="number">3</span>,<span class="number">3</span>))</span><br><span class="line">cv.imshow(<span class="string">&#x27;Average Blur&#x27;</span>, average)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Gaussian Blur</span></span><br><span class="line">gauss = cv.GaussianBlur(img, (<span class="number">3</span>,<span class="number">3</span>), <span class="number">0</span>)</span><br><span class="line">cv.imshow(<span class="string">&#x27;Gaussian Blur&#x27;</span>, gauss)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Median Blur</span></span><br><span class="line">median = cv.medianBlur(img, <span class="number">3</span>)</span><br><span class="line">cv.imshow(<span class="string">&#x27;Median Blur&#x27;</span>, median)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Bilateral</span></span><br><span class="line">bilateral = cv.bilateralFilter(img, <span class="number">10</span>, <span class="number">35</span>, <span class="number">25</span>)</span><br><span class="line">cv.imshow(<span class="string">&#x27;Bilateral&#x27;</span>, bilateral)</span><br><span class="line"></span><br><span class="line">cv.waitKey(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<img data-src="/2024/10/15/python-opencv/1728981082825.png" class="">
+<h2 id="bitwise-operations"><a class="markdownIt-Anchor" href="#bitwise-operations">#</a> BITWISE operations</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2 <span class="keyword">as</span> cv</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">blank = np.zeros((<span class="number">400</span>, <span class="number">400</span>), dtype=<span class="string">&#x27;uint8&#x27;</span>)</span><br><span class="line"></span><br><span class="line">rectangle = cv.rectangle(blank.copy(), (<span class="number">30</span>, <span class="number">30</span>), (<span class="number">370</span>, <span class="number">370</span>), <span class="number">255</span>, -<span class="number">1</span>)</span><br><span class="line">circle = cv.circle(blank.copy(), (<span class="number">200</span>, <span class="number">200</span>), <span class="number">200</span>, <span class="number">255</span>, -<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">cv.imshow(<span class="string">&#x27;Rectangle&#x27;</span>, rectangle)</span><br><span class="line">cv.imshow(<span class="string">&#x27;Circle&#x27;</span>, circle)</span><br><span class="line"></span><br><span class="line"><span class="comment"># bitwise AND --&gt; intersecting regions</span></span><br><span class="line">bitwise_and = cv.bitwise_and(rectangle, circle)</span><br><span class="line">cv.imshow(<span class="string">&#x27;Bitwise AND&#x27;</span>, bitwise_and)</span><br><span class="line"></span><br><span class="line"><span class="comment"># bitwise OR --&gt; non-intersecting and intersecting regions</span></span><br><span class="line">bitwise_or = cv.bitwise_or(rectangle, circle)</span><br><span class="line">cv.imshow(<span class="string">&#x27;Bitwise OR&#x27;</span>, bitwise_or)</span><br><span class="line"></span><br><span class="line"><span class="comment"># bitwise XOR --&gt; non-intersecting regions</span></span><br><span class="line">bitwise_xor = cv.bitwise_xor(rectangle, circle)</span><br><span class="line">cv.imshow(<span class="string">&#x27;Bitwise XOR&#x27;</span>, bitwise_xor)</span><br><span class="line"></span><br><span class="line"><span class="comment"># bitwise NOT</span></span><br><span class="line">bitwise_not = cv.bitwise_not(circle)</span><br><span class="line">cv.imshow(<span class="string">&#x27;Circle NOT&#x27;</span>, bitwise_not)</span><br><span class="line"></span><br><span class="line">cv.waitKey(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<img data-src="/2024/10/15/python-opencv/1728981185535.png" class="">
+<h2 id="masking"><a class="markdownIt-Anchor" href="#masking">#</a> Masking</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2 <span class="keyword">as</span> cv</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">img = cv.imread(<span class="string">&#x27;./Resources/Photos/cats 2.jpg&#x27;</span>)</span><br><span class="line">cv.imshow(<span class="string">&#x27;Cats&#x27;</span>, img)</span><br><span class="line"></span><br><span class="line">blank = np.zeros(img.shape[:<span class="number">2</span>], dtype=<span class="string">&#x27;uint8&#x27;</span>)</span><br><span class="line">cv.imshow(<span class="string">&#x27;Blank Image&#x27;</span>, blank)</span><br><span class="line"></span><br><span class="line">circle = cv.circle(blank.copy(), (img.shape[<span class="number">1</span>]//<span class="number">2</span> + <span class="number">45</span>, img.shape[<span class="number">0</span>]//<span class="number">2</span>), <span class="number">100</span>, <span class="number">255</span>, -<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">rectangle = cv.rectangle(blank.copy(), (<span class="number">30</span>, <span class="number">30</span>), (<span class="number">370</span>, <span class="number">370</span>), <span class="number">255</span>, -<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">weird_shape = cv.bitwise_and(circle, rectangle)</span><br><span class="line">cv.imshow(<span class="string">&#x27;Weird Shape&#x27;</span>, weird_shape)</span><br><span class="line"></span><br><span class="line">masked = cv.bitwise_and(img, img, mask=weird_shape)</span><br><span class="line">cv.imshow(<span class="string">&#x27;Weird Shaped Masked Image&#x27;</span>, masked)</span><br><span class="line"></span><br><span class="line">cv.waitKey(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<img data-src="/2024/10/15/python-opencv/1728981334297.png" class="">
+<h2 id="histogram-computation"><a class="markdownIt-Anchor" href="#histogram-computation">#</a> Histogram Computation</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2 <span class="keyword">as</span> cv</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">img = cv.imread(<span class="string">&#x27;./Resources/Photos/cats.jpg&#x27;</span>)</span><br><span class="line">cv.imshow(<span class="string">&#x27;Cats&#x27;</span>, img)</span><br><span class="line"></span><br><span class="line">blank = np.zeros(img.shape[:<span class="number">2</span>], dtype=<span class="string">&#x27;uint8&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)</span></span><br><span class="line"><span class="comment"># cv.imshow(&#x27;Gray&#x27;, gray)</span></span><br><span class="line"></span><br><span class="line">mask = cv.circle(blank, (img.shape[<span class="number">1</span>]//<span class="number">2</span>, img.shape[<span class="number">0</span>]//<span class="number">2</span>), <span class="number">100</span>, <span class="number">255</span>, -<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">masked = cv.bitwise_and(img, img, mask=mask)</span><br><span class="line">cv.imshow(<span class="string">&#x27;Mask&#x27;</span>, masked)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Grayscale Histogram</span></span><br><span class="line"><span class="comment"># gray_hist = cv.calcHist([gray], [0], mask, [256], [0,256] )</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># plt.figure()</span></span><br><span class="line"><span class="comment"># plt.title(&#x27;Grayscale Histogram&#x27;)</span></span><br><span class="line"><span class="comment"># plt.xlabel(&#x27;Bins&#x27;)</span></span><br><span class="line"><span class="comment"># plt.ylabel(&#x27;# of pixels&#x27;)</span></span><br><span class="line"><span class="comment"># plt.plot(gray_hist)</span></span><br><span class="line"><span class="comment"># plt.xlim([0,256])</span></span><br><span class="line"><span class="comment"># plt.show()</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Colour Histogram</span></span><br><span class="line">plt.figure()</span><br><span class="line">plt.title(<span class="string">&#x27;Colour Histogram&#x27;</span>)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;Bins&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;# of pixels&#x27;</span>)</span><br><span class="line">plt.xlim([<span class="number">0</span>, <span class="number">256</span>])</span><br><span class="line"></span><br><span class="line">colors = (<span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;g&#x27;</span>, <span class="string">&#x27;r&#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> i, col <span class="keyword">in</span> <span class="built_in">enumerate</span>(colors):</span><br><span class="line">    hist = cv.calcHist([img], [i], mask, [<span class="number">256</span>], [<span class="number">0</span>, <span class="number">256</span>])</span><br><span class="line">    plt.plot(hist, color=col)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">cv.waitKey(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<img data-src="/2024/10/15/python-opencv/1728981473493.png" class="">
+<img data-src="/2024/10/15/python-opencv/1728981497206.png" class="">
+<h2 id="thresholdingbinarizing-images"><a class="markdownIt-Anchor" href="#thresholdingbinarizing-images">#</a> Thresholding/Binarizing Images</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2 <span class="keyword">as</span> cv</span><br><span class="line"></span><br><span class="line">gray = cv.imread(<span class="string">&#x27;./Resources/Photos/cats.jpg&#x27;</span>, cv.IMREAD_GRAYSCALE)</span><br><span class="line">cv.imshow(<span class="string">&#x27;Gray&#x27;</span>, gray)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Thresholding</span></span><br><span class="line">threshold, thresh = cv.threshold(gray, <span class="number">150</span>, <span class="number">255</span>, cv.THRESH_BINARY)</span><br><span class="line">cv.imshow(<span class="string">&#x27;Thresholded&#x27;</span>, thresh)</span><br><span class="line"></span><br><span class="line">threshold, thresh_inv = cv.threshold(gray, <span class="number">150</span>, <span class="number">255</span>, cv.THRESH_BINARY_INV)</span><br><span class="line">cv.imshow(<span class="string">&#x27;Thresholded Inverse&#x27;</span>, thresh_inv)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Adaptive Thresholding</span></span><br><span class="line">adaptive_thresh_1 = cv.adaptiveThreshold(</span><br><span class="line">    gray, <span class="number">255</span>, cv.ADAPTIVE_THRESH_GAUSSIAN_C, cv.THRESH_BINARY, <span class="number">11</span>, <span class="number">3</span>)</span><br><span class="line">cv.imshow(<span class="string">&#x27;Adaptive Threshing 1&#x27;</span>, adaptive_thresh_1)</span><br><span class="line"></span><br><span class="line">adaptive_thresh_2 = cv.adaptiveThreshold(</span><br><span class="line">    gray, <span class="number">255</span>, cv.ADAPTIVE_THRESH_GAUSSIAN_C, cv.THRESH_BINARY, <span class="number">11</span>, <span class="number">9</span>)</span><br><span class="line">cv.imshow(<span class="string">&#x27;Adaptive Threshing 2&#x27;</span>, adaptive_thresh_2)</span><br><span class="line"></span><br><span class="line">cv.waitKey(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<img data-src="/2024/10/15/python-opencv/1728981936682.png" class="">
+<h2 id="gradient-edge-detection"><a class="markdownIt-Anchor" href="#gradient-edge-detection">#</a> Gradient Edge Detection</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2 <span class="keyword">as</span> cv</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">img = cv.imread(<span class="string">&#x27;./Resources/Photos/park.jpg&#x27;</span>)</span><br><span class="line">cv.imshow(<span class="string">&#x27;Park&#x27;</span>, img)</span><br><span class="line"></span><br><span class="line">gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)</span><br><span class="line">cv.imshow(<span class="string">&#x27;Gray&#x27;</span>, gray)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Laplacian</span></span><br><span class="line">lap = cv.Laplacian(gray, cv.CV_64F)</span><br><span class="line">lap = np.uint8(np.absolute(lap))</span><br><span class="line">cv.imshow(<span class="string">&#x27;Laplacian&#x27;</span>, lap)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Sobel </span></span><br><span class="line">sobelx = cv.Sobel(gray, cv.CV_64F, <span class="number">1</span>, <span class="number">0</span>)</span><br><span class="line">sobely = cv.Sobel(gray, cv.CV_64F, <span class="number">0</span>, <span class="number">1</span>)</span><br><span class="line">combined_sobel = cv.bitwise_or(sobelx, sobely)</span><br><span class="line"></span><br><span class="line">cv.imshow(<span class="string">&#x27;Sobel X&#x27;</span>, sobelx)</span><br><span class="line">cv.imshow(<span class="string">&#x27;Sobel Y&#x27;</span>, sobely)</span><br><span class="line">cv.imshow(<span class="string">&#x27;Combined Sobel&#x27;</span>, combined_sobel)</span><br><span class="line"></span><br><span class="line">canny = cv.Canny(gray, <span class="number">150</span>, <span class="number">175</span>)</span><br><span class="line">cv.imshow(<span class="string">&#x27;Canny&#x27;</span>, canny)</span><br><span class="line">cv.waitKey(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<img data-src="/2024/10/15/python-opencv/1728982071428.png" class="">
+
+      <div class="tags">
+          <a href="/tags/python/" rel="tag"><i class="ic i-tag"></i> python</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2024-10-15 17:15:00" itemprop="dateModified" datetime="2024-10-15T17:15:00+08:00">2024-10-15</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2024/08/30/css-table/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;秒速五厘米-2.jpg" title="Styling Tables the Modern CSS Way">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Styling Tables the Modern CSS Way</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2024/11/06/email/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;clannad-3.jpg" title="Email">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Email</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#reading-images-video"><span class="toc-number">1.</span> <span class="toc-text"> Reading Images &amp; Video</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#write-images"><span class="toc-number">1.1.</span> <span class="toc-text"> Write Images</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#resizing-and-rescaling-frames"><span class="toc-number">2.</span> <span class="toc-text"> Resizing and Rescaling Frames</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#drawing-shapes-putting-text"><span class="toc-number">3.</span> <span class="toc-text"> Drawing Shapes &amp; Putting Text</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#essential-functions"><span class="toc-number">4.</span> <span class="toc-text"> Essential Functions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#image-transformations"><span class="toc-number">5.</span> <span class="toc-text"> Image Transformations</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#contour-detection"><span class="toc-number">6.</span> <span class="toc-text"> Contour Detection</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#color-spaces"><span class="toc-number">7.</span> <span class="toc-text"> Color Spaces</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#color-channels"><span class="toc-number">8.</span> <span class="toc-text"> Color Channels</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#blurring"><span class="toc-number">9.</span> <span class="toc-text"> Blurring</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bitwise-operations"><span class="toc-number">10.</span> <span class="toc-text"> BITWISE operations</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#masking"><span class="toc-number">11.</span> <span class="toc-text"> Masking</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#histogram-computation"><span class="toc-number">12.</span> <span class="toc-text"> Histogram Computation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#thresholdingbinarizing-images"><span class="toc-number">13.</span> <span class="toc-text"> Thresholding&#x2F;Binarizing Images</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gradient-edge-detection"><span class="toc-number">14.</span> <span class="toc-text"> Gradient Edge Detection</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">363</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">52</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
+      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2024/08/30/css-table/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2024/11/06/email/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ D E W</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2024/10/15/python-opencv/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

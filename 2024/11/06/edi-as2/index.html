@@ -1,0 +1,465 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CFira%20Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="https,as2" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2024/11/06/edi-as2/">
+
+
+
+  <title>
+How AS2 Works |
+D E W = 露の世</title>
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">How AS2 Works
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2024-11-06 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2024-11-06T00:00:00+08:00">2024-11-06</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">D E W</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="/anime/index/赌博默示录.jpg"></li>
+          <li class="item" data-background-image="/anime/index/交响情人梦.jpg"></li>
+          <li class="item" data-background-image="/anime/index/擅长捉弄的高木同学.jpg"></li>
+          <li class="item" data-background-image="/anime/index/千与千寻-1.jpg"></li>
+          <li class="item" data-background-image="/anime/index/幽游白书.jpg"></li>
+          <li class="item" data-background-image="/anime/index/隐瞒之事.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2024/11/06/edi-as2/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>repost: <span class="exturl" data-url="aHR0cHM6Ly9hYXl1dGVjaG5vbG9naWVzLmNvbS9kb2NzL2FzMi9ob3ctYXMyLXdvcmtzLw==">How AS2 Works</span></p>
+</blockquote>
+<p>This guide provides a comprehensive description of the operation of the AS2 protocol.</p>
+<p>The high level layout is broken down as follows:</p>
+<ul>
+<li>How does AS2 work?</li>
+<li>Key components of an AS2 system</li>
+<li>Message flow in AS2</li>
+</ul>
+<h2 id="1-how-does-as2-work"><a class="markdownIt-Anchor" href="#1-how-does-as2-work">#</a> 1 How does AS2 work?</h2>
+<p>Internal applications, first generate files for transmission to partners. Most of such files are Electronic Data Interchange (EDI) in either the American National Standards Committee (ANSI) X12 format, or the UN Electronic Data Interchange for Administration, Commerce, and Transport (UN/EDIFACT) format. Enterprise Resource Planning or Line of Business systems are examples of systems generating such files. Such files are submitted to AS2 communications software for transmission to partners. Partner details are defined to the AS2 software, and includes the partner AS2 identifier, URL, and certificates. Upstream applications are integrated with the AS2 software using API’s,<br>
+shared directories, SFTP or messaging etc.</p>
+<p>An AS2 solution performs the exchange of files as per the protocol defined by the <span class="exturl" data-url="aHR0cHM6Ly9kYXRhdHJhY2tlci5pZXRmLm9yZy9kb2MvaHRtbC9yZmM0MTMw">RFC 4130</span>. Its core components and the message flow are defined below.</p>
+<h2 id="2-key-components-of-an-as2-system"><a class="markdownIt-Anchor" href="#2-key-components-of-an-as2-system">#</a> 2 Key components of an AS2 system</h2>
+<h3 id="21-as2-station"><a class="markdownIt-Anchor" href="#21-as2-station">#</a> 2.1 AS2 Station</h3>
+<p>An AS2 Station defines an AS2 communications profile for an organization. This includes the AS2 identifier, key-pair and certificate. Most organizations define a single station. Some define separate stations for Testing and Production use. Organizations can also create separate stations for different business units or identities. Each AS2 station should have a descriptive AS2 identifier. e.g.</p>
+<ul>
+<li>ACME_COMPANY - Single AS2 Station used for both testing and production use. The simplest form for most organizations</li>
+<li>ACME_TEST, ACME_PROD - Two stations for testing and production use. Used by large organizations. Not required for SMBs</li>
+<li>ACME_MANUFACTURING, ACME_DISTRIBUTION - Multiple stations used by different business units of the same organization. Only useful for very large organizations</li>
+</ul>
+<h3 id="22-partner-directory"><a class="markdownIt-Anchor" href="#22-partner-directory">#</a> 2.2 Partner Directory</h3>
+<p>A Partner directory holds AS2 identifiers, URLs and certificates of all configured partners. Partner directories allow the easier management of partner details, as some partners use non-human friendly IDs as AS2 identifiers.</p>
+<h3 id="23-certificate-store"><a class="markdownIt-Anchor" href="#23-certificate-store">#</a> 2.3 Certificate Store</h3>
+<p>Certificate store lists all certificates used by the stations and partners. This information is useful to understand upcoming expiry dates for certificates. Certificates rotated upon expiry, and new certificates, are usually provided in advance by partners. Each Station also includes its private key along with its public key / certificate.</p>
+<h3 id="24-mailboxes"><a class="markdownIt-Anchor" href="#24-mailboxes">#</a> 2.4 Mailboxes</h3>
+<p>Mailboxes such as an Inbox and Outbox stores received and sent messages. Mailboxes are like email folders, and helps to organize and view messages. New messages could be composed or sent, and received messages downloaded and viewed. Each message will also show its MDN status as successful or failed.</p>
+<h3 id="25-integration"><a class="markdownIt-Anchor" href="#25-integration">#</a> 2.5 Integration</h3>
+<p>AS2 solutions may expose multiple options for integration with existing systems that generates and processes files. Common options available are the following:</p>
+<ul>
+<li>API’s - e.g. REST APIs</li>
+<li>SFTP servers</li>
+<li>AWS S3 bucket integration</li>
+<li>Shared file system locations / NFS</li>
+<li>Messaging systems</li>
+</ul>
+<p>Most systems based around files such as SFTP, S3 or local shared folder will have a directory structure as follows. In addition, there maybe directories for failed transfers.</p>
+<ul>
+<li>Outgoing files to be places: e.g.  <code>AS2/send/&lt;station-AS2-id&gt;/&lt;partner-AS2-id&gt;/</code></li>
+<li>Incoming files received: e.g.  <code>AS2/files/&lt;station-AS2-id&gt;/&lt;partner-AS2-id&gt;/inbox/</code></li>
+<li>Outgoing files after send: e.g.  <code>AS2/files/&lt;station-AS2-id&gt;/&lt;partner-AS2-id&gt;/outbox/</code></li>
+</ul>
+<p>Most APIs based around REST may expose URIs such as follows.</p>
+<ul>
+<li>Submit messages: e.g.  <code>POST /message/submit</code></li>
+<li>List messages received: e.g.  <code>GET /message/inbox</code></li>
+<li>List messages sent: e.g.  <code>GET /message/outbox</code></li>
+<li>Download specific message by ID: e.g.  <code>GET /message/inbox/&lt;msg-id&gt;</code></li>
+</ul>
+<h2 id="3-message-flow-in-as2"><a class="markdownIt-Anchor" href="#3-message-flow-in-as2">#</a> 3 Message flow in AS2</h2>
+<img data-src="/2024/11/06/edi-as2/how-as2-protocol-works.gif" class="" title="Internal steps of AS2 communications">
+<h3 id="31-at-the-sender"><a class="markdownIt-Anchor" href="#31-at-the-sender">#</a> 3.1 At the Sender</h3>
+<ol>
+<li>Use a secure hash function to calculate the Message Integrity Check (MIC) or the Message Digest. The hash algorithms most commonly used are MD5, SHA-1 or SHA-256</li>
+<li>Digitally sign the file content using the sender’s private key, and place the file contents and signature into a MIME message.</li>
+<li>Encrypt the MIME message with the file contents and signature, using the receiver’s public key or certificate. Overwrite the MIME message with the now encrypted content. (Note when decrypted, this the contents of step #2 above will be available, including the signature, and the file contents)</li>
+<li>Add AS2 protocol specific headers such as AS2-From, AS2-To etc, and transmit S/MIME message as a HTTP POST to the partner’s URL</li>
+</ol>
+<h3 id="32-at-the-receiver"><a class="markdownIt-Anchor" href="#32-at-the-receiver">#</a> 3.2 At the Receiver</h3>
+<ol>
+<li>Check received message AS2 headers to verify that the received message is intended for the recipient, and the sender is known.</li>
+<li>Decrypt the outermost payload using the receiver’s private key</li>
+<li>Verify the digital signature placed by the sender, to verify the partner sending the message, and the payload was not altered</li>
+<li>Compute Message Integrity Check (MIC), by hashing the original payload received</li>
+<li>Create Message Disposition Notification (MDN) by digitally signing the received MIC with the receiver’s private key.</li>
+<li>Send the MDN back to the sender using the HTTP response (i.e. synchronous MDN) or a new HTTP message (i.e. asynchronous MDN)</li>
+</ol>
+<h3 id="33-at-the-sender-receiving-an-mdn"><a class="markdownIt-Anchor" href="#33-at-the-sender-receiving-an-mdn">#</a> 3.3 At the Sender, receiving an MDN</h3>
+<ol>
+<li>After receiving an MDN, verify its signature with the partner’s certificate to confirm it was digitally signed and sent by the claimed partner which received the original message intact.</li>
+<li>Store the successful (or failed) MDN for non-repudiation, investigation or troubleshooting.</li>
+</ol>
+<h3 id="34-notes"><a class="markdownIt-Anchor" href="#34-notes">#</a> 3.4 Notes</h3>
+<ul>
+<li>HTTPS can be used instead of HTTP as the transport mechanism, although using HTTP still provides all the guarantees of AS2</li>
+<li>Signing, Encryption and MDNs are not enforced by the AS2 specification, and are left for the individual partners to decide and use.</li>
+<li>The certificates of each of the partners contain the public key of its asymmetric key pair. These are exchanged prior to receiving messages from such partners, usually over email.</li>
+<li>Certificates used in AS2 does not require signing by a third party trusted Certification Authority (CA). However, certain industries (e.g. Energy industry in Europe) may require such signed certificates.</li>
+</ul>
+<hr>
+<h2 id="comments"><a class="markdownIt-Anchor" href="#comments">#</a> Comments</h2>
+<h3 id="31-at-the-sender-2"><a class="markdownIt-Anchor" href="#31-at-the-sender-2">#</a> 3.1 At the Sender</h3>
+<ol>
+<li>Use a secure hash function to calculate the Message Integrity Check (MIC) or the Message Digest. The hash algorithms most commonly used are MD5, SHA-1 or SHA-256</li>
+<li><strong>Digitally sign the file content using the sender’s private key, and place the file contents and signature into a MIME message.</strong></li>
+<li>Encrypt the MIME message with the file contents and signature, using the receiver’s public key or certificate. Overwrite the MIME message with the now encrypted content. (Note when decrypted, this the contents of step #2 above will be available, including the signature, and the file contents)</li>
+<li>Add AS2 protocol specific headers such as AS2-From, AS2-To etc, and transmit S/MIME message as a HTTP POST to the partner’s URL</li>
+</ol>
+<p>Why need sign the file content using the sender’s private key?</p>
+<p><em>This allows the receiver to confirm who sent the file. The receiver can use the sender’s public key to verify. If the sender sends a file but does not sign it. The receiver only knows the sender by header AS2-From. But the AS2-From can be forged by others.</em></p>
+
+      <div class="tags">
+          <a href="/tags/https/" rel="tag"><i class="ic i-tag"></i> https</a>
+          <a href="/tags/as2/" rel="tag"><i class="ic i-tag"></i> as2</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2024-11-06 18:58:51" itemprop="dateModified" datetime="2024-11-06T18:58:51+08:00">2024-11-06</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2024/11/06/email/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;万国志.jpg" title="Email">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Email</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-how-does-as2-work"><span class="toc-number">1.</span> <span class="toc-text"> 1 How does AS2 work?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-key-components-of-an-as2-system"><span class="toc-number">2.</span> <span class="toc-text"> 2 Key components of an AS2 system</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#21-as2-station"><span class="toc-number">2.1.</span> <span class="toc-text"> 2.1 AS2 Station</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#22-partner-directory"><span class="toc-number">2.2.</span> <span class="toc-text"> 2.2 Partner Directory</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#23-certificate-store"><span class="toc-number">2.3.</span> <span class="toc-text"> 2.3 Certificate Store</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#24-mailboxes"><span class="toc-number">2.4.</span> <span class="toc-text"> 2.4 Mailboxes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#25-integration"><span class="toc-number">2.5.</span> <span class="toc-text"> 2.5 Integration</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-message-flow-in-as2"><span class="toc-number">3.</span> <span class="toc-text"> 3 Message flow in AS2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#31-at-the-sender"><span class="toc-number">3.1.</span> <span class="toc-text"> 3.1 At the Sender</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#32-at-the-receiver"><span class="toc-number">3.2.</span> <span class="toc-text"> 3.2 At the Receiver</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#33-at-the-sender-receiving-an-mdn"><span class="toc-number">3.3.</span> <span class="toc-text"> 3.3 At the Sender, receiving an MDN</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#34-notes"><span class="toc-number">3.4.</span> <span class="toc-text"> 3.4 Notes</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#comments"><span class="toc-number">4.</span> <span class="toc-text"> Comments</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#31-at-the-sender-2"><span class="toc-number">4.1.</span> <span class="toc-text"> 3.1 At the Sender</span></a></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">363</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">52</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
+      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ D E W</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2024/11/06/edi-as2/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
