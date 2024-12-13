@@ -102,12 +102,12 @@ D E W = 露の世</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="/anime/index/东方project-1.jpg"></li>
-          <li class="item" data-background-image="/anime/index/昨日之歌.jpg"></li>
-          <li class="item" data-background-image="/anime/index/未闻花名-2.jpg"></li>
-          <li class="item" data-background-image="/anime/index/刻刻.jpg"></li>
           <li class="item" data-background-image="/anime/index/电锯人-1.jpg"></li>
-          <li class="item" data-background-image="/anime/index/歌剧少女-1.jpg"></li>
+          <li class="item" data-background-image="/anime/index/真实之泪.jpg"></li>
+          <li class="item" data-background-image="/anime/index/俺物语.jpg"></li>
+          <li class="item" data-background-image="/anime/index/棋魂.jpg"></li>
+          <li class="item" data-background-image="/anime/index/明日酱的水手服-3.jpg"></li>
+          <li class="item" data-background-image="/anime/index/侧耳倾听-3.jpg"></li>
         </ul>
       </div>
     </header>
@@ -169,7 +169,7 @@ D E W = 露の世</title>
 </tr>
 </tbody>
 </table>
-<p>Set Directory Access Permissions</p>
+<p>Setting directory access permissions.</p>
 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[testmgr@erptest edi]$ ls -l</span><br><span class="line">total <span class="number">8</span></span><br><span class="line">drwxr-xr-x. <span class="number">2</span> testmgr dba <span class="number">4096</span> Feb <span class="number">18</span> <span class="number">17</span>:<span class="number">57</span> test</span><br><span class="line">[testmgr@erptest edi]$ chmod <span class="number">777</span> test</span><br><span class="line">[testmgr@erptest edi]$ ls -l</span><br><span class="line">total <span class="number">8</span></span><br><span class="line">drwxrwxrwx. <span class="number">2</span> testmgr dba <span class="number">4096</span> Feb <span class="number">18</span> <span class="number">17</span>:<span class="number">57</span> test</span><br></pre></td></tr></table></figure>
 <h3 id="put-content-to-file"><a class="markdownIt-Anchor" href="#put-content-to-file">#</a> Put Content to File</h3>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span></span><br><span class="line">  f1 utl_file.file_type;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  f1 :<span class="operator">=</span> utl_file.fopen(<span class="string">&#x27;EDI_TEST&#x27;</span>, <span class="string">&#x27;hello.txt&#x27;</span>, <span class="string">&#x27;w&#x27;</span>);</span><br><span class="line">  utl_file.put_line(f1, <span class="string">&#x27;put_line: hello world!&#x27;</span>);</span><br><span class="line">  utl_file.putf(f1, <span class="string">&#x27;putf: hello world!\n&#x27;</span>);</span><br><span class="line">  utl_file.put(f1, <span class="string">&#x27;put: hello world\n!&#x27;</span>);</span><br><span class="line">  utl_file.fclose(f1);</span><br><span class="line">  dbms_output.put_line(<span class="string">&#x27;File Created&#x27;</span>);</span><br><span class="line">exception</span><br><span class="line">  <span class="keyword">when</span> others <span class="keyword">then</span></span><br><span class="line">    dbms_output.put_line(sqlerrm);</span><br><span class="line"><span class="keyword">end</span>;</span><br></pre></td></tr></table></figure>
@@ -187,8 +187,10 @@ D E W = 露の世</title>
 <h3 id="copy"><a class="markdownIt-Anchor" href="#copy">#</a> Copy</h3>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">begin</span></span><br><span class="line">  utl_file.fcopy(<span class="string">&#x27;EDI_TEST&#x27;</span>, <span class="string">&#x27;emp.csv&#x27;</span>, <span class="string">&#x27;EDI_TEST&#x27;</span>, <span class="string">&#x27;emp_copy.csv&#x27;</span>);</span><br><span class="line"><span class="keyword">end</span>;</span><br></pre></td></tr></table></figure>
 <h3 id="remove"><a class="markdownIt-Anchor" href="#remove">#</a> Remove</h3>
+<p>Remove requires write permission on the file.</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">begin</span></span><br><span class="line">  utl_file.fremove(<span class="string">&#x27;EDI_TEST&#x27;</span>, <span class="string">&#x27;emp.csv&#x27;</span>);</span><br><span class="line"><span class="keyword">end</span>;</span><br></pre></td></tr></table></figure>
 <h3 id="rename"><a class="markdownIt-Anchor" href="#rename">#</a> Rename</h3>
+<p>Rename requires write permission on the file.</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">begin</span></span><br><span class="line">  utl_file.frename(<span class="string">&#x27;EDI_TEST&#x27;</span>, <span class="string">&#x27;emp.csv&#x27;</span>, <span class="string">&#x27;EDI_TEST&#x27;</span>, <span class="string">&#x27;emp_rename.csv&#x27;</span>, <span class="literal">true</span>);</span><br><span class="line"><span class="keyword">end</span>;</span><br></pre></td></tr></table></figure>
 <h3 id="file-attribute"><a class="markdownIt-Anchor" href="#file-attribute">#</a> File Attribute</h3>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span></span><br><span class="line">  exisit <span class="type">boolean</span>;</span><br><span class="line">  flen number;</span><br><span class="line">  bsize number;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  utl_file.fgetattr(<span class="string">&#x27;EDI_TEST&#x27;</span>, <span class="string">&#x27;emp3.csv&#x27;</span>, exisit, flen, bsize);</span><br><span class="line">  </span><br><span class="line">  if exisit <span class="keyword">then</span></span><br><span class="line">    dbms_output.put_line(<span class="string">&#x27;File Exists&#x27;</span>);</span><br><span class="line">  <span class="keyword">else</span> </span><br><span class="line">    dbms_output.put_line(<span class="string">&#x27;File Not Exists&#x27;</span>);</span><br><span class="line">  <span class="keyword">end</span> if;</span><br><span class="line">  </span><br><span class="line">  dbms_output.put_line(<span class="string">&#x27;File Length: &#x27;</span> <span class="operator">||</span> to_char(flen));</span><br><span class="line">  dbms_output.put_line(<span class="string">&#x27;Block Size: &#x27;</span> <span class="operator">||</span> to_char(bsize));</span><br><span class="line"><span class="keyword">end</span>;</span><br></pre></td></tr></table></figure>
@@ -307,7 +309,7 @@ D E W = 露の世</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2024-02-20 17:13:55" itemprop="dateModified" datetime="2024-02-20T17:13:55+08:00">2024-02-20</time>
+    <time title="Modified: 2024-12-05 19:31:51" itemprop="dateModified" datetime="2024-12-05T19:31:51+08:00">2024-12-05</time>
   </span>
 </div>
 
@@ -324,7 +326,7 @@ D E W = 露の世</title>
     <div class="item left">
       
 
-  <a href="/2024/01/09/oralce-practice/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;虫师.jpg" title="Oracle SQL Practice">
+  <a href="/2024/01/09/oralce-practice/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;萤火虫之墓-1.jpg" title="Oracle SQL Practice">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Oracle SQL Practice</h3>
@@ -334,7 +336,7 @@ D E W = 露の世</title>
     <div class="item right">
       
 
-  <a href="/2024/03/25/python-streamlit-gradio/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;异世界迷宫黑心企业.jpg" title="Python Streamlit and Gradio">
+  <a href="/2024/03/25/python-streamlit-gradio/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;鬼灭之刃.jpg" title="Python Streamlit and Gradio">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Python Streamlit and Gradio</h3>
@@ -371,7 +373,7 @@ D E W = 露の世</title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">363</span>
+        <span class="count">364</span>
         <span class="name">posts</span>
       </a>
     </div>

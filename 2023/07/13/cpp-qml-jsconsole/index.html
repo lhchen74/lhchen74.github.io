@@ -24,10 +24,10 @@
 <link rel="stylesheet" href="/css/app.css?v=0.2.5">
 
   
-  <meta name="keywords" content="js,c++" />
+  <meta name="keywords" content="js,cpp" />
 
 
-<link rel="canonical" href="https://lhchen74.github.io/2023/07/13/qml-jsconsole/">
+<link rel="canonical" href="https://lhchen74.github.io/2023/07/13/cpp-qml-jsconsole/">
 
 
 
@@ -102,12 +102,12 @@ D E W = 露の世</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="/anime/index/罪恶王冠.jpg"></li>
-          <li class="item" data-background-image="/anime/index/蔷薇少女.jpg"></li>
-          <li class="item" data-background-image="/anime/index/电锯人-2.jpg"></li>
-          <li class="item" data-background-image="/anime/index/昭和元禄落语心中.jpg"></li>
-          <li class="item" data-background-image="/anime/index/四月一日灵异事件簿.jpg"></li>
-          <li class="item" data-background-image="/anime/index/捉妖小红娘-1.jpg"></li>
+          <li class="item" data-background-image="/anime/index/东京喰种.jpg"></li>
+          <li class="item" data-background-image="/anime/index/派对浪客诸葛孔明-1.jpg"></li>
+          <li class="item" data-background-image="/anime/index/亚人-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/天空之城.jpg"></li>
+          <li class="item" data-background-image="/anime/index/龙猫-3.jpg"></li>
+          <li class="item" data-background-image="/anime/index/关于完全听不懂老公在说什么的事-1.jpg"></li>
         </ul>
       </div>
     </header>
@@ -136,7 +136,7 @@ D E W = 露の世</title>
 </div>
 
     <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
-  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2023/07/13/qml-jsconsole/">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2023/07/13/cpp-qml-jsconsole/">
 
   <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="image" content="/images/avatar.jpg">
@@ -157,7 +157,7 @@ D E W = 露の世</title>
 <p>As a little example, we will create a JS console. We need an input field where the user can enter his JS expressions and ideally there should be a list of output results. As this should more look like a desktop application we use the Qt Quick Controls module.</p>
 <p>TIP</p>
 <p>A JS console inside your next project can be really beneficial for testing. Enhanced with a Quake-Terminal effect it is also good to impress customers. To use it wisely you need to control the scope the JS console evaluates in, e.g. the currently visible screen, the main data model, a singleton core object or all together.</p>
-<img data-src="/2023/07/13/qml-jsconsole/ea4830e292014745bce3c0dc92047ee6.png" class="" title="image">
+
 <p>We use Qt Creator to create a Qt Quick UI project using Qt Quick controls. We call the project JSConsole. After the wizard has finished we have already a basic structure for the application with an application window and a menu to exit the application.</p>
 <p>For the input, we use a TextField and a Button to send the input for evaluation. The result of the expression evaluation is displayed using a ListView with a ListModel as the model and two labels to display the expression and the evaluated result.</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">// part of JSConsole<span class="selector-class">.qml</span></span><br><span class="line">ApplicationWindow &#123;</span><br><span class="line">  id: root</span><br><span class="line">  ...</span><br><span class="line">  ColumnLayout &#123;</span><br><span class="line">      anchors.fill: parent</span><br><span class="line">      anchors.margins: <span class="number">9</span></span><br><span class="line">      RowLayout &#123;</span><br><span class="line">          Layout.fillWidth: true</span><br><span class="line">          TextField &#123;</span><br><span class="line">              id: input</span><br><span class="line">              Layout.fillWidth: true</span><br><span class="line">              focus: true</span><br><span class="line">              onAccepted: &#123;</span><br><span class="line">                  // call our evaluation function on root</span><br><span class="line">                  root.<span class="built_in">jsCall</span>(input.text)</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="selector-tag">Button</span> &#123;</span><br><span class="line">              text: <span class="built_in">qsTr</span>(<span class="string">&quot;Send&quot;</span>)</span><br><span class="line">              onClicked: &#123;</span><br><span class="line">                  // call our evaluation function on root</span><br><span class="line">                  root.<span class="built_in">jsCall</span>(input.text)</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      Item &#123;</span><br><span class="line">          Layout<span class="selector-class">.fillWidth</span>: true</span><br><span class="line">          Layout.fillHeight: true</span><br><span class="line">          Rectangle &#123;</span><br><span class="line">              anchors.fill: parent</span><br><span class="line">              color: <span class="string">&#x27;#333&#x27;</span></span><br><span class="line">              border.color: Qt.<span class="built_in">darker</span>(color)</span><br><span class="line">              opacity: <span class="number">0.2</span></span><br><span class="line">              radius: <span class="number">2</span></span><br><span class="line">          &#125;</span><br><span class="line">          ScrollView &#123;</span><br><span class="line">              id: scrollView</span><br><span class="line">              anchors.fill: parent</span><br><span class="line">              anchors.margins: <span class="number">9</span></span><br><span class="line">              ListView &#123;</span><br><span class="line">                  id: resultView</span><br><span class="line">                  model: ListModel &#123;</span><br><span class="line">                      id: outputModel</span><br><span class="line">                  &#125;</span><br><span class="line">                  delegate: ColumnLayout &#123;</span><br><span class="line">                      width: ListView.view.width</span><br><span class="line">                      Label &#123;</span><br><span class="line">                          Layout.fillWidth: true</span><br><span class="line">                          color: <span class="string">&#x27;green&#x27;</span></span><br><span class="line">                          text: <span class="string">&quot;&gt; &quot;</span> + model.expression</span><br><span class="line">                      &#125;</span><br><span class="line">                      <span class="selector-tag">Label</span> &#123;</span><br><span class="line">                          Layout<span class="selector-class">.fillWidth</span>: true</span><br><span class="line">                          color: <span class="string">&#x27;blue&#x27;</span></span><br><span class="line">                          text: <span class="string">&quot;&quot;</span> + model.result</span><br><span class="line">                      &#125;</span><br><span class="line">                      Rectangle &#123;</span><br><span class="line">                          <span class="attribute">height</span>: <span class="number">1</span></span><br><span class="line">                          Layout.fillWidth: true</span><br><span class="line">                          color: <span class="string">&#x27;#333&#x27;</span></span><br><span class="line">                          opacity: <span class="number">0.2</span></span><br><span class="line">                      &#125;</span><br><span class="line">                  &#125;</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -177,7 +177,7 @@ D E W = 露の世</title>
 
       <div class="tags">
           <a href="/tags/js/" rel="tag"><i class="ic i-tag"></i> js</a>
-          <a href="/tags/c/" rel="tag"><i class="ic i-tag"></i> c++</a>
+          <a href="/tags/cpp/" rel="tag"><i class="ic i-tag"></i> cpp</a>
       </div>
   </div>
 
@@ -189,7 +189,7 @@ D E W = 露の世</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2023-07-13 13:21:26" itemprop="dateModified" datetime="2023-07-13T13:21:26+08:00">2023-07-13</time>
+    <time title="Modified: 2024-11-12 18:53:57" itemprop="dateModified" datetime="2024-11-12T18:53:57+08:00">2024-11-12</time>
   </span>
 </div>
 
@@ -206,20 +206,20 @@ D E W = 露の世</title>
     <div class="item left">
       
 
-  <a href="/2023/06/10/excerpt-kushufu/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;迷域行者.jpg" title="枯树赋 - 庾信">
+  <a href="/2023/07/13/pyside6-model-view/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;萤火之森-2.jpg" title="The ModelView Architecture Qt&#39;s MVC-like interface for displaying data in views">
   <span class="type">Previous Post</span>
-  <span class="category"><i class="ic i-flag"></i> excerpt</span>
-  <h3>枯树赋 - 庾信</h3>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>The ModelView Architecture Qt's MVC-like interface for displaying data in views</h3>
   </a>
 
     </div>
     <div class="item right">
       
 
-  <a href="/2023/07/13/pyside6-quotify/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;七大罪.jpg" title="PySide6 Practice Quotify">
+  <a href="/2023/08/10/pyside6-example/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;家庭教师.jpg" title="PySide6 Practice Example">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
-  <h3>PySide6 Practice Quotify</h3>
+  <h3>PySide6 Practice Example</h3>
   </a>
 
     </div>
@@ -252,7 +252,7 @@ D E W = 露の世</title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">363</span>
+        <span class="count">364</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -329,12 +329,12 @@ D E W = 露の世</title>
 
   <ul id="quick">
     <li class="prev pjax">
-        <a href="/2023/06/10/excerpt-kushufu/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+        <a href="/2023/07/13/pyside6-model-view/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
     </li>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
     <li class="next pjax">
-        <a href="/2023/07/13/pyside6-quotify/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+        <a href="/2023/08/10/pyside6-example/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
     </li>
     <li class="percent"></li>
   </ul>
@@ -371,7 +371,7 @@ D E W = 露の世</title>
   </div>
 <script data-config type="text/javascript">
   var LOCAL = {
-    path: '2023/07/13/qml-jsconsole/',
+    path: '2023/07/13/cpp-qml-jsconsole/',
     favicon: {
       show: "（●´3｀●）Goooood",
       hide: "(´Д｀)Booooom"
