@@ -102,12 +102,12 @@ D E W = 露の世</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="/anime/index/动物新世代.jpg"></li>
-          <li class="item" data-background-image="/anime/index/捉妖小红娘-2.jpg"></li>
-          <li class="item" data-background-image="/anime/index/即使如此世界依然美丽.jpg"></li>
-          <li class="item" data-background-image="/anime/index/翼年代记.jpg"></li>
-          <li class="item" data-background-image="/anime/index/滑头鬼之孙.jpg"></li>
-          <li class="item" data-background-image="/anime/index/冰海战记-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/孤独摇滚-3.jpg"></li>
+          <li class="item" data-background-image="/anime/index/可塑性记忆-1.jpg"></li>
+          <li class="item" data-background-image="/anime/index/罪恶王冠.jpg"></li>
+          <li class="item" data-background-image="/anime/index/樱花庄的宠物女孩.jpg"></li>
+          <li class="item" data-background-image="/anime/index/岁月的童话-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/通灵王.jpg"></li>
         </ul>
       </div>
     </header>
@@ -151,26 +151,261 @@ D E W = 露の世</title>
   <div class="body md" itemprop="articleBody">
     
 
-    <h1 id="oracle-左右全连接"><a class="markdownIt-Anchor" href="#oracle-左右全连接">#</a> Oracle 左右全连接</h1>
-<blockquote>
+    <blockquote>
 <p>越觉得厚重的情绪越荒诞得遥远，越难于去细致地描述，便惊觉语言是多么的苍白无力。我想，这恐怕便是人类音乐与绘画等艺术诞生的起源。</p>
 </blockquote>
 <h2 id="测试数据"><a class="markdownIt-Anchor" href="#测试数据">#</a> 测试数据</h2>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> a(id number);</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> b(id number);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> a <span class="keyword">values</span>(<span class="number">1</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> a <span class="keyword">values</span>(<span class="number">2</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> a <span class="keyword">values</span>(<span class="number">3</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> b <span class="keyword">values</span>(<span class="number">1</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> b <span class="keyword">values</span>(<span class="number">2</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> b <span class="keyword">values</span>(<span class="number">4</span>);</span><br><span class="line"><span class="keyword">commit</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> t_a(id number);</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> t_b(id number);</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> t_a <span class="keyword">values</span>(<span class="number">1</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> t_a <span class="keyword">values</span>(<span class="number">2</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> t_a <span class="keyword">values</span>(<span class="number">3</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> t_b <span class="keyword">values</span>(<span class="number">1</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> t_b <span class="keyword">values</span>(<span class="number">2</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> t_b <span class="keyword">values</span>(<span class="number">4</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">commit</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> t_a;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+</tr>
+<tr>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> t_b;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+</tr>
+<tr>
+<td>4</td>
+</tr>
+</tbody>
+</table>
 <h2 id="左外连接"><a class="markdownIt-Anchor" href="#左外连接">#</a> 左外连接</h2>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--左外连接会显示左边表的所有数据</span></span><br><span class="line"><span class="comment">--主流数据库通用的方法</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> a <span class="keyword">left</span> <span class="keyword">join</span> b <span class="keyword">on</span> a.id<span class="operator">=</span>b.id;</span><br><span class="line"></span><br><span class="line"><span class="comment">--oracle特有的方法</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> a, b <span class="keyword">where</span> a.id<span class="operator">=</span>b.id(<span class="operator">+</span>);</span><br><span class="line"></span><br><span class="line">        ID         ID</span><br><span class="line"><span class="comment">---------- ----------</span></span><br><span class="line">         <span class="number">1</span>          <span class="number">1</span></span><br><span class="line">         <span class="number">2</span>          <span class="number">2</span></span><br><span class="line">         <span class="number">3</span></span><br></pre></td></tr></table></figure>
+<p>左外连接会显示左边表的所有数据。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 主流数据库通用的方法</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> t_a <span class="keyword">left</span> <span class="keyword">join</span> t_b <span class="keyword">on</span> t_a.id <span class="operator">=</span> t_b.id;</span><br><span class="line"><span class="comment">-- 或者</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> t_a <span class="keyword">left</span> <span class="keyword">outer</span> <span class="keyword">join</span> t_b <span class="keyword">on</span> t_a.id <span class="operator">=</span> t_b.id; <span class="comment">-- outer 可以省略</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- Oracle特有的方法</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> t_a, t_b <span class="keyword">where</span> t_a.id <span class="operator">=</span> t_b.id(<span class="operator">+</span>);</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>ID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>3</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <h2 id="右外连接"><a class="markdownIt-Anchor" href="#右外连接">#</a> 右外连接</h2>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--右外连接会显示右边表所有数据</span></span><br><span class="line"><span class="comment">--主流数据库通用的方法</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> a <span class="keyword">right</span> <span class="keyword">join</span> b <span class="keyword">on</span> a.id<span class="operator">=</span>b.id;</span><br><span class="line"></span><br><span class="line"><span class="comment">--oracle特有的方法</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> a, b <span class="keyword">where</span> a.id(<span class="operator">+</span>)<span class="operator">=</span>b.id;</span><br><span class="line"></span><br><span class="line">        ID         ID</span><br><span class="line"><span class="comment">---------- ----------</span></span><br><span class="line">         <span class="number">1</span>          <span class="number">1</span></span><br><span class="line">         <span class="number">2</span>          <span class="number">2</span></span><br><span class="line">                    <span class="number">4</span></span><br></pre></td></tr></table></figure>
+<p>右外连接会显示右边表所有数据。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 主流数据库通用的方法</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> t_a <span class="keyword">right</span> <span class="keyword">join</span> t_b <span class="keyword">on</span> t_a.id <span class="operator">=</span> t_b.id;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- Oracle特有的方法</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> t_a, t_b <span class="keyword">where</span> t_a.id(<span class="operator">+</span>) <span class="operator">=</span> t_b.id;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>ID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td></td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
 <h2 id="内连接"><a class="markdownIt-Anchor" href="#内连接">#</a> 内连接</h2>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--主流数据库通用的方法</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> a <span class="keyword">join</span> b <span class="keyword">on</span> a.id<span class="operator">=</span>b.id;</span><br><span class="line"></span><br><span class="line"><span class="comment">--where关联</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> a, b <span class="keyword">where</span> a.id<span class="operator">=</span>b.id;</span><br><span class="line"></span><br><span class="line">        ID         ID</span><br><span class="line"><span class="comment">---------- ----------</span></span><br><span class="line">         <span class="number">1</span>          <span class="number">1</span></span><br><span class="line">         <span class="number">2</span>          <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 主流数据库通用的方法</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> t_a <span class="keyword">join</span> t_b <span class="keyword">on</span> t_a.id <span class="operator">=</span> t_b.id;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- WHERE 关联</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> t_a, t_b <span class="keyword">where</span> t_a.id<span class="operator">=</span>t_b.id;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>ID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
 <h2 id="全外连接"><a class="markdownIt-Anchor" href="#全外连接">#</a> 全外连接</h2>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--主流数据库通用的方法</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> a <span class="keyword">full</span> <span class="keyword">join</span> b <span class="keyword">on</span> a.id<span class="operator">=</span>b.id;</span><br><span class="line"></span><br><span class="line"><span class="comment">--oracle特有的方法</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> a, b <span class="keyword">where</span> a.id <span class="operator">=</span> b.id(<span class="operator">+</span>)</span><br><span class="line"><span class="keyword">union</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> a, b <span class="keyword">where</span> a.id(<span class="operator">+</span>) <span class="operator">=</span> b.id;</span><br><span class="line"></span><br><span class="line">        ID         ID</span><br><span class="line"><span class="comment">---------- ----------</span></span><br><span class="line">         <span class="number">1</span>          <span class="number">1</span></span><br><span class="line">         <span class="number">2</span>          <span class="number">2</span></span><br><span class="line">         <span class="number">3</span></span><br><span class="line">                    <span class="number">4</span></span><br></pre></td></tr></table></figure>
-<h2 id="完全连接交叉连接或者笛卡尔积"><a class="markdownIt-Anchor" href="#完全连接交叉连接或者笛卡尔积">#</a> 完全连接 (交叉连接或者笛卡尔积)</h2>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--主流数据库通用的方法</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> a, b;</span><br><span class="line"></span><br><span class="line"><span class="comment">--或者</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> a <span class="keyword">cross</span> <span class="keyword">join</span> b;</span><br><span class="line"></span><br><span class="line">        ID         ID</span><br><span class="line"><span class="comment">---------- ----------</span></span><br><span class="line">         <span class="number">1</span>          <span class="number">1</span></span><br><span class="line">         <span class="number">1</span>          <span class="number">2</span></span><br><span class="line">         <span class="number">1</span>          <span class="number">4</span></span><br><span class="line">         <span class="number">2</span>          <span class="number">1</span></span><br><span class="line">         <span class="number">2</span>          <span class="number">2</span></span><br><span class="line">         <span class="number">2</span>          <span class="number">4</span></span><br><span class="line">         <span class="number">3</span>          <span class="number">1</span></span><br><span class="line">         <span class="number">3</span>          <span class="number">2</span></span><br><span class="line">         <span class="number">3</span>          <span class="number">4</span></span><br></pre></td></tr></table></figure>
-<h2 id="注意"><a class="markdownIt-Anchor" href="#注意">#</a> 注意</h2>
-<p>左向外连接， <code>+</code>  在右边，返回左边表所有符合条件数据<br>
-右向外连接， <code>+</code>  在左边，返回右边表所有符合条件数据</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--注意这里没有第二个加号，会直接过滤掉数据，只显示符合条件的记录</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> a, b <span class="keyword">where</span> a.id <span class="operator">=</span> b.id(<span class="operator">+</span>) <span class="keyword">and</span> b.id <span class="operator">=</span> <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">        ID         ID</span><br><span class="line"><span class="comment">---------- ----------</span></span><br><span class="line">         <span class="number">2</span>          <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--注意where上第二个加号，它的作用是修改右边表记录的显示，例如如果b.id(+) = 2，显示为2，否则显示null</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> a, b <span class="keyword">where</span> a.id <span class="operator">=</span> b.id(<span class="operator">+</span>) <span class="keyword">and</span> b.id(<span class="operator">+</span>) <span class="operator">=</span> <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">        ID         ID</span><br><span class="line"><span class="comment">---------- ----------</span></span><br><span class="line">         <span class="number">2</span>          <span class="number">2</span></span><br><span class="line">         <span class="number">3</span></span><br><span class="line">         <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 主流数据库通用的方法</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> t_a <span class="keyword">full</span> <span class="keyword">join</span> t_b <span class="keyword">on</span> t_a.id<span class="operator">=</span>t_b.id;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- Oracle 特有的方法</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> t_a, t_b <span class="keyword">where</span> t_a.id <span class="operator">=</span> t_b.id(<span class="operator">+</span>)</span><br><span class="line"><span class="keyword">union</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> t_a, t_b <span class="keyword">where</span> t_a.id(<span class="operator">+</span>) <span class="operator">=</span> t_b.id;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>ID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>3</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<h2 id="完全连接交叉连接笛卡尔积"><a class="markdownIt-Anchor" href="#完全连接交叉连接笛卡尔积">#</a> 完全连接 / 交叉连接 / 笛卡尔积</h2>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 主流数据库通用的方法</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> t_a, t_b;</span><br><span class="line"><span class="comment">-- 或者</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> t_a <span class="keyword">cross</span> <span class="keyword">join</span> t_b;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>ID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>1</td>
+<td>4</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>2</td>
+<td>4</td>
+</tr>
+<tr>
+<td>3</td>
+<td>1</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<h2 id="注意事项"><a class="markdownIt-Anchor" href="#注意事项">#</a> 注意事项</h2>
+<p><strong>在  <code>ON</code>  条件里应该只写表连接条件，数据筛选放在  <code>WHERE</code>  里。</strong></p>
+<p>左外连接不筛选右边数据。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span></span><br><span class="line">  <span class="keyword">from</span> t_a <span class="keyword">left</span> <span class="keyword">join</span> t_b</span><br><span class="line">    <span class="keyword">on</span> t_a.id <span class="operator">=</span> t_b.id;</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span></span><br><span class="line">  <span class="keyword">from</span> t_a, t_b</span><br><span class="line"> <span class="keyword">where</span> t_a.id <span class="operator">=</span> t_b.id(<span class="operator">+</span>);</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>ID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>3</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>左外连接使用  <code>WHERE</code>  筛选右边数据。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span></span><br><span class="line">  <span class="keyword">from</span> t_a <span class="keyword">left</span> <span class="keyword">join</span> t_b</span><br><span class="line">    <span class="keyword">on</span> t_a.id <span class="operator">=</span> t_b.id</span><br><span class="line"> <span class="keyword">where</span> t_b.id <span class="operator">=</span> <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span></span><br><span class="line">  <span class="keyword">from</span> t_a, t_b</span><br><span class="line"> <span class="keyword">where</span> t_a.id <span class="operator">=</span> t_b.id(<span class="operator">+</span>)</span><br><span class="line">   <span class="keyword">and</span> t_b.id <span class="operator">=</span> <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>ID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p>左外连接使用  <code>ON/+</code>  筛选右边数据。符合  <code>t_b.id  = 2</code>  的数据只有一条，但是左外连接需要显示左边所有数据，所以  <code>t_a.id = 1</code>  这条数据对应的右边数据为空。在  <code>ON</code>  条件里应该只写连接条件，数据筛选放在  <code>WHERE</code>  里。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span></span><br><span class="line">  <span class="keyword">from</span> t_a <span class="keyword">left</span> <span class="keyword">join</span> t_b</span><br><span class="line">    <span class="keyword">on</span> t_a.id <span class="operator">=</span> t_b.id <span class="keyword">and</span> t_b.id <span class="operator">=</span> <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span></span><br><span class="line">  <span class="keyword">from</span> t_a, t_b</span><br><span class="line"> <span class="keyword">where</span> t_a.id <span class="operator">=</span> t_b.id(<span class="operator">+</span>)</span><br><span class="line">   <span class="keyword">and</span> t_b.id(<span class="operator">+</span>) <span class="operator">=</span> <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>ID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>3</td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 
       <div class="tags">
           <a href="/tags/db/" rel="tag"><i class="ic i-tag"></i> db</a>
@@ -185,7 +420,7 @@ D E W = 露の世</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2021-10-18 13:27:15" itemprop="dateModified" datetime="2021-10-18T13:27:15+08:00">2021-10-18</time>
+    <time title="Modified: 2024-12-19 17:07:58" itemprop="dateModified" datetime="2024-12-19T17:07:58+08:00">2024-12-19</time>
   </span>
 </div>
 
@@ -202,7 +437,7 @@ D E W = 露の世</title>
     <div class="item left">
       
 
-  <a href="/2018/01/01/hexo/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;一拳超人.jpg" title="Hexo">
+  <a href="/2018/01/01/hexo/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;弹丸论破.jpg" title="Hexo">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Hexo</h3>
@@ -212,10 +447,10 @@ D E W = 露の世</title>
     <div class="item right">
       
 
-  <a href="/2018/08/08/oracle-common-sql/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;斩·赤红之瞳.jpg" title="Oracle Common SQL">
+  <a href="/2018/08/08/oracle-call-java/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;千与千寻-2.jpg" title="Oracle Call Java">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
-  <h3>Oracle Common SQL</h3>
+  <h3>Oracle Call Java</h3>
   </a>
 
     </div>
@@ -234,7 +469,7 @@ D E W = 露の世</title>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="Contents">
-          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#oracle-%E5%B7%A6%E5%8F%B3%E5%85%A8%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.</span> <span class="toc-text"> Oracle 左右全连接</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E6%95%B0%E6%8D%AE"><span class="toc-number">1.1.</span> <span class="toc-text"> 测试数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A6%E5%A4%96%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.2.</span> <span class="toc-text"> 左外连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%B3%E5%A4%96%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.3.</span> <span class="toc-text"> 右外连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.4.</span> <span class="toc-text"> 内连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A8%E5%A4%96%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.5.</span> <span class="toc-text"> 全外连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%8C%E5%85%A8%E8%BF%9E%E6%8E%A5%E4%BA%A4%E5%8F%89%E8%BF%9E%E6%8E%A5%E6%88%96%E8%80%85%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF"><span class="toc-number">1.6.</span> <span class="toc-text"> 完全连接 (交叉连接或者笛卡尔积)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F"><span class="toc-number">1.7.</span> <span class="toc-text"> 注意</span></a></li></ol></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E6%95%B0%E6%8D%AE"><span class="toc-number">1.</span> <span class="toc-text"> 测试数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A6%E5%A4%96%E8%BF%9E%E6%8E%A5"><span class="toc-number">2.</span> <span class="toc-text"> 左外连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%B3%E5%A4%96%E8%BF%9E%E6%8E%A5"><span class="toc-number">3.</span> <span class="toc-text"> 右外连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E8%BF%9E%E6%8E%A5"><span class="toc-number">4.</span> <span class="toc-text"> 内连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A8%E5%A4%96%E8%BF%9E%E6%8E%A5"><span class="toc-number">5.</span> <span class="toc-text"> 全外连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%8C%E5%85%A8%E8%BF%9E%E6%8E%A5%E4%BA%A4%E5%8F%89%E8%BF%9E%E6%8E%A5%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF"><span class="toc-number">6.</span> <span class="toc-text"> 完全连接 &#x2F; 交叉连接 &#x2F; 笛卡尔积</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">7.</span> <span class="toc-text"> 注意事项</span></a></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
       </div>
@@ -249,7 +484,7 @@ D E W = 露の世</title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">364</span>
+        <span class="count">366</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -331,7 +566,7 @@ D E W = 露の世</title>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
     <li class="next pjax">
-        <a href="/2018/08/08/oracle-common-sql/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+        <a href="/2018/08/08/oracle-call-java/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
     </li>
     <li class="percent"></li>
   </ul>
@@ -352,7 +587,7 @@ D E W = 露の世</title>
   <div class="copyright">
     
     &copy; 2010 – 
-    <span itemprop="copyrightYear">2024</span>
+    <span itemprop="copyrightYear">2025</span>
     <span class="with-love">
       <i class="ic i-sakura rotate"></i>
     </span>

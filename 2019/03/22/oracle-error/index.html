@@ -102,12 +102,12 @@ D E W = 露の世</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="/anime/index/天真与闪电-1.jpg"></li>
-          <li class="item" data-background-image="/anime/index/空之境界.jpg"></li>
-          <li class="item" data-background-image="/anime/index/岁月的童话-2.jpg"></li>
-          <li class="item" data-background-image="/anime/index/秦时明月-1.jpg"></li>
-          <li class="item" data-background-image="/anime/index/派对浪客诸葛孔明-2.jpg"></li>
-          <li class="item" data-background-image="/anime/index/十二国记.jpg"></li>
+          <li class="item" data-background-image="/anime/index/侧耳倾听-1.jpg"></li>
+          <li class="item" data-background-image="/anime/index/更衣人偶坠入爱河-1.jpg"></li>
+          <li class="item" data-background-image="/anime/index/东方project-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/蔷薇少女-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/高分少女.jpg"></li>
+          <li class="item" data-background-image="/anime/index/四叠半神话大系-3.jpg"></li>
         </ul>
       </div>
     </header>
@@ -169,7 +169,55 @@ D E W = 露の世</title>
 <h3 id="pls-00428-an-into-clause-is-expected-in-this-select-statement"><a class="markdownIt-Anchor" href="#pls-00428-an-into-clause-is-expected-in-this-select-statement">#</a> PLS-00428: an INTO clause is expected in this SELECT statement</h3>
 <p>PL/SQL block must has an INTO clause in SELECT statement</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">begin</span></span><br><span class="line">  <span class="keyword">execute</span> immediate <span class="string">&#x27;select 1 from dual&#x27;</span>; <span class="comment">--After sql should has ;, if add will occurs error: ORA-00911: invalid character</span></span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">--PLS-00428: an INTO clause is expected in this SELECT statement</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  <span class="keyword">execute</span> immediate <span class="string">&#x27;begin select 1 from dual; end;&#x27;</span>;</span><br><span class="line"><span class="keyword">end</span>;</span><br></pre></td></tr></table></figure>
-
+<h3 id="ora-00955-name-is-already-used-by-an-existing-object"><a class="markdownIt-Anchor" href="#ora-00955-name-is-already-used-by-an-existing-object">#</a> ORA-00955: name is already used by an existing object</h3>
+<p>创建 b 表时报错，因为 b object 已经存在。 查询 user_objects 可以看到 b 是 Java Class.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> b(id number);</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> object_name, object_type, created, last_ddl_time, status</span><br><span class="line">  <span class="keyword">from</span> user_objects</span><br><span class="line"> <span class="keyword">where</span> object_name <span class="operator">=</span> <span class="string">&#x27;B&#x27;</span></span><br><span class="line"> <span class="keyword">order</span> <span class="keyword">by</span> object_name;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>OBJECT_NAME</th>
+<th>OBJECT_TYPE</th>
+<th>CREATED</th>
+<th>LAST_DDL_TIME</th>
+<th>STATUS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B</td>
+<td>JAVA CLASS</td>
+<td>6/12/2017 9:42:09 AM</td>
+<td>8/18/2024 10:00:55 AM</td>
+<td>VALID</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ora-29555-java-source-class-or-resource-is-not-allowed-here"><a class="markdownIt-Anchor" href="#ora-29555-java-source-class-or-resource-is-not-allowed-here">#</a> ORA-29555: Java source, class or resource is not allowed here</h3>
+<p><code>SELECT </code>  b 表的时候报错，因为 b 是 Java Class 不是 Table.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> b;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> object_name, object_type, created, last_ddl_time, status</span><br><span class="line">  <span class="keyword">from</span> user_objects</span><br><span class="line"> <span class="keyword">where</span> object_type <span class="keyword">in</span> (<span class="string">&#x27;JAVA CLASS&#x27;</span>)</span><br><span class="line">   <span class="keyword">and</span> object_name <span class="operator">=</span> <span class="string">&#x27;B&#x27;</span></span><br><span class="line"> <span class="keyword">order</span> <span class="keyword">by</span> object_name;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>OBJECT_NAME</th>
+<th>OBJECT_TYPE</th>
+<th>CREATED</th>
+<th>LAST_DDL_TIME</th>
+<th>STATUS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B</td>
+<td>JAVA CLASS</td>
+<td>6/12/2017 9:42:09 AM</td>
+<td>8/18/2024 10:00:55 AM</td>
+<td>VALID</td>
+</tr>
+</tbody>
+</table>
+<img data-src="/2019/03/22/oracle-error/1734599774791.png" class="">
       <div class="tags">
           <a href="/tags/db/" rel="tag"><i class="ic i-tag"></i> db</a>
       </div>
@@ -183,7 +231,7 @@ D E W = 露の世</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2021-10-18 13:27:14" itemprop="dateModified" datetime="2021-10-18T13:27:14+08:00">2021-10-18</time>
+    <time title="Modified: 2024-12-19 17:23:28" itemprop="dateModified" datetime="2024-12-19T17:23:28+08:00">2024-12-19</time>
   </span>
 </div>
 
@@ -200,7 +248,7 @@ D E W = 露の世</title>
     <div class="item left">
       
 
-  <a href="/2019/03/01/javascript-d3/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;星际牛仔.jpg" title="D3">
+  <a href="/2019/03/01/javascript-d3/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;工作细胞.jpg" title="D3">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>D3</h3>
@@ -210,7 +258,7 @@ D E W = 露の世</title>
     <div class="item right">
       
 
-  <a href="/2019/03/22/java-jdbc/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;龙猫-4.jpg" title="Java	Jdbc">
+  <a href="/2019/03/22/java-jdbc/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;绝园的暴风雨.jpg" title="Java	Jdbc">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Java	Jdbc</h3>
@@ -232,7 +280,7 @@ D E W = 露の世</title>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="Contents">
-          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#ora-01422"><span class="toc-number">1.</span> <span class="toc-text"> ORA-01422</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ora-06502-numeric-or-value-error-character-string-buffer-too-small"><span class="toc-number">2.</span> <span class="toc-text"> ORA-06502 numeric or value error: character string buffer too small</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ora-01858-a-non-numeric-character-was-found-where-a-numeric-was-expected"><span class="toc-number">3.</span> <span class="toc-text"> ORA-01858 a non-numeric character was found where a numeric was expected</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ora-00979-not-a-group-by-expression"><span class="toc-number">4.</span> <span class="toc-text"> ORA-00979 not a GROUP BY expression</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ora-00957-duplicate-column-name"><span class="toc-number">5.</span> <span class="toc-text"> ORA-00957 duplicate column name</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ora-00936-missing-expression"><span class="toc-number">6.</span> <span class="toc-text"> ORA-00936 missing expression</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ora-00917-missing-comma"><span class="toc-number">7.</span> <span class="toc-text"> ORA-00917 missing comma</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pls-00428-an-into-clause-is-expected-in-this-select-statement"><span class="toc-number">8.</span> <span class="toc-text"> PLS-00428: an INTO clause is expected in this SELECT statement</span></a></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#ora-01422"><span class="toc-number">1.</span> <span class="toc-text"> ORA-01422</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ora-06502-numeric-or-value-error-character-string-buffer-too-small"><span class="toc-number">2.</span> <span class="toc-text"> ORA-06502 numeric or value error: character string buffer too small</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ora-01858-a-non-numeric-character-was-found-where-a-numeric-was-expected"><span class="toc-number">3.</span> <span class="toc-text"> ORA-01858 a non-numeric character was found where a numeric was expected</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ora-00979-not-a-group-by-expression"><span class="toc-number">4.</span> <span class="toc-text"> ORA-00979 not a GROUP BY expression</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ora-00957-duplicate-column-name"><span class="toc-number">5.</span> <span class="toc-text"> ORA-00957 duplicate column name</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ora-00936-missing-expression"><span class="toc-number">6.</span> <span class="toc-text"> ORA-00936 missing expression</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ora-00917-missing-comma"><span class="toc-number">7.</span> <span class="toc-text"> ORA-00917 missing comma</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pls-00428-an-into-clause-is-expected-in-this-select-statement"><span class="toc-number">8.</span> <span class="toc-text"> PLS-00428: an INTO clause is expected in this SELECT statement</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ora-00955-name-is-already-used-by-an-existing-object"><span class="toc-number">9.</span> <span class="toc-text"> ORA-00955: name is already used by an existing object</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ora-29555-java-source-class-or-resource-is-not-allowed-here"><span class="toc-number">10.</span> <span class="toc-text"> ORA-29555: Java source, class or resource is not allowed here</span></a></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
       </div>
@@ -247,7 +295,7 @@ D E W = 露の世</title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">364</span>
+        <span class="count">366</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -350,7 +398,7 @@ D E W = 露の世</title>
   <div class="copyright">
     
     &copy; 2010 – 
-    <span itemprop="copyrightYear">2024</span>
+    <span itemprop="copyrightYear">2025</span>
     <span class="with-love">
       <i class="ic i-sakura rotate"></i>
     </span>

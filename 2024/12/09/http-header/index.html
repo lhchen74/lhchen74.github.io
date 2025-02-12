@@ -1,0 +1,416 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CFira%20Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="js,html,http" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2024/12/09/http-header/">
+
+
+
+  <title>
+HTTP Response Header Content-Disposition |
+D E W = 露の世</title>
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">HTTP Response Header Content-Disposition
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2024-12-09 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2024-12-09T00:00:00+08:00">2024-12-09</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">D E W</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="/anime/index/clannad.jpg"></li>
+          <li class="item" data-background-image="/anime/index/言叶之庭.jpg"></li>
+          <li class="item" data-background-image="/anime/index/妖精森林的小不点.jpg"></li>
+          <li class="item" data-background-image="/anime/index/异度侵入-1.jpg"></li>
+          <li class="item" data-background-image="/anime/index/火影忍者.jpg"></li>
+          <li class="item" data-background-image="/anime/index/甲铁城的卡巴内瑞-1.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2024/12/09/http-header/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h2 id="content-disposition"><a class="markdownIt-Anchor" href="#content-disposition">#</a> Content-Disposition</h2>
+<blockquote>
+<p>from: <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2F0YW5nc2hhcmUvY29udGVudC1kaXNwb3NpdGlvbg==">atangshare/content-disposition</span></p>
+</blockquote>
+<blockquote>
+<p><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvSFRUUC9IZWFkZXJzL0NvbnRlbnQtRGlzcG9zaXRpb24=">MDN Content-Disposition</span></p>
+</blockquote>
+<p>The HTTP <strong>Content-Disposition</strong> header indicates whether content should be displayed <em>inline</em> in the browser as a web page or part of a web page or downloaded as an <em>attachment</em> locally.</p>
+<p>The first parameter in the HTTP context is either  <code>inline</code>  (default value, indicating it can be displayed inside the Web page, or as the Web page) or  <code>attachment</code>  (indicating it should be downloaded; most browsers presenting a ‘Save as’ dialog, prefilled with the value of the  <code>filename</code>  parameters if present).</p>
+<p>public/index.html</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;/preview&quot;</span>&gt;</span>预览<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;/download&quot;</span>&gt;</span>下载<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>server.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> http <span class="keyword">from</span> <span class="string">&#x27;http&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> fs <span class="keyword">from</span> <span class="string">&#x27;fs/promises&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> path <span class="keyword">from</span> <span class="string">&#x27;path&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; fileURLToPath &#125; <span class="keyword">from</span> <span class="string">&#x27;url&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> __dirname = path.dirname(fileURLToPath(<span class="keyword">import</span>.meta.url));</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> server = http.createServer(<span class="keyword">async</span> (req, res) =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> (req.url === <span class="string">&#x27;/&#x27;</span>) &#123;</span><br><span class="line">        <span class="keyword">const</span> data = <span class="keyword">await</span> fs.readFile(path.join(__dirname, <span class="string">&#x27;public&#x27;</span>, <span class="string">&#x27;index.html&#x27;</span>));</span><br><span class="line">        res.writeHead(<span class="number">200</span>, &#123;</span><br><span class="line">            <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;text/html&#x27;</span></span><br><span class="line">        &#125;);</span><br><span class="line">        res.end(data);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (req.url === <span class="string">&#x27;/preview&#x27;</span>) &#123;</span><br><span class="line">        <span class="keyword">const</span> data = <span class="keyword">await</span> fs.readFile(path.join(__dirname, <span class="string">&#x27;public&#x27;</span>, <span class="string">&#x27;sample.pdf&#x27;</span>));</span><br><span class="line">        res.writeHead(<span class="number">200</span>, &#123;</span><br><span class="line">            <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;application/pdf&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;Content-Disposition&#x27;</span>: <span class="string">&#x27;inline&#x27;</span></span><br><span class="line">        &#125;);</span><br><span class="line">        res.end(data);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (req.url === <span class="string">&#x27;/download&#x27;</span>) &#123;</span><br><span class="line">        <span class="keyword">const</span> data = <span class="keyword">await</span> fs.readFile(path.join(__dirname, <span class="string">&#x27;public&#x27;</span>, <span class="string">&#x27;sample.pdf&#x27;</span>));</span><br><span class="line">        res.writeHead(<span class="number">200</span>, &#123;</span><br><span class="line">            <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;application/pdf&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;Content-Disposition&#x27;</span>: <span class="string">&#x27;attachment;filename=&quot;sample2.pdf&quot;&#x27;</span></span><br><span class="line">        &#125;);</span><br><span class="line">        res.end(data);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">server.listen(<span class="number">3000</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;Server is running on 3000&#x27;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>result</p>
+<blockquote>
+<p>$ node server.js<br>
+Server is running on 3000</p>
+</blockquote>
+<p>Click Download link will download the file to local, and the file name will use the file name specified in Content-Disposition.</p>
+<img data-src="/2024/12/09/http-header/1733743325206.png" class="">
+<p>Click Preview Link will preview the file directly in the browser.</p>
+<img data-src="/2024/12/09/http-header/1733743141193.png" class="">
+<h2 id="etag"><a class="markdownIt-Anchor" href="#etag">#</a> ETag</h2>
+<p>ETag cache flow</p>
+<img data-src="/2024/12/09/http-header/1737973736013.png" class="">
+<p>Node http server implementation.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">&#x27;http&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> crypto = <span class="built_in">require</span>(<span class="string">&#x27;crypto&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> server = http.createServer(<span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (req.url === <span class="string">&#x27;/test.pdf&#x27;</span>) &#123;</span><br><span class="line">        <span class="keyword">const</span> pdf = fs.readFileSync(<span class="string">&#x27;./test.pdf&#x27;</span>);</span><br><span class="line">        <span class="keyword">const</span> etag = crypto.createHash(<span class="string">&#x27;md5&#x27;</span>).update(pdf).digest(<span class="string">&#x27;hex&#x27;</span>);</span><br><span class="line">        <span class="keyword">const</span> ifNoneMatch = req.headers[<span class="string">&#x27;if-none-match&#x27;</span>];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (etag === ifNoneMatch) &#123;</span><br><span class="line">            res.statusCode = <span class="number">304</span>;</span><br><span class="line">            res.end();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            res.setHeader(<span class="string">&#x27;ETag&#x27;</span>, etag);</span><br><span class="line">            res.end(pdf);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">server.listen(<span class="number">3000</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;Server is listening on http://localhost:3000&#x27;</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>Access firstly</p>
+<img data-src="/2024/12/09/http-header/1737973414547.png" class="">
+<p>Access secondly</p>
+<img data-src="/2024/12/09/http-header/1737973712597.png" class="">
+<img data-src="/2024/12/09/http-header/1737973609383.png" class="">
+      <div class="tags">
+          <a href="/tags/js/" rel="tag"><i class="ic i-tag"></i> js</a>
+          <a href="/tags/html/" rel="tag"><i class="ic i-tag"></i> html</a>
+          <a href="/tags/http/" rel="tag"><i class="ic i-tag"></i> http</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2025-01-27 19:56:10" itemprop="dateModified" datetime="2025-01-27T19:56:10+08:00">2025-01-27</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2024/11/06/edi-as2/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;电波女与青春男-2.jpg" title="How AS2 Works">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>How AS2 Works</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2024/12/26/js-fetch-await/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;乒乓.jpg" title="Why Two Awaits?">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Why Two Awaits?</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#content-disposition"><span class="toc-number">1.</span> <span class="toc-text"> Content-Disposition</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#etag"><span class="toc-number">2.</span> <span class="toc-text"> ETag</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">366</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">51</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
+      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2024/11/06/edi-as2/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2024/12/26/js-fetch-await/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ D E W</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2024/12/09/http-header/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
