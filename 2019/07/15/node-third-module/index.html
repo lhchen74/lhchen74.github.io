@@ -102,12 +102,12 @@ D E W = 露の世</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="/anime/index/东京喰种.jpg"></li>
-          <li class="item" data-background-image="/anime/index/好想告诉你.jpg"></li>
-          <li class="item" data-background-image="/anime/index/another.jpg"></li>
-          <li class="item" data-background-image="/anime/index/天空之城-2.jpg"></li>
-          <li class="item" data-background-image="/anime/index/跃动青春.jpg"></li>
-          <li class="item" data-background-image="/anime/index/体操武士-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/上低音号.jpg"></li>
+          <li class="item" data-background-image="/anime/index/彻夜之歌-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/蔷薇少女.jpg"></li>
+          <li class="item" data-background-image="/anime/index/冰海战记.jpg"></li>
+          <li class="item" data-background-image="/anime/index/三月的狮子.jpg"></li>
+          <li class="item" data-background-image="/anime/index/奇诺之旅.jpg"></li>
         </ul>
       </div>
     </header>
@@ -203,6 +203,10 @@ D E W = 露の世</title>
 <h3 id="npkill-maintain-your-development-workspace-clean"><a class="markdownIt-Anchor" href="#npkill-maintain-your-development-workspace-clean">#</a> <span class="exturl" data-url="aHR0cHM6Ly9ucGtpbGwuanMub3JnLw==">NPKILL - Maintain your development workspace clean.</span></h3>
 <p><strong>Npkill</strong> is a CLI tool that allows you to list all the heavy <strong>node_modules</strong> that you have scattered around your computer and allows you to delete those you don’t need in a very simple and elegant way.</p>
 <p>You might be surprised how much space <strong>node_modules</strong> from old projects are silly taking up.</p>
+<h3 id="abbrnodesspi-server-side-windows-authentication-for-nodejs"><a class="markdownIt-Anchor" href="#abbrnodesspi-server-side-windows-authentication-for-nodejs">#</a> <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FiYnIvbm9kZXNzcGk=">abbr/NodeSSPI - Server-side windows authentication for Node.js</span></h3>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> app = express();</span><br><span class="line"><span class="keyword">const</span> server = <span class="built_in">require</span>(<span class="string">&#x27;http&#x27;</span>).createServer(app);</span><br><span class="line"></span><br><span class="line">app.use(<span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> nodeSSPI = <span class="built_in">require</span>(<span class="string">&#x27;node-sspi&#x27;</span>);</span><br><span class="line">    <span class="keyword">const</span> nodeSSPIObj = <span class="keyword">new</span> nodeSSPI(&#123;</span><br><span class="line">        retrieveGroups: <span class="literal">true</span>,</span><br><span class="line">    &#125;);</span><br><span class="line">    nodeSSPIObj.authenticate(req, res, <span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</span><br><span class="line">        res.writableEnded || next();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.use(<span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> out =</span><br><span class="line">        <span class="string">&#x27;Hello &#x27;</span> +</span><br><span class="line">        req.socket.user +</span><br><span class="line">        <span class="string">&#x27;! Your sid is &#x27;</span> +</span><br><span class="line">        req.socket.userSid +</span><br><span class="line">        <span class="string">&#x27; and you belong to following groups:&lt;br/&gt;&lt;ul&gt;&#x27;</span>;</span><br><span class="line">    <span class="keyword">if</span> (req.socket.userGroups) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">const</span> i <span class="keyword">in</span> req.socket.userGroups) &#123;</span><br><span class="line">            out += <span class="string">&#x27;&lt;li&gt;&#x27;</span> + req.socket.userGroups[i] + <span class="string">&#x27;&lt;/li&gt;&lt;br/&gt;\n&#x27;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    out += <span class="string">&#x27;&lt;/ul&gt;&#x27;</span>;</span><br><span class="line">    res.send(out);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> port = process.env.PORT || <span class="number">5000</span>;</span><br><span class="line">server.listen(port, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(</span><br><span class="line">        <span class="string">&#x27;Express server listening on port %d in %s mode&#x27;</span>,</span><br><span class="line">        port,</span><br><span class="line">        app.get(<span class="string">&#x27;env&#x27;</span>)</span><br><span class="line">    );</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>To access the URL, you need to enter a Windows user name/password for authentication.</p>
+<img data-src="/2019/07/15/node-third-module/1740730097672.png" class="">
 
       <div class="tags">
           <a href="/tags/node/" rel="tag"><i class="ic i-tag"></i> node</a>
@@ -217,7 +221,7 @@ D E W = 露の世</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2024-06-17 17:37:39" itemprop="dateModified" datetime="2024-06-17T17:37:39+08:00">2024-06-17</time>
+    <time title="Modified: 2025-02-28 16:11:27" itemprop="dateModified" datetime="2025-02-28T16:11:27+08:00">2025-02-28</time>
   </span>
 </div>
 
@@ -234,20 +238,20 @@ D E W = 露の世</title>
     <div class="item left">
       
 
-  <a href="/2019/07/15/node-testing/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;岁月的童话.jpg" title="Node Test">
+  <a href="/2019/07/15/node/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;借东西的小人阿莉埃蒂-2.jpg" title="Node">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
-  <h3>Node Test</h3>
+  <h3>Node</h3>
   </a>
 
     </div>
     <div class="item right">
       
 
-  <a href="/2019/07/15/node-satatic-file-server/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;四月一日灵异事件簿-2.jpg" title="Node Static File Server">
+  <a href="/2019/07/15/node-record/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;夏日重现.jpg" title="Node Example Record">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
-  <h3>Node Static File Server</h3>
+  <h3>Node Example Record</h3>
   </a>
 
     </div>
@@ -266,7 +270,7 @@ D E W = 露の世</title>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="Contents">
-          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#nodejs-toolbox"><span class="toc-number">1.</span> <span class="toc-text"> Node.js Toolbox</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cheerio"><span class="toc-number">2.</span> <span class="toc-text"> cheerio</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#chartjs"><span class="toc-number">3.</span> <span class="toc-text"> Chart.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#colors"><span class="toc-number">4.</span> <span class="toc-text"> colors</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#chalk"><span class="toc-number">5.</span> <span class="toc-text"> chalk</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mockjs"><span class="toc-number">6.</span> <span class="toc-text"> mockjs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pm2"><span class="toc-number">7.</span> <span class="toc-text"> pm2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#lowdb"><span class="toc-number">8.</span> <span class="toc-text"> lowdb</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#chokidar"><span class="toc-number">9.</span> <span class="toc-text"> chokidar</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#yrm"><span class="toc-number">10.</span> <span class="toc-text"> yrm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#prism"><span class="toc-number">11.</span> <span class="toc-text"> Prism</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#furigana-markdown-it"><span class="toc-number">12.</span> <span class="toc-text"> furigana-markdown-it</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#case-police"><span class="toc-number">13.</span> <span class="toc-text"> case-police: 🚨</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#slidev"><span class="toc-number">14.</span> <span class="toc-text"> Slidev</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#retypeappretype"><span class="toc-number">15.</span> <span class="toc-text"> retypeapp&#x2F;retype</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sboudriasinquirerjs"><span class="toc-number">16.</span> <span class="toc-text"> SBoudrias&#x2F;Inquirer.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#haversnailinquirer-date-prompt"><span class="toc-number">17.</span> <span class="toc-text"> haversnail&#x2F;inquirer-date-prompt</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#eduardoboucasinquirer-table-prompt"><span class="toc-number">18.</span> <span class="toc-text"> eduardoboucas&#x2F;inquirer-table-prompt</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#npkill-maintain-your-development-workspace-clean"><span class="toc-number">19.</span> <span class="toc-text"> NPKILL - Maintain your development workspace clean.</span></a></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#nodejs-toolbox"><span class="toc-number">1.</span> <span class="toc-text"> Node.js Toolbox</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cheerio"><span class="toc-number">2.</span> <span class="toc-text"> cheerio</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#chartjs"><span class="toc-number">3.</span> <span class="toc-text"> Chart.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#colors"><span class="toc-number">4.</span> <span class="toc-text"> colors</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#chalk"><span class="toc-number">5.</span> <span class="toc-text"> chalk</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mockjs"><span class="toc-number">6.</span> <span class="toc-text"> mockjs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pm2"><span class="toc-number">7.</span> <span class="toc-text"> pm2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#lowdb"><span class="toc-number">8.</span> <span class="toc-text"> lowdb</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#chokidar"><span class="toc-number">9.</span> <span class="toc-text"> chokidar</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#yrm"><span class="toc-number">10.</span> <span class="toc-text"> yrm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#prism"><span class="toc-number">11.</span> <span class="toc-text"> Prism</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#furigana-markdown-it"><span class="toc-number">12.</span> <span class="toc-text"> furigana-markdown-it</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#case-police"><span class="toc-number">13.</span> <span class="toc-text"> case-police: 🚨</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#slidev"><span class="toc-number">14.</span> <span class="toc-text"> Slidev</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#retypeappretype"><span class="toc-number">15.</span> <span class="toc-text"> retypeapp&#x2F;retype</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sboudriasinquirerjs"><span class="toc-number">16.</span> <span class="toc-text"> SBoudrias&#x2F;Inquirer.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#haversnailinquirer-date-prompt"><span class="toc-number">17.</span> <span class="toc-text"> haversnail&#x2F;inquirer-date-prompt</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#eduardoboucasinquirer-table-prompt"><span class="toc-number">18.</span> <span class="toc-text"> eduardoboucas&#x2F;inquirer-table-prompt</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#npkill-maintain-your-development-workspace-clean"><span class="toc-number">19.</span> <span class="toc-text"> NPKILL - Maintain your development workspace clean.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#abbrnodesspi-server-side-windows-authentication-for-nodejs"><span class="toc-number">20.</span> <span class="toc-text"> abbr&#x2F;NodeSSPI - Server-side windows authentication for Node.js</span></a></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
       </div>
@@ -281,7 +285,7 @@ D E W = 露の世</title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">366</span>
+        <span class="count">373</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -358,12 +362,12 @@ D E W = 露の世</title>
 
   <ul id="quick">
     <li class="prev pjax">
-        <a href="/2019/07/15/node-testing/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+        <a href="/2019/07/15/node/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
     </li>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
     <li class="next pjax">
-        <a href="/2019/07/15/node-satatic-file-server/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+        <a href="/2019/07/15/node-record/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
     </li>
     <li class="percent"></li>
   </ul>

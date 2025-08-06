@@ -102,12 +102,12 @@ D E W = 露の世</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="/anime/index/四月一日灵异事件簿.jpg"></li>
-          <li class="item" data-background-image="/anime/index/约会大作战.jpg"></li>
-          <li class="item" data-background-image="/anime/index/虞美人盛开的山坡-1.jpg"></li>
-          <li class="item" data-background-image="/anime/index/魔女宅急便-2.jpg"></li>
-          <li class="item" data-background-image="/anime/index/更衣人偶坠入爱河-2.jpg"></li>
-          <li class="item" data-background-image="/anime/index/俺物语-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/明日酱的水手服-3.jpg"></li>
+          <li class="item" data-background-image="/anime/index/秒速五厘米-3.jpg"></li>
+          <li class="item" data-background-image="/anime/index/魁拔.jpg"></li>
+          <li class="item" data-background-image="/anime/index/来自深渊.jpg"></li>
+          <li class="item" data-background-image="/anime/index/东京教父-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/葬送的芙莉莲-2.jpg"></li>
         </ul>
       </div>
     </header>
@@ -784,6 +784,9 @@ D E W = 露の世</title>
 </tr>
 </tbody>
 </table>
+<p>For Oracle 11g, in PL/SQL, VARCHAR2 can be up to 32767 bytes. in SQL the limit is 4000 bytes.</p>
+<p>如果 XML 内容很大，在 PL/SQL 中可以是用 getClobVal () 转换 XMLType 到 Clob， 然后使用 SUBSTR 截取 Clob 到  VARCHAR2，在 Oracle 11g 中最大支持  32767。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> yeh.po_number,</span><br><span class="line">       XMLELEMENT(&quot;table&quot;,</span><br><span class="line">         XMLCONCAT(</span><br><span class="line">           XMLELEMENT(&quot;tr&quot;, </span><br><span class="line">             XMLELEMENT(&quot;th&quot;, <span class="string">&#x27;EDI Type&#x27;</span>),</span><br><span class="line">             XMLELEMENT(&quot;th&quot;, <span class="string">&#x27;PO Number&#x27;</span>),</span><br><span class="line">             XMLELEMENT(&quot;th&quot;, <span class="string">&#x27;PO Release Number&#x27;</span>),</span><br><span class="line">             XMLELEMENT(&quot;th&quot;, <span class="string">&#x27;PO Date&#x27;</span>),</span><br><span class="line">             XMLELEMENT(&quot;th&quot;, <span class="string">&#x27;Ship to Code&#x27;</span>),</span><br><span class="line">             XMLELEMENT(&quot;th&quot;, <span class="string">&#x27;Ship to Name&#x27;</span>),</span><br><span class="line">             XMLELEMENT(&quot;th&quot;, <span class="string">&#x27;Sold to Code&#x27;</span>),</span><br><span class="line">             XMLELEMENT(&quot;th&quot;, <span class="string">&#x27;Sold to Name&#x27;</span>)</span><br><span class="line">           ),</span><br><span class="line">           XMLAGG( </span><br><span class="line">             XMLELEMENT(&quot;tr&quot;, </span><br><span class="line">               XMLELEMENT(&quot;td&quot;, yeh.edi_type),</span><br><span class="line">               XMLELEMENT(&quot;td&quot;, yeh.po_number),</span><br><span class="line">               XMLELEMENT(&quot;td&quot;, yeh.po_release_number),</span><br><span class="line">               XMLELEMENT(&quot;td&quot;, yeh.po_date),</span><br><span class="line">               XMLELEMENT(&quot;td&quot;, yea_ship.code),</span><br><span class="line">               XMLELEMENT(&quot;td&quot;, yea_ship.name),</span><br><span class="line">               XMLELEMENT(&quot;td&quot;, yea_sold.code),</span><br><span class="line">               XMLELEMENT(&quot;td&quot;, yea_sold.name)</span><br><span class="line">             )</span><br><span class="line">           )</span><br><span class="line">         )</span><br><span class="line">       ).getClobVal() <span class="keyword">as</span> table_str</span><br><span class="line">  <span class="keyword">from</span> ysc_edi_inbound_header  yeh,</span><br><span class="line">       ysc_edi_inbound_address  yea_ship,</span><br><span class="line">       ysc_edi_inbound_address  yea_sold</span><br><span class="line"> <span class="keyword">where</span> yeh.header_id <span class="operator">=</span> yea_ship.header_id</span><br><span class="line">   <span class="keyword">and</span> yeh.header_id <span class="operator">=</span> yea_sold.header_id</span><br><span class="line">   <span class="keyword">and</span> yea_ship.identifier_code <span class="operator">=</span> <span class="string">&#x27;ST&#x27;</span></span><br><span class="line">   <span class="keyword">and</span> yea_sold.identifier_code <span class="operator">=</span> <span class="string">&#x27;BY&#x27;</span></span><br><span class="line">   <span class="keyword">and</span> yeh.header_id <span class="operator">=</span> <span class="number">1</span></span><br><span class="line"> <span class="keyword">group</span> <span class="keyword">by</span> yeh.po_number;</span><br><span class="line"> </span><br><span class="line">dbms_output.put_line(substr(r_l.xml_clob, <span class="number">1</span>, <span class="number">32767</span>));</span><br></pre></td></tr></table></figure>
 <h2 id="xml-namespace"><a class="markdownIt-Anchor" href="#xml-namespace">#</a> XML namespace</h2>
 <p>使用 XMLTable 解析 XML 如果 XML 包含 namespace, 会解析不到数据。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> item.<span class="operator">*</span></span><br><span class="line">  <span class="keyword">from</span> som_edi_customer_source ses,</span><br><span class="line">       xmltable(</span><br><span class="line">         <span class="string">&#x27;/Pip3A4PurchaseOrderRequest/PurchaseOrder/ProductLineItem&#x27;</span></span><br><span class="line">          passing xmltype(ses.memo)  <span class="comment">--memo type is clob, if memo is xmltype can direct use passing ses.memo</span></span><br><span class="line">          columns</span><br><span class="line">            cust_name varchar2(<span class="number">1000</span>) path <span class="string">&#x27;CustomerInformation/businessName&#x27;</span>,</span><br><span class="line">            cust_po_number varchar2(<span class="number">1000</span>) path <span class="string">&#x27;PartnerBusiness/BusinessIdentifier&#x27;</span></span><br><span class="line">       ) item</span><br><span class="line"><span class="keyword">where</span> ses.seq_id <span class="operator">=</span> p_seq_id;</span><br></pre></td></tr></table></figure>
@@ -828,7 +831,7 @@ D E W = 露の世</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2025-01-03 16:19:30" itemprop="dateModified" datetime="2025-01-03T16:19:30+08:00">2025-01-03</time>
+    <time title="Modified: 2025-03-07 11:52:56" itemprop="dateModified" datetime="2025-03-07T11:52:56+08:00">2025-03-07</time>
   </span>
 </div>
 
@@ -845,7 +848,7 @@ D E W = 露の世</title>
     <div class="item left">
       
 
-  <a href="/2020/04/22/css-bfc/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;奇巧计程车.jpg" title="CSS BFC">
+  <a href="/2020/04/22/css-bfc/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;龙猫-4.jpg" title="CSS BFC">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>CSS BFC</h3>
@@ -855,7 +858,7 @@ D E W = 露の世</title>
     <div class="item right">
       
 
-  <a href="/2020/04/30/oracle-update/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;魔女宅急便-2.jpg" title="Update a table with data from another table">
+  <a href="/2020/04/30/oracle-update/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;排球少年-2.jpg" title="Update a table with data from another table">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Update a table with data from another table</h3>
@@ -892,7 +895,7 @@ D E W = 露の世</title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">366</span>
+        <span class="count">373</span>
         <span class="name">posts</span>
       </a>
     </div>

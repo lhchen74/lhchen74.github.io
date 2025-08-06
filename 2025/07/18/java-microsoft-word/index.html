@@ -1,0 +1,458 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CFira%20Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="java" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2025/07/18/java-microsoft-word/">
+
+
+
+  <title>
+Java Read Excel to XML |
+D E W = 露の世</title>
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">Java Read Excel to XML
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2025-07-18 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2025-07-18T00:00:00+08:00">2025-07-18</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">D E W</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="/anime/index/我的英雄学院.jpg"></li>
+          <li class="item" data-background-image="/anime/index/怪物之子-1.jpg"></li>
+          <li class="item" data-background-image="/anime/index/幽游白书.jpg"></li>
+          <li class="item" data-background-image="/anime/index/龙猫-3.jpg"></li>
+          <li class="item" data-background-image="/anime/index/好想告诉你.jpg"></li>
+          <li class="item" data-background-image="/anime/index/侧耳倾听-4.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2025/07/18/java-microsoft-word/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>repost: <span class="exturl" data-url="aHR0cHM6Ly93d3cuYmFlbGR1bmcuY29tL2phdmEtbWljcm9zb2Z0LXdvcmQtd2l0aC1hcGFjaGUtcG9p">Microsoft Word Processing in Java with Apache POI</span></p>
+</blockquote>
+<h2 id="1-overview"><a class="markdownIt-Anchor" href="#1-overview">#</a> <strong>1. Overview</strong></h2>
+<p><span class="exturl" data-url="aHR0cHM6Ly9wb2kuYXBhY2hlLm9yZy8=">Apache POI</span> is a Java library for working with the various file formats based on the Office Open XML standards (OOXML) and Microsoft’s OLE 2 Compound Document format (OLE2).</p>
+<p>This tutorial focuses on the support of <span class="exturl" data-url="aHR0cHM6Ly9wb2kuYXBhY2hlLm9yZy8=">Apache POI for Microsoft Word</span>, the most commonly used Office file format. It walks through steps needed to format and generate an MS Word file and how to parse this file.</p>
+<h2 id="2-maven-dependencies"><a class="markdownIt-Anchor" href="#2-maven-dependencies">#</a> <strong>2. Maven Dependencies</strong></h2>
+<p>The only dependency that is required for Apache POI to handle MS Word files is:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.poi<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>poi-ooxml<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.2.5<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;<span class="name">Copy</span></span></span><br></pre></td></tr></table></figure>
+<p>Please click <span class="exturl" data-url="aHR0cHM6Ly9tdm5yZXBvc2l0b3J5LmNvbS9hcnRpZmFjdC9vcmcuYXBhY2hlLnBvaS9wb2ktb294bWw=">here</span> for the latest version of this artifact.</p>
+<h2 id="3-preparation"><a class="markdownIt-Anchor" href="#3-preparation">#</a> <strong>3. Preparation</strong></h2>
+<p>Let’s now look at some of the elements used to facilitate the generation of an MS Word file.</p>
+<h3 id="31-resource-files"><a class="markdownIt-Anchor" href="#31-resource-files">#</a> <strong>3.1. Resource Files</strong></h3>
+<p>We’ll collect the contents of three text files and write them into an MS Word file – named <em>rest-with-spring.docx</em>.</p>
+<p>In addition, the <em>logo-leaf.png</em> file is used to insert an image into that new file. All these files do exist on the classpath and are represented by several static variables:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> String logo = <span class="string">&quot;logo-leaf.png&quot;</span>;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> String paragraph1 = <span class="string">&quot;poi-word-para1.txt&quot;</span>;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> String paragraph2 = <span class="string">&quot;poi-word-para2.txt&quot;</span>;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> String paragraph3 = <span class="string">&quot;poi-word-para3.txt&quot;</span>;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> String output = <span class="string">&quot;rest-with-spring.docx&quot;</span>;Copy</span><br></pre></td></tr></table></figure>
+<p>For those who are curious, contents of these resource files in the repository, whose link is given in the last section of this tutorial, are extracted from <span class="exturl" data-url="aHR0cHM6Ly93d3cuYmFlbGR1bmcuY29tL3Jlc3Qtd2l0aC1zcHJpbmctY291cnNlP3V0bV9zb3VyY2U9YmxvZyZhbXA7dXRtX21lZGl1bT13ZWImYW1wO3V0bV9jb250ZW50PW1lbnUmYW1wO3V0bV9jYW1wYWlnbj1yd3M=">this course page</span> here on the site.</p>
+<h3 id="32-helper-method"><a class="markdownIt-Anchor" href="#32-helper-method">#</a> <strong>3.2. Helper Method</strong></h3>
+<p>The main method consisting of logic used to generate an MS Word file, which is described in the following section, makes use of a helper method:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">convertTextFileToString</span><span class="params">(String fileName)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> (Stream&lt;String&gt; stream</span><br><span class="line">      = Files.lines(Paths.get(ClassLoader.getSystemResource(fileName).toURI()))) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> stream.collect(Collectors.joining(<span class="string">&quot; &quot;</span>));</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException | URISyntaxException e) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;Copy</span><br></pre></td></tr></table></figure>
+<p>This method extracts contents contained in a text file located on the classpath, whose name is the passed-in <em>String</em> argument. Then, it concatenates lines in this file and returns the joining <em>String</em>.</p>
+<h2 id="4-ms-word-file-generation"><a class="markdownIt-Anchor" href="#4-ms-word-file-generation">#</a> <strong>4. MS Word File Generation</strong></h2>
+<p>This section gives instructions on how to format and generate a Microsoft Word file. Prior to working on any part of the file, we need to have an <em>XWPFDocument</em> instance:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">XWPFDocument document = <span class="keyword">new</span> XWPFDocument();Copy</span><br></pre></td></tr></table></figure>
+<h3 id="41-formatting-title-and-subtitle"><a class="markdownIt-Anchor" href="#41-formatting-title-and-subtitle">#</a> <strong>4.1. Formatting Title and Subtitle</strong></h3>
+<p>In order to create the title, we need to first instantiate the <em>XWPFParagraph</em> class and set the alignment on the new object:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">XWPFParagraph title = document.createParagraph();</span><br><span class="line">title.setAlignment(ParagraphAlignment.CENTER);Copy</span><br></pre></td></tr></table></figure>
+<p>The content of a paragraph needs to be wrapped in an <em>XWPFRun</em> object. We may configure this object to set a text value and its associated styles:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">XWPFRun titleRun = title.createRun();</span><br><span class="line">titleRun.setText(<span class="string">&quot;Build Your REST API with Spring&quot;</span>);</span><br><span class="line">titleRun.setColor(<span class="string">&quot;009933&quot;</span>);</span><br><span class="line">titleRun.setBold(<span class="keyword">true</span>);</span><br><span class="line">titleRun.setFontFamily(<span class="string">&quot;Courier&quot;</span>);</span><br><span class="line">titleRun.setFontSize(<span class="number">20</span>);Copy</span><br></pre></td></tr></table></figure>
+<p>One should be able to infer the purposes of the set-methods from their names.</p>
+<p>In a similar way we create an <em>XWPFParagraph</em> instance enclosing the subtitle:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">XWPFParagraph subTitle = document.createParagraph();</span><br><span class="line">subTitle.setAlignment(ParagraphAlignment.CENTER);Copy</span><br></pre></td></tr></table></figure>
+<p>Let’s format the subtitle as well:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">XWPFRun subTitleRun = subTitle.createRun();</span><br><span class="line">subTitleRun.setText(<span class="string">&quot;from HTTP fundamentals to API Mastery&quot;</span>);</span><br><span class="line">subTitleRun.setColor(<span class="string">&quot;00CC44&quot;</span>);</span><br><span class="line">subTitleRun.setFontFamily(<span class="string">&quot;Courier&quot;</span>);</span><br><span class="line">subTitleRun.setFontSize(<span class="number">16</span>);</span><br><span class="line">subTitleRun.setTextPosition(<span class="number">20</span>);</span><br><span class="line">subTitleRun.setUnderline(UnderlinePatterns.DOT_DOT_DASH);Copy</span><br></pre></td></tr></table></figure>
+<p>The <em>setTextPosition</em> method sets the distance between the subtitle and the subsequent image, while <em>setUnderline</em> determines the underlining pattern.</p>
+<p>Notice that we hard-code the contents of both the title and subtitle as these statements are too short to justify the use of a helper method.</p>
+<h3 id="42-inserting-an-image"><a class="markdownIt-Anchor" href="#42-inserting-an-image">#</a> <strong>4.2. Inserting an Image</strong></h3>
+<p>An image also needs to be wrapped in an <em>XWPFParagraph</em> instance. We want the image to be horizontally centered and placed under the subtitle, thus the following snippet must be put below the code given above:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">XWPFParagraph image = document.createParagraph();</span><br><span class="line">image.setAlignment(ParagraphAlignment.CENTER);Copy</span><br></pre></td></tr></table></figure>
+<p>Here is how to set the distance between this image and the text below it:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">XWPFRun imageRun = image.createRun();</span><br><span class="line">imageRun.setTextPosition(<span class="number">20</span>);Copy</span><br></pre></td></tr></table></figure>
+<p>An image is taken from a file on the classpath and then inserted into the MS Word file with the specified dimensions:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Path imagePath = Paths.get(ClassLoader.getSystemResource(logo).toURI());</span><br><span class="line">imageRun.addPicture(Files.newInputStream(imagePath),</span><br><span class="line">  XWPFDocument.PICTURE_TYPE_PNG, imagePath.getFileName().toString(),</span><br><span class="line">  Units.toEMU(<span class="number">50</span>), Units.toEMU(<span class="number">50</span>));Copy</span><br></pre></td></tr></table></figure>
+<h3 id="43-formatting-paragraphs"><a class="markdownIt-Anchor" href="#43-formatting-paragraphs">#</a> <strong>4.3. Formatting Paragraphs</strong></h3>
+<p>Here is how we create the first paragraph with contents taken from the <em>poi-word-para1.txt</em> file:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">XWPFParagraph para1 = document.createParagraph();</span><br><span class="line">para1.setAlignment(ParagraphAlignment.BOTH);</span><br><span class="line">String string1 = convertTextFileToString(paragraph1);</span><br><span class="line">XWPFRun para1Run = para1.createRun();</span><br><span class="line">para1Run.setText(string1);Copy</span><br></pre></td></tr></table></figure>
+<p>It is apparent that the creation of a paragraph is similar to the creation of the title or subtitle. The only difference here is the use of the helper method instead of hard-coded strings.</p>
+<p>In a similar way, we can create two other paragraphs using contents from files <em>poi-word-para2.txt</em> and <em>poi-word-para3.txt</em>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">XWPFParagraph para2 = document.createParagraph();</span><br><span class="line">para2.setAlignment(ParagraphAlignment.RIGHT);</span><br><span class="line">String string2 = convertTextFileToString(paragraph2);</span><br><span class="line">XWPFRun para2Run = para2.createRun();</span><br><span class="line">para2Run.setText(string2);</span><br><span class="line">para2Run.setItalic(<span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line">XWPFParagraph para3 = document.createParagraph();</span><br><span class="line">para3.setAlignment(ParagraphAlignment.LEFT);</span><br><span class="line">String string3 = convertTextFileToString(paragraph3);</span><br><span class="line">XWPFRun para3Run = para3.createRun();</span><br><span class="line">para3Run.setText(string3);Copy</span><br></pre></td></tr></table></figure>
+<p>The creation of these three paragraphs is almost the same, except for some styling such as alignment or italics.</p>
+<h3 id="44-generating-ms-word-file"><a class="markdownIt-Anchor" href="#44-generating-ms-word-file">#</a> <strong>4.4. Generating MS Word File</strong></h3>
+<p>Now we are ready to write out a Microsoft Word file to memory from the <em>document</em> variable:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">FileOutputStream out = <span class="keyword">new</span> FileOutputStream(output);</span><br><span class="line">document.write(out);</span><br><span class="line">out.close();</span><br><span class="line">document.close();Copy</span><br></pre></td></tr></table></figure>
+<p>All the code snippets in this section are wrapped in a method named <em>handleSimpleDoc</em>.</p>
+<h2 id="5-parsing-and-testing"><a class="markdownIt-Anchor" href="#5-parsing-and-testing">#</a> <strong>5. Parsing and Testing</strong></h2>
+<p>This section outlines the parsing of MS Word files and verification of the result.</p>
+<h3 id="51-preparation"><a class="markdownIt-Anchor" href="#51-preparation">#</a> <strong>5.1. Preparation</strong></h3>
+<p>We declare a static field in the test class:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> WordDocument wordDocument;Copy</span><br></pre></td></tr></table></figure>
+<p>This field is used to reference to an instance of the class that encloses all the code fragments shown in sections 3 and 4.</p>
+<p>Before parsing and testing, we need to initialize the static variable declared right above and generate the <em>rest-with-spring.docx</em> file in the current working directory by invoking the <em>handleSimpleDoc</em> method:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@BeforeClass</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">generateMSWordFile</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    WordTest.wordDocument = <span class="keyword">new</span> WordDocument();</span><br><span class="line">    wordDocument.handleSimpleDoc();</span><br><span class="line">&#125;Copy</span><br></pre></td></tr></table></figure>
+<p>Let’s move on to the final step: parsing the MS Word file and the verification of the outcome.</p>
+<h3 id="52-parsing-ms-word-file-and-verification"><a class="markdownIt-Anchor" href="#52-parsing-ms-word-file-and-verification">#</a> <strong>5.2. Parsing MS Word File and Verification</strong></h3>
+<p>First, we extract contents from the given MS Word file in the project directory and the store the contents in a <em>List</em> of <em>XWPFParagraph</em>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Path msWordPath = Paths.get(WordDocument.output);</span><br><span class="line">XWPFDocument document = <span class="keyword">new</span> XWPFDocument(Files.newInputStream(msWordPath));</span><br><span class="line">List&lt;XWPFParagraph&gt; paragraphs = document.getParagraphs();</span><br><span class="line">document.close();Copy</span><br></pre></td></tr></table></figure>
+<p>Next, let’s make sure that the content and style of the title is the same as what we have set before:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">XWPFParagraph title = paragraphs.get(<span class="number">0</span>);</span><br><span class="line">XWPFRun titleRun = title.getRuns().get(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">assertEquals(<span class="string">&quot;Build Your REST API with Spring&quot;</span>, title.getText());</span><br><span class="line">assertEquals(<span class="string">&quot;009933&quot;</span>, titleRun.getColor());</span><br><span class="line">assertTrue(titleRun.isBold());</span><br><span class="line">assertEquals(<span class="string">&quot;Courier&quot;</span>, titleRun.getFontFamily());</span><br><span class="line">assertEquals(<span class="number">20</span>, titleRun.getFontSize());Copy</span><br></pre></td></tr></table></figure>
+<p>For the sake of simplicity, we just validate the contents of other parts of the file, leaving out the styles. The verification of their styles is similar to what we have done with the title:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">assertEquals(<span class="string">&quot;from HTTP fundamentals to API Mastery&quot;</span>,</span><br><span class="line">  paragraphs.get(<span class="number">1</span>).getText());</span><br><span class="line">assertEquals(<span class="string">&quot;What makes a good API?&quot;</span>, paragraphs.get(<span class="number">3</span>).getText());</span><br><span class="line">assertEquals(wordDocument.convertTextFileToString</span><br><span class="line">  (WordDocument.paragraph1), paragraphs.get(<span class="number">4</span>).getText());</span><br><span class="line">assertEquals(wordDocument.convertTextFileToString</span><br><span class="line">  (WordDocument.paragraph2), paragraphs.get(<span class="number">5</span>).getText());</span><br><span class="line">assertEquals(wordDocument.convertTextFileToString</span><br><span class="line">  (WordDocument.paragraph3), paragraphs.get(<span class="number">6</span>).getText());Copy</span><br></pre></td></tr></table></figure>
+<p>Now we can be confident that the creation of the <em>rest-with-spring.docx</em> file has been successful.</p>
+<h2 id="6-conclusion"><a class="markdownIt-Anchor" href="#6-conclusion">#</a> <strong>6. Conclusion</strong></h2>
+<p>This tutorial introduced Apache POI support for the Microsoft Word format. It went through steps needed to generate an MS Word file and to verify its contents.</p>
+<h2 id="comment"><a class="markdownIt-Anchor" href="#comment">#</a> Comment</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jbn.study;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.FileOutputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.net.URISyntaxException;</span><br><span class="line"><span class="keyword">import</span> java.nio.file.Files;</span><br><span class="line"><span class="keyword">import</span> java.nio.file.Path;</span><br><span class="line"><span class="keyword">import</span> java.nio.file.Paths;</span><br><span class="line"><span class="keyword">import</span> java.util.stream.Collectors;</span><br><span class="line"><span class="keyword">import</span> java.util.stream.Stream;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.poi.openxml4j.exceptions.InvalidFormatException;</span><br><span class="line"><span class="keyword">import</span> org.apache.poi.util.Units;</span><br><span class="line"><span class="keyword">import</span> org.apache.poi.xwpf.usermodel.ParagraphAlignment;</span><br><span class="line"><span class="keyword">import</span> org.apache.poi.xwpf.usermodel.UnderlinePatterns;</span><br><span class="line"><span class="keyword">import</span> org.apache.poi.xwpf.usermodel.XWPFDocument;</span><br><span class="line"><span class="keyword">import</span> org.apache.poi.xwpf.usermodel.XWPFParagraph;</span><br><span class="line"><span class="keyword">import</span> org.apache.poi.xwpf.usermodel.XWPFRun;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MicrosoftWordProcessing</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String logo = <span class="string">&quot;logo.png&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String paragraph1 = <span class="string">&quot;poi-word-para1.txt&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String paragraph2 = <span class="string">&quot;poi-word-para2.txt&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String paragraph3 = <span class="string">&quot;poi-word-para3.txt&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String output = <span class="string">&quot;rest-with-spring.docx&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">convertTextFileToString</span><span class="params">(String fileName)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> (Stream&lt;String&gt; stream = Files.lines(Paths.get(ClassLoader.getSystemResource(fileName).toURI()))) &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> stream.collect(Collectors.joining(<span class="string">&quot; &quot;</span>));</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException | URISyntaxException e) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException, InvalidFormatException, URISyntaxException </span>&#123;</span><br><span class="line">        XWPFDocument document = <span class="keyword">new</span> XWPFDocument();</span><br><span class="line"></span><br><span class="line">        XWPFParagraph title = document.createParagraph();</span><br><span class="line">        title.setAlignment(ParagraphAlignment.CENTER);</span><br><span class="line"></span><br><span class="line">        XWPFRun titleRun = title.createRun();</span><br><span class="line">        titleRun.setText(<span class="string">&quot;Life and Death&quot;</span>);</span><br><span class="line">        titleRun.setColor(<span class="string">&quot;009933&quot;</span>);</span><br><span class="line">        titleRun.setBold(<span class="keyword">true</span>);</span><br><span class="line">        titleRun.setFontFamily(<span class="string">&quot;Courier&quot;</span>);</span><br><span class="line">        titleRun.setFontSize(<span class="number">20</span>);</span><br><span class="line"></span><br><span class="line">        XWPFParagraph subTitle = document.createParagraph();</span><br><span class="line">        subTitle.setAlignment(ParagraphAlignment.CENTER);</span><br><span class="line">        XWPFRun subTitleRun = subTitle.createRun();</span><br><span class="line">        subTitleRun.setText(<span class="string">&quot;Life and Death&quot;</span>);</span><br><span class="line">        subTitleRun.setColor(<span class="string">&quot;00CC44&quot;</span>);</span><br><span class="line">        subTitleRun.setFontFamily(<span class="string">&quot;Courier&quot;</span>);</span><br><span class="line">        subTitleRun.setFontSize(<span class="number">16</span>);</span><br><span class="line">        subTitleRun.setTextPosition(<span class="number">20</span>);</span><br><span class="line">        subTitleRun.setUnderline(UnderlinePatterns.DOT_DOT_DASH);</span><br><span class="line"></span><br><span class="line">        XWPFParagraph image = document.createParagraph();</span><br><span class="line">        image.setAlignment(ParagraphAlignment.CENTER);</span><br><span class="line"></span><br><span class="line">        XWPFRun imageRun = image.createRun();</span><br><span class="line">        imageRun.setTextPosition(<span class="number">20</span>);</span><br><span class="line">        Path imagePath = Paths.get(ClassLoader.getSystemResource(logo).toURI());</span><br><span class="line">        imageRun.addPicture(Files.newInputStream(imagePath),</span><br><span class="line">                XWPFDocument.PICTURE_TYPE_PNG, imagePath.getFileName().toString(),</span><br><span class="line">                Units.toEMU(<span class="number">50</span>), Units.toEMU(<span class="number">50</span>));</span><br><span class="line"></span><br><span class="line">        XWPFParagraph para1 = document.createParagraph();</span><br><span class="line">        para1.setAlignment(ParagraphAlignment.LEFT);</span><br><span class="line">        String string1 = convertTextFileToString(paragraph1);</span><br><span class="line">        XWPFRun para1Run = para1.createRun();</span><br><span class="line">        para1Run.setText(string1);</span><br><span class="line"></span><br><span class="line">        XWPFParagraph para2 = document.createParagraph();</span><br><span class="line">        para2.setAlignment(ParagraphAlignment.RIGHT);</span><br><span class="line">        String string2 = convertTextFileToString(paragraph2);</span><br><span class="line">        XWPFRun para2Run = para2.createRun();</span><br><span class="line">        para2Run.setText(string2);</span><br><span class="line">        para2Run.setItalic(<span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line">        XWPFParagraph para3 = document.createParagraph();</span><br><span class="line">        para3.setAlignment(ParagraphAlignment.RIGHT);</span><br><span class="line">        String string3 = convertTextFileToString(paragraph3);</span><br><span class="line">        XWPFRun para3Run = para3.createRun();</span><br><span class="line">        para3Run.setText(string3);</span><br><span class="line">        para3Run.setFontFamily(<span class="string">&quot;kaiti&quot;</span>);</span><br><span class="line"></span><br><span class="line">        FileOutputStream out = <span class="keyword">new</span> FileOutputStream(output);</span><br><span class="line">        document.write(out);</span><br><span class="line">        out.close();</span><br><span class="line">        document.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<img data-src="/2025/07/18/java-microsoft-word/1752832087149.png" class="">
+      <div class="tags">
+          <a href="/tags/java/" rel="tag"><i class="ic i-tag"></i> java</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2025-07-18 17:49:28" itemprop="dateModified" datetime="2025-07-18T17:49:28+08:00">2025-07-18</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2025/07/18/java-read-excel-to-xml/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;秦时明月-3.jpg" title="Java Read Excel to XML">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Java Read Excel to XML</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2025/07/29/java-jackson/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;晨曦公主.jpg" title="Jackson Annotation Examples">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Jackson Annotation Examples</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-overview"><span class="toc-number">1.</span> <span class="toc-text"> 1. Overview</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-maven-dependencies"><span class="toc-number">2.</span> <span class="toc-text"> 2. Maven Dependencies</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-preparation"><span class="toc-number">3.</span> <span class="toc-text"> 3. Preparation</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#31-resource-files"><span class="toc-number">3.1.</span> <span class="toc-text"> 3.1. Resource Files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#32-helper-method"><span class="toc-number">3.2.</span> <span class="toc-text"> 3.2. Helper Method</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-ms-word-file-generation"><span class="toc-number">4.</span> <span class="toc-text"> 4. MS Word File Generation</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#41-formatting-title-and-subtitle"><span class="toc-number">4.1.</span> <span class="toc-text"> 4.1. Formatting Title and Subtitle</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#42-inserting-an-image"><span class="toc-number">4.2.</span> <span class="toc-text"> 4.2. Inserting an Image</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#43-formatting-paragraphs"><span class="toc-number">4.3.</span> <span class="toc-text"> 4.3. Formatting Paragraphs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#44-generating-ms-word-file"><span class="toc-number">4.4.</span> <span class="toc-text"> 4.4. Generating MS Word File</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-parsing-and-testing"><span class="toc-number">5.</span> <span class="toc-text"> 5. Parsing and Testing</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#51-preparation"><span class="toc-number">5.1.</span> <span class="toc-text"> 5.1. Preparation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#52-parsing-ms-word-file-and-verification"><span class="toc-number">5.2.</span> <span class="toc-text"> 5.2. Parsing MS Word File and Verification</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-conclusion"><span class="toc-number">6.</span> <span class="toc-text"> 6. Conclusion</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#comment"><span class="toc-number">7.</span> <span class="toc-text"> Comment</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">373</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">51</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
+      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2025/07/18/java-read-excel-to-xml/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2025/07/29/java-jackson/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ D E W</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2025/07/18/java-microsoft-word/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

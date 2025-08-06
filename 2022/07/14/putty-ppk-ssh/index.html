@@ -102,12 +102,12 @@ D E W = 露の世</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="/anime/index/朝花夕誓.jpg"></li>
-          <li class="item" data-background-image="/anime/index/剑风传奇.jpg"></li>
-          <li class="item" data-background-image="/anime/index/加速世界.jpg"></li>
-          <li class="item" data-background-image="/anime/index/薄樱鬼.jpg"></li>
-          <li class="item" data-background-image="/anime/index/凉宫春日.jpg"></li>
-          <li class="item" data-background-image="/anime/index/死亡笔记-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/狼的孩子雨和雪.jpg"></li>
+          <li class="item" data-background-image="/anime/index/超能力女儿.jpg"></li>
+          <li class="item" data-background-image="/anime/index/寄生兽.jpg"></li>
+          <li class="item" data-background-image="/anime/index/我的青春恋爱物语果然有问题.jpg"></li>
+          <li class="item" data-background-image="/anime/index/玉子市场.jpg"></li>
+          <li class="item" data-background-image="/anime/index/多罗罗.jpg"></li>
         </ul>
       </div>
     </header>
@@ -152,7 +152,7 @@ D E W = 露の世</title>
     
 
     <blockquote>
-<p>转载：<span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm9yYWNsZS5jb20vZW4vY2xvdWQvcGFhcy9nb2xkZW5nYXRlLWNsb3VkL3R1dG9yaWFsLWNoYW5nZS1wcml2YXRlLWtleS1mb3JtYXQv">Change Private Key Format to Use with PuTTY</span></p>
+<p>repost: <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm9yYWNsZS5jb20vZW4vY2xvdWQvcGFhcy9nb2xkZW5nYXRlLWNsb3VkL3R1dG9yaWFsLWNoYW5nZS1wcml2YXRlLWtleS1mb3JtYXQv">Change Private Key Format to Use with PuTTY</span></p>
 </blockquote>
 <p>This 10-minute tutorial shows you how to change your private key format to use with PuTTY, which is a Secure Shell (SSH) client for Windows that can connect to a remote machine. If you’re using SSH on Linux, then this tutorial isn’t for you.</p>
 <h2 id="background"><a class="markdownIt-Anchor" href="#background">#</a> Background</h2>
@@ -275,7 +275,8 @@ D E W = 露の世</title>
 </ol>
 <h2 id="comments"><a class="markdownIt-Anchor" href="#comments">#</a> Comments</h2>
 <p>Python paramiko connect SFTP cannot use ppk(PuTTY-User-Key-File, include public key and private key). So we need to use PuTTYgen load ppk then export OpenSSH(including private key only) key.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> paramiko</span><br><span class="line"></span><br><span class="line">hostname = <span class="string">&#x27;xxx&#x27;</span></span><br><span class="line">username = <span class="string">&#x27;xxx&#x27;</span></span><br><span class="line">password = <span class="string">&#x27;xxx&#x27;</span></span><br><span class="line">port = <span class="number">22</span>  <span class="comment"># int</span></span><br><span class="line"></span><br><span class="line">ssh = paramiko.SSHClient()</span><br><span class="line">ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())</span><br><span class="line"><span class="comment"># customer_sftp.id_rsa SSH private key</span></span><br><span class="line">ssh.connect(hostname, port=port, username=username, password=password, key_filename=<span class="string">&#x27;./customer_sftp.id_rsa&#x27;</span>)</span><br><span class="line">sftp = ssh.open_sftp()</span><br><span class="line"></span><br><span class="line"><span class="comment"># print(sftp)</span></span><br><span class="line"><span class="comment"># Some SFTP maybe not open the shell function </span></span><br><span class="line"><span class="comment"># stdin, stdout, stderr = ssh.exec_command(&#x27;ls&#x27;)</span></span><br><span class="line"><span class="comment"># print(stdout.readlines())</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># sftp.put(sourcefile, uploadfile)</span></span><br><span class="line"></span><br><span class="line">sftp.close()</span><br><span class="line">ssh.close()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> paramiko</span><br><span class="line"></span><br><span class="line">hostname = <span class="string">&#x27;xxx&#x27;</span></span><br><span class="line">username = <span class="string">&#x27;xxx&#x27;</span></span><br><span class="line">passphrase = <span class="string">&#x27;xxx&#x27;</span></span><br><span class="line">port = <span class="number">22</span>  <span class="comment"># int</span></span><br><span class="line"></span><br><span class="line">ssh = paramiko.SSHClient()</span><br><span class="line">ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())</span><br><span class="line"><span class="comment"># customer_sftp.id_rsa SSH private key</span></span><br><span class="line">ssh.connect(hostname, port=port, username=username, passphrase=passphrase, key_filename=<span class="string">&#x27;./customer_sftp.id_rsa&#x27;</span>)</span><br><span class="line">sftp = ssh.open_sftp()</span><br><span class="line"></span><br><span class="line"><span class="comment"># print(sftp)</span></span><br><span class="line"><span class="comment"># Some SFTP maybe not open the shell function</span></span><br><span class="line"><span class="comment"># stdin, stdout, stderr = ssh.exec_command(&#x27;ls&#x27;)</span></span><br><span class="line"><span class="comment"># print(stdout.readlines())</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># sftp.put(sourcefile, uploadfile)</span></span><br><span class="line"></span><br><span class="line">sftp.close()</span><br><span class="line">ssh.close()</span><br></pre></td></tr></table></figure>
+
       <div class="tags">
           <a href="/tags/ssh/" rel="tag"><i class="ic i-tag"></i> ssh</a>
       </div>
@@ -289,7 +290,7 @@ D E W = 露の世</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2022-07-19 11:36:10" itemprop="dateModified" datetime="2022-07-19T11:36:10+08:00">2022-07-19</time>
+    <time title="Modified: 2025-07-14 13:15:19" itemprop="dateModified" datetime="2025-07-14T13:15:19+08:00">2025-07-14</time>
   </span>
 </div>
 
@@ -306,7 +307,7 @@ D E W = 露の世</title>
     <div class="item left">
       
 
-  <a href="/2022/06/27/excerpt-ancient-prose/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;亚人-3.jpg" title="古文摘抄">
+  <a href="/2022/06/27/excerpt-ancient-prose/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;怪物之子-2.jpg" title="古文摘抄">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> excerpt</span>
   <h3>古文摘抄</h3>
@@ -316,7 +317,7 @@ D E W = 露の世</title>
     <div class="item right">
       
 
-  <a href="/2022/07/15/css-background-clip-origin/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;GOSICK.jpg" title="CSS — background-clip vs. background-origin properties">
+  <a href="/2022/07/15/css-background-clip-origin/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;一拳超人.jpg" title="CSS — background-clip vs. background-origin properties">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>CSS — background-clip vs. background-origin properties</h3>
@@ -353,7 +354,7 @@ D E W = 露の世</title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">366</span>
+        <span class="count">373</span>
         <span class="name">posts</span>
       </a>
     </div>

@@ -1,0 +1,440 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CFira%20Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="java,xml" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2025/07/29/java-jackson-xml/">
+
+
+
+  <title>
+XML Serialization and Deserialization with Jackson |
+D E W = 露の世</title>
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">XML Serialization and Deserialization with Jackson
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2025-07-29 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2025-07-29T00:00:00+08:00">2025-07-29</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">D E W</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="/anime/index/灼眼的夏娜.jpg"></li>
+          <li class="item" data-background-image="/anime/index/宝石之国.jpg"></li>
+          <li class="item" data-background-image="/anime/index/龙猫-1.jpg"></li>
+          <li class="item" data-background-image="/anime/index/clannad.jpg"></li>
+          <li class="item" data-background-image="/anime/index/食梦者玛利.jpg"></li>
+          <li class="item" data-background-image="/anime/index/排球少年-1.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2025/07/29/java-jackson-xml/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>repost: <span class="exturl" data-url="aHR0cHM6Ly93d3cuYmFlbGR1bmcuY29tL2phY2tzb24teG1sLXNlcmlhbGl6YXRpb24tYW5kLWRlc2VyaWFsaXphdGlvbg==">XML Serialization and Deserialization with Jackson</span></p>
+</blockquote>
+<h2 id="1-overview"><a class="markdownIt-Anchor" href="#1-overview">#</a> 1. Overview</h2>
+<p>In this tutorial, we’ll learn <strong>how to serialize Java objects to XML data using Jackson 2.x, and deserialize them back to a POJO</strong>.</p>
+<p>We’ll focus on the basic operation that doesn’t require a lot of complexity or customization.</p>
+<h2 id="2-xmlmapper-object"><a class="markdownIt-Anchor" href="#2-xmlmapper-object">#</a> 2. XmlMapper Object</h2>
+<p><em>XmlMapper</em> is the main class from Jackson 2.x that helps us in serialization, so we’ll need to create an instance of it:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">XmlMapper mapper = <span class="keyword">new</span> XmlMapper();</span><br></pre></td></tr></table></figure>
+<p>This <em>mapper</em> is available in the <em>jackson-dataformat-xml</em> jar, so we have to add it as a dependency to our <em>pom.xml</em>:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.fasterxml.jackson.dataformat<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jackson-dataformat-xml<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.11.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Please check <span class="exturl" data-url="aHR0cHM6Ly9tdm5yZXBvc2l0b3J5LmNvbS9hcnRpZmFjdC9jb20uZmFzdGVyeG1sLmphY2tzb24uZGF0YWZvcm1hdC9qYWNrc29uLWRhdGFmb3JtYXQteG1s">the latest version of the jackson-dataformat-xml dependency</span> in the Maven repository.</p>
+<h2 id="3-serialize-java-to-xml"><a class="markdownIt-Anchor" href="#3-serialize-java-to-xml">#</a> 3. Serialize Java to XML</h2>
+<p><em>XmlMapper</em> is a subclass of <em>ObjectMapper,</em> which is used in JSON serialization; however, it adds some XML specific tweaks to the parent class.</p>
+<p>Let’s look at how to use it to do the actual serialization. Let’s create a Java class first:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SimpleBean</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> x = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> y = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//standard setters and getters</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="31-serialize-to-the-xml-string"><a class="markdownIt-Anchor" href="#31-serialize-to-the-xml-string">#</a> 3.1. Serialize to the XML String</h3>
+<p>We can serialize our Java object into the XML <em>String</em>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">whenJavaSerializedToXmlStr_thenCorrect</span><span class="params">()</span> <span class="keyword">throws</span> JsonProcessingException </span>&#123;</span><br><span class="line">    XmlMapper xmlMapper = <span class="keyword">new</span> XmlMapper();</span><br><span class="line">    String xml = xmlMapper.writeValueAsString(<span class="keyword">new</span> SimpleBean());</span><br><span class="line">    assertNotNull(xml);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>As a result, we’ll get:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">SimpleBean</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">x</span>&gt;</span>1<span class="tag">&lt;/<span class="name">x</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">y</span>&gt;</span>2<span class="tag">&lt;/<span class="name">y</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">SimpleBean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="32-serialize-to-the-xml-file"><a class="markdownIt-Anchor" href="#32-serialize-to-the-xml-file">#</a> 3.2. Serialize to the XML File</h3>
+<p>We can also serialize our Java object to the XML file:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">whenJavaSerializedToXmlFile_thenCorrect</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    XmlMapper xmlMapper = <span class="keyword">new</span> XmlMapper();</span><br><span class="line">    xmlMapper.writeValue(<span class="keyword">new</span> File(<span class="string">&quot;simple_bean.xml&quot;</span>), <span class="keyword">new</span> SimpleBean());</span><br><span class="line">    File file = <span class="keyword">new</span> File(<span class="string">&quot;simple_bean.xml&quot;</span>);</span><br><span class="line">    assertNotNull(file);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>And below we can see the content of the resulting file named <em>simple_bean.xml</em>:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">SimpleBean</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">x</span>&gt;</span>1<span class="tag">&lt;/<span class="name">x</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">y</span>&gt;</span>2<span class="tag">&lt;/<span class="name">y</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">SimpleBean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="4-deserialize-xml-to-java"><a class="markdownIt-Anchor" href="#4-deserialize-xml-to-java">#</a> 4. Deserialize XML to Java</h2>
+<p>In this section, we’ll look at how to obtain Java objects from XML.</p>
+<h3 id="41-deserialize-from-the-xml-string"><a class="markdownIt-Anchor" href="#41-deserialize-from-the-xml-string">#</a> 4.1. Deserialize From the XML String</h3>
+<p>As with serialization, we can also deserialize an XML String back to a Java object:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">whenJavaGotFromXmlStr_thenCorrect</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    XmlMapper xmlMapper = <span class="keyword">new</span> XmlMapper();</span><br><span class="line">    SimpleBean value</span><br><span class="line">      = xmlMapper.readValue(<span class="string">&quot;&lt;SimpleBean&gt;&lt;x&gt;1&lt;/x&gt;&lt;y&gt;2&lt;/y&gt;&lt;/SimpleBean&gt;&quot;</span>, SimpleBean.class);</span><br><span class="line">    assertTrue(value.getX() == <span class="number">1</span> &amp;&amp; value.getY() == <span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="42-deserialize-from-the-xml-file"><a class="markdownIt-Anchor" href="#42-deserialize-from-the-xml-file">#</a> 4.2. Deserialize From the XML File</h3>
+<p>Likewise, if we have an XML file, we can convert it back to a Java object.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">whenJavaGotFromXmlFile_thenCorrect</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    File file = <span class="keyword">new</span> File(<span class="string">&quot;simple_bean.xml&quot;</span>);</span><br><span class="line">    XmlMapper xmlMapper = <span class="keyword">new</span> XmlMapper();</span><br><span class="line">    SimpleBean value = xmlMapper.readValue(file, SimpleBean.class);</span><br><span class="line">    assertTrue(value.getX() == <span class="number">1</span> &amp;&amp; value.getY() == <span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="5-handling-capitalised-elements"><a class="markdownIt-Anchor" href="#5-handling-capitalised-elements">#</a> 5. Handling Capitalised Elements</h2>
+<p>In this section, we’ll discuss how to handle scenarios where we either have XML with capitalized elements to deserialize, or we need to serialize Java objects to XML with one or more elements capitalized.</p>
+<h3 id="51-deserialize-from-the-xml-string"><a class="markdownIt-Anchor" href="#51-deserialize-from-the-xml-string">#</a> 5.1. Deserialize From the XML String</h3>
+<p>Let’s say we have an XML with one field capitalized:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">SimpleBeanForCapitalizedFields</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">X</span>&gt;</span>1<span class="tag">&lt;/<span class="name">X</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">y</span>&gt;</span>2<span class="tag">&lt;/<span class="name">y</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">SimpleBeanForCapitalizedFields</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>In order to correctly handle capitalized elements, we need to annotate the “x” field with the <em>@JsonProperty</em> annotation:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SimpleBeanForCapitalizedFields</span> </span>&#123;</span><br><span class="line">    <span class="meta">@JsonProperty(&quot;X&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> x = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> y = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// standard getters, setters</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>We can now correctly deserialize an XML <em>String</em> back to a Java object:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">whenJavaGotFromXmlStrWithCapitalElem_thenCorrect</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    XmlMapper xmlMapper = <span class="keyword">new</span> XmlMapper();</span><br><span class="line">    SimpleBeanForCapitalizedFields value</span><br><span class="line">      = xmlMapper.readValue(</span><br><span class="line">      <span class="string">&quot;&lt;SimpleBeanForCapitalizedFields&gt;&lt;X&gt;1&lt;/X&gt;&lt;y&gt;2&lt;/y&gt;&lt;/SimpleBeanForCapitalizedFields&gt;&quot;</span>,</span><br><span class="line">      SimpleBeanForCapitalizedFields.class);</span><br><span class="line">    assertTrue(value.getX() == <span class="number">1</span> &amp;&amp; value.getY() == <span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="52-serialize-to-the-xml-string"><a class="markdownIt-Anchor" href="#52-serialize-to-the-xml-string">#</a> 5.2. Serialize to the XML String</h3>
+<p>By annotating the required fields with <em>@JsonProperty,</em> we can correctly serialize a Java object into an XML <em>String</em> with one or more capitalized elements:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">whenJavaSerializedToXmlFileWithCapitalizedField_thenCorrect</span><span class="params">()</span></span></span><br><span class="line"><span class="function">  <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    XmlMapper xmlMapper = <span class="keyword">new</span> XmlMapper();</span><br><span class="line">    xmlMapper.writeValue(<span class="keyword">new</span> File(<span class="string">&quot;target/simple_bean_capitalized.xml&quot;</span>),</span><br><span class="line">      <span class="keyword">new</span> SimpleBeanForCapitalizedFields());</span><br><span class="line">    File file = <span class="keyword">new</span> File(<span class="string">&quot;target/simple_bean_capitalized.xml&quot;</span>);</span><br><span class="line">    assertNotNull(file);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="6-serialize-list-to-xml"><a class="markdownIt-Anchor" href="#6-serialize-list-to-xml">#</a> 6. <strong>Serialize List to XML</strong></h2>
+<p>The <em>XmlMapper</em> is able to serialize an entire Java bean into a document. To convert a Java object to XML, we’ll take a simple example with a nested object and arrays.</p>
+<p>Our intent is to serialize a <em>Person</em> object, along with its composed <em>Address</em> object, into XML.</p>
+<p>Our final XML will look something like:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Person</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">firstName</span>&gt;</span>Rohan<span class="tag">&lt;/<span class="name">firstName</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">lastName</span>&gt;</span>Daye<span class="tag">&lt;/<span class="name">lastName</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">phoneNumbers</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">phoneNumbers</span>&gt;</span>9911034731<span class="tag">&lt;/<span class="name">phoneNumbers</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">phoneNumbers</span>&gt;</span>9911033478<span class="tag">&lt;/<span class="name">phoneNumbers</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">phoneNumbers</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">address</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">streetName</span>&gt;</span>Name1<span class="tag">&lt;/<span class="name">streetName</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">city</span>&gt;</span>City1<span class="tag">&lt;/<span class="name">city</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">address</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">address</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">streetName</span>&gt;</span>Name2<span class="tag">&lt;/<span class="name">streetName</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">city</span>&gt;</span>City2<span class="tag">&lt;/<span class="name">city</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">address</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Person</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>Notice that our phone numbers are encapsulated in a phoneNumbers wrapper, while our address isn’t.</strong></p>
+<p>We can express this nuance via the <em>@JacksonXMLElementWrapper</em> annotation in our <em>Person</em> class:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String firstName;</span><br><span class="line">    <span class="keyword">private</span> String lastName;</span><br><span class="line">    <span class="keyword">private</span> List&lt;String&gt; phoneNumbers = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="meta">@JacksonXmlElementWrapper(useWrapping = false)</span></span><br><span class="line">    <span class="keyword">private</span> List&lt;Address&gt; address = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="comment">//standard setters and getters</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>In fact, we can change the wrapping element name with <em>@JacksonXmlElementWrapper(localName = ‘phoneNumbers’).</em> Or, if we don’t want to wrap our elements, we can disable the mapping with <em>@JacksonXmlElementWrapper(useWrapping = false)</em>.</p>
+<p>Then we’ll define our <em>Address</em> type:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Address</span> </span>&#123;</span><br><span class="line">    String streetName;</span><br><span class="line">    String city;</span><br><span class="line">    <span class="comment">//standard setters and getters</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>Jackson takes care of the rest for us.</strong> Like before, we can simply call <em>writeValue</em> again:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String XML = <span class="string">&quot;&lt;Person&gt;...&lt;/Person&gt;&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">whenJavaSerializedToXmlFile_thenSuccess</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    XmlMapper xmlMapper = <span class="keyword">new</span> XmlMapper();</span><br><span class="line">    Person person = testPerson(); <span class="comment">// test data</span></span><br><span class="line">    ByteArrayOutputStream byteArrayOutputStream = <span class="keyword">new</span> ByteArrayOutputStream();</span><br><span class="line">    xmlMapper.writeValue(byteArrayOutputStream, person);</span><br><span class="line">    assertEquals(XML, byteArrayOutputStream.toString());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="7-deserialize-xml-to-list"><a class="markdownIt-Anchor" href="#7-deserialize-xml-to-list">#</a> 7. Deserialize XML to List</h2>
+<p>Jackson can read XML that contains lists of objects as well.</p>
+<p>If we take our same XML as before, the <em>readValue</em> method does just fine:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">whenJavaDeserializedFromXmlFile_thenCorrect</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    XmlMapper xmlMapper = <span class="keyword">new</span> XmlMapper();</span><br><span class="line">    Person value = xmlMapper.readValue(XML, Person.class);</span><br><span class="line">    assertEquals(<span class="string">&quot;City1&quot;</span>, value.getAddress().get(<span class="number">0</span>).getCity());</span><br><span class="line">    assertEquals(<span class="string">&quot;City2&quot;</span>, value.getAddress().get(<span class="number">1</span>).getCity());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="8-conclusion"><a class="markdownIt-Anchor" href="#8-conclusion">#</a> 8. Conclusion</h2>
+<p>This brief article illustrated how to serialize a simple POJO to XML, and obtain a POJO from basic XML data.</p>
+<p>We also explored how to serialize and deserialize complex beans that contain collections.</p>
+
+      <div class="tags">
+          <a href="/tags/java/" rel="tag"><i class="ic i-tag"></i> java</a>
+          <a href="/tags/xml/" rel="tag"><i class="ic i-tag"></i> xml</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2025-07-29 11:06:21" itemprop="dateModified" datetime="2025-07-29T11:06:21+08:00">2025-07-29</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2025/07/29/java-jackson/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;绝园的暴风雨.jpg" title="Jackson Annotation Examples">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Jackson Annotation Examples</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-overview"><span class="toc-number">1.</span> <span class="toc-text"> 1. Overview</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-xmlmapper-object"><span class="toc-number">2.</span> <span class="toc-text"> 2. XmlMapper Object</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-serialize-java-to-xml"><span class="toc-number">3.</span> <span class="toc-text"> 3. Serialize Java to XML</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#31-serialize-to-the-xml-string"><span class="toc-number">3.1.</span> <span class="toc-text"> 3.1. Serialize to the XML String</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#32-serialize-to-the-xml-file"><span class="toc-number">3.2.</span> <span class="toc-text"> 3.2. Serialize to the XML File</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-deserialize-xml-to-java"><span class="toc-number">4.</span> <span class="toc-text"> 4. Deserialize XML to Java</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#41-deserialize-from-the-xml-string"><span class="toc-number">4.1.</span> <span class="toc-text"> 4.1. Deserialize From the XML String</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#42-deserialize-from-the-xml-file"><span class="toc-number">4.2.</span> <span class="toc-text"> 4.2. Deserialize From the XML File</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-handling-capitalised-elements"><span class="toc-number">5.</span> <span class="toc-text"> 5. Handling Capitalised Elements</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#51-deserialize-from-the-xml-string"><span class="toc-number">5.1.</span> <span class="toc-text"> 5.1. Deserialize From the XML String</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#52-serialize-to-the-xml-string"><span class="toc-number">5.2.</span> <span class="toc-text"> 5.2. Serialize to the XML String</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-serialize-list-to-xml"><span class="toc-number">6.</span> <span class="toc-text"> 6. Serialize List to XML</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-deserialize-xml-to-list"><span class="toc-number">7.</span> <span class="toc-text"> 7. Deserialize XML to List</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-conclusion"><span class="toc-number">8.</span> <span class="toc-text"> 8. Conclusion</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">373</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">51</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
+      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ D E W</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2025/07/29/java-jackson-xml/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
