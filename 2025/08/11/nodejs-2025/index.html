@@ -1,0 +1,512 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CFira%20Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="js" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2025/08/11/nodejs-2025/">
+
+
+
+  <title>
+Modern Node.js Patterns for 2025 |
+D E W = 露の世</title>
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">Modern Node.js Patterns for 2025
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2025-08-11 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2025-08-11T00:00:00+08:00">2025-08-11</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">D E W</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="/anime/index/红猪-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/甲铁城的卡巴内瑞-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/SSSS.电光机王.jpg"></li>
+          <li class="item" data-background-image="/anime/index/只有我不存在的城市.jpg"></li>
+          <li class="item" data-background-image="/anime/index/元气囝仔.jpg"></li>
+          <li class="item" data-background-image="/anime/index/晨曦公主.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2025/08/11/nodejs-2025/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>repost:<span class="exturl" data-url="aHR0cHM6Ly9rYXNodzFuLmNvbS9ibG9nL25vZGVqcy0yMDI1Lw==">Modern Node.js Patterns for 2025</span></p>
+</blockquote>
+<p>Node.js has undergone a remarkable transformation since its early days. If you’ve been writing Node.js for several years, you’ve likely witnessed this evolution firsthand—from the callback-heavy, CommonJS-dominated landscape to today’s clean, standards-based development experience.</p>
+<p>The changes aren’t just cosmetic; they represent a fundamental shift in how we approach server-side JavaScript development. Modern Node.js embraces web standards, reduces external dependencies, and provides a more intuitive developer experience. Let’s explore these transformations and understand why they matter for your applications in 2025.</p>
+<h2 id="1-module-system-esm-is-the-new-standard"><a class="markdownIt-Anchor" href="#1-module-system-esm-is-the-new-standard">#</a> 1. Module System: ESM is the New Standard</h2>
+<p>The module system is perhaps where you’ll notice the biggest difference. CommonJS served us well, but ES Modules (ESM) have become the clear winner, offering better tooling support and alignment with web standards.</p>
+<h3 id="the-old-way-commonjs"><a class="markdownIt-Anchor" href="#the-old-way-commonjs">#</a> The Old Way (CommonJS)</h3>
+<p>Let’s look at how we used to structure modules. This approach required explicit exports and synchronous imports:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// math.js</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">module</span>.exports = &#123; add &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// app.js</span></span><br><span class="line"><span class="keyword">const</span> &#123; add &#125; = <span class="built_in">require</span>(<span class="string">&quot;./math&quot;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(add(<span class="number">2</span>, <span class="number">3</span>));</span><br></pre></td></tr></table></figure>
+<p>This worked fine, but it had limitations—no static analysis, no tree-shaking, and it didn’t align with browser standards.</p>
+<h3 id="the-modern-way-es-modules-with-node-prefix"><a class="markdownIt-Anchor" href="#the-modern-way-es-modules-with-node-prefix">#</a> The Modern Way (ES Modules with Node: Prefix)</h3>
+<p>Modern Node.js development embraces ES Modules with a crucial addition—the  <code>node:</code>  prefix for built-in modules. This explicit naming prevents confusion and makes dependencies crystal clear:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// math.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// app.js</span></span><br><span class="line"><span class="keyword">import</span> &#123; add &#125; <span class="keyword">from</span> <span class="string">&quot;./math.js&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; readFile &#125; <span class="keyword">from</span> <span class="string">&quot;node:fs/promises&quot;</span>; <span class="comment">// Modern node: prefix</span></span><br><span class="line"><span class="keyword">import</span> &#123; createServer &#125; <span class="keyword">from</span> <span class="string">&quot;node:http&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(add(<span class="number">2</span>, <span class="number">3</span>));</span><br></pre></td></tr></table></figure>
+<p>The  <code>node:</code>  prefix is more than just a convention—it’s a clear signal to both developers and tools that you’re importing Node.js built-ins rather than npm packages. This prevents potential conflicts and makes your code more explicit about its dependencies.</p>
+<h3 id="top-level-await-simplifying-initialization"><a class="markdownIt-Anchor" href="#top-level-await-simplifying-initialization">#</a> Top-Level Await: Simplifying Initialization</h3>
+<p>One of the most game-changing features is top-level await. No more wrapping your entire application in an async function just to use await at the module level:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.js - Clean initialization without wrapper functions</span></span><br><span class="line"><span class="keyword">import</span> &#123; readFile &#125; <span class="keyword">from</span> <span class="string">&quot;node:fs/promises&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> config = <span class="built_in">JSON</span>.parse(<span class="keyword">await</span> readFile(<span class="string">&quot;config.json&quot;</span>, <span class="string">&quot;utf8&quot;</span>));</span><br><span class="line"><span class="keyword">const</span> server = createServer(<span class="comment">/* ... */</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;App started with config:&quot;</span>, config.appName);</span><br></pre></td></tr></table></figure>
+<p>This eliminates the common pattern of immediately-invoked async function expressions (IIFE) that we used to see everywhere. Your code becomes more linear and easier to reason about.</p>
+<h2 id="2-built-in-web-apis-reducing-external-dependencies"><a class="markdownIt-Anchor" href="#2-built-in-web-apis-reducing-external-dependencies">#</a> 2. Built-in Web APIs: Reducing External Dependencies</h2>
+<p>Node.js has embraced web standards in a big way, bringing APIs that web developers already know directly into the runtime. This means fewer dependencies and more consistency across environments.</p>
+<h3 id="fetch-api-no-more-http-library-dependencies"><a class="markdownIt-Anchor" href="#fetch-api-no-more-http-library-dependencies">#</a> Fetch API: No More HTTP Library Dependencies</h3>
+<p>Remember when every project needed axios, node-fetch, or similar libraries for HTTP requests? Those days are over. Node.js now includes the Fetch API natively:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Old way - external dependencies required</span></span><br><span class="line"><span class="keyword">const</span> axios = <span class="built_in">require</span>(<span class="string">&quot;axios&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> response = <span class="keyword">await</span> axios.get(<span class="string">&quot;https://api.example.com/data&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Modern way - built-in fetch with enhanced features</span></span><br><span class="line"><span class="keyword">const</span> response = <span class="keyword">await</span> fetch(<span class="string">&quot;https://api.example.com/data&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> data = <span class="keyword">await</span> response.json();</span><br></pre></td></tr></table></figure>
+<p>But the modern approach goes beyond just replacing your HTTP library. You get sophisticated timeout and cancellation support built-in:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">fetchData</span>(<span class="params">url</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> response = <span class="keyword">await</span> fetch(url, &#123;</span><br><span class="line">      signal: AbortSignal.timeout(<span class="number">5000</span>), <span class="comment">// Built-in timeout support</span></span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!response.ok) &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">`HTTP <span class="subst">$&#123;response.status&#125;</span>: <span class="subst">$&#123;response.statusText&#125;</span>`</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">await</span> response.json();</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    <span class="keyword">if</span> (error.name === <span class="string">&quot;TimeoutError&quot;</span>) &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&quot;Request timed out&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">throw</span> error;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>This approach eliminates the need for timeout libraries and provides a consistent error handling experience. The  <code>AbortSignal.timeout()</code>  method is particularly elegant—it creates a signal that automatically aborts after the specified time.</p>
+<h3 id="abortcontroller-graceful-operation-cancellation"><a class="markdownIt-Anchor" href="#abortcontroller-graceful-operation-cancellation">#</a> AbortController: Graceful Operation Cancellation</h3>
+<p>Modern applications need to handle cancellation gracefully, whether it’s user-initiated or due to timeouts. AbortController provides a standardized way to cancel operations:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Cancel long-running operations cleanly</span></span><br><span class="line"><span class="keyword">const</span> controller = <span class="keyword">new</span> AbortController();</span><br><span class="line"></span><br><span class="line"><span class="comment">// Set up automatic cancellation</span></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> controller.abort(), <span class="number">10000</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> data = <span class="keyword">await</span> fetch(<span class="string">&quot;https://slow-api.com/data&quot;</span>, &#123;</span><br><span class="line">    signal: controller.signal,</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;Data received:&quot;</span>, data);</span><br><span class="line">&#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">  <span class="keyword">if</span> (error.name === <span class="string">&quot;AbortError&quot;</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;Request was cancelled - this is expected behavior&quot;</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.error(<span class="string">&quot;Unexpected error:&quot;</span>, error);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>This pattern works across many Node.js APIs, not just fetch. You can use the same AbortController with file operations, database queries, and any async operation that supports cancellation.</p>
+<h2 id="3-built-in-testing-professional-testing-without-external-dependencies"><a class="markdownIt-Anchor" href="#3-built-in-testing-professional-testing-without-external-dependencies">#</a> 3. Built-in Testing: Professional Testing Without External Dependencies</h2>
+<p>Testing used to require choosing between Jest, Mocha, Ava, or other frameworks. Node.js now includes a full-featured test runner that covers most testing needs without any external dependencies.</p>
+<h3 id="modern-testing-with-nodejs-built-in-test-runner"><a class="markdownIt-Anchor" href="#modern-testing-with-nodejs-built-in-test-runner">#</a> Modern Testing with Node.js Built-in Test Runner</h3>
+<p>The built-in test runner provides a clean, familiar API that feels modern and complete:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// test/math.test.js</span></span><br><span class="line"><span class="keyword">import</span> &#123; test, describe &#125; <span class="keyword">from</span> <span class="string">&quot;node:test&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> assert <span class="keyword">from</span> <span class="string">&quot;node:assert&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; add, multiply &#125; <span class="keyword">from</span> <span class="string">&quot;../math.js&quot;</span>;</span><br><span class="line"></span><br><span class="line">describe(<span class="string">&quot;Math functions&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  test(<span class="string">&quot;adds numbers correctly&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    assert.strictEqual(add(<span class="number">2</span>, <span class="number">3</span>), <span class="number">5</span>);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  test(<span class="string">&quot;handles async operations&quot;</span>, <span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> result = <span class="keyword">await</span> multiply(<span class="number">2</span>, <span class="number">3</span>);</span><br><span class="line">    assert.strictEqual(result, <span class="number">6</span>);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  test(<span class="string">&quot;throws on invalid input&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    assert.throws(<span class="function">() =&gt;</span> add(<span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>), <span class="regexp">/Invalid input/</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>What makes this particularly powerful is how seamlessly it integrates with the Node.js development workflow:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># Run all tests with built-in runner</span><br><span class="line">node --test</span><br><span class="line"></span><br><span class="line"># Watch mode for development</span><br><span class="line">node --test --watch</span><br><span class="line"></span><br><span class="line"># Coverage reporting (Node.js 20+)</span><br><span class="line">node --test --experimental-test-coverage</span><br></pre></td></tr></table></figure>
+<p>The watch mode is especially valuable during development—your tests re-run automatically as you modify code, providing immediate feedback without any additional configuration.</p>
+<h2 id="4-sophisticated-asynchronous-patterns"><a class="markdownIt-Anchor" href="#4-sophisticated-asynchronous-patterns">#</a> 4. Sophisticated Asynchronous Patterns</h2>
+<p>While async/await isn’t new, the patterns around it have matured significantly. Modern Node.js development leverages these patterns more effectively and combines them with newer APIs.</p>
+<h3 id="asyncawait-with-enhanced-error-handling"><a class="markdownIt-Anchor" href="#asyncawait-with-enhanced-error-handling">#</a> Async/Await with Enhanced Error Handling</h3>
+<p>Modern error handling combines async/await with sophisticated error recovery and parallel execution patterns:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; readFile, writeFile &#125; <span class="keyword">from</span> <span class="string">&quot;node:fs/promises&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">processData</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="comment">// Parallel execution of independent operations</span></span><br><span class="line">    <span class="keyword">const</span> [config, userData] = <span class="keyword">await</span> <span class="built_in">Promise</span>.all([</span><br><span class="line">      readFile(<span class="string">&quot;config.json&quot;</span>, <span class="string">&quot;utf8&quot;</span>),</span><br><span class="line">      fetch(<span class="string">&quot;/api/user&quot;</span>).then(<span class="function">(<span class="params">r</span>) =&gt;</span> r.json()),</span><br><span class="line">    ]);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> processed = processUserData(userData, <span class="built_in">JSON</span>.parse(config));</span><br><span class="line">    <span class="keyword">await</span> writeFile(<span class="string">&quot;output.json&quot;</span>, <span class="built_in">JSON</span>.stringify(processed, <span class="literal">null</span>, <span class="number">2</span>));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> processed;</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    <span class="comment">// Structured error logging with context</span></span><br><span class="line">    <span class="built_in">console</span>.error(<span class="string">&quot;Processing failed:&quot;</span>, &#123;</span><br><span class="line">      error: error.message,</span><br><span class="line">      stack: error.stack,</span><br><span class="line">      timestamp: <span class="keyword">new</span> <span class="built_in">Date</span>().toISOString(),</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">throw</span> error;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>This pattern combines parallel execution for performance with comprehensive error handling. The  <code>Promise.all()</code>  ensures that independent operations run concurrently, while the try/catch provides a single point for error handling with rich context.</p>
+<h3 id="modern-event-handling-with-asynciterators"><a class="markdownIt-Anchor" href="#modern-event-handling-with-asynciterators">#</a> Modern Event Handling with AsyncIterators</h3>
+<p>Event-driven programming has evolved beyond simple event listeners. AsyncIterators provide a more powerful way to handle streams of events:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; EventEmitter, once &#125; <span class="keyword">from</span> <span class="string">&quot;node:events&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DataProcessor</span> <span class="keyword">extends</span> <span class="title">EventEmitter</span> </span>&#123;</span><br><span class="line">  <span class="keyword">async</span> *<span class="function"><span class="title">processStream</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">      <span class="built_in">this</span>.emit(<span class="string">&quot;data&quot;</span>, <span class="string">`chunk-<span class="subst">$&#123;i&#125;</span>`</span>);</span><br><span class="line">      <span class="keyword">yield</span> <span class="string">`processed-<span class="subst">$&#123;i&#125;</span>`</span>;</span><br><span class="line">      <span class="comment">// Simulate async processing time</span></span><br><span class="line">      <span class="keyword">await</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> <span class="built_in">setTimeout</span>(resolve, <span class="number">100</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">this</span>.emit(<span class="string">&quot;end&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Consume events as an async iterator</span></span><br><span class="line"><span class="keyword">const</span> processor = <span class="keyword">new</span> DataProcessor();</span><br><span class="line"><span class="keyword">for</span> <span class="keyword">await</span> (<span class="keyword">const</span> result <span class="keyword">of</span> processor.processStream()) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;Processed:&quot;</span>, result);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>This approach is particularly powerful because it combines the flexibility of events with the control flow of async iteration. You can process events in sequence, handle backpressure naturally, and break out of processing loops cleanly.</p>
+<h2 id="5-advanced-streams-with-web-standards-integration"><a class="markdownIt-Anchor" href="#5-advanced-streams-with-web-standards-integration">#</a> 5. Advanced Streams with Web Standards Integration</h2>
+<p>Streams remain one of Node.js’s most powerful features, but they’ve evolved to embrace web standards and provide better interoperability.</p>
+<h3 id="modern-stream-processing"><a class="markdownIt-Anchor" href="#modern-stream-processing">#</a> Modern Stream Processing</h3>
+<p>Stream processing has become more intuitive with better APIs and clearer patterns:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Readable, Transform &#125; <span class="keyword">from</span> <span class="string">&quot;node:stream&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; pipeline &#125; <span class="keyword">from</span> <span class="string">&quot;node:stream/promises&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; createReadStream, createWriteStream &#125; <span class="keyword">from</span> <span class="string">&quot;node:fs&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Create transform streams with clean, focused logic</span></span><br><span class="line"><span class="keyword">const</span> upperCaseTransform = <span class="keyword">new</span> Transform(&#123;</span><br><span class="line">  objectMode: <span class="literal">true</span>,</span><br><span class="line">  <span class="function"><span class="title">transform</span>(<span class="params">chunk, encoding, callback</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.push(chunk.toString().toUpperCase());</span><br><span class="line">    callback();</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Process files with robust error handling</span></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">processFile</span>(<span class="params">inputFile, outputFile</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">await</span> pipeline(</span><br><span class="line">      createReadStream(inputFile),</span><br><span class="line">      upperCaseTransform,</span><br><span class="line">      createWriteStream(outputFile)</span><br><span class="line">    );</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;File processed successfully&quot;</span>);</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    <span class="built_in">console</span>.error(<span class="string">&quot;Pipeline failed:&quot;</span>, error);</span><br><span class="line">    <span class="keyword">throw</span> error;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The  <code>pipeline</code>  function with promises provides automatic cleanup and error handling, eliminating many of the traditional pain points with stream processing.</p>
+<h3 id="web-streams-interoperability"><a class="markdownIt-Anchor" href="#web-streams-interoperability">#</a> Web Streams Interoperability</h3>
+<p>Modern Node.js can seamlessly work with Web Streams, enabling better compatibility with browser code and edge runtime environments:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Create a Web Stream (compatible with browsers)</span></span><br><span class="line"><span class="keyword">const</span> webReadable = <span class="keyword">new</span> ReadableStream(&#123;</span><br><span class="line">  <span class="function"><span class="title">start</span>(<span class="params">controller</span>)</span> &#123;</span><br><span class="line">    controller.enqueue(<span class="string">&quot;Hello &quot;</span>);</span><br><span class="line">    controller.enqueue(<span class="string">&quot;World!&quot;</span>);</span><br><span class="line">    controller.close();</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Convert between Web Streams and Node.js streams</span></span><br><span class="line"><span class="keyword">const</span> nodeStream = Readable.fromWeb(webReadable);</span><br><span class="line"><span class="keyword">const</span> backToWeb = Readable.toWeb(nodeStream);</span><br></pre></td></tr></table></figure>
+<p>This interoperability is crucial for applications that need to run in multiple environments or share code between server and client.</p>
+<h2 id="6-worker-threads-true-parallelism-for-cpu-intensive-tasks"><a class="markdownIt-Anchor" href="#6-worker-threads-true-parallelism-for-cpu-intensive-tasks">#</a> 6. Worker Threads: True Parallelism for CPU-Intensive Tasks</h2>
+<p>JavaScript’s single-threaded nature isn’t always ideal for CPU-intensive work. Worker threads provide a way to leverage multiple cores effectively while maintaining the simplicity of JavaScript.</p>
+<h3 id="background-processing-without-blocking"><a class="markdownIt-Anchor" href="#background-processing-without-blocking">#</a> Background Processing Without Blocking</h3>
+<p>Worker threads are perfect for computationally expensive tasks that would otherwise block the main event loop:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// worker.js - Isolated computation environment</span></span><br><span class="line"><span class="keyword">import</span> &#123; parentPort, workerData &#125; <span class="keyword">from</span> <span class="string">&quot;node:worker_threads&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fibonacci</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (n &lt; <span class="number">2</span>) <span class="keyword">return</span> n;</span><br><span class="line">  <span class="keyword">return</span> fibonacci(n - <span class="number">1</span>) + fibonacci(n - <span class="number">2</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> result = fibonacci(workerData.number);</span><br><span class="line">parentPort.postMessage(result);</span><br></pre></td></tr></table></figure>
+<p>The main application can delegate heavy computations without blocking other operations:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.js - Non-blocking delegation</span></span><br><span class="line"><span class="keyword">import</span> &#123; Worker &#125; <span class="keyword">from</span> <span class="string">&quot;node:worker_threads&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; fileURLToPath &#125; <span class="keyword">from</span> <span class="string">&quot;node:url&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">calculateFibonacci</span>(<span class="params">number</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> worker = <span class="keyword">new</span> Worker(</span><br><span class="line">      fileURLToPath(<span class="keyword">new</span> URL(<span class="string">&quot;./worker.js&quot;</span>, <span class="keyword">import</span>.meta.url)),</span><br><span class="line">      &#123; <span class="attr">workerData</span>: &#123; number &#125; &#125;</span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">    worker.on(<span class="string">&quot;message&quot;</span>, resolve);</span><br><span class="line">    worker.on(<span class="string">&quot;error&quot;</span>, reject);</span><br><span class="line">    worker.on(<span class="string">&quot;exit&quot;</span>, <span class="function">(<span class="params">code</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (code !== <span class="number">0</span>) &#123;</span><br><span class="line">        reject(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">`Worker stopped with exit code <span class="subst">$&#123;code&#125;</span>`</span>));</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Your main application remains responsive</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;Starting calculation...&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> result = <span class="keyword">await</span> calculateFibonacci(<span class="number">40</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;Fibonacci result:&quot;</span>, result);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;Application remained responsive throughout!&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>This pattern allows your application to utilize multiple CPU cores while keeping the familiar async/await programming model.</p>
+<h2 id="7-enhanced-development-experience"><a class="markdownIt-Anchor" href="#7-enhanced-development-experience">#</a> 7. Enhanced Development Experience</h2>
+<p>Modern Node.js prioritizes developer experience with built-in tools that previously required external packages or complex configurations.</p>
+<h3 id="watch-mode-and-environment-management"><a class="markdownIt-Anchor" href="#watch-mode-and-environment-management">#</a> Watch Mode and Environment Management</h3>
+<p>Development workflow has been significantly streamlined with built-in watch mode and environment file support:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;name&quot;</span>: <span class="string">&quot;modern-node-app&quot;</span>,</span><br><span class="line">  <span class="string">&quot;type&quot;</span>: <span class="string">&quot;module&quot;</span>,</span><br><span class="line">  <span class="string">&quot;engines&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;node&quot;</span>: <span class="string">&quot;&gt;=20.0.0&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;dev&quot;</span>: <span class="string">&quot;node --watch --env-file=.env app.js&quot;</span>,</span><br><span class="line">    <span class="string">&quot;test&quot;</span>: <span class="string">&quot;node --test --watch&quot;</span>,</span><br><span class="line">    <span class="string">&quot;start&quot;</span>: <span class="string">&quot;node app.js&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The  <code>--watch</code>  flag eliminates the need for nodemon, while  <code>--env-file</code>  removes the dependency on dotenv. Your development environment becomes simpler and faster:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// .env file automatically loaded with --env-file</span></span><br><span class="line"><span class="comment">// DATABASE_URL=postgres://localhost:5432/mydb</span></span><br><span class="line"><span class="comment">// API_KEY=secret123</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// app.js - Environment variables available immediately</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;Connecting to:&quot;</span>, process.env.DATABASE_URL);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;API Key loaded:&quot;</span>, process.env.API_KEY ? <span class="string">&quot;Yes&quot;</span> : <span class="string">&quot;No&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>These features make development more pleasant by reducing configuration overhead and eliminating restart cycles.</p>
+<h2 id="8-modern-security-and-performance-monitoring"><a class="markdownIt-Anchor" href="#8-modern-security-and-performance-monitoring">#</a> 8. Modern Security and Performance Monitoring</h2>
+<p>Security and performance have become first-class concerns with built-in tools for monitoring and controlling application behavior.</p>
+<h3 id="permission-model-for-enhanced-security"><a class="markdownIt-Anchor" href="#permission-model-for-enhanced-security">#</a> Permission Model for Enhanced Security</h3>
+<p>The experimental permission model allows you to restrict what your application can access, following the principle of least privilege:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Run with restricted file system access</span><br><span class="line">node --experimental-permission --allow-fs-read=./data --allow-fs-write=./logs app.js</span><br><span class="line"></span><br><span class="line"># Network restrictions</span><br><span class="line">node --experimental-permission --allow-net=api.example.com app.js</span><br><span class="line"># Above allow-net feature not avaiable yet, PR merged in node.js repo, will be available in future release</span><br></pre></td></tr></table></figure>
+<p>This is particularly valuable for applications that process untrusted code or need to demonstrate security compliance.</p>
+<h3 id="built-in-performance-monitoring"><a class="markdownIt-Anchor" href="#built-in-performance-monitoring">#</a> Built-in Performance Monitoring</h3>
+<p>Performance monitoring is now built into the platform, eliminating the need for external APM tools for basic monitoring:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; PerformanceObserver, performance &#125; <span class="keyword">from</span> <span class="string">&quot;node:perf_hooks&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Set up automatic performance monitoring</span></span><br><span class="line"><span class="keyword">const</span> obs = <span class="keyword">new</span> PerformanceObserver(<span class="function">(<span class="params">list</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> entry <span class="keyword">of</span> list.getEntries()) &#123;</span><br><span class="line">    <span class="keyword">if</span> (entry.duration &gt; <span class="number">100</span>) &#123;</span><br><span class="line">      <span class="comment">// Log slow operations</span></span><br><span class="line">      <span class="built_in">console</span>.log(</span><br><span class="line">        <span class="string">`Slow operation detected: <span class="subst">$&#123;entry.name&#125;</span> took <span class="subst">$&#123;entry.duration&#125;</span>ms`</span></span><br><span class="line">      );</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line">obs.observe(&#123; <span class="attr">entryTypes</span>: [<span class="string">&quot;function&quot;</span>, <span class="string">&quot;http&quot;</span>, <span class="string">&quot;dns&quot;</span>] &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Instrument your own operations</span></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">processLargeDataset</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">  performance.mark(<span class="string">&quot;processing-start&quot;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> result = <span class="keyword">await</span> heavyProcessing(data);</span><br><span class="line"></span><br><span class="line">  performance.mark(<span class="string">&quot;processing-end&quot;</span>);</span><br><span class="line">  performance.measure(<span class="string">&quot;data-processing&quot;</span>, <span class="string">&quot;processing-start&quot;</span>, <span class="string">&quot;processing-end&quot;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>This provides visibility into application performance without external dependencies, helping you identify bottlenecks early in development.</p>
+<h2 id="9-application-distribution-and-deployment"><a class="markdownIt-Anchor" href="#9-application-distribution-and-deployment">#</a> 9. Application Distribution and Deployment</h2>
+<p>Modern Node.js makes application distribution simpler with features like single executable applications and improved packaging.</p>
+<h3 id="single-executable-applications"><a class="markdownIt-Anchor" href="#single-executable-applications">#</a> Single Executable Applications</h3>
+<p>You can now bundle your Node.js application into a single executable file, simplifying deployment and distribution:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># Create a self-contained executable</span><br><span class="line">node --experimental-sea-config sea-config.json</span><br></pre></td></tr></table></figure>
+<p>The configuration file defines how your application gets bundled:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;main&quot;</span>: <span class="string">&quot;app.js&quot;</span>,</span><br><span class="line">  <span class="string">&quot;output&quot;</span>: <span class="string">&quot;my-app-bundle.blob&quot;</span>,</span><br><span class="line">  <span class="string">&quot;disableExperimentalSEAWarning&quot;</span>: <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>This is particularly valuable for CLI tools, desktop applications, or any scenario where you want to distribute your application without requiring users to install Node.js separately.</p>
+<h2 id="10-modern-error-handling-and-diagnostics"><a class="markdownIt-Anchor" href="#10-modern-error-handling-and-diagnostics">#</a> 10. Modern Error Handling and Diagnostics</h2>
+<p>Error handling has evolved beyond simple try/catch blocks to include structured error handling and comprehensive diagnostics.</p>
+<h3 id="structured-error-handling"><a class="markdownIt-Anchor" href="#structured-error-handling">#</a> Structured Error Handling</h3>
+<p>Modern applications benefit from structured, contextual error handling that provides better debugging information:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AppError</span> <span class="keyword">extends</span> <span class="title">Error</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">message, code, statusCode = <span class="number">500</span>, context = &#123;&#125;</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(message);</span><br><span class="line">    <span class="built_in">this</span>.name = <span class="string">&quot;AppError&quot;</span>;</span><br><span class="line">    <span class="built_in">this</span>.code = code;</span><br><span class="line">    <span class="built_in">this</span>.statusCode = statusCode;</span><br><span class="line">    <span class="built_in">this</span>.context = context;</span><br><span class="line">    <span class="built_in">this</span>.timestamp = <span class="keyword">new</span> <span class="built_in">Date</span>().toISOString();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">toJSON</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      name: <span class="built_in">this</span>.name,</span><br><span class="line">      message: <span class="built_in">this</span>.message,</span><br><span class="line">      code: <span class="built_in">this</span>.code,</span><br><span class="line">      statusCode: <span class="built_in">this</span>.statusCode,</span><br><span class="line">      context: <span class="built_in">this</span>.context,</span><br><span class="line">      timestamp: <span class="built_in">this</span>.timestamp,</span><br><span class="line">      stack: <span class="built_in">this</span>.stack,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Usage with rich context</span></span><br><span class="line"><span class="keyword">throw</span> <span class="keyword">new</span> AppError(<span class="string">&quot;Database connection failed&quot;</span>, <span class="string">&quot;DB_CONNECTION_ERROR&quot;</span>, <span class="number">503</span>, &#123;</span><br><span class="line">  host: <span class="string">&quot;localhost&quot;</span>,</span><br><span class="line">  port: <span class="number">5432</span>,</span><br><span class="line">  retryAttempt: <span class="number">3</span>,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>This approach provides much richer error information for debugging and monitoring, while maintaining a consistent error interface across your application.</p>
+<h3 id="advanced-diagnostics"><a class="markdownIt-Anchor" href="#advanced-diagnostics">#</a> Advanced Diagnostics</h3>
+<p>Node.js includes sophisticated diagnostic capabilities that help you understand what’s happening inside your application:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> diagnostics_channel <span class="keyword">from</span> <span class="string">&quot;node:diagnostics_channel&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Create custom diagnostic channels</span></span><br><span class="line"><span class="keyword">const</span> dbChannel = diagnostics_channel.channel(<span class="string">&quot;app:database&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> httpChannel = diagnostics_channel.channel(<span class="string">&quot;app:http&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Subscribe to diagnostic events</span></span><br><span class="line">dbChannel.subscribe(<span class="function">(<span class="params">message</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;Database operation:&quot;</span>, &#123;</span><br><span class="line">    operation: message.operation,</span><br><span class="line">    duration: message.duration,</span><br><span class="line">    query: message.query,</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Publish diagnostic information</span></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">queryDatabase</span>(<span class="params">sql, params</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> start = performance.now();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> result = <span class="keyword">await</span> db.query(sql, params);</span><br><span class="line"></span><br><span class="line">    dbChannel.publish(&#123;</span><br><span class="line">      operation: <span class="string">&quot;query&quot;</span>,</span><br><span class="line">      sql,</span><br><span class="line">      params,</span><br><span class="line">      duration: performance.now() - start,</span><br><span class="line">      success: <span class="literal">true</span>,</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    dbChannel.publish(&#123;</span><br><span class="line">      operation: <span class="string">&quot;query&quot;</span>,</span><br><span class="line">      sql,</span><br><span class="line">      params,</span><br><span class="line">      duration: performance.now() - start,</span><br><span class="line">      success: <span class="literal">false</span>,</span><br><span class="line">      error: error.message,</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">throw</span> error;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>This diagnostic information can be consumed by monitoring tools, logged for analysis, or used to trigger automatic remediation actions.</p>
+<h2 id="11-modern-package-management-and-module-resolution"><a class="markdownIt-Anchor" href="#11-modern-package-management-and-module-resolution">#</a> 11. Modern Package Management and Module Resolution</h2>
+<p>Package management and module resolution have become more sophisticated, with better support for monorepos, internal packages, and flexible module resolution.</p>
+<h3 id="import-maps-and-internal-package-resolution"><a class="markdownIt-Anchor" href="#import-maps-and-internal-package-resolution">#</a> Import Maps and Internal Package Resolution</h3>
+<p>Modern Node.js supports import maps, allowing you to create clean internal module references:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;imports&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;#config&quot;</span>: <span class="string">&quot;./src/config/index.js&quot;</span>,</span><br><span class="line">    <span class="string">&quot;#utils/*&quot;</span>: <span class="string">&quot;./src/utils/*.js&quot;</span>,</span><br><span class="line">    <span class="string">&quot;#db&quot;</span>: <span class="string">&quot;./src/database/connection.js&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>This creates a clean, stable interface for internal modules:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Clean internal imports that don&#x27;t break when you reorganize</span></span><br><span class="line"><span class="keyword">import</span> config <span class="keyword">from</span> <span class="string">&quot;#config&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; logger, validator &#125; <span class="keyword">from</span> <span class="string">&quot;#utils/common&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> db <span class="keyword">from</span> <span class="string">&quot;#db&quot;</span>;</span><br></pre></td></tr></table></figure>
+<p>These internal imports make refactoring easier and provide a clear distinction between internal and external dependencies.</p>
+<h3 id="dynamic-imports-for-flexible-loading"><a class="markdownIt-Anchor" href="#dynamic-imports-for-flexible-loading">#</a> Dynamic Imports for Flexible Loading</h3>
+<p>Dynamic imports enable sophisticated loading patterns, including conditional loading and code splitting:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Load features based on configuration or environment</span></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">loadDatabaseAdapter</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> dbType = process.env.DATABASE_TYPE || <span class="string">&quot;sqlite&quot;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> adapter = <span class="keyword">await</span> <span class="keyword">import</span>(<span class="string">`#db/adapters/<span class="subst">$&#123;dbType&#125;</span>`</span>);</span><br><span class="line">    <span class="keyword">return</span> adapter.default;</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    <span class="built_in">console</span>.warn(</span><br><span class="line">      <span class="string">`Database adapter <span class="subst">$&#123;dbType&#125;</span> not available, falling back to sqlite`</span></span><br><span class="line">    );</span><br><span class="line">    <span class="keyword">const</span> fallback = <span class="keyword">await</span> <span class="keyword">import</span>(<span class="string">&quot;#db/adapters/sqlite&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> fallback.default;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Conditional feature loading</span></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">loadOptionalFeatures</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> features = [];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (process.env.ENABLE_ANALYTICS === <span class="string">&quot;true&quot;</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> analytics = <span class="keyword">await</span> <span class="keyword">import</span>(<span class="string">&quot;#features/analytics&quot;</span>);</span><br><span class="line">    features.push(analytics.default);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (process.env.ENABLE_MONITORING === <span class="string">&quot;true&quot;</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> monitoring = <span class="keyword">await</span> <span class="keyword">import</span>(<span class="string">&quot;#features/monitoring&quot;</span>);</span><br><span class="line">    features.push(monitoring.default);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> features;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>This pattern allows you to build applications that adapt to their environment and only load the code they actually need.</p>
+<h2 id="the-path-forward-key-takeaways-for-modern-nodejs-2025"><a class="markdownIt-Anchor" href="#the-path-forward-key-takeaways-for-modern-nodejs-2025">#</a> The Path Forward: Key Takeaways for Modern Node.js (2025)</h2>
+<p>As we look at the current state of Node.js development, several key principles emerge:</p>
+<ol>
+<li><strong>Embrace Web Standards</strong>: Use  <code>node:</code>  prefixes, fetch API, AbortController, and Web Streams for better compatibility and reduced dependencies</li>
+<li><strong>Leverage Built-in Tools</strong>: The test runner, watch mode, and environment file support reduce external dependencies and configuration complexity</li>
+<li><strong>Think in Modern Async Patterns</strong>: Top-level await, structured error handling, and async iterators make code more readable and maintainable</li>
+<li><strong>Use Worker Threads Strategically</strong>: For CPU-intensive tasks, worker threads provide true parallelism without blocking the main thread</li>
+<li><strong>Adopt Progressive Enhancement</strong>: Use permission models, diagnostics channels, and performance monitoring to build robust, observable applications</li>
+<li><strong>Optimize for Developer Experience</strong>: Watch mode, built-in testing, and import maps create a more pleasant development workflow</li>
+<li><strong>Plan for Distribution</strong>: Single executable applications and modern packaging make deployment simpler</li>
+</ol>
+<p>The transformation of Node.js from a simple JavaScript runtime to a comprehensive development platform is remarkable. By adopting these modern patterns, you’re not just writing contemporary code—you’re building applications that are more maintainable, performant, and aligned with the broader JavaScript ecosystem.</p>
+<p>The beauty of modern Node.js lies in its evolution while maintaining backward compatibility. You can adopt these patterns incrementally, and they work alongside existing code. Whether you’re starting a new project or modernizing an existing one, these patterns provide a clear path toward more robust, enjoyable Node.js development.</p>
+<p>As we move through 2025, Node.js continues to evolve, but the foundational patterns we’ve explored here provide a solid base for building applications that will remain modern and maintainable for years to come.</p>
+
+      <div class="tags">
+          <a href="/tags/js/" rel="tag"><i class="ic i-tag"></i> js</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2025-08-11 10:12:23" itemprop="dateModified" datetime="2025-08-11T10:12:23+08:00">2025-08-11</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2025/07/29/java-jackson-xml/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;校园迷糊大王.jpg" title="XML Serialization and Deserialization with Jackson">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>XML Serialization and Deserialization with Jackson</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2025/08/12/csharp-vscode-wpf/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;怪化猫.jpg" title="WPF project in VSCode">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>WPF project in VSCode</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-module-system-esm-is-the-new-standard"><span class="toc-number">1.</span> <span class="toc-text"> 1. Module System: ESM is the New Standard</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#the-old-way-commonjs"><span class="toc-number">1.1.</span> <span class="toc-text"> The Old Way (CommonJS)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#the-modern-way-es-modules-with-node-prefix"><span class="toc-number">1.2.</span> <span class="toc-text"> The Modern Way (ES Modules with Node: Prefix)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#top-level-await-simplifying-initialization"><span class="toc-number">1.3.</span> <span class="toc-text"> Top-Level Await: Simplifying Initialization</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-built-in-web-apis-reducing-external-dependencies"><span class="toc-number">2.</span> <span class="toc-text"> 2. Built-in Web APIs: Reducing External Dependencies</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#fetch-api-no-more-http-library-dependencies"><span class="toc-number">2.1.</span> <span class="toc-text"> Fetch API: No More HTTP Library Dependencies</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#abortcontroller-graceful-operation-cancellation"><span class="toc-number">2.2.</span> <span class="toc-text"> AbortController: Graceful Operation Cancellation</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-built-in-testing-professional-testing-without-external-dependencies"><span class="toc-number">3.</span> <span class="toc-text"> 3. Built-in Testing: Professional Testing Without External Dependencies</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#modern-testing-with-nodejs-built-in-test-runner"><span class="toc-number">3.1.</span> <span class="toc-text"> Modern Testing with Node.js Built-in Test Runner</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-sophisticated-asynchronous-patterns"><span class="toc-number">4.</span> <span class="toc-text"> 4. Sophisticated Asynchronous Patterns</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#asyncawait-with-enhanced-error-handling"><span class="toc-number">4.1.</span> <span class="toc-text"> Async&#x2F;Await with Enhanced Error Handling</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#modern-event-handling-with-asynciterators"><span class="toc-number">4.2.</span> <span class="toc-text"> Modern Event Handling with AsyncIterators</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-advanced-streams-with-web-standards-integration"><span class="toc-number">5.</span> <span class="toc-text"> 5. Advanced Streams with Web Standards Integration</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#modern-stream-processing"><span class="toc-number">5.1.</span> <span class="toc-text"> Modern Stream Processing</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#web-streams-interoperability"><span class="toc-number">5.2.</span> <span class="toc-text"> Web Streams Interoperability</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-worker-threads-true-parallelism-for-cpu-intensive-tasks"><span class="toc-number">6.</span> <span class="toc-text"> 6. Worker Threads: True Parallelism for CPU-Intensive Tasks</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#background-processing-without-blocking"><span class="toc-number">6.1.</span> <span class="toc-text"> Background Processing Without Blocking</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-enhanced-development-experience"><span class="toc-number">7.</span> <span class="toc-text"> 7. Enhanced Development Experience</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#watch-mode-and-environment-management"><span class="toc-number">7.1.</span> <span class="toc-text"> Watch Mode and Environment Management</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-modern-security-and-performance-monitoring"><span class="toc-number">8.</span> <span class="toc-text"> 8. Modern Security and Performance Monitoring</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#permission-model-for-enhanced-security"><span class="toc-number">8.1.</span> <span class="toc-text"> Permission Model for Enhanced Security</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#built-in-performance-monitoring"><span class="toc-number">8.2.</span> <span class="toc-text"> Built-in Performance Monitoring</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-application-distribution-and-deployment"><span class="toc-number">9.</span> <span class="toc-text"> 9. Application Distribution and Deployment</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#single-executable-applications"><span class="toc-number">9.1.</span> <span class="toc-text"> Single Executable Applications</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-modern-error-handling-and-diagnostics"><span class="toc-number">10.</span> <span class="toc-text"> 10. Modern Error Handling and Diagnostics</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#structured-error-handling"><span class="toc-number">10.1.</span> <span class="toc-text"> Structured Error Handling</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#advanced-diagnostics"><span class="toc-number">10.2.</span> <span class="toc-text"> Advanced Diagnostics</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-modern-package-management-and-module-resolution"><span class="toc-number">11.</span> <span class="toc-text"> 11. Modern Package Management and Module Resolution</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#import-maps-and-internal-package-resolution"><span class="toc-number">11.1.</span> <span class="toc-text"> Import Maps and Internal Package Resolution</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dynamic-imports-for-flexible-loading"><span class="toc-number">11.2.</span> <span class="toc-text"> Dynamic Imports for Flexible Loading</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#the-path-forward-key-takeaways-for-modern-nodejs-2025"><span class="toc-number">12.</span> <span class="toc-text"> The Path Forward: Key Takeaways for Modern Node.js (2025)</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">378</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">51</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
+      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2025/07/29/java-jackson-xml/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2025/08/12/csharp-vscode-wpf/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ D E W</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2025/08/11/nodejs-2025/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
