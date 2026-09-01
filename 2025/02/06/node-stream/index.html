@@ -1,0 +1,701 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CFira%20Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="js" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2025/02/06/node-stream/">
+
+
+
+  <title>
+Understanding Node.js Streams |
+D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</title>
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">Understanding Node.js Streams
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2025-02-06 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2025-02-06T00:00:00+08:00">2025-02-06</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">D E W</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="/anime/index/秒速五厘米-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/龙猫-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/怪医黑杰克.jpg"></li>
+          <li class="item" data-background-image="/anime/index/重启咲良田.jpg"></li>
+          <li class="item" data-background-image="/anime/index/虫师.jpg"></li>
+          <li class="item" data-background-image="/anime/index/幽游白书.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2025/02/06/node-stream/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content="我知这世界本如露水般短暂，然而，然而, ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>repost: <span class="exturl" data-url="aHR0cHM6Ly93d3cuZGVubmlzb2tlZWZmZS5jb20vYmxvZy8yMDI0LTA3LTA1LXVuZGVyc3RhbmRpbmctbm9kZWpzLXN0cmVhbXM=">Understanding Node.js Streams - Dennis O’Keeffe</span></p>
+</blockquote>
+<h2 id="overview"><a class="markdownIt-Anchor" href="#overview">#</a> Overview</h2>
+<p>Streams can be a less approachable topic for those working with Node.js.</p>
+<p>Within Node.js, there are <span class="exturl" data-url="aHR0cHM6Ly9ub2RlanMub3JnL2FwaS9zdHJlYW0uaHRtbCN0eXBlcy1vZi1zdHJlYW1z">four fundamental stream types</span> that exist:</p>
+<ol>
+<li><strong>Writeable</strong>: Streams that you can write data to.</li>
+<li><strong>Readable</strong>: Streams that you can read data from.</li>
+<li><strong>Duplex</strong>: Streams that are both readable and writeable.</li>
+<li><strong>Transform</strong>: A type of Duplex stream that can modify or transform the data as it is written and read.</li>
+</ol>
+<p>Over the course of this post, we will working through the fundamentals that you should understand about Node.js streams and why they exist.</p>
+<p>In this post, we will not deep dive into each of the four stream types. Even though I will be introducing stream code in this blog post, we specifically will focus on the foundational concepts that you should understand about streams. In the posts following, will consolidate our knowledge by diving deeper into each stream type.</p>
+<p>How to think about the four fundamental Node.js Stream types</p>
+<p>To help you understand the four stream types, I will introduce four analogies to think about each stream type orientated around water so that you connect the dots between the four types, but I will also add an alternative analogy to help consolidate your mental model of the four fundamental stream types. These aim to help bridge the gap between the abstract concept of streams and something more tangible.</p>
+<h2 id="1-writable-streams-the-water-bucket-the-notebook"><a class="markdownIt-Anchor" href="#1-writable-streams-the-water-bucket-the-notebook">#</a> 1. Writable Streams: The Water Bucket, The Notebook</h2>
+<p><strong>Writable</strong> streams are like <strong>water buckets that collect data (water)</strong>. Just as a bucket can be filled with water from various sources, a writable stream can <strong>receive data from different inputs</strong>. You can pour data into it chunk by chunk, and it will hold that data until it’s full or you’re done writing. This makes writable streams <strong>perfect for scenarios where you need to collect and store data</strong>, such as writing to files or sending responses in a web server.</p>
+<img data-src="/2025/02/06/node-stream/water-bucket.webp" class="" title="A water bucket can be used to think about Writeable Streams in Node.js">
+<p>A water bucket can be used to think about Writeable Streams in Node.js</p>
+<p>Alternatively, you could think of <strong>Writable</strong> streams are like a <strong>notebook where you can write information</strong>. Just as you can open a notebook and jot down thoughts, ideas, or data page by page, a writable stream allows you to <strong>input data chunk by chunk</strong>. You control <strong>when to write, how much to write, and when you’re finished</strong>.</p>
+<p>Examples of <strong>Writable</strong> streams include:</p>
+<ul>
+<li><strong>File Writing</strong>: Writing data to a file using  <code>fs.createWriteStream()</code> .</li>
+<li><strong>HTTP Responses</strong>: Sending responses to clients in a web server.</li>
+<li><strong>Database Inserts</strong>: Streaming large amounts of data into a database.</li>
+<li><strong>Console Output</strong>: Writing to  <code>process.stdout</code>  for command-line applications.</li>
+</ul>
+<p>A simple example of creating a writable stream to a file  <code>output.txt</code>  in Node.js and writing in the text <strong>Hello, World!</strong>:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&quot;node:fs&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> writeStream = fs.<span class="title function_">createWriteStream</span>(<span class="string">&quot;output.txt&quot;</span>);</span><br><span class="line">writeStream.<span class="title function_">write</span>(<span class="string">&quot;Hello, World!&quot;</span>);</span><br><span class="line">writeStream.<span class="title function_">end</span>();</span><br></pre></td></tr></table></figure>
+<h2 id="2-readable-streams-the-tap-the-fantasy-novel"><a class="markdownIt-Anchor" href="#2-readable-streams-the-tap-the-fantasy-novel">#</a> 2. Readable Streams: The Tap, The Fantasy Novel</h2>
+<p><strong>Readable</strong> streams can be thought of as water taps. Like a tap that can be turned on to release a steady flow of water, a readable stream provides a controlled source of data. You can “open” the stream to start receiving data, control its flow, and “close” it when you’re done. This makes readable streams ideal for scenarios where you have a source of data that you want to access and process at your own pace, such as reading from a file or receiving a response from an HTTP request. Just as you can adjust a tap to control the water flow, you can also manage how you consume data from a readable stream.</p>
+<p><img data-src="https://cdn.dennisokeeffe.com/assets/2024-07-05-understanding-nodejs-streams/tap.webp" alt="A water tap can be used to think about Readable Streams in Node.js"></p>
+<p>A water tap can be used to think about Readable Streams in Node.js</p>
+<p>You could also think about a <strong>fantasy novel</strong> (or in fact, any published book that you read). As you flip through the pages, you’re consuming the story bit by bit, much like how a <strong>readable stream provides data in chunks</strong>. You can <strong>pause your reading</strong> (pause the stream), <strong>continue where you left off</strong> (resume the stream), or <strong>decide you’re done reading for now</strong> (end the stream).</p>
+<p>Examples of <strong>Readable</strong> streams include:</p>
+<ul>
+<li><strong>File Reading</strong>: Reading data from a file using  <code>fs.createReadStream()</code> .</li>
+<li><strong>HTTP Requests</strong>: Receiving data from client requests in a web server.</li>
+<li><strong>Database Queries</strong>: Streaming large result sets from a database.</li>
+<li><strong>User Input</strong>: Reading from  <code>process.stdin</code>  for command-line interfaces.</li>
+</ul>
+<p>An example of creating a readable stream from a file  <code>input.txt</code>  in Node.js:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&quot;node:fs&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> readStream = fs.<span class="title function_">createReadStream</span>(<span class="string">&quot;input.txt&quot;</span>);</span><br><span class="line">readStream.<span class="title function_">on</span>(<span class="string">&quot;data&quot;</span>, <span class="function">(<span class="params">chunk</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Received <span class="subst">$&#123;chunk.length&#125;</span> bytes of data.`</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="3-duplex-streams-the-two-way-water-pipe-the-walkie-talkie"><a class="markdownIt-Anchor" href="#3-duplex-streams-the-two-way-water-pipe-the-walkie-talkie">#</a> 3. Duplex Streams: The Two-Way Water Pipe, The Walkie-Talkie</h2>
+<p><strong>Duplex</strong> streams are like two-way water pipes. Imagine a <strong>pipe system where water can flow in both directions simultaneously</strong>. One end of the pipe can <strong>receive water</strong> (write data), while the other end can <strong>release water</strong> (read data). This bidirectional flow makes duplex streams perfect for <strong>scenarios where you need to both send and receive data</strong>, such as in network sockets or inter-process communication.</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9jZG4uZGVubmlzb2tlZWZmZS5jb20vYXNzZXRzLzIwMjQtMDctMDUtdW5kZXJzdGFuZGluZy1ub2RlanMtc3RyZWFtcy93YXRlci1waXBlLndlYnA=">A two-way pipe can be used to think about Readable Streams in Node.js</span></p>
+<p>A two-way pipe can be used to think about Readable Streams in Node.js</p>
+<p>Admittedly for me, <strong>Duplex</strong> streams were the ones that took me more time to understand. My alternative is that <strong>Duplex</strong> streams are akin to a <strong>walkie-talkie</strong>. With a <strong>walkie-talkie</strong>, you can both speak (write data) and listen (read data) through the same device. Similarly, a <strong>duplex stream can both accept input and provide output</strong>, making it perfect for two-way communication scenarios.</p>
+<p>Examples of <strong>Duplex</strong> streams include:</p>
+<ul>
+<li><strong>TCP Sockets</strong>: Implementing network communication where data flows both ways.</li>
+<li><strong>SSH Tunnels</strong>: Establishing secure, bidirectional communication channels.</li>
+<li><strong>Websockets</strong>: Creating real-time, full-duplex communication in web applications.</li>
+<li><strong>Inter-process Communication</strong>: Facilitating two-way communication between processes.</li>
+</ul>
+<p>An example of creating a duplex stream using a TCP server in Node.js by creating a server that listens on port  <code>8080</code> :</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> net = <span class="built_in">require</span>(<span class="string">&quot;node:net&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> server = net.<span class="title function_">createServer</span>(<span class="function">(<span class="params">socket</span>) =&gt;</span> &#123;</span><br><span class="line">  socket.<span class="title function_">write</span>(<span class="string">&quot;Server: Hello!&quot;</span>);</span><br><span class="line">  socket.<span class="title function_">on</span>(<span class="string">&quot;data&quot;</span>, <span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Received:&quot;</span>, data.<span class="title function_">toString</span>());</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br><span class="line">server.<span class="title function_">listen</span>(<span class="number">8080</span>);</span><br></pre></td></tr></table></figure>
+<p>In the above code, we have a  <code>socket</code>  variable that is a duplex stream. We write to the socket using  <code>socket.write()</code>  and read from the socket using  <code>socket.on(&quot;data&quot;, ...)</code> .</p>
+<h2 id="4-transform-streams-the-water-treatment-plant-the-factory-assembly-line"><a class="markdownIt-Anchor" href="#4-transform-streams-the-water-treatment-plant-the-factory-assembly-line">#</a> 4. Transform Streams: The Water Treatment Plant, The Factory Assembly Line</h2>
+<p><strong>Transform</strong> streams you can think of as <strong>water treatment plants</strong>. Just as a treatment plant takes in raw water, processes it, and outputs clean water, a transform stream <strong>receives input data, manipulates or “transforms” it in some way, and then outputs the modified data</strong>. This makes transform streams excellent for <strong>scenarios where you need to modify data on the fly, such as compression, encryption, or any kind of data parsing or conversion</strong>.</p>
+<p><img data-src="https://cdn.dennisokeeffe.com/assets/2024-07-05-understanding-nodejs-streams/water-treament-plan.webp" alt="A water treatment plant can be used to think about Transform Streams in Node.js"></p>
+<p>A water treatment plant can be used to think about Transform Streams in Node.js</p>
+<p><strong>Transform</strong> streams can be likened to a factory assembly line. In a factory, raw materials enter at one end, undergo various modifications or enhancements as they move along the line, and emerge as finished products at the other end. Similarly, a transform stream takes input data, processes or modifies it in some way, and outputs the transformed data.</p>
+<p>Examples of <strong>Transform</strong> streams include:</p>
+<ul>
+<li><strong>Data Compression</strong>: Compressing or decompressing data on-the-fly.</li>
+<li><strong>Encryption/Decryption</strong>: Securing data as it’s being transmitted.</li>
+<li><strong>Data Parsing</strong>: Converting between data formats (e.g., <strong>CSV</strong> to <strong>JSON</strong>).</li>
+<li><strong>Text Encoding</strong>: Changing character encodings of text data.</li>
+</ul>
+<p>Here is a simple example of a transform stream that converts input text to uppercase:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; <span class="title class_">Transform</span> &#125; = <span class="built_in">require</span>(<span class="string">&quot;node:stream&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> upperCaseTransform = <span class="keyword">new</span> <span class="title class_">Transform</span>(&#123;</span><br><span class="line">  <span class="title function_">transform</span>(<span class="params">chunk, encoding, callback</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">push</span>(chunk.<span class="title function_">toString</span>().<span class="title function_">toUpperCase</span>());</span><br><span class="line">    <span class="title function_">callback</span>();</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">process.<span class="property">stdin</span>.<span class="title function_">pipe</span>(upperCaseTransform).<span class="title function_">pipe</span>(process.<span class="property">stdout</span>);</span><br></pre></td></tr></table></figure>
+<p>We could run the following in the terminal to see it in action:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> <span class="string">&quot;Hello&quot;</span> | node basic-transform.js</span><br><span class="line">HELLO</span><br></pre></td></tr></table></figure>
+<h2 id="understanding-the-difference-between-duplex-and-transform-streams"><a class="markdownIt-Anchor" href="#understanding-the-difference-between-duplex-and-transform-streams">#</a> Understanding the difference between Duplex and Transform streams</h2>
+<p>Transform streams are actually a special type of duplex stream. They can be thought of as duplex streams with a built-in relationship between the input and output. Using out analogy of <strong>the factory line</strong> or <strong>the water treatment plant</strong>, we understand that the input and output are related in some way. For <strong>Transform</strong> streams, data that comes in can be changed in some way before it goes out.</p>
+<p>On the other hand, <strong>Duplex</strong> streams are more general. They can be used for two-way communication, but the input and output are not necessarily related. You can write data in one format and read it in another, or vice versa. In our example of the <strong>walkie talkie</strong>, what you talk about and what you hear are not necessarily directly related.</p>
+<p>The “why” behind Node.js Streams</p>
+<p>Node.js streams offer several benefits that make them a powerful tool for data processing and manipulation. Here are some key advantages of using streams in Node.js applications:</p>
+<ol>
+<li><strong>Memory Efficiency</strong>
+<ul>
+<li>Process large amounts of data <strong>without loading it all into memory at once</strong>.</li>
+<li>Ideal for working with <strong>files or datasets larger than available Random Access Memory</strong> (RAM).</li>
+</ul>
+</li>
+<li><strong>Time Efficiency</strong>
+<ul>
+<li>Start processing data <strong>as soon as it’s available</strong>, without waiting for the entire dataset.</li>
+<li><strong>Reduces overall processing time</strong> for large datasets.</li>
+</ul>
+</li>
+<li><strong>Composability</strong>
+<ul>
+<li>Easily chain multiple stream operations together using  <code>.pipe()</code> .</li>
+<li>Create complex data processing pipelines with modular, reusable components.</li>
+</ul>
+</li>
+<li><strong>Backpressure Handling</strong>
+<ul>
+<li>Built-in mechanisms to <strong>manage the flow of data</strong> between fast producers and slow consumers.</li>
+<li><strong>Prevents memory overflow</strong> and <strong>system crashes</strong>.</li>
+</ul>
+</li>
+<li><strong>Abstraction of Data Sources and Destinations</strong>
+<ul>
+<li><strong>Consistent interface</strong> for various types of input/output (files, network, etc.).</li>
+<li>Write code that <strong>works with different data sources</strong> without major changes.</li>
+</ul>
+</li>
+<li><strong>Event-Driven Architecture</strong>
+<ul>
+<li>Aligns well with Node.js’s event-driven, non-blocking I/O model.</li>
+<li><strong>Enables responsive applications</strong> even when dealing with large datasets.</li>
+</ul>
+</li>
+<li><strong>Built-in to Core Modules</strong>
+<ul>
+<li>Native support in many Node.js core modules ( <code>fs</code> ,  <code>http</code> ,  <code>crypto</code> , etc.).</li>
+<li>Seamless integration with Node.js ecosystem.</li>
+</ul>
+</li>
+<li><strong>Asynchronous Processing</strong>
+<ul>
+<li>Natural fit for <strong>asynchronous operations</strong>, allowing for <strong>efficient multitasking</strong>.</li>
+<li>Keeps the <strong>event loop</strong> free for other operations.</li>
+</ul>
+</li>
+<li><strong>Transformations</strong>
+<ul>
+<li>Easy to <strong>implement data transformations</strong> on-the-fly.</li>
+<li>Supports operations like <strong>compression, encryption, or format conversion</strong> as data flows.</li>
+</ul>
+</li>
+<li><strong>Improved Performance in Network Operations</strong>
+<ul>
+<li>Efficient for <strong>sending and receiving data</strong> over networks.</li>
+<li><strong>Reduces latency</strong> in client-server communications.</li>
+</ul>
+</li>
+<li><strong>Customizability</strong>
+<ul>
+<li>Can create custom streams for specific use cases.</li>
+<li>Extend built-in stream classes for tailored functionality.</li>
+</ul>
+</li>
+<li><strong>Interoperability</strong>
+<ul>
+<li>Works well with other Node.js features and third-party libraries.</li>
+<li>Many <strong>npm</strong> packages provide stream interfaces for various data sources and sinks.</li>
+</ul>
+</li>
+<li><strong>Lazy Evaluation</strong>
+<ul>
+<li><strong>Process data only when it’s needed</strong>, improving application responsiveness.</li>
+<li>Useful for scenarios where not all data may be used.</li>
+</ul>
+</li>
+<li><strong>Standard Interface</strong>
+<ul>
+<li>Provides a consistent API across different types of streams.</li>
+<li>Reduces the learning curve for working with various data sources and sinks.</li>
+</ul>
+</li>
+</ol>
+<p>These benefits make Node.js streams a powerful tool for efficient, scalable, and flexible data handling in a wide range of applications.</p>
+<p>Node.js Streams concepts that you should know</p>
+<p>On top of the four fundamental stream types, it is important to keep in mind a few foundational key terms that relate to streams:</p>
+<ol>
+<li><strong>Stream types</strong>: The <em>already-mentioned</em> four foundational stream types (Writeable, Readable, Duplex, and Transform).</li>
+<li><strong>Buffering</strong>: Temporary data storage within streams, controlled by  <code>highWaterMark</code>  to manage memory usage.</li>
+<li><strong>Backpressure</strong>: Mechanism to balance data flow between fast producers and slow consumers, preventing memory issues.</li>
+<li><strong>Modes of Operation</strong>: <em>Flowing</em> (automatic data reading) vs <em>Paused</em> (manual data reading) modes for controlling data consumption.</li>
+<li><strong>Piping</strong>: Connecting streams to automatically manage data flow and backpressure between them.</li>
+<li><strong>Events</strong>: Asynchronous notifications for stream states and data availability, crucial for stream interaction.</li>
+<li><strong>Object Mode</strong>: An option with streams that enable the capability to process JavaScript objects instead of just buffers or strings.</li>
+</ol>
+<p>Understanding these concepts provides a solid foundation for working with Node.js streams effectively. It helps in making informed decisions about stream usage, handling data efficiently, and avoiding common pitfalls in stream-based applications.</p>
+<p>Let’s walk through each of these concepts in more detail.</p>
+<p>Buffering</p>
+<p><a target="_blank" rel="noopener" href="https://nodejs.org/api/stream.html#buffering"><strong>Buffering</strong></a> in Node.js streams refers to the process of storing chunks of data in memory while they are being transferred between the source and the destination.</p>
+<p>You can think of it like a <strong>queue of people waiting to enter a room</strong>. The room can only hold a certain number of people at a time, so the <strong>manager</strong> at the front of the queue (<strong>buffer</strong>) helps manage the flow of people in and out of the room.</p>
+<p><img data-src="https://cdn.dennisokeeffe.com/assets/2024-07-05-understanding-nodejs-streams/queue-of-people.webp" alt="A queue of people can be an analogy for both buffering and backpressure"></p>
+<p>A queue of people can be an analogy for both buffering and backpressure</p>
+<p>When data is read from a stream, it is held temporarily in a <strong>buffer</strong> until it can be processed or written to another stream. It is a mechanism used by streams to manage data flow efficiently.</p>
+<p>We can help example <strong>buffering</strong> by creating a writable stream with a custom  <code>highWaterMark</code> .</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; <span class="title class_">Writable</span> &#125; = <span class="built_in">require</span>(<span class="string">&quot;node:stream&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> myWritable = <span class="keyword">new</span> <span class="title class_">Writable</span>(&#123;</span><br><span class="line">  <span class="attr">highWaterMark</span>: <span class="number">1024</span>, <span class="comment">// Set buffer size to 1KB</span></span><br><span class="line">  <span class="title function_">write</span>(<span class="params">chunk, encoding, callback</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Writing:&quot;</span>, chunk.<span class="title function_">toString</span>());</span><br><span class="line">    <span class="title function_">callback</span>();</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ol>
+<li>Create a writable stream with a 1KB buffer.</li>
+<li>Write data to the stream.</li>
+<li>If more than 1KB of data is written before it’s processed, the write method will return  <code>false</code> , indicating the buffer is full.</li>
+</ol>
+<p>Here is a more detailed example:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; <span class="title class_">Writable</span> &#125; = <span class="built_in">require</span>(<span class="string">&quot;node:stream&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> myWritable = <span class="keyword">new</span> <span class="title class_">Writable</span>(&#123;</span><br><span class="line">  <span class="attr">highWaterMark</span>: <span class="number">1024</span>, <span class="comment">// Set buffer size to 1KB</span></span><br><span class="line">  <span class="title function_">write</span>(<span class="params">chunk, encoding, callback</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Writing:&quot;</span>, chunk.<span class="title function_">toString</span>());</span><br><span class="line">    <span class="comment">// Simulate processing delay</span></span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="title function_">callback</span>();</span><br><span class="line">    &#125;, <span class="number">100</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Write data to the writable stream</span></span><br><span class="line"><span class="keyword">const</span> data = <span class="title class_">Buffer</span>.<span class="title function_">from</span>(<span class="string">&quot;This is some data to write to the stream.&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">  <span class="keyword">const</span> canWrite = myWritable.<span class="title function_">write</span>(data);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (!canWrite) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Buffer is full, applying backpressure.&quot;</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Data written to buffer.&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// End the writable stream</span></span><br><span class="line">myWritable.<span class="title function_">end</span>();</span><br></pre></td></tr></table></figure>
+<p>In the above examples, when you call the write method of the writable stream, the data is added to the internal buffer. If the buffer is not full, the write method will immediately process the chunk. If the buffer is full, the stream will handle the backpressure by signaling the source to slow down or stop sending data until there’s enough space in the buffer.</p>
+<img data-src="/2025/02/06/node-stream/buffering-example.webp" class="" title="Sequence diagram for our buffering example">
+<p>Sequence diagram for our buffering example</p>
+<p>Setting the  <code>highWaterMark</code>  value does not reject chunks smaller than the specified buffer size. Instead, it determines the maximum amount of data that the internal buffer can hold before applying backpressure. I sometimes think of the  <code>highWaterMark</code>  as a set of go/stop traffic lights.</p>
+<p>Backpressure</p>
+<p>We touched briefly above on <strong>backpressure</strong>, but what is it exactly?</p>
+<p><strong>Backpressure</strong> is a flow control mechanism. It is used in streams to manage the rate at which data is transmitted from the <strong>source (producer)</strong> to the <strong>destination (consumer).</strong></p>
+<p>Let’s continue with our analogy of the <strong>queue of people wanting to enter the room</strong>. When the room reaches its capacity (buffer is full), the manager stops allowing more people to enter. This is akin to the writable stream <strong>applying backpressure</strong> because it cannot handle more data at the moment.</p>
+<p>It prevents the <strong>destination</strong> from being overwhelmed by data when it cannot process incoming data as quickly as it is being produced. In the context of Node.js streams, <strong>backpressure</strong> helps ensure efficient and stable data transfer, preventing memory overflow and maintaining application performance.</p>
+<p>For another example, here demonstrate handling <strong>backpressure</strong> in a pipe operation:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&quot;node:fs&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Create a readable stream from a large file</span></span><br><span class="line"><span class="keyword">const</span> readStream = fs.<span class="title function_">createReadStream</span>(<span class="string">&quot;bigfile.txt&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Create a writable stream to an output file</span></span><br><span class="line"><span class="keyword">const</span> writeStream = fs.<span class="title function_">createWriteStream</span>(<span class="string">&quot;output.txt&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Pipe the readable stream into the writable stream</span></span><br><span class="line">readStream.<span class="title function_">pipe</span>(writeStream);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Listen for the &#x27;drain&#x27; event on the writable stream</span></span><br><span class="line">writeStream.<span class="title function_">on</span>(<span class="string">&quot;drain&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// This event is emitted when the writable stream buffer is drained</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Drained. Resuming read.&quot;</span>);</span><br><span class="line">  <span class="comment">// Resume the readable stream to continue reading data</span></span><br><span class="line">  readStream.<span class="title function_">resume</span>();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ol>
+<li>Create read and write streams.</li>
+<li>Pipe data from read to write stream.</li>
+<li>If  <code>writeStream</code> 's buffer fills up, it emits ‘<strong>drain</strong>’ event.</li>
+<li>When ‘<strong>drain</strong>’ occurs, resume reading to manage <strong>backpressure</strong>.</li>
+</ol>
+<p>Backpressure is managed implicitly by the pipe method, which connects the readable stream ( <code>readStream</code> ) to the writable stream ( <code>writeStream</code> ). The pipe method automatically handles the flow control, including backpressure, so you don’t need to manually manage it.</p>
+<p>When the  <code>drain</code>  event is emitted, the  <code>writeStream</code>  signals that it has processed enough data to make room in its buffer. The  <code>readStream</code>  then resumes reading data and continues the flow.</p>
+<img data-src="/2025/02/06/node-stream/backpressure-example.webp" class="" title="Sequence diagram for our backpressure example">
+<p>Sequence diagram for our backpressure example</p>
+<p>The two reading modes: Flowing and Paused</p>
+<p>Node.js streams can operate in <span class="exturl" data-url="aHR0cHM6Ly9ub2RlanMub3JnL2FwaS9zdHJlYW0uaHRtbCN0d28tcmVhZGluZy1tb2Rlcw==">two reading modes</span>: <strong>flowing</strong> and <strong>paused</strong>. These modes are separate from <strong>object mode</strong> (that we will touch on later) and determines how data is read from a readable stream.</p>
+<ol>
+<li>In <strong>flowing mode</strong>, data is read automatically from the stream and emitted as soon as it’s available. This mode is suitable for scenarios where you want to consume data as it arrives, such as real-time data processing or streaming media.</li>
+<li>In <strong>paused mode</strong>, data is read manually by calling the  <code>read()</code>  method. This mode is useful when you need more control over data consumption, such as processing data in batches or pausing and resuming data flow.</li>
+</ol>
+<p>In the following example, we switch between <strong>flowing</strong> and <strong>paused</strong> modes.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&quot;node:fs&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> readStream = fs.<span class="title function_">createReadStream</span>(<span class="string">&quot;sample.txt&quot;</span>);</span><br><span class="line"></span><br><span class="line">readStream.<span class="title function_">on</span>(<span class="string">&quot;data&quot;</span>, <span class="function">(<span class="params">chunk</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Received <span class="subst">$&#123;chunk.length&#125;</span> bytes`</span>);</span><br><span class="line">  readStream.<span class="title function_">pause</span>(); <span class="comment">// Switch to paused mode</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    readStream.<span class="title function_">resume</span>(); <span class="comment">// Switch back to flowing mode</span></span><br><span class="line">  &#125;, <span class="number">1000</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ol>
+<li>Create a readable stream in <strong>flowing mode</strong>.</li>
+<li>Receive data chunks automatically.</li>
+<li>Pause the stream, switching to <strong>paused mode</strong>.</li>
+<li>After a delay, resume the stream, switching back to <strong>flowing mode</strong>.</li>
+</ol>
+<img data-src="/2025/02/06/node-stream/flowing-mode-example.webp" class="" title="Sequence diagram for our flowing mode example">
+<p>Sequence diagram for our flowing mode example</p>
+<p>Here is a more specific example of <strong>flowing mode</strong>:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&quot;node:fs&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> readStream = fs.<span class="title function_">createReadStream</span>(<span class="string">&quot;bigfile.txt&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> writeStream = fs.<span class="title function_">createWriteStream</span>(<span class="string">&quot;output.txt&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Pipe the readable stream to the writable stream</span></span><br><span class="line">readStream.<span class="title function_">pipe</span>(writeStream);</span><br><span class="line"></span><br><span class="line">readStream.<span class="title function_">on</span>(<span class="string">&quot;data&quot;</span>, <span class="function">(<span class="params">chunk</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Processing data chunk:&quot;</span>, chunk.<span class="property">length</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>While here is a more specific example of <strong>paused mode</strong>:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&quot;node:fs&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> readStream = fs.<span class="title function_">createReadStream</span>(<span class="string">&quot;bigfile.txt&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Start in paused mode (default)</span></span><br><span class="line">readStream.<span class="title function_">on</span>(<span class="string">&quot;readable&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> chunk;</span><br><span class="line">  <span class="keyword">while</span> (<span class="literal">null</span> !== (chunk = readStream.<span class="title function_">read</span>())) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Processing data chunk:&quot;</span>, chunk.<span class="property">length</span>);</span><br><span class="line">    <span class="comment">// Simulate processing delay</span></span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Finished processing chunk&quot;</span>);</span><br><span class="line">    &#125;, <span class="number">1000</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>In this scenario, we start in <strong>paused mode</strong> by listening for the  <code>readable</code>  event. We then manually read data chunks using the  <code>read()</code>  method and process them one by one.</p>
+<p>Piping</p>
+<p><strong>Piping</strong> in Node.js streams refers to <strong>the process of connecting a readable stream to a writable stream</strong>, allowing data to flow automatically from the source (readable stream) to the destination (writable stream). This mechanism simplifies data transfer and handling, making it easy to implement common data processing tasks, such as file copying, HTTP request handling, and more.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&quot;node:fs&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> &#123; <span class="title class_">Transform</span> &#125; = <span class="built_in">require</span>(<span class="string">&quot;node:stream&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> readStream = fs.<span class="title function_">createReadStream</span>(<span class="string">&quot;input.txt&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> writeStream = fs.<span class="title function_">createWriteStream</span>(<span class="string">&quot;output.txt&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> upperCaseTransform = <span class="keyword">new</span> <span class="title class_">Transform</span>(&#123;</span><br><span class="line">  <span class="title function_">transform</span>(<span class="params">chunk, encoding, callback</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">push</span>(chunk.<span class="title function_">toString</span>().<span class="title function_">toUpperCase</span>());</span><br><span class="line">    <span class="title function_">callback</span>();</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">readStream.<span class="title function_">pipe</span>(upperCaseTransform).<span class="title function_">pipe</span>(writeStream);</span><br></pre></td></tr></table></figure>
+<ol>
+<li>Create read, transform, and write streams.</li>
+<li>Pipe data from read stream through transform stream to write stream.</li>
+<li>Data flows automatically, with backpressure handled by Node.js.<img data-src="/2025/02/06/node-stream/pipe-example.webp" class="" title="Sequence diagram for our piping example"></li>
+</ol>
+<p>Sequence diagram for our piping example</p>
+<p>A <strong>pipeline</strong> can be created by chaining multiple streams together using the  <code>.pipe()</code>  method or using the  <code>pipeline</code>  function from the  <code>node:stream</code>  module. This allows you to create complex data processing workflows with minimal code and effort.</p>
+<p>Here is an example using the  <code>.pipe()</code>  method to create a pipeline:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&quot;node:fs&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> zlib = <span class="built_in">require</span>(<span class="string">&quot;node:zlib&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> &#123; <span class="title class_">Transform</span> &#125; = <span class="built_in">require</span>(<span class="string">&quot;node:stream&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Create a transform stream to convert data to uppercase</span></span><br><span class="line"><span class="keyword">const</span> upperCaseTransform = <span class="keyword">new</span> <span class="title class_">Transform</span>(&#123;</span><br><span class="line">  <span class="title function_">transform</span>(<span class="params">chunk, encoding, callback</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">push</span>(chunk.<span class="title function_">toString</span>().<span class="title function_">toUpperCase</span>());</span><br><span class="line">    <span class="title function_">callback</span>();</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Create a readable stream from a source file</span></span><br><span class="line"><span class="keyword">const</span> readStream = fs.<span class="title function_">createReadStream</span>(<span class="string">&quot;source.txt&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Create a writable stream to a destination file</span></span><br><span class="line"><span class="keyword">const</span> writeStream = fs.<span class="title function_">createWriteStream</span>(<span class="string">&quot;destination.txt.gz&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Create a gzip transform stream</span></span><br><span class="line"><span class="keyword">const</span> gzip = zlib.<span class="title function_">createGzip</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// Pipe the streams together: read -&gt; transform -&gt; gzip -&gt; write</span></span><br><span class="line">readStream</span><br><span class="line">  .<span class="title function_">pipe</span>(upperCaseTransform) <span class="comment">// Transform to uppercase</span></span><br><span class="line">  .<span class="title function_">pipe</span>(gzip) <span class="comment">// Compress with gzip</span></span><br><span class="line">  .<span class="title function_">pipe</span>(writeStream); <span class="comment">// Write to the destination file</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Handle events</span></span><br><span class="line">writeStream.<span class="title function_">on</span>(<span class="string">&quot;finish&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(</span><br><span class="line">    <span class="string">&quot;File has been copied, transformed, and compressed successfully.&quot;</span>,</span><br><span class="line">  );</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">writeStream.<span class="title function_">on</span>(<span class="string">&quot;error&quot;</span>, <span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">error</span>(<span class="string">&quot;Error writing to file:&quot;</span>, err);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">readStream.<span class="title function_">on</span>(<span class="string">&quot;error&quot;</span>, <span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">error</span>(<span class="string">&quot;Error reading from file:&quot;</span>, err);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>Here is the alternative using  <code>pipeline</code> :</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; pipeline &#125; = <span class="built_in">require</span>(<span class="string">&quot;node:stream&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&quot;node:fs&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> zlib = <span class="built_in">require</span>(<span class="string">&quot;node:zlib&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> &#123; <span class="title class_">Transform</span> &#125; = <span class="built_in">require</span>(<span class="string">&quot;node:stream&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Create a transform stream to convert data to uppercase</span></span><br><span class="line"><span class="keyword">const</span> upperCaseTransform = <span class="keyword">new</span> <span class="title class_">Transform</span>(&#123;</span><br><span class="line">  <span class="title function_">transform</span>(<span class="params">chunk, encoding, callback</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">push</span>(chunk.<span class="title function_">toString</span>().<span class="title function_">toUpperCase</span>());</span><br><span class="line">    <span class="title function_">callback</span>();</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Create streams</span></span><br><span class="line"><span class="keyword">const</span> readStream = fs.<span class="title function_">createReadStream</span>(<span class="string">&quot;source.txt&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> writeStream = fs.<span class="title function_">createWriteStream</span>(<span class="string">&quot;destination.txt.gz&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> gzip = zlib.<span class="title function_">createGzip</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// Use pipeline to handle the streams</span></span><br><span class="line"><span class="title function_">pipeline</span>(</span><br><span class="line">  readStream, <span class="comment">// Read from the source file</span></span><br><span class="line">  upperCaseTransform, <span class="comment">// Transform to uppercase</span></span><br><span class="line">  gzip, <span class="comment">// Compress with gzip</span></span><br><span class="line">  writeStream, <span class="comment">// Write to the destination file</span></span><br><span class="line">  <span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (err) &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">error</span>(<span class="string">&quot;Pipeline failed:&quot;</span>, err);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Pipeline succeeded.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>Events</p>
+<p><strong>Events</strong> refer to the various events that streams can emit during their lifecycle. These events allow you to handle different stages and aspects of data processing, such as when data is available, when the stream ends, or when an error occurs.</p>
+<p>Under the hood, streams in Node.js can emit events because they are instances of the <a target="_blank" rel="noopener" href="https://nodejs.org/en/learn/asynchronous-work/the-nodejs-event-emitter"><strong>EventEmitter</strong></a> class (which I may retroactively touch on more in depth in a future blog post).</p>
+<p>Different types of streams emit different events, but we will highlight some of the more common events that you can listen for in Node.js streams.</p>
+<h2 id="readable"><a class="markdownIt-Anchor" href="#readable">#</a> Readable</h2>
+<ol>
+<li><strong>data</strong>: Emitted when a chunk of data is available to be read.</li>
+<li><strong>end</strong>: Emitted when there is no more data to be read from the stream.</li>
+<li><strong>error</strong>: Emitted when an error occurs while reading data.</li>
+<li><strong>readable</strong>: Emitted when the stream has data available to be read. This event is used in paused mode to indicate that you can call  <code>read()</code>  to get more data.</li>
+</ol>
+<h2 id="writeable"><a class="markdownIt-Anchor" href="#writeable">#</a> Writeable</h2>
+<ol>
+<li><strong>drain</strong>: Emitted when the writable stream’s internal buffer is emptied and it is ready to receive more data. This is important for handling backpressure.</li>
+<li><strong>finish</strong>: Emitted when the  <code>end()</code>  method is called and all data has been flushed to the underlying system.</li>
+<li><strong>error</strong>: Emitted when an error occurs while writing data.</li>
+</ol>
+<h2 id="stream-events-in-action"><a class="markdownIt-Anchor" href="#stream-events-in-action">#</a> Stream Events in action</h2>
+<p>The following is an simple example of hooking to events on a readable stream.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&quot;node:fs&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> readStream = fs.<span class="title function_">createReadStream</span>(<span class="string">&quot;events.txt&quot;</span>);</span><br><span class="line"></span><br><span class="line">readStream.<span class="title function_">on</span>(<span class="string">&quot;open&quot;</span>, <span class="function">() =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Stream opened&quot;</span>));</span><br><span class="line">readStream.<span class="title function_">on</span>(<span class="string">&quot;data&quot;</span>, <span class="function">(<span class="params">chunk</span>) =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Received <span class="subst">$&#123;chunk.length&#125;</span> bytes`</span>));</span><br><span class="line">readStream.<span class="title function_">on</span>(<span class="string">&quot;end&quot;</span>, <span class="function">() =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Stream ended&quot;</span>));</span><br><span class="line">readStream.<span class="title function_">on</span>(<span class="string">&quot;close&quot;</span>, <span class="function">() =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Stream closed&quot;</span>));</span><br><span class="line">readStream.<span class="title function_">on</span>(<span class="string">&quot;error&quot;</span>, <span class="function">(<span class="params">err</span>) =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">error</span>(<span class="string">&quot;Error:&quot;</span>, err));</span><br></pre></td></tr></table></figure>
+<ol>
+<li>Create a readable stream.</li>
+<li>Set up event listeners for various stream states.</li>
+<li>Events fire asynchronously as the stream operates.</li>
+<li>‘<strong>open</strong>’ event when file is opened, ‘<strong>data</strong>’ for each chunk, ‘<strong>end</strong>’ when all data is read, ‘<strong>close</strong>’ when stream closes.</li>
+</ol>
+<p>For a more complex example demonstrating more event types, you can refer to the following:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&quot;node:fs&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> zlib = <span class="built_in">require</span>(<span class="string">&quot;node:zlib&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> &#123; <span class="title class_">Transform</span> &#125; = <span class="built_in">require</span>(<span class="string">&quot;node:stream&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Create a transform stream to convert data to uppercase</span></span><br><span class="line"><span class="keyword">const</span> upperCaseTransform = <span class="keyword">new</span> <span class="title class_">Transform</span>(&#123;</span><br><span class="line">  <span class="title function_">transform</span>(<span class="params">chunk, encoding, callback</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">push</span>(chunk.<span class="title function_">toString</span>().<span class="title function_">toUpperCase</span>());</span><br><span class="line">    <span class="title function_">callback</span>();</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> readStream = fs.<span class="title function_">createReadStream</span>(<span class="string">&quot;source.txt&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> writeStream = fs.<span class="title function_">createWriteStream</span>(<span class="string">&quot;destination.txt.gz&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> gzip = zlib.<span class="title function_">createGzip</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// Pipe the streams together</span></span><br><span class="line">readStream.<span class="title function_">pipe</span>(upperCaseTransform).<span class="title function_">pipe</span>(gzip).<span class="title function_">pipe</span>(writeStream);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Handle readable stream events</span></span><br><span class="line">readStream.<span class="title function_">on</span>(<span class="string">&quot;data&quot;</span>, <span class="function">(<span class="params">chunk</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Reading data:&quot;</span>, chunk.<span class="property">length</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">readStream.<span class="title function_">on</span>(<span class="string">&quot;end&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Finished reading data.&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">readStream.<span class="title function_">on</span>(<span class="string">&quot;error&quot;</span>, <span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">error</span>(<span class="string">&quot;Read error:&quot;</span>, err);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Handle writable stream events</span></span><br><span class="line">writeStream.<span class="title function_">on</span>(<span class="string">&quot;finish&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Finished writing data.&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">writeStream.<span class="title function_">on</span>(<span class="string">&quot;drain&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Writable stream drained.&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">writeStream.<span class="title function_">on</span>(<span class="string">&quot;error&quot;</span>, <span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">error</span>(<span class="string">&quot;Write error:&quot;</span>, err);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Handle transform stream events</span></span><br><span class="line">upperCaseTransform.<span class="title function_">on</span>(<span class="string">&quot;error&quot;</span>, <span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">error</span>(<span class="string">&quot;Transform error:&quot;</span>, err);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">gzip.<span class="title function_">on</span>(<span class="string">&quot;error&quot;</span>, <span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">error</span>(<span class="string">&quot;Gzip error:&quot;</span>, err);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>The above hooks into some events for the different streams in the pipeline. This allows you to monitor the progress of the data processing, handle errors, and respond to various stream states.</p>
+<p>Object Mode</p>
+<p>All streams created by Node.js APIs operate exclusively with strings or  <code>Buffer</code> ,  <code>TypedArray</code>  or  <code>DataView</code>  objects.</p>
+<p><a target="_blank" rel="noopener" href="https://nodejs.org/api/stream.html#object-mode"><strong>Object mode</strong></a> however enables streams to work with other types of JavaScript object values.</p>
+<p>In the following, we set  <code>objectMode</code>  to  <code>true</code>  in order to process JavaScript objects.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; <span class="title class_">Transform</span> &#125; = <span class="built_in">require</span>(<span class="string">&quot;node:stream&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> objectModeTransform = <span class="keyword">new</span> <span class="title class_">Transform</span>(&#123;</span><br><span class="line">  <span class="attr">objectMode</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="title function_">transform</span>(<span class="params">chunk, encoding, callback</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">push</span>(&#123; <span class="attr">length</span>: chunk.<span class="property">length</span>, <span class="attr">content</span>: chunk.<span class="title function_">toString</span>() &#125;);</span><br><span class="line">    <span class="title function_">callback</span>();</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">process.<span class="property">stdin</span>.<span class="title function_">pipe</span>(objectModeTransform).<span class="title function_">on</span>(<span class="string">&quot;data&quot;</span>, <span class="function">(<span class="params">obj</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Received object:&quot;</span>, obj);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ol>
+<li>Create a transform stream in object mode.</li>
+<li>Pipe stdin (buffer mode) to the transform stream.</li>
+<li>Transform <strong>converts Buffer chunks</strong> to JavaScript objects.</li>
+<li>Output stream receives and logs JavaScript objects.</li>
+</ol>
+<p>There are trade-offs for using  <code>objectMode</code>  as it can impact performance overhead, backpressure handling, buffering constraints and serialization requirements.</p>
+<p>Here is another example to more clearly demonstrate the use of  <code>objectMode</code>  between a readable and writeable stream:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; <span class="title class_">Readable</span>, <span class="title class_">Writable</span> &#125; = <span class="built_in">require</span>(<span class="string">&quot;node:stream&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Create a readable stream in objectMode</span></span><br><span class="line"><span class="keyword">const</span> readableStream = <span class="keyword">new</span> <span class="title class_">Readable</span>(&#123;</span><br><span class="line">  <span class="attr">objectMode</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="title function_">read</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">push</span>(&#123; <span class="attr">id</span>: <span class="number">1</span>, <span class="attr">name</span>: <span class="string">&quot;Alice&quot;</span> &#125;);</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">push</span>(&#123; <span class="attr">id</span>: <span class="number">2</span>, <span class="attr">name</span>: <span class="string">&quot;Bob&quot;</span> &#125;);</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">push</span>(<span class="literal">null</span>); <span class="comment">// No more data</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Create a writable stream in objectMode</span></span><br><span class="line"><span class="keyword">const</span> writableStream = <span class="keyword">new</span> <span class="title class_">Writable</span>(&#123;</span><br><span class="line">  <span class="attr">objectMode</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="title function_">write</span>(<span class="params">chunk, encoding, callback</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Received object:&quot;</span>, chunk);</span><br><span class="line">    <span class="title function_">callback</span>();</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Pipe the readable stream to the writable stream</span></span><br><span class="line">readableStream.<span class="title function_">pipe</span>(writableStream);</span><br></pre></td></tr></table></figure>
+<ol>
+<li>Create a readable stream that emits JavaScript objects.</li>
+<li>Create a writable stream that receives and logs objects.</li>
+<li>Pipe the readable stream to the writable stream.</li>
+</ol>
+<img data-src="/2025/02/06/node-stream/object-mode-example.webp" class="" title="Sequence diagram for our object mode example">
+<p>Sequence diagram for our object mode example</p>
+<p>Conclusion</p>
+<p>Understanding <strong>Node.js streams</strong> is crucial for efficient data handling and manipulation in various applications. This blog post introduced the four fundamental types of streams, <strong>Writable</strong>, <strong>Readable</strong>, <strong>Duplex</strong>, and <strong>Transform</strong>, using relatable analogies to bridge the gap between abstract concepts and practical implementation.</p>
+<p>Streams offer numerous benefits, <strong>including memory and time efficiency, composability, backpressure handling, and seamless integration with Node.js’s event-driven architecture</strong>. They enable the creation of powerful, scalable, and flexible data processing pipelines.</p>
+<p>By grasping the foundational concepts of streams, such as <strong>buffering</strong>, <strong>backpressure</strong>, <strong>piping</strong>, and <strong>modes of operation</strong>, you can unlock the full potential of Node.js for handling large datasets, network communication, and real-time data processing.</p>
+<p>With this solid foundation, you’re now equipped to explore the more complex aspects of Node.js streams and leverage their capabilities to build robust and performant applications.</p>
+<p>Future posts will delve deeper into each stream type, providing detailed insights and advanced techniques to further enhance your Node.js applications.</p>
+<p>Resources and further reading</p>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9ub2RlanMub3JnL2FwaS9zdHJlYW0uaHRtbCN0eXBlcy1vZi1zdHJlYW1z">Node.js | Stream | Four fundamental stream types</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9ub2RlanMub3JnL2FwaS9zdHJlYW0uaHRtbCNidWZmZXJpbmc=">Node.js | Stream | Buffering in Node.js streams</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9ub2RlanMub3JnL2VuL2xlYXJuL2FzeW5jaHJvbm91cy13b3JrL3RoZS1ub2RlanMtZXZlbnQtZW1pdHRlcg==">Node.js | Asynchronous work | EventEmitter class</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9ub2RlanMub3JnL2FwaS9zdHJlYW0uaHRtbCN0d28tcmVhZGluZy1tb2Rlcw==">Node.js | Stream | Two reading modes</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9ub2RlanMub3JnL2FwaS9zdHJlYW0uaHRtbCNvYmplY3QtbW9kZQ==">Node.js | Stream | Object mode</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9ub2RlanMub3JnL2FwaS9zdHJlYW0uaHRtbCN0eXBlcy1vZi1zdHJlYW1z">Node.js | Stream | Types of streams</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9ub2RlanMub3JnLw==">Node.js homepage</span></li>
+</ul>
+<p><strong>Disclaimer</strong>: This blog post used AI to generate the images used for the analogy.</p>
+
+      <div class="tags">
+          <a href="/tags/js/" rel="tag"><i class="ic i-tag"></i> js</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2026-02-06 20:12:53" itemprop="dateModified" datetime="2026-02-06T20:12:53+08:00">2026-02-06</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2025/01/27/shell-variable$/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;怪医黑杰克.jpg" title="Shell 脚本必学技能 $1 变量详解">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Shell 脚本必学技能 $1 变量详解</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2025/04/01/orace-datatype/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;ReLIFE.jpg" title="Oracle Type Code Mappings">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Oracle Type Code Mappings</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#overview"><span class="toc-number">1.</span> <span class="toc-text"> Overview</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-writable-streams-the-water-bucket-the-notebook"><span class="toc-number">2.</span> <span class="toc-text"> 1. Writable Streams: The Water Bucket, The Notebook</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-readable-streams-the-tap-the-fantasy-novel"><span class="toc-number">3.</span> <span class="toc-text"> 2. Readable Streams: The Tap, The Fantasy Novel</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-duplex-streams-the-two-way-water-pipe-the-walkie-talkie"><span class="toc-number">4.</span> <span class="toc-text"> 3. Duplex Streams: The Two-Way Water Pipe, The Walkie-Talkie</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-transform-streams-the-water-treatment-plant-the-factory-assembly-line"><span class="toc-number">5.</span> <span class="toc-text"> 4. Transform Streams: The Water Treatment Plant, The Factory Assembly Line</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#understanding-the-difference-between-duplex-and-transform-streams"><span class="toc-number">6.</span> <span class="toc-text"> Understanding the difference between Duplex and Transform streams</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#readable"><span class="toc-number">7.</span> <span class="toc-text"> Readable</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#writeable"><span class="toc-number">8.</span> <span class="toc-text"> Writeable</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#stream-events-in-action"><span class="toc-number">9.</span> <span class="toc-text"> Stream Events in action</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">392</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">56</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
+      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2025/01/27/shell-variable$/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2025/04/01/orace-datatype/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ D E W</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2025/02/06/node-stream/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

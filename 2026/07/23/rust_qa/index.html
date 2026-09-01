@@ -1,0 +1,636 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CFira%20Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="rust,ai" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2026/07/23/rust_qa/">
+
+
+
+  <title>
+Rust Q&A |
+D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</title>
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">Rust Q&A
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2026-07-23 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2026-07-23T00:00:00+08:00">2026-07-23</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">D E W</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="/anime/index/犬夜叉.jpg"></li>
+          <li class="item" data-background-image="/anime/index/校园迷糊大王.jpg"></li>
+          <li class="item" data-background-image="/anime/index/平家物语.jpg"></li>
+          <li class="item" data-background-image="/anime/index/电波女与青春男.jpg"></li>
+          <li class="item" data-background-image="/anime/index/endro!.jpg"></li>
+          <li class="item" data-background-image="/anime/index/龙王的工作.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2026/07/23/rust_qa/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content="我知这世界本如露水般短暂，然而，然而, ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h2 id="q1-why-are-box-and-dyn-required-in-vecboxdyn-sale"><a class="markdownIt-Anchor" href="#q1-why-are-box-and-dyn-required-in-vecboxdyn-sale">#</a> Q1: Why are  <code>Box</code>  and  <code>dyn</code>  required in  <code>Vec&lt;Box&lt;dyn Sale&gt;&gt;</code> ?</h2>
+<p><strong> <code>dyn</code>  — opts into dynamic dispatch</strong></p>
+<p>Without  <code>dyn</code> , Rust uses static dispatch (generics/monomorphization), meaning only one concrete type per collection.  <code>dyn Sale</code>  tells the compiler: “I don’t know the exact type at compile time — look it up at runtime via a vtable.”</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">dyn</span> Sale  <span class="comment">// fat pointer: (ptr to data, ptr to vtable)</span></span><br></pre></td></tr></table></figure>
+<p><strong> <code>Box</code>  — gives the trait object a known size</strong></p>
+<p><code>dyn Sale</code>  is a <em>Dynamically Sized Type (DST)</em> — the compiler doesn’t know its size at compile time, so it can’t be stored directly in a  <code>Vec</code> .  <code>Box&lt;dyn Sale&gt;</code>  fixes this by:</p>
+<ol>
+<li>Allocating each concrete value on the <strong>heap</strong></li>
+<li>Storing a <strong>fat pointer</strong> (data ptr + vtable ptr) — always the same size regardless of the underlying type</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Vec&lt;Box&lt;dyn Sale&gt;&gt;</span><br><span class="line">     │</span><br><span class="line">     ├─ Box → heap: FullSale(20.0)</span><br><span class="line">     ├─ Box → heap: OneDollarOffCoupon(20.0)</span><br><span class="line">     └─ Box → heap: TenPercentOffPromo(20.0)</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><code>Vec&lt;Box&lt;dyn Sale&gt;&gt;</code></th>
+<th><code>Vec&lt;T: Sale&gt;</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mixed types</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Dispatch</td>
+<td>Runtime (vtable)</td>
+<td>Compile-time</td>
+</tr>
+<tr>
+<td>Heap allocation</td>
+<td>Yes (Box)</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="q2-why-do-i-need-dyn-sale-rather-than-just-sale"><a class="markdownIt-Anchor" href="#q2-why-do-i-need-dyn-sale-rather-than-just-sale">#</a> Q2: Why do I need  <code>dyn Sale</code>  rather than just  <code>Sale</code> ?</h2>
+<p>Before Rust 2018, you could write  <code>Box&lt;Sale&gt;</code>  and it implicitly meant a trait object. The  <code>dyn</code>  keyword was introduced to remove ambiguity:</p>
+<table>
+<thead>
+<tr>
+<th>Context</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fn foo&lt;T: Sale&gt;</code></td>
+<td>Trait bound — static dispatch</td>
+</tr>
+<tr>
+<td><code>Box&lt;Sale&gt;</code>  (old)</td>
+<td>Trait object — dynamic dispatch</td>
+</tr>
+</tbody>
+</table>
+<p>Now  <code>dyn</code>  makes the intent explicit every time. In Rust 2021, writing  <code>Box&lt;Sale&gt;</code>  without  <code>dyn</code>  is a hard compile error.</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">foo</span>&lt;T: Sale&gt;(s: T) &#123; ... &#125;     <span class="comment">// static dispatch</span></span><br><span class="line"><span class="keyword">fn</span> <span class="title function_">foo</span>(s: <span class="keyword">impl</span> <span class="title class_">Sale</span>) &#123; ... &#125;      <span class="comment">// equivalent shorthand</span></span><br><span class="line"><span class="keyword">fn</span> <span class="title function_">foo</span>(s: &amp;<span class="keyword">dyn</span> Sale) &#123; ... &#125;      <span class="comment">// dynamic dispatch — must say dyn</span></span><br><span class="line"><span class="keyword">fn</span> <span class="title function_">foo</span>(s: <span class="type">Box</span>&lt;<span class="keyword">dyn</span> Sale&gt;) &#123; ... &#125;  <span class="comment">// dynamic dispatch — must say dyn</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="q3-are-traits-not-types-can-we-not-store-a-trait-directly"><a class="markdownIt-Anchor" href="#q3-are-traits-not-types-can-we-not-store-a-trait-directly">#</a> Q3: Are traits not types? Can we not store a trait directly?</h2>
+<p>Two layers:</p>
+<p><strong>1. A trait itself is not a type — it’s a contract.</strong></p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="variable">x</span>: Sale = <span class="title function_ invoke__">FullSale</span>(<span class="number">20.0</span>);   <span class="comment">// ERROR — `Sale` is a trait, not a type</span></span><br></pre></td></tr></table></figure>
+<p><strong>2.  <code>dyn Sale</code>  IS a type — but it’s unsized (DST).</strong></p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="variable">v</span>: <span class="type">Vec</span>&lt;<span class="keyword">dyn</span> Sale&gt; = ...;     <span class="comment">// ERROR — size unknown at compile time</span></span><br></pre></td></tr></table></figure>
+<p><strong>3. A pointer layer gives it a known size.</strong></p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="variable">v</span>: <span class="type">Vec</span>&lt;<span class="type">Box</span>&lt;<span class="keyword">dyn</span> Sale&gt;&gt; = ...; <span class="comment">// OK — Box is always pointer-sized</span></span><br><span class="line"><span class="keyword">let</span> <span class="variable">x</span>: &amp;<span class="keyword">dyn</span> Sale = ...;          <span class="comment">// OK — reference is always pointer-sized</span></span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Storable directly?</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Sale</code></td>
+<td>No</td>
+<td>Trait (a contract), not a type</td>
+</tr>
+<tr>
+<td><code>dyn Sale</code></td>
+<td>No</td>
+<td>Unsized type (DST)</td>
+</tr>
+<tr>
+<td><code>Box&lt;dyn Sale&gt;</code></td>
+<td>Yes</td>
+<td>Fixed-size fat pointer on heap</td>
+</tr>
+<tr>
+<td><code>&amp;dyn Sale</code></td>
+<td>Yes</td>
+<td>Fixed-size fat pointer (borrowed)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="q4-why-is-a-needed-in-inner-veca-idcard"><a class="markdownIt-Anchor" href="#q4-why-is-a-needed-in-inner-veca-idcard">#</a> Q4: Why is  <code>&amp;'a</code>  needed in  <code>inner: Vec&lt;&amp;'a IdCard&gt;</code> ?</h2>
+<p><strong>Rule:</strong> If a struct contains a reference, you must always annotate its lifetime explicitly. Rust never infers lifetimes in struct definitions.</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">YoungPeople</span> &#123;</span><br><span class="line">    inner: <span class="type">Vec</span>&lt;&amp;IdCard&gt;,  <span class="comment">// ERROR — every reference needs a lifetime</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>YoungPeople&lt;'a&gt;</code>  says: <em>“I borrow  <code>IdCard</code>  data that lives for at least  <code>'a</code> .”</em> The struct cannot outlive the data it points to.</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="variable">ids</span> = <span class="title function_ invoke__">new_ids</span>();               <span class="comment">// owns IdCard values</span></span><br><span class="line"><span class="keyword">let</span> <span class="variable">young</span> = YoungPeople &#123;</span><br><span class="line">    inner: ids.inner.<span class="title function_ invoke__">iter</span>()        <span class="comment">// borrows from `ids`</span></span><br><span class="line">        .<span class="title function_ invoke__">filter</span>(|i| i.age &lt;= <span class="number">20</span>)</span><br><span class="line">        .<span class="title function_ invoke__">collect</span>(),</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// young must be dropped before ids — Rust enforces this via &#x27;a</span></span><br></pre></td></tr></table></figure>
+<p>The returned  <code>Self</code>  in  <code>living_in_fooville</code>  is  <code>YoungPeople&lt;'a&gt;</code> , meaning the new struct still borrows the original  <code>IdCard</code>  data with the same lifetime — no copying, no new ownership.</p>
+<hr>
+<h2 id="q5-why-does-map-take-ownership-but-filter-does-not"><a class="markdownIt-Anchor" href="#q5-why-does-map-take-ownership-but-filter-does-not">#</a> Q5: Why does  <code>map</code>  take ownership but  <code>filter</code>  does not?</h2>
+<p>It comes down to their purpose:</p>
+<ul>
+<li><strong> <code>filter</code> </strong> only decides <em>keep or discard</em> — it just needs to <strong>look</strong> at the item, so it borrows ( <code>&amp;Item</code> )</li>
+<li><strong> <code>map</code> </strong> <em>transforms</em> the item into something new — it needs to <strong>consume</strong> it, so it takes by value ( <code>Item</code> )</li>
+</ul>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">filter</span>&lt;P&gt;(<span class="keyword">self</span>, predicate: P)  <span class="comment">// closure gets &amp;Self::Item  (borrow)</span></span><br><span class="line"><span class="keyword">fn</span> <span class="title function_">map</span>&lt;B, F&gt;(<span class="keyword">self</span>, f: F)          <span class="comment">// closure gets Self::Item   (by value)</span></span><br></pre></td></tr></table></figure>
+<p>In the  <code>YoungPeople</code>  example,  <code>self.inner</code>  is  <code>Vec&lt;&amp;'a IdCard&gt;</code> , so  <code>.iter()</code>  produces  <code>&amp;&amp;'a IdCard</code> :</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.<span class="title function_ invoke__">filter</span>(|i| i.city == City::Fooville)</span><br><span class="line"><span class="comment">//      ^ i is &amp;(&amp;&amp;&#x27;a IdCard) — just peeking</span></span><br><span class="line"></span><br><span class="line">.<span class="title function_ invoke__">map</span>(|i| *i)</span><br><span class="line"><span class="comment">//   ^ i is &amp;&amp;&#x27;a IdCard — consumed, *i dereferences to &amp;&#x27;a IdCard</span></span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Closure receives</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>filter</code></td>
+<td><code>&amp;Item</code>  (borrow)</td>
+<td>Only needs to inspect</td>
+</tr>
+<tr>
+<td><code>map</code></td>
+<td><code>Item</code>  (by value)</td>
+<td>Needs to transform/replace</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="q6-why-is-static-str-required-in-const-mock_data-static-str-include_str"><a class="markdownIt-Anchor" href="#q6-why-is-static-str-required-in-const-mock_data-static-str-include_str">#</a> Q6: Why is  <code>&amp;'static str</code>  required in  <code>const MOCK_DATA: &amp;'static str = include_str!(...)</code> ?</h2>
+<p>Two separate reasons:</p>
+<p><strong>1.  <code>const</code>  always requires an explicit type annotation</strong></p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="variable">x</span> = <span class="string">&quot;hello&quot;</span>;         <span class="comment">// OK — type inferred</span></span><br><span class="line"><span class="keyword">const</span> X = <span class="string">&quot;hello&quot;</span>;       <span class="comment">// ERROR — type annotation required</span></span><br><span class="line"><span class="keyword">const</span> X: &amp;<span class="type">str</span> = <span class="string">&quot;hello&quot;</span>; <span class="comment">// OK</span></span><br></pre></td></tr></table></figure>
+<p><strong>2.  <code>include_str!</code>  produces  <code>&amp;'static str</code> </strong></p>
+<p><code>include_str!</code>  embeds the file directly into the binary at compile time. Since that data lives for the entire duration of the program, its lifetime is  <code>'static</code> .</p>
+<p>You can also write  <code>&amp;str</code>  — in a  <code>const</code>  context, Rust infers the  <code>'static</code>  lifetime:</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> MOCK_DATA: &amp;<span class="type">str</span> = <span class="built_in">include_str!</span>(<span class="string">&quot;mock-data.csv&quot;</span>);  <span class="comment">// also valid</span></span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Requires type?</th>
+<th>Lifetime</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>let</code></td>
+<td>No (inferred)</td>
+<td>Local scope</td>
+</tr>
+<tr>
+<td><code>const</code></td>
+<td>Yes</td>
+<td>Always  <code>'static</code></td>
+</tr>
+<tr>
+<td><code>static</code></td>
+<td>Yes</td>
+<td>Always  <code>'static</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="q7-why-cant-rust-infer-the-type-without-vec_-in-collect"><a class="markdownIt-Anchor" href="#q7-why-cant-rust-infer-the-type-without-vec_-in-collect">#</a> Q7: Why can’t Rust infer the type without  <code>Vec&lt;_&gt;</code>  in  <code>collect()</code> ?</h2>
+<p><code>collect()</code>  can produce many different types —  <code>Vec</code> ,  <code>HashSet</code> ,  <code>HashMap</code> ,  <code>String</code> , and more. The compiler can’t choose for you:</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="variable">data</span> = MOCK_DATA.<span class="title function_ invoke__">split</span>(<span class="string">&#x27;<span class="char escape_">\n</span>&#x27;</span>).<span class="title function_ invoke__">skip</span>(<span class="number">1</span>).<span class="title function_ invoke__">collect</span>();</span><br><span class="line"><span class="comment">// ERROR — Do you want Vec&lt;&amp;str&gt;? HashSet&lt;&amp;str&gt;? Something else?</span></span><br></pre></td></tr></table></figure>
+<p><code>Vec&lt;_&gt;</code>  gives the compiler the one hint it needs:</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="variable">data</span>: <span class="type">Vec</span>&lt;_&gt; = MOCK_DATA.<span class="title function_ invoke__">split</span>(<span class="string">&#x27;<span class="char escape_">\n</span>&#x27;</span>).<span class="title function_ invoke__">skip</span>(<span class="number">1</span>).<span class="title function_ invoke__">collect</span>();</span><br><span class="line"><span class="comment">//        ^^^      you say &quot;Vec&quot;</span></span><br><span class="line"><span class="comment">//            ^    Rust infers &quot;&amp;str&quot; from split()  ✓</span></span><br></pre></td></tr></table></figure>
+<p>Three equivalent ways to write it:</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="variable">data</span>: <span class="type">Vec</span>&lt;_&gt;    = ...<span class="title function_ invoke__">collect</span>();        <span class="comment">// you say Vec, Rust infers element</span></span><br><span class="line"><span class="keyword">let</span> <span class="variable">data</span>: <span class="type">Vec</span>&lt;&amp;<span class="type">str</span>&gt; = ...<span class="title function_ invoke__">collect</span>();        <span class="comment">// fully explicit</span></span><br><span class="line"><span class="keyword">let</span> <span class="variable">data</span>            = ...collect::&lt;<span class="type">Vec</span>&lt;_&gt;&gt;(); <span class="comment">// turbofish syntax</span></span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>Annotation</th>
+<th>Container</th>
+<th>Element</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>none</td>
+<td>ambiguous ❌</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>Vec&lt;_&gt;</code></td>
+<td>you decide</td>
+<td>Rust infers</td>
+</tr>
+<tr>
+<td><code>Vec&lt;&amp;str&gt;</code></td>
+<td>you decide</td>
+<td>you decide</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="q8-what-is-the-difference-between-filter_map-and-map"><a class="markdownIt-Anchor" href="#q8-what-is-the-difference-between-filter_map-and-map">#</a> Q8: What is the difference between  <code>filter_map</code>  and  <code>map</code> ?</h2>
+<p><strong> <code>map</code> </strong> transforms every element, always producing one output per input.</p>
+<p><strong> <code>filter_map</code> </strong> transforms AND optionally drops elements in one step.</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">map</span>&lt;B, F: <span class="title function_ invoke__">FnMut</span>(A) <span class="punctuation">-&gt;</span> B&gt;(<span class="keyword">self</span>, f: F)                <span class="comment">// returns B</span></span><br><span class="line"><span class="keyword">fn</span> <span class="title function_">filter_map</span>&lt;B, F: <span class="title function_ invoke__">FnMut</span>(A) <span class="punctuation">-&gt;</span> <span class="type">Option</span>&lt;B&gt;&gt;(<span class="keyword">self</span>, f: F) <span class="comment">// returns Option&lt;B&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>Example:</strong></p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="variable">v</span> = <span class="built_in">vec!</span>[<span class="string">&quot;1&quot;</span>, <span class="string">&quot;two&quot;</span>, <span class="string">&quot;3&quot;</span>, <span class="string">&quot;four&quot;</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// map — keeps ALL results, including failures</span></span><br><span class="line"><span class="keyword">let</span> <span class="variable">results</span>: <span class="type">Vec</span>&lt;_&gt; = v.<span class="title function_ invoke__">iter</span>().<span class="title function_ invoke__">map</span>(|s| s.parse::&lt;<span class="type">i32</span>&gt;()).<span class="title function_ invoke__">collect</span>();</span><br><span class="line"><span class="comment">// [Ok(1), Err(...), Ok(3), Err(...)]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// filter_map — keeps only successful parses</span></span><br><span class="line"><span class="keyword">let</span> <span class="variable">numbers</span>: <span class="type">Vec</span>&lt;<span class="type">i32</span>&gt; = v.<span class="title function_ invoke__">iter</span>().<span class="title function_ invoke__">filter_map</span>(|s| s.<span class="title function_ invoke__">parse</span>().<span class="title function_ invoke__">ok</span>()).<span class="title function_ invoke__">collect</span>();</span><br><span class="line"><span class="comment">// [1, 3]</span></span><br></pre></td></tr></table></figure>
+<p><code>filter_map</code>  is equivalent to  <code>.map(f).flatten()</code>  — use it instead of  <code>.map(...).filter(|x| x.is_some()).map(|x| x.unwrap())</code> .</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Output per input</th>
+<th>Closure returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>map</code></td>
+<td>Always 1</td>
+<td><code>B</code></td>
+</tr>
+<tr>
+<td><code>filter_map</code></td>
+<td>0 or 1</td>
+<td><code>Option&lt;B&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="q9-what-does-a-mean-in-lifetime-annotations"><a class="markdownIt-Anchor" href="#q9-what-does-a-mean-in-lifetime-annotations">#</a> Q9: What does  <code>'a</code>  mean in lifetime annotations?</h2>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">longest</span>&lt;<span class="symbol">&#x27;a</span>&gt;(one: &amp;<span class="symbol">&#x27;a</span> <span class="type">str</span>, two: &amp;<span class="symbol">&#x27;a</span> <span class="type">str</span>) <span class="punctuation">-&gt;</span> &amp;<span class="symbol">&#x27;a</span> <span class="type">str</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> two &gt; one &#123; two &#125; <span class="keyword">else</span> &#123; one &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>'a</code>  is a <strong>lifetime parameter</strong> — a name the compiler uses to track how long references are valid relative to each other.</p>
+<ul>
+<li><code>&lt;'a&gt;</code>  in angle brackets <em>declares</em> the lifetime (like  <code>&lt;T&gt;</code>  declares a type parameter)</li>
+<li><code>&amp;'a str</code>  on each reference says they are all connected in lifetime</li>
+</ul>
+<p><strong>What  <code>'a</code>  actually means:</strong></p>
+<p>It does NOT mean all references live for exactly the same duration. It means:</p>
+<blockquote>
+<p>“The returned reference is valid for <strong>at most</strong> the shorter of the two input lifetimes.”</p>
+</blockquote>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="variable">result</span>;</span><br><span class="line"><span class="keyword">let</span> <span class="variable">one</span> = <span class="type">String</span>::<span class="title function_ invoke__">from</span>(<span class="string">&quot;long-lived&quot;</span>);</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">two</span> = <span class="type">String</span>::<span class="title function_ invoke__">from</span>(<span class="string">&quot;short-lived&quot;</span>);</span><br><span class="line">    result = <span class="title function_ invoke__">longest</span>(&amp;one, &amp;two);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;result&#125;&quot;</span>);  <span class="comment">// OK — both alive here</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// `two` dropped — `result` can&#x27;t be used past this point</span></span><br><span class="line"><span class="built_in">println!</span>(<span class="string">&quot;&#123;result&#125;&quot;</span>);      <span class="comment">// ERROR — compiler catches this via &#x27;a</span></span><br></pre></td></tr></table></figure>
+<p>Without  <code>'a</code> , the compiler can’t determine how long the return value lives (it could be tied to  <code>one</code>  or  <code>two</code> ), so the function is rejected.</p>
+<p>The name  <code>'a</code>  is just convention —  <code>'b</code> ,  <code>'x</code> , or  <code>'lifetime</code>  all work. Single lowercase letters are idiomatic.</p>
+
+      <div class="tags">
+          <a href="/tags/rust/" rel="tag"><i class="ic i-tag"></i> rust</a>
+          <a href="/tags/ai/" rel="tag"><i class="ic i-tag"></i> ai</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2026-07-23 16:05:07" itemprop="dateModified" datetime="2026-07-23T16:05:07+08:00">2026-07-23</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2026/07/23/vue3-react-cheatsheet/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;电波女与青春男.jpg" title="Vue 3 vs React Cheatsheet">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Vue 3 vs React Cheatsheet</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2026/07/23/linux-qa/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;异度侵入-2.jpg" title="Linux Q&amp;A">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Linux Q&A</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#q1-why-are-box-and-dyn-required-in-vecboxdyn-sale"><span class="toc-number">1.</span> <span class="toc-text"> Q1: Why are  Box  and  dyn  required in  Vec&lt;Box&lt;dyn Sale&gt;&gt; ?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#q2-why-do-i-need-dyn-sale-rather-than-just-sale"><span class="toc-number">2.</span> <span class="toc-text"> Q2: Why do I need  dyn Sale  rather than just  Sale ?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#q3-are-traits-not-types-can-we-not-store-a-trait-directly"><span class="toc-number">3.</span> <span class="toc-text"> Q3: Are traits not types? Can we not store a trait directly?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#q4-why-is-a-needed-in-inner-veca-idcard"><span class="toc-number">4.</span> <span class="toc-text"> Q4: Why is  &amp;&#39;a  needed in  inner: Vec&lt;&amp;&#39;a IdCard&gt; ?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#q5-why-does-map-take-ownership-but-filter-does-not"><span class="toc-number">5.</span> <span class="toc-text"> Q5: Why does  map  take ownership but  filter  does not?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#q6-why-is-static-str-required-in-const-mock_data-static-str-include_str"><span class="toc-number">6.</span> <span class="toc-text"> Q6: Why is  &amp;&#39;static str  required in  const MOCK_DATA: &amp;&#39;static str &#x3D; include_str!(...) ?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#q7-why-cant-rust-infer-the-type-without-vec_-in-collect"><span class="toc-number">7.</span> <span class="toc-text"> Q7: Why can’t Rust infer the type without  Vec&lt;_&gt;  in  collect() ?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#q8-what-is-the-difference-between-filter_map-and-map"><span class="toc-number">8.</span> <span class="toc-text"> Q8: What is the difference between  filter_map  and  map ?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#q9-what-does-a-mean-in-lifetime-annotations"><span class="toc-number">9.</span> <span class="toc-text"> Q9: What does  &#39;a  mean in lifetime annotations?</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">392</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">56</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
+      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2026/07/23/vue3-react-cheatsheet/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2026/07/23/linux-qa/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ D E W</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2026/07/23/rust_qa/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,481 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CFira%20Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="python" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2026/07/17/python-configparser/">
+
+
+
+  <title>
+Most Developers Don’t Know Python Has a Built-In Config File Parser |
+D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</title>
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">Most Developers Don’t Know Python Has a Built-In Config File Parser
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2026-07-17 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2026-07-17T00:00:00+08:00">2026-07-17</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">D E W</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="/anime/index/我的邻居山田君.jpg"></li>
+          <li class="item" data-background-image="/anime/index/奇巧计程车.jpg"></li>
+          <li class="item" data-background-image="/anime/index/全职猎人.jpg"></li>
+          <li class="item" data-background-image="/anime/index/哈尔的移动城堡.jpg"></li>
+          <li class="item" data-background-image="/anime/index/川柳少女.jpg"></li>
+          <li class="item" data-background-image="/anime/index/侧耳倾听-1.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2026/07/17/python-configparser/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content="我知这世界本如露水般短暂，然而，然而, ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>repost: <span class="exturl" data-url="aHR0cHM6Ly9tZWRpdW0uY29tL3RoZS1weXRob253b3JsZC9tb3N0LWRldmVsb3BlcnMtZG9udC1rbm93LXB5dGhvbi1oYXMtYS1idWlsdC1pbi1jb25maWctZmlsZS1wYXJzZXItZmYwYTg1MGM4Y2Iz">Most Developers Don’t Know Python Has a Built-In Config File Parser - mata</span></p>
+</blockquote>
+<h2 id="stop-reinventing-the-wheel-with-yaml-json-or-toml-python-already-has-configparser-baked-in"><a class="markdownIt-Anchor" href="#stop-reinventing-the-wheel-with-yaml-json-or-toml-python-already-has-configparser-baked-in">#</a> <em>Stop reinventing the wheel with YAML, JSON, or TOML — Python already has</em>  <code>*configparser*</code>  <em>baked in.</em></h2>
+<p>Every developer has faced the same problem at some point:<br>
+Where do you put all those environment-specific values — database credentials, API keys, feature flags, and app settings?</p>
+<p>The instinct is to reach for JSON, YAML, or even  <code>.env</code>  files. But here’s the twist: <strong>Python already ships with a perfectly capable configuration parser called</strong>  <code>**configparser**</code> , and it’s been sitting there quietly in the standard library since Python 3.0.</p>
+<p>Surprisingly, most developers either don’t know it exists or underestimate its usefulness.</p>
+<p>This article will walk you through:</p>
+<blockquote>
+<p><em>What</em>  <code>*configparser*</code>  <em>is and why you should use it.</em></p>
+<p><em>Real-world examples of reading and writing config files.</em></p>
+<p><em>Advanced features like defaults, interpolation, and nested structures.</em></p>
+<p><em>How it compares to JSON, YAML, and TOML.</em></p>
+<p><em>Practical scenarios where it truly shines.</em></p>
+</blockquote>
+<p>By the end, you’ll know when and how to use  <code>configparser</code>  effectively in your projects.</p>
+<h2 id="what-is-configparser"><a class="markdownIt-Anchor" href="#what-is-configparser">#</a> What Is  <code>configparser</code> ?</h2>
+<p>At its core,  <code>configparser</code>  is Python’s <strong>built-in module for reading and writing configuration files in the INI format</strong>.</p>
+<p>INI files are simple, human-readable, and have been around since the early days of Windows applications. They’re structured with <strong>sections</strong>, <strong>keys</strong>, and <strong>values</strong>.</p>
+<p>Here’s what a typical INI file looks like:</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[database]</span></span><br><span class="line"><span class="attr">host</span> = localhost</span><br><span class="line"><span class="attr">port</span> = <span class="number">5432</span></span><br><span class="line"><span class="attr">user</span> = admin</span><br><span class="line"><span class="attr">password</span> = secret</span><br><span class="line"></span><br><span class="line"><span class="section">[app]</span></span><br><span class="line"><span class="attr">debug</span> = <span class="literal">true</span></span><br><span class="line"><span class="attr">log_level</span> = INFO</span><br></pre></td></tr></table></figure>
+<p>With  <code>configparser</code> , you can parse this instantly without writing custom parsing logic or installing external libraries.</p>
+<h2 id="reading-a-config-file"><a class="markdownIt-Anchor" href="#reading-a-config-file">#</a> Reading a Config File</h2>
+<p>Here’s how simple it is:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> configparser</span><br><span class="line"></span><br><span class="line">config = configparser.ConfigParser()</span><br><span class="line">config.read(<span class="string">&quot;settings.ini&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Access values</span></span><br><span class="line">db_host = config[<span class="string">&quot;database&quot;</span>][<span class="string">&quot;host&quot;</span>]</span><br><span class="line">debug_mode = config.getboolean(<span class="string">&quot;app&quot;</span>, <span class="string">&quot;debug&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(db_host)   <span class="comment"># localhost</span></span><br><span class="line"><span class="built_in">print</span>(debug_mode)  <span class="comment"># True</span></span><br></pre></td></tr></table></figure>
+<p>Key points:</p>
+<blockquote>
+<p><em>Sections are accessed like dictionaries (</em> <code>*config[&quot;database&quot;]*</code> <em>).</em></p>
+<p><em>Values are always read as</em> <strong>strings</strong> <em>by default.</em></p>
+<p><em>Helper methods like</em>  <code>*.getboolean()*</code> <em>,</em>  <code>*.getint()*</code> <em>, and</em>  <code>*.getfloat()*</code>  <em>handle type conversion.</em></p>
+</blockquote>
+<h2 id="writing-config-files"><a class="markdownIt-Anchor" href="#writing-config-files">#</a> Writing Config Files</h2>
+<p>You’re not just limited to reading configs.  <code>configparser</code>  can also <strong>create and update</strong> them.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> configparser</span><br><span class="line"></span><br><span class="line">config = configparser.ConfigParser()</span><br><span class="line"></span><br><span class="line">config[<span class="string">&quot;database&quot;</span>] = &#123;</span><br><span class="line">    <span class="string">&quot;host&quot;</span>: <span class="string">&quot;localhost&quot;</span>,</span><br><span class="line">    <span class="string">&quot;port&quot;</span>: <span class="string">&quot;5432&quot;</span>,</span><br><span class="line">    <span class="string">&quot;user&quot;</span>: <span class="string">&quot;admin&quot;</span>,</span><br><span class="line">    <span class="string">&quot;password&quot;</span>: <span class="string">&quot;secret&quot;</span>,</span><br><span class="line">&#125;</span><br><span class="line">config[<span class="string">&quot;app&quot;</span>] = &#123;<span class="string">&quot;debug&quot;</span>: <span class="string">&quot;true&quot;</span>, <span class="string">&quot;log_level&quot;</span>: <span class="string">&quot;INFO&quot;</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;settings.ini&quot;</span>, <span class="string">&quot;w&quot;</span>) <span class="keyword">as</span> configfile:</span><br><span class="line">    config.write(configfile)</span><br></pre></td></tr></table></figure>
+<p>Run this, and you’ll generate the same INI file format as before.</p>
+<h2 id="defaults-and-interpolation"><a class="markdownIt-Anchor" href="#defaults-and-interpolation">#</a> Defaults and Interpolation</h2>
+<p>Where  <code>configparser</code>  gets really interesting is its <strong>support for defaults and variable substitution</strong>.</p>
+<h2 id="defaults"><a class="markdownIt-Anchor" href="#defaults">#</a> Defaults</h2>
+<p>You can set global defaults that all sections inherit from:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">config = configparser.ConfigParser(defaults=&#123;<span class="string">&quot;log_level&quot;</span>: <span class="string">&quot;WARNING&quot;</span>&#125;)</span><br></pre></td></tr></table></figure>
+<p>Now, any section missing  <code>log_level</code>  will automatically fall back to  <code>&quot;WARNING&quot;</code> .</p>
+<h2 id="interpolation-variable-substitution"><a class="markdownIt-Anchor" href="#interpolation-variable-substitution">#</a> Interpolation (Variable Substitution)</h2>
+<p>Need to reuse values?  <code>configparser</code>  supports interpolation out of the box.</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[paths]</span></span><br><span class="line"><span class="attr">root</span> = /usr/local/app</span><br><span class="line"><span class="attr">logs</span> = %(root)s/logs</span><br><span class="line"><span class="attr">data</span> = %(root)s/data</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">config = configparser.ConfigParser()</span><br><span class="line">config.read(<span class="string">&quot;settings.ini&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(config[<span class="string">&quot;paths&quot;</span>][<span class="string">&quot;logs&quot;</span>])</span><br><span class="line"><span class="comment"># /usr/local/app/logs</span></span><br></pre></td></tr></table></figure>
+<p>This small feature can drastically reduce duplication in config files.</p>
+<h2 id="advanced-usage-you-should-know"><a class="markdownIt-Anchor" href="#advanced-usage-you-should-know">#</a> Advanced Usage You Should Know</h2>
+<p><strong>1. Type Conversions Beyond Basics</strong><br>
+You can define your own type parsers if you need something custom.</p>
+<p><strong>2. Merging Multiple Files</strong><br>
+You can load multiple files in order, and later ones will override earlier ones:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">config.read([<span class="string">&quot;default.ini&quot;</span>, <span class="string">&quot;production.ini&quot;</span>])</span><br></pre></td></tr></table></figure>
+<p><strong>3. Case Sensitivity</strong><br>
+By default,  <code>configparser</code>  treats keys as case-insensitive. If you want case sensitivity:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">config = configparser.ConfigParser()</span><br><span class="line">config.optionxform = <span class="built_in">str</span></span><br><span class="line">```</span><br><span class="line"></span><br><span class="line">**<span class="number">4.</span> Fallbacks**</span><br><span class="line">Avoid `KeyError` crashes by using fallbacks:</span><br><span class="line"></span><br><span class="line">```python</span><br><span class="line">retries = config.getint(<span class="string">&quot;network&quot;</span>, <span class="string">&quot;retries&quot;</span>, fallback=<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="how-does-it-compare-to-json-yaml-and-toml"><a class="markdownIt-Anchor" href="#how-does-it-compare-to-json-yaml-and-toml">#</a> How Does It Compare to JSON, YAML, and TOML?</h2>
+<p>Let’s be real —  <code>configparser</code>  isn’t perfect. It works best for <strong>simple configs</strong>.</p>
+<p><strong>JSON</strong></p>
+<blockquote>
+<p><em>Great for structured data, but lacks comments and is less human-friendly for config files.</em></p>
+</blockquote>
+<p><strong>YAML</strong></p>
+<blockquote>
+<p><em>Powerful and widely used, especially in DevOps, but indentation errors can be frustrating.</em></p>
+</blockquote>
+<p><strong>TOML</strong></p>
+<blockquote>
+<p><em>Cleaner than JSON/YAML for configs, and officially adopted by Python (</em> <code>*pyproject.toml*</code> <em>).</em></p>
+</blockquote>
+<p><strong>INI (configparser)</strong></p>
+<blockquote>
+<p><em>Lightweight, human-readable configs.</em></p>
+<p><em>No external dependencies.</em></p>
+<p><em>Simple key-value pairs with sections.</em></p>
+</blockquote>
+<p>If your project requires nested structures, YAML or TOML might be a better choice. But if you just need straightforward settings,  <code>configparser</code>  is a hidden gem.</p>
+<h2 id="real-world-use-cases"><a class="markdownIt-Anchor" href="#real-world-use-cases">#</a> Real-World Use Cases</h2>
+<p>So when should you actually use  <code>configparser</code> ?</p>
+<blockquote>
+<p><strong>Small to medium-sized applications</strong> <em>— store environment configs like DB credentials, API keys, or feature flags.</em></p>
+<p><strong>CLI tools and scripts</strong> <em>— let users tweak behavior without editing code.</em></p>
+<p><strong>Prototyping</strong> <em>— quickly set up configs without pulling in dependencies.</em></p>
+<p><strong>Legacy systems</strong> <em>— still common in environments that favor INI over JSON/YAML.</em></p>
+</blockquote>
+<p>Example: Suppose you’re writing a command-line tool that syncs files between servers. Instead of hardcoding credentials or forcing users to manage a JSON file, you can ship a simple INI template they edit with Notepad.</p>
+<h2 id="the-hidden-advantage-zero-dependencies"><a class="markdownIt-Anchor" href="#the-hidden-advantage-zero-dependencies">#</a> The Hidden Advantage: Zero Dependencies</h2>
+<p>In a world where we’re constantly adding new packages to  <code>requirements.txt</code> , the fact that  <code>configparser</code>  is <strong>built into Python’s standard library</strong> is a huge win.</p>
+<p>No need to install or maintain extra libraries.<br>
+No worries about version mismatches.<br>
+Just import and go.</p>
+<p>Sometimes, the simplest tools are the best.</p>
+<h2 id="conclusion"><a class="markdownIt-Anchor" href="#conclusion">#</a> Conclusion</h2>
+<p><code>configparser</code>  is one of those underrated Python modules hiding in plain sight. It won’t replace YAML or TOML for complex configurations, but it doesn’t need to.</p>
+<p>For many projects, it’s the perfect balance of <strong>simplicity, readability, and zero dependencies</strong>.</p>
+<p>So the next time you start a Python project and need a config file, don’t immediately reach for YAML or JSON. Open your toolbox and try  <code>configparser</code>  first.</p>
+<p>You might be surprised how much time — and complexity — you save.</p>
+<p><em>Sometimes the most powerful tools are the ones you’ve been carrying all along.</em></p>
+
+      <div class="tags">
+          <a href="/tags/python/" rel="tag"><i class="ic i-tag"></i> python</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2026-07-17 14:15:39" itemprop="dateModified" datetime="2026-07-17T14:15:39+08:00">2026-07-17</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2026/05/29/angorithm-determine-whether-two-date-ranges-overlap/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;犬夜叉-2.jpg" title="Determine Whether Two Date Ranges Overlap">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Determine Whether Two Date Ranges Overlap</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2026/07/17/python-concurrent-futures/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;月刊少女野崎君.jpg" title="Introduction to concurrent.futures in Python">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Introduction to concurrent.futures in Python</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#stop-reinventing-the-wheel-with-yaml-json-or-toml-python-already-has-configparser-baked-in"><span class="toc-number">1.</span> <span class="toc-text"> Stop reinventing the wheel with YAML, JSON, or TOML — Python already has  *configparser*  baked in.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#what-is-configparser"><span class="toc-number">2.</span> <span class="toc-text"> What Is  configparser ?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#reading-a-config-file"><span class="toc-number">3.</span> <span class="toc-text"> Reading a Config File</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#writing-config-files"><span class="toc-number">4.</span> <span class="toc-text"> Writing Config Files</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#defaults-and-interpolation"><span class="toc-number">5.</span> <span class="toc-text"> Defaults and Interpolation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#defaults"><span class="toc-number">6.</span> <span class="toc-text"> Defaults</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#interpolation-variable-substitution"><span class="toc-number">7.</span> <span class="toc-text"> Interpolation (Variable Substitution)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#advanced-usage-you-should-know"><span class="toc-number">8.</span> <span class="toc-text"> Advanced Usage You Should Know</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#how-does-it-compare-to-json-yaml-and-toml"><span class="toc-number">9.</span> <span class="toc-text"> How Does It Compare to JSON, YAML, and TOML?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#real-world-use-cases"><span class="toc-number">10.</span> <span class="toc-text"> Real-World Use Cases</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#the-hidden-advantage-zero-dependencies"><span class="toc-number">11.</span> <span class="toc-text"> The Hidden Advantage: Zero Dependencies</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#conclusion"><span class="toc-number">12.</span> <span class="toc-text"> Conclusion</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">392</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">56</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
+      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2026/05/29/angorithm-determine-whether-two-date-ranges-overlap/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2026/07/17/python-concurrent-futures/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ D E W</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2026/07/17/python-configparser/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

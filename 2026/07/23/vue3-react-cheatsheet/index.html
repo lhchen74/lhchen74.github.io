@@ -1,0 +1,980 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CFira%20Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="ai,vue,react" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2026/07/23/vue3-react-cheatsheet/">
+
+
+
+  <title>
+Vue 3 vs React Cheatsheet |
+D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</title>
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">Vue 3 vs React Cheatsheet
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2026-07-23 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2026-07-23T00:00:00+08:00">2026-07-23</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">D E W</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="/anime/index/天空之城.jpg"></li>
+          <li class="item" data-background-image="/anime/index/夏日大作战.jpg"></li>
+          <li class="item" data-background-image="/anime/index/星际牛仔.jpg"></li>
+          <li class="item" data-background-image="/anime/index/亚人-3.jpg"></li>
+          <li class="item" data-background-image="/anime/index/CAROLE&TUESDAY-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/网球王子.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2026/07/23/vue3-react-cheatsheet/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content="我知这世界本如露水般短暂，然而，然而, ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h2 id="table-of-contents"><a class="markdownIt-Anchor" href="#table-of-contents">#</a> Table of Contents</h2>
+<ol>
+<li><a href="#1-component-structure">Component Structure</a></li>
+<li><a href="#2-reactive-state">Reactive State</a></li>
+<li><a href="#3-computed--memoization">Computed / Memoization</a></li>
+<li><a href="#4-event-handlers--methods">Event Handlers &amp; Methods</a></li>
+<li><a href="#5-watchers--effects">Watchers / Effects</a></li>
+<li><a href="#6-lifecycle-hooks">Lifecycle Hooks</a></li>
+<li><a href="#7-props--communication">Props &amp; Communication</a></li>
+<li><a href="#8-two-way-binding">Two-Way Binding</a></li>
+<li><a href="#9-template-refs--dom-refs">Template Refs / DOM Refs</a></li>
+<li><a href="#10-context--provide-inject">Context / Provide-Inject</a></li>
+<li><a href="#11-composables--custom-hooks">Composables / Custom Hooks</a></li>
+<li><a href="#12-conditional-rendering">Conditional Rendering</a></li>
+<li><a href="#13-list-rendering">List Rendering</a></li>
+<li><a href="#14-slots--children--render-props">Slots / Children &amp; Render Props</a></li>
+<li><a href="#15-styling">Styling</a></li>
+<li><a href="#16-routing">Routing</a></li>
+<li><a href="#17-state-management">State Management</a></li>
+<li><a href="#18-quick-reference">Quick Reference</a></li>
+</ol>
+<hr>
+<h2 id="1-component-structure"><a class="markdownIt-Anchor" href="#1-component-structure">#</a> 1. Component Structure</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Vue 3</th>
+<th>React</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>File extension</td>
+<td><code>.vue</code>  (SFC)</td>
+<td><code>.jsx</code>  /  <code>.tsx</code></td>
+</tr>
+<tr>
+<td>Template language</td>
+<td>HTML-like template</td>
+<td>JSX</td>
+</tr>
+<tr>
+<td>Script style</td>
+<td><code>&lt;script setup&gt;</code></td>
+<td>Function component</td>
+</tr>
+<tr>
+<td>Style scope</td>
+<td><code>&lt;style scoped&gt;</code></td>
+<td>CSS modules / CSS-in-JS</td>
+</tr>
+</tbody>
+</table>
+<h3 id="vue-3"><a class="markdownIt-Anchor" href="#vue-3">#</a> Vue 3</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;greeting&quot;&gt;&#123;&#123; message &#125;&#125;&lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script setup&gt;</span><br><span class="line">import &#123; ref &#125; from &#x27;vue&#x27;</span><br><span class="line">const message = ref(&#x27;Hello, Vue 3!&#x27;)</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">.greeting &#123; color: #42b883; &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="react"><a class="markdownIt-Anchor" href="#react">#</a> React</h3>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; useState &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="keyword">import</span> styles <span class="keyword">from</span> <span class="string">&#x27;./Greeting.module.css&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">Greeting</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> [message] = <span class="title function_">useState</span>(<span class="string">&#x27;Hello, React!&#x27;</span>)</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#123;styles.greeting&#125;</span>&gt;</span>&#123;message&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="2-reactive-state"><a class="markdownIt-Anchor" href="#2-reactive-state">#</a> 2. Reactive State</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Vue 3</th>
+<th>React</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Primitive</td>
+<td><code>ref(value)</code>  →  <code>.value</code></td>
+<td><code>useState(value)</code>  →  <code>[val, setVal]</code></td>
+</tr>
+<tr>
+<td>Object</td>
+<td><code>reactive(&#123;&#125;)</code></td>
+<td><code>useState(&#123;&#125;)</code>  or  <code>useReducer</code></td>
+</tr>
+<tr>
+<td>Read</td>
+<td><code>count.value</code></td>
+<td><code>count</code></td>
+</tr>
+<tr>
+<td>Write</td>
+<td><code>count.value = 1</code></td>
+<td><code>setCount(1)</code></td>
+</tr>
+<tr>
+<td>Immutability</td>
+<td>Mutable (proxy)</td>
+<td>Immutable (must use setter)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="vue-3-2"><a class="markdownIt-Anchor" href="#vue-3-2">#</a> Vue 3</h3>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; ref, reactive &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> count = <span class="title function_">ref</span>(<span class="number">0</span>)</span><br><span class="line">count.<span class="property">value</span>++                      <span class="comment">// mutate directly</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> state = <span class="title function_">reactive</span>(&#123; <span class="attr">name</span>: <span class="string">&#x27;Vue&#x27;</span>, <span class="attr">score</span>: <span class="number">100</span> &#125;)</span><br><span class="line">state.<span class="property">score</span> += <span class="number">10</span>                  <span class="comment">// mutate directly</span></span><br></pre></td></tr></table></figure>
+<h3 id="react-2"><a class="markdownIt-Anchor" href="#react-2">#</a> React</h3>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; useState &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> [count, setCount] = <span class="title function_">useState</span>(<span class="number">0</span>)</span><br><span class="line"><span class="title function_">setCount</span>(count + <span class="number">1</span>)                <span class="comment">// must use setter</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> [state, setState] = <span class="title function_">useState</span>(&#123; <span class="attr">name</span>: <span class="string">&#x27;React&#x27;</span>, <span class="attr">score</span>: <span class="number">100</span> &#125;)</span><br><span class="line"><span class="title function_">setState</span>(<span class="function"><span class="params">prev</span> =&gt;</span> (&#123; ...prev, <span class="attr">score</span>: prev.<span class="property">score</span> + <span class="number">10</span> &#125;))  <span class="comment">// spread to keep immutability</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="3-computed-memoization"><a class="markdownIt-Anchor" href="#3-computed-memoization">#</a> 3. Computed / Memoization</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Vue 3</th>
+<th>React</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Derived value</td>
+<td><code>computed(() =&gt; ...)</code></td>
+<td><code>useMemo(() =&gt; ..., [deps])</code></td>
+</tr>
+<tr>
+<td>Cached function</td>
+<td>—</td>
+<td><code>useCallback(() =&gt; ..., [deps])</code></td>
+</tr>
+<tr>
+<td>Auto dependency</td>
+<td>Yes (reactive tracking)</td>
+<td>No (manual deps array)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="vue-3-3"><a class="markdownIt-Anchor" href="#vue-3-3">#</a> Vue 3</h3>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; ref, computed &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> price = <span class="title function_">ref</span>(<span class="number">100</span>)</span><br><span class="line"><span class="keyword">const</span> qty   = <span class="title function_">ref</span>(<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Auto-tracks price and qty</span></span><br><span class="line"><span class="keyword">const</span> total = <span class="title function_">computed</span>(<span class="function">() =&gt;</span> price.<span class="property">value</span> * qty.<span class="property">value</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(total.<span class="property">value</span>) <span class="comment">// 300</span></span><br></pre></td></tr></table></figure>
+<h3 id="react-3"><a class="markdownIt-Anchor" href="#react-3">#</a> React</h3>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; useState, useMemo, useCallback &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> [price, setPrice] = <span class="title function_">useState</span>(<span class="number">100</span>)</span><br><span class="line"><span class="keyword">const</span> [qty, setQty]     = <span class="title function_">useState</span>(<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Must list deps manually</span></span><br><span class="line"><span class="keyword">const</span> total = <span class="title function_">useMemo</span>(<span class="function">() =&gt;</span> price * qty, [price, qty])</span><br><span class="line"></span><br><span class="line"><span class="comment">// Cache a function reference</span></span><br><span class="line"><span class="keyword">const</span> handleAdd = <span class="title function_">useCallback</span>(<span class="function">() =&gt;</span> <span class="title function_">setQty</span>(<span class="function"><span class="params">q</span> =&gt;</span> q + <span class="number">1</span>), [])</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="4-event-handlers-methods"><a class="markdownIt-Anchor" href="#4-event-handlers-methods">#</a> 4. Event Handlers &amp; Methods</h2>
+<h3 id="vue-3-4"><a class="markdownIt-Anchor" href="#vue-3-4">#</a> Vue 3</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup&gt;</span><br><span class="line">import &#123; ref &#125; from &#x27;vue&#x27;</span><br><span class="line">const count = ref(0)</span><br><span class="line">const increment = () =&gt; count.value++</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;button @click=&quot;increment&quot;&gt;&#123;&#123; count &#125;&#125;&lt;/button&gt;</span><br><span class="line">  &lt;button @click=&quot;count++&quot;&gt;Inline&lt;/button&gt;</span><br><span class="line">  &lt;input @keyup.enter=&quot;submit&quot; /&gt;</span><br><span class="line">  &lt;form @submit.prevent=&quot;onSubmit&quot; /&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="react-4"><a class="markdownIt-Anchor" href="#react-4">#</a> React</h3>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [count, setCount] = <span class="title function_">useState</span>(<span class="number">0</span>)</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">increment</span> = (<span class="params"></span>) =&gt; <span class="title function_">setCount</span>(<span class="function"><span class="params">c</span> =&gt;</span> c + <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> (</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;increment&#125;</span>&gt;</span>&#123;count&#125;<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> setCount(c =&gt; c + 1)&#125;&gt;Inline<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">onKeyUp</span>=<span class="string">&#123;e</span> =&gt;</span> e.key === &#x27;Enter&#x27; &amp;&amp; submit()&#125; /&gt;</span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">onSubmit</span>=<span class="string">&#123;e</span> =&gt;</span> &#123; e.preventDefault(); onSubmit() &#125;&#125; /&gt;</span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="5-watchers-effects"><a class="markdownIt-Anchor" href="#5-watchers-effects">#</a> 5. Watchers / Effects</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Vue 3</th>
+<th>React</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Run on change</td>
+<td><code>watch(source, cb)</code></td>
+<td><code>useEffect(() =&gt; ..., [deps])</code></td>
+</tr>
+<tr>
+<td>Run immediately</td>
+<td><code>watch(src, cb, &#123; immediate: true &#125;)</code></td>
+<td><code>useEffect(() =&gt; ..., [deps])</code>  (always runs on mount)</td>
+</tr>
+<tr>
+<td>Auto-track deps</td>
+<td><code>watchEffect(() =&gt; ...)</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Cleanup</td>
+<td>Return nothing /  <code>onWatcherCleanup</code></td>
+<td>Return cleanup function</td>
+</tr>
+<tr>
+<td>Deep watch</td>
+<td><code>watch(src, cb, &#123; deep: true &#125;)</code></td>
+<td>Manual deep comparison</td>
+</tr>
+</tbody>
+</table>
+<h3 id="vue-3-5"><a class="markdownIt-Anchor" href="#vue-3-5">#</a> Vue 3</h3>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; ref, watch, watchEffect &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> query = <span class="title function_">ref</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Explicit — runs when query changes</span></span><br><span class="line"><span class="title function_">watch</span>(query, <span class="function">(<span class="params">newVal, oldVal</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;query changed:&#x27;</span>, newVal)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Auto-track — runs when any accessed reactive value changes</span></span><br><span class="line"><span class="keyword">const</span> stop = <span class="title function_">watchEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;query is now:&#x27;</span>, query.<span class="property">value</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// With cleanup</span></span><br><span class="line"><span class="title function_">watch</span>(query, <span class="title function_">async</span> (val, _, onCleanup) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> controller = <span class="keyword">new</span> <span class="title class_">AbortController</span>()</span><br><span class="line">  <span class="title function_">onCleanup</span>(<span class="function">() =&gt;</span> controller.<span class="title function_">abort</span>())</span><br><span class="line">  <span class="keyword">await</span> <span class="title function_">fetch</span>(<span class="string">`/search?q=<span class="subst">$&#123;val&#125;</span>`</span>, &#123; <span class="attr">signal</span>: controller.<span class="property">signal</span> &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="react-5"><a class="markdownIt-Anchor" href="#react-5">#</a> React</h3>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; useState, useEffect &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> [query, setQuery] = <span class="title function_">useState</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Runs when query changes (also runs on mount)</span></span><br><span class="line"><span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;query changed:&#x27;</span>, query)</span><br><span class="line">&#125;, [query])</span><br><span class="line"></span><br><span class="line"><span class="comment">// With cleanup</span></span><br><span class="line"><span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> controller = <span class="keyword">new</span> <span class="title class_">AbortController</span>()</span><br><span class="line">  <span class="title function_">fetch</span>(<span class="string">`/search?q=<span class="subst">$&#123;query&#125;</span>`</span>, &#123; <span class="attr">signal</span>: controller.<span class="property">signal</span> &#125;)</span><br><span class="line">  <span class="keyword">return</span> <span class="function">() =&gt;</span> controller.<span class="title function_">abort</span>()   <span class="comment">// cleanup function</span></span><br><span class="line">&#125;, [query])</span><br><span class="line"></span><br><span class="line"><span class="comment">// Run once on mount (like onMounted)</span></span><br><span class="line"><span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;mounted&#x27;</span>)</span><br><span class="line">  <span class="keyword">return</span> <span class="function">() =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;unmounted&#x27;</span>)</span><br><span class="line">&#125;, [])</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="6-lifecycle-hooks"><a class="markdownIt-Anchor" href="#6-lifecycle-hooks">#</a> 6. Lifecycle Hooks</h2>
+<table>
+<thead>
+<tr>
+<th>Vue 3</th>
+<th>React ( <code>useEffect</code>  equivalent)</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>setup()</code>  body</td>
+<td>Top of function body</td>
+<td>Initialization</td>
+</tr>
+<tr>
+<td><code>onBeforeMount()</code></td>
+<td>—</td>
+<td>Before first render</td>
+</tr>
+<tr>
+<td><code>onMounted()</code></td>
+<td><code>useEffect(() =&gt; ..., [])</code></td>
+<td>After first render</td>
+</tr>
+<tr>
+<td><code>onBeforeUpdate()</code></td>
+<td>—</td>
+<td>Before re-render</td>
+</tr>
+<tr>
+<td><code>onUpdated()</code></td>
+<td><code>useEffect(() =&gt; ...)</code>  (no deps)</td>
+<td>After every render</td>
+</tr>
+<tr>
+<td><code>onBeforeUnmount()</code></td>
+<td>—</td>
+<td>Before destroy</td>
+</tr>
+<tr>
+<td><code>onUnmounted()</code></td>
+<td><code>useEffect</code>  cleanup ( <code>return () =&gt; ...</code> )</td>
+<td>After destroy</td>
+</tr>
+</tbody>
+</table>
+<h3 id="vue-3-6"><a class="markdownIt-Anchor" href="#vue-3-6">#</a> Vue 3</h3>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; onMounted, onUpdated, onUnmounted &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="title function_">onMounted</span>(<span class="function">() =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;mounted&#x27;</span>))</span><br><span class="line"><span class="title function_">onUpdated</span>(<span class="function">() =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;updated&#x27;</span>))</span><br><span class="line"><span class="title function_">onUnmounted</span>(<span class="function">() =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;unmounted&#x27;</span>))</span><br></pre></td></tr></table></figure>
+<h3 id="react-6"><a class="markdownIt-Anchor" href="#react-6">#</a> React</h3>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; useEffect &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// mounted</span></span><br><span class="line"><span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;mounted&#x27;</span>)</span><br><span class="line">  <span class="keyword">return</span> <span class="function">() =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;unmounted&#x27;</span>)   <span class="comment">// unmounted</span></span><br><span class="line">&#125;, [])</span><br><span class="line"></span><br><span class="line"><span class="comment">// every update</span></span><br><span class="line"><span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;updated&#x27;</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="7-props-communication"><a class="markdownIt-Anchor" href="#7-props-communication">#</a> 7. Props &amp; Communication</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Vue 3</th>
+<th>React</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Define props</td>
+<td><code>defineProps&lt;T&gt;()</code></td>
+<td>Function argument  <code>(&#123; prop &#125;)</code></td>
+</tr>
+<tr>
+<td>Required prop</td>
+<td><code>&#123; required: true &#125;</code></td>
+<td>TypeScript type (no  <code>?</code> )</td>
+</tr>
+<tr>
+<td>Default value</td>
+<td><code>withDefaults(...)</code></td>
+<td>Destructuring default  <code>= value</code></td>
+</tr>
+<tr>
+<td>Child → Parent</td>
+<td><code>defineEmits</code>  +  <code>emit('event')</code></td>
+<td>Callback prop  <code>onEvent</code></td>
+</tr>
+<tr>
+<td>v-model</td>
+<td><code>modelValue</code>  prop +  <code>update:modelValue</code>  emit</td>
+<td>Controlled component pattern</td>
+</tr>
+</tbody>
+</table>
+<h3 id="vue-3-7"><a class="markdownIt-Anchor" href="#vue-3-7">#</a> Vue 3</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- Child.vue --&gt;</span><br><span class="line">&lt;script setup&gt;</span><br><span class="line">const props = withDefaults(defineProps&lt;&#123;</span><br><span class="line">  title: string</span><br><span class="line">  count?: number</span><br><span class="line">&#125;&gt;(), &#123; count: 0 &#125;)</span><br><span class="line"></span><br><span class="line">const emit = defineEmits&lt;&#123;</span><br><span class="line">  submit: [value: string]</span><br><span class="line">&#125;&gt;()</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;button @click=&quot;emit(&#x27;submit&#x27;, &#x27;hello&#x27;)&quot;&gt;&#123;&#123; props.title &#125;&#125;&lt;/button&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- Parent.vue --&gt;</span><br><span class="line">&lt;Child title=&quot;Click me&quot; :count=&quot;5&quot; @submit=&quot;handleSubmit&quot; /&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="react-7"><a class="markdownIt-Anchor" href="#react-7">#</a> React</h3>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Child.jsx</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Child</span>(<span class="params">&#123; title, count = <span class="number">0</span>, onSubmit &#125;</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> onSubmit(&#x27;hello&#x27;)&#125;&gt;&#123;title&#125;<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Parent.jsx</span></span><br><span class="line">&lt;<span class="title class_">Child</span> title=<span class="string">&quot;Click me&quot;</span> count=&#123;<span class="number">5</span>&#125; onSubmit=&#123;handleSubmit&#125; /&gt;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="8-two-way-binding"><a class="markdownIt-Anchor" href="#8-two-way-binding">#</a> 8. Two-Way Binding</h2>
+<h3 id="vue-3-8"><a class="markdownIt-Anchor" href="#vue-3-8">#</a> Vue 3</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- Simple input binding --&gt;</span><br><span class="line">&lt;input v-model=&quot;text&quot; /&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- v-model on component --&gt;</span><br><span class="line">&lt;!-- Parent --&gt;</span><br><span class="line">&lt;MyInput v-model=&quot;name&quot; /&gt;</span><br><span class="line">&lt;!-- Expands to: &lt;MyInput :modelValue=&quot;name&quot; @update:modelValue=&quot;name = $event&quot; /&gt; --&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- Child (MyInput.vue) --&gt;</span><br><span class="line">&lt;script setup&gt;</span><br><span class="line">defineProps([&#x27;modelValue&#x27;])</span><br><span class="line">const emit = defineEmits([&#x27;update:modelValue&#x27;])</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;input :value=&quot;modelValue&quot; @input=&quot;emit(&#x27;update:modelValue&#x27;, $event.target.value)&quot; /&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="react-8"><a class="markdownIt-Anchor" href="#react-8">#</a> React</h3>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// React uses &quot;controlled components&quot; — no built-in two-way binding</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">MyInput</span>(<span class="params">&#123; value, onChange &#125;</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">input</span> <span class="attr">value</span>=<span class="string">&#123;value&#125;</span> <span class="attr">onChange</span>=<span class="string">&#123;e</span> =&gt;</span> onChange(e.target.value)&#125; /&gt;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Parent</span></span><br><span class="line"><span class="keyword">const</span> [name, setName] = <span class="title function_">useState</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">&lt;<span class="title class_">MyInput</span> value=&#123;name&#125; onChange=&#123;setName&#125; /&gt;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="9-template-refs-dom-refs"><a class="markdownIt-Anchor" href="#9-template-refs-dom-refs">#</a> 9. Template Refs / DOM Refs</h2>
+<h3 id="vue-3-9"><a class="markdownIt-Anchor" href="#vue-3-9">#</a> Vue 3</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;input ref=&quot;inputEl&quot; /&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script setup&gt;</span><br><span class="line">import &#123; ref, onMounted &#125; from &#x27;vue&#x27;</span><br><span class="line"></span><br><span class="line">const inputEl = ref(null)</span><br><span class="line"></span><br><span class="line">onMounted(() =&gt; &#123;</span><br><span class="line">  inputEl.value.focus()</span><br><span class="line">&#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="react-9"><a class="markdownIt-Anchor" href="#react-9">#</a> React</h3>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; useRef, useEffect &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">MyInput</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> inputEl = <span class="title function_">useRef</span>(<span class="literal">null</span>)</span><br><span class="line"></span><br><span class="line">  <span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    inputEl.<span class="property">current</span>.<span class="title function_">focus</span>()</span><br><span class="line">  &#125;, [])</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">input</span> <span class="attr">ref</span>=<span class="string">&#123;inputEl&#125;</span> /&gt;</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="10-context-provide-inject"><a class="markdownIt-Anchor" href="#10-context-provide-inject">#</a> 10. Context / Provide-Inject</h2>
+<h3 id="vue-3-provide-inject"><a class="markdownIt-Anchor" href="#vue-3-provide-inject">#</a> Vue 3 — Provide / Inject</h3>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Ancestor</span></span><br><span class="line"><span class="keyword">import</span> &#123; provide, ref &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> theme = <span class="title function_">ref</span>(<span class="string">&#x27;dark&#x27;</span>)</span><br><span class="line"><span class="title function_">provide</span>(<span class="string">&#x27;theme&#x27;</span>, theme)           <span class="comment">// can be reactive</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Descendant (any depth)</span></span><br><span class="line"><span class="keyword">import</span> &#123; inject &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> theme = <span class="title function_">inject</span>(<span class="string">&#x27;theme&#x27;</span>)            <span class="comment">// reactive ref</span></span><br><span class="line"><span class="keyword">const</span> size  = <span class="title function_">inject</span>(<span class="string">&#x27;size&#x27;</span>, <span class="string">&#x27;md&#x27;</span>)       <span class="comment">// with default</span></span><br></pre></td></tr></table></figure>
+<h3 id="react-context-api"><a class="markdownIt-Anchor" href="#react-context-api">#</a> React — Context API</h3>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createContext, useContext, useState &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Create context</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">ThemeContext</span> = <span class="title function_">createContext</span>(<span class="string">&#x27;light&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Provider (ancestor)</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> [theme, setTheme] = <span class="title function_">useState</span>(<span class="string">&#x27;dark&#x27;</span>)</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">ThemeContext.Provider</span> <span class="attr">value</span>=<span class="string">&#123;theme&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Child</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">ThemeContext.Provider</span>&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Consumer (any descendant)</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Child</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> theme = <span class="title function_">useContext</span>(<span class="title class_">ThemeContext</span>)</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;theme&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="11-composables-custom-hooks"><a class="markdownIt-Anchor" href="#11-composables-custom-hooks">#</a> 11. Composables / Custom Hooks</h2>
+<p>Both patterns extract reusable stateful logic. The naming convention differs:</p>
+<ul>
+<li>Vue:  <code>useXxx()</code>  composable functions</li>
+<li>React:  <code>useXxx()</code>  custom hooks (React enforces the  <code>use</code>  prefix)</li>
+</ul>
+<h3 id="vue-3-composable"><a class="markdownIt-Anchor" href="#vue-3-composable">#</a> Vue 3 — Composable</h3>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// composables/useCounter.js</span></span><br><span class="line"><span class="keyword">import</span> &#123; ref, computed &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">useCounter</span>(<span class="params">initial = <span class="number">0</span></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> count   = <span class="title function_">ref</span>(initial)</span><br><span class="line">  <span class="keyword">const</span> double  = <span class="title function_">computed</span>(<span class="function">() =&gt;</span> count.<span class="property">value</span> * <span class="number">2</span>)</span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">increment</span> = (<span class="params"></span>) =&gt; count.<span class="property">value</span>++</span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">reset</span>     = (<span class="params"></span>) =&gt; (count.<span class="property">value</span> = initial)</span><br><span class="line">  <span class="keyword">return</span> &#123; count, double, increment, reset &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Usage</span></span><br><span class="line"><span class="keyword">const</span> &#123; count, increment &#125; = <span class="title function_">useCounter</span>(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="react-custom-hook"><a class="markdownIt-Anchor" href="#react-custom-hook">#</a> React — Custom Hook</h3>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// hooks/useCounter.js</span></span><br><span class="line"><span class="keyword">import</span> &#123; useState, useMemo &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">useCounter</span>(<span class="params">initial = <span class="number">0</span></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = <span class="title function_">useState</span>(initial)</span><br><span class="line">  <span class="keyword">const</span> double    = <span class="title function_">useMemo</span>(<span class="function">() =&gt;</span> count * <span class="number">2</span>, [count])</span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">increment</span> = (<span class="params"></span>) =&gt; <span class="title function_">setCount</span>(<span class="function"><span class="params">c</span> =&gt;</span> c + <span class="number">1</span>)</span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">reset</span>     = (<span class="params"></span>) =&gt; <span class="title function_">setCount</span>(initial)</span><br><span class="line">  <span class="keyword">return</span> &#123; count, double, increment, reset &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Usage</span></span><br><span class="line"><span class="keyword">const</span> &#123; count, increment &#125; = <span class="title function_">useCounter</span>(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="12-conditional-rendering"><a class="markdownIt-Anchor" href="#12-conditional-rendering">#</a> 12. Conditional Rendering</h2>
+<h3 id="vue-3-10"><a class="markdownIt-Anchor" href="#vue-3-10">#</a> Vue 3</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div v-if=&quot;isLoggedIn&quot;&gt;Welcome back!&lt;/div&gt;</span><br><span class="line">  &lt;div v-else-if=&quot;isGuest&quot;&gt;Hello, guest.&lt;/div&gt;</span><br><span class="line">  &lt;div v-else&gt;Please log in.&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">  &lt;!-- v-show keeps element in DOM --&gt;</span><br><span class="line">  &lt;Spinner v-show=&quot;isLoading&quot; /&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="react-10"><a class="markdownIt-Anchor" href="#react-10">#</a> React</h3>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> (</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">    &#123;isLoggedIn ? (</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span>&gt;</span>Welcome back!<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    ) : isGuest ? (</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span>&gt;</span>Hello, guest.<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    ) : (</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span>&gt;</span>Please log in.<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    )&#125;</span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">    &#123;/* Short-circuit for simple show/hide */&#125;</span></span><br><span class="line"><span class="language-xml">    &#123;isLoading &amp;&amp; <span class="tag">&lt;<span class="name">Spinner</span> /&gt;</span>&#125;</span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">    &#123;/* CSS equivalent of v-show */&#125;</span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">Spinner</span> <span class="attr">style</span>=<span class="string">&#123;&#123;</span> <span class="attr">display:</span> <span class="attr">isLoading</span> ? &#x27;<span class="attr">block</span>&#x27; <span class="attr">:</span> &#x27;<span class="attr">none</span>&#x27; &#125;&#125; /&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="13-list-rendering"><a class="markdownIt-Anchor" href="#13-list-rendering">#</a> 13. List Rendering</h2>
+<h3 id="vue-3-11"><a class="markdownIt-Anchor" href="#vue-3-11">#</a> Vue 3</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;!-- Array --&gt;</span><br><span class="line">  &lt;li v-for=&quot;item in items&quot; :key=&quot;item.id&quot;&gt;</span><br><span class="line">    &#123;&#123; item.name &#125;&#125;</span><br><span class="line">  &lt;/li&gt;</span><br><span class="line"></span><br><span class="line">  &lt;!-- With index --&gt;</span><br><span class="line">  &lt;li v-for=&quot;(item, i) in items&quot; :key=&quot;i&quot;&gt;</span><br><span class="line">    &#123;&#123; i &#125;&#125;: &#123;&#123; item.name &#125;&#125;</span><br><span class="line">  &lt;/li&gt;</span><br><span class="line"></span><br><span class="line">  &lt;!-- Object --&gt;</span><br><span class="line">  &lt;li v-for=&quot;(val, key) in user&quot; :key=&quot;key&quot;&gt;</span><br><span class="line">    &#123;&#123; key &#125;&#125;: &#123;&#123; val &#125;&#125;</span><br><span class="line">  &lt;/li&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="react-11"><a class="markdownIt-Anchor" href="#react-11">#</a> React</h3>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> (</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    &#123;/* Array */&#125;</span></span><br><span class="line"><span class="language-xml">    &#123;items.map(item =&gt; (</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">li</span> <span class="attr">key</span>=<span class="string">&#123;item.id&#125;</span>&gt;</span>&#123;item.name&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    ))&#125;</span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">    &#123;/* With index */&#125;</span></span><br><span class="line"><span class="language-xml">    &#123;items.map((item, i) =&gt; (</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">li</span> <span class="attr">key</span>=<span class="string">&#123;i&#125;</span>&gt;</span>&#123;i&#125;: &#123;item.name&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    ))&#125;</span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">    &#123;/* Object */&#125;</span></span><br><span class="line"><span class="language-xml">    &#123;Object.entries(user).map(([key, val]) =&gt; (</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">li</span> <span class="attr">key</span>=<span class="string">&#123;key&#125;</span>&gt;</span>&#123;key&#125;: &#123;val&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    ))&#125;</span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="14-slots-children-render-props"><a class="markdownIt-Anchor" href="#14-slots-children-render-props">#</a> 14. Slots / Children &amp; Render Props</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Vue 3</th>
+<th>React</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Default content</td>
+<td><code>&lt;slot /&gt;</code></td>
+<td><code>&#123;children&#125;</code></td>
+</tr>
+<tr>
+<td>Named slots</td>
+<td><code>&lt;slot name=&quot;header&quot; /&gt;</code></td>
+<td>Separate props ( <code>headerSlot</code> )</td>
+</tr>
+<tr>
+<td>Scoped slots</td>
+<td><code>&lt;slot :data=&quot;val&quot; /&gt;</code></td>
+<td>Render props / children as function</td>
+</tr>
+</tbody>
+</table>
+<h3 id="vue-3-12"><a class="markdownIt-Anchor" href="#vue-3-12">#</a> Vue 3</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- MyCard.vue --&gt;</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;card&quot;&gt;</span><br><span class="line">    &lt;slot name=&quot;header&quot; /&gt;</span><br><span class="line">    &lt;slot /&gt;</span><br><span class="line">    &lt;slot name=&quot;footer&quot; :closeModal=&quot;close&quot; /&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- Parent usage --&gt;</span><br><span class="line">&lt;MyCard&gt;</span><br><span class="line">  &lt;template #header&gt;&lt;h2&gt;Title&lt;/h2&gt;&lt;/template&gt;</span><br><span class="line">  &lt;p&gt;Body content&lt;/p&gt;</span><br><span class="line">  &lt;template #footer=&quot;&#123; closeModal &#125;&quot;&gt;</span><br><span class="line">    &lt;button @click=&quot;closeModal&quot;&gt;Close&lt;/button&gt;</span><br><span class="line">  &lt;/template&gt;</span><br><span class="line">&lt;/MyCard&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="react-12"><a class="markdownIt-Anchor" href="#react-12">#</a> React</h3>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// MyCard.jsx — named &quot;slots&quot; via props</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">MyCard</span>(<span class="params">&#123; header, children, footer &#125;</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;card&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      &#123;header&#125;</span></span><br><span class="line"><span class="language-xml">      &#123;children&#125;</span></span><br><span class="line"><span class="language-xml">      &#123;footer&#125;</span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Render prop pattern for scoped slot equivalent</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">MyCard</span>(<span class="params">&#123; children &#125;</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">close</span> = (<span class="params"></span>) =&gt; &#123; <span class="comment">/* ... */</span> &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;card&quot;</span>&gt;</span>&#123;children(close)&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Parent usage</span></span><br><span class="line">&lt;<span class="title class_">MyCard</span></span><br><span class="line">  header=&#123;<span class="language-xml"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span>&#125;</span><br><span class="line">  footer=&#123;<span class="language-xml"><span class="tag">&lt;<span class="name">button</span>&gt;</span>Close<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span>&#125;</span><br><span class="line">&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Body content<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line">&lt;/<span class="title class_">MyCard</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Render prop usage</span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">MyCard</span>&gt;</span>&#123;close =&gt; <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;close&#125;</span>&gt;</span>Close<span class="tag">&lt;/<span class="name">button</span>&gt;</span>&#125;<span class="tag">&lt;/<span class="name">MyCard</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="15-styling"><a class="markdownIt-Anchor" href="#15-styling">#</a> 15. Styling</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Vue 3</th>
+<th>React</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scoped CSS</td>
+<td><code>&lt;style scoped&gt;</code></td>
+<td>CSS Modules ( <code>.module.css</code> )</td>
+</tr>
+<tr>
+<td>Global CSS</td>
+<td><code>&lt;style&gt;</code>  (no scoped)</td>
+<td>Import directly</td>
+</tr>
+<tr>
+<td>Dynamic class</td>
+<td><code>:class=&quot;&#123; active: isActive &#125;&quot;</code></td>
+<td><code>className=&#123;isActive ? 'active' : ''&#125;</code></td>
+</tr>
+<tr>
+<td>Dynamic style</td>
+<td><code>:style=&quot;&#123; color: color &#125;&quot;</code></td>
+<td><code>style=&#123;&#123; color &#125;&#125;</code></td>
+</tr>
+<tr>
+<td>CSS-in-JS</td>
+<td>—</td>
+<td>styled-components, Emotion</td>
+</tr>
+</tbody>
+</table>
+<h3 id="vue-3-13"><a class="markdownIt-Anchor" href="#vue-3-13">#</a> Vue 3</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div :class=&quot;&#123; active: isActive, &#x27;text-lg&#x27;: isLarge &#125;&quot;&gt;Text&lt;/div&gt;</span><br><span class="line">  &lt;div :class=&quot;[baseClass, isActive &amp;&amp; &#x27;active&#x27;]&quot;&gt;Text&lt;/div&gt;</span><br><span class="line">  &lt;div :style=&quot;&#123; color, fontSize: size + &#x27;px&#x27; &#125;&quot;&gt;Text&lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">.active &#123; background: #42b883; &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="react-13"><a class="markdownIt-Anchor" href="#react-13">#</a> React</h3>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> styles <span class="keyword">from</span> <span class="string">&#x27;./Component.module.css&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Component</span>(<span class="params">&#123; isActive, isLarge, color, size &#125;</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#123;</span>`$&#123;<span class="attr">styles.base</span>&#125; $&#123;<span class="attr">isActive</span> ? <span class="attr">styles.active</span> <span class="attr">:</span> &#x27;&#x27;&#125; $&#123;<span class="attr">isLarge</span> ? <span class="attr">styles.lg</span> <span class="attr">:</span> &#x27;&#x27;&#125;`&#125;&gt;</span></span></span><br><span class="line"><span class="language-xml">        Text</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&#123;&#123;</span> <span class="attr">color</span>, <span class="attr">fontSize:</span> `$&#123;<span class="attr">size</span>&#125;<span class="attr">px</span>` &#125;&#125;&gt;</span>Text<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="16-routing"><a class="markdownIt-Anchor" href="#16-routing">#</a> 16. Routing</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Vue Router</th>
+<th>React Router v6</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Setup</td>
+<td><code>createRouter()</code></td>
+<td><code>createBrowserRouter()</code></td>
+</tr>
+<tr>
+<td>Outlet</td>
+<td><code>&lt;RouterView /&gt;</code></td>
+<td><code>&lt;Outlet /&gt;</code></td>
+</tr>
+<tr>
+<td>Link</td>
+<td><code>&lt;RouterLink to=&quot;...&quot;&gt;</code></td>
+<td><code>&lt;Link to=&quot;...&quot;&gt;</code></td>
+</tr>
+<tr>
+<td>Navigate</td>
+<td><code>router.push(...)</code></td>
+<td><code>useNavigate()</code></td>
+</tr>
+<tr>
+<td>Params</td>
+<td><code>route.params.id</code></td>
+<td><code>useParams().id</code></td>
+</tr>
+<tr>
+<td>Query</td>
+<td><code>route.query.page</code></td>
+<td><code>useSearchParams()</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="vue-3-vue-router"><a class="markdownIt-Anchor" href="#vue-3-vue-router">#</a> Vue 3 — Vue Router</h3>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// router/index.js</span></span><br><span class="line"><span class="keyword">import</span> &#123; createRouter, createWebHistory &#125; <span class="keyword">from</span> <span class="string">&#x27;vue-router&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> router = <span class="title function_">createRouter</span>(&#123;</span><br><span class="line">  <span class="attr">history</span>: <span class="title function_">createWebHistory</span>(),</span><br><span class="line">  <span class="attr">routes</span>: [</span><br><span class="line">    &#123; <span class="attr">path</span>: <span class="string">&#x27;/&#x27;</span>,         <span class="attr">component</span>: <span class="title class_">Home</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">path</span>: <span class="string">&#x27;/user/:id&#x27;</span>, <span class="attr">component</span>: <span class="title class_">User</span>, <span class="attr">name</span>: <span class="string">&#x27;user&#x27;</span> &#125;,</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup&gt;</span><br><span class="line">import &#123; useRouter, useRoute &#125; from &#x27;vue-router&#x27;</span><br><span class="line">const router = useRouter()</span><br><span class="line">const route  = useRoute()</span><br><span class="line"></span><br><span class="line">console.log(route.params.id)</span><br><span class="line">router.push(&#123; name: &#x27;user&#x27;, params: &#123; id: 1 &#125; &#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="react-react-router-v6"><a class="markdownIt-Anchor" href="#react-react-router-v6">#</a> React — React Router v6</h3>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.jsx</span></span><br><span class="line"><span class="keyword">import</span> &#123; createBrowserRouter, <span class="title class_">RouterProvider</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;react-router-dom&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> router = <span class="title function_">createBrowserRouter</span>([</span><br><span class="line">  &#123; <span class="attr">path</span>: <span class="string">&#x27;/&#x27;</span>,        <span class="attr">element</span>: <span class="language-xml"><span class="tag">&lt;<span class="name">Home</span> /&gt;</span></span> &#125;,</span><br><span class="line">  &#123; <span class="attr">path</span>: <span class="string">&#x27;/user/:id&#x27;</span>, <span class="attr">element</span>: <span class="language-xml"><span class="tag">&lt;<span class="name">User</span> /&gt;</span></span> &#125;,</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line"><span class="comment">// Usage in component</span></span><br><span class="line"><span class="keyword">import</span> &#123; useNavigate, useParams, <span class="title class_">Link</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;react-router-dom&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">User</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; id &#125; = <span class="title function_">useParams</span>()</span><br><span class="line">  <span class="keyword">const</span> navigate = <span class="title function_">useNavigate</span>()</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">p</span>&gt;</span>User: &#123;id&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> navigate(&#x27;/&#x27;)&#125;&gt;Home<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Link</span> <span class="attr">to</span>=<span class="string">&quot;/&quot;</span>&gt;</span>Home Link<span class="tag">&lt;/<span class="name">Link</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="17-state-management"><a class="markdownIt-Anchor" href="#17-state-management">#</a> 17. State Management</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Vue 3 — Pinia</th>
+<th>React — Zustand</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Define store</td>
+<td><code>defineStore('id', () =&gt; &#123;...&#125;)</code></td>
+<td><code>create((set) =&gt; &#123;...&#125;)</code></td>
+</tr>
+<tr>
+<td>State</td>
+<td><code>ref()</code>  inside store</td>
+<td>Properties in initial object</td>
+</tr>
+<tr>
+<td>Getters</td>
+<td><code>computed()</code>  inside store</td>
+<td>Derived selectors</td>
+</tr>
+<tr>
+<td>Actions</td>
+<td>Functions inside store</td>
+<td>Functions calling  <code>set()</code></td>
+</tr>
+<tr>
+<td>Use in component</td>
+<td><code>useCounterStore()</code></td>
+<td><code>useCounterStore(selector)</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="vue-3-pinia"><a class="markdownIt-Anchor" href="#vue-3-pinia">#</a> Vue 3 — Pinia</h3>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// stores/counter.js</span></span><br><span class="line"><span class="keyword">import</span> &#123; defineStore &#125; <span class="keyword">from</span> <span class="string">&#x27;pinia&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; ref, computed &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> useCounterStore = <span class="title function_">defineStore</span>(<span class="string">&#x27;counter&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> count  = <span class="title function_">ref</span>(<span class="number">0</span>)</span><br><span class="line">  <span class="keyword">const</span> double = <span class="title function_">computed</span>(<span class="function">() =&gt;</span> count.<span class="property">value</span> * <span class="number">2</span>)</span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">increment</span> = (<span class="params"></span>) =&gt; count.<span class="property">value</span>++</span><br><span class="line">  <span class="keyword">return</span> &#123; count, double, increment &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup&gt;</span><br><span class="line">import &#123; storeToRefs &#125; from &#x27;pinia&#x27;</span><br><span class="line">import &#123; useCounterStore &#125; from &#x27;@/stores/counter&#x27;</span><br><span class="line"></span><br><span class="line">const store = useCounterStore()</span><br><span class="line">const &#123; count, double &#125; = storeToRefs(store)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="react-zustand"><a class="markdownIt-Anchor" href="#react-zustand">#</a> React — Zustand</h3>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// stores/counter.js</span></span><br><span class="line"><span class="keyword">import</span> &#123; create &#125; <span class="keyword">from</span> <span class="string">&#x27;zustand&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> useCounterStore = <span class="title function_">create</span>(<span class="function">(<span class="params">set, get</span>) =&gt;</span> (&#123;</span><br><span class="line">  <span class="attr">count</span>: <span class="number">0</span>,</span><br><span class="line">  <span class="attr">double</span>: <span class="function">() =&gt;</span> <span class="title function_">get</span>().<span class="property">count</span> * <span class="number">2</span>,</span><br><span class="line">  <span class="attr">increment</span>: <span class="function">() =&gt;</span> <span class="title function_">set</span>(<span class="function"><span class="params">state</span> =&gt;</span> (&#123; <span class="attr">count</span>: state.<span class="property">count</span> + <span class="number">1</span> &#125;)),</span><br><span class="line">&#125;))</span><br></pre></td></tr></table></figure>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Counter</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> count     = <span class="title function_">useCounterStore</span>(<span class="function"><span class="params">s</span> =&gt;</span> s.<span class="property">count</span>)</span><br><span class="line">  <span class="keyword">const</span> increment = <span class="title function_">useCounterStore</span>(<span class="function"><span class="params">s</span> =&gt;</span> s.<span class="property">increment</span>)</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;increment&#125;</span>&gt;</span>&#123;count&#125;<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="18-quick-reference"><a class="markdownIt-Anchor" href="#18-quick-reference">#</a> 18. Quick Reference</h2>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Vue 3</th>
+<th>React</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Reactive primitive</td>
+<td><code>ref(val)</code></td>
+<td><code>useState(val)</code></td>
+</tr>
+<tr>
+<td>Reactive object</td>
+<td><code>reactive(&#123;&#125;)</code></td>
+<td><code>useState(&#123;&#125;)</code></td>
+</tr>
+<tr>
+<td>Computed / memoize</td>
+<td><code>computed(() =&gt; ...)</code></td>
+<td><code>useMemo(() =&gt; ..., [deps])</code></td>
+</tr>
+<tr>
+<td>Cached function</td>
+<td>—</td>
+<td><code>useCallback(fn, [deps])</code></td>
+</tr>
+<tr>
+<td>Side effects</td>
+<td><code>watchEffect(() =&gt; ...)</code></td>
+<td><code>useEffect(() =&gt; ..., [deps])</code></td>
+</tr>
+<tr>
+<td>Watch specific</td>
+<td><code>watch(src, cb)</code></td>
+<td><code>useEffect(() =&gt; ..., [dep])</code></td>
+</tr>
+<tr>
+<td>On mount</td>
+<td><code>onMounted(() =&gt; ...)</code></td>
+<td><code>useEffect(() =&gt; ..., [])</code></td>
+</tr>
+<tr>
+<td>On unmount</td>
+<td><code>onUnmounted(() =&gt; ...)</code></td>
+<td><code>useEffect(() =&gt; &#123; return cleanup &#125;, [])</code></td>
+</tr>
+<tr>
+<td>DOM reference</td>
+<td><code>const el = ref(null)</code></td>
+<td><code>const el = useRef(null)</code></td>
+</tr>
+<tr>
+<td>Props</td>
+<td><code>defineProps&lt;T&gt;()</code></td>
+<td>Function argument</td>
+</tr>
+<tr>
+<td>Emit / callback</td>
+<td><code>defineEmits&lt;T&gt;()</code></td>
+<td>Callback prop</td>
+</tr>
+<tr>
+<td>Shared state</td>
+<td><code>provide / inject</code></td>
+<td><code>createContext / useContext</code></td>
+</tr>
+<tr>
+<td>Reusable logic</td>
+<td>Composable  <code>useXxx()</code></td>
+<td>Custom hook  <code>useXxx()</code></td>
+</tr>
+<tr>
+<td>Template</td>
+<td>HTML template + directives</td>
+<td>JSX</td>
+</tr>
+<tr>
+<td>Conditional</td>
+<td><code>v-if / v-show</code></td>
+<td>Ternary /  <code>&amp;&amp;</code></td>
+</tr>
+<tr>
+<td>List</td>
+<td><code>v-for</code></td>
+<td><code>.map()</code></td>
+</tr>
+<tr>
+<td>Two-way bind</td>
+<td><code>v-model</code></td>
+<td>Controlled component</td>
+</tr>
+<tr>
+<td>Scoped styles</td>
+<td><code>&lt;style scoped&gt;</code></td>
+<td>CSS Modules</td>
+</tr>
+<tr>
+<td>Global store</td>
+<td>Pinia</td>
+<td>Zustand / Redux</td>
+</tr>
+<tr>
+<td>Router</td>
+<td>Vue Router</td>
+<td>React Router</td>
+</tr>
+</tbody>
+</table>
+
+      <div class="tags">
+          <a href="/tags/ai/" rel="tag"><i class="ic i-tag"></i> ai</a>
+          <a href="/tags/vue/" rel="tag"><i class="ic i-tag"></i> vue</a>
+          <a href="/tags/react/" rel="tag"><i class="ic i-tag"></i> react</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2026-07-23 16:22:31" itemprop="dateModified" datetime="2026-07-23T16:22:31+08:00">2026-07-23</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2026/07/17/python-concurrent-futures/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;剑来.jpg" title="Introduction to concurrent.futures in Python">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Introduction to concurrent.futures in Python</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2026/07/23/rust_qa/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;秒速五厘米-3.jpg" title="Rust Q&amp;A">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Rust Q&A</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#table-of-contents"><span class="toc-number">1.</span> <span class="toc-text"> Table of Contents</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-component-structure"><span class="toc-number">2.</span> <span class="toc-text"> 1. Component Structure</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#vue-3"><span class="toc-number">2.1.</span> <span class="toc-text"> Vue 3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#react"><span class="toc-number">2.2.</span> <span class="toc-text"> React</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-reactive-state"><span class="toc-number">3.</span> <span class="toc-text"> 2. Reactive State</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#vue-3-2"><span class="toc-number">3.1.</span> <span class="toc-text"> Vue 3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#react-2"><span class="toc-number">3.2.</span> <span class="toc-text"> React</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-computed-memoization"><span class="toc-number">4.</span> <span class="toc-text"> 3. Computed &#x2F; Memoization</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#vue-3-3"><span class="toc-number">4.1.</span> <span class="toc-text"> Vue 3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#react-3"><span class="toc-number">4.2.</span> <span class="toc-text"> React</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-event-handlers-methods"><span class="toc-number">5.</span> <span class="toc-text"> 4. Event Handlers &amp; Methods</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#vue-3-4"><span class="toc-number">5.1.</span> <span class="toc-text"> Vue 3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#react-4"><span class="toc-number">5.2.</span> <span class="toc-text"> React</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-watchers-effects"><span class="toc-number">6.</span> <span class="toc-text"> 5. Watchers &#x2F; Effects</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#vue-3-5"><span class="toc-number">6.1.</span> <span class="toc-text"> Vue 3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#react-5"><span class="toc-number">6.2.</span> <span class="toc-text"> React</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-lifecycle-hooks"><span class="toc-number">7.</span> <span class="toc-text"> 6. Lifecycle Hooks</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#vue-3-6"><span class="toc-number">7.1.</span> <span class="toc-text"> Vue 3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#react-6"><span class="toc-number">7.2.</span> <span class="toc-text"> React</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-props-communication"><span class="toc-number">8.</span> <span class="toc-text"> 7. Props &amp; Communication</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#vue-3-7"><span class="toc-number">8.1.</span> <span class="toc-text"> Vue 3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#react-7"><span class="toc-number">8.2.</span> <span class="toc-text"> React</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-two-way-binding"><span class="toc-number">9.</span> <span class="toc-text"> 8. Two-Way Binding</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#vue-3-8"><span class="toc-number">9.1.</span> <span class="toc-text"> Vue 3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#react-8"><span class="toc-number">9.2.</span> <span class="toc-text"> React</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-template-refs-dom-refs"><span class="toc-number">10.</span> <span class="toc-text"> 9. Template Refs &#x2F; DOM Refs</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#vue-3-9"><span class="toc-number">10.1.</span> <span class="toc-text"> Vue 3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#react-9"><span class="toc-number">10.2.</span> <span class="toc-text"> React</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-context-provide-inject"><span class="toc-number">11.</span> <span class="toc-text"> 10. Context &#x2F; Provide-Inject</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#vue-3-provide-inject"><span class="toc-number">11.1.</span> <span class="toc-text"> Vue 3 — Provide &#x2F; Inject</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#react-context-api"><span class="toc-number">11.2.</span> <span class="toc-text"> React — Context API</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-composables-custom-hooks"><span class="toc-number">12.</span> <span class="toc-text"> 11. Composables &#x2F; Custom Hooks</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#vue-3-composable"><span class="toc-number">12.1.</span> <span class="toc-text"> Vue 3 — Composable</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#react-custom-hook"><span class="toc-number">12.2.</span> <span class="toc-text"> React — Custom Hook</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-conditional-rendering"><span class="toc-number">13.</span> <span class="toc-text"> 12. Conditional Rendering</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#vue-3-10"><span class="toc-number">13.1.</span> <span class="toc-text"> Vue 3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#react-10"><span class="toc-number">13.2.</span> <span class="toc-text"> React</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-list-rendering"><span class="toc-number">14.</span> <span class="toc-text"> 13. List Rendering</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#vue-3-11"><span class="toc-number">14.1.</span> <span class="toc-text"> Vue 3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#react-11"><span class="toc-number">14.2.</span> <span class="toc-text"> React</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-slots-children-render-props"><span class="toc-number">15.</span> <span class="toc-text"> 14. Slots &#x2F; Children &amp; Render Props</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#vue-3-12"><span class="toc-number">15.1.</span> <span class="toc-text"> Vue 3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#react-12"><span class="toc-number">15.2.</span> <span class="toc-text"> React</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#15-styling"><span class="toc-number">16.</span> <span class="toc-text"> 15. Styling</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#vue-3-13"><span class="toc-number">16.1.</span> <span class="toc-text"> Vue 3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#react-13"><span class="toc-number">16.2.</span> <span class="toc-text"> React</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#16-routing"><span class="toc-number">17.</span> <span class="toc-text"> 16. Routing</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#vue-3-vue-router"><span class="toc-number">17.1.</span> <span class="toc-text"> Vue 3 — Vue Router</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#react-react-router-v6"><span class="toc-number">17.2.</span> <span class="toc-text"> React — React Router v6</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#17-state-management"><span class="toc-number">18.</span> <span class="toc-text"> 17. State Management</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#vue-3-pinia"><span class="toc-number">18.1.</span> <span class="toc-text"> Vue 3 — Pinia</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#react-zustand"><span class="toc-number">18.2.</span> <span class="toc-text"> React — Zustand</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#18-quick-reference"><span class="toc-number">19.</span> <span class="toc-text"> 18. Quick Reference</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">392</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">56</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
+      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2026/07/17/python-concurrent-futures/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2026/07/23/rust_qa/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ D E W</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2026/07/23/vue3-react-cheatsheet/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,446 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CFira%20Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="python" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2026/07/17/python-concurrent-futures/">
+
+
+
+  <title>
+Introduction to concurrent.futures in Python |
+D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</title>
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">Introduction to concurrent.futures in Python
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2026-07-17 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2026-07-17T00:00:00+08:00">2026-07-17</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">D E W</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="/anime/index/ReLIFE.jpg"></li>
+          <li class="item" data-background-image="/anime/index/千与千寻-1.jpg"></li>
+          <li class="item" data-background-image="/anime/index/迷域行者.jpg"></li>
+          <li class="item" data-background-image="/anime/index/叛逆的鲁鲁修.jpg"></li>
+          <li class="item" data-background-image="/anime/index/OVERLOAD.jpg"></li>
+          <li class="item" data-background-image="/anime/index/好想告诉你.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2026/07/17/python-concurrent-futures/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content="我知这世界本如露水般短暂，然而，然而, ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>repost: <a target="_blank" rel="noopener" href="https://medium.com/@smrati.katiyar/introduction-to-concurrent-futures-in-python-009fe1d4592c">Introduction to  <code>concurrent.futures</code>  in Python - smrati katiyar</a></p>
+</blockquote>
+<p>Concurrency in Python can be efficiently handled using the  <code>concurrent.futures</code>  module. This module provides a high-level interface for asynchronously executing function calls using either threads or processes. It allows you to run tasks in parallel, whether they are I/O-bound or CPU-bound, without worrying too much about the underlying details of thread and process management.</p>
+<p>In this article, we’ll explore how to use  <code>concurrent.futures</code> , explain the differences between threads and processes, and provide examples to illustrate the concepts.</p>
+<h2 id="what-is-concurrentfutures"><a class="markdownIt-Anchor" href="#what-is-concurrentfutures">#</a> What is  <code>concurrent.futures</code> ?</h2>
+<p>The  <code>concurrent.futures</code>  module provides two primary classes for parallel execution:</p>
+<ul>
+<li><strong>ThreadPoolExecutor</strong>: Uses threads to perform tasks. Best suited for I/O-bound operations where tasks spend time waiting (e.g., file I/O or network requests).</li>
+<li><strong>ProcessPoolExecutor</strong>: Uses separate processes to perform tasks. Ideal for CPU-bound tasks, such as computation-heavy operations, since Python’s Global Interpreter Lock (GIL) does not apply to separate processes.</li>
+</ul>
+<p>Both classes work similarly and allow you to submit tasks for concurrent execution, providing a way to execute them in parallel or asynchronously while managing their results.</p>
+<h2 id="key-concepts"><a class="markdownIt-Anchor" href="#key-concepts">#</a> Key Concepts</h2>
+<ul>
+<li><strong>Executor</strong>: An executor is an object that manages worker threads or processes.</li>
+<li><strong>Future</strong>: A  <code>Future</code>  object represents a result that may not have been computed yet. It allows you to check if the task is complete, retrieve the result, or cancel the task if needed.</li>
+<li><strong>submit</strong>: The  <code>submit()</code>  method is used to schedule a function for execution and returns a  <code>Future</code>  object.</li>
+<li><strong>map</strong>: Similar to Python’s built-in  <code>map()</code> , but tasks are executed concurrently.</li>
+</ul>
+<p>Let’s dive into examples to see how each component works.</p>
+<h2 id="1-using-threadpoolexecutor-for-io-bound-tasks"><a class="markdownIt-Anchor" href="#1-using-threadpoolexecutor-for-io-bound-tasks">#</a> 1. Using ThreadPoolExecutor for I/O-Bound Tasks</h2>
+<p>The  <code>ThreadPoolExecutor</code>  is perfect for I/O-bound tasks like reading files, making network requests, or handling user input concurrently.</p>
+<h2 id="example-downloading-multiple-web-pages-concurrently"><a class="markdownIt-Anchor" href="#example-downloading-multiple-web-pages-concurrently">#</a> Example: Downloading multiple web pages concurrently</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> concurrent.futures</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"><span class="comment"># Function to download a webpage</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">download_page</span>(<span class="params">url</span>):</span><br><span class="line">    response = requests.get(url)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">f&quot;<span class="subst">&#123;url&#125;</span> - <span class="subst">&#123;<span class="built_in">len</span>(response.content)&#125;</span> bytes&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># List of URLs to download</span></span><br><span class="line">urls = [</span><br><span class="line">    <span class="string">&quot;https://www.example.com&quot;</span>,</span><br><span class="line">    <span class="string">&quot;https://www.python.org&quot;</span>,</span><br><span class="line">    <span class="string">&quot;https://www.github.com&quot;</span>,</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Using ThreadPoolExecutor to download pages concurrently</span></span><br><span class="line">start_time = time.time()</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> concurrent.futures.ThreadPoolExecutor() <span class="keyword">as</span> executor:</span><br><span class="line">    futures = [executor.submit(download_page, url) <span class="keyword">for</span> url <span class="keyword">in</span> urls]</span><br><span class="line">    <span class="keyword">for</span> future <span class="keyword">in</span> concurrent.futures.as_completed(futures):</span><br><span class="line">        <span class="built_in">print</span>(future.result())</span><br><span class="line"></span><br><span class="line">end_time = time.time()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;Downloaded all pages in <span class="subst">&#123;end_time - start_time:<span class="number">.2</span>f&#125;</span> seconds&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="explanation"><a class="markdownIt-Anchor" href="#explanation">#</a> Explanation:</h2>
+<ul>
+<li>The  <code>download_page()</code>  function fetches a webpage and returns the size of the page content.</li>
+<li>Using  <code>ThreadPoolExecutor</code> , we submit the tasks to download each URL concurrently.</li>
+<li>The  <code>concurrent.futures.as_completed()</code>  function returns each  <code>Future</code>  as it completes, allowing us to process results as soon as they are ready.</li>
+</ul>
+<h2 id="output"><a class="markdownIt-Anchor" href="#output">#</a> Output:</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">https://www.python.org - <span class="number">48730</span> <span class="built_in">bytes</span></span><br><span class="line">https://www.example.com - <span class="number">1256</span> <span class="built_in">bytes</span></span><br><span class="line">https://www.github.com - <span class="number">30773</span> <span class="built_in">bytes</span></span><br><span class="line">Downloaded <span class="built_in">all</span> pages <span class="keyword">in</span> <span class="number">1.23</span> seconds</span><br></pre></td></tr></table></figure>
+<p>In this example, tasks that could take time to wait for network responses are handled in separate threads, speeding up the overall execution time.</p>
+<h2 id="2-using-processpoolexecutor-for-cpu-bound-tasks"><a class="markdownIt-Anchor" href="#2-using-processpoolexecutor-for-cpu-bound-tasks">#</a> 2. Using ProcessPoolExecutor for CPU-Bound Tasks</h2>
+<p>For CPU-intensive tasks like mathematical computations,  <code>ProcessPoolExecutor</code>  is more suitable. Python’s GIL (Global Interpreter Lock) limits true parallelism in threads, but since processes have separate memory spaces, multiple processes can run in parallel on different CPU cores.</p>
+<h3 id="example-parallel-computation-using-processpoolexecutor"><a class="markdownIt-Anchor" href="#example-parallel-computation-using-processpoolexecutor">#</a> Example: Parallel computation using  <code>ProcessPoolExecutor</code></h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> concurrent.futures</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="comment"># Function to perform a CPU-bound task</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">compute_factorial</span>(<span class="params">n</span>):</span><br><span class="line">    result = <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>, n + <span class="number">1</span>):</span><br><span class="line">        result *= i</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line">numbers = [<span class="number">50000</span>, <span class="number">60000</span>, <span class="number">70000</span>, <span class="number">80000</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Using ProcessPoolExecutor to compute factorials concurrently</span></span><br><span class="line">start_time = time.time()</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> concurrent.futures.ProcessPoolExecutor() <span class="keyword">as</span> executor:</span><br><span class="line">    futures = [executor.submit(compute_factorial, num) <span class="keyword">for</span> num <span class="keyword">in</span> numbers]</span><br><span class="line">    <span class="keyword">for</span> future <span class="keyword">in</span> concurrent.futures.as_completed(futures):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;Factorial computed for number: <span class="subst">&#123;numbers[futures.index(future)]&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">end_time = time.time()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;Computed all factorials in <span class="subst">&#123;end_time - start_time:<span class="number">.2</span>f&#125;</span> seconds&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="explanation-2"><a class="markdownIt-Anchor" href="#explanation-2">#</a> Explanation:</h2>
+<ul>
+<li>The  <code>compute_factorial()</code>  function performs a CPU-bound operation of calculating the factorial of a number.</li>
+<li>Using  <code>ProcessPoolExecutor</code> , we submit each factorial computation task to be executed in a separate process.</li>
+<li>The  <code>concurrent.futures.as_completed()</code>  function is used to retrieve results as they become available.</li>
+</ul>
+<p><strong>Output</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Factorial computed <span class="keyword">for</span> number: <span class="number">50000</span></span><br><span class="line">Factorial computed <span class="keyword">for</span> number: <span class="number">60000</span></span><br><span class="line">Factorial computed <span class="keyword">for</span> number: <span class="number">70000</span></span><br><span class="line">Factorial computed <span class="keyword">for</span> number: <span class="number">80000</span></span><br><span class="line">Computed <span class="built_in">all</span> factorials <span class="keyword">in</span> <span class="number">2.98</span> seconds</span><br></pre></td></tr></table></figure>
+<p>This example demonstrates how CPU-bound tasks can be handled in parallel across multiple CPU cores, improving performance.</p>
+<h2 id="3-using-map-for-simple-concurrent-task-execution"><a class="markdownIt-Anchor" href="#3-using-map-for-simple-concurrent-task-execution">#</a> 3. Using  <code>map</code>  for Simple Concurrent Task Execution</h2>
+<p>Both  <code>ThreadPoolExecutor</code>  and  <code>ProcessPoolExecutor</code>  provide a convenient method called  <code>map()</code>  to apply a function to multiple inputs concurrently. It works similarly to Python’s built-in  <code>map()</code> , but with concurrent execution.</p>
+<h3 id="example-using-map-with-threadpoolexecutor"><a class="markdownIt-Anchor" href="#example-using-map-with-threadpoolexecutor">#</a> Example: Using  <code>map</code>  with ThreadPoolExecutor</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> concurrent.futures</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">square</span>(<span class="params">n</span>):</span><br><span class="line">    <span class="keyword">return</span> n * n</span><br><span class="line"></span><br><span class="line">numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Using ThreadPoolExecutor to calculate squares concurrently</span></span><br><span class="line"><span class="keyword">with</span> concurrent.futures.ThreadPoolExecutor() <span class="keyword">as</span> executor:</span><br><span class="line">    results = executor.<span class="built_in">map</span>(square, numbers)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Results are returned in the order of input</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>(results))</span><br></pre></td></tr></table></figure>
+<p><strong>Output</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[1, 4, 9, 16, 25]</span><br></pre></td></tr></table></figure>
+<p>Here,  <code>executor.map()</code>  applies the  <code>square()</code>  function to each element in  <code>numbers</code>  concurrently. The  <code>map()</code>  function returns results in the same order as the input data, making it a convenient choice for cases where task order matters.</p>
+<h2 id="4-handling-exceptions-in-futures"><a class="markdownIt-Anchor" href="#4-handling-exceptions-in-futures">#</a> 4. Handling Exceptions in Futures</h2>
+<p>When working with concurrent tasks, some tasks may fail or raise exceptions.  <code>concurrent.futures</code>  allows you to handle these exceptions gracefully.</p>
+<h3 id="example-exception-handling-with-future"><a class="markdownIt-Anchor" href="#example-exception-handling-with-future">#</a> Example: Exception Handling with  <code>Future</code></h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> concurrent.futures</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">faulty_task</span>(<span class="params">n</span>):</span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">2</span>:</span><br><span class="line">        <span class="keyword">raise</span> ValueError(<span class="string">&quot;Error with input 2&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> n * n</span><br><span class="line"></span><br><span class="line">numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> concurrent.futures.ThreadPoolExecutor() <span class="keyword">as</span> executor:</span><br><span class="line">    futures = [executor.submit(faulty_task, num) <span class="keyword">for</span> num <span class="keyword">in</span> numbers]</span><br><span class="line">    <span class="keyword">for</span> future <span class="keyword">in</span> concurrent.futures.as_completed(futures):</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            result = future.result()  <span class="comment"># Retrieve result or raise an exception</span></span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;Result: <span class="subst">&#123;result&#125;</span>&quot;</span>)</span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;Task raised an exception: <span class="subst">&#123;e&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p><strong>Output</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Result: <span class="number">1</span></span><br><span class="line">Task raised an exception: Error <span class="keyword">with</span> <span class="built_in">input</span> <span class="number">2</span></span><br><span class="line">Result: <span class="number">9</span></span><br><span class="line">Result: <span class="number">16</span></span><br></pre></td></tr></table></figure>
+<p>In this example, the  <code>faulty_task()</code>  function raises an exception for input  <code>2</code> . The  <code>future.result()</code>  method either returns the result of the task or raises an exception if the task failed.</p>
+<h2 id="conclusion"><a class="markdownIt-Anchor" href="#conclusion">#</a> Conclusion</h2>
+<p>The  <code>concurrent.futures</code>  module in Python offers a powerful and simple interface for writing concurrent and parallel code. Whether you’re dealing with I/O-bound tasks using  <code>ThreadPoolExecutor</code>  or CPU-bound tasks with  <code>ProcessPoolExecutor</code> , this module provides a high-level way to manage tasks and retrieve results asynchronously.</p>
+<p>By combining concepts like  <code>Future</code> ,  <code>submit()</code> , and  <code>map()</code> , you can easily implement concurrency into your Python programs and achieve significant performance improvements for both I/O-bound and CPU-bound operations.</p>
+
+      <div class="tags">
+          <a href="/tags/python/" rel="tag"><i class="ic i-tag"></i> python</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2026-07-17 14:23:24" itemprop="dateModified" datetime="2026-07-17T14:23:24+08:00">2026-07-17</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2026/07/17/python-configparser/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;血意少年.jpg" title="Most Developers Don’t Know Python Has a Built-In Config File Parser">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Most Developers Don’t Know Python Has a Built-In Config File Parser</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2026/07/23/vue3-react-cheatsheet/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;异国日记-1.jpg" title="Vue 3 vs React Cheatsheet">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Vue 3 vs React Cheatsheet</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#what-is-concurrentfutures"><span class="toc-number">1.</span> <span class="toc-text"> What is  concurrent.futures ?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#key-concepts"><span class="toc-number">2.</span> <span class="toc-text"> Key Concepts</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-using-threadpoolexecutor-for-io-bound-tasks"><span class="toc-number">3.</span> <span class="toc-text"> 1. Using ThreadPoolExecutor for I&#x2F;O-Bound Tasks</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#example-downloading-multiple-web-pages-concurrently"><span class="toc-number">4.</span> <span class="toc-text"> Example: Downloading multiple web pages concurrently</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#explanation"><span class="toc-number">5.</span> <span class="toc-text"> Explanation:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#output"><span class="toc-number">6.</span> <span class="toc-text"> Output:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-using-processpoolexecutor-for-cpu-bound-tasks"><span class="toc-number">7.</span> <span class="toc-text"> 2. Using ProcessPoolExecutor for CPU-Bound Tasks</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#example-parallel-computation-using-processpoolexecutor"><span class="toc-number">7.1.</span> <span class="toc-text"> Example: Parallel computation using  ProcessPoolExecutor</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#explanation-2"><span class="toc-number">8.</span> <span class="toc-text"> Explanation:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-using-map-for-simple-concurrent-task-execution"><span class="toc-number">9.</span> <span class="toc-text"> 3. Using  map  for Simple Concurrent Task Execution</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#example-using-map-with-threadpoolexecutor"><span class="toc-number">9.1.</span> <span class="toc-text"> Example: Using  map  with ThreadPoolExecutor</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-handling-exceptions-in-futures"><span class="toc-number">10.</span> <span class="toc-text"> 4. Handling Exceptions in Futures</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#example-exception-handling-with-future"><span class="toc-number">10.1.</span> <span class="toc-text"> Example: Exception Handling with  Future</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#conclusion"><span class="toc-number">11.</span> <span class="toc-text"> Conclusion</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">392</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">56</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
+      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2026/07/17/python-configparser/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2026/07/23/vue3-react-cheatsheet/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ D E W</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2026/07/17/python-concurrent-futures/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

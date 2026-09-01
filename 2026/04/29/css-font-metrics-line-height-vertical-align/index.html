@@ -1,0 +1,560 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="露の世" href="https://lhchen74.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="露の世" href="https://lhchen74.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="露の世" href="https://lhchen74.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CFira%20Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="css" />
+
+
+<link rel="canonical" href="https://lhchen74.github.io/2026/04/29/css-font-metrics-line-height-vertical-align/">
+
+
+
+  <title>
+Deep dive CSS font metrics, line-height and vertical-align |
+D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</title>
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">Deep dive CSS font metrics, line-height and vertical-align
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2026-04-29 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2026-04-29T00:00:00+08:00">2026-04-29</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">D E W</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="/anime/index/强风吹拂.jpg"></li>
+          <li class="item" data-background-image="/anime/index/紫罗兰永恒花园-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/魔法少女小圆-1.jpg"></li>
+          <li class="item" data-background-image="/anime/index/红猪-1.jpg"></li>
+          <li class="item" data-background-image="/anime/index/侧耳倾听-4.jpg"></li>
+          <li class="item" data-background-image="/anime/index/虎鹤妖师录.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://lhchen74.github.io/2026/04/29/css-font-metrics-line-height-vertical-align/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="江边鸟">
+    <meta itemprop="description" content="我知这世界本如露水般短暂，然而，然而, ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="露の世">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>repost: <span class="exturl" data-url="aHR0cHM6Ly9pYW12ZG8ubWUvZW4vYmxvZy9jc3MtZm9udC1tZXRyaWNzLWxpbmUtaGVpZ2h0LWFuZC12ZXJ0aWNhbC1hbGlnbiNmbnJlZi0y">Deep dive CSS: font metrics, line-height and vertical-align - Vincent De Oliveira</span></p>
+</blockquote>
+<p><code>Line-height</code>  and  <code>vertical-align</code>  are simple CSS properties. So simple that most of us are convinced to fully understand how they work and how to use them. But it’s not. They really are complex, maybe the hardest ones, as <strong>they have a major role in the creation of one of the less-known feature of CSS: inline formatting context</strong>.</p>
+<p>For example,  <code>line-height</code>  can be set as a length or a unitless value <span class="exturl" data-url="aHR0cHM6Ly9pYW12ZG8ubWUvZW4vYmxvZy9jc3MtZm9udC1tZXRyaWNzLWxpbmUtaGVpZ2h0LWFuZC12ZXJ0aWNhbC1hbGlnbiNmbi0x">1</span>, but the default is  <code>normal</code> . OK, but what normal is? We often read that it is (or should be) 1, or maybe 1.2, even the <span class="exturl" data-url="aHR0cHM6Ly93d3cudzMub3JnL1RSL0NTUzIvdmlzdWRldC5odG1sI3Byb3BkZWYtbGluZS1oZWlnaHQ=">CSS spec is unclear on that point</span>. We know that unitless  <code>line-height</code>  is  <code>font-size</code>  relative, but the problem is that  <code>font-size: 100px</code>  behaves differently across font-families, so is  <code>line-height</code>  always the same or different? Is it really between 1 and 1.2? And  <code>vertical-align</code> , what are its implications regarding  <code>line-height</code> ?</p>
+<p>Deep dive into a not-so-simple CSS mechanism…</p>
+<h2 id="lets-talk-about-font-size-first"><a class="markdownIt-Anchor" href="#lets-talk-about-font-size-first">#</a> Let’s talk about  <code>font-size</code>  first</h2>
+<p>Look at this simple HTML code, a  <code>&lt;p&gt;</code>  tag containing 3  <code>&lt;span&gt;</code> , each with a different  <code>font-family</code> :</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;a&quot;</span>&gt;</span>Ba<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;b&quot;</span>&gt;</span>Ba<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;c&quot;</span>&gt;</span>Ba<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">100px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.a</span> &#123;</span><br><span class="line">  <span class="attribute">font-family</span>: Helvetica;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.b</span> &#123;</span><br><span class="line">  <span class="attribute">font-family</span>: Gruppo;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.c</span> &#123;</span><br><span class="line">  <span class="attribute">font-family</span>: Catamaran;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Using the same  <code>font-size</code>  with different font-families produce elements with various heights:</p>
+<img data-src="/2026/04/29/css-font-metrics-line-height-vertical-align/font-size.png" class="" title="img">Different font-families, same font-size, give various heights
+<p>Even if we’re aware of that behavior, why  <code>font-size: 100px</code>  does not create elements with 100px height? I’ve measured and found these values: Helvetica: 115px, Gruppo: 97px and Catamaran: 164px</p>
+<p><img data-src="https://iamvdo.me/content/01-blog/30-css-avance-metriques-des-fontes-line-height-et-vertical-align/font-size-line-height.png" alt="img">Elements with font-size: 100px have height that varies from 97px to 164px</p>
+<p>Although it seems a bit weird at first, it’s totally expected. <strong>The reason lays down inside the font itself</strong>. Here is how it works:</p>
+<ul>
+<li>a font defines its <span class="exturl" data-url="aHR0cDovL2Rlc2lnbndpdGhmb250Zm9yZ2UuY29tL2VuLVVTL1RoZV9FTV9TcXVhcmUuaHRtbA==">em-square</span> (or UPM, units per em), a kind of container where each character will be drawn. This square uses relative units and is generally set at 1000 units. But it can also be 1024, 2048 or anything else.</li>
+<li>based on its relative units, metrics of the fonts are set (ascender, descender, capital height, x-height, etc.). Note that some values can bleed outside of the em-square.</li>
+<li>in the browser, relative units are scaled to fit the desired font-size.</li>
+</ul>
+<p>Let’s take the Catamaran font and open it in <span class="exturl" data-url="aHR0cHM6Ly9mb250Zm9yZ2UuZ2l0aHViLmlvL2VuLVVTLw==">FontForge</span> to get metrics:</p>
+<ul>
+<li>the em-square is 1000</li>
+<li>the ascender is 1100 and the descender is 540. After running some tests, it seems that browsers use the <em>HHead Ascent</em>/<em>Descent</em> values on Mac OS, and <em>Win Ascent</em>/<em>Descent</em> values on Windows (these values may differ!). We also note that <em>Capital Height</em> is 680 and <em>X height</em> is 485.</li>
+</ul>
+<p><img data-src="https://iamvdo.me/content/01-blog/30-css-avance-metriques-des-fontes-line-height-et-vertical-align/font-forge-metrics.png" alt="img">Font metrics values using FontForge</p>
+<p>That means the Catamaran font uses 1100 + 540 units in a 1000 units em-square, which gives a height of 164px when setting  <code>font-size: 100px</code> . <strong>This computed height defines the content-area of an element</strong> and I will refer to this terminology for the rest of the article. You can think of the <em>content-area</em> as the area where the  <code>background</code>  property applies <span class="exturl" data-url="aHR0cHM6Ly9pYW12ZG8ubWUvZW4vYmxvZy9jc3MtZm9udC1tZXRyaWNzLWxpbmUtaGVpZ2h0LWFuZC12ZXJ0aWNhbC1hbGlnbiNmbi0y">2</span>.</p>
+<p>We can also predict that capital letters are 68px high (680 units) and lower case letters (x-height) are 49px high (485 units). As a result,  <code>1ex</code>  = 49px and  <code>1em</code>  = 100px, not 164px (thankfully,  <code>em</code>  is based on  <code>font-size</code> , not computed height)</p>
+<p><img data-src="https://iamvdo.me/content/01-blog/30-css-avance-metriques-des-fontes-line-height-et-vertical-align/upm-px-equivalent.png" alt="img">Catamaran font: UPM —Units Per Em— and pixels equivalent using font-size: 100px</p>
+<p>Before going deeper, a short note on what this it involves. When a  <code>&lt;p&gt;</code>  element is rendered on screen, it can be composed of many lines, according to its width. Each line is made up of one or many inline elements (HTML tags or anonymous inline elements for text content) and is called a <em>line-box</em>. <strong>The height of a line-box is based on its children’s height</strong>. The browser therefore computes the height for each inline elements, and thus the height of the <em>line-box</em> (from its child’s highest point to its child’s lowest point). As a result, a <em>line-box</em> is always tall enough to contain all its children (by default).</p>
+<blockquote>
+<p>Each HTML element is actually a stack of <em>line-boxes</em>. If you know the height of each <em>line-box</em>, you know the height of an element.</p>
+</blockquote>
+<p>If we update the previous HTML code like this:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">  Good design will be better.</span><br><span class="line">  <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;a&quot;</span>&gt;</span>Ba<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;b&quot;</span>&gt;</span>Ba<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;c&quot;</span>&gt;</span>Ba<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  We get to make a consequence.</span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>It will generate 3 <em>line-boxes</em>:</p>
+<ul>
+<li>the first and last one each contain a single anonymous inline element (text content)</li>
+<li>the second one contains two anonymous inline elements, and the 3  <code>&lt;span&gt;</code></li>
+</ul>
+<p><img data-src="https://iamvdo.me/content/01-blog/30-css-avance-metriques-des-fontes-line-height-et-vertical-align/line-boxes.png" alt="img">A  <code>&lt;p&gt;</code>  (black border) is made of line-boxes (white borders) that contain inline elements (solid borders) and anonymous inline elements (dashed borders)</p>
+<p>We clearly see that the second <em>line-box</em> is taller than the others, due to the computed <em>content-area</em> of its children, and more specifically, the one using the Catamaran font.</p>
+<p><strong>The difficult part in the line-box creation is that we can’t really see, nor control it with CSS</strong>. Even applying a background to  <code>::first-line</code>  does not give us any visual clue on the first <em>line-box</em>’s height.</p>
+<h2 id="line-height-to-the-problems-and-beyond"><a class="markdownIt-Anchor" href="#line-height-to-the-problems-and-beyond">#</a>  <code>line-height</code> : to the problems and beyond</h2>
+<p>Until now, I introduced two notions: <em>content-area</em> and <em>line-box</em>. If you’ve read it well, I told that a <em>line-box</em>’s height is computed according to its children’s height, I didn’t say its children <em>content-area</em>’s height. And that makes a big difference.</p>
+<p>Even though it may sound strange, <strong>an inline element has two different height: the content-area height and the virtual-area height</strong> (I invented the term <em>virtual-area</em> as the height is invisible to us, but you won’t find any occurrence in the spec).</p>
+<ul>
+<li>the <em>content-area</em> height is defined by the font metrics (as seen before)</li>
+<li><strong>the virtual-area height is the line-height</strong>, and it is the height <strong>used to compute the line-box’s height</strong></li>
+</ul>
+<img data-src="/2026/04/29/css-font-metrics-line-height-vertical-align/line-height.png" class="" title="img">Inline elements have two different height
+<p>That being said, it breaks down the popular belief that  <code>line-height</code>  is the distance between baselines. In CSS, it is not <span class="exturl" data-url="aHR0cHM6Ly9pYW12ZG8ubWUvZW4vYmxvZy9jc3MtZm9udC1tZXRyaWNzLWxpbmUtaGVpZ2h0LWFuZC12ZXJ0aWNhbC1hbGlnbiNmbi0z">3</span>.</p>
+<p><img data-src="https://iamvdo.me/content/01-blog/30-css-avance-metriques-des-fontes-line-height-et-vertical-align/line-height-yes-no.png" alt="img">In CSS, the line-height is not the distance between baselines</p>
+<p>The computed difference of height between the <em>virtual-area</em> and the <em>content-area</em> is called the leading. Half this leading is added on top of the <em>content-area</em>, the other half is added on the bottom. <strong>The content-area is therefore always on the middle of the virtual-area</strong>.</p>
+<p>Based on its computed value, the  <code>line-height</code>  (<em>virtual-area</em>) can be equal, taller or smaller than the <em>content-area</em>. In case of a smaller <em>virtual-area</em>, leading is negative and a <em>line-box</em> is visually smaller than its children.</p>
+<p>There are also other kind of inline elements:</p>
+<ul>
+<li>replaced inline elements ( <code>&lt;img&gt;</code> ,  <code>&lt;input&gt;</code> ,  <code>&lt;svg&gt;</code> , etc.)</li>
+<li><code>inline-block</code>  and all  <code>inline-*</code>  elements</li>
+<li>inline elements that participate in a specific formatting context (eg. in a flexbox element, all flex items are <em>blocksified</em>)</li>
+</ul>
+<p>For these specific inline elements, height is computed based on their  <code>height</code> ,  <code>margin</code>  and  <code>border</code>  properties. If  <code>height</code>  is  <code>auto</code> , then  <code>line-height</code>  is used and the <em>content-area</em> is strictly equal to the  <code>line-height</code> .</p>
+<img data-src="/2026/04/29/css-font-metrics-line-height-vertical-align/line-height-inline-block.png" class="" title="img">Inline replaced elements, inline-block/inline-\* and blocksified inline elements have a content-area equal to their height, or line-height
+<p>Anyway, the problem we’re still facing is how much the  <code>line-height</code> ’s  <code>normal</code>  value is? And the answer, as for the computation of the <em>content-area</em>’s height, is to be found inside the font metrics.</p>
+<p>So let’s go back to FontForge. The Catamaran’s em-square is 1000, but we’re seeing many ascender/descender values:</p>
+<ul>
+<li>generals <em>Ascent/Descent</em>: ascender is 770 and descender is 230. Used for character drawings. (table <em>“OS/2”</em>)</li>
+<li>metrics <em>Ascent/Descent</em>: ascender is 1100 and descender is 540. Used for <em>content-area</em>’s height. (table <em>“hhea”</em> and table <em>“OS/2”</em>)</li>
+<li>metric <em>Line Gap</em>. Used for  <code>line-height: normal</code> , by adding this value to <em>Ascent/Descent</em> metrics. (table <em>“hhea”</em>)</li>
+</ul>
+<p>In our case, the Catamaran font defines a 0 unit line gap, so <strong>line-height: normal will be equal to the content-area, which is 1640 units, or 1.64</strong>.</p>
+<p>As a comparison, the Arial font describes an em-square of 2048 units, an ascender of 1854, a descender of 434 and a line gap of 67. It means that  <code>font-size: 100px</code>  gives a <em>content-area</em> of 112px (1117 units) and a  <code>line-height: normal</code>  of 115px (1150 units or 1.15). All these metrics are font-specific, and set by the font designer.</p>
+<p><strong>It becomes obvious that setting line-height: 1 is a bad practice</strong>. I remind you that unitless values are  <code>font-size</code>  relative, not <em>content-area</em> relative, and dealing with a <em>virtual-area</em> smaller than the <em>content-area</em> is the origin of many of our problems.</p>
+<img data-src="/2026/04/29/css-font-metrics-line-height-vertical-align/line-height-1.png" class="" title="img">Using line-height: 1 can create a line-box smaller than the content-area
+<p>But not only  <code>line-height: 1</code> . For what it’s worth, on the 1117 fonts installed on my computer (yes, <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3FycGlrZS9XZWItRm9udC1Mb2Fk">I installed all fonts from Google Web Fonts</span>), 1059 fonts, around 95%, have a computed  <code>line-height</code>  greater than 1. Their computed  <code>line-height</code>  goes from 0.618 to 3.378. You’ve read it well, 3.378!</p>
+<p>Small details on <em>line-box</em> computation:</p>
+<ul>
+<li>for inline elements,  <code>padding</code>  and  <code>border</code>  increases the background area, but not the <em>content-area</em>’s height (nor the <em>line-box</em>’s height). The <em>content-area</em> is therefore not always what you see on screen.  <code>margin-top</code>  and  <code>margin-bottom</code>  have no effect.</li>
+<li>for replaced inline elements,  <code>inline-block</code>  and <em>blocksified</em> inline elements:  <code>padding</code> ,  <code>margin</code>  and  <code>border</code>  increases the  <code>height</code> , so the <em>content-area</em> and <em>line-box</em>’s height</li>
+</ul>
+<h2 id="vertical-align-one-property-to-rule-them-all"><a class="markdownIt-Anchor" href="#vertical-align-one-property-to-rule-them-all">#</a>  <code>vertical-align</code> : one property to rule them all</h2>
+<p>I didn’t mention the  <code>vertical-align</code>  property yet, even though it is an essential factor to compute a <em>line-box</em>’s height. We can even say that <strong>vertical-align may have the leading role in inline formatting context</strong>.</p>
+<p>The default value is  <code>baseline</code> . Do you remind font metrics ascender and descender? These values determine where the baseline stands, and so the ratio. As the ratio between ascenders and descenders is rarely 50/50, it may produce unexpected results, for example with siblings elements.</p>
+<p>Start with that code:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">span</span>&gt;</span>Ba<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">span</span>&gt;</span>Ba<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">  <span class="attribute">font-family</span>: Catamaran;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">line-height</span>: <span class="number">200px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>A  <code>&lt;p&gt;</code>  tag with 2 siblings  <code>&lt;span&gt;</code>  inheriting  <code>font-family</code> ,  <code>font-size</code>  and fixed  <code>line-height</code> . Baselines will match and the <em>line-box</em>’s height is equal to their  <code>line-height</code> .</p>
+<img data-src="/2026/04/29/css-font-metrics-line-height-vertical-align/vertical-align-baseline.png" class="" title="img">Same font values, same baselines, everything seems OK
+<p>What if the second element has a smaller  <code>font-size</code> ?</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">span</span><span class="selector-pseudo">:last-child</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">50px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>As strange as it sounds, <strong>default baseline alignment may result in a higher (!) line-box</strong>, as seen in the image below. I remind you that a <em>line-box</em>’s height is computed from its child’s highest point to its child’s lowest point.</p>
+<img data-src="/2026/04/29/css-font-metrics-line-height-vertical-align/vertical-align-baseline-nok.png" class="" title="img">A smaller child element may result in a higher line-box's height
+<p>That could be <a target="_blank" rel="noopener" href="http://allthingssmitty.com/2017/01/30/nope-nope-nope-line-height-is-unitless/">an argument in favor of using  <code>line-height</code>  unitless values</a>, but sometimes you need fixed ones to <span class="exturl" data-url="aHR0cHM6Ly9zY290Y2guaW8vdHV0b3JpYWxzL2Flc3RoZXRpYy1zYXNzLTMtdHlwb2dyYXBoeS1hbmQtdmVydGljYWwtcmh5dGhtI2Jhc2VsaW5lLWdyaWRzLWFuZC12ZXJ0aWNhbC1yaHl0aG0=">create a perfect vertical rhythm</span>. <strong>To be honest, no matter what you choose, you’ll always have trouble with inline alignments</strong>.</p>
+<p>Look at this another example. A  <code>&lt;p&gt;</code>  tag with  <code>line-height: 200px</code> , containing a single  <code>&lt;span&gt;</code>  inheriting  <code>line-height</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">span</span>&gt;</span>Ba<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">  <span class="attribute">line-height</span>: <span class="number">200px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">span</span> &#123;</span><br><span class="line">  <span class="attribute">font-family</span>: Catamaran;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">100px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>How high is the <em>line-box</em>? We should expect 200px, but it’s not what we get. The problem here is that the  <code>&lt;p&gt;</code>  has its own, different  <code>font-family</code>  (default to  <code>serif</code> ). Baselines between the  <code>&lt;p&gt;</code>  tag and the  <code>&lt;span&gt;</code>  are likely to be different, the height of the <em>line-box</em> is therefore higher than expected. <strong>This happens because browsers do their computation as if each line-box starts with a zero-width character</strong>, that the spec called a strut.</p>
+<blockquote>
+<p>An invisible character, but a visible impact.</p>
+</blockquote>
+<p>To resume, we’re facing the same previous problem as for siblings elements.</p>
+<img data-src="/2026/04/29/css-font-metrics-line-height-vertical-align/vertical-align-strut.png" class="" title="img">Each child is aligned as if its line-box starts with an invisible zero-width character
+<p>Baseline alignment is screwed, but what about  <code>vertical-align: middle</code>  to the rescue? As you can read in the spec,  <code>middle</code>  “aligns the vertical midpoint of the box with the baseline of the parent box plus half the x-height of the parent”. <strong>Baselines ratio are different, as well as x-height ratio, so middle alignment isn’t reliable either</strong>. Worst, in most scenarios,  <code>middle</code>  is never really “at the middle”. Too many factors are involved and cannot be set via CSS (x-height, ascender/descender ratio, etc.)</p>
+<p>As a side note, there are 4 other values, that may be useful in some cases:</p>
+<ul>
+<li><code>vertical-align: top</code>  /  <code>bottom</code>  align to the top or the bottom of the <em>line-box</em></li>
+<li><code>vertical-align: text-top</code>  /  <code>text-bottom</code>  align to the top or the bottom of the <em>content-area</em></li>
+</ul>
+<img data-src="/2026/04/29/css-font-metrics-line-height-vertical-align/vertical-align-top-bottom-text.png" class="" title="img">Vertical-align: top, bottom, text-top and text-bottom
+<p>Be careful though, in all cases, it aligns the <em>virtual-area</em>, so the invisible height. Look at this simple example using  <code>vertical-align: top</code> . <strong>Invisible line-height may produce odd, but unsurprising, results</strong>.</p>
+<img data-src="/2026/04/29/css-font-metrics-line-height-vertical-align/vertical-align-top-virtual-height.png" class="" title="img">vertical-align may produce odd result at first, but expected when visualizing line-height
+<p>Finally,  <code>vertical-align</code>  also accepts numerical values which raise or lower the box regarding to the baseline. That last option could come in handy.</p>
+<h2 id="css-is-awesome"><a class="markdownIt-Anchor" href="#css-is-awesome">#</a> CSS is awesome</h2>
+<p>We’ve talked about how  <code>line-height</code>  and  <code>vertical-align</code>  work together, but now the question is: are font metrics controllable with CSS? Short answer: no. Even if I really hope so. Anyway, I think we have to play a bit. Font metrics are constant, so we should be able to do something.</p>
+<p>What if, for example, we want a text using the Catamaran font, where the capital height is exactly 100px high? Seems doable: let’s do some maths.</p>
+<p>First we set all font metrics as CSS custom properties <span class="exturl" data-url="aHR0cHM6Ly9pYW12ZG8ubWUvZW4vYmxvZy9jc3MtZm9udC1tZXRyaWNzLWxpbmUtaGVpZ2h0LWFuZC12ZXJ0aWNhbC1hbGlnbiNmbi00">4</span>, then compute  <code>font-size</code>  to get a capital height of 100px.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">  <span class="comment">/* font metrics */</span></span><br><span class="line">  <span class="attr">--font</span>: Catamaran;</span><br><span class="line">  <span class="attr">--fm-capitalHeight</span>: <span class="number">0.68</span>;</span><br><span class="line">  <span class="attr">--fm-descender</span>: <span class="number">0.54</span>;</span><br><span class="line">  <span class="attr">--fm-ascender</span>: <span class="number">1.1</span>;</span><br><span class="line">  <span class="attr">--fm-linegap</span>: <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* desired font-size for capital height */</span></span><br><span class="line">  <span class="attr">--capital-height</span>: <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* apply font-family */</span></span><br><span class="line">  <span class="attribute">font-family</span>: <span class="built_in">var</span>(--font);</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* compute font-size to get capital height equal desired font-size */</span></span><br><span class="line">  <span class="attr">--computedFontSize</span>: (<span class="built_in">var</span>(--capital-height) / <span class="built_in">var</span>(--fm-capitalHeight));</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="built_in">calc</span>(<span class="built_in">var</span>(--computedFontSize) * <span class="number">1px</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<img data-src="/2026/04/29/css-font-metrics-line-height-vertical-align/css-metrics-capital-height.png" class="" title="img">The capital height is now 100px high
+<p>Pretty straightforward, isn’t it? But what if we want the text to be visually at the middle, so that the remaining space is equally distributed on top and bottom of the “B” letter? To achieve that, we have to compute  <code>vertical-align</code>  based on ascender/descender ratio.</p>
+<p>First, compute  <code>line-height: normal</code>  and <em>content-area</em>’s height:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">    …</span><br><span class="line">    <span class="attr">--lineheightNormal</span>: (<span class="built_in">var</span>(--fm-ascender) + <span class="built_in">var</span>(--fm-descender) + <span class="built_in">var</span>(--fm-linegap));</span><br><span class="line">    <span class="attr">--contentArea</span>: (<span class="built_in">var</span>(--lineheightNormal) * <span class="built_in">var</span>(--computedFontSize));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Then, we need:</p>
+<ul>
+<li>the distance from the bottom of the capital letter to the bottom edge</li>
+<li>the distance from the top of the capital letter to the top edge</li>
+</ul>
+<p>Like so:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">    …</span><br><span class="line">    <span class="attr">--distanceBottom</span>: (<span class="built_in">var</span>(--fm-descender));</span><br><span class="line">    <span class="attr">--distanceTop</span>: (<span class="built_in">var</span>(--fm-ascender) - <span class="built_in">var</span>(--fm-capitalHeight));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>We can now compute  <code>vertical-align</code> , which is the difference between the distances multiplied by the computed  <code>font-size</code> . (we must apply this value to an inline child element)</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">    …</span><br><span class="line">    <span class="attr">--valign</span>: ((<span class="built_in">var</span>(--distanceBottom) - <span class="built_in">var</span>(--distanceTop)) * <span class="built_in">var</span>(--computedFontSize));</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">span</span> &#123;</span><br><span class="line">    <span class="attribute">vertical-align</span>: <span class="built_in">calc</span>(<span class="built_in">var</span>(--valign) * -<span class="number">1px</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>At the end, we set the desired  <code>line-height</code>  and compute it while maintaining a vertical alignment:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">    …</span><br><span class="line">    <span class="comment">/* desired line-height */</span></span><br><span class="line">    <span class="attr">--line-height</span>: <span class="number">3</span>;</span><br><span class="line">    <span class="attribute">line-height</span>: <span class="built_in">calc</span>(((<span class="built_in">var</span>(--line-height) * <span class="built_in">var</span>(--capital-height)) - <span class="built_in">var</span>(--valign)) * <span class="number">1px</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<img data-src="/2026/04/29/css-font-metrics-line-height-vertical-align/css-metrics-results-line-height.png" class="" title="img">Results with different line-height. The text is always on the middle
+<p>Adding an icon whose height is matching the letter “B” is now easy:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">span</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span><br><span class="line">  <span class="attribute">display</span>: inline-block;</span><br><span class="line">  <span class="attribute">width</span>: <span class="built_in">calc</span>(<span class="number">1px</span> * <span class="built_in">var</span>(--capital-height));</span><br><span class="line">  <span class="attribute">height</span>: <span class="built_in">calc</span>(<span class="number">1px</span> * <span class="built_in">var</span>(--capital-height));</span><br><span class="line">  <span class="attribute">margin-right</span>: <span class="number">10px</span>;</span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">url</span>(<span class="string">&quot;https://cdn.pbrd.co/images/yBAKn5bbv.png&quot;</span>);</span><br><span class="line">  <span class="attribute">background-size</span>: cover;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<img data-src="/2026/04/29/css-font-metrics-line-height-vertical-align/css-metrics-results-icon.png" class="" title="img">Icon and B letter are the same height
+<p><span class="exturl" data-url="aHR0cDovL2pzYmluLmNvbS90dWZhdGlyL2VkaXQ/Y3NzLG91dHB1dA==">See result in JSBin</span></p>
+<p>Note that this test is for demonstration purpose only. You can’t rely on this. Many reasons:</p>
+<ul>
+<li>unless font metrics are constant, <span class="exturl" data-url="aHR0cHM6Ly93d3cuYnJ1bmlsZG8ub3JnL3Rlc3Qvbm9ybWFsLWxoLXBsb3QuaHRtbA==">computations in browsers are not</span> ¯⁠*⁠(ツ)⁠*/⁠¯</li>
+<li>if font is not loaded, fallback font has probably different font metrics, and dealing with multiple values will quickly become quite unmanageable</li>
+</ul>
+<h2 id="takeaways"><a class="markdownIt-Anchor" href="#takeaways">#</a> Takeaways</h2>
+<p>What we learned:</p>
+<ul>
+<li>inline formatting context is really hard to understand</li>
+<li>all inline elements have 2 height:
+<ul>
+<li>the <em>content-area</em> (based on font metrics)</li>
+<li>the <em>virtual-area</em> ( <code>line-height</code> )</li>
+<li>none of these 2 heights can be visualize with no doubt. (if you’re a devtools developer and want to work on this, it could be awesome)</li>
+</ul>
+</li>
+<li><code>line-height: normal</code>  is based on font metrics</li>
+<li><code>line-height: n</code>  may create a <em>virtual-area</em> smaller than <em>content-area</em></li>
+<li><code>vertical-align</code>  is not very reliable</li>
+<li>a <em>line-box</em>’s height is computed based on its children’s  <code>line-height</code>  and  <code>vertical-align</code>  properties</li>
+<li>we cannot easily get/set font metrics with CSS</li>
+</ul>
+<p>But I still love CSS 😃</p>
+<h2 id="resources"><a class="markdownIt-Anchor" href="#resources">#</a> Resources</h2>
+<ul>
+<li>get font metrics: <span class="exturl" data-url="aHR0cHM6Ly9mb250Zm9yZ2UuZ2l0aHViLmlvL2VuLVVTLw==">FontForge</span>, <span class="exturl" data-url="aHR0cDovL29wZW50eXBlLmpzLm9yZy9mb250LWluc3BlY3Rvci5odG1s">opentype.js</span></li>
+<li><a target="_blank" rel="noopener" href="http://brunildo.org/test/aspect-lh-table2.html">compute  <code>line-height: normal</code> , and some ratio in the browser</a></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cudzMub3JnL1N0eWxlL0NTUy9UZXN0L0ZvbnRzL0FoZW0v">Ahem</span>, a special font to help understand how it works</li>
+<li>an even deeper, institutional, explanation of <span class="exturl" data-url="aHR0cDovL21leWVyd2ViLmNvbS9lcmljL2Nzcy9pbmxpbmUtZm9ybWF0Lmh0bWw=">inline formatting context</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9zZWVrLW9zcy5naXRodWIuaW8vY2Fwc2l6ZS8=">Capsize</span>, a tool to make the sizing and layout of text predictable</li>
+<li>Up to date specification <span class="exturl" data-url="aHR0cHM6Ly9kcmFmdHMuY3Nzd2cub3JnL2Nzcy1pbmxpbmUtMy8=">CSS Inline Layout Module Level 3</span></li>
+<li><a target="_blank" rel="noopener" href="https://medium.com/microsoft-design/leading-trim-the-future-of-digital-typesetting-d082d84b202">A blog post about the  <code>leading-trim</code>  property</a>, to ensure consistent spacing by controling the leading</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kcmFmdHMuY3NzLWhvdWRpbmkub3JnL2ZvbnQtbWV0cmljcy1hcGktMS8=">Font Metrics API Level 1</span>, a collection of interesting ideas (Houdini)</li>
+</ul>
+<ol>
+<li>no matter what you choose, that’s not the point here <span class="exturl" data-url="aHR0cHM6Ly9pYW12ZG8ubWUvZW4vYmxvZy9jc3MtZm9udC1tZXRyaWNzLWxpbmUtaGVpZ2h0LWFuZC12ZXJ0aWNhbC1hbGlnbiNmbnJlZi0x">↩</span></li>
+<li>it’s not strictly true <span class="exturl" data-url="aHR0cHM6Ly9pYW12ZG8ubWUvZW4vYmxvZy9jc3MtZm9udC1tZXRyaWNzLWxpbmUtaGVpZ2h0LWFuZC12ZXJ0aWNhbC1hbGlnbiNmbnJlZi0y">↩</span></li>
+<li>in other editing software, it might be the distance between baselines. In Word, or Photoshop, that is the case. The main difference is that the first line is also affected in CSS <span class="exturl" data-url="aHR0cHM6Ly9pYW12ZG8ubWUvZW4vYmxvZy9jc3MtZm9udC1tZXRyaWNzLWxpbmUtaGVpZ2h0LWFuZC12ZXJ0aWNhbC1hbGlnbiNmbnJlZi0z">↩</span></li>
+<li>you could also use variables from preprocessors, custom properties are not required <span class="exturl" data-url="aHR0cHM6Ly9pYW12ZG8ubWUvZW4vYmxvZy9jc3MtZm9udC1tZXRyaWNzLWxpbmUtaGVpZ2h0LWFuZC12ZXJ0aWNhbC1hbGlnbiNmbnJlZi00">↩</span></li>
+</ol>
+
+      <div class="tags">
+          <a href="/tags/css/" rel="tag"><i class="ic i-tag"></i> css</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2026-04-29 13:34:59" itemprop="dateModified" datetime="2026-04-29T13:34:59+08:00">2026-04-29</time>
+  </span>
+</div>
+
+      
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2026/03/11/python-313to361/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;三月的狮子-3.jpg" title="Python 3.13 to 3.6.1">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Python 3.13 to 3.6.1</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2026/05/29/react-testing-find-get-query/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;幽灵公主-2.jpg" title="findByText() vs getByText() vs queryByText()- React Testing Library">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>findByText() vs getByText() vs queryByText()- React Testing Library</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#lets-talk-about-font-size-first"><span class="toc-number">1.</span> <span class="toc-text"> Let’s talk about  font-size  first</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#line-height-to-the-problems-and-beyond"><span class="toc-number">2.</span> <span class="toc-text">  line-height : to the problems and beyond</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vertical-align-one-property-to-rule-them-all"><span class="toc-number">3.</span> <span class="toc-text">  vertical-align : one property to rule them all</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#css-is-awesome"><span class="toc-number">4.</span> <span class="toc-text"> CSS is awesome</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#takeaways"><span class="toc-number">5.</span> <span class="toc-text"> Takeaways</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#resources"><span class="toc-number">6.</span> <span class="toc-text"> Resources</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="江边鸟"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">江边鸟</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">392</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">56</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
+      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2026/03/11/python-313to361/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2026/05/29/react-testing-find-get-query/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">江边鸟 @ D E W</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2026/04/29/css-font-metrics-line-height-vertical-align/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
