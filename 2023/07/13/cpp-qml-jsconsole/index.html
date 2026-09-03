@@ -102,12 +102,12 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="/anime/index/僵尸百分百.jpg"></li>
-          <li class="item" data-background-image="/anime/index/钢之炼金术师.jpg"></li>
-          <li class="item" data-background-image="/anime/index/怪物MONSTER.jpg"></li>
-          <li class="item" data-background-image="/anime/index/妖精的尾巴.jpg"></li>
-          <li class="item" data-background-image="/anime/index/大剑.jpg"></li>
-          <li class="item" data-background-image="/anime/index/Air.jpg"></li>
+          <li class="item" data-background-image="/anime/index/三月的狮子-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/东京教父-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/龙猫-1.jpg"></li>
+          <li class="item" data-background-image="/anime/index/魔女宅急便-1.jpg"></li>
+          <li class="item" data-background-image="/anime/index/clannad-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/甲铁城的卡巴内瑞-1.jpg"></li>
         </ul>
       </div>
     </header>
@@ -157,7 +157,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <p>As a little example, we will create a JS console. We need an input field where the user can enter his JS expressions and ideally there should be a list of output results. As this should more look like a desktop application we use the Qt Quick Controls module.</p>
 <p>TIP</p>
 <p>A JS console inside your next project can be really beneficial for testing. Enhanced with a Quake-Terminal effect it is also good to impress customers. To use it wisely you need to control the scope the JS console evaluates in, e.g. the currently visible screen, the main data model, a singleton core object or all together.</p>
-
+<p><img data-src="qml-jsconsole/ea4830e292014745bce3c0dc92047ee6.png" alt="image"></p>
 <p>We use Qt Creator to create a Qt Quick UI project using Qt Quick controls. We call the project JSConsole. After the wizard has finished we have already a basic structure for the application with an application window and a menu to exit the application.</p>
 <p>For the input, we use a TextField and a Button to send the input for evaluation. The result of the expression evaluation is displayed using a ListView with a ListModel as the model and two labels to display the expression and the evaluated result.</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">// part of JSConsole<span class="selector-class">.qml</span></span><br><span class="line">ApplicationWindow &#123;</span><br><span class="line">  id: root</span><br><span class="line">  ...</span><br><span class="line">  ColumnLayout &#123;</span><br><span class="line">      anchors<span class="selector-class">.fill</span>: parent</span><br><span class="line">      anchors.margins: <span class="number">9</span></span><br><span class="line">      RowLayout &#123;</span><br><span class="line">          Layout<span class="selector-class">.fillWidth</span>: true</span><br><span class="line">          TextField &#123;</span><br><span class="line">              id: input</span><br><span class="line">              Layout.fillWidth: true</span><br><span class="line">              focus: true</span><br><span class="line">              onAccepted: &#123;</span><br><span class="line">                  // call our evaluation function on root</span><br><span class="line">                  root<span class="selector-class">.jsCall</span>(<span class="selector-tag">input</span><span class="selector-class">.text</span>)</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="selector-tag">Button</span> &#123;</span><br><span class="line">              <span class="selector-tag">text</span>: <span class="built_in">qsTr</span>(<span class="string">&quot;Send&quot;</span>)</span><br><span class="line">              onClicked: &#123;</span><br><span class="line">                  // call our evaluation function on root</span><br><span class="line">                  root<span class="selector-class">.jsCall</span>(<span class="selector-tag">input</span><span class="selector-class">.text</span>)</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      Item &#123;</span><br><span class="line">          Layout<span class="selector-class">.fillWidth</span>: true</span><br><span class="line">          Layout.fillHeight: true</span><br><span class="line">          Rectangle &#123;</span><br><span class="line">              anchors<span class="selector-class">.fill</span>: parent</span><br><span class="line">              color: <span class="string">&#x27;#333&#x27;</span></span><br><span class="line">              border.color: Qt.<span class="built_in">darker</span>(color)</span><br><span class="line">              opacity: <span class="number">0.2</span></span><br><span class="line">              radius: <span class="number">2</span></span><br><span class="line">          &#125;</span><br><span class="line">          ScrollView &#123;</span><br><span class="line">              id: scrollView</span><br><span class="line">              anchors.fill: parent</span><br><span class="line">              anchors.margins: <span class="number">9</span></span><br><span class="line">              ListView &#123;</span><br><span class="line">                  id: resultView</span><br><span class="line">                  model: ListModel &#123;</span><br><span class="line">                      id: outputModel</span><br><span class="line">                  &#125;</span><br><span class="line">                  delegate: ColumnLayout &#123;</span><br><span class="line">                      <span class="attribute">width</span>: ListView.view.width</span><br><span class="line">                      Label &#123;</span><br><span class="line">                          Layout<span class="selector-class">.fillWidth</span>: true</span><br><span class="line">                          color: <span class="string">&#x27;green&#x27;</span></span><br><span class="line">                          text: <span class="string">&quot;&gt; &quot;</span> + model.expression</span><br><span class="line">                      &#125;</span><br><span class="line">                      <span class="selector-tag">Label</span> &#123;</span><br><span class="line">                          Layout<span class="selector-class">.fillWidth</span>: true</span><br><span class="line">                          color: <span class="string">&#x27;blue&#x27;</span></span><br><span class="line">                          text: <span class="string">&quot;&quot;</span> + model.result</span><br><span class="line">                      &#125;</span><br><span class="line">                      Rectangle &#123;</span><br><span class="line">                          <span class="attribute">height</span>: <span class="number">1</span></span><br><span class="line">                          Layout.fillWidth: true</span><br><span class="line">                          color: <span class="string">&#x27;#333&#x27;</span></span><br><span class="line">                          opacity: <span class="number">0.2</span></span><br><span class="line">                      &#125;</span><br><span class="line">                  &#125;</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -165,7 +165,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// part of JSConsole.qml</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;jsconsole.js&quot;</span> <span class="keyword">as</span> <span class="title class_">Util</span></span><br><span class="line">...</span><br><span class="line"><span class="title class_">ApplicationWindow</span> &#123;</span><br><span class="line">  <span class="attr">id</span>: root</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">jsCall</span>(<span class="params">exp</span>) &#123;</span><br><span class="line">      <span class="keyword">var</span> data = <span class="title class_">Util</span>.<span class="title function_">call</span>(exp);</span><br><span class="line">      <span class="comment">// insert the result at the beginning of the list</span></span><br><span class="line">      outputModel.<span class="title function_">insert</span>(<span class="number">0</span>, data)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>For safety, we do not use the  <code>eval</code>  function from JS as this would allow the user to modify the local scope. We use the Function constructor to create a JS function on runtime and pass in our scope as this variable. As the function is created every time it does not act as a closure and stores its own scope, we need to use  <code>this.a = 10</code>  to store the value inside this scope of the function. This scope is set by the script to the scope variable.</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// jsconsole.js</span></span><br><span class="line">.<span class="property">pragma</span> library</span><br><span class="line"><span class="keyword">var</span> scope = &#123;</span><br><span class="line">  <span class="comment">// our custom scope injected into our function evaluation</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">call</span>(<span class="params">msg</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> exp = msg.<span class="title function_">toString</span>();</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(exp)</span><br><span class="line">    <span class="keyword">var</span> data = &#123;</span><br><span class="line">        expression : msg</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">var</span> fun = <span class="keyword">new</span> <span class="title class_">Function</span>(<span class="string">&#x27;return (&#x27;</span> + exp + <span class="string">&#x27;);&#x27;</span>);</span><br><span class="line">        data.<span class="property">result</span> = <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(fun.<span class="title function_">call</span>(scope), <span class="literal">null</span>, <span class="number">2</span>)</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;scope: &#x27;</span> + <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(scope, <span class="literal">null</span>, <span class="number">2</span>) + <span class="string">&#x27;result: &#x27;</span> + result)</span><br><span class="line">    &#125; <span class="keyword">catch</span>(e) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(e.<span class="title function_">toString</span>())</span><br><span class="line">        data.<span class="property">error</span> = e.<span class="title function_">toString</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> data;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>The data return from the call function is a JS object with a result, expression and error property:  <code>data: &#123; expression: &#123;&#125;, result: &#123;&#125;, error: &#123;&#125; &#125;</code> . We can use this JS object directly inside the ListModel and access it then from the delegate, e.g.  <code>model.expression</code>  gives us the input expression. For the simplicity of the example, we ignore the error result.</p>
+<p>The data return from the call function is a JS object with a result, expression and error property:  <code>data: { expression: {}, result: {}, error: {} }</code> . We can use this JS object directly inside the ListModel and access it then from the delegate, e.g.  <code>model.expression</code>  gives us the input expression. For the simplicity of the example, we ignore the error result.</p>
 <hr>
 <p>Complete Source Code</p>
 <p>jsconsole.js</p>
@@ -206,17 +206,17 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item left">
       
 
-  <a href="/2023/07/13/pyside6-qml/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;滑头鬼之孙.jpg" title="Qt for Python - Building an Application - 《Qt6 QML Book》">
+  <a href="/2023/07/13/pyside6-quotify/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;石纪元.jpg" title="PySide6 Practice Quotify">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
-  <h3>Qt for Python - Building an Application - 《Qt6 QML Book》</h3>
+  <h3>PySide6 Practice Quotify</h3>
   </a>
 
     </div>
     <div class="item right">
       
 
-  <a href="/2023/08/10/pyside6-example/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;更衣人偶坠入爱河-1.jpg" title="PySide6 Practice Example">
+  <a href="/2023/08/10/pyside6-example/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;怪医黑杰克.jpg" title="PySide6 Practice Example">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>PySide6 Practice Example</h3>
@@ -272,9 +272,8 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 
 <div class="social">
       <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-pen"></i></span>
       <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
-      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
-      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
 </div>
 
 <ul class="menu">
@@ -282,11 +281,6 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     
   <li class="item">
     <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
-  </li>
-
-    
-  <li class="item">
-    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
   </li>
 
         
@@ -310,16 +304,22 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   </li>
 
   </ul>
-    
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-sakura"></i>Anime</a>
+    <ul class="submenu">
+
+        
   <li class="item">
-    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+    <a href="/anime/" rel="section"><i class="ic i-markdown"></i>Quotes</a>
   </li>
 
-    
+        
   <li class="item">
-    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+    <a href="/gallery/" rel="section"><i class="ic i-magic"></i>Gallery</a>
   </li>
 
+  </ul>
 
 </ul>
 
@@ -329,7 +329,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 
   <ul id="quick">
     <li class="prev pjax">
-        <a href="/2023/07/13/pyside6-qml/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+        <a href="/2023/07/13/pyside6-quotify/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
     </li>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
@@ -372,6 +372,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <script data-config type="text/javascript">
   var LOCAL = {
     path: '2023/07/13/cpp-qml-jsconsole/',
+    sidebar: true,
     favicon: {
       show: "（●´3｀●）Goooood",
       hide: "(´Д｀)Booooom"
@@ -393,7 +394,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   };
 </script>
 
-<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
 
 <script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
 

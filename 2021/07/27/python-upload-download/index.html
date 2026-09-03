@@ -102,12 +102,12 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="/anime/index/赌博默示录.jpg"></li>
-          <li class="item" data-background-image="/anime/index/体操武士-2.jpg"></li>
-          <li class="item" data-background-image="/anime/index/昭和元禄落语心中-3.jpg"></li>
-          <li class="item" data-background-image="/anime/index/比宇宙更遥远的地方.jpg"></li>
-          <li class="item" data-background-image="/anime/index/冰菓.jpg"></li>
-          <li class="item" data-background-image="/anime/index/未来日记.jpg"></li>
+          <li class="item" data-background-image="/anime/index/悬崖上的金鱼姬-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/全职猎人.jpg"></li>
+          <li class="item" data-background-image="/anime/index/平家物语-1.jpg"></li>
+          <li class="item" data-background-image="/anime/index/空想新子和千年的魔法.jpg"></li>
+          <li class="item" data-background-image="/anime/index/fate_stay_night.jpg"></li>
+          <li class="item" data-background-image="/anime/index/文豪野犬-2.jpg"></li>
         </ul>
       </div>
     </header>
@@ -162,11 +162,11 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <p><strong>Powershell</strong></p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="variable">$env:FLASK_APP</span> = <span class="string">&quot;app&quot;</span></span><br><span class="line">&gt; flask run</span><br><span class="line"> * Running on http://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">5000</span>/</span><br></pre></td></tr></table></figure>
 <p>Then visit  <code>http://127.0.0.1:5000/</code>  by chrome,  <code>Choose file &amp; Upload</code> . You will find the file occurs in the  <code>uploads</code>  folder.</p>
-<img data-src="/2021/07/27/python-upload-download/1627373383984.png" class="" width="1627373383984">
+<p><img data-src="1627373383984.png" alt="1627373383984"></p>
 <h2 id="test-uplaod-by-other-ways"><a class="markdownIt-Anchor" href="#test-uplaod-by-other-ways">#</a> Test Uplaod by Other ways</h2>
 <h3 id="postman"><a class="markdownIt-Anchor" href="#postman">#</a> Postman</h3>
 <p>notice KEY need use  <code>file</code> , because in python get files by  <code>file = request.files['file']</code></p>
-<img data-src="/2021/07/27/python-upload-download/1627373787748.png" class="" width="1627373787748">
+<p><img data-src="1627373787748.png" alt="1627373787748"></p>
 <h3 id="vscode-restclient"><a class="markdownIt-Anchor" href="#vscode-restclient">#</a> VSCode RestClient</h3>
 <p>notice  <code>file=@test.jpg</code>  and  <code>name=&quot;file&quot;</code></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">## curl upload</span></span></span><br><span class="line">curl -X POST -F file=@test.jpg http://127.0.0.1:5000/upload</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">## rest upload</span></span></span><br><span class="line">POST http://127.0.0.1:5000/upload HTTP/1.1</span><br><span class="line">Content-Type: multipart/form-data; boundary=myboundary</span><br><span class="line"></span><br><span class="line">--myboundary</span><br><span class="line">Content-Disposition: form-data; name=&quot;file&quot;; filename=&quot;test.jpg&quot;</span><br><span class="line">Content-Type: image/png</span><br><span class="line"></span><br><span class="line">&lt; ./test.jpg</span><br><span class="line">--myboundary--</span><br></pre></td></tr></table></figure>
@@ -180,7 +180,8 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <p>create  <code>static/test.csv</code></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">foo,bar,baz</span><br><span class="line">hai,bai,crai</span><br></pre></td></tr></table></figure>
 <p>Then visit  <code>http://127.0.0.1:5000/</code>  by chrome, a dialog box is displayed asking you to save the file.</p>
-<img data-src="/2021/07/27/python-upload-download/1627374612411.png" class="" width="1627374612411">
+<p><img data-src="1627374612411.png" alt="1627374612411"></p>
+
       <div class="tags">
           <a href="/tags/python/" rel="tag"><i class="ic i-tag"></i> python</a>
           <a href="/tags/html/" rel="tag"><i class="ic i-tag"></i> html</a>
@@ -212,7 +213,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item left">
       
 
-  <a href="/2021/07/26/python-watchdog/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;食梦者.jpg" title="How to Create a Watchdog in Python">
+  <a href="/2021/07/26/python-watchdog/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;赛马娘.jpg" title="How to Create a Watchdog in Python">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>How to Create a Watchdog in Python</h3>
@@ -222,7 +223,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item right">
       
 
-  <a href="/2021/07/27/python-process-monitor/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;血意少年.jpg" title="How to Make a Process Monitor in Python">
+  <a href="/2021/07/27/python-process-monitor/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;四月是你的谎言.jpg" title="How to Make a Process Monitor in Python">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>How to Make a Process Monitor in Python</h3>
@@ -279,9 +280,8 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 
 <div class="social">
       <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-pen"></i></span>
       <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
-      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
-      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
 </div>
 
 <ul class="menu">
@@ -289,11 +289,6 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     
   <li class="item">
     <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
-  </li>
-
-    
-  <li class="item">
-    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
   </li>
 
         
@@ -317,16 +312,22 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   </li>
 
   </ul>
-    
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-sakura"></i>Anime</a>
+    <ul class="submenu">
+
+        
   <li class="item">
-    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+    <a href="/anime/" rel="section"><i class="ic i-markdown"></i>Quotes</a>
   </li>
 
-    
+        
   <li class="item">
-    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+    <a href="/gallery/" rel="section"><i class="ic i-magic"></i>Gallery</a>
   </li>
 
+  </ul>
 
 </ul>
 
@@ -379,6 +380,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <script data-config type="text/javascript">
   var LOCAL = {
     path: '2021/07/27/python-upload-download/',
+    sidebar: true,
     favicon: {
       show: "（●´3｀●）Goooood",
       hide: "(´Д｀)Booooom"
@@ -400,7 +402,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   };
 </script>
 
-<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
 
 <script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
 

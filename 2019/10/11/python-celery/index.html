@@ -102,12 +102,12 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="/anime/index/斩神之凡尘神域.jpg"></li>
-          <li class="item" data-background-image="/anime/index/少女乐队的呐喊.jpg"></li>
-          <li class="item" data-background-image="/anime/index/血意少年.jpg"></li>
-          <li class="item" data-background-image="/anime/index/胆大党.jpg"></li>
-          <li class="item" data-background-image="/anime/index/冰海战记.jpg"></li>
-          <li class="item" data-background-image="/anime/index/与变成了异世界美少女的大叔一起冒险.jpg"></li>
+          <li class="item" data-background-image="/anime/index/三月的狮子.jpg"></li>
+          <li class="item" data-background-image="/anime/index/真实之泪.jpg"></li>
+          <li class="item" data-background-image="/anime/index/千与千寻-1.jpg"></li>
+          <li class="item" data-background-image="/anime/index/巴克亚罗.jpg"></li>
+          <li class="item" data-background-image="/anime/index/佐贺偶像是传奇.jpg"></li>
+          <li class="item" data-background-image="/anime/index/岁月的童话-2.jpg"></li>
         </ul>
       </div>
     </header>
@@ -164,7 +164,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <p>Beat 是一个定时任务调度器，它会根据配置定时将任务发送给 Broker，等待 Worker 来消费。</p>
 <h3 id="5-backend"><a class="markdownIt-Anchor" href="#5-backend">#</a> 5、Backend</h3>
 <p>Backend 用于保存任务的执行结果，每个任务都有返回值，比如发送邮件的服务会告诉我们有没有发送成功，这个结果就是存在 Backend 中，当然我们并不总是要关心任务的执行结果。</p>
-<img data-src="/2019/10/11/python-celery/584bbf78e1783.png" class="" title="584bbf78e1783.png">
+<p><img data-src="584bbf78e1783.png" alt="584bbf78e1783.png"></p>
 <p>记住这 5 个角色后面理解 Celery 就轻松了。</p>
 <h3 id="快速入门"><a class="markdownIt-Anchor" href="#快速入门">#</a> 快速入门</h3>
 <p>接触任何新东西，没有什么比实际动手学得更快了。假设我们选择 Redis 作为 broker，你需要安装 redis 并且已经启动了 redis 服务（这个步骤请自行借用搜索引擎解决）</p>
@@ -184,7 +184,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <p>启动 Worker，监听 Broker 中是否有任务，命令： <code>celery worker</code> ，你可能需要指定参数</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">celery -A tasks worker --loglevel=info</span><br></pre></td></tr></table></figure>
 <p>-A： 指定 celery 实例在哪个模块中，例子中，celery 实例在 tasks.py 文件中，启动成功后，能看到信息</p>
-<img data-src="/2019/10/11/python-celery/celeyrun.png" class="" title="celeyrun.png">
+<p><img data-src="celeyrun.png" alt="celeyrun.png"></p>
 <p>函数用 app.task 装饰器修饰之后，就会成为 Celery 中的一个 Task。</p>
 <h3 id="4-调用任务"><a class="markdownIt-Anchor" href="#4-调用任务">#</a> 4、调用任务</h3>
 <p>在主程序中调用任务，将任务发送给 Broker， 而不是真正执行该任务，比如下面的主程序是 register</p>
@@ -196,7 +196,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. 插入记录到数据库</span><br><span class="line">2. celery 帮我发邮件</span><br><span class="line">3. 告诉用户注册成功</span><br><span class="line">耗时：0.22688984870910645 秒 </span><br></pre></td></tr></table></figure>
 <p>程序花了不到 0.23 秒就执行完成，如果按照正常的同步逻辑去执行，至少需要 5 秒钟，因为发邮件的任务就花了 5 秒。</p>
 <p>在 worker 服务窗口看日志信息</p>
-<img data-src="/2019/10/11/python-celery/celerywork.png" class="" title="celerywork.png">
+<p><img data-src="celerywork.png" alt="celerywork.png"></p>
 <h3 id="注意"><a class="markdownIt-Anchor" href="#注意">#</a> 注意：</h3>
 <p>1、celery worker 启动时，如果是 root 用户，需要设置环境变量：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ export C_FORCE_ROOT=&#x27;true&#x27;</span><br></pre></td></tr></table></figure>
@@ -244,7 +244,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item left">
       
 
-  <a href="/2019/10/10/colors-in-terminal/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;天真与闪电-2.jpg" title="Colors In Terminal">
+  <a href="/2019/10/10/colors-in-terminal/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;白箱-2.jpg" title="Colors In Terminal">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Colors In Terminal</h3>
@@ -254,7 +254,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item right">
       
 
-  <a href="/2019/10/11/db-dialect/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;强风吹拂.jpg" title="DB Dialect">
+  <a href="/2019/10/11/db-dialect/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;无头骑士异闻录.jpg" title="DB Dialect">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>DB Dialect</h3>
@@ -311,9 +311,8 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 
 <div class="social">
       <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-pen"></i></span>
       <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
-      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
-      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
 </div>
 
 <ul class="menu">
@@ -321,11 +320,6 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     
   <li class="item">
     <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
-  </li>
-
-    
-  <li class="item">
-    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
   </li>
 
         
@@ -349,16 +343,22 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   </li>
 
   </ul>
-    
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-sakura"></i>Anime</a>
+    <ul class="submenu">
+
+        
   <li class="item">
-    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+    <a href="/anime/" rel="section"><i class="ic i-markdown"></i>Quotes</a>
   </li>
 
-    
+        
   <li class="item">
-    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+    <a href="/gallery/" rel="section"><i class="ic i-magic"></i>Gallery</a>
   </li>
 
+  </ul>
 
 </ul>
 
@@ -411,6 +411,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <script data-config type="text/javascript">
   var LOCAL = {
     path: '2019/10/11/python-celery/',
+    sidebar: true,
     favicon: {
       show: "（●´3｀●）Goooood",
       hide: "(´Д｀)Booooom"
@@ -432,7 +433,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   };
 </script>
 
-<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
 
 <script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
 

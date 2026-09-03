@@ -102,12 +102,12 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="/anime/index/混沌武士-1.jpg"></li>
-          <li class="item" data-background-image="/anime/index/钢之炼金术师.jpg"></li>
-          <li class="item" data-background-image="/anime/index/对某飞行员的追忆.jpg"></li>
-          <li class="item" data-background-image="/anime/index/花开伊吕波.jpg"></li>
-          <li class="item" data-background-image="/anime/index/灼眼的夏娜.jpg"></li>
-          <li class="item" data-background-image="/anime/index/胆大党.jpg"></li>
+          <li class="item" data-background-image="/anime/index/新人炼金术师的店铺经营.jpg"></li>
+          <li class="item" data-background-image="/anime/index/秒速五厘米-4.jpg"></li>
+          <li class="item" data-background-image="/anime/index/悠哉日常大王-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/空之境界.jpg"></li>
+          <li class="item" data-background-image="/anime/index/赌博默示录.jpg"></li>
+          <li class="item" data-background-image="/anime/index/电锯人-1.jpg"></li>
         </ul>
       </div>
     </header>
@@ -162,15 +162,15 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <p>像我自己有時候在處理一些流程或筆記會希望能在文件中加入可即時互動的程式碼，即時產生文件所需要的資料，又或者藉由程式碼來幫助工作流程的處理，而且能在程式碼中加上 Markdown，這樣可以更詳盡的說明流程。</p>
 <p>Jupyter Notebooks 就相當適用於這種情境，但如果你不想安裝 Jupyter 或 Python 了話，可以安裝 <span class="exturl" data-url="aHR0cHM6Ly9tYXJrZXRwbGFjZS52aXN1YWxzdHVkaW8uY29tL2l0ZW1zP2l0ZW1OYW1lPW1zLWRvdG5ldHRvb2xzLmRvdG5ldC1pbnRlcmFjdGl2ZS12c2NvZGU=">.NET Interactive Notebooks</span> 這個 VSCode 擴充套件，讓你可以輕鬆玩 Jupyter Notebooks。</p>
 <h2 id="kernels-overview"><a class="markdownIt-Anchor" href="#kernels-overview">#</a> Kernels Overview</h2>
-<img data-src="/2022/02/24/vscode-csharp-notebook/Cx42MvH.png" class="" title=".NET Interactive Architectural Overview">
+<p><img data-src="Cx42MvH.png" alt=".NET Interactive Architectural Overview"></p>
 <p>上面這張圖 是 .NET Interactive 的核心架構圖，大概有個概念就好，如果想更深入了解這個架構內部是怎麼溝通的，可以參考<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2RvdG5ldC9pbnRlcmFjdGl2ZS9ibG9iL21haW4vZG9jcy9rZXJuZWxzLW92ZXJ2aWV3Lm1k">這篇文件</span>。</p>
 <p>.NET Interactive Notebooks 現階段支援 7 種 Subkernel，分別是 C#、F#、PowerShell、JavaScript、HTML、Markdown 以及 SQL。</p>
 <p>這裡主要會使用 C# Subkernel。</p>
 <h2 id="基本使用"><a class="markdownIt-Anchor" href="#基本使用">#</a> 基本使用</h2>
 <p>當你在 VSCode 安裝玩 .NET Interactive Notebooks 擴充套件後，可以按  <code>ctrl</code>  +  <code>shift</code>  +  <code>P</code>  並輸入  <code>notebook</code> ，會列出下圖清單，此時選擇  <code>.NET Interactive: Create new blank notebook</code>  建立空白的 Notebook 檔案。也可以按  <code>ctrl</code>  +  <code>shift</code>  +  <code>alt</code>  +  <code>N</code>  快速建立空白 Notebook。</p>
-<img data-src="/2022/02/24/vscode-csharp-notebook/6A39nOr.png" class="" title="建立空白的 Notebook">
+<p><img data-src="6A39nOr.png" alt="建立空白的 Notebook"></p>
 <p>主介面相當單純，基本上只分 Code 和 Markdown 兩種區塊選擇，根據你當前需要做添加即可。</p>
-<img data-src="/2022/02/24/vscode-csharp-notebook/TVdvOJO.png" class="" title="主介面">
+<p><img data-src="TVdvOJO.png" alt="主介面"></p>
 <p>如果是 Code 區塊，則可以在右下角選擇該區塊要使用哪個 Subkernel，預設是使用 C# Notebook。</p>
 <h2 id="c-notebook"><a class="markdownIt-Anchor" href="#c-notebook">#</a> C# Notebook</h2>
 <p>C# Notebook 所使用的語法是修改版的 C# Script，也就是使用  <code>.csx</code>  腳本的格式，因此跟平常寫的 C# 不一樣，但也差不多。</p>
@@ -197,7 +197,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 </blockquote>
 <h3 id="呼叫-rest-api-範例"><a class="markdownIt-Anchor" href="#呼叫-rest-api-範例">#</a> 呼叫 REST API 範例</h3>
 <p>下圖是寫一個用 .NET 的 HttpClient 呼叫 REST API 的程式碼：</p>
-<img data-src="/2022/02/24/vscode-csharp-notebook/EEzeQ7k.png" class="" title="呼叫 REST API 範例">
+<p><img data-src="EEzeQ7k.png" alt="呼叫 REST API 範例"></p>
 <p>中間的 C# 程式碼，大家應該不陌生，這部分就不解釋了。</p>
 <p>你或許會注意到開頭和結尾出現  <code>#!csharp</code>  和  <code>#!time</code>  這個奇怪的東西。這兩個算是特殊指令，文件叫他們 Magic Commands（稍後的文章內容會再介紹）。那他們主要是做什麼用的呢？</p>
 <p>因為 .NET Interactive Extension 預設會使用 C# Subkernel，當然我們可以從右下角手動指定，但重新開啟檔案時，又會跳回預設值了，所以可以使用  <code>#!csharp</code>  這 Magic Command 來指定該 Code 區塊要使用 C# Subkernel，其他 Subkernel 則有對應不同的 Magic Command。</p>
@@ -208,7 +208,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <h3 id="安裝並還原-nuget-package"><a class="markdownIt-Anchor" href="#安裝並還原-nuget-package">#</a> 安裝並還原 NuGet Package</h3>
 <p>都用 C# 了，當然免不了要用 NuGet 來安裝第三方套件囉。</p>
 <p>要在 C# Notebook 裡面安裝並使用 NuGet 套件，也是需要 Magic Command 幫忙，直接來看範例。</p>
-<img data-src="/2022/02/24/vscode-csharp-notebook/x4JaU7D.png" class="" title="安裝並還原 NuGet Package">
+<p><img data-src="x4JaU7D.png" alt="安裝並還原 NuGet Package"></p>
 <p>首先要設定 NuGet 套件的來源 URL，這裡使用公開的 <span class="exturl" data-url="aHR0cDovL051R2V0Lm9yZw==">NuGet.org</span> 的 URL，當然你也可以設定成你自己架設的私有 NuGet Server，設定的指令需要使用  <code>#i</code>  Magic Command，如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// NuGet.org 的套件來源</span><br><span class="line">#i &quot;nuget:https://api.nuget.org/v3/index.json&quot;</span><br><span class="line">// 這組是 dotnet 的 Pre-release NuGet 套件來源</span><br><span class="line">#i &quot;nuget:https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet-tools/nuget/v3/index.json&quot;</span><br><span class="line">// 這組是使用本機環境下的 NuGet 套件來源</span><br><span class="line">#i &quot;nuget:C:\myorg\mypackage\src\bin\Release&quot;</span><br></pre></td></tr></table></figure>
 <p>有了套件來源後，就可以使用  <code>#r</code>  Magic Command 來加入參考，後面直接接套件名稱和指定的版本即可，如果 .NET Interactive 中沒有該套件，則會嘗試用你所設定的套件來源進行下載及安裝，下面用 <span class="exturl" data-url="aHR0cDovL0pzb24uTkVU">Json.NET</span> 來當範例：</p>
@@ -244,7 +244,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 </blockquote>
 <p>在 .NET Notebook 中的各個 Code 區塊是可以共享變數的，並且是用 Call by Reference 的方式呼叫，因此變數可以跨 Code 區塊使用，而且在 .NET Interactive 所包含的 3 種語言（C#、F#、PowerShell）互相共用（可以參考上面 Kernels Overview 的架構圖）。</p>
 <p>而上面的  <code>#!value</code>  相當特別，許多時候我們會想要直接使用文本，例如 JSON、CSV、XML 這類型的文本，這時候就可以用  <code>#!value</code>  來儲存這些文本資料，並用  <code>#!share</code>  指令讓該變數可以跨 Code 區塊使用，使用起來如下圖：</p>
-<img data-src="/2022/02/24/vscode-csharp-notebook/971ZzLV.png" class="" title="使用 #!value 儲存文本，並用 #!share 跨區塊取得值">
+<p><img data-src="971ZzLV.png" alt="使用 #!value 儲存文本，並用 #!share 跨區塊取得值"></p>
 <p><code>#!value</code>  有三種儲存值的方式：</p>
 <ol>
 <li>直接從區塊中取得要儲存的文本</li>
@@ -306,7 +306,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item left">
       
 
-  <a href="/2022/01/03/haiku/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;黑色四叶草.jpg" title="一座向四面洞开的草庵 — 俳句小札">
+  <a href="/2022/01/03/haiku/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;虞美人盛开的山坡-1.jpg" title="一座向四面洞开的草庵 — 俳句小札">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>一座向四面洞开的草庵 — 俳句小札</h3>
@@ -316,7 +316,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item right">
       
 
-  <a href="/2022/03/18/css-selector-quiz/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;穹庐下的魔女.jpg" title="CSS Selector Quiz">
+  <a href="/2022/03/18/css-selector-quiz/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;电锯人-1.jpg" title="CSS Selector Quiz">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>CSS Selector Quiz</h3>
@@ -373,9 +373,8 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 
 <div class="social">
       <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-pen"></i></span>
       <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
-      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
-      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
 </div>
 
 <ul class="menu">
@@ -383,11 +382,6 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     
   <li class="item">
     <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
-  </li>
-
-    
-  <li class="item">
-    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
   </li>
 
         
@@ -411,16 +405,22 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   </li>
 
   </ul>
-    
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-sakura"></i>Anime</a>
+    <ul class="submenu">
+
+        
   <li class="item">
-    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+    <a href="/anime/" rel="section"><i class="ic i-markdown"></i>Quotes</a>
   </li>
 
-    
+        
   <li class="item">
-    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+    <a href="/gallery/" rel="section"><i class="ic i-magic"></i>Gallery</a>
   </li>
 
+  </ul>
 
 </ul>
 
@@ -473,6 +473,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <script data-config type="text/javascript">
   var LOCAL = {
     path: '2022/02/24/vscode-csharp-notebook/',
+    sidebar: true,
     favicon: {
       show: "（●´3｀●）Goooood",
       hide: "(´Д｀)Booooom"
@@ -494,7 +495,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   };
 </script>
 
-<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
 
 <script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
 

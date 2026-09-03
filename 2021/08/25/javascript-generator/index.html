@@ -102,12 +102,12 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="/anime/index/神推偶像登上武道馆我就死而无憾.jpg"></li>
-          <li class="item" data-background-image="/anime/index/僵尸百分百.jpg"></li>
-          <li class="item" data-background-image="/anime/index/虎鹤妖师录.jpg"></li>
-          <li class="item" data-background-image="/anime/index/刀剑神域.jpg"></li>
-          <li class="item" data-background-image="/anime/index/怪物MONSTER.jpg"></li>
-          <li class="item" data-background-image="/anime/index/你看起来好像很好吃.jpg"></li>
+          <li class="item" data-background-image="/anime/index/约定的梦幻岛.jpg"></li>
+          <li class="item" data-background-image="/anime/index/少女终末旅行.jpg"></li>
+          <li class="item" data-background-image="/anime/index/怪化猫.jpg"></li>
+          <li class="item" data-background-image="/anime/index/龙猫-1.jpg"></li>
+          <li class="item" data-background-image="/anime/index/翼年代记.jpg"></li>
+          <li class="item" data-background-image="/anime/index/文豪野犬-2.jpg"></li>
         </ul>
       </div>
     </header>
@@ -164,7 +164,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <p>Here, take a look:</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span>* <span class="title function_">generateSequence</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">yield</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">yield</span> <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">3</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// &quot;generator function&quot; creates &quot;generator object&quot;</span></span><br><span class="line"><span class="keyword">let</span> generator = <span class="title function_">generateSequence</span>();</span><br><span class="line"><span class="title function_">alert</span>(generator); <span class="comment">// [object Generator]</span></span><br></pre></td></tr></table></figure>
 <p>The function code execution hasn’t started yet:</p>
-<img data-src="/2021/08/25/javascript-generator/1629892386256.png" class="" width="1629892386256">
+<p><img data-src="1629892386256.png" alt="1629892386256"></p>
 <p>The main method of a generator is  <code>next()</code> . When called, it runs the execution until the nearest  <code>yield &lt;value&gt;</code>  statement ( <code>value</code>  can be omitted, then it’s  <code>undefined</code> ). Then the function execution pauses, and the yielded  <code>value</code>  is returned to the outer code.</p>
 <p>The result of  <code>next()</code>  is always an object with two properties:</p>
 <ul>
@@ -174,15 +174,15 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <p>For instance, here we create the generator and get its first yielded value:</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span>* <span class="title function_">generateSequence</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">yield</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">yield</span> <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">3</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> generator = <span class="title function_">generateSequence</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> one = generator.<span class="title function_">next</span>();</span><br><span class="line"></span><br><span class="line"><span class="title function_">alert</span>(<span class="title class_">JSON</span>.<span class="title function_">stringify</span>(one)); <span class="comment">// &#123;value: 1, done: false&#125;</span></span><br></pre></td></tr></table></figure>
 <p>As of now, we got the first value only, and the function execution is on the second line:</p>
-<img data-src="/2021/08/25/javascript-generator/1629892423048.png" class="" width="1629892423048">
+<p><img data-src="1629892423048.png" alt="1629892423048"></p>
 <p>Let’s call  <code>generator.next()</code>  again. It resumes the code execution and returns the next  <code>yield</code> :</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> two = generator.<span class="title function_">next</span>();</span><br><span class="line"></span><br><span class="line"><span class="title function_">alert</span>(<span class="title class_">JSON</span>.<span class="title function_">stringify</span>(two)); <span class="comment">// &#123;value: 2, done: false&#125;</span></span><br></pre></td></tr></table></figure>
-<img data-src="/2021/08/25/javascript-generator/1629892446644.png" class="" width="1629892446644">
+<p><img data-src="1629892446644.png" alt="1629892446644"></p>
 <p>And, if we call it a third time, the execution reaches the  <code>return</code>  statement that finishes the function:</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> three = generator.<span class="title function_">next</span>();</span><br><span class="line"></span><br><span class="line"><span class="title function_">alert</span>(<span class="title class_">JSON</span>.<span class="title function_">stringify</span>(three)); <span class="comment">// &#123;value: 3, done: true&#125;</span></span><br></pre></td></tr></table></figure>
-<img data-src="/2021/08/25/javascript-generator/1629892489768.png" class="" width="1629892489768">
+<p><img data-src="1629892489768.png" alt="1629892489768"></p>
 <p>Now the generator is done. We should see it from  <code>done:true</code>  and process  <code>value:3</code>  as the final result.</p>
-<p>New calls to  <code>generator.next()</code>  don’t make sense any more. If we do them, they return the same object:  <code>&#123;done: true&#125;</code> .</p>
+<p>New calls to  <code>generator.next()</code>  don’t make sense any more. If we do them, they return the same object:  <code>{done: true}</code> .</p>
 <p>❗️ <strong> <code>function* f(…)</code>  or  <code>function *f(…)</code> ?</strong></p>
 <p>Both syntaxes are correct.</p>
 <p>But usually the first syntax is preferred, as the star  <code>*</code>  denotes that it’s a generator function, it describes the kind, not the name, so it should stick with the  <code>function</code>  keyword.</p>
@@ -207,7 +207,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <p>That works, because  <code>range[Symbol.iterator]()</code>  now returns a generator, and generator methods are exactly what  <code>for..of</code>  expects:</p>
 <ul>
 <li>it has a  <code>.next()</code>  method</li>
-<li>that returns values in the form  <code>&#123;value: ..., done: true/false&#125;</code></li>
+<li>that returns values in the form  <code>{value: ..., done: true/false}</code></li>
 </ul>
 <p>That’s not a coincidence, of course. Generators were added to JavaScript language with iterators in mind, to implement them easily.</p>
 <p>The variant with a generator is much more concise than the original iterable code of  <code>range</code> , and keeps the same functionality.</p>
@@ -239,7 +239,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <p>To do so, we should call  <code>generator.next(arg)</code> , with an argument. That argument becomes the result of  <code>yield</code> .</p>
 <p>Let’s see an example:</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span>* <span class="title function_">gen</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// Pass a question to the outer code and wait for an answer</span></span><br><span class="line">    <span class="keyword">let</span> result = <span class="keyword">yield</span> <span class="string">&quot;2 + 2 = ?&quot;</span>; <span class="comment">// (*)</span></span><br><span class="line"></span><br><span class="line">    <span class="title function_">alert</span>(result);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> generator = <span class="title function_">gen</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> question = generator.<span class="title function_">next</span>().<span class="property">value</span>; <span class="comment">// &lt;-- yield returns the value</span></span><br><span class="line"></span><br><span class="line">generator.<span class="title function_">next</span>(<span class="number">4</span>); <span class="comment">// --&gt; pass the result into the generator</span></span><br></pre></td></tr></table></figure>
-<img data-src="/2021/08/25/javascript-generator/1629892558931.png" class="" width="1629892558931">
+<p><img data-src="1629892558931.png" alt="1629892558931"></p>
 <ol>
 <li>The first call  <code>generator.next()</code>  should be always made without an argument (the argument is ignored if passed). It starts the execution and returns the result of the first  <code>yield &quot;2+2=?&quot;</code> . At this point the generator pauses the execution, while staying on the line  <code>(*)</code> .</li>
 <li>Then, as shown at the picture above, the result of  <code>yield</code>  gets into the  <code>question</code>  variable in the calling code.</li>
@@ -252,7 +252,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <p>To make things more obvious, here’s another example, with more calls:</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span>* <span class="title function_">gen</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> ask1 = <span class="keyword">yield</span> <span class="string">&quot;2 + 2 = ?&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">alert</span>(ask1); <span class="comment">// 4</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> ask2 = <span class="keyword">yield</span> <span class="string">&quot;3 * 3 = ?&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">alert</span>(ask2); <span class="comment">// 9</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> generator = <span class="title function_">gen</span>();</span><br><span class="line"></span><br><span class="line"><span class="title function_">alert</span>(generator.<span class="title function_">next</span>().<span class="property">value</span>); <span class="comment">// &quot;2 + 2 = ?&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="title function_">alert</span>(generator.<span class="title function_">next</span>(<span class="number">4</span>).<span class="property">value</span>); <span class="comment">// &quot;3 * 3 = ?&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="title function_">alert</span>(generator.<span class="title function_">next</span>(<span class="number">9</span>).<span class="property">done</span>); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
 <p>The execution picture:</p>
-<img data-src="/2021/08/25/javascript-generator/1629892587415.png" class="" width="1629892587415">
+<p><img data-src="1629892587415.png" alt="1629892587415"></p>
 <ol>
 <li>The first  <code>.next()</code>  starts the execution… It reaches the first  <code>yield</code> .</li>
 <li>The result is returned to the outer code.</li>
@@ -279,7 +279,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <p>Often we don’t use it, as most of time we want to get all returning values, but it can be useful when we want to stop generator in a specific condition.</p>
 <h2 id="summary"><a class="markdownIt-Anchor" href="#summary">#</a> Summary</h2>
 <ul>
-<li>Generators are created by generator functions  <code>function* f(…) &#123;…&#125;</code> .</li>
+<li>Generators are created by generator functions  <code>function* f(…) {…}</code> .</li>
 <li>Inside generators (only) there exists a  <code>yield</code>  operator.</li>
 <li>The outer code and the generator may exchange results via  <code>next/yield</code>  calls.</li>
 </ul>
@@ -335,7 +335,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item left">
       
 
-  <a href="/2021/08/10/html-location/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;千与千寻-4.jpg" title="window.location Cheatsheet">
+  <a href="/2021/08/10/html-location/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;侧耳倾听-3.jpg" title="window.location Cheatsheet">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>window.location Cheatsheet</h3>
@@ -345,7 +345,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item right">
       
 
-  <a href="/2021/08/25/javascript-async-generator/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;蔷薇少女-2.jpg" title="Async iteration and generators">
+  <a href="/2021/08/25/javascript-async-generator/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;俺物语.jpg" title="Async iteration and generators">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Async iteration and generators</h3>
@@ -402,9 +402,8 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 
 <div class="social">
       <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-pen"></i></span>
       <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
-      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
-      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
 </div>
 
 <ul class="menu">
@@ -412,11 +411,6 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     
   <li class="item">
     <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
-  </li>
-
-    
-  <li class="item">
-    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
   </li>
 
         
@@ -440,16 +434,22 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   </li>
 
   </ul>
-    
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-sakura"></i>Anime</a>
+    <ul class="submenu">
+
+        
   <li class="item">
-    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+    <a href="/anime/" rel="section"><i class="ic i-markdown"></i>Quotes</a>
   </li>
 
-    
+        
   <li class="item">
-    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+    <a href="/gallery/" rel="section"><i class="ic i-magic"></i>Gallery</a>
   </li>
 
+  </ul>
 
 </ul>
 
@@ -502,6 +502,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <script data-config type="text/javascript">
   var LOCAL = {
     path: '2021/08/25/javascript-generator/',
+    sidebar: true,
     favicon: {
       show: "（●´3｀●）Goooood",
       hide: "(´Д｀)Booooom"
@@ -523,7 +524,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   };
 </script>
 
-<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
 
 <script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
 

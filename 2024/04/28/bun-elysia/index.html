@@ -102,12 +102,12 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="/anime/index/电波女与青春男-2.jpg"></li>
-          <li class="item" data-background-image="/anime/index/暗杀教室.jpg"></li>
-          <li class="item" data-background-image="/anime/index/红猪-2.jpg"></li>
-          <li class="item" data-background-image="/anime/index/ReLIFE.jpg"></li>
-          <li class="item" data-background-image="/anime/index/碧蓝之海.jpg"></li>
-          <li class="item" data-background-image="/anime/index/七大罪.jpg"></li>
+          <li class="item" data-background-image="/anime/index/关于我转生成史莱姆这档事.jpg"></li>
+          <li class="item" data-background-image="/anime/index/魔笛.jpg"></li>
+          <li class="item" data-background-image="/anime/index/全职猎人.jpg"></li>
+          <li class="item" data-background-image="/anime/index/转生成蜘蛛又怎样.jpg"></li>
+          <li class="item" data-background-image="/anime/index/邻座的怪同学.jpg"></li>
+          <li class="item" data-background-image="/anime/index/元气囝仔.jpg"></li>
         </ul>
       </div>
     </header>
@@ -167,7 +167,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <p>First of all, Create a new directory and change your path to it and then run the  <code>bun init</code>  command.</p>
 <p>It will create a Typescript based new project, Now let’s begin writing some code. Open the directory in your IDE (mine is <span class="exturl" data-url="aHR0cHM6Ly9jb2RlLnZpc3VhbHN0dWRpby5jb20v">VSCode</span>).</p>
 <p>You’ll see something like this:</p>
-<img data-src="/2024/04/28/bun-elysia/4e5xrigb397ixcz1c6dg.png" class="">
+<p><img data-src="4e5xrigb397ixcz1c6dg.png" alt=""></p>
 <p>Now, Let’s install our dependencies:</p>
 <ul>
 <li><code>elysia</code>  - The web framework we’re using.</li>
@@ -201,7 +201,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <p>Now, Let’s create the database routes,</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Elysia</span> &#125; <span class="keyword">from</span> <span class="string">&quot;elysia&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; html &#125; <span class="keyword">from</span> <span class="string">&quot;@elysiajs/html&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">BooksDatabase</span> &#125; <span class="keyword">from</span> <span class="string">&quot;./db.js&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Elysia</span>()</span><br><span class="line">  .<span class="title function_">use</span>(<span class="title function_">html</span>())</span><br><span class="line">  .<span class="title function_">decorate</span>(<span class="string">&quot;db&quot;</span>, <span class="keyword">new</span> <span class="title class_">BooksDatabase</span>())</span><br><span class="line">  .<span class="title function_">get</span>(<span class="string">&quot;/&quot;</span>, <span class="function">() =&gt;</span> <span class="title class_">Bun</span>.<span class="title function_">file</span>(<span class="string">&quot;index.html&quot;</span>).<span class="title function_">text</span>())</span><br><span class="line">  .<span class="title function_">get</span>(<span class="string">&quot;/script.js&quot;</span>, <span class="function">() =&gt;</span> <span class="title class_">Bun</span>.<span class="title function_">file</span>(<span class="string">&quot;script.js&quot;</span>).<span class="title function_">text</span>())</span><br><span class="line">  .<span class="title function_">get</span>(<span class="string">&quot;/books&quot;</span>, <span class="function">(<span class="params">&#123; db &#125;</span>) =&gt;</span> db.<span class="title function_">getBooks</span>())</span><br><span class="line">  .<span class="title function_">listen</span>(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
 <p>Notice the db autocomplete in the handler 😃</p>
-<img data-src="/2024/04/28/bun-elysia/pb3h9gjsx1rl7jzhjctl.png" class="">
+<p><img data-src="pb3h9gjsx1rl7jzhjctl.png" alt=""></p>
 <p>Create routes for creating a book</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Elysia</span>, t &#125; <span class="keyword">from</span> <span class="string">&quot;elysia&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; html &#125; <span class="keyword">from</span> <span class="string">&quot;@elysiajs/html&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">BooksDatabase</span> &#125; <span class="keyword">from</span> <span class="string">&quot;./db.js&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Elysia</span>()</span><br><span class="line">  .<span class="title function_">use</span>(<span class="title function_">html</span>())</span><br><span class="line">  .<span class="title function_">decorate</span>(<span class="string">&quot;db&quot;</span>, <span class="keyword">new</span> <span class="title class_">BooksDatabase</span>())</span><br><span class="line">  .<span class="title function_">get</span>(<span class="string">&quot;/&quot;</span>, <span class="function">() =&gt;</span> <span class="title class_">Bun</span>.<span class="title function_">file</span>(<span class="string">&quot;index.html&quot;</span>).<span class="title function_">text</span>())</span><br><span class="line">  .<span class="title function_">get</span>(<span class="string">&quot;/script.js&quot;</span>, <span class="function">() =&gt;</span> <span class="title class_">Bun</span>.<span class="title function_">file</span>(<span class="string">&quot;script.js&quot;</span>).<span class="title function_">text</span>())</span><br><span class="line">  .<span class="title function_">get</span>(<span class="string">&quot;/books&quot;</span>, <span class="function">(<span class="params">&#123; db &#125;</span>) =&gt;</span> db.<span class="title function_">getBooks</span>())</span><br><span class="line">  .<span class="title function_">post</span>(</span><br><span class="line">    <span class="string">&quot;/books&quot;</span>,</span><br><span class="line">    <span class="title function_">async</span> (&#123; db, body &#125;) =&gt; &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(body);</span><br><span class="line">      <span class="keyword">const</span> id = (<span class="keyword">await</span> db.<span class="title function_">addBook</span>(body)).<span class="property">id</span>;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(id);</span><br><span class="line">      <span class="keyword">return</span> &#123; <span class="attr">success</span>: <span class="literal">true</span>, id &#125;;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">schema</span>: &#123;</span><br><span class="line">        <span class="attr">body</span>: t.<span class="title class_">Object</span>(&#123;</span><br><span class="line">          <span class="attr">name</span>: t.<span class="title class_">String</span>(),</span><br><span class="line">          <span class="attr">author</span>: t.<span class="title class_">String</span>(),</span><br><span class="line">        &#125;),</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line">  .<span class="title function_">listen</span>(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
 <p>Notice the schema validation, Elysia provides schema validation out of the box powered by  <code>@sinclair/typebox</code> , Read more about this <span class="exturl" data-url="aHR0cHM6Ly9lbHlzaWFqcy5jb20vY29uY2VwdC9zY2hlbWEuaHRtbA==">here</span></p>
@@ -220,7 +220,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <p>Time to experiment the api, Start the server using  <code>bun index.ts</code>  It should log Database initialized and create the  <code>books.db</code>  file</p>
 <p>Head to  <code>localhost:3000</code></p>
 <p>This is what you should see:</p>
-<img data-src="/2024/04/28/bun-elysia/ix7yoy4msb14oakhb15w.png" class="">
+<p><img data-src="ix7yoy4msb14oakhb15w.png" alt=""></p>
 
       <div class="tags">
           <a href="/tags/js/" rel="tag"><i class="ic i-tag"></i> js</a>
@@ -252,7 +252,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item left">
       
 
-  <a href="/2024/04/28/bun-express/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;四叠半神话大系.jpg" title="How To Build a Web API using Express.js, Bun and MongoDB?">
+  <a href="/2024/04/28/bun-express/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;派对浪客诸葛孔明-1.jpg" title="How To Build a Web API using Express.js, Bun and MongoDB?">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>How To Build a Web API using Express.js, Bun and MongoDB?</h3>
@@ -262,7 +262,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item right">
       
 
-  <a href="/2024/05/23/csharp-wpf-crud/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;银魂.jpg" title="CRUD Operations in WPF using EntityFrameworkCore and SQLite">
+  <a href="/2024/05/23/csharp-wpf-crud/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;斩神之凡尘神域.jpg" title="CRUD Operations in WPF using EntityFrameworkCore and SQLite">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>CRUD Operations in WPF using EntityFrameworkCore and SQLite</h3>
@@ -319,9 +319,8 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 
 <div class="social">
       <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-pen"></i></span>
       <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
-      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
-      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
 </div>
 
 <ul class="menu">
@@ -329,11 +328,6 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     
   <li class="item">
     <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
-  </li>
-
-    
-  <li class="item">
-    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
   </li>
 
         
@@ -357,16 +351,22 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   </li>
 
   </ul>
-    
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-sakura"></i>Anime</a>
+    <ul class="submenu">
+
+        
   <li class="item">
-    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+    <a href="/anime/" rel="section"><i class="ic i-markdown"></i>Quotes</a>
   </li>
 
-    
+        
   <li class="item">
-    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+    <a href="/gallery/" rel="section"><i class="ic i-magic"></i>Gallery</a>
   </li>
 
+  </ul>
 
 </ul>
 
@@ -419,6 +419,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <script data-config type="text/javascript">
   var LOCAL = {
     path: '2024/04/28/bun-elysia/',
+    sidebar: true,
     favicon: {
       show: "（●´3｀●）Goooood",
       hide: "(´Д｀)Booooom"
@@ -440,7 +441,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   };
 </script>
 
-<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
 
 <script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
 

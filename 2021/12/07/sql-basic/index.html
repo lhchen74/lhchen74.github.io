@@ -102,12 +102,12 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="/anime/index/怪兽8号.jpg"></li>
-          <li class="item" data-background-image="/anime/index/你看起来好像很好吃.jpg"></li>
-          <li class="item" data-background-image="/anime/index/未闻花名-2.jpg"></li>
-          <li class="item" data-background-image="/anime/index/蓝色监狱.jpg"></li>
-          <li class="item" data-background-image="/anime/index/红猪-3.jpg"></li>
-          <li class="item" data-background-image="/anime/index/亚人-1.jpg"></li>
+          <li class="item" data-background-image="/anime/index/四月一日灵异事件簿-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/秒速五厘米-4.jpg"></li>
+          <li class="item" data-background-image="/anime/index/石纪元.jpg"></li>
+          <li class="item" data-background-image="/anime/index/JOJO的奇幻冒险.jpg"></li>
+          <li class="item" data-background-image="/anime/index/猫的报恩.jpg"></li>
+          <li class="item" data-background-image="/anime/index/CAROLE&TUESDAY-2.jpg"></li>
         </ul>
       </div>
     </header>
@@ -174,7 +174,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <p>原子性是指在事务结束时，其中所包含的更新处理要么全部执行，要么完全不执行，也就是要么占有一切要么一无所有。例如，在之前的例子中，在事务结束时，绝对不可能出现运动 T 恤的价格下降了，而 T 恤衫的价格却没有上涨的情况。该事务的结束状态，要么是两者都执行了（COMMIT），要么是两者都未执行（ROLLBACK）。从事务中途停止的角度去考虑，就能比较容易理解原子性的重要性了。由于用户在一个事务中定义了两条 UPDATE 语句， DBMS 肯定不会只执行其中一条，否则就会对业务处理造成影响。</p>
 <p><strong>一致性（Consistency）</strong></p>
 <p>一致性指的是事务中包含的处理要满足数据库提前设置的约束，如主键约束或者 NOT NULL 约束等。例如，设置了 NOT NULL 约束的列是不能更新为 NULL 的，试图插入违反主键约束的记录就会出错，无法执行。对事务来说，这些不合法的 SQL 会被回滚。也就是说，这些 SQL 处理会被取消，不会执行。一致性也称为完整性。</p>
-<img data-src="/2021/12/07/sql-basic/1638859336304.png" class="" title="Consistency Flow">
+<p><img data-src="1638859336304.png" alt="Consistency Flow"></p>
 <p><strong>隔离性（Isolation）</strong></p>
 <p>隔离性指的是保证不同事务之间互不干扰的特性。该特性保证了事务之间不会互相嵌套。此外，在某个事务中进行的更改，在该事务结束之前，对其他事务而言是不可见的。因此，即使某个事务向表中添加了记录，在没有提交之前，其他事务也是看不到新添加的记录的。</p>
 <p><strong>持久性（Durability）</strong></p>
@@ -182,7 +182,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <h2 id="视图和表"><a class="markdownIt-Anchor" href="#视图和表">#</a> 视图和表</h2>
 <p>视图和表区别是 “是否保存了实际的数据”。通常，我们在创建表时，会通过 INSERT 语句将数据保存到数据库之中，而数据库中的数据实际上会被保存到计算机的存储设备（通常是硬盘）中。因此，我们通过 SELECT 语句查询数据时，实际上就是从存储设备（硬盘）中读取数据，进行各种计算之后，再将结果返回给用户这样一个过程。</p>
 <p>但是使用视图时并不会将数据保存到存储设备之中，而且也不会将数据保存到其他任何地方。实际上视图保存的是 SELECT 语句。我们从视图中读取数据时，视图会在内部执行该 SELECT 语句并创建出一张临时表。</p>
-<img data-src="/2021/12/07/sql-basic/1638859659594.png" class="" title="View">
+<p><img data-src="1638859659594.png" alt="View"></p>
 <h2 id="视图的限制"><a class="markdownIt-Anchor" href="#视图的限制">#</a> 视图的限制</h2>
 <p><strong>定义视图时不能使用 ORDER BY 子句</strong></p>
 <p>为什么不能使用 ORDER BY 子句呢？这是因为视图和表一样， 数据行都是没有顺序的。实际上，有些 DBMS 在定义视图的语句中是可以使用 ORDER BY 子句的（例如，在 PostgreSQL 中 上 述 SQL 语句就没有问题，可以执行。），但是这并不是通用的语法。因此，在定义视图时请不要使用 ORDER BY 子句。</p>
@@ -197,12 +197,12 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <p>为什么通过汇总得到的视图不能进行更新呢？</p>
 <p>视图归根结底还是从表派生出来的，因此，如果原表可以更新，那么视图中的数据也可以更新。反之亦然，如果视图发生了改变，而原表没有进行相应更新的话，就无法保证数据的一致性了。</p>
 <p>使用前述 INSERT 语句，向视图 ProductSum 中添加数据 (‘电器制品’, 5) 时，原表 Product 应该如何更新才好呢？按理说应该向表中添加商品种类为 “电器制品” 的 5 行数据，但是这些商品对应的商品编号、商品名称和销售单价等我们都不清楚。数据库在这里就遇到了麻烦。</p>
-<img data-src="/2021/12/07/sql-basic/1638860199216.png" class="" title="View Update">
+<p><img data-src="1638860199216.png" alt="View Update"></p>
 <h2 id="关联子查询结合条件一定要写在子查询中"><a class="markdownIt-Anchor" href="#关联子查询结合条件一定要写在子查询中">#</a> 关联子查询结合条件一定要写在子查询中</h2>
 <p>错误的关联子查询书写方法，将关联条件移到子查询之外.</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> product_type, product_name, sale_price</span><br><span class="line">  <span class="keyword">FROM</span> Product <span class="keyword">AS</span> P1</span><br><span class="line"> <span class="keyword">WHERE</span> P1.product_type <span class="operator">=</span> P2.product_type <span class="comment">-- 将关联条件移到子查询之外</span></span><br><span class="line">   <span class="keyword">AND</span> sale_price <span class="operator">&gt;</span> (<span class="keyword">SELECT</span> <span class="built_in">AVG</span>(sale_price)</span><br><span class="line">                       <span class="keyword">FROM</span> Product <span class="keyword">AS</span> P2</span><br><span class="line">                      <span class="keyword">GROUP</span> <span class="keyword">BY</span> product_type);</span><br></pre></td></tr></table></figure>
 <p>SQL 的规则禁止这样的书写方法。该书写方法究竟违反了什么规则呢？那就是关联名称的作用域。虽然这一术语看起来有些晦涩难懂，但是一解释大家就明白了。关联名称就是像 P1、 P2 这样作为表别名的名称，作用域（scope）就是生存范围。也就是说，关联名称存在一个有效范围的限制。具体来讲，子查询内部设定的关联名称，只能在该子查询内部使用。换句话说，就是 “内部可以看到外部，而外部看不到内部”。请大家一定不要忘记关联名称具有一定的有效范围。如前所述，SQL 是按照先内层子查询后外层查询的顺序来执行的。这样，子查询执行结束时只会留下执行结果，作为抽出源的 P2 表其实已经不存在了。因此，在执行外层查询时，由于 P2 表已经不存在了，因此就会返回 “不存在使用该名称的表” 这样的错误。</p>
-<img data-src="/2021/12/07/sql-basic/1638860615353.png" class="" title="Scope">
+<p><img data-src="1638860615353.png" alt="Scope"></p>
 <h2 id="联结的特定语法和过时语法"><a class="markdownIt-Anchor" href="#联结的特定语法和过时语法">#</a> 联结的特定语法和过时语法</h2>
 <p><strong>使用过时语法的内联结</strong></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> SP.shop_id, SP.shop_name, SP.product_id, P.product_name, P.sale_price</span><br><span class="line">  <span class="keyword">FROM</span> ShopProduct SP, Product P</span><br><span class="line"> <span class="keyword">WHERE</span> SP.product_id <span class="operator">=</span> P.product_id</span><br><span class="line">   <span class="keyword">AND</span> SP.shop_id <span class="operator">=</span> <span class="string">&#x27;000A&#x27;</span>;</span><br></pre></td></tr></table></figure>
@@ -228,7 +228,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <h3 id="两个-order-by"><a class="markdownIt-Anchor" href="#两个-order-by">#</a> 两个 ORDER BY</h3>
 <p>最后我们来介绍一下使用窗口函数时与结果形式相关的注意事项，那就是记录的排列顺序。因为使用窗口函数时必须要在 OVER 子句中使用 ORDER BY，所以可能有读者乍一看会觉得结果中的记录不会按照该 ORDER BY 指定的顺序进行排序。但其实这只是一种错觉。 OVER 子句中的 ORDER BY 只是用来决定窗口函数按照什么样的顺序进行计算的，对结果的排列顺序并没有影响。因此如下代码可能得到一个记录的排列顺序比较混乱的结果。有些 DBMS 也可以按照窗口函数的 ORDER BY 子句所指定的顺序对结果进行排序，但那也仅仅是个例而已。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> product_name, product_type, sale_price,</span><br><span class="line">        <span class="built_in">RANK</span> () <span class="keyword">OVER</span> (<span class="keyword">ORDER</span> <span class="keyword">BY</span> sale_price) <span class="keyword">AS</span> ranking</span><br><span class="line">  <span class="keyword">FROM</span> Product;</span><br></pre></td></tr></table></figure>
-<img data-src="/2021/12/07/sql-basic/1638862000582.png" class="" title="Without Order Ranking">
+<p><img data-src="1638862000582.png" alt="Without Order Ranking"></p>
 <p>那么，如何才能让记录切实按照 ranking 列的升序进行排列呢？答案非常简单。那就是在 SELECT 语句的最后，使用 ORDER BY 子句进行指定。这样就能保证 SELECT 语句的结果中记录的排列顺序了，除此之外也没有其他办法了。也许大家会觉得在一条 SELECT 语句中使用两次 ORDER BY 会有点别扭，但是尽管这两个 ORDER BY 看上去是相同的，但其实它们的功能却完全不同。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--Oracle SQL Server DB2 PostgreSQL</span></span><br><span class="line"><span class="keyword">SELECT</span> product_name, product_type, sale_price,</span><br><span class="line">       <span class="built_in">RANK</span> () <span class="keyword">OVER</span> (<span class="keyword">ORDER</span> <span class="keyword">BY</span> sale_price) <span class="keyword">AS</span> ranking</span><br><span class="line">  <span class="keyword">FROM</span> Product</span><br><span class="line"> <span class="keyword">ORDER</span> <span class="keyword">BY</span> ranking;</span><br></pre></td></tr></table></figure>
 <h2 id="sql基础教程"><a class="markdownIt-Anchor" href="#sql基础教程">#</a> SQL 基础教程</h2>
@@ -271,7 +271,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item left">
       
 
-  <a href="/2021/11/22/https-flow/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;黄金神威.jpg" title="HTTPS Flow">
+  <a href="/2021/11/22/https-flow/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;悬崖上的金鱼姬-1.jpg" title="HTTPS Flow">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>HTTPS Flow</h3>
@@ -281,7 +281,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item right">
       
 
-  <a href="/2021/12/30/python-third-moudle/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;派对浪客诸葛孔明-1.jpg" title="Python Third-party Moudle">
+  <a href="/2021/12/30/python-third-moudle/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;你看起来好像很好吃.jpg" title="Python Third-party Moudle">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Python Third-party Moudle</h3>
@@ -338,9 +338,8 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 
 <div class="social">
       <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-pen"></i></span>
       <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
-      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
-      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
 </div>
 
 <ul class="menu">
@@ -348,11 +347,6 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     
   <li class="item">
     <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
-  </li>
-
-    
-  <li class="item">
-    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
   </li>
 
         
@@ -376,16 +370,22 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   </li>
 
   </ul>
-    
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-sakura"></i>Anime</a>
+    <ul class="submenu">
+
+        
   <li class="item">
-    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+    <a href="/anime/" rel="section"><i class="ic i-markdown"></i>Quotes</a>
   </li>
 
-    
+        
   <li class="item">
-    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+    <a href="/gallery/" rel="section"><i class="ic i-magic"></i>Gallery</a>
   </li>
 
+  </ul>
 
 </ul>
 
@@ -438,6 +438,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <script data-config type="text/javascript">
   var LOCAL = {
     path: '2021/12/07/sql-basic/',
+    sidebar: true,
     favicon: {
       show: "（●´3｀●）Goooood",
       hide: "(´Д｀)Booooom"
@@ -459,7 +460,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   };
 </script>
 
-<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
 
 <script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
 

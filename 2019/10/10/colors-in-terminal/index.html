@@ -102,12 +102,12 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="/anime/index/歌剧少女-2.jpg"></li>
-          <li class="item" data-background-image="/anime/index/三月的狮子-3.jpg"></li>
-          <li class="item" data-background-image="/anime/index/东京教父-1.jpg"></li>
-          <li class="item" data-background-image="/anime/index/秒速五厘米-2.jpg"></li>
-          <li class="item" data-background-image="/anime/index/clannad-2.jpg"></li>
-          <li class="item" data-background-image="/anime/index/动物新世代.jpg"></li>
+          <li class="item" data-background-image="/anime/index/蜂蜜与四叶草.jpg"></li>
+          <li class="item" data-background-image="/anime/index/辉夜大小姐想让我告白.jpg"></li>
+          <li class="item" data-background-image="/anime/index/胆大党.jpg"></li>
+          <li class="item" data-background-image="/anime/index/命运石之门.jpg"></li>
+          <li class="item" data-background-image="/anime/index/恋如雨止-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/海贼王.jpg"></li>
         </ul>
       </div>
     </header>
@@ -178,7 +178,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 </tbody>
 </table>
 <p>So  <code>\x1b[31;4m</code> ,  <code>\e[31;4m</code>  and  <code>\033[31;4m</code>  are different ways to write the same sequence. Let’s look at the structure of this sequence.</p>
-<img data-src="/2019/10/10/colors-in-terminal/sequence_structure.png" class="" title="sequence_structure">
+<p><img data-src="sequence_structure.png" alt="sequence_structure"></p>
 <p><code>\x1b[</code>  is a <strong>Control Sequence Introducer</strong> that consists of hexadecimal ASCII  <code>ESC</code>  character code and a  <code>[</code> .</p>
 <p><code>31;4</code>  is a list of instructions separated by  <code>;</code> . Usually this list is formatted as follows:</p>
 <p><code>[&lt;PREFIX&gt;];[&lt;COLOR&gt;];[&lt;TEXT DECORATION&gt;]</code></p>
@@ -194,7 +194,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <p>To list all available colors in 16-color mode run:</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash"><span class="keyword">for</span> code <span class="keyword">in</span> &#123;30..37&#125;; <span class="keyword">do</span> \</span></span><br><span class="line"><span class="language-bash"><span class="built_in">echo</span> -en <span class="string">&quot;\e[<span class="variable">$&#123;code&#125;</span>m&quot;</span><span class="string">&#x27;\\e[&#x27;</span><span class="string">&quot;<span class="variable">$code</span>&quot;</span><span class="string">&#x27;m&#x27;</span><span class="string">&quot;\e[0m&quot;</span>; \</span></span><br><span class="line"><span class="language-bash"><span class="built_in">echo</span> -en <span class="string">&quot;  \e[<span class="variable">$code</span>;1m&quot;</span><span class="string">&#x27;\\e[&#x27;</span><span class="string">&quot;<span class="variable">$code</span>&quot;</span><span class="string">&#x27;;1m&#x27;</span><span class="string">&quot;\e[0m&quot;</span>; \</span></span><br><span class="line"><span class="language-bash"><span class="built_in">echo</span> -en <span class="string">&quot;  \e[<span class="variable">$code</span>;3m&quot;</span><span class="string">&#x27;\\e[&#x27;</span><span class="string">&quot;<span class="variable">$code</span>&quot;</span><span class="string">&#x27;;3m&#x27;</span><span class="string">&quot;\e[0m&quot;</span>; \</span></span><br><span class="line"><span class="language-bash"><span class="built_in">echo</span> -en <span class="string">&quot;  \e[<span class="variable">$code</span>;4m&quot;</span><span class="string">&#x27;\\e[&#x27;</span><span class="string">&quot;<span class="variable">$code</span>&quot;</span><span class="string">&#x27;;4m&#x27;</span><span class="string">&quot;\e[0m&quot;</span>; \</span></span><br><span class="line"><span class="language-bash"><span class="built_in">echo</span> -e <span class="string">&quot;  \e[<span class="subst">$((code+60)</span>)m&quot;</span><span class="string">&#x27;\\e[&#x27;</span><span class="string">&quot;<span class="subst">$((code+60)</span>)&quot;</span><span class="string">&#x27;m&#x27;</span><span class="string">&quot;\e[0m&quot;</span>; \</span></span><br><span class="line"><span class="language-bash"><span class="keyword">done</span></span></span><br></pre></td></tr></table></figure>
 <p>You should see something like this:</p>
-<img data-src="/2019/10/10/colors-in-terminal/16color_mode.png" class="" title="16color_mode">
+<p><img data-src="16color_mode.png" alt="16color_mode"></p>
 <p>Or, in fact, something completely different! You can set up red to look like blue but I wouldn’t recommend such a deception as it probably mess up some color themes in  <code>bash</code> ,  <code>zsh</code>  or anything else that runs in a terminal.</p>
 <p>As you can see from command’s output there’re several sets of color codes:</p>
 <table>
@@ -271,7 +271,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item left">
       
 
-  <a href="/2019/10/10/python-new/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;川柳少女.jpg" title="Python __New__, __Init__, __Call__">
+  <a href="/2019/10/10/python-new/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;黑之契约者.jpg" title="Python __New__, __Init__, __Call__">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Python __New__, __Init__, __Call__</h3>
@@ -281,7 +281,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item right">
       
 
-  <a href="/2019/10/11/python-celery/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;我的英雄学院.jpg" title="Python Celery">
+  <a href="/2019/10/11/python-celery/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;妖精的尾巴.jpg" title="Python Celery">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Python Celery</h3>
@@ -338,9 +338,8 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 
 <div class="social">
       <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-pen"></i></span>
       <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
-      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
-      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
 </div>
 
 <ul class="menu">
@@ -348,11 +347,6 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     
   <li class="item">
     <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
-  </li>
-
-    
-  <li class="item">
-    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
   </li>
 
         
@@ -376,16 +370,22 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   </li>
 
   </ul>
-    
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-sakura"></i>Anime</a>
+    <ul class="submenu">
+
+        
   <li class="item">
-    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+    <a href="/anime/" rel="section"><i class="ic i-markdown"></i>Quotes</a>
   </li>
 
-    
+        
   <li class="item">
-    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+    <a href="/gallery/" rel="section"><i class="ic i-magic"></i>Gallery</a>
   </li>
 
+  </ul>
 
 </ul>
 
@@ -438,6 +438,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <script data-config type="text/javascript">
   var LOCAL = {
     path: '2019/10/10/colors-in-terminal/',
+    sidebar: true,
     favicon: {
       show: "（●´3｀●）Goooood",
       hide: "(´Д｀)Booooom"
@@ -459,7 +460,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   };
 </script>
 
-<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
 
 <script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
 

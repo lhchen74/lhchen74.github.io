@@ -102,12 +102,12 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="/anime/index/春宵苦短，少女前进吧.jpg"></li>
-          <li class="item" data-background-image="/anime/index/白箱-2.jpg"></li>
-          <li class="item" data-background-image="/anime/index/龙猫-2.jpg"></li>
-          <li class="item" data-background-image="/anime/index/此花亭奇谭.jpg"></li>
-          <li class="item" data-background-image="/anime/index/龙王的工作.jpg"></li>
-          <li class="item" data-background-image="/anime/index/亚人-1.jpg"></li>
+          <li class="item" data-background-image="/anime/index/只有我不存在的城市.jpg"></li>
+          <li class="item" data-background-image="/anime/index/勇者赫鲁库.jpg"></li>
+          <li class="item" data-background-image="/anime/index/亚人-3.jpg"></li>
+          <li class="item" data-background-image="/anime/index/轻音少女.jpg"></li>
+          <li class="item" data-background-image="/anime/index/秒速五厘米-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/86不存在的战区-1.jpg"></li>
         </ul>
       </div>
     </header>
@@ -186,7 +186,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">df = pd.DataFrame(&#123;<span class="string">&quot;id&quot;</span>:[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>],</span><br><span class="line"><span class="string">&quot;raw_grade&quot;</span>:[<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;e&#x27;</span>]&#125;)</span><br><span class="line"><span class="comment"># print(df)</span></span><br><span class="line"><span class="comment">#    id raw_grade</span></span><br><span class="line"><span class="comment"># 0   1         a</span></span><br><span class="line"><span class="comment"># 1   2         b</span></span><br><span class="line"><span class="comment"># 2   3         b</span></span><br><span class="line"><span class="comment"># 3   4         a</span></span><br><span class="line"><span class="comment"># 4   5         a</span></span><br><span class="line"><span class="comment"># 5   6         e</span></span><br><span class="line"><span class="number">1.</span> 将原始的grade转换为Categorical数据类型</span><br><span class="line">df[<span class="string">&#x27;grade&#x27;</span>] = df[<span class="string">&quot;raw_grade&quot;</span>].astype(<span class="string">&#x27;category&#x27;</span>)</span><br><span class="line"><span class="comment"># print(df[&#x27;grade&#x27;])</span></span><br><span class="line"><span class="comment"># 0    a</span></span><br><span class="line"><span class="comment"># 1    b</span></span><br><span class="line"><span class="comment"># 2    b</span></span><br><span class="line"><span class="comment"># 3    a</span></span><br><span class="line"><span class="comment"># 4    a</span></span><br><span class="line"><span class="comment"># 5    e</span></span><br><span class="line"><span class="comment"># Name: grade, dtype: category</span></span><br><span class="line"><span class="comment"># Categories (3, object): [a, b, e]</span></span><br><span class="line"><span class="number">2.</span> 将Categorical类型数据重命名为更有意义的名称</span><br><span class="line">df[<span class="string">&#x27;grade&#x27;</span>].cat.categories = [<span class="string">&#x27;very good&#x27;</span>,<span class="string">&#x27;good&#x27;</span>,<span class="string">&#x27;very bad&#x27;</span>]</span><br><span class="line"><span class="comment"># print(df[&#x27;grade&#x27;])</span></span><br><span class="line"><span class="comment"># 0    very good</span></span><br><span class="line"><span class="comment"># 1         good</span></span><br><span class="line"><span class="comment"># 2         good</span></span><br><span class="line"><span class="comment"># 3    very good</span></span><br><span class="line"><span class="comment"># 4    very good</span></span><br><span class="line"><span class="comment"># 5     very bad</span></span><br><span class="line"><span class="comment"># Name: grade, dtype: category</span></span><br><span class="line"><span class="comment"># Categories (3, object): [very good, good, very bad]</span></span><br><span class="line"><span class="number">3.</span> 对类别进行重新排序，增加缺失的类别</span><br><span class="line">df[<span class="string">&#x27;grade&#x27;</span>] = df[<span class="string">&#x27;grade&#x27;</span>].cat.set_categories([<span class="string">&#x27;very bad&#x27;</span>,<span class="string">&#x27;bad&#x27;</span>,<span class="string">&#x27;medium&#x27;</span>,<span class="string">&#x27;good&#x27;</span>,<span class="string">&#x27;very good&#x27;</span>])</span><br><span class="line"><span class="comment"># print(df[&#x27;grade&#x27;])</span></span><br><span class="line"><span class="comment"># 0    very good</span></span><br><span class="line"><span class="comment"># 1         good</span></span><br><span class="line"><span class="comment"># 2         good</span></span><br><span class="line"><span class="comment"># 3    very good</span></span><br><span class="line"><span class="comment"># 4    very good</span></span><br><span class="line"><span class="comment"># 5     very bad</span></span><br><span class="line"><span class="comment"># Name: grade, dtype: category</span></span><br><span class="line"><span class="comment"># Categories (5, object): [very bad, bad, medium, good, very good]</span></span><br><span class="line"><span class="number">4.</span> 排序是按照Categorical的顺序进行的而不是按照字典顺序进行</span><br><span class="line">res = df.sort_values(by = <span class="string">&#x27;grade&#x27;</span>)</span><br><span class="line"><span class="comment"># print(res)</span></span><br><span class="line"><span class="comment">#    id raw_grade      grade</span></span><br><span class="line"><span class="comment"># 5   6         e   very bad</span></span><br><span class="line"><span class="comment"># 1   2         b       good</span></span><br><span class="line"><span class="comment"># 2   3         b       good</span></span><br><span class="line"><span class="comment"># 0   1         a  very good</span></span><br><span class="line"><span class="comment"># 3   4         a  very good</span></span><br><span class="line"><span class="comment"># 4   5         a  very good</span></span><br><span class="line"><span class="number">5.</span> 对Categorical列进行排序时存在空的类别</span><br><span class="line">res = df.groupby(<span class="string">&#x27;grade&#x27;</span>).size()</span><br><span class="line"><span class="comment"># print(res)</span></span><br><span class="line"><span class="comment"># grade</span></span><br><span class="line"><span class="comment"># very bad     1</span></span><br><span class="line"><span class="comment"># bad          0</span></span><br><span class="line"><span class="comment"># medium       0</span></span><br><span class="line"><span class="comment"># good         2</span></span><br><span class="line"><span class="comment"># very good    3</span></span><br><span class="line"><span class="comment"># dtype: int64</span></span><br></pre></td></tr></table></figure>
 <h3 id="画图"><a class="markdownIt-Anchor" href="#画图">#</a> 画图</h3>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">ts = pd.Series(np.random.randn(<span class="number">1000</span>),index=pd.date_range(<span class="string">&#x27;1/1/2000&#x27;</span>,periods=<span class="number">1000</span>))</span><br><span class="line"><span class="comment"># ts = ts.cumsum()</span></span><br><span class="line"><span class="comment"># ts.plot()</span></span><br><span class="line"><span class="comment"># plt.show()</span></span><br><span class="line"></span><br><span class="line">df = pd.DataFrame(np.random.randn(<span class="number">1000</span>,<span class="number">4</span>),index=ts.index,</span><br><span class="line">                  columns=[<span class="string">&#x27;A&#x27;</span>,<span class="string">&#x27;B&#x27;</span>,<span class="string">&#x27;C&#x27;</span>,<span class="string">&#x27;D&#x27;</span>])</span><br><span class="line">df = df.cumsum()</span><br><span class="line">plt.figure();df.plot();plt.legend(loc=<span class="string">&#x27;best&#x27;</span>);plt.show()</span><br></pre></td></tr></table></figure>
-
+<p><img data-src="figure.png" alt="figure"></p>
 <h3 id="导入和保存数据"><a class="markdownIt-Anchor" href="#导入和保存数据">#</a> 导入和保存数据</h3>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">dates = pd.date_range(<span class="string">&#x27;20180119&#x27;</span>,periods = <span class="number">6</span>)</span><br><span class="line">df = pd.DataFrame(np.random.randn(<span class="number">6</span>,<span class="number">4</span>),index=dates,columns=<span class="built_in">list</span>(<span class="string">&#x27;ABCD&#x27;</span>))</span><br><span class="line"><span class="number">1.</span> 写入csv文件</span><br><span class="line">df.to_csv(<span class="string">&#x27;foo.csv&#x27;</span>)</span><br><span class="line"><span class="number">2.</span> 从csv文件中读取</span><br><span class="line">rdf = pd.read_csv(<span class="string">&#x27;foo.csv&#x27;</span>)</span><br><span class="line"><span class="comment"># print(rdf.head())</span></span><br><span class="line"><span class="comment">#    Unnamed: 0         A         B         C         D</span></span><br><span class="line"><span class="comment"># 0  2018-01-19 -0.493852  1.111875 -1.274353  1.253351</span></span><br><span class="line"><span class="comment"># 1  2018-01-20 -0.955214 -0.874248  0.497260  1.422481</span></span><br><span class="line"><span class="comment"># 2  2018-01-21  0.990284  0.236732 -0.216565 -0.391593</span></span><br><span class="line"><span class="comment"># 3  2018-01-22 -1.669639  0.388650  0.729114  0.553893</span></span><br><span class="line"><span class="comment"># 4  2018-01-23  0.108748 -1.347310 -1.346028 -1.075332</span></span><br><span class="line"><span class="comment"># pip install tables==3.3.0</span></span><br><span class="line"><span class="number">1.</span> 写入HDF5存储</span><br><span class="line">df.to_hdf(<span class="string">&#x27;foo.h5&#x27;</span>,<span class="string">&#x27;df&#x27;</span>)</span><br><span class="line"><span class="number">2.</span> 从HDF5存储中读取</span><br><span class="line">rdf = pd.read_hdf(<span class="string">&#x27;foo.h5&#x27;</span>,<span class="string">&#x27;df&#x27;</span>)</span><br><span class="line"><span class="comment"># print(rdf.head())</span></span><br><span class="line"><span class="comment">#                    A         B         C         D</span></span><br><span class="line"><span class="comment"># 2018-01-19 -0.012467  0.795258  0.317056  2.658598</span></span><br><span class="line"><span class="comment"># 2018-01-20  0.199918 -0.404888  0.882677  1.460073</span></span><br><span class="line"><span class="comment"># 2018-01-21 -1.454304 -0.261921 -0.247211  0.874749</span></span><br><span class="line"><span class="comment"># 2018-01-22 -0.620360 -0.835549 -0.307428  2.102838</span></span><br><span class="line"><span class="comment"># 2018-01-23 -1.901853 -0.237466 -0.241624  0.899364</span></span><br><span class="line"><span class="comment"># pip install openpyxl</span></span><br><span class="line"><span class="number">1.</span> 写入excel文件</span><br><span class="line">df.to_excel(<span class="string">&#x27;foo.xlsx&#x27;</span>,sheet_name=<span class="string">&#x27;Sheet1&#x27;</span>)</span><br><span class="line"><span class="number">2.</span> 从excel文件中读取</span><br><span class="line">rdf = pd.read_excel(<span class="string">&#x27;foo.xlsx&#x27;</span>,<span class="string">&#x27;Sheet1&#x27;</span>,index_col=<span class="literal">None</span>,na_values=[<span class="string">&#x27;NA&#x27;</span>])</span><br><span class="line"><span class="comment"># print(rdf.head())</span></span><br><span class="line"><span class="comment">#                   A         B         C         D</span></span><br><span class="line"><span class="comment"># 2018-01-19 -0.721516  1.137682 -0.302877 -0.494486</span></span><br><span class="line"><span class="comment"># 2018-01-20  0.365947  1.494965  0.241657 -0.300226</span></span><br><span class="line"><span class="comment"># 2018-01-21  0.522483  1.195972 -0.403275 -0.882628</span></span><br><span class="line"><span class="comment"># 2018-01-22 -0.556909  0.877889 -0.218577  1.026033</span></span><br><span class="line"><span class="comment"># 2018-01-23  0.459684 -0.896963  1.271079 -2.797635</span></span><br></pre></td></tr></table></figure>
 <blockquote>
@@ -223,7 +223,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item left">
       
 
-  <a href="/2020/10/30/python-test/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;冰海战记-2.jpg" title="Python Test">
+  <a href="/2020/10/30/python-test/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;寄生兽.jpg" title="Python Test">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Python Test</h3>
@@ -233,7 +233,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item right">
       
 
-  <a href="/2020/10/30/python-pandas-load-data/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;异国日记-1.jpg" title="Python Pandas Load Data">
+  <a href="/2020/10/30/python-pandas-load-data/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;借东西的小人阿莉埃蒂.jpg" title="Python Pandas Load Data">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Python Pandas Load Data</h3>
@@ -290,9 +290,8 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 
 <div class="social">
       <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-pen"></i></span>
       <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
-      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
-      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
 </div>
 
 <ul class="menu">
@@ -300,11 +299,6 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     
   <li class="item">
     <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
-  </li>
-
-    
-  <li class="item">
-    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
   </li>
 
         
@@ -328,16 +322,22 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   </li>
 
   </ul>
-    
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-sakura"></i>Anime</a>
+    <ul class="submenu">
+
+        
   <li class="item">
-    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+    <a href="/anime/" rel="section"><i class="ic i-markdown"></i>Quotes</a>
   </li>
 
-    
+        
   <li class="item">
-    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+    <a href="/gallery/" rel="section"><i class="ic i-magic"></i>Gallery</a>
   </li>
 
+  </ul>
 
 </ul>
 
@@ -390,6 +390,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <script data-config type="text/javascript">
   var LOCAL = {
     path: '2020/10/30/python-pandas/',
+    sidebar: true,
     favicon: {
       show: "（●´3｀●）Goooood",
       hide: "(´Д｀)Booooom"
@@ -411,7 +412,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   };
 </script>
 
-<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
 
 <script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
 

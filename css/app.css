@@ -1503,6 +1503,12 @@ main >.inner {
     padding: 0.5rem;
   }
 }
+body.no-sidebar #sidebar {
+  display: none;
+}
+body.no-sidebar #main {
+  width: 100%;
+}
 #header {
   margin: 0 auto;
   position: relative;
@@ -2221,23 +2227,17 @@ main >.inner {
 .social .item.github i {
   color: #191717;
 }
-.social .item.music::before {
-  background-color: #e60026;
-}
-.social .item.music i {
-  color: #e60026;
-}
 .social .item.codepen::before {
   background-color: #3b5998;
 }
 .social .item.codepen i {
   color: #3b5998;
 }
-.social .item.anki::before {
-  background-color: #55acd5;
+.social .item.music::before {
+  background-color: #e60026;
 }
-.social .item.anki i {
-  color: #55acd5;
+.social .item.music i {
+  color: #e60026;
 }
 .social .item:focus i,
 .social .item:hover i {
@@ -5286,4 +5286,21 @@ span.label {
 }
 .audio.playing .cover .disc {
   animation-play-state: running;
+}
+.gallery-waterfall {
+  position: relative;
+}
+.gallery-item {
+  margin-bottom: 8px;
+  overflow: hidden;
+  border-radius: 6px;
+}
+.gallery-item img {
+  width: 100%;
+  display: block;
+  border-radius: 6px;
+  transition: transform 0.3s ease;
+}
+.gallery-item:hover img {
+  transform: scale(1.25);
 }

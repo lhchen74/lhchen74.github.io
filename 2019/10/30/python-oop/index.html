@@ -102,12 +102,12 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="/anime/index/辉夜大小姐想让我告白.jpg"></li>
-          <li class="item" data-background-image="/anime/index/摇曳露营.jpg"></li>
-          <li class="item" data-background-image="/anime/index/听我的电波吧.jpg"></li>
-          <li class="item" data-background-image="/anime/index/赌博默示录.jpg"></li>
-          <li class="item" data-background-image="/anime/index/终结的炽天使.jpg"></li>
-          <li class="item" data-background-image="/anime/index/声之形.jpg"></li>
+          <li class="item" data-background-image="/anime/index/神的记事本.jpg"></li>
+          <li class="item" data-background-image="/anime/index/间谍过家家.jpg"></li>
+          <li class="item" data-background-image="/anime/index/精灵守护者.jpg"></li>
+          <li class="item" data-background-image="/anime/index/咒术回战.jpg"></li>
+          <li class="item" data-background-image="/anime/index/动物狂想曲-1.jpg"></li>
+          <li class="item" data-background-image="/anime/index/红猪-3.jpg"></li>
         </ul>
       </div>
     </header>
@@ -156,7 +156,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 </blockquote>
 <h3 id="类的成员"><a class="markdownIt-Anchor" href="#类的成员">#</a> 类的成员</h3>
 <p>类的成员可以分为三大类：字段、方法和属性</p>
-<img data-src="/2019/10/30/python-oop/425762-20150916222236164-249943282.png" class="">
+<p><img data-src="425762-20150916222236164-249943282.png" alt=""></p>
 <p><em>注：所有成员中，只有普通字段的内容保存对象中，即：根据此类创建了多少对象，在内存中就有多少个普通字段。而其他的成员，则都是保存在类中，即：无论对象的多少，在内存中只创建一份。</em></p>
 <p><strong>一、字段</strong></p>
 <p>字段包括：普通字段和静态字段，他们在定义和使用中有所区别，而最本质的区别是内存中保存的位置不同，</p>
@@ -166,7 +166,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Province</span>:</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 静态字段</span></span><br><span class="line">    country ＝ <span class="string">&#x27;中国&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name</span>):</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 普通字段</span></span><br><span class="line">        <span class="variable language_">self</span>.name = name</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 直接访问普通字段</span></span><br><span class="line">obj = Province(<span class="string">&#x27;河北省&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span> obj.name</span><br><span class="line"></span><br><span class="line"><span class="comment"># 直接访问静态字段</span></span><br><span class="line">Province.country</span><br></pre></td></tr></table></figure>
 <p>由上述代码可以看出【普通字段需要通过对象来访问】【静态字段通过类访问】，在使用上可以看出普通字段和静态字段的归属是不同的。其在内容的存储方式类似如下图：</p>
-<img data-src="/2019/10/30/python-oop/425762-20150907094454965-329821364.jpg" class="">
+<p><img data-src="425762-20150907094454965-329821364.jpg" alt=""></p>
 <p>由上图可是：</p>
 <ul>
 <li>静态字段在内存中只保存一份</li>
@@ -181,7 +181,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <li>静态方法：由<strong>类</strong>调用；无默认参数；</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Foo</span>:</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name</span>):</span><br><span class="line">        <span class="variable language_">self</span>.name = name</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">ord_func</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot; 定义普通方法，至少有一个self参数 &quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># print self.name</span></span><br><span class="line">        <span class="built_in">print</span> <span class="string">&#x27;普通方法&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @classmethod</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">class_func</span>(<span class="params">cls</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot; 定义类方法，至少有一个cls参数 &quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">        <span class="built_in">print</span> <span class="string">&#x27;类方法&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">static_func</span>():</span><br><span class="line">        <span class="string">&quot;&quot;&quot; 定义静态方法 ，无默认参数&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">        <span class="built_in">print</span> <span class="string">&#x27;静态方法&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 调用普通方法</span></span><br><span class="line">f = Foo()</span><br><span class="line">f.ord_func()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 调用类方法</span></span><br><span class="line">Foo.class_func()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 调用静态方法</span></span><br><span class="line">Foo.static_func()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p><strong><img data-src="/2019/10/30/python-oop/425762-20151012145051507-726073921.jpg" class=""></strong></p>
+<p><strong><img data-src="425762-20151012145051507-726073921.jpg" alt=""></strong></p>
 <p>** 相同点：** 对于所有的方法而言，均属于类（非对象）中，所以，在内存中也只保存一份。</p>
 <p>** 不同点：** 方法调用者不同、调用方法时自动传入的参数不同。</p>
 <p><strong>三、属性</strong></p>
@@ -193,7 +193,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 </ul>
 <p><strong>1、属性的基本使用</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ############### 定义 ###############</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Foo</span>:</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">func</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 定义属性</span></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">prop</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"><span class="comment"># ############### 调用 ###############</span></span><br><span class="line">foo_obj = Foo()</span><br><span class="line"></span><br><span class="line">foo_obj.func()</span><br><span class="line">foo_obj.prop   <span class="comment">#调用属性</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<img data-src="/2019/10/30/python-oop/425762-20151019151817833-1751535998.png" class="">
+<p><img data-src="425762-20151019151817833-1751535998.png" alt=""></p>
 <p>由属性的定义和调用要注意一下几点：</p>
 <ul>
 <li>定义时，在普通方法的基础上添加 <strong>@property</strong> 装饰器；</li>
@@ -292,7 +292,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <p><code>__dict__</code></p>
 <p>类或对象中的所有成员</p>
 <p>上文中我们知道：类的普通字段属于对象；类中的静态字段和方法等属于类，即：</p>
-<img data-src="/2019/10/30/python-oop/425762-20150907094454965-329821364.jpg" class="">
+<p><img data-src="425762-20150907094454965-329821364.jpg" alt=""></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Province</span>:</span><br><span class="line"></span><br><span class="line">    country = <span class="string">&#x27;China&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name, count</span>):</span><br><span class="line">        <span class="variable language_">self</span>.name = name</span><br><span class="line">        <span class="variable language_">self</span>.count = count</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">func</span>(<span class="params">self, *args, **kwargs</span>):</span><br><span class="line">        <span class="built_in">print</span> <span class="string">&#x27;func&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取类的成员，即：静态字段、方法、</span></span><br><span class="line"><span class="built_in">print</span> Province.__dict__</span><br><span class="line"><span class="comment"># 输出：&#123;&#x27;country&#x27;: &#x27;China&#x27;, &#x27;__module__&#x27;: &#x27;__main__&#x27;, &#x27;func&#x27;: &lt;function func at 0x10be30f50&gt;, &#x27;__init__&#x27;: &lt;function __init__ at 0x10be30ed8&gt;, &#x27;__doc__&#x27;: None&#125;</span></span><br><span class="line"></span><br><span class="line">obj1 = Province(<span class="string">&#x27;HeBei&#x27;</span>,<span class="number">10000</span>)</span><br><span class="line"><span class="built_in">print</span> obj1.__dict__</span><br><span class="line"><span class="comment"># 获取 对象obj1 的成员</span></span><br><span class="line"><span class="comment"># 输出：&#123;&#x27;count&#x27;: 10000, &#x27;name&#x27;: &#x27;HeBei&#x27;&#125;</span></span><br><span class="line"></span><br><span class="line">obj2 = Province(<span class="string">&#x27;HeNan&#x27;</span>, <span class="number">3888</span>)</span><br><span class="line"><span class="built_in">print</span> obj2.__dict__</span><br><span class="line"><span class="comment"># 获取 对象obj1 的成员</span></span><br><span class="line"><span class="comment"># 输出：&#123;&#x27;count&#x27;: 3888, &#x27;name&#x27;: &#x27;HeNan&#x27;&#125;</span></span><br></pre></td></tr></table></figure>
 <p><code>__str__</code></p>
 <p>如果一个类中定义了 <code>__str__</code> 方法，那么在打印 对象 时，默认输出该方法的返回值。</p>
@@ -330,7 +330,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <p>＝》 类 是由 type 类实例化产生</p>
 <p>那么问题来了，类默认是由 type 类实例化产生，type 类中如何实现的创建类？类又是如何创建对象？</p>
 <p>答：类中有一个属性  <code>__metaclass__</code> ，其用来表示该类由 谁 来实例化创建，所以，我们可以为  <code>__metaclass__</code>  设置一个 type 类的派生类，从而查看 类 创建的过程。</p>
-<img data-src="/2019/10/30/python-oop/425762-20151020005415755-634423846.png" class="">
+<p><img data-src="425762-20151020005415755-634423846.png" alt=""></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyType</span>(<span class="title class_ inherited__">type</span>):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, what, bases=<span class="literal">None</span>, <span class="built_in">dict</span>=<span class="literal">None</span></span>):</span><br><span class="line">        <span class="built_in">super</span>(MyType, <span class="variable language_">self</span>).__init__(what, bases, <span class="built_in">dict</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__call__</span>(<span class="params">self, *args, **kwargs</span>):</span><br><span class="line">        obj = <span class="variable language_">self</span>.__new__(<span class="variable language_">self</span>, *args, **kwargs)</span><br><span class="line"></span><br><span class="line">        <span class="variable language_">self</span>.__init__(obj)</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Foo</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line"></span><br><span class="line">    __metaclass__ = MyType</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name</span>):</span><br><span class="line">        <span class="variable language_">self</span>.name = name</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__new__</span>(<span class="params">cls, *args, **kwargs</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">object</span>.__new__(cls, *args, **kwargs)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 第一阶段：解释器从上到下执行代码创建Foo类</span></span><br><span class="line"><span class="comment"># 第二阶段：通过Foo类创建obj对象</span></span><br><span class="line">obj = Foo()</span><br></pre></td></tr></table></figure>
 <p>作者：<span class="exturl" data-url="aHR0cDovL3d3dy5jbmJsb2dzLmNvbS93dXBlaXFpLw==">武沛齐</span><br>
 出处：<span class="exturl" data-url="aHR0cDovL3d3dy5jbmJsb2dzLmNvbS93dXBlaXFpLw==">http://www.cnblogs.com/wupeiqi/</span><br>
@@ -366,7 +366,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item left">
       
 
-  <a href="/2019/10/30/python-sqlalchemy/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;三月的狮子-2.jpg" title="Python Sqlalchemy">
+  <a href="/2019/10/30/python-sqlalchemy/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;文豪野犬-1.jpg" title="Python Sqlalchemy">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Python Sqlalchemy</h3>
@@ -376,7 +376,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item right">
       
 
-  <a href="/2019/10/30/python-decorator/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;乒乓.jpg" title="Python Decorator">
+  <a href="/2019/10/30/python-decorator/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;鬼灭之刃.jpg" title="Python Decorator">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Python Decorator</h3>
@@ -433,9 +433,8 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 
 <div class="social">
       <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-pen"></i></span>
       <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
-      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
-      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
 </div>
 
 <ul class="menu">
@@ -443,11 +442,6 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     
   <li class="item">
     <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
-  </li>
-
-    
-  <li class="item">
-    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
   </li>
 
         
@@ -471,16 +465,22 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   </li>
 
   </ul>
-    
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-sakura"></i>Anime</a>
+    <ul class="submenu">
+
+        
   <li class="item">
-    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+    <a href="/anime/" rel="section"><i class="ic i-markdown"></i>Quotes</a>
   </li>
 
-    
+        
   <li class="item">
-    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+    <a href="/gallery/" rel="section"><i class="ic i-magic"></i>Gallery</a>
   </li>
 
+  </ul>
 
 </ul>
 
@@ -533,6 +533,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <script data-config type="text/javascript">
   var LOCAL = {
     path: '2019/10/30/python-oop/',
+    sidebar: true,
     favicon: {
       show: "（●´3｀●）Goooood",
       hide: "(´Д｀)Booooom"
@@ -554,7 +555,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   };
 </script>
 
-<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
 
 <script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
 

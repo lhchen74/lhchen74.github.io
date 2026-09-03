@@ -1,4 +1,4 @@
-var CONFIG = {"version":"0.2.5","hostname":"https://lhchen74.github.io","root":"/","statics":"/","favicon":{"normal":"images/favicon.ico","hidden":"images/failure.ico"},"darkmode":false,"auto_scroll":true,"js":{"chart":"npm/frappe-charts@1.5.0/dist/frappe-charts.min.iife.min.js","copy_tex":"npm/katex@0.12.0/dist/contrib/copy-tex.min.js","fancybox":"combine/npm/jquery@3.5.1/dist/jquery.min.js,npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js,npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"},"css":{"valine":"css/comment.css","katex":"npm/katex@0.12.0/dist/katex.min.css","mermaid":"css/mermaid.css","fancybox":"combine/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"},"loader":{"start":true,"switch":false},"search":{"appID":"KZFJ2FBGOI","apiKey":"aa30fe0893d6dba1e6faaf90a7961181","indexName":"dew","hits":{"per_page":10}},"quicklink":{"timeout":3000,"priority":true},"audio":[{"title":"纯音乐","list":["https://music.163.com/#/playlist?id=2153740332"]},{"title":"华语","list":["https://music.163.com/#/playlist?id=3082898405"]},{"title":"英语","list":["https://music.163.com/#/playlist?id=2300591867"]},{"title":"日语","list":["https://music.163.com/#/playlist?id=2156138863"]},{"title":"动漫","list":["https://music.163.com/#/playlist?id=2096019982"]}],"fireworks":["rgba(255,182,185,.9)","rgba(250,227,217,.9)","rgba(187,222,214,.9)","rgba(138,198,209,.9)"]};const getRndInteger = function (min, max) {
+var CONFIG = {"version":"0.2.5","hostname":"https://lhchen74.github.io","root":"/","statics":"/","favicon":{"normal":"images/favicon.ico","hidden":"images/failure.ico"},"darkmode":false,"auto_scroll":true,"js":{"valine":"gh/amehime/MiniValine@4.2.2-beta10/dist/MiniValine.min.js","chart":"npm/frappe-charts@1.5.0/dist/frappe-charts.min.iife.min.js","copy_tex":"npm/katex@0.12.0/dist/contrib/copy-tex.min.js","fancybox":"combine/npm/jquery@3.5.1/dist/jquery.min.js,npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js,npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"},"css":{"valine":"css/comment.css","katex":"npm/katex@0.12.0/dist/katex.min.css","mermaid":"css/mermaid.css","fancybox":"combine/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"},"loader":{"start":true,"switch":false},"search":{"appID":"KZFJ2FBGOI","apiKey":"aa30fe0893d6dba1e6faaf90a7961181","indexName":"dew","hits":{"per_page":10}},"quicklink":{"timeout":3000,"priority":true},"audio":[{"title":"纯音乐","list":["https://music.163.com/#/playlist?id=2153740332"]},{"title":"华语","list":["https://music.163.com/#/playlist?id=3082898405"]},{"title":"英语","list":["https://music.163.com/#/playlist?id=2300591867"]},{"title":"日语","list":["https://music.163.com/#/playlist?id=2156138863"]},{"title":"动漫","list":["https://music.163.com/#/playlist?id=2096019982"]}],"fireworks":["rgba(255,182,185,.9)","rgba(250,227,217,.9)","rgba(187,222,214,.9)","rgba(138,198,209,.9)"]};const getRndInteger = function (min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
@@ -2221,6 +2221,24 @@ const pjaxReload = function () {
   pageScroll(0);
 }
 
+// hexo-tag-aplayer only injects APlayer.min.js/css into <head>, which
+// isn't one of the pjax selectors below, so it never arrives via a
+// pjax navigation — only on a hard page load. Load it ourselves,
+// the same way the other vendor libraries are loaded per-navigation.
+const loadAplayer = function () {
+  if (!LOCAL.aplayer || window.APlayer) return;
+
+  if (!window.cssaplayer) {
+    document.head.createChild('link', {
+      rel: 'stylesheet',
+      href: CONFIG.root + 'assets/css/APlayer.min.css'
+    });
+    window.cssaplayer = true;
+  }
+
+  getScript(CONFIG.root + 'assets/js/APlayer.min.js');
+}
+
 const siteRefresh = function (reload) {
   LOCAL_HASH = 0
   LOCAL_URL = window.location.href
@@ -2229,6 +2247,7 @@ const siteRefresh = function (reload) {
   vendorJs('copy_tex');
   vendorCss('mermaid');
   vendorJs('chart');
+  loadAplayer();
   // vendorJs('valine', function () {
   //   var options = Object.assign({}, CONFIG.valine);
   //   options = Object.assign(options, LOCAL.valine || {});
@@ -2250,6 +2269,8 @@ const siteRefresh = function (reload) {
   }
 
   originTitle = document.title
+
+  BODY.toggleClass('no-sidebar', LOCAL.sidebar === false)
 
   resizeHandle()
 

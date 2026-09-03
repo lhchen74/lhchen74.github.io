@@ -102,12 +102,12 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="/anime/index/赛马娘.jpg"></li>
-          <li class="item" data-background-image="/anime/index/命运石之门.jpg"></li>
-          <li class="item" data-background-image="/anime/index/风之谷-2.jpg"></li>
-          <li class="item" data-background-image="/anime/index/怪物之子.jpg"></li>
-          <li class="item" data-background-image="/anime/index/未闻花名-2.jpg"></li>
-          <li class="item" data-background-image="/anime/index/冰海战记-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/寄生兽.jpg"></li>
+          <li class="item" data-background-image="/anime/index/血意少年.jpg"></li>
+          <li class="item" data-background-image="/anime/index/尸鬼.jpg"></li>
+          <li class="item" data-background-image="/anime/index/紫罗兰永恒花园.jpg"></li>
+          <li class="item" data-background-image="/anime/index/蜂蜜与四叶草.jpg"></li>
+          <li class="item" data-background-image="/anime/index/罗小黑战记.jpg"></li>
         </ul>
       </div>
     </header>
@@ -164,23 +164,23 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <h2 id="pattern-正向先行断言"><a class="markdownIt-Anchor" href="#pattern-正向先行断言">#</a> (?=pattern) 正向先行断言</h2>
 <p>代表字符串中的一个位置，紧接该位置之后的字符序列能够匹配 pattern。</p>
 <p>例如对 <strong>“a regular expression”</strong> 这个字符串，要想匹配 regular 中的 re，但不能匹配 expression 中的 re，可以用 <strong>re(?=gular)</strong>，该表达式限定了 re 右边的位置，这个位置之后是 gular，但并不消耗 gular 这些字符。</p>
-<img data-src="/2021/08/03/regex-lookhead-lookbehind/B7F44A41-BC1A-4088-8ED4-7CB0F3984991.jpg" class="">
+<p><img data-src="B7F44A41-BC1A-4088-8ED4-7CB0F3984991.jpg" alt=""></p>
 <p>将表达式改为 <strong>re(?=gular).</strong> ，将会匹配 reg，元字符 <strong>.</strong> 匹配了<strong> g</strong></p>
-<img data-src="/2021/08/03/regex-lookhead-lookbehind/BD357AC2-7BFC-4FDE-A1B2-2FCE1B17E641.jpg" class="">
+<p><img data-src="BD357AC2-7BFC-4FDE-A1B2-2FCE1B17E641.jpg" alt=""></p>
 <h2 id="pattern-负向先行断言"><a class="markdownIt-Anchor" href="#pattern-负向先行断言">#</a> (?!pattern) 负向先行断言</h2>
 <p>代表字符串中的一个位置，紧接该位置之后的字符序列不能匹配 pattern。</p>
 <p>例如对 <strong>“regex represents regular expression”</strong> 这个字符串，要想匹配除 regex 和 regular 之外的 re，可以用 <strong>re(?!g)</strong>，该表达式限定了 <strong>re</strong> 右边的位置，这个位置后面不是字符 <strong>g</strong>。</p>
 <p>负向和正向的区别，就在于该位置之后的字符能否匹配括号中的表达式。</p>
-<img data-src="/2021/08/03/regex-lookhead-lookbehind/92C72B08-2122-408E-97A2-6274417A3C16.jpg" class="">
+<p><img data-src="92C72B08-2122-408E-97A2-6274417A3C16.jpg" alt=""></p>
 <h2 id="pattern-正向后行断言"><a class="markdownIt-Anchor" href="#pattern-正向后行断言">#</a> (?&lt;=pattern) 正向后行断言</h2>
 <p>代表字符串中的一个位置，紧接该位置之前的字符序列能够匹配 pattern。</p>
 <p>例如对 <strong>regex represents regular expression</strong> 这个字符串，有 4 个单词，要想匹配单词内部的 re，但不匹配单词开头的 re，可以用 <strong>(?&lt;=\w)re</strong>，单词内部的 re，在 re 前面应该是一个单词字符。</p>
 <p>之所以叫后行断言，是因为正则表达式引擎在匹配字符串和表达式时，是从前向后逐个扫描字符串中的字符，并判断是否与表达式符合，当在表达式中遇到该断言时，正则表达式引擎需要往字符串前端检测已扫描过的字符，相对于扫描方向是向后的。</p>
-<img data-src="/2021/08/03/regex-lookhead-lookbehind/94F6A0A8-CB0F-4EE6-A537-0FA309EF64AE.jpg" class="">
+<p><img data-src="94F6A0A8-CB0F-4EE6-A537-0FA309EF64AE.jpg" alt=""></p>
 <h2 id="pattern-负向后行断言"><a class="markdownIt-Anchor" href="#pattern-负向后行断言">#</a> (?&lt;!pattern) 负向后行断言</h2>
 <p>代表字符串中的一个位置，紧接该位置之前的字符序列不能匹配 pattern。</p>
 <p>例如对 <strong>“regex represents regular expression”</strong> 这个字符串，要想匹配单词开头的 re，可以用 <strong>(?&lt;!\w)re</strong>。单词开头的 <strong>re</strong>，在本例中，也就是指不在单词内部的 <strong>re</strong>，即 <strong>re</strong> 前面不是单词字符。当然也可以用 <strong>\bre</strong> 来匹配。</p>
-<img data-src="/2021/08/03/regex-lookhead-lookbehind/5226CEE8-0B90-4E89-9EE2-DFD7E45DA6B2.jpg" class="">
+<p><img data-src="5226CEE8-0B90-4E89-9EE2-DFD7E45DA6B2.jpg" alt=""></p>
 <p>对于这 4 个断言的理解，可以从两个方面入手：</p>
 <ol>
 <li><strong>关于先行 (lookahead) 和后行 (lookbehind)</strong> 正则表达式引擎在执行字符串和表达式匹配时，会从头到尾（从前到后）连续扫描字符串中的字符，设想有一个扫描指针指向字符边界处并随匹配过程移动。先行断言，是当扫描指针位于某处时，引擎会尝试匹配指针还未扫过的字符，先于指针到达该字符，故称为先行。后行断言，引擎会尝试匹配指针已扫过的字符，后于指针到达该字符，故称为后行。</li>
@@ -195,8 +195,8 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <p>每个字符前都不是 <strong>that</strong>:  <code>^((?&lt;!that).)*this((?&lt;!that).)*$</code></p>
 <p>每个字符后都不是 <strong>that</strong>:  <code>^(.(?!that))*this(.(?!that))*$</code></p>
 <p>对于 <strong>this is runoob test</strong> 这句话，两个表达式都能够匹配成功，而 <strong>this and that is runoob test</strong> 都匹配失败。</p>
-<img data-src="/2021/08/03/regex-lookhead-lookbehind/0F108023-F4EF-409A-A63C-18334D4A0F3B.jpg" class="">
-<img data-src="/2021/08/03/regex-lookhead-lookbehind/DA61F6F1-4247-4E52-9EB8-198E3A90393D.jpg" class="">
+<p><img data-src="0F108023-F4EF-409A-A63C-18334D4A0F3B.jpg" alt=""></p>
+<p><img data-src="DA61F6F1-4247-4E52-9EB8-198E3A90393D.jpg" alt=""></p>
 <p>在一般情况下，这两个表达式基本上都能够满足要求了。考虑极端情况，如一句话以 <strong>that</strong> 开头、以 <strong>that</strong> 结尾、<strong>that</strong> 和 <strong>this</strong> 连在一起时，上述表达式就可能不胜任了。 如 <strong>runoob thatthis is the case</strong> 或者 <strong>this is the case, not that</strong> 等。</p>
 <p>只要灵活运用这几个断言，就很容易解决：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">^(.(?&lt;!that))*this(.(?&lt;!that))*$</span><br><span class="line">^(.(?&lt;!that))*this((?!that).)*$</span><br><span class="line">^((?!that).)*this(.(?&lt;!that))*$</span><br><span class="line">^((?!that).)*this((?!that).)*$</span><br></pre></td></tr></table></figure>
@@ -205,17 +205,18 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <p>先行断言和后行断言某种程度上就好比使用 <strong>if</strong> 语句对匹配的字符前后做判断验证。</p>
 <h2 id="总结-的使用"><a class="markdownIt-Anchor" href="#总结-的使用">#</a> 总结？=、?&lt;=、?!、?&lt;!= 的使用</h2>
 <p><strong>exp1(?=exp2)</strong>：查找 exp2 前面的 exp1。</p>
-<img data-src="/2021/08/03/regex-lookhead-lookbehind/reg-111.jpg" class="">
+<p><img data-src="reg-111.jpg" alt=""></p>
 <p><strong>(?&lt;=exp2)exp1</strong>：查找 exp2 后面的 exp1。</p>
-<img data-src="/2021/08/03/regex-lookhead-lookbehind/reg-222.jpg" class="">
+<p><img data-src="reg-222.jpg" alt=""></p>
 <p><strong>exp1(?!exp2)</strong>：查找后面不是 exp2 的 exp1。</p>
-<img data-src="/2021/08/03/regex-lookhead-lookbehind/reg-333.jpg" class="">
+<p><img data-src="reg-333.jpg" alt=""></p>
 <p><strong>(?&lt;!=exp2)exp1</strong>：查找前面不是 exp2 的 exp1。</p>
-<img data-src="/2021/08/03/regex-lookhead-lookbehind/reg-444.jpg" class="">
+<p><img data-src="reg-444.jpg" alt=""></p>
 <h2 id="comments"><a class="markdownIt-Anchor" href="#comments">#</a> Comments</h2>
 <p>使用 <strong>(?=pattern)</strong> 零宽正向先行断言 (zero-width positive lookahead assertion) 替换 Markdown 两个 <strong> <code>** 中的第一个为 **</code> python</strong>。</p>
-<img data-src="/2021/08/03/regex-lookhead-lookbehind/1673265279172.png" class="" title="Replace Before">
-<img data-src="/2021/08/03/regex-lookhead-lookbehind/1673265312801.png" class="" title="Replace After">
+<p><img data-src="1673265279172.png" alt="Replace Before"></p>
+<p><img data-src="1673265312801.png" alt="Replace After"></p>
+
       <div class="tags">
           <a href="/tags/regex/" rel="tag"><i class="ic i-tag"></i> regex</a>
       </div>
@@ -246,7 +247,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item left">
       
 
-  <a href="/2021/07/27/python-process-monitor/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;蜂蜜与四叶草.jpg" title="How to Make a Process Monitor in Python">
+  <a href="/2021/07/27/python-process-monitor/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;新世纪福音战士.jpg" title="How to Make a Process Monitor in Python">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>How to Make a Process Monitor in Python</h3>
@@ -256,7 +257,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item right">
       
 
-  <a href="/2021/08/03/oracle-form-download-file/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;萤火之森-2.jpg" title="Download File by Form Personalization">
+  <a href="/2021/08/03/oracle-form-download-file/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;东京教父-1.jpg" title="Download File by Form Personalization">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Download File by Form Personalization</h3>
@@ -313,9 +314,8 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 
 <div class="social">
       <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-pen"></i></span>
       <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
-      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
-      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
 </div>
 
 <ul class="menu">
@@ -323,11 +323,6 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     
   <li class="item">
     <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
-  </li>
-
-    
-  <li class="item">
-    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
   </li>
 
         
@@ -351,16 +346,22 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   </li>
 
   </ul>
-    
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-sakura"></i>Anime</a>
+    <ul class="submenu">
+
+        
   <li class="item">
-    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+    <a href="/anime/" rel="section"><i class="ic i-markdown"></i>Quotes</a>
   </li>
 
-    
+        
   <li class="item">
-    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+    <a href="/gallery/" rel="section"><i class="ic i-magic"></i>Gallery</a>
   </li>
 
+  </ul>
 
 </ul>
 
@@ -413,6 +414,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <script data-config type="text/javascript">
   var LOCAL = {
     path: '2021/08/03/regex-lookhead-lookbehind/',
+    sidebar: true,
     favicon: {
       show: "（●´3｀●）Goooood",
       hide: "(´Д｀)Booooom"
@@ -434,7 +436,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   };
 </script>
 
-<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
 
 <script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
 

@@ -102,12 +102,12 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="/anime/index/四月一日灵异事件簿-2.jpg"></li>
-          <li class="item" data-background-image="/anime/index/百变狸猫-1.jpg"></li>
-          <li class="item" data-background-image="/anime/index/鬼灭之刃.jpg"></li>
-          <li class="item" data-background-image="/anime/index/凉宫春日.jpg"></li>
-          <li class="item" data-background-image="/anime/index/青之芦苇-2.jpg"></li>
-          <li class="item" data-background-image="/anime/index/只有神知道的世界.jpg"></li>
+          <li class="item" data-background-image="/anime/index/动物新世代.jpg"></li>
+          <li class="item" data-background-image="/anime/index/未闻花名-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/四月一日灵异事件簿.jpg"></li>
+          <li class="item" data-background-image="/anime/index/来自新世界.jpg"></li>
+          <li class="item" data-background-image="/anime/index/平家物语-1.jpg"></li>
+          <li class="item" data-background-image="/anime/index/神的记事本.jpg"></li>
         </ul>
       </div>
     </header>
@@ -160,7 +160,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <p>On the other hand, all the lines within these files that don’t match the specified patterns are considered outliers and are abandoned in our analysis.</p>
 <p>We will be using <span class="exturl" data-url="aHR0cHM6Ly9weXBpLm9yZy9wcm9qZWN0L3dhdGNoZG9nLw==">watchdog</span> and <span class="exturl" data-url="aHR0cHM6Ly9weXBpLm9yZy9wcm9qZWN0L3B5Z3RhaWwv">pygtail </span>libraries to detect the changes occurring, there is also a Flask, Redis, and SocketIO version where a GUI web app is created for the same purpose, you can always refer to it <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2Jhc3NlbW1hcmppL0ZsYXNrX0xvZ19JbnNwZWN0b3I=">here</span>.</p>
 <h2 id="process-flowchart"><a class="markdownIt-Anchor" href="#process-flowchart">#</a> Process Flowchart</h2>
-<img data-src="/2021/07/26/python-watchdog/watchdog-tutorial-flowchart.png" class="" title="process-flowchart-of-watchdog-tutorial-in-python">
+<p><img data-src="watchdog-tutorial-flowchart.png" alt="process-flowchart-of-watchdog-tutorial-in-python"></p>
 <p>To get started, let’s install the requirements:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pip3 install Pygtail==<span class="number">0.11</span><span class="number">.1</span> watchdog==<span class="number">2.1</span><span class="number">.1</span></span><br></pre></td></tr></table></figure>
 <p>First, let’s define the configuration parameters for our application within  <code>config.py</code> :</p>
@@ -208,7 +208,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <p>Finally, let’s make command line arguments around the code using <a target="_blank" rel="noopener" href="https://docs.python.org/3/library/argparse.html"> <code>argparse</code> </a>:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">is_dir_path</span>(<span class="params">path</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;Utility function to check whether a path is an actual directory&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">if</span> os.path.isdir(path):</span><br><span class="line">        <span class="keyword">return</span> path</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">raise</span> NotADirectoryError(path)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    <span class="keyword">import</span> argparse</span><br><span class="line">    parser = argparse.ArgumentParser(</span><br><span class="line">        description=<span class="string">&quot;Watchdog script for watching for files &amp; directories&#x27; changes&quot;</span>)</span><br><span class="line">    parser.add_argument(<span class="string">&quot;path&quot;</span>,  --position arguments</span><br><span class="line">                        default=config.WATCH_DIRECTORY,</span><br><span class="line">                        <span class="built_in">type</span>=is_dir_path,</span><br><span class="line">                        )</span><br><span class="line">    parser.add_argument(<span class="string">&quot;-d&quot;</span>, <span class="string">&quot;--watch-delay&quot;</span>,</span><br><span class="line">                        <span class="built_in">help</span>=<span class="string">f&quot;Watch delay, default is <span class="subst">&#123;config.WATCH_DELAY&#125;</span>&quot;</span>,</span><br><span class="line">                        default=config.WATCH_DELAY,</span><br><span class="line">                        <span class="built_in">type</span>=<span class="built_in">int</span>,</span><br><span class="line">                        )</span><br><span class="line">    parser.add_argument(<span class="string">&quot;-r&quot;</span>, <span class="string">&quot;--recursive&quot;</span>,</span><br><span class="line">                        action=<span class="string">&quot;store_true&quot;</span>,</span><br><span class="line">                        <span class="built_in">help</span>=<span class="string">f&quot;Whether to recursively watch for the path&#x27;s children, default is <span class="subst">&#123;config.WATCH_RECURSIVELY&#125;</span>&quot;</span>,</span><br><span class="line">                        default=config.WATCH_RECURSIVELY,</span><br><span class="line">                        )</span><br><span class="line">    parser.add_argument(<span class="string">&quot;-p&quot;</span>, <span class="string">&quot;--pattern&quot;</span>,</span><br><span class="line">                        <span class="built_in">help</span>=<span class="string">f&quot;Pattern of files to watch, default is <span class="subst">&#123;config.WATCH_PATTERN&#125;</span>&quot;</span>,</span><br><span class="line">                        default=config.WATCH_PATTERN,</span><br><span class="line">                        )</span><br><span class="line">    parser.add_argument(<span class="string">&quot;--watch-directories&quot;</span>,</span><br><span class="line">                        action=<span class="string">&quot;store_true&quot;</span>,</span><br><span class="line">                        <span class="built_in">help</span>=<span class="string">f&quot;Whether to watch directories, default is <span class="subst">&#123;config.DO_WATCH_DIRECTORIES&#125;</span>&quot;</span>,</span><br><span class="line">                        default=config.DO_WATCH_DIRECTORIES,</span><br><span class="line">                        )</span><br><span class="line">    <span class="comment"># parse the arguments</span></span><br><span class="line">    args = parser.parse_args()</span><br><span class="line">    <span class="comment"># define &amp; launch the log watcher</span></span><br><span class="line">    log_watcher = LogWatcher(</span><br><span class="line">        watchDirectory=args.path,</span><br><span class="line">        watchDelay=args.watch_delay,</span><br><span class="line">        watchRecursively=args.recursive,</span><br><span class="line">        watchPattern=<span class="built_in">tuple</span>(args.pattern.split(<span class="string">&quot;,&quot;</span>)),</span><br><span class="line">        doWatchDirectories=args.watch_directories,</span><br><span class="line">        exceptionPattern=config.EXCEPTION_PATTERN,</span><br><span class="line">    )</span><br><span class="line">    log_watcher.run()</span><br></pre></td></tr></table></figure>
 <p>We defined  <code>is_dir_path()</code>  in order to ensure that the path entered is a valid directory. Let’s use the script:</p>
-<img data-src="/2021/07/26/python-watchdog/running-watchdog-script-with-python.jpg" class="" title="Running Watchdog Script with Python">
+<p><img data-src="running-watchdog-script-with-python.jpg" alt="Running Watchdog Script with Python"></p>
 <p>I’ve passed  <code>--recursive</code>  to watch everything is happening on  <code>E:\watchdog</code>  directory including the sub-folders, I also specified a pattern of  <code>.txt,.log,.jpg,.png</code> , for watching text and image files.</p>
 <p>Then I created a folder and started writing on a text file, then moved an image and deleted it, the watchdog is catching everything!</p>
 <p>Note that you can have the option to either override parameters in  <code>config.py</code>  or pass the parameters here.</p>
@@ -246,7 +246,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item left">
       
 
-  <a href="/2021/07/20/a-daily-tool/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;借东西的小人阿莉埃蒂.jpg" title="Daily Tool">
+  <a href="/2021/07/20/a-daily-tool/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;大鱼海棠.jpg" title="Daily Tool">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> manual</span>
   <h3>Daily Tool</h3>
@@ -256,7 +256,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item right">
       
 
-  <a href="/2021/07/27/python-upload-download/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;动物新世代.jpg" title="Python Upload &amp; Download File">
+  <a href="/2021/07/27/python-upload-download/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;斩神之凡尘神域.jpg" title="Python Upload &amp; Download File">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Python Upload & Download File</h3>
@@ -313,9 +313,8 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 
 <div class="social">
       <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-pen"></i></span>
       <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
-      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
-      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
 </div>
 
 <ul class="menu">
@@ -323,11 +322,6 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     
   <li class="item">
     <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
-  </li>
-
-    
-  <li class="item">
-    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
   </li>
 
         
@@ -351,16 +345,22 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   </li>
 
   </ul>
-    
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-sakura"></i>Anime</a>
+    <ul class="submenu">
+
+        
   <li class="item">
-    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+    <a href="/anime/" rel="section"><i class="ic i-markdown"></i>Quotes</a>
   </li>
 
-    
+        
   <li class="item">
-    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+    <a href="/gallery/" rel="section"><i class="ic i-magic"></i>Gallery</a>
   </li>
 
+  </ul>
 
 </ul>
 
@@ -413,6 +413,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <script data-config type="text/javascript">
   var LOCAL = {
     path: '2021/07/26/python-watchdog/',
+    sidebar: true,
     favicon: {
       show: "（●´3｀●）Goooood",
       hide: "(´Д｀)Booooom"
@@ -434,7 +435,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   };
 </script>
 
-<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
 
 <script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
 

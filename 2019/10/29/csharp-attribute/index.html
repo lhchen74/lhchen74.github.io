@@ -102,12 +102,12 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="/anime/index/妖精的尾巴.jpg"></li>
-          <li class="item" data-background-image="/anime/index/死亡笔记.jpg"></li>
-          <li class="item" data-background-image="/anime/index/食梦者.jpg"></li>
-          <li class="item" data-background-image="/anime/index/终结的炽天使.jpg"></li>
-          <li class="item" data-background-image="/anime/index/昭和元禄落语心中-3.jpg"></li>
-          <li class="item" data-background-image="/anime/index/冰菓.jpg"></li>
+          <li class="item" data-background-image="/anime/index/天空之城.jpg"></li>
+          <li class="item" data-background-image="/anime/index/温泉屋小女将.jpg"></li>
+          <li class="item" data-background-image="/anime/index/怪医黑杰克.jpg"></li>
+          <li class="item" data-background-image="/anime/index/龙猫-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/平家物语-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/弹丸论破.jpg"></li>
         </ul>
       </div>
     </header>
@@ -169,11 +169,11 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 </ul>
 <p>举例：</p>
 <p>在项目中，有一个类由两个程序员（小张和小李）共同维护。这个类起一个 “工具包”（Utilities）的作用（<span class="exturl" data-url="aHR0cDovL3huLS1vMXE1MHouTkVU">就像.NET</span> Framework 中的 Math 类一样），里面含了几十个静态方法。而这些静态方法，一半是小张写的、一半是小李写的；在项目的测试中，有一些静态方法曾经出过 bug，后来又被修正。这样，我们就可以把这些方面划分成这样几类：</p>
-<img data-src="/2019/10/29/csharp-attribute/201101061335115808.jpg" class="" title="Box">
+<p><img data-src="201101061335115808.jpg" alt="Box"></p>
 <p>我们分类的目的主要是在测试的时候可以按不同的类别进行测试、获取不同的效果。比如：统计两个人的工作量或者对曾经出过 bug 的方法进行回归测试。如果不使用 Attribute，为了区分这四类静态方法，我们只能通过注释来说明，但这种方式会有很多弊端；如果使用 Attribute，区分这四类静态方法将会变得简单多了。示例代码如下：</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> Buged</span></span><br><span class="line"><span class="comment">//C# 的宏定义必须出现在所有代码之前。当前只让 Buged 宏有效。</span></span><br><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Diagnostics; <span class="comment">// 注意：这是为了使用包含在此名称空间中的ConditionalAttribute特性</span></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">Con_Attribute</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] <span class="keyword">args</span></span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 虽然方法都被调用了，但只有符合条件的才会被执行！</span></span><br><span class="line">            ToolKit.FunA();</span><br><span class="line">            ToolKit.FunB();</span><br><span class="line">            ToolKit.FunC();</span><br><span class="line">            ToolKit.FunD();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">class</span> <span class="title">ToolKit</span></span><br><span class="line">    &#123;</span><br><span class="line">        [<span class="meta">ConditionalAttribute(<span class="string">&quot;Li&quot;</span>)</span>] <span class="comment">// Attribute名称的长记法</span></span><br><span class="line">        [<span class="meta">ConditionalAttribute(<span class="string">&quot;Buged&quot;</span>)</span>]</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">FunA</span>()</span></span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(<span class="string">&quot;Created By Li, Buged.&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        [<span class="meta">Conditional(<span class="string">&quot;Li&quot;</span>)</span>] <span class="comment">// Attribute名称的短记法</span></span><br><span class="line">        [<span class="meta">Conditional(<span class="string">&quot;NoBug&quot;</span>)</span>]</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">FunB</span>()</span></span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(<span class="string">&quot;Created By Li, NoBug.&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        [<span class="meta">ConditionalAttribute(<span class="string">&quot;Zhang&quot;</span>)</span>]<span class="comment">// Attribute名称的长记法</span></span><br><span class="line">        [<span class="meta">ConditionalAttribute(<span class="string">&quot;Buged&quot;</span>)</span>]</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">FunC</span>()</span></span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(<span class="string">&quot;Created By Zhang, Buged.&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        [<span class="meta">Conditional(<span class="string">&quot;Zhang&quot;</span>)</span>] <span class="comment">// Attribute名称的短记法</span></span><br><span class="line">        [<span class="meta">Conditional(<span class="string">&quot;NoBug&quot;</span>)</span>]</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">FunD</span>()</span></span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(<span class="string">&quot;Created By Zhang, NoBug.&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>运行结果如下：</p>
-<img data-src="/2019/10/29/csharp-attribute/201101061335121631.png" class="" title="2010-12-21_113636">
+<p><img data-src="201101061335121631.png" alt="2010-12-21_113636"></p>
 <p>注意：运行结果是由代码中 “#define Buged” 这个宏定义所决定。</p>
 <p>分析：</p>
 <ol>
@@ -198,7 +198,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <p>示例代码如下：</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> XG //C# 的宏定义必须出现在所有代码之前</span></span><br><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Diagnostics; <span class="comment">// 注意：这是为了使用包含在此名称空间中的ConditionalAttribute 特性</span></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">Con_Attribute</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title">Program2</span></span><br><span class="line">    &#123;</span><br><span class="line">        [<span class="meta">Conditional(<span class="string">&quot;XG&quot;</span>)</span>]</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Fun</span>()</span></span><br><span class="line">        &#123;</span><br><span class="line">            Console.ForegroundColor = ConsoleColor.Yellow;</span><br><span class="line">            Console.WriteLine(<span class="string">&quot;http://xugang.cnblogs.com&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] <span class="keyword">args</span></span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">            Fun();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>使用微软的中间语言反编译器查看 MSIL 中间语言中 TargetMethod:void () 方法的代码，截图如下：</p>
-<img data-src="/2019/10/29/csharp-attribute/201101061335147529.png" class="" title="2010-12-21_122656">
+<p><img data-src="201101061335147529.png" alt="2010-12-21_122656"></p>
 <p>可以看出：Attribute 本质上就是一个类，它在所附着的目标对象上最终实例化。</p>
 <p>仔细观察中间语言（MSIL）的代码之后，那些被 C# 语言所掩盖的事实，在中间语言（MSIL）中就变得赤身裸体了。而 Attribute 也变得毫无秘密！</p>
 <p>图中红色所指的是 Fun 方法及其修饰符，但 Attribute 并没有出现在这里。</p>
@@ -259,7 +259,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <p>使用下面这个小程序可以查看每个枚举值对应的整数值，示例代码如下：</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">namespace</span> <span class="title">Con_Attribute</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title">Program4</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] <span class="keyword">args</span></span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(<span class="string">&quot;Assembly\t\t\t&#123;0&#125;&quot;</span>, Convert.ToInt32(AttributeTargets.Assembly));</span><br><span class="line">            Console.WriteLine(<span class="string">&quot;Module\t\t\t\t&#123;0&#125;&quot;</span>, Convert.ToInt32(AttributeTargets.Module));</span><br><span class="line">            Console.WriteLine(<span class="string">&quot;Class\t\t\t\t&#123;0&#125;&quot;</span>, Convert.ToInt32(AttributeTargets.Class));</span><br><span class="line">            Console.WriteLine(<span class="string">&quot;Struct\t\t\t\t&#123;0&#125;&quot;</span>, Convert.ToInt32(AttributeTargets.Struct));</span><br><span class="line">            Console.WriteLine(<span class="string">&quot;Enum\t\t\t\t&#123;0&#125;&quot;</span>, Convert.ToInt32(AttributeTargets.Enum));</span><br><span class="line">            Console.WriteLine(<span class="string">&quot;Constructor\t\t\t&#123;0&#125;&quot;</span>, Convert.ToInt32(AttributeTargets.Constructor));</span><br><span class="line">            Console.WriteLine(<span class="string">&quot;Method\t\t\t\t&#123;0&#125;&quot;</span>, Convert.ToInt32(AttributeTargets.Method));</span><br><span class="line">            Console.WriteLine(<span class="string">&quot;Property\t\t\t&#123;0&#125;&quot;</span>, Convert.ToInt32(AttributeTargets.Property));</span><br><span class="line">            Console.WriteLine(<span class="string">&quot;Field\t\t\t\t&#123;0&#125;&quot;</span>, Convert.ToInt32(AttributeTargets.Field));</span><br><span class="line">            Console.WriteLine(<span class="string">&quot;Event\t\t\t\t&#123;0&#125;&quot;</span>, Convert.ToInt32(AttributeTargets.Event));</span><br><span class="line">            Console.WriteLine(<span class="string">&quot;Interface\t\t\t&#123;0&#125;&quot;</span>, Convert.ToInt32(AttributeTargets.Interface));</span><br><span class="line">            Console.WriteLine(<span class="string">&quot;Parameter\t\t\t&#123;0&#125;&quot;</span>, Convert.ToInt32(AttributeTargets.Parameter));</span><br><span class="line">            Console.WriteLine(<span class="string">&quot;Delegate\t\t\t&#123;0&#125;&quot;</span>, Convert.ToInt32(AttributeTargets.Delegate));</span><br><span class="line">            Console.WriteLine(<span class="string">&quot;ReturnValue\t\t\t&#123;0&#125;&quot;</span>, Convert.ToInt32(AttributeTargets.ReturnValue));</span><br><span class="line">            Console.WriteLine(<span class="string">&quot;GenericParameter\t\t&#123;0&#125;&quot;</span>, Convert.ToInt32(AttributeTargets.GenericParameter));</span><br><span class="line">            Console.WriteLine(<span class="string">&quot;All\t\t\t\t&#123;0&#125;&quot;</span>, Convert.ToInt32(AttributeTargets.All));</span><br><span class="line">            Console.WriteLine(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>结果显示如下：</p>
-<img data-src="/2019/10/29/csharp-attribute/20110106133514528.png" class="" title="2010-12-21_232331">
+<p><img data-src="20110106133514528.png" alt="2010-12-21_232331"></p>
 <p>AttributeTargets 使用了枚举值的另一种用法 —— 标识位。<br>
 　　除了 All 的值之外，每个值的二进制形式中只有一位是 “1”，其余位全是 “0”。<br>
 　　如果我们的 Attribute 要求既能附着在类上，又能附着在类的方法上。就可以使用 C# 中的操作符 “|”（也就是按位求 “或”）。有了它，我们只需要将代码书写如下：</p>
@@ -319,7 +319,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item left">
       
 
-  <a href="/2019/10/29/csharp-nlog/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;葬送的芙莉莲.jpg" title="C# NLog">
+  <a href="/2019/10/29/csharp-nlog/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;勇者赫鲁库.jpg" title="C# NLog">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>C# NLog</h3>
@@ -329,7 +329,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item right">
       
 
-  <a href="/2019/10/29/coder-poem/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;派对浪客诸葛孔明-1.jpg" title="Coder Poem">
+  <a href="/2019/10/29/coder-poem/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;歌剧少女-1.jpg" title="Coder Poem">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Coder Poem</h3>
@@ -385,9 +385,8 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 
 <div class="social">
       <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-pen"></i></span>
       <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
-      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
-      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
 </div>
 
 <ul class="menu">
@@ -395,11 +394,6 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     
   <li class="item">
     <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
-  </li>
-
-    
-  <li class="item">
-    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
   </li>
 
         
@@ -423,16 +417,22 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   </li>
 
   </ul>
-    
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-sakura"></i>Anime</a>
+    <ul class="submenu">
+
+        
   <li class="item">
-    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+    <a href="/anime/" rel="section"><i class="ic i-markdown"></i>Quotes</a>
   </li>
 
-    
+        
   <li class="item">
-    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+    <a href="/gallery/" rel="section"><i class="ic i-magic"></i>Gallery</a>
   </li>
 
+  </ul>
 
 </ul>
 
@@ -485,6 +485,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <script data-config type="text/javascript">
   var LOCAL = {
     path: '2019/10/29/csharp-attribute/',
+    sidebar: true,
     favicon: {
       show: "（●´3｀●）Goooood",
       hide: "(´Д｀)Booooom"
@@ -506,7 +507,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   };
 </script>
 
-<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
 
 <script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
 

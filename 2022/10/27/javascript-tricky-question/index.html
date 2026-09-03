@@ -102,12 +102,12 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="/anime/index/空想新子和千年的魔法.jpg"></li>
-          <li class="item" data-background-image="/anime/index/魔女宅急便-2.jpg"></li>
-          <li class="item" data-background-image="/anime/index/南家三姐妹.jpg"></li>
-          <li class="item" data-background-image="/anime/index/你看起来好像很好吃.jpg"></li>
-          <li class="item" data-background-image="/anime/index/王者天下.jpg"></li>
-          <li class="item" data-background-image="/anime/index/动物狂想曲-1.jpg"></li>
+          <li class="item" data-background-image="/anime/index/跃动青春.jpg"></li>
+          <li class="item" data-background-image="/anime/index/亚人-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/瑞克和莫蒂.jpg"></li>
+          <li class="item" data-background-image="/anime/index/三月的狮子-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/此花亭奇谭.jpg"></li>
+          <li class="item" data-background-image="/anime/index/男子高校生的日常.jpg"></li>
         </ul>
       </div>
     </header>
@@ -162,7 +162,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <p>Not JavaScript,  <code>this</code> , CSS, Internet Explorer, but the 2 above.</p>
 <p>If you’re qualifying as Senior Developer whose job involves JavaScript, there’s a good chance to be asked tricky questions during the coding interview.</p>
 <p>I know it’s unfair. Some unknown people put you on the edge to see what you’re made of. It’s an unpleasant experience.</p>
-<img data-src="/2022/10/27/javascript-tricky-question/job-interview.png" class="" title="Job interview">
+<p><img data-src="job-interview.png" alt="Job interview"></p>
 <p>What can you do?</p>
 <p>Follow the advice: <em>“Practice makes perfect”</em>. Deep, regular learning of JavaScript will improve your coding, and as a positive side effect, interviewing skills.</p>
 <p>In this post, you will find 7 at first sight simple, but tricky JavaScript interview questions.</p>
@@ -175,7 +175,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <p>Let’s look at the line 2:  <code>let a = b = 0</code> . This statement declares a local variable  <code>a</code> . However, it does declare a <em>global</em> variable  <code>b</code> .</p>
 <p>No variable  <code>b</code>  is declared neither in the  <code>foo()</code>  scope or global scope. So JavaScript interprets  <code>b = 0</code>  expression as  <code>window.b = 0</code> .</p>
 <p>In other words,  <code>b</code>  is a global variable created accidentally.</p>
-<img data-src="/2022/10/27/javascript-tricky-question/accitental-global-variables.png" class="" title="Accidental global variables JavaScript">
+<p><img data-src="accitental-global-variables.png" alt="Accidental global variables JavaScript"></p>
 <p>In a browser, the above code snippet is equivalent to:</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> a;</span><br><span class="line">  <span class="variable language_">window</span>.<span class="property">b</span> = <span class="number">0</span>;</span><br><span class="line">  a = <span class="variable language_">window</span>.<span class="property">b</span>;</span><br><span class="line">  a++;</span><br><span class="line">  <span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">foo</span>();</span><br><span class="line"><span class="keyword">typeof</span> a; <span class="comment">// =&gt; &#x27;undefined&#x27;</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="variable language_">window</span>.<span class="property">b</span>; <span class="comment">// =&gt; &#x27;number&#x27;</span></span><br></pre></td></tr></table></figure>
 <p><code>typeof a</code>  is  <code>'undefined'</code> . The variable  <code>a</code>  exists within  <code>foo()</code>  scope and not available in the outside scope.</p>
@@ -196,13 +196,13 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <p>What is the content of  <code>numbers</code>  array:</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> length = <span class="number">4</span>;</span><br><span class="line"><span class="keyword">const</span> numbers = [];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; length; i++);</span><br><span class="line">&#123;</span><br><span class="line">  numbers.<span class="title function_">push</span>(i + <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line">numbers; <span class="comment">// =&gt; ???</span></span><br></pre></td></tr></table></figure>
 <h4 id="answer-3"><a class="markdownIt-Anchor" href="#answer-3">#</a> Answer</h4>
-<p>Let’s take a closer look at the semicolon  <code>;</code>  that appears right before the opening curly brace  <code>&#123;</code> :</p>
-<img data-src="/2022/10/27/javascript-tricky-question/for-and-null-statement-pitfall-4.png" class="" title="The null statement effect">
+<p>Let’s take a closer look at the semicolon  <code>;</code>  that appears right before the opening curly brace  <code>{</code> :</p>
+<p><img data-src="for-and-null-statement-pitfall-4.png" alt="The null statement effect"></p>
 <p>Being easily overlooked, this semicolon creates a <em>null statement</em>. The null statement is an empty statement that does nothing.</p>
-<p><code>for()</code>  iterates 4 times over the null statement (that does nothing), ignoring the block that actually pushes items to array:  <code>&#123; numbers.push(i + 1); &#125;</code> .</p>
+<p><code>for()</code>  iterates 4 times over the null statement (that does nothing), ignoring the block that actually pushes items to array:  <code>{ numbers.push(i + 1); }</code> .</p>
 <p>The above code is equivalent to the following:</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> length = <span class="number">4</span>;</span><br><span class="line"><span class="keyword">const</span> numbers = [];</span><br><span class="line"><span class="keyword">var</span> i;</span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; length; i++) &#123;</span><br><span class="line">  <span class="comment">// does nothing</span></span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">  <span class="comment">// a simple block</span></span><br><span class="line">  numbers.<span class="title function_">push</span>(i + <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line">numbers; <span class="comment">// =&gt; [5]</span></span><br></pre></td></tr></table></figure>
-<p><code>for()</code>  increments  <code>i</code>  variable until  <code>4</code> . Then JavaScript enters one time the block  <code>&#123; numbers.push(i + 1); &#125;</code> , pushing  <code>4 + 1</code>  to  <code>numbers</code>  array.</p>
+<p><code>for()</code>  increments  <code>i</code>  variable until  <code>4</code> . Then JavaScript enters one time the block  <code>{ numbers.push(i + 1); }</code> , pushing  <code>4 + 1</code>  to  <code>numbers</code>  array.</p>
 <p>Thus  <code>numbers</code>  is  <code>[5]</code> .</p>
 <h4 id="my-story-behind-this-question"><a class="markdownIt-Anchor" href="#my-story-behind-this-question">#</a> My story behind this question</h4>
 <p><em>Long time ago, when I was interviewing for my first job, I was asked this question.</em></p>
@@ -263,7 +263,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">myVar; <span class="comment">// =&gt; ???</span></span><br><span class="line">myConst; <span class="comment">// =&gt; ???</span></span><br><span class="line"><span class="keyword">var</span> myVar = <span class="string">&quot;value&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> myConst = <span class="number">3.14</span>;</span><br></pre></td></tr></table></figure>
 <h4 id="answer-7"><a class="markdownIt-Anchor" href="#answer-7">#</a> Answer</h4>
 <p>Hoisting and temporal dead zone are 2 important concepts that influence the lifecycle of JavaScript variables.</p>
-<img data-src="/2022/10/27/javascript-tricky-question/temporal-dead-zone-and-hoisting-javascript.png" class="" title="Temporal dead zone and hoisting in JavaScript">
+<p><img data-src="temporal-dead-zone-and-hoisting-javascript.png" alt="Temporal dead zone and hoisting in JavaScript"></p>
 <p>Accessing  <code>myVar</code>  before declaration evaluates to  <code>undefined</code> . A hoisted  <code>var</code>  variable, before its initialization, has an  <code>undefined</code>  value.</p>
 <p>However, accessing  <code>myConst</code>  before the declaration line throws a  <code>ReferenceError</code> .  <code>const</code>  variables are in a temporal dead zone until the declaration line  <code>const myConst = 3.14</code> .</p>
 <p>Follow the guide <span class="exturl" data-url="aHR0cHM6Ly9kbWl0cmlwYXZsdXRpbi5jb20vamF2YXNjcmlwdC1ob2lzdGluZy1pbi1kZXRhaWxzLw==">JavaScript Variables Hoisting in Details</span> to get a good grasp on hoisting.</p>
@@ -303,7 +303,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item left">
       
 
-  <a href="/2022/10/25/javascript-let/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;三月的狮子-3.jpg" title="JavaScript Variables Lifecycle Why let Is Not Hoisted">
+  <a href="/2022/10/25/javascript-let/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;埃罗芒阿老师.jpg" title="JavaScript Variables Lifecycle Why let Is Not Hoisted">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>JavaScript Variables Lifecycle Why let Is Not Hoisted</h3>
@@ -313,7 +313,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item right">
       
 
-  <a href="/2022/10/27/javascript-screen-window-page-size/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;天真与闪电-2.jpg" title="How to Get the Screen, Window, and Web Page Sizes in JavaScript">
+  <a href="/2022/10/27/javascript-screen-window-page-size/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;anime.jpg" title="How to Get the Screen, Window, and Web Page Sizes in JavaScript">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>How to Get the Screen, Window, and Web Page Sizes in JavaScript</h3>
@@ -370,9 +370,8 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 
 <div class="social">
       <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-pen"></i></span>
       <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
-      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
-      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
 </div>
 
 <ul class="menu">
@@ -380,11 +379,6 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     
   <li class="item">
     <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
-  </li>
-
-    
-  <li class="item">
-    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
   </li>
 
         
@@ -408,16 +402,22 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   </li>
 
   </ul>
-    
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-sakura"></i>Anime</a>
+    <ul class="submenu">
+
+        
   <li class="item">
-    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+    <a href="/anime/" rel="section"><i class="ic i-markdown"></i>Quotes</a>
   </li>
 
-    
+        
   <li class="item">
-    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+    <a href="/gallery/" rel="section"><i class="ic i-magic"></i>Gallery</a>
   </li>
 
+  </ul>
 
 </ul>
 
@@ -470,6 +470,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <script data-config type="text/javascript">
   var LOCAL = {
     path: '2022/10/27/javascript-tricky-question/',
+    sidebar: true,
     favicon: {
       show: "（●´3｀●）Goooood",
       hide: "(´Д｀)Booooom"
@@ -491,7 +492,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   };
 </script>
 
-<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
 
 <script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
 

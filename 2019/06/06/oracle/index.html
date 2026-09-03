@@ -102,12 +102,12 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="/anime/index/86不存在的战区-1.jpg"></li>
-          <li class="item" data-background-image="/anime/index/秦时明月-2.jpg"></li>
-          <li class="item" data-background-image="/anime/index/动物狂想曲-2.jpg"></li>
-          <li class="item" data-background-image="/anime/index/五等分的花嫁.jpg"></li>
-          <li class="item" data-background-image="/anime/index/大鱼海棠.jpg"></li>
-          <li class="item" data-background-image="/anime/index/鹿枫堂四色日和.jpg"></li>
+          <li class="item" data-background-image="/anime/index/大剑.jpg"></li>
+          <li class="item" data-background-image="/anime/index/天空之城-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/转生成蜘蛛又怎样.jpg"></li>
+          <li class="item" data-background-image="/anime/index/歌剧少女-1.jpg"></li>
+          <li class="item" data-background-image="/anime/index/工作细胞.jpg"></li>
+          <li class="item" data-background-image="/anime/index/物语系列.jpg"></li>
         </ul>
       </div>
     </header>
@@ -2601,10 +2601,10 @@ Having a NULL value in one of the expressions will return NULL as the least valu
 </tbody>
 </table>
 <p>In PL/SQL Developer Hex Tab show charcter’s unicode point not UTF-8 represention. And the order is reversed, the  <code>U+00A0</code>  is show  <code>A000</code> .</p>
-<img data-src="/2019/06/06/oracle/1733735140904.png" class="">
-<img data-src="/2019/06/06/oracle/1733735246220.png" class="">
+<p><img data-src="1733735140904.png" alt=""></p>
+<p><img data-src="1733735246220.png" alt=""></p>
 <p>In VSCode use Hex Editor Extension.</p>
-<img data-src="/2019/06/06/oracle/1733740196611.png" class="">
+<p><img data-src="1733740196611.png" alt=""></p>
 <p>Use  <code>CHR(160 USING NCHAR_CS)</code>  or  <code>NCHAR(160)</code>  replace Non-breaking space</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> carrier_no,</span><br><span class="line">       replace(carrier_no, CHR(<span class="number">160</span> <span class="keyword">USING</span> NCHAR_CS), <span class="string">&#x27;&#x27;</span>),</span><br><span class="line">       replace(carrier_no, NCHR(<span class="number">160</span>), <span class="string">&#x27;&#x27;</span>)</span><br><span class="line">  <span class="keyword">from</span> som_edi_test;</span><br></pre></td></tr></table></figure>
 <blockquote>
@@ -2686,10 +2686,10 @@ dbms_output.put 只会输出内容到缓存<br>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> level <span class="keyword">as</span> id <span class="keyword">from</span> dual <span class="keyword">connect</span> <span class="keyword">by</span>  level <span class="operator">&lt;</span> <span class="number">5</span>;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">1 1</span></span><br><span class="line"><span class="comment">2 2</span></span><br><span class="line"><span class="comment">3 3</span></span><br><span class="line"><span class="comment">4 4</span></span><br><span class="line"><span class="comment">5 5</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">select</span> rownum <span class="keyword">as</span> id <span class="keyword">from</span> xmltable(<span class="string">&#x27;1 to 10&#x27;</span>);</span><br><span class="line"><span class="keyword">select</span> level <span class="operator">+</span> <span class="number">5</span> <span class="keyword">as</span> id <span class="keyword">from</span> dual <span class="keyword">connect</span> <span class="keyword">by</span>  level <span class="operator">&lt;=</span> <span class="number">10</span> <span class="operator">-</span> <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">--可以使用 connect by 生成测试数据</span></span><br><span class="line"><span class="keyword">insert into</span> TMP_TABLE <span class="keyword">select</span> <span class="string">&#x27;TMP&#x27;</span><span class="operator">||</span> lpad(rownum, <span class="number">7</span>, <span class="number">0</span>), rownum, sysdate <span class="keyword">from</span> dual <span class="keyword">connect</span> <span class="keyword">by</span> level <span class="operator">&lt;=</span> <span class="number">1000000</span>;</span><br></pre></td></tr></table></figure>
 <h3 id="placeholder"><a class="markdownIt-Anchor" href="#placeholder">#</a> &amp; Placeholder</h3>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> dual <span class="keyword">where</span> <span class="number">1</span> <span class="operator">=</span> <span class="operator">&amp;</span>p;</span><br><span class="line"></span><br><span class="line">DUMMY</span><br><span class="line"><span class="comment">-----</span></span><br><span class="line">X</span><br></pre></td></tr></table></figure>
-<img data-src="/2019/06/06/oracle/ampersand.png" class="" title="ampersand">
+<p><img data-src="ampersand.png" alt="ampersand"></p>
 <h3 id="plsql-developer-autoreplace"><a class="markdownIt-Anchor" href="#plsql-developer-autoreplace">#</a> PL/SQL Developer AutoReplace</h3>
 <p>Tools/Preferences/User Interface/Editor/AutoReplace</p>
-<img data-src="/2019/06/06/oracle/1700298428670.png" class="">
+<p><img data-src="1700298428670.png" alt=""></p>
 <p>snippet.txt</p>
 <p>可以在名称前添加特殊符号，防止与表名简写冲突，例如 #，测试发现 ！不可以 。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">w<span class="operator">=</span><span class="keyword">where</span></span><br><span class="line">f<span class="operator">=</span><span class="keyword">from</span></span><br><span class="line">o<span class="operator">=</span><span class="keyword">order</span> <span class="keyword">by</span></span><br><span class="line">dt<span class="operator">=</span><span class="keyword">delete</span></span><br><span class="line">sf<span class="operator">=</span><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span></span><br><span class="line">df<span class="operator">=</span><span class="keyword">delete</span> <span class="keyword">from</span></span><br><span class="line">sc<span class="operator">=</span><span class="keyword">select</span> <span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">from</span></span><br><span class="line">g<span class="operator">=</span><span class="keyword">group</span> <span class="keyword">by</span></span><br><span class="line">tt<span class="operator">=</span><span class="keyword">truncate</span> <span class="keyword">table</span></span><br><span class="line">dr<span class="operator">=</span><span class="keyword">drop</span> <span class="keyword">table</span></span><br><span class="line">ct<span class="operator">=</span><span class="keyword">create table</span></span><br><span class="line">sd<span class="operator">=</span><span class="keyword">select</span> <span class="keyword">distinct</span></span><br><span class="line">qs<span class="operator">=</span><span class="keyword">select</span> som_edi_custom_utils_pkg.str_quotify(<span class="string">&#x27;&#x27;</span>) <span class="keyword">from</span> dual</span><br><span class="line">qstr<span class="operator">=</span>qstr.tpl</span><br><span class="line">#qstr<span class="operator">=</span>qstr.tpl</span><br></pre></td></tr></table></figure>
@@ -2825,18 +2825,18 @@ B 抓取表 T 的 transfer_flag 为 ‘N’ 的资料，生成 B_ASN, 然后将 
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--Initialize apps environment in pl/sql developer, not needed if called by ERP Request.</span></span><br><span class="line"><span class="comment">--1175:MIS, 50705:SC_OM_SUPERUSER, 660:ONT</span></span><br><span class="line"><span class="comment">--select fu.user_id from fnd_user fu where fu.user_name = &#x27;MIS&#x27;--1175</span></span><br><span class="line"><span class="comment">--select fr.responsibility_id, fr.application_id from fnd_responsibility fr where fr.responsibility_key = &#x27;SC_OM_SUPERUSER&#x27;--50705,660</span></span><br><span class="line"><span class="comment">--fnd_global.APPS_INITIALIZE(user_id =&gt; 1175, resp_id =&gt; 50705, resp_appl_id =&gt; 660);</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  <span class="keyword">begin</span></span><br><span class="line">   <span class="keyword">select</span> fu.user_id</span><br><span class="line">     <span class="keyword">into</span> l_user_id</span><br><span class="line">     <span class="keyword">from</span> fnd_user fu</span><br><span class="line">    <span class="keyword">where</span> fu.user_name <span class="operator">=</span> <span class="string">&#x27;MIS&#x27;</span>;</span><br><span class="line">            </span><br><span class="line">   <span class="keyword">select</span> fr.responsibility_id, fr.application_id </span><br><span class="line">     <span class="keyword">into</span> l_responsibility_id, l_application_id</span><br><span class="line">     <span class="keyword">from</span> fnd_responsibility fr</span><br><span class="line">    <span class="keyword">where</span> fr.responsibility_key <span class="operator">=</span> <span class="string">&#x27;SC_OM_SUPERUSER&#x27;</span>;</span><br><span class="line">            </span><br><span class="line">    fnd_global.APPS_INITIALIZE(user_id <span class="operator">=</span><span class="operator">&gt;</span> l_user_id, resp_id <span class="operator">=</span><span class="operator">&gt;</span> l_responsibility_id, resp_appl_id <span class="operator">=</span><span class="operator">&gt;</span> l_application_id);</span><br><span class="line">  exception</span><br><span class="line">   <span class="keyword">when</span> others <span class="keyword">then</span></span><br><span class="line">     l_err_msg :<span class="operator">=</span> <span class="string">&#x27;APPS_INITIALIZE Error: &#x27;</span> <span class="operator">||</span> sqlerrm;</span><br><span class="line">     debug_error;</span><br><span class="line">  <span class="keyword">end</span>;</span><br><span class="line">          </span><br><span class="line">  l_req_id :<span class="operator">=</span> fnd_request.submit_request(application  <span class="operator">=</span><span class="operator">&gt;</span> <span class="string">&#x27;YSC&#x27;</span>,</span><br><span class="line">                                         program      <span class="operator">=</span><span class="operator">&gt;</span> <span class="string">&#x27;SOMP4057&#x27;</span>,</span><br><span class="line">                                         description  <span class="operator">=</span><span class="operator">&gt;</span> <span class="keyword">null</span>,</span><br><span class="line">                                         start_time   <span class="operator">=</span><span class="operator">&gt;</span> <span class="keyword">null</span>,</span><br><span class="line">                                         sub_request  <span class="operator">=</span><span class="operator">&gt;</span> <span class="literal">false</span>,</span><br><span class="line">                                         argument1    <span class="operator">=</span><span class="operator">&gt;</span> l_file_name);</span><br><span class="line">                                                </span><br><span class="line">  if l_req_id <span class="operator">=</span> <span class="number">0</span> <span class="keyword">then</span> </span><br><span class="line">   l_err_msg :<span class="operator">=</span> <span class="string">&#x27;Call SOMP4057 Error&#x27;</span>;</span><br><span class="line">  <span class="keyword">end</span> if;</span><br><span class="line"><span class="keyword">end</span>;</span><br></pre></td></tr></table></figure>
 <p>如果调用成功，可以通过 ERP / View / Find Requests 查看到对应的 Request。</p>
 <h3 id="customer-address-relation"><a class="markdownIt-Anchor" href="#customer-address-relation">#</a> Customer Address Relation</h3>
-<img data-src="/2019/06/06/oracle/customer-address-relation.png" class="">
+<p><img data-src="customer-address-relation.png" alt=""></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">or</span> replace <span class="keyword">view</span> som_edi_customer_sites_v <span class="keyword">as</span></span><br><span class="line"><span class="keyword">select</span> party.party_name,</span><br><span class="line">       party.duns_number_c duns_number,</span><br><span class="line">       cust_acct.cust_account_id,  <span class="comment">--mtl_customer_items.customer_id</span></span><br><span class="line">       cust_acct.account_number,</span><br><span class="line">       cust_acct.attribute19 <span class="keyword">as</span> edi_customer_no,</span><br><span class="line">       site_use.org_id,         <span class="comment">--Operating Unit</span></span><br><span class="line">       site_use.status,</span><br><span class="line">       site_use.site_use_id,    <span class="comment">--Order ship_to_org_id/invoice_to_org_id</span></span><br><span class="line">       site_use.site_use_code,  <span class="comment">--SHIP_TO/BILL_TO</span></span><br><span class="line">       site_use.location,</span><br><span class="line">       site_use.attribute2 <span class="keyword">as</span> edi_ship_bill_to_code,</span><br><span class="line">       site_use.attribute3 <span class="keyword">as</span> edi_ship_bill_to_customer,</span><br><span class="line">       site_use.attribute4 <span class="keyword">as</span> customer_site_name, <span class="comment">--Title for Customer Site</span></span><br><span class="line">       site_use.attribute5 <span class="keyword">as</span> edi_region_code,</span><br><span class="line">       party_site.party_site_number,</span><br><span class="line">       loc.address1,</span><br><span class="line">       loc.address2,</span><br><span class="line">       loc.address3,</span><br><span class="line">       loc.country, <span class="comment">--US</span></span><br><span class="line">       loc.city,</span><br><span class="line">       loc.state,</span><br><span class="line">       loc.province,</span><br><span class="line">       loc.postal_code,</span><br><span class="line">       territory.territory_short_name,  <span class="comment">--United States</span></span><br><span class="line">       territory.iso_territory_code, <span class="comment">--USA</span></span><br><span class="line">       territory.iso_numeric_code <span class="comment">--country_code</span></span><br><span class="line">  <span class="keyword">from</span> hz_parties             party,</span><br><span class="line">       hz_cust_accounts       cust_acct,</span><br><span class="line">       hz_cust_acct_sites_all acct_site,</span><br><span class="line">       hz_cust_site_uses_all  site_use,</span><br><span class="line">       hz_party_sites         party_site,</span><br><span class="line">       hz_locations           loc,</span><br><span class="line">       fnd_territories_vl     territory</span><br><span class="line"> <span class="keyword">where</span> party.party_id <span class="operator">=</span> cust_acct.party_id</span><br><span class="line">   <span class="keyword">and</span> cust_acct.cust_account_id <span class="operator">=</span> acct_site.cust_account_id</span><br><span class="line">   <span class="keyword">and</span> acct_site.cust_acct_site_id <span class="operator">=</span> site_use.cust_acct_site_id</span><br><span class="line">   <span class="keyword">and</span> acct_site.party_site_id <span class="operator">=</span> party_site.party_site_id</span><br><span class="line">   <span class="keyword">and</span> party_site.location_id <span class="operator">=</span> loc.location_id</span><br><span class="line">   <span class="keyword">and</span> loc.country <span class="operator">=</span> territory.territory_code(<span class="operator">+</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h3 id="oracle-userenvlang-and-nls_lang"><a class="markdownIt-Anchor" href="#oracle-userenvlang-and-nls_lang">#</a> Oracle userenv(‘LANG’)  and NLS_LANG</h3>
 <p>为什么 Oracle 安装完成之后要在注册表中设置 NLS_LANG ？</p>
 <p>NLS_LANG 的设定会影响到 userenv (‘LANG’)，如果设定不正确，可能导致使用 userenv (‘LANG’) 的查询不到资料。</p>
-<img data-src="/2019/06/06/oracle/1733398740191.png" class="">
+<p><img data-src="1733398740191.png" alt=""></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> get_order_salesperson(p_delivery_id <span class="keyword">in</span> varchar2) <span class="keyword">return</span> varchar2 </span><br><span class="line"><span class="keyword">is</span> </span><br><span class="line">  l_return   varchar2(<span class="number">100</span>);</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  <span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">select</span> rss.resource_name <span class="keyword">into</span> l_return</span><br><span class="line">      <span class="keyword">from</span> wsh_new_deliveries           wnd,</span><br><span class="line">            wsh_delivery_assignments     wda,</span><br><span class="line">            wsh_delivery_details         wdd,</span><br><span class="line">            oe_order_headers_all         ooh,</span><br><span class="line">            hr_all_organization_units_tl hou,</span><br><span class="line">          (<span class="keyword">SELECT</span> JRE.RESOURCE_NAME, JRS.SALESREP_ID, JRS.ORG_ID, JRS.SALESREP_NUMBER</span><br><span class="line">            <span class="keyword">FROM</span> JTF_RS_SALESREPS         JRS,</span><br><span class="line">                  JTF_RS_RESOURCE_EXTNS    JRR,</span><br><span class="line">                  JTF_RS_RESOURCE_EXTNS_TL JRE</span><br><span class="line">            <span class="keyword">WHERE</span> JRS.RESOURCE_ID <span class="operator">=</span> JRR.RESOURCE_ID</span><br><span class="line">              <span class="keyword">AND</span> JRE.LANGUAGE <span class="operator">=</span> USERENV(<span class="string">&#x27;LANG&#x27;</span>)</span><br><span class="line">              <span class="keyword">AND</span> JRR.RESOURCE_ID <span class="operator">=</span> JRE.RESOURCE_ID</span><br><span class="line">              <span class="keyword">AND</span> JRR.CATEGORY <span class="operator">=</span> JRE.CATEGORY</span><br><span class="line">              <span class="keyword">AND</span> JRR.CATEGORY <span class="keyword">IN</span></span><br><span class="line">                  (<span class="string">&#x27;EMPLOYEE&#x27;</span>, <span class="string">&#x27;OTHER&#x27;</span>, <span class="string">&#x27;PARTY&#x27;</span>, <span class="string">&#x27;PARTNER&#x27;</span>, <span class="string">&#x27;SUPPLIER_CONTACT&#x27;</span>)</span><br><span class="line">            ) rss</span><br><span class="line">      <span class="keyword">where</span> <span class="number">1</span> <span class="operator">=</span> <span class="number">1</span></span><br><span class="line">        <span class="keyword">and</span> wnd.delivery_id <span class="operator">=</span> p_delivery_id</span><br><span class="line">        <span class="keyword">and</span> wdd.delivery_detail_id <span class="operator">=</span> wda.delivery_detail_id</span><br><span class="line">        <span class="keyword">and</span> wnd.delivery_id <span class="operator">=</span> wda.delivery_id</span><br><span class="line">        <span class="keyword">and</span> wdd.source_header_id <span class="operator">=</span> ooh.header_id</span><br><span class="line">        <span class="keyword">and</span> ooh.salesrep_id <span class="operator">=</span> rss.salesrep_id</span><br><span class="line">        <span class="keyword">and</span> rss.org_id <span class="operator">=</span> hou.organization_id</span><br><span class="line">        <span class="keyword">and</span> hou.language <span class="operator">=</span> userenv(<span class="string">&#x27;LANG&#x27;</span>) </span><br><span class="line">      <span class="keyword">group</span> <span class="keyword">by</span> rss.resource_name;</span><br><span class="line">    exception</span><br><span class="line">      <span class="keyword">when</span> others <span class="keyword">then</span></span><br><span class="line">        l_return :<span class="operator">=</span> <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> l_return;</span><br><span class="line"><span class="keyword">end</span> get_order_salesperson;</span><br></pre></td></tr></table></figure>
 <p><strong>SIMPLIFIED CHINESE_CHINA.ZHS16GBK</strong></p>
-<img data-src="/2019/06/06/oracle/1733398848152.png" class="">
+<p><img data-src="1733398848152.png" alt=""></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> userenv(<span class="string">&#x27;LANG&#x27;</span>) <span class="keyword">from</span> dual; <span class="comment">--ZHS</span></span><br></pre></td></tr></table></figure>
 <p><strong>AMERICAN_AMERICA.ZHS16GBK</strong></p>
-<img data-src="/2019/06/06/oracle/1733398884848.png" class="">
+<p><img data-src="1733398884848.png" alt=""></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> userenv(<span class="string">&#x27;LANG&#x27;</span>) <span class="keyword">from</span> dual;</span><br><span class="line"></span><br><span class="line"><span class="comment">--US</span></span><br></pre></td></tr></table></figure>
 <h3 id="erp-term"><a class="markdownIt-Anchor" href="#erp-term">#</a> ERP Term</h3>
 <table>
@@ -2911,7 +2911,7 @@ B 抓取表 T 的 transfer_flag 为 ‘N’ 的资料，生成 B_ASN, 然后将 
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2026-08-25 17:46:56" itemprop="dateModified" datetime="2026-08-25T17:46:56+08:00">2026-08-25</time>
+    <time title="Modified: 2026-09-03 17:36:17" itemprop="dateModified" datetime="2026-09-03T17:36:17+08:00">2026-09-03</time>
   </span>
 </div>
 
@@ -2928,7 +2928,7 @@ B 抓取表 T 的 transfer_flag 为 ‘N’ 的资料，生成 B_ASN, 然后将 
     <div class="item left">
       
 
-  <a href="/2019/06/06/python-fire/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;我们的重置人生.jpg" title="Python Fire">
+  <a href="/2019/06/06/python-fire/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;百变狸猫-2.jpg" title="Python Fire">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Python Fire</h3>
@@ -2938,7 +2938,7 @@ B 抓取表 T 的 transfer_flag 为 ‘N’ 的资料，生成 B_ASN, 然后将 
     <div class="item right">
       
 
-  <a href="/2019/06/06/oracle-trigger/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;歌剧少女-2.jpg" title="Oracle Trigger">
+  <a href="/2019/06/06/oracle-trigger/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;春宵苦短，少女前进吧.jpg" title="Oracle Trigger">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Oracle Trigger</h3>
@@ -2998,9 +2998,8 @@ B 抓取表 T 的 transfer_flag 为 ‘N’ 的资料，生成 B_ASN, 然后将 
 
 <div class="social">
       <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-pen"></i></span>
       <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
-      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
-      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
 </div>
 
 <ul class="menu">
@@ -3008,11 +3007,6 @@ B 抓取表 T 的 transfer_flag 为 ‘N’ 的资料，生成 B_ASN, 然后将 
     
   <li class="item">
     <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
-  </li>
-
-    
-  <li class="item">
-    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
   </li>
 
         
@@ -3036,16 +3030,22 @@ B 抓取表 T 的 transfer_flag 为 ‘N’ 的资料，生成 B_ASN, 然后将 
   </li>
 
   </ul>
-    
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-sakura"></i>Anime</a>
+    <ul class="submenu">
+
+        
   <li class="item">
-    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+    <a href="/anime/" rel="section"><i class="ic i-markdown"></i>Quotes</a>
   </li>
 
-    
+        
   <li class="item">
-    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+    <a href="/gallery/" rel="section"><i class="ic i-magic"></i>Gallery</a>
   </li>
 
+  </ul>
 
 </ul>
 
@@ -3098,6 +3098,7 @@ B 抓取表 T 的 transfer_flag 为 ‘N’ 的资料，生成 B_ASN, 然后将 
 <script data-config type="text/javascript">
   var LOCAL = {
     path: '2019/06/06/oracle/',
+    sidebar: true,
     favicon: {
       show: "（●´3｀●）Goooood",
       hide: "(´Д｀)Booooom"
@@ -3119,7 +3120,7 @@ B 抓取表 T 的 transfer_flag 为 ‘N’ 的资料，生成 B_ASN, 然后将 
   };
 </script>
 
-<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
 
 <script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
 

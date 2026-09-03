@@ -102,12 +102,12 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="/anime/index/龙猫-3.jpg"></li>
-          <li class="item" data-background-image="/anime/index/东京暗鸦-2.jpg"></li>
-          <li class="item" data-background-image="/anime/index/轻音少女.jpg"></li>
-          <li class="item" data-background-image="/anime/index/灼眼的夏娜.jpg"></li>
-          <li class="item" data-background-image="/anime/index/玉子市场.jpg"></li>
-          <li class="item" data-background-image="/anime/index/弹丸论破.jpg"></li>
+          <li class="item" data-background-image="/anime/index/擅长捉弄的高木同学-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/恋如雨止.jpg"></li>
+          <li class="item" data-background-image="/anime/index/斩·赤红之瞳.jpg"></li>
+          <li class="item" data-background-image="/anime/index/死神少爷与黑女仆.jpg"></li>
+          <li class="item" data-background-image="/anime/index/幽灵公主-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/夏日重现.jpg"></li>
         </ul>
       </div>
     </header>
@@ -158,11 +158,11 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <p>很多开发者知道这个字段，但是说不清它的具体细节。本文详细介绍该字段。</p>
 <h2 id="一-referer-的含义"><a class="markdownIt-Anchor" href="#一-referer-的含义">#</a> 一、Referer 的含义</h2>
 <p>现实生活中，购买服务或加入会员的时候，往往要求提供信息：“你从哪里知道了我们？”</p>
-<img data-src="/2022/05/21/html-http-referrer/bg2019060401.jpg" class="">
+<p><img data-src="bg2019060401.jpg" alt=""></p>
 <p>这叫做引荐人（referrer），谁引荐了你？对于公司来说，这是很有用的信息。</p>
 <p>互联网也是一样，你不会无缘无故访问一个网页，总是有人告诉你，可以去那里看看。服务器也想知道，你的 &quot;引荐人&quot; 是谁？</p>
 <p>HTTP 协议在请求（request）的头信息里面，设计了一个 <code>Referer</code>  字段，给出 &quot;引荐网页&quot; 的 URL。</p>
-<img data-src="/2022/05/21/html-http-referrer/bg2019060402.jpg" class="">
+<p><img data-src="bg2019060402.jpg" alt=""></p>
 <p>这个字段是可选的。客户端发送请求的时候，自主决定是否加上该字段。</p>
 <p>很有趣的是，这个字段的拼写是错的。 <code>Referer</code>  的正确拼写是 <code>Referrer</code> ，但是写入标准的时候，不知为何，没人发现少了一个字母 <code>r</code> 。标准定案以后，只能将错就错，所有头信息的该字段都一律错误拼写成 <code>Referer</code> 。</p>
 <h2 id="二-referer-的发生场景"><a class="markdownIt-Anchor" href="#二-referer-的发生场景">#</a> 二、Referer 的发生场景</h2>
@@ -228,7 +228,8 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <p>设置  <code>&lt;img&gt;</code>  标签的  <code>referrerpolicy=&quot;unsafe-url&quot;</code>  可以看到 <code>Referer</code>  请求字段不仅包含源信息（协议 + 域名 + 端口）、同时包含路径  <code>test.html</code> .</p>
 <p>test.html</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Test<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span></span></span><br><span class="line"><span class="tag">      <span class="attr">referrerpolicy</span>=<span class="string">&quot;unsafe-url&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">src</span>=<span class="string">&quot;https://lhchen74.github.io/images/css/three-body.jpg&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">alt</span>=<span class="string">&quot;Image of Three Body&quot;</span></span></span><br><span class="line"><span class="tag">    /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<img data-src="/2022/05/21/html-http-referrer/1653098650986.png" class="">
+<p><img data-src="1653098650986.png" alt=""></p>
+
       <div class="tags">
           <a href="/tags/html/" rel="tag"><i class="ic i-tag"></i> html</a>
       </div>
@@ -259,7 +260,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item left">
       
 
-  <a href="/2022/05/20/html-white-space/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;金牌得主.jpg" title="CSS 的空格处理">
+  <a href="/2022/05/20/html-white-space/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;未闻花名-2.jpg" title="CSS 的空格处理">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>CSS 的空格处理</h3>
@@ -269,7 +270,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item right">
       
 
-  <a href="/2022/05/31/markdown/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;动物新世代.jpg" title="Escaping backtick in Markdown">
+  <a href="/2022/05/31/markdown/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;冰海战记.jpg" title="Escaping backtick in Markdown">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Escaping backtick in Markdown</h3>
@@ -326,9 +327,8 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 
 <div class="social">
       <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-pen"></i></span>
       <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
-      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
-      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
 </div>
 
 <ul class="menu">
@@ -336,11 +336,6 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     
   <li class="item">
     <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
-  </li>
-
-    
-  <li class="item">
-    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
   </li>
 
         
@@ -364,16 +359,22 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   </li>
 
   </ul>
-    
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-sakura"></i>Anime</a>
+    <ul class="submenu">
+
+        
   <li class="item">
-    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+    <a href="/anime/" rel="section"><i class="ic i-markdown"></i>Quotes</a>
   </li>
 
-    
+        
   <li class="item">
-    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+    <a href="/gallery/" rel="section"><i class="ic i-magic"></i>Gallery</a>
   </li>
 
+  </ul>
 
 </ul>
 
@@ -426,6 +427,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <script data-config type="text/javascript">
   var LOCAL = {
     path: '2022/05/21/html-http-referrer/',
+    sidebar: true,
     favicon: {
       show: "（●´3｀●）Goooood",
       hide: "(´Д｀)Booooom"
@@ -447,7 +449,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   };
 </script>
 
-<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
 
 <script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
 

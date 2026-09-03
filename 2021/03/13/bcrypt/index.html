@@ -102,12 +102,12 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="/anime/index/蓝色监狱.jpg"></li>
-          <li class="item" data-background-image="/anime/index/新世纪福音战士.jpg"></li>
-          <li class="item" data-background-image="/anime/index/温泉屋小女将.jpg"></li>
-          <li class="item" data-background-image="/anime/index/混沌武士-3.jpg"></li>
-          <li class="item" data-background-image="/anime/index/食梦者.jpg"></li>
-          <li class="item" data-background-image="/anime/index/东京暗鸦-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/虎鹤妖师录.jpg"></li>
+          <li class="item" data-background-image="/anime/index/某科学的超电磁炮.jpg"></li>
+          <li class="item" data-background-image="/anime/index/冰海战记-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/东京喰种.jpg"></li>
+          <li class="item" data-background-image="/anime/index/秦时明月-3.jpg"></li>
+          <li class="item" data-background-image="/anime/index/跃动青春.jpg"></li>
         </ul>
       </div>
     </header>
@@ -177,7 +177,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <p>What we are going through this first phase is to promote <span class="exturl" data-url="aHR0cHM6Ly9jcnlwdG8uc3RhY2tleGNoYW5nZS5jb20vcXVlc3Rpb25zLzQ2NTUwL2JlbmNobWFyay1kaWZmZXJlbmNlcy1iZXR3ZWVuLXNoYS01MTItYW5kLWJjcnlwdA==">key strengthening</span> to slow down calculations which in turn also slow down attackers.</p>
 <p><strong>Phase 2:</strong></p>
 <p>The magic value is the 192-bit value  <code>OrpheanBeholderScryDoubt</code> . This value is encrypted 64 times using  <code>eksblowfish</code>  in <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvQmxvY2tfY2lwaGVyX21vZGVfb2Zfb3BlcmF0aW9uI0VsZWN0cm9uaWNfQ29kZWJvb2tfKEVDQik=">ECB mode</span> with the state from the previous phase. The output of this phase is the cost and the 128-bit salt value concatenated with the result of the encryption loop.</p>
-<img data-src="/2021/03/13/bcrypt/bcrypt-algo.png" class="" title="Algorithm that shows the two phases that make up the bcrypt implementation">
+<p><img data-src="bcrypt-algo.png" alt="Algorithm that shows the two phases that make up the bcrypt implementation"></p>
 <p>The resulting hash is prefixed with  <code>$2a$</code> ,  <code>$2y$</code> , or  <code>$2b$</code> . The prefixes are added to indicate usage of  <code>bcrypt</code>  and its version.</p>
 <p>The result of  <code>bcrypt</code>  achieves <span class="exturl" data-url="aHR0cHM6Ly93d3cudXNlbml4Lm9yZy9sZWdhY3kvZXZlbnRzL3VzZW5peDk5L3Byb3Zvcy9wcm92b3NfaHRtbC9ub2RlMy5odG1sI3NlYzpkZXNpZ24=">core properties of a secure password function</span> as defined by its designers:</p>
 <ul>
@@ -212,7 +212,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <p>These are the results:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">bcrypt | cost: 10, time to hash: 65.683ms</span><br><span class="line">bcrypt | cost: 11, time to hash: 129.227ms</span><br><span class="line">bcrypt | cost: 12, time to hash: 254.624ms</span><br><span class="line">bcrypt | cost: 13, time to hash: 511.969ms</span><br><span class="line">bcrypt | cost: 14, time to hash: 1015.073ms</span><br><span class="line">bcrypt | cost: 15, time to hash: 2043.034ms</span><br><span class="line">bcrypt | cost: 16, time to hash: 4088.721ms</span><br><span class="line">bcrypt | cost: 17, time to hash: 8162.788ms</span><br><span class="line">bcrypt | cost: 18, time to hash: 16315.459ms</span><br><span class="line">bcrypt | cost: 19, time to hash: 32682.622ms</span><br><span class="line">bcrypt | cost: 20, time to hash: 66779.182ms</span><br></pre></td></tr></table></figure>
 <p>Plotting this data in <span class="exturl" data-url="aHR0cHM6Ly93d3cud29sZnJhbWFscGhhLmNvbS9pbnB1dC8/aT1leHBvbmVudGlhbCtmaXQrNjUuNjgzLCsxMjkuMjI3LCsyNTQuNjI0LCs1MTEuOTY5LCsxMDE1LjA3MywrMjA0My4wMzQsKzQwODguNzIxLDgxNjIuNzg4LDE2MzE1LjQ1OSwzMjY4Mi42MjIsKzY2Nzc5LjE4Mg==">Wolfram Alpha</span> to create a <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Least_squares"><strong>least-squares fit</strong></a> graph, we observe that the time to hash a password grows exponentially as the cost is increased in this particular hardware configuration:</p>
-<img data-src="/2021/03/13/bcrypt/graph.gif" class="" title="Plot of least-squares best fit for bcrypt hashing times data based on cost increases">
+<p><img data-src="graph.gif" alt="Plot of least-squares best fit for bcrypt hashing times data based on cost increases"></p>
 <p>For this data set, Wolfram Alpha gives us the following least-squares best fit equation:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">28.3722 e^(0.705681x)</span><br></pre></td></tr></table></figure>
 <p>If we wanted to predict how long would it take to hash a password in this system when the cost is  <code>30</code> , we could simply plug that value for  <code>x</code> :</p>
@@ -292,7 +292,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item left">
       
 
-  <a href="/2021/03/13/java-hash/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;大剑.jpg" title="字典、哈希与Map">
+  <a href="/2021/03/13/java-hash/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;秒速五厘米-5.jpg" title="字典、哈希与Map">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>字典、哈希与Map</h3>
@@ -302,7 +302,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item right">
       
 
-  <a href="/2021/03/14/linux-sed-awk/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;摇曳露营.jpg" title="Linux Grep Sed And Awk">
+  <a href="/2021/03/14/linux-sed-awk/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;刻刻.jpg" title="Linux Grep Sed And Awk">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Linux Grep Sed And Awk</h3>
@@ -358,9 +358,8 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 
 <div class="social">
       <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-pen"></i></span>
       <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
-      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
-      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
 </div>
 
 <ul class="menu">
@@ -368,11 +367,6 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     
   <li class="item">
     <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
-  </li>
-
-    
-  <li class="item">
-    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
   </li>
 
         
@@ -396,16 +390,22 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   </li>
 
   </ul>
-    
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-sakura"></i>Anime</a>
+    <ul class="submenu">
+
+        
   <li class="item">
-    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+    <a href="/anime/" rel="section"><i class="ic i-markdown"></i>Quotes</a>
   </li>
 
-    
+        
   <li class="item">
-    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+    <a href="/gallery/" rel="section"><i class="ic i-magic"></i>Gallery</a>
   </li>
 
+  </ul>
 
 </ul>
 
@@ -458,6 +458,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <script data-config type="text/javascript">
   var LOCAL = {
     path: '2021/03/13/bcrypt/',
+    sidebar: true,
     favicon: {
       show: "（●´3｀●）Goooood",
       hide: "(´Д｀)Booooom"
@@ -479,7 +480,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   };
 </script>
 
-<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
 
 <script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
 

@@ -102,12 +102,12 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="/anime/index/妖精森林的小不点.jpg"></li>
-          <li class="item" data-background-image="/anime/index/幻灵镇魂曲.jpg"></li>
-          <li class="item" data-background-image="/anime/index/蔷薇少女.jpg"></li>
-          <li class="item" data-background-image="/anime/index/犬夜叉-3.jpg"></li>
-          <li class="item" data-background-image="/anime/index/Monsters-University.jpg"></li>
-          <li class="item" data-background-image="/anime/index/黑之契约者.jpg"></li>
+          <li class="item" data-background-image="/anime/index/与变成了异世界美少女的大叔一起冒险.jpg"></li>
+          <li class="item" data-background-image="/anime/index/勇者赫鲁库.jpg"></li>
+          <li class="item" data-background-image="/anime/index/侧耳倾听-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/八犬传.jpg"></li>
+          <li class="item" data-background-image="/anime/index/花开伊吕波.jpg"></li>
+          <li class="item" data-background-image="/anime/index/东京喰种.jpg"></li>
         </ul>
       </div>
     </header>
@@ -170,19 +170,20 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 Server is running on 3000</p>
 </blockquote>
 <p>Click Download link will download the file to local, and the file name will use the file name specified in Content-Disposition.</p>
-<img data-src="/2024/12/09/http-header/1733743325206.png" class="">
+<p><img data-src="1733743325206.png" alt=""></p>
 <p>Click Preview Link will preview the file directly in the browser.</p>
-<img data-src="/2024/12/09/http-header/1733743141193.png" class="">
+<p><img data-src="1733743141193.png" alt=""></p>
 <h2 id="etag"><a class="markdownIt-Anchor" href="#etag">#</a> ETag</h2>
 <p>ETag cache flow</p>
-<img data-src="/2024/12/09/http-header/1737973736013.png" class="">
+<p><img data-src="1737973736013.png" alt=""></p>
 <p>Node http server implementation.</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">&#x27;http&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> crypto = <span class="built_in">require</span>(<span class="string">&#x27;crypto&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> server = http.<span class="title function_">createServer</span>(<span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (req.<span class="property">url</span> === <span class="string">&#x27;/test.pdf&#x27;</span>) &#123;</span><br><span class="line">        <span class="keyword">const</span> pdf = fs.<span class="title function_">readFileSync</span>(<span class="string">&#x27;./test.pdf&#x27;</span>);</span><br><span class="line">        <span class="keyword">const</span> etag = crypto.<span class="title function_">createHash</span>(<span class="string">&#x27;md5&#x27;</span>).<span class="title function_">update</span>(pdf).<span class="title function_">digest</span>(<span class="string">&#x27;hex&#x27;</span>);</span><br><span class="line">        <span class="keyword">const</span> ifNoneMatch = req.<span class="property">headers</span>[<span class="string">&#x27;if-none-match&#x27;</span>];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (etag === ifNoneMatch) &#123;</span><br><span class="line">            res.<span class="property">statusCode</span> = <span class="number">304</span>;</span><br><span class="line">            res.<span class="title function_">end</span>();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            res.<span class="title function_">setHeader</span>(<span class="string">&#x27;ETag&#x27;</span>, etag);</span><br><span class="line">            res.<span class="title function_">end</span>(pdf);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">server.<span class="title function_">listen</span>(<span class="number">3000</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Server is listening on http://localhost:3000&#x27;</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <p>Access firstly</p>
-<img data-src="/2024/12/09/http-header/1737973414547.png" class="">
+<p><img data-src="1737973414547.png" alt=""></p>
 <p>Access secondly</p>
-<img data-src="/2024/12/09/http-header/1737973712597.png" class="">
-<img data-src="/2024/12/09/http-header/1737973609383.png" class="">
+<p><img data-src="1737973712597.png" alt=""></p>
+<p><img data-src="1737973609383.png" alt=""></p>
+
       <div class="tags">
           <a href="/tags/js/" rel="tag"><i class="ic i-tag"></i> js</a>
           <a href="/tags/html/" rel="tag"><i class="ic i-tag"></i> html</a>
@@ -215,7 +216,7 @@ Server is running on 3000</p>
     <div class="item left">
       
 
-  <a href="/2024/11/06/edi-as2/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;三月的狮子-3.jpg" title="How AS2 Works">
+  <a href="/2024/11/06/edi-as2/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;荒川爆笑团-2.jpg" title="How AS2 Works">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>How AS2 Works</h3>
@@ -225,7 +226,7 @@ Server is running on 3000</p>
     <div class="item right">
       
 
-  <a href="/2024/12/26/js-fetch-await/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;摇曳露营.jpg" title="Why Two Awaits?">
+  <a href="/2024/12/26/js-fetch-await/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;关于完全听不懂老公在说什么的事-1.jpg" title="Why Two Awaits?">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Why Two Awaits?</h3>
@@ -282,9 +283,8 @@ Server is running on 3000</p>
 
 <div class="social">
       <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-pen"></i></span>
       <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
-      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
-      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
 </div>
 
 <ul class="menu">
@@ -292,11 +292,6 @@ Server is running on 3000</p>
     
   <li class="item">
     <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
-  </li>
-
-    
-  <li class="item">
-    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
   </li>
 
         
@@ -320,16 +315,22 @@ Server is running on 3000</p>
   </li>
 
   </ul>
-    
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-sakura"></i>Anime</a>
+    <ul class="submenu">
+
+        
   <li class="item">
-    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+    <a href="/anime/" rel="section"><i class="ic i-markdown"></i>Quotes</a>
   </li>
 
-    
+        
   <li class="item">
-    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+    <a href="/gallery/" rel="section"><i class="ic i-magic"></i>Gallery</a>
   </li>
 
+  </ul>
 
 </ul>
 
@@ -382,6 +383,7 @@ Server is running on 3000</p>
 <script data-config type="text/javascript">
   var LOCAL = {
     path: '2024/12/09/http-header/',
+    sidebar: true,
     favicon: {
       show: "（●´3｀●）Goooood",
       hide: "(´Д｀)Booooom"
@@ -403,7 +405,7 @@ Server is running on 3000</p>
   };
 </script>
 
-<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
 
 <script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
 

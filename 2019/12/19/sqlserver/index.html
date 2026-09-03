@@ -102,12 +102,12 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="/anime/index/ReLIFE.jpg"></li>
-          <li class="item" data-background-image="/anime/index/失忆投捕.jpg"></li>
-          <li class="item" data-background-image="/anime/index/听到涛声.jpg"></li>
-          <li class="item" data-background-image="/anime/index/千与千寻-3.jpg"></li>
-          <li class="item" data-background-image="/anime/index/好想告诉你.jpg"></li>
-          <li class="item" data-background-image="/anime/index/魔女宅急便-1.jpg"></li>
+          <li class="item" data-background-image="/anime/index/鲁邦三世.jpg"></li>
+          <li class="item" data-background-image="/anime/index/斩神之凡尘神域.jpg"></li>
+          <li class="item" data-background-image="/anime/index/clannad-3.jpg"></li>
+          <li class="item" data-background-image="/anime/index/镖人.jpg"></li>
+          <li class="item" data-background-image="/anime/index/昭和元禄落语心中-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/浪客剑心.jpg"></li>
         </ul>
       </div>
     </header>
@@ -185,11 +185,11 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 </ul>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create table</span> Products (</span><br><span class="line">	<span class="comment">--ProductId int identity(1, 1) primary key,</span></span><br><span class="line">    ProductId <span class="type">int</span> <span class="keyword">identity</span>(<span class="number">1</span>, <span class="number">1</span>),</span><br><span class="line">	Category <span class="type">char</span>(<span class="number">6</span>) <span class="keyword">not null</span>,</span><br><span class="line"> 	Name <span class="type">varchar</span>(<span class="number">50</span>) <span class="keyword">unique</span> <span class="keyword">not null</span>,</span><br><span class="line"> 	Weight <span class="type">float</span> <span class="keyword">check</span> (Weight <span class="operator">&gt;=</span> <span class="number">0</span>),</span><br><span class="line"> 	Price <span class="type">decimal</span>(<span class="number">18</span>, <span class="number">2</span>),</span><br><span class="line"> 	[Launch <span class="type">Date</span>] <span class="type">Date</span>,</span><br><span class="line"> 	<span class="keyword">constraint</span> PK_Products <span class="keyword">primary key</span> (ProductId)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 <h4 id="get-create-table-script"><a class="markdownIt-Anchor" href="#get-create-table-script">#</a> Get Create Table Script</h4>
-<img data-src="/2019/12/19/sqlserver/1717147527769.png" class="">
+<p><img data-src="1717147527769.png" alt=""></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">USE [MarketManagement]</span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line"><span class="comment">/****** Object:  Table [dbo].[Products]    Script Date: 5/31/2024 5:25:15 PM ******/</span></span><br><span class="line"><span class="keyword">SET</span> ANSI_NULLS <span class="keyword">ON</span></span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line"><span class="keyword">SET</span> QUOTED_IDENTIFIER <span class="keyword">ON</span></span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line"><span class="keyword">SET</span> ANSI_PADDING <span class="keyword">ON</span></span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE TABLE</span> [dbo].[Products](</span><br><span class="line">	[ProductId] [<span class="type">int</span>] <span class="keyword">IDENTITY</span>(<span class="number">1</span>,<span class="number">1</span>) <span class="keyword">NOT NULL</span>,</span><br><span class="line">	[Category] [<span class="type">char</span>](<span class="number">6</span>) <span class="keyword">NOT NULL</span>,</span><br><span class="line">	[Name] [<span class="type">varchar</span>](<span class="number">50</span>) <span class="keyword">NOT NULL</span>,</span><br><span class="line">	[Weight] [<span class="type">float</span>] <span class="keyword">NULL</span>,</span><br><span class="line">	[Price] [<span class="type">decimal</span>](<span class="number">18</span>, <span class="number">2</span>) <span class="keyword">NULL</span>,</span><br><span class="line">	[Launch <span class="type">Date</span>] [<span class="type">date</span>] <span class="keyword">NULL</span>,</span><br><span class="line"> <span class="keyword">CONSTRAINT</span> [PK_Products] <span class="keyword">PRIMARY KEY</span> CLUSTERED</span><br><span class="line">(</span><br><span class="line">	[ProductId] <span class="keyword">ASC</span></span><br><span class="line">)<span class="keyword">WITH</span> (PAD_INDEX <span class="operator">=</span> OFF, STATISTICS_NORECOMPUTE <span class="operator">=</span> OFF, IGNORE_DUP_KEY <span class="operator">=</span> OFF, ALLOW_ROW_LOCKS <span class="operator">=</span> <span class="keyword">ON</span>, ALLOW_PAGE_LOCKS <span class="operator">=</span> <span class="keyword">ON</span>) <span class="keyword">ON</span> [<span class="keyword">PRIMARY</span>],</span><br><span class="line"><span class="keyword">UNIQUE</span> NONCLUSTERED</span><br><span class="line">(</span><br><span class="line">	[Name] <span class="keyword">ASC</span></span><br><span class="line">)<span class="keyword">WITH</span> (PAD_INDEX <span class="operator">=</span> OFF, STATISTICS_NORECOMPUTE <span class="operator">=</span> OFF, IGNORE_DUP_KEY <span class="operator">=</span> OFF, ALLOW_ROW_LOCKS <span class="operator">=</span> <span class="keyword">ON</span>, ALLOW_PAGE_LOCKS <span class="operator">=</span> <span class="keyword">ON</span>) <span class="keyword">ON</span> [<span class="keyword">PRIMARY</span>]</span><br><span class="line">) <span class="keyword">ON</span> [<span class="keyword">PRIMARY</span>]</span><br><span class="line"></span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line"><span class="keyword">SET</span> ANSI_PADDING OFF</span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER TABLE</span> [dbo].[Products]  <span class="keyword">WITH</span> <span class="keyword">CHECK</span> <span class="keyword">ADD  CONSTRAINT</span> [check_price] <span class="keyword">CHECK</span>  (([price]<span class="operator">&gt;=</span>(<span class="number">0</span>)))</span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER TABLE</span> [dbo].[Products] <span class="keyword">CHECK</span> <span class="keyword">CONSTRAINT</span> [check_price]</span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER TABLE</span> [dbo].[Products]  <span class="keyword">WITH</span> <span class="keyword">CHECK</span> <span class="keyword">ADD</span> <span class="keyword">CHECK</span>  (([Weight]<span class="operator">&gt;=</span>(<span class="number">0</span>)))</span><br><span class="line">GO</span><br></pre></td></tr></table></figure>
 <h4 id="view-table-details"><a class="markdownIt-Anchor" href="#view-table-details">#</a> View Table Details</h4>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">exec</span> sp_help Products;</span><br></pre></td></tr></table></figure>
-<img data-src="/2019/12/19/sqlserver/1717056031847.png" class="">
+<p><img data-src="1717056031847.png" alt=""></p>
 <h3 id="insert"><a class="markdownIt-Anchor" href="#insert">#</a> Insert</h3>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert into</span> Products</span><br><span class="line"><span class="keyword">values</span> (<span class="string">&#x27;MEAT&#x27;</span>, <span class="string">&#x27;Beef&#x27;</span>, <span class="number">99.9999</span>, <span class="number">99.9999</span>, <span class="string">&#x27;2024-05-30&#x27;</span>),</span><br><span class="line">       (<span class="string">&#x27;MEAT&#x27;</span>, <span class="string">&#x27;Pork&#x27;</span>, <span class="number">99.9999</span>, <span class="number">99.99</span>, <span class="string">&#x27;2024-05-30&#x27;</span>);</span><br></pre></td></tr></table></figure>
 <h3 id="select"><a class="markdownIt-Anchor" href="#select">#</a> Select</h3>
@@ -226,8 +226,8 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 </table>
 <h4 id="select-expand"><a class="markdownIt-Anchor" href="#select-expand">#</a> Select * Expand</h4>
 <p>select  <code>Columns</code>  and drag to the destination.</p>
-<img data-src="/2019/12/19/sqlserver/1718095102013.png" class="">
-<img data-src="/2019/12/19/sqlserver/1718095206883.png" class="">
+<p><img data-src="1718095102013.png" alt=""></p>
+<p><img data-src="1718095206883.png" alt=""></p>
 <h4 id="top"><a class="markdownIt-Anchor" href="#top">#</a> Top</h4>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> top <span class="number">1</span> <span class="operator">*</span> <span class="keyword">from</span> Products;</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> top <span class="number">50</span> <span class="keyword">percent</span> <span class="operator">*</span> <span class="keyword">from</span> Products;</span><br></pre></td></tr></table></figure>
 <h4 id="union-and-order-by"><a class="markdownIt-Anchor" href="#union-and-order-by">#</a> Union and Order by</h4>
@@ -1614,7 +1614,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 </tbody>
 </table>
 <h3 id="include-execution-plan"><a class="markdownIt-Anchor" href="#include-execution-plan">#</a> Include Execution Plan</h3>
-<img data-src="/2019/12/19/sqlserver/1717575917302.png" class="">
+<p><img data-src="1717575917302.png" alt=""></p>
 
       <div class="tags">
           <a href="/tags/db/" rel="tag"><i class="ic i-tag"></i> db</a>
@@ -1646,7 +1646,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item left">
       
 
-  <a href="/2019/12/11/oracle-testdata/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;一拳超人.jpg" title="Oracle Test Data Generate">
+  <a href="/2019/12/11/oracle-testdata/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;伪恋.jpg" title="Oracle Test Data Generate">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Oracle Test Data Generate</h3>
@@ -1656,7 +1656,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item right">
       
 
-  <a href="/2019/12/20/java-httpclient/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;派对浪客诸葛孔明-1.jpg" title="Java 11 HttpClient Examples">
+  <a href="/2019/12/20/java-httpclient/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;未来日记.jpg" title="Java 11 HttpClient Examples">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Java 11 HttpClient Examples</h3>
@@ -1713,9 +1713,8 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 
 <div class="social">
       <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-pen"></i></span>
       <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
-      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
-      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
 </div>
 
 <ul class="menu">
@@ -1723,11 +1722,6 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     
   <li class="item">
     <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
-  </li>
-
-    
-  <li class="item">
-    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
   </li>
 
         
@@ -1751,16 +1745,22 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   </li>
 
   </ul>
-    
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-sakura"></i>Anime</a>
+    <ul class="submenu">
+
+        
   <li class="item">
-    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+    <a href="/anime/" rel="section"><i class="ic i-markdown"></i>Quotes</a>
   </li>
 
-    
+        
   <li class="item">
-    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+    <a href="/gallery/" rel="section"><i class="ic i-magic"></i>Gallery</a>
   </li>
 
+  </ul>
 
 </ul>
 
@@ -1813,6 +1813,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <script data-config type="text/javascript">
   var LOCAL = {
     path: '2019/12/19/sqlserver/',
+    sidebar: true,
     favicon: {
       show: "（●´3｀●）Goooood",
       hide: "(´Д｀)Booooom"
@@ -1834,7 +1835,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   };
 </script>
 
-<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
 
 <script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
 

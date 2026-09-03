@@ -102,12 +102,12 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="/anime/index/编舟记.jpg"></li>
-          <li class="item" data-background-image="/anime/index/声之形.jpg"></li>
-          <li class="item" data-background-image="/anime/index/亚人-1.jpg"></li>
-          <li class="item" data-background-image="/anime/index/龙与虎-2.jpg"></li>
-          <li class="item" data-background-image="/anime/index/电波女与青春男-2.jpg"></li>
-          <li class="item" data-background-image="/anime/index/岁月的童话-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/酷爱电影的庞波小姐.jpg"></li>
+          <li class="item" data-background-image="/anime/index/一拳超人.jpg"></li>
+          <li class="item" data-background-image="/anime/index/尸鬼.jpg"></li>
+          <li class="item" data-background-image="/anime/index/混沌武士-1.jpg"></li>
+          <li class="item" data-background-image="/anime/index/八犬传.jpg"></li>
+          <li class="item" data-background-image="/anime/index/荒川爆笑团-2.jpg"></li>
         </ul>
       </div>
     </header>
@@ -156,7 +156,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 </blockquote>
 <p>For the past few weeks, I’ve been hiring for a senior <span class="exturl" data-url="aHR0cHM6Ly9jc3MtdHJpY2tzLmNvbS93aGF0LWRvZXMtaXQtbWVhbi10by1iZS1mdWxsLXN0YWNrLw==">full-stack</span> JavaScript engineer at my rental furniture company, <span class="exturl" data-url="aHR0cHM6Ly9wYWJpby5jb20vZW4tZGUv">Pabio</span>. Since we’re a remote team, we conduct our interviews on Zoom, and I’ve observed that some developers are not great at live-coding or whiteboard interviews, even if they’re good at the job. So, instead, we have an hour-long technical discussion where I ask them questions about web vitals, accessibility, the browser wars, and other similar topics about the web. One of the questions I always like to ask is: <strong>“Explain the first ten or so lines of the Twitter source code to me.”</strong></p>
 <p>I think it’s a simple test that tells me a lot about the depth of fundamental front-end knowledge they have, and this article lists the best answers.</p>
-<img data-src="/2022/05/05/html-first-ten-lines/s_1B56F376C1F0FF4107271F0A0DA0CCE65FEA59C4FFF17FD5500C71C0B3B69841_1642491088212_screenshot-twitter-source-scaled.jpg" class="" title="Screenshot of source code from Twitter.">
+<p><img data-src="s_1B56F376C1F0FF4107271F0A0DA0CCE65FEA59C4FFF17FD5500C71C0B3B69841_1642491088212_screenshot-twitter-source-scaled.jpg" alt="Screenshot of source code from Twitter."></p>
 <p>Note that since our technical discussion is a conversation. I don’t expect a perfect answer from anyone. If I hear some right keywords, I know that the candidate knows the concept, and I try to push them in the right direction.</p>
 <h3 id="line-1-doctype-html"><a class="markdownIt-Anchor" href="#line-1-doctype-html">#</a> Line 1:  <code>&lt;!DOCTYPE html&gt;</code></h3>
 <p>The first line of every document’s source code is perfect for this interview because how much a candidate knows about the  <code>DOCTYPE</code>  declaration closely resembles how many years of experience they have. I still remember my Dreamweaver days with the long XHTML DOCTYPE line, like Chris listed in his article <span class="exturl" data-url="aHR0cHM6Ly9jc3MtdHJpY2tzLmNvbS9zbmlwcGV0cy9odG1sL3RoZS1jb21tb24tZG9jdHlwZXMv">“The Common DOCTYPES”</span> from 2009.</p>
@@ -187,14 +187,14 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <p>Nobody I interviewed knew about this one. I would assume that you’d know this only if you have in-depth knowledge about all the new things that are happening on the standards track.</p>
 <p><strong>Perfect answer:</strong> Origin trials let us use new and experimental features on our site and the feedback is tracked by the user agent and reported to the web standards community without users having to opt-in to a feature flag. For example, Edge has an origin trial for dual-screen and foldable device primitives, which is pretty cool as you can make interesting layouts based on whether a foldable phone is opened or closed.</p>
 <p><strong>Also accepted:</strong> I don’t know about this one.</p>
-<h3 id="line-10-html-ms-text-size-adjust100-webkit-text"><a class="markdownIt-Anchor" href="#line-10-html-ms-text-size-adjust100-webkit-text">#</a> Line 10:  <code>html&#123;-ms-text-size-adjust:100%;-webkit-text...</code></h3>
+<h3 id="line-10-html-ms-text-size-adjust100-webkit-text"><a class="markdownIt-Anchor" href="#line-10-html-ms-text-size-adjust100-webkit-text">#</a> Line 10:  <code>html{-ms-text-size-adjust:100%;-webkit-text...</code></h3>
 <p>Almost nobody knew about this one too; only if you know about CSS edge cases and optimizations, you’d be able to figure this line out.</p>
 <p><strong>Perfect answer:</strong> Imagine that you don’t have a mobile responsive site and you open it on a small screen, so the browser might resize the text to make it bigger so it’s easier to read. The CSS <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-size-adjust"> <code>text-size-adjust</code> </a> property can either disable this feature with the value none or specify a percentage up to which the browser is allowed to make the text bigger.</p>
 <p>In this case, Twitter says the maximum is  <code>100%</code> , so the text should be no bigger than the actual size; they just do that because their site is already responsive and they don’t want to risk a browser breaking the layout with a larger font size. This is applied to the root HTML tag so it applies to everything inside it. Since this is an experimental CSS property, vendor prefixes are required. Also, there’s a missing  <code>&lt;style&gt;</code>  before this CSS, but I’m guessing that’s minified in the previous line and we don’t see it.</p>
 <p><strong>Also accepted:</strong> I don’t know about this property in specific but the  <code>-ms</code>  and  <code>-webkit-</code>  are vendor prefixes needed by Internet Explorer and WebKit-based browsers, respectively, for non-standard properties. We used to require these prefixes when CSS3 came out, but as properties go from experimental to stable or are adopted to a standards track, these prefixes go away in favor of a standardized property.</p>
-<h3 id="bonus-line-11-bodymargin0"><a class="markdownIt-Anchor" href="#bonus-line-11-bodymargin0">#</a> Bonus — Line 11:  <code>body&#123;margin:0;&#125;</code></h3>
+<h3 id="bonus-line-11-bodymargin0"><a class="markdownIt-Anchor" href="#bonus-line-11-bodymargin0">#</a> Bonus — Line 11:  <code>body{margin:0;}</code></h3>
 <p>This line from Twitter’s source code is particularly fun because you can follow-up with a question about the difference between resetting and normalizing a webpage. Almost everyone knew a version of the right answer.</p>
-<p><strong>Perfect answer:</strong> Because different browsers have different default styles (user agent stylesheet), you want to overwrite them by resetting properties so your site looks the same across devices. In this case, Twitter is telling the browser to remove the body tag’s default margin. This is just to reduce browser inconsistencies, but I prefer normalizing the styles instead of resetting them, i.e., applying the same defaults across browsers rather than removing them altogether. People even used to use  <code>* &#123; margin: 0 &#125;</code>  which is totally overkill and not great for performance, but now it’s common to import something like  <code>normalize.css</code>  or  <code>reset.css</code>  (or even <span class="exturl" data-url="aHR0cHM6Ly9jc3MtdHJpY2tzLmNvbS9hbi1pbnRlcnZpZXctd2l0aC1lbGFkLXNoZWNodGVyLW9uLXRoZS1uZXctY3NzLXJlc2V0Lw==">something newer</span>) and start from there.</p>
+<p><strong>Perfect answer:</strong> Because different browsers have different default styles (user agent stylesheet), you want to overwrite them by resetting properties so your site looks the same across devices. In this case, Twitter is telling the browser to remove the body tag’s default margin. This is just to reduce browser inconsistencies, but I prefer normalizing the styles instead of resetting them, i.e., applying the same defaults across browsers rather than removing them altogether. People even used to use  <code>* { margin: 0 }</code>  which is totally overkill and not great for performance, but now it’s common to import something like  <code>normalize.css</code>  or  <code>reset.css</code>  (or even <span class="exturl" data-url="aHR0cHM6Ly9jc3MtdHJpY2tzLmNvbS9hbi1pbnRlcnZpZXctd2l0aC1lbGFkLXNoZWNodGVyLW9uLXRoZS1uZXctY3NzLXJlc2V0Lw==">something newer</span>) and start from there.</p>
 <h3 id="more-lines"><a class="markdownIt-Anchor" href="#more-lines">#</a> More lines!</h3>
 <p>I always enjoy playing with the browser Inspector tool to see how sites are made, which is how I came up with this idea. Even though I consider myself sort of an expert on semantic HTML, I learn something new every time I do this exercise.</p>
 <p>Since Twitter is mostly a client-side React app, there’s only a few dozen lines in the source code. Even with that, there’s so much to learn! There are a few more interesting lines in the Twitter source code that I leave as an exercise for you, the reader. How many of them could you explain in an interview?</p>
@@ -237,7 +237,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item left">
       
 
-  <a href="/2022/04/15/english-graph/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;薄樱鬼.jpg" title="English Graph">
+  <a href="/2022/04/15/english-graph/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;路人女主的养成方法.jpg" title="English Graph">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>English Graph</h3>
@@ -247,7 +247,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item right">
       
 
-  <a href="/2022/05/18/javascript-alpinejs-fetch/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;东京喰种.jpg" title="Using Native Fetch With AlpineJs">
+  <a href="/2022/05/18/javascript-alpinejs-fetch/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;阴晴不定大哥哥.jpg" title="Using Native Fetch With AlpineJs">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Using Native Fetch With AlpineJs</h3>
@@ -304,9 +304,8 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 
 <div class="social">
       <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-pen"></i></span>
       <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
-      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
-      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
 </div>
 
 <ul class="menu">
@@ -314,11 +313,6 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     
   <li class="item">
     <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
-  </li>
-
-    
-  <li class="item">
-    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
   </li>
 
         
@@ -342,16 +336,22 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   </li>
 
   </ul>
-    
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-sakura"></i>Anime</a>
+    <ul class="submenu">
+
+        
   <li class="item">
-    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+    <a href="/anime/" rel="section"><i class="ic i-markdown"></i>Quotes</a>
   </li>
 
-    
+        
   <li class="item">
-    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+    <a href="/gallery/" rel="section"><i class="ic i-magic"></i>Gallery</a>
   </li>
 
+  </ul>
 
 </ul>
 
@@ -404,6 +404,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <script data-config type="text/javascript">
   var LOCAL = {
     path: '2022/05/05/html-first-ten-lines/',
+    sidebar: true,
     favicon: {
       show: "（●´3｀●）Goooood",
       hide: "(´Д｀)Booooom"
@@ -425,7 +426,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   };
 </script>
 
-<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
 
 <script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
 

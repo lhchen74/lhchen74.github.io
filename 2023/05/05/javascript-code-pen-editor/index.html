@@ -102,12 +102,12 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="/anime/index/少女乐队的呐喊.jpg"></li>
-          <li class="item" data-background-image="/anime/index/罗小黑战记.jpg"></li>
-          <li class="item" data-background-image="/anime/index/你看起来好像很好吃.jpg"></li>
-          <li class="item" data-background-image="/anime/index/怪物MONSTER.jpg"></li>
-          <li class="item" data-background-image="/anime/index/白箱-2.jpg"></li>
-          <li class="item" data-background-image="/anime/index/奇巧计程车.jpg"></li>
+          <li class="item" data-background-image="/anime/index/起风了-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/萤火虫之墓-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/体操武士-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/怪兽8号-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/魔女宅急便-1.jpg"></li>
+          <li class="item" data-background-image="/anime/index/夏日重现.jpg"></li>
         </ul>
       </div>
     </header>
@@ -166,7 +166,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <p>We will use the  <code>keyup</code>  event to update the document in the iframe with the changed code. Again we are using the event target’s value and dataset to select and set the document state. Now getting into the part where we create a virtual document, we are using the  <code>update()</code>  function to take the state of the  <code>doc</code>  object that we are keeping up to date with the event listeners and transform the values into an HTML document string. Once we have the HTML document, we can convert the text into a Blob that contains the page. Using the  <code>URL.createObjectURL</code> , we can take the output of the Blob and virtually create a local file that we can take and set to the source of the iframe! We call the  <code>update()</code>  function at the end of the for loop to initially create the iframe preview with the initial state of the textareas. This is what gives us the ability to render the editor statically.</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">makeEditor</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> frame = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;iframe&quot;</span>);</span><br><span class="line">  <span class="keyword">let</span> doc = &#123;</span><br><span class="line">    <span class="attr">html</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="attr">css</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="attr">js</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> ta = <span class="variable language_">document</span>.<span class="title function_">querySelectorAll</span>(<span class="string">&quot;[data-lang]&quot;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; ta.<span class="property">length</span>; i++) &#123;</span><br><span class="line">    doc[ta[i].<span class="property">dataset</span>.<span class="property">lang</span>] = ta[i].<span class="property">value</span>;</span><br><span class="line">    ta[i].<span class="title function_">addEventListener</span>(<span class="string">&quot;keyup&quot;</span>, <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">      doc[e.<span class="property">target</span>.<span class="property">dataset</span>.<span class="property">lang</span>] = e.<span class="property">target</span>.<span class="property">value</span>;</span><br><span class="line">      <span class="title function_">update</span>();</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">update</span>();</span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">update</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> html = <span class="string">`&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;style&gt;<span class="subst">$&#123;doc.css&#125;</span>&lt;/style&gt;&lt;/head&gt;&lt;body&gt;<span class="subst">$&#123;doc.html&#125;</span>&lt;script&gt;<span class="subst">$&#123;doc.js&#125;</span>&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;`</span>;</span><br><span class="line">    <span class="keyword">const</span> blob = <span class="keyword">new</span> <span class="title class_">Blob</span>([html], &#123; <span class="attr">type</span>: <span class="string">&quot;text/html&quot;</span> &#125;);</span><br><span class="line">    frame.<span class="property">src</span> = <span class="variable constant_">URL</span>.<span class="title function_">createObjectURL</span>(blob);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">makeEditor</span>();</span><br></pre></td></tr></table></figure>
 <h3 id="creating-an-editor-component"><a class="markdownIt-Anchor" href="#creating-an-editor-component">#</a> Creating an Editor Component</h3>
-<img data-src="/2023/05/05/javascript-code-pen-editor/users_masonwright_desktop_editor_index_html_1_NpcVEKDtC9.png" class="" title="Code Pen like editor">
+<p><img data-src="users_masonwright_desktop_editor_index_html_1_NpcVEKDtC9.png" alt="Code Pen like editor"></p>
 <p>I’ll be the first person to admit that I am not the greatest designer. That is why I use CSS libraries for most of my styling. However, above is a screenshot of the editor we will make in this next part. This version will differ from the previous, as we will be looking to render multiple editors within a page without overflowing the data between them.</p>
 <h4 id="the-component"><a class="markdownIt-Anchor" href="#the-component">#</a> The Component</h4>
 <p>Below is the HTML structure of the component; it works the same way as the previous one. This one is more structured, with the textarea’s on the bottom and the iframe on top. The container  <code>div</code>  has a custom  <code>editor</code>  attribute that will let us search for it in the new  <code>makeEditor</code>  function we will create. From this  <code>editor</code>  div, we can style the elements inside; here, we gave the text area labels that tell the user what is what.</p>
@@ -209,7 +209,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item left">
       
 
-  <a href="/2023/04/21/postgresql-json-graph/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;三月的狮子.jpg" title="PostgreSQL JSON Graph">
+  <a href="/2023/04/21/postgresql-json-graph/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;放学后失眠的你.jpg" title="PostgreSQL JSON Graph">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>PostgreSQL JSON Graph</h3>
@@ -219,7 +219,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item right">
       
 
-  <a href="/2023/05/07/perl-text-processing/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;只有我不存在的城市.jpg" title="Regular Expressions, File IO &amp; Text Processing">
+  <a href="/2023/05/07/perl-text-processing/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;心理测量者.jpg" title="Regular Expressions, File IO &amp; Text Processing">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Regular Expressions, File IO & Text Processing</h3>
@@ -276,9 +276,8 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 
 <div class="social">
       <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-pen"></i></span>
       <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
-      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
-      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
 </div>
 
 <ul class="menu">
@@ -286,11 +285,6 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     
   <li class="item">
     <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
-  </li>
-
-    
-  <li class="item">
-    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
   </li>
 
         
@@ -314,16 +308,22 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   </li>
 
   </ul>
-    
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-sakura"></i>Anime</a>
+    <ul class="submenu">
+
+        
   <li class="item">
-    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+    <a href="/anime/" rel="section"><i class="ic i-markdown"></i>Quotes</a>
   </li>
 
-    
+        
   <li class="item">
-    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+    <a href="/gallery/" rel="section"><i class="ic i-magic"></i>Gallery</a>
   </li>
 
+  </ul>
 
 </ul>
 
@@ -376,6 +376,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <script data-config type="text/javascript">
   var LOCAL = {
     path: '2023/05/05/javascript-code-pen-editor/',
+    sidebar: true,
     favicon: {
       show: "（●´3｀●）Goooood",
       hide: "(´Д｀)Booooom"
@@ -397,7 +398,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   };
 </script>
 
-<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
 
 <script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
 

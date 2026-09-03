@@ -102,12 +102,12 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="/anime/index/温泉屋小女将.jpg"></li>
-          <li class="item" data-background-image="/anime/index/another.jpg"></li>
-          <li class="item" data-background-image="/anime/index/冰海战记-2.jpg"></li>
-          <li class="item" data-background-image="/anime/index/萤火虫之墓-2.jpg"></li>
-          <li class="item" data-background-image="/anime/index/紫罗兰永恒花园-2.jpg"></li>
-          <li class="item" data-background-image="/anime/index/神推偶像登上武道馆我就死而无憾.jpg"></li>
+          <li class="item" data-background-image="/anime/index/绝园的暴风雨.jpg"></li>
+          <li class="item" data-background-image="/anime/index/侧耳倾听-4.jpg"></li>
+          <li class="item" data-background-image="/anime/index/关于完全听不懂老公在说什么的事-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/迷宫饭.jpg"></li>
+          <li class="item" data-background-image="/anime/index/朝花夕誓.jpg"></li>
+          <li class="item" data-background-image="/anime/index/电锯人-1.jpg"></li>
         </ul>
       </div>
     </header>
@@ -229,7 +229,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <p>The  <code>window.location</code>  returns a  <code>Location</code>  object. Which gives you information about the current location of the page. But you can also access the  <code>Location</code>  object in several ways.</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="property">location</span>          → <span class="title class_">Location</span></span><br><span class="line"><span class="variable language_">window</span>.<span class="property">document</span>.<span class="property">location</span> → <span class="title class_">Location</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="property">location</span>        → <span class="title class_">Location</span></span><br><span class="line">location                 → <span class="title class_">Location</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>The reason we can do this is because these are global variables in our browser.</p>
-<img data-src="/2021/08/10/html-location/86-window-location-cheatsheet-browser-global-variable.jfif" class="" title="img">
+<p><img data-src="86-window-location-cheatsheet-browser-global-variable.jfif" alt="img"></p>
 <h3 id="windowlocation-vs-location"><a class="markdownIt-Anchor" href="#windowlocation-vs-location">#</a> window.location vs location</h3>
 <p>All 4 of these properties point at the same  <code>Location</code>  object. I personally prefer  <code>window.location</code>  and would actually avoid using  <code>location</code> . Mainly because  <code>location</code>  reads more like a generic term and someone might accidentally name their variable that, which would override the global variable. Take for example:</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// https://www.samanthaming.com</span></span><br><span class="line"></span><br><span class="line">location.<span class="property">protocol</span>; <span class="comment">// &#x27;https&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">localFile</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> location = <span class="string">&quot;/sam&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> location.<span class="property">protocol</span>;</span><br><span class="line">    <span class="comment">// ❌ undefined</span></span><br><span class="line">    <span class="comment">//    b/c local &quot;location&quot; has override the global variable</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -292,7 +292,8 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <p>All three does redirect, the difference has to do with browser history.  <code>href</code>  and  <code>assign</code>  are the same here. It will save your <strong>current page</strong> in history, whereas  <code>replace</code>  won’t. So if you prefer creating an experience where the navigation can’t press back to the originating page, then use  <code>replace</code>  👍</p>
 <p>So the question now is  <code>href</code>  vs  <code>assign</code> . I guess this will come to personal preference. I like the  <code>assign</code>  better because it’s a method so it feels like I’m performing some action. Also there’s an added bonus of it being easier to test. I’ve been writing a lot of Jest tests, so by using a method, it makes it way easier to mock.</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">assign</span> = jest.<span class="title function_">fn</span>();</span><br><span class="line"></span><br><span class="line"><span class="title function_">myUrlUpdateFunction</span>();</span><br><span class="line"></span><br><span class="line"><span class="title function_">expect</span>(<span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">assign</span>).<span class="title function_">toBeCalledWith</span>(<span class="string">&quot;http://my.url&quot;</span>);</span><br></pre></td></tr></table></figure>
-<img data-src="/2021/08/10/html-location/86-window-location-cheatsheet.jfif" class="">
+<p><img data-src="86-window-location-cheatsheet.jfif" alt=""></p>
+
       <div class="tags">
           <a href="/tags/html/" rel="tag"><i class="ic i-tag"></i> html</a>
       </div>
@@ -323,7 +324,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item left">
       
 
-  <a href="/2021/08/07/css-counter/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;穿越时空的少女-2.jpg" title="A Guide to CSS counter">
+  <a href="/2021/08/07/css-counter/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;风之谷.jpg" title="A Guide to CSS counter">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>A Guide to CSS counter</h3>
@@ -333,7 +334,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item right">
       
 
-  <a href="/2021/08/25/javascript-generator/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;龙猫-3.jpg" title="Generators">
+  <a href="/2021/08/25/javascript-generator/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;黑之契约者.jpg" title="Generators">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Generators</h3>
@@ -390,9 +391,8 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 
 <div class="social">
       <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-pen"></i></span>
       <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
-      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
-      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
 </div>
 
 <ul class="menu">
@@ -400,11 +400,6 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     
   <li class="item">
     <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
-  </li>
-
-    
-  <li class="item">
-    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
   </li>
 
         
@@ -428,16 +423,22 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   </li>
 
   </ul>
-    
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-sakura"></i>Anime</a>
+    <ul class="submenu">
+
+        
   <li class="item">
-    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+    <a href="/anime/" rel="section"><i class="ic i-markdown"></i>Quotes</a>
   </li>
 
-    
+        
   <li class="item">
-    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+    <a href="/gallery/" rel="section"><i class="ic i-magic"></i>Gallery</a>
   </li>
 
+  </ul>
 
 </ul>
 
@@ -490,6 +491,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <script data-config type="text/javascript">
   var LOCAL = {
     path: '2021/08/10/html-location/',
+    sidebar: true,
     favicon: {
       show: "（●´3｀●）Goooood",
       hide: "(´Д｀)Booooom"
@@ -511,7 +513,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   };
 </script>
 
-<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
 
 <script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
 

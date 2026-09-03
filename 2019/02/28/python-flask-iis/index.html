@@ -102,12 +102,12 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="/anime/index/可塑性记忆-1.jpg"></li>
-          <li class="item" data-background-image="/anime/index/魔女宅急便-2.jpg"></li>
-          <li class="item" data-background-image="/anime/index/辉夜姬物语-1.jpg"></li>
-          <li class="item" data-background-image="/anime/index/胆大党.jpg"></li>
-          <li class="item" data-background-image="/anime/index/秦时明月-1.jpg"></li>
-          <li class="item" data-background-image="/anime/index/薇薇-萤石眼之歌.jpg"></li>
+          <li class="item" data-background-image="/anime/index/宝石之国.jpg"></li>
+          <li class="item" data-background-image="/anime/index/未来的未来.jpg"></li>
+          <li class="item" data-background-image="/anime/index/网球王子.jpg"></li>
+          <li class="item" data-background-image="/anime/index/电锯人-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/晨曦公主.jpg"></li>
+          <li class="item" data-background-image="/anime/index/clannad.jpg"></li>
         </ul>
       </div>
     </header>
@@ -160,21 +160,21 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 </blockquote>
 <h3 id="启动-iis-服务安裝-cgi"><a class="markdownIt-Anchor" href="#启动-iis-服务安裝-cgi">#</a> 启动 IIS 服务，安裝 CGI</h3>
 <p>1 控制台 (檢視方式：類別) -&gt; 程式集 -&gt; 開啓或關閉 Windows 功能</p>
-<img data-src="/2019/02/28/python-flask-iis/1565145973712.png" class="">
+<p><img data-src="1565145973712.png" alt=""></p>
 <p>2 安裝 IIS 管理工具和 CGI</p>
 <p>IIS 管理工具</p>
-<img data-src="/2019/02/28/python-flask-iis/1565146695079.png" class="">
+<p><img data-src="1565146695079.png" alt=""></p>
 <p>CGI 如果沒有安裝 CGI, <strong>後續處理常式對應 會找不到 FastCgiModule</strong></p>
-<img data-src="/2019/02/28/python-flask-iis/1565149653704.png" class="">
+<p><img data-src="1565149653704.png" alt=""></p>
 <h3 id="添加站臺"><a class="markdownIt-Anchor" href="#添加站臺">#</a> 添加站臺</h3>
 <p>打開 IIS 服務 -&gt; 站台 -&gt; 新增網站，在弹出的窗口输入  <code>站台名稱</code>   <code>實體路徑</code>   <code>連接埠</code></p>
-<img data-src="/2019/02/28/python-flask-iis/1565155471556.png" class="">
+<p><img data-src="1565155471556.png" alt=""></p>
 <h3 id="flask-项目添加插件"><a class="markdownIt-Anchor" href="#flask-项目添加插件">#</a> Flask 项目添加插件</h3>
 <h4 id="安裝-wfastcgi"><a class="markdownIt-Anchor" href="#安裝-wfastcgi">#</a> 安裝 wfastcgi</h4>
 <p><code>pip install wfastcgi</code></p>
 <h4 id="啓動-wfastcgi"><a class="markdownIt-Anchor" href="#啓動-wfastcgi">#</a> 啓動 wfastcgi</h4>
 <p>進入 Python Scripts 目錄  <code>C:\Program Files\Python36\Scripts</code>  執行  <code>wfastcgi-enable.exe</code></p>
-<img data-src="/2019/02/28/python-flask-iis/1565147818362.png" class="">
+<p><img data-src="1565147818362.png" alt=""></p>
 <p>複製 FastCGI script processor</p>
 <p><code>&quot;c:\program files\python36\python.exe&quot;|&quot;c:\program files\python36\lib\site-packages\wfastcgi.py&quot;</code></p>
 <p>注意: program files 包含空格，需要用引號引起來，複製時需要注意，如果設置錯誤會出現</p>
@@ -187,20 +187,20 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <h3 id="配置-fastcgi"><a class="markdownIt-Anchor" href="#配置-fastcgi">#</a> 配置 FastCGI</h3>
 <h4 id="處理常式對應"><a class="markdownIt-Anchor" href="#處理常式對應">#</a> 處理常式對應</h4>
 <p>處理常式對應 -&gt; 新增模組對應</p>
-<img data-src="/2019/02/28/python-flask-iis/1565148545865.png" class="">
-<img data-src="/2019/02/28/python-flask-iis/1565148667449.png" class="">
+<p><img data-src="1565148545865.png" alt=""></p>
+<p><img data-src="1565148667449.png" alt=""></p>
 <p>執行檔案填寫之前複製的 FastCGI script processor，program files 包含空格，需要用引號引起來</p>
 <p><code>&quot;c:\program files\python36\python.exe&quot;|&quot;c:\program files\python36\lib\site-packges\wfastcgi.py&quot;</code></p>
-<img data-src="/2019/02/28/python-flask-iis/1565149860744.png" class="">
+<p><img data-src="1565149860744.png" alt=""></p>
 <p>點擊要求限制：不要勾選方框</p>
-<img data-src="/2019/02/28/python-flask-iis/1565150015464.png" class="">
+<p><img data-src="1565150015464.png" alt=""></p>
 <h4 id="主頁-fastcgi-設置"><a class="markdownIt-Anchor" href="#主頁-fastcgi-設置">#</a> 主頁 FastCGI 設置</h4>
 <p><code>PYTHONPATH(項目根路徑，不是 app 路徑)</code></p>
 <p><code>WSGI_HANDLER(flask 啓動程序,例如項目啓動程序是 hello.py, 那麽此處需要填寫 hello.app)</code></p>
-<img data-src="/2019/02/28/python-flask-iis/1565156907201.png" class="">
-<img data-src="/2019/02/28/python-flask-iis/1565156984282.png" class="">
-<img data-src="/2019/02/28/python-flask-iis/1565157431919.png" class="">
-<img data-src="/2019/02/28/python-flask-iis/1565157521446.png" class="">
+<p><img data-src="1565156907201.png" alt=""></p>
+<p><img data-src="1565156984282.png" alt=""></p>
+<p><img data-src="1565157431919.png" alt=""></p>
+<p><img data-src="1565157521446.png" alt=""></p>
 
       <div class="tags">
           <a href="/tags/python/" rel="tag"><i class="ic i-tag"></i> python</a>
@@ -232,7 +232,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item left">
       
 
-  <a href="/2019/02/28/python-generator/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;迷宫饭.jpg" title="Python Yield">
+  <a href="/2019/02/28/python-generator/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;怪医黑杰克.jpg" title="Python Yield">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Python Yield</h3>
@@ -242,10 +242,10 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item right">
       
 
-  <a href="/2019/02/28/python-ftp/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;动物狂想曲-1.jpg" title="FTP and SFTP File Upload and Download">
+  <a href="/2019/02/28/python-class/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;未来的未来.jpg" title="Python Class">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
-  <h3>FTP and SFTP File Upload and Download</h3>
+  <h3>Python Class</h3>
   </a>
 
     </div>
@@ -299,9 +299,8 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 
 <div class="social">
       <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-pen"></i></span>
       <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
-      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
-      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
 </div>
 
 <ul class="menu">
@@ -309,11 +308,6 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     
   <li class="item">
     <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
-  </li>
-
-    
-  <li class="item">
-    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
   </li>
 
         
@@ -337,16 +331,22 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   </li>
 
   </ul>
-    
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-sakura"></i>Anime</a>
+    <ul class="submenu">
+
+        
   <li class="item">
-    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+    <a href="/anime/" rel="section"><i class="ic i-markdown"></i>Quotes</a>
   </li>
 
-    
+        
   <li class="item">
-    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+    <a href="/gallery/" rel="section"><i class="ic i-magic"></i>Gallery</a>
   </li>
 
+  </ul>
 
 </ul>
 
@@ -361,7 +361,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
     <li class="next pjax">
-        <a href="/2019/02/28/python-ftp/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+        <a href="/2019/02/28/python-class/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
     </li>
     <li class="percent"></li>
   </ul>
@@ -399,6 +399,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <script data-config type="text/javascript">
   var LOCAL = {
     path: '2019/02/28/python-flask-iis/',
+    sidebar: true,
     favicon: {
       show: "（●´3｀●）Goooood",
       hide: "(´Д｀)Booooom"
@@ -420,7 +421,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   };
 </script>
 
-<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
 
 <script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
 

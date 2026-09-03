@@ -102,12 +102,12 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="/anime/index/来自风平浪静的明天.jpg"></li>
+          <li class="item" data-background-image="/anime/index/心理测量者.jpg"></li>
+          <li class="item" data-background-image="/anime/index/幽游白书.jpg"></li>
+          <li class="item" data-background-image="/anime/index/灼眼的夏娜.jpg"></li>
           <li class="item" data-background-image="/anime/index/大剑.jpg"></li>
-          <li class="item" data-background-image="/anime/index/赌博默示录.jpg"></li>
-          <li class="item" data-background-image="/anime/index/86不存在的战区-1.jpg"></li>
-          <li class="item" data-background-image="/anime/index/昨日之歌.jpg"></li>
-          <li class="item" data-background-image="/anime/index/剑来.jpg"></li>
+          <li class="item" data-background-image="/anime/index/我的英雄学院.jpg"></li>
+          <li class="item" data-background-image="/anime/index/秒速五厘米-5.jpg"></li>
         </ul>
       </div>
     </header>
@@ -153,9 +153,9 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 
     <h2 id="er-digram"><a class="markdownIt-Anchor" href="#er-digram">#</a> ER Digram</h2>
 <p>MySQL Workbench 可以生成数据表的 Entity RelationShip Digram. Menu Path: Database -&gt; Reverse Engineer -&gt; 选择相关 Database 生成 Model Digram.</p>
-<img data-src="/2020/09/16/mysql-tutorial/er_diagram01.png" class="" title="ER Diagram Path">
+<p><img data-src="er_diagram01.png" alt="ER Diagram Path"></p>
 <p>如下是 sql_store 的 ER Digram.</p>
-<img data-src="/2020/09/16/mysql-tutorial/er_diagram02.png" class="" title="ER Diagram">
+<p><img data-src="er_diagram02.png" alt="ER Diagram"></p>
 <p>notes: Identifying relationships exist when the primary key of the parent entity is included in the primary key of the child entity. On the other hand, a non-identifying relationship exists when the primary key of the parent entity is included in the child entity but not as part of the child entity’s primary key.</p>
 <p>当父实体的主键包含在子实体的主键中时，存在标识关系。另一方面，如果父实体的主键包含在子实体中，但不作为子实体的主键的一部分，则存在非标识关系。</p>
 <h2 id="notes"><a class="markdownIt-Anchor" href="#notes">#</a> Notes</h2>
@@ -201,7 +201,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <h3 id="default"><a class="markdownIt-Anchor" href="#default">#</a> Default</h3>
 <p>default 表示让 mysql 生成这个值，可以用于主键自增栏位和有默认值的栏位</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert into</span> customers</span><br><span class="line"><span class="keyword">values</span> (<span class="keyword">default</span>, <span class="string">&#x27;babb&#x27;</span>, <span class="string">&#x27;chen&#x27;</span>, <span class="keyword">default</span>, <span class="keyword">default</span>, <span class="string">&#x27;18896763538&#x27;</span>, <span class="string">&#x27;henan&#x27;</span>, <span class="string">&#x27;xy&#x27;</span>, <span class="keyword">default</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">update</span> customers</span><br><span class="line">  <span class="keyword">set</span> points <span class="operator">=</span> <span class="keyword">default</span></span><br><span class="line"><span class="keyword">where</span> customer_id <span class="operator">=</span> <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
-<img data-src="/2020/09/16/mysql-tutorial/default.png" class="" title="Default">
+<p><img data-src="default.png" alt="Default"></p>
 <h3 id="insert-multi-rows"><a class="markdownIt-Anchor" href="#insert-multi-rows">#</a> Insert Multi Rows</h3>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert into</span> shippers (name)</span><br><span class="line"><span class="keyword">values</span> (<span class="string">&#x27;Shipper1&#x27;</span>),</span><br><span class="line">       (<span class="string">&#x27;Shipper2&#x27;</span>),</span><br><span class="line">       (<span class="string">&#x27;Shipper3&#x27;</span>);</span><br></pre></td></tr></table></figure>
 <h3 id="insert-multi-tables"><a class="markdownIt-Anchor" href="#insert-multi-tables">#</a> Insert Multi Tables</h3>
@@ -825,7 +825,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">start</span> transaction; <span class="comment">-- 1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">insert into</span> orders(customer_id, order_date, status)</span><br><span class="line"><span class="keyword">values</span> (<span class="number">1</span>, <span class="string">&#x27;2020-01-01&#x27;</span>, <span class="number">1</span>); <span class="comment">-- 2</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">insert into</span> order_items</span><br><span class="line"><span class="keyword">values</span> (last_insert_id(), <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>); <span class="comment">-- 3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">commit</span>;</span><br></pre></td></tr></table></figure>
 <p>模拟执行到 insert into order_items 时断开 server 连接。</p>
 <p>Workbench 菜单 Query -&gt; Excute Current Statement (Ctrl + Enter) 执行 1， 2， 关闭连接，重新连接查询 orders 数据没有被插入。</p>
-<img data-src="/2020/09/16/mysql-tutorial/concurrent.png" class="">
+<p><img data-src="concurrent.png" alt=""></p>
 <h3 id="concurrency-and-locking"><a class="markdownIt-Anchor" href="#concurrency-and-locking">#</a> Concurrency and Locking</h3>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> customers <span class="keyword">where</span> customer_id <span class="operator">=</span> <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
 <table>
@@ -866,8 +866,8 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 </thead>
 <tbody>
 <tr>
-<td><img data-src="mysql-tutorial/concurrency_locking_01.png" alt=""></td>
-<td><img data-src="mysql-tutorial/concurrency_locking_02.png" alt=""></td>
+<td><img data-src="concurrency_locking_01.png" alt=""></td>
+<td><img data-src="concurrency_locking_02.png" alt=""></td>
 </tr>
 </tbody>
 </table>
@@ -903,10 +903,10 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <h3 id="lost-updates"><a class="markdownIt-Anchor" href="#lost-updates">#</a> Lost Updates</h3>
 <p>当两个事务尝试更新相同的数据并且没有上锁时，就会发生这种情况，较晚提交的事务会覆盖较早事务做的更改。</p>
 <p>如下事务 A 和事务 B 对同一数据修改，如果事务 B 更晚提交就会覆盖事务 A 的提交，事务 A 的更新就会丢失。解决方法是使用锁。默认情况下 MySQL 会使用锁定机制。防止两个事务同时更新同样的数据。它们会一个一个按照顺序执行，这样连个更新都能完成。</p>
-<img data-src="/2020/09/16/mysql-tutorial/loast_updates01.png" class="">
+<p><img data-src="loast_updates01.png" alt=""></p>
 <h3 id="dirty-reads"><a class="markdownIt-Anchor" href="#dirty-reads">#</a> Dirty Reads</h3>
 <p>脏读就是一个事务读取了尚未被提交的数据。事务 B 读取了事务 A 尚未提交的数据，并基于数据做了决策（每点积分给予 1% 折扣），但是之后事务 A 又进行了回滚，实际客人没有 20 积分，事务 B 却给了 20 % 折扣。解决此问题需要为事务建立隔离级别 READ COMMITTED，这样事务就只能读取已经提交的数据。</p>
-<img data-src="/2020/09/16/mysql-tutorial/dirty_reads_00.png" class="">
+<p><img data-src="dirty_reads_00.png" alt=""></p>
 <table>
 <thead>
 <tr>
@@ -916,8 +916,8 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 </thead>
 <tbody>
 <tr>
-<td><img data-src="mysql-tutorial/dirty_reads_01.png" alt=""></td>
-<td><img data-src="mysql-tutorial/dirty_reads_02.png" alt=""></td>
+<td><img data-src="dirty_reads_01.png" alt=""></td>
+<td><img data-src="dirty_reads_02.png" alt=""></td>
 </tr>
 </tbody>
 </table>
@@ -931,14 +931,14 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 </thead>
 <tbody>
 <tr>
-<td><img data-src="mysql-tutorial/read_commited_01.png" alt=""></td>
-<td><img data-src="mysql-tutorial/read_commited_02.png" alt=""></td>
+<td><img data-src="read_commited_01.png" alt=""></td>
+<td><img data-src="read_commited_02.png" alt=""></td>
 </tr>
 </tbody>
 </table>
 <h3 id="non-repeating-reads"><a class="markdownIt-Anchor" href="#non-repeating-reads">#</a> Non-repeating Reads</h3>
 <p>不可重复读就是在事务过程中读取了某个数据两次，得到了不同结果。解决此问题需要为事务建立隔离级别 REPEATABLE READ, 将它与其他事务隔离，确保数据更改对事务不可见，读取的数据是可重复和一致的，即使其它事务更改了数据，我们会看到首次读取就创建的快照。</p>
-<img data-src="/2020/09/16/mysql-tutorial/non_repeating_reads_01.png" class="">
+<p><img data-src="non_repeating_reads_01.png" alt=""></p>
 <table>
 <thead>
 <tr>
@@ -948,8 +948,8 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 </thead>
 <tbody>
 <tr>
-<td><img data-src="mysql-tutorial/non_repeating_reads_02.png" alt=""></td>
-<td><img data-src="mysql-tutorial/non_repeating_reads_03.png" alt=""></td>
+<td><img data-src="non_repeating_reads_02.png" alt=""></td>
+<td><img data-src="non_repeating_reads_03.png" alt=""></td>
 </tr>
 </tbody>
 </table>
@@ -963,14 +963,14 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 </thead>
 <tbody>
 <tr>
-<td><img data-src="mysql-tutorial/repeatable_read_01.png" alt=""></td>
-<td><img data-src="mysql-tutorial/repeatable_read_02.png" alt=""></td>
+<td><img data-src="repeatable_read_01.png" alt=""></td>
+<td><img data-src="repeatable_read_02.png" alt=""></td>
 </tr>
 </tbody>
 </table>
 <h3 id="phantom-reads"><a class="markdownIt-Anchor" href="#phantom-reads">#</a> Phantom Reads</h3>
 <p>幻读是指在事务执行查询之后进行了添加，更新或删除，实际读取的是添加，更新或删除之前的数据，事务执行完成之后仍然有符合条件的数据，这种突然出现的数据就像幽灵 👻 一样。解决此问题需要为事务建立隔离级别 SERIALIZABLE, 它能保证当有别的事务在更新数据时，我们的事务能够知晓变动，如果有其它事务修改了可能影响查询结果的数据，我们的事务必须等待它们完成。这是事务的最高隔离级别，保证最大的确定性，但是会影响性能。</p>
-<img data-src="/2020/09/16/mysql-tutorial/phantom_reads_01.png" class="">
+<p><img data-src="phantom_reads_01.png" alt=""></p>
 <table>
 <thead>
 <tr>
@@ -980,8 +980,8 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 </thead>
 <tbody>
 <tr>
-<td><img data-src="mysql-tutorial/phantom_reads_02.png" alt=""></td>
-<td><img data-src="mysql-tutorial/phantom_reads_03.png" alt=""></td>
+<td><img data-src="phantom_reads_02.png" alt=""></td>
+<td><img data-src="phantom_reads_03.png" alt=""></td>
 </tr>
 </tbody>
 </table>
@@ -995,22 +995,22 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 </thead>
 <tbody>
 <tr>
-<td><img data-src="mysql-tutorial/serializable_01.png" alt=""></td>
-<td><img data-src="mysql-tutorial/serializable_02.png" alt=""></td>
+<td><img data-src="serializable_01.png" alt=""></td>
+<td><img data-src="serializable_02.png" alt=""></td>
 </tr>
 <tr>
-<td><img data-src="mysql-tutorial/serializable_03.png" alt=""></td>
-<td><img data-src="mysql-tutorial/serializable_04.png" alt=""></td>
+<td><img data-src="serializable_03.png" alt=""></td>
+<td><img data-src="serializable_04.png" alt=""></td>
 </tr>
 </tbody>
 </table>
 <p>更高的隔离级别意味着更低的并发问题，但同时也意味着更多的锁和过呢更低的并发性能。</p>
 <p>MySQL 的默认隔离级别时 REPEATABLE READ</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> variables <span class="keyword">like</span> <span class="string">&#x27;transaction_isolation&#x27;</span>;</span><br><span class="line"></span><br><span class="line">Variable_name            <span class="keyword">Value</span></span><br><span class="line"><span class="comment">--------------           ------------</span></span><br><span class="line">transaction_isolation    REPEATABLE<span class="operator">-</span>READ</span><br><span class="line"></span><br><span class="line"><span class="keyword">set</span> session transaction isolation level serializable;</span><br><span class="line"><span class="keyword">set</span> <span class="keyword">global</span> transaction isolation level serializable;</span><br></pre></td></tr></table></figure>
-<img data-src="/2020/09/16/mysql-tutorial/transaction_summary.png" class="">
+<p><img data-src="transaction_summary.png" alt=""></p>
 <h2 id="datatype"><a class="markdownIt-Anchor" href="#datatype">#</a> Datatype</h2>
 <h3 id="json"><a class="markdownIt-Anchor" href="#json">#</a> json</h3>
-<img data-src="/2020/09/16/mysql-tutorial/json_type.png" class="">
+<p><img data-src="json_type.png" alt=""></p>
 <p>json raw string</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> products <span class="keyword">set</span> properties  <span class="operator">=</span> <span class="string">&#x27;</span></span><br><span class="line"><span class="string">&#123;</span></span><br><span class="line"><span class="string">    &quot;dimensions&quot;: [1, 2, 3],</span></span><br><span class="line"><span class="string">    &quot;weight&quot;: 10,</span></span><br><span class="line"><span class="string">    &quot;manufactor&quot;: &#123; &quot;name&quot;: &quot;sony&quot; &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">&#x27;</span></span><br><span class="line"><span class="keyword">where</span> product_id <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span></span><br><span class="line">  <span class="keyword">from</span> products</span><br><span class="line"> <span class="keyword">where</span> product_id <span class="operator">=</span> <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
 <table>
@@ -1070,21 +1070,21 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <h2 id="data-modelling"><a class="markdownIt-Anchor" href="#data-modelling">#</a> Data Modelling</h2>
 <h3 id="conceptual-model"><a class="markdownIt-Anchor" href="#conceptual-model">#</a> conceptual model</h3>
 <p>Represents the entities and their relationships. Generally use ER(Entity Relationship) Digram or UML</p>
-<img data-src="/2020/09/16/mysql-tutorial/conceptual_model.png" class="">
+<p><img data-src="conceptual_model.png" alt=""></p>
 <h3 id="logic-model"><a class="markdownIt-Anchor" href="#logic-model">#</a> logic model</h3>
 <p>Logic model is independent of database technologics. It’s just an abstract data model that clearly shows our entities. But there’s something more detailed than the conceptual model.</p>
-<img data-src="/2020/09/16/mysql-tutorial/logic_model.png" class="">
+<p><img data-src="logic_model.png" alt=""></p>
 <h3 id="physic-model"><a class="markdownIt-Anchor" href="#physic-model">#</a> physic model</h3>
 <p>File -&gt; New Model</p>
-<img data-src="/2020/09/16/mysql-tutorial/physic_model_01.png" class="">
+<p><img data-src="physic_model_01.png" alt=""></p>
 <p>Add Diagram</p>
-<img data-src="/2020/09/16/mysql-tutorial/physic_model_02.png" class="">
+<p><img data-src="physic_model_02.png" alt=""></p>
 <p>Add Tables and Columns</p>
-<img data-src="/2020/09/16/mysql-tutorial/physic_model_03.png" class="">
+<p><img data-src="physic_model_03.png" alt=""></p>
 <p>Add Primary Key, Foreign Key and Relationship</p>
-<img data-src="/2020/09/16/mysql-tutorial/physic_model_04.png" class="">
+<p><img data-src="physic_model_04.png" alt=""></p>
 <p>Setting Foreign Key，CASCADE on update, NO ACTION(RESTRICT) on delete (reject delete)</p>
-<img data-src="/2020/09/16/mysql-tutorial/physic_model_05.png" class="">
+<p><img data-src="physic_model_05.png" alt=""></p>
 
       <div class="tags">
           <a href="/tags/db/" rel="tag"><i class="ic i-tag"></i> db</a>
@@ -1116,7 +1116,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item left">
       
 
-  <a href="/2020/09/10/rust/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;温泉屋小女将.jpg" title="Rust Question">
+  <a href="/2020/09/10/rust/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;翼年代记.jpg" title="Rust Question">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Rust Question</h3>
@@ -1126,7 +1126,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item right">
       
 
-  <a href="/2020/09/30/python-java-cmd/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;三月的狮子-2.jpg" title="Python And Java Calculate Memory">
+  <a href="/2020/09/30/python-java-cmd/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;文学少女.jpg" title="Python And Java Calculate Memory">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Python And Java Calculate Memory</h3>
@@ -1183,9 +1183,8 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 
 <div class="social">
       <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-pen"></i></span>
       <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
-      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
-      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
 </div>
 
 <ul class="menu">
@@ -1193,11 +1192,6 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     
   <li class="item">
     <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
-  </li>
-
-    
-  <li class="item">
-    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
   </li>
 
         
@@ -1221,16 +1215,22 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   </li>
 
   </ul>
-    
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-sakura"></i>Anime</a>
+    <ul class="submenu">
+
+        
   <li class="item">
-    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+    <a href="/anime/" rel="section"><i class="ic i-markdown"></i>Quotes</a>
   </li>
 
-    
+        
   <li class="item">
-    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+    <a href="/gallery/" rel="section"><i class="ic i-magic"></i>Gallery</a>
   </li>
 
+  </ul>
 
 </ul>
 
@@ -1283,6 +1283,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <script data-config type="text/javascript">
   var LOCAL = {
     path: '2020/09/16/mysql-tutorial/',
+    sidebar: true,
     favicon: {
       show: "（●´3｀●）Goooood",
       hide: "(´Д｀)Booooom"
@@ -1304,7 +1305,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   };
 </script>
 
-<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
 
 <script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
 

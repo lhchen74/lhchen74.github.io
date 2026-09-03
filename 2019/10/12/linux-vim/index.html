@@ -102,12 +102,12 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="/anime/index/无头骑士异闻录.jpg"></li>
-          <li class="item" data-background-image="/anime/index/异国日记-2.jpg"></li>
-          <li class="item" data-background-image="/anime/index/火影忍者.jpg"></li>
-          <li class="item" data-background-image="/anime/index/朝花夕誓.jpg"></li>
-          <li class="item" data-background-image="/anime/index/文学少女-2.jpg"></li>
-          <li class="item" data-background-image="/anime/index/捉妖小红娘-1.jpg"></li>
+          <li class="item" data-background-image="/anime/index/国王排名.jpg"></li>
+          <li class="item" data-background-image="/anime/index/一周的朋友.jpg"></li>
+          <li class="item" data-background-image="/anime/index/樱花庄的宠物女孩.jpg"></li>
+          <li class="item" data-background-image="/anime/index/穿越时空的少女-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/侧耳倾听-1.jpg"></li>
+          <li class="item" data-background-image="/anime/index/Monsters-University.jpg"></li>
         </ul>
       </div>
     </header>
@@ -162,7 +162,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <li>k 向上移动光标。</li>
 <li>l 向右移动光标。</li>
 </ul>
-<img data-src="/2019/10/12/linux-vim/1659491541281.png" class="">
+<p><img data-src="1659491541281.png" alt=""></p>
 <h3 id="单词移动"><a class="markdownIt-Anchor" href="#单词移动">#</a> 单词移动</h3>
 <ul>
 <li><code>w/W</code>  移动到下一个 word/WORD 开头， <code>e/E</code>  移动到下一个 word/WORD 结尾。</li>
@@ -172,7 +172,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <h3 id="行间搜索移动"><a class="markdownIt-Anchor" href="#行间搜索移动">#</a> 行间搜索移动</h3>
 <p>同一行快速移动的方式是搜索一个字符并且移动到该字符。</p>
 <ul>
-<li>使用  <code>f&#123;char&#125;</code>  可以移动到 char 字符上， <code>t</code>  移动到 char 的前一个字符。</li>
+<li>使用  <code>f{char}</code>  可以移动到 char 字符上， <code>t</code>  移动到 char 的前一个字符。</li>
 <li>使用  <code>;</code>  或  <code>,</code>  继续搜索该行下一个或上一个。</li>
 <li>大写的  <code>F</code>  表示反过来搜索前面的字符。</li>
 </ul>
@@ -313,7 +313,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 </table>
 <h3 id="替换命令"><a class="markdownIt-Anchor" href="#替换命令">#</a> 替换命令</h3>
 <p><code>substitute</code>  命令可以用来查找并且替换文本，并且支持正则表达式。</p>
-<p><code>:[range]s[ubstitute]/&#123;pattern&#125;/&#123;string&#125;/[flags]</code></p>
+<p><code>:[range]s[ubstitute]/{pattern}/{string}/[flags]</code></p>
 <ul>
 <li><code>range</code>  表示范围，例如: 10,20 表示 10-20 行，% 表示全部。</li>
 <li><code>pattern</code>  要替换的模式。</li>
@@ -428,11 +428,11 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 </thead>
 <tbody>
 <tr filename="">
-<td><code>:tabn[ew] &#123;filename&#125;</code></td>
+<td><code>:tabn[ew] {filename}</code></td>
 <td>在新标签页打开</td>
 </tr>
 <tr filename="">
-<td><code>:tabe[dit] &#123;filename&#125;</code></td>
+<td><code>:tabe[dit] {filename}</code></td>
 <td>在新标签页打开</td>
 </tr>
 <tr>
@@ -460,9 +460,9 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <td>---------------------------</td>
 </tr>
 <tr>
-<td><code>:tabn[ext] &#123;N&#125;</code></td>
-<td><code>&#123;N&#125;gt</code></td>
-<td>切换到编号为  <code>&#123;N&#125;</code>  的标签页</td>
+<td><code>:tabn[ext] {N}</code></td>
+<td><code>{N}gt</code></td>
+<td>切换到编号为  <code>{N}</code>  的标签页</td>
 </tr>
 <tr>
 <td><code>:tabn[ext]</code></td>
@@ -517,7 +517,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <h3 id="深入寄存器register"><a class="markdownIt-Anchor" href="#深入寄存器register">#</a> 深入寄存器 (register)</h3>
 <p>Vim 不使用单一剪贴板进行剪贴，复制与粘贴，而是多组寄存器。</p>
 <ul>
-<li>通过  <code>&quot;&#123;register&#125;</code>  前缀可以指定寄存器，不使用默认的无名寄存器。</li>
+<li>通过  <code>&quot;{register}</code>  前缀可以指定寄存器，不使用默认的无名寄存器。</li>
 <li>比如  <code>&quot;ayiw</code>  复制一个单词到寄存器  <code>a</code>  中， <code>&quot;bdd</code>  删除当前行到寄存器  <code>b</code>  中。
 <ul>
 <li><code>:reg a</code>  查看  <code>a</code>  寄存器。</li>
@@ -542,8 +542,8 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <p>宏可以看成一系列命令的集合。我们可以使用宏<em>录制</em>一系列操作，然后用于<em>回放</em>。宏可以非常方便把一系列命令用在多行文本上。</p>
 <ul>
 <li>Vim 使用  <code>q</code>  来录制宏，同时也是使用  <code>q</code>  结束录制。</li>
-<li>使用  <code>q&#123;register&#125;</code>  选择要保存的寄存器，把录制的命令保存其中。</li>
-<li>使用  <code>@&#123;register&#125;</code>  回访寄存器中保存的一系列命令。</li>
+<li>使用  <code>q{register}</code>  选择要保存的寄存器，把录制的命令保存其中。</li>
+<li>使用  <code>@{register}</code>  回访寄存器中保存的一系列命令。</li>
 </ul>
 <p>使用宏给如下文本每行前后添加上双引号。</p>
 <ol>
@@ -577,7 +577,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <ul>
 <li>使用  <code>:colorscheme</code>  显示当前的主题色，默认是  <code>default</code> .</li>
 <li>使用  <code>:colorscheme &lt;Ctrl + d&gt;</code>  可以显示所有的配色。</li>
-<li>使用  <code>:colorscheme &#123;schemename&#125;</code>  可以修改配色。</li>
+<li>使用  <code>:colorscheme {schemename}</code>  可以修改配色。</li>
 </ul>
 <p>使用网上下载的配色，以 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3cwbmcvdmltLWh5YnJpZA==">GitHub - w0ng/vim-hybrid: A dark color scheme for Vim</span> 为例。复制  <code>colors/hybrid.vim</code>  到  <code>~/.vim/colors/hybrid.vim</code> , 没有  <code>~/.vim/colors</code>  目录需要先手动建立，之后可以使用插件管理器管理，然后在使用  <code>:colorscheme hybrid</code>  选择配色。如果要持久化配色方案需要在  <code>~/.vim/vimrc</code>  中添加相应配置。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set background=dark</span><br><span class="line">colorscheme hybrid</span><br></pre></td></tr></table></figure>
@@ -675,7 +675,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 </li>
 <li>
 <p>选择 Tagget key, 例如这里选择  <code>s</code>  会定位到第  <code>63</code>  行的 opt 前面。</p>
-<img data-src="/2019/10/12/linux-vim/1659441184098.png" class="">
+<p><img data-src="1659441184098.png" alt=""></p>
 </li>
 </ol>
 <h4 id="vim-surround"><a class="markdownIt-Anchor" href="#vim-surround">#</a> vim-surround</h4>
@@ -827,7 +827,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item left">
       
 
-  <a href="/2019/10/11/db-dialect/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;荒川爆笑团.jpg" title="DB Dialect">
+  <a href="/2019/10/11/db-dialect/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;秦时明月-2.jpg" title="DB Dialect">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>DB Dialect</h3>
@@ -837,7 +837,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item right">
       
 
-  <a href="/2019/10/16/python-gooey/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;JOJO的奇幻冒险.jpg" title="Gooey Turn CLI into GUI">
+  <a href="/2019/10/16/python-gooey/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;奇诺之旅.jpg" title="Gooey Turn CLI into GUI">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Gooey Turn CLI into GUI</h3>
@@ -897,9 +897,8 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 
 <div class="social">
       <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-pen"></i></span>
       <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
-      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
-      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
 </div>
 
 <ul class="menu">
@@ -907,11 +906,6 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     
   <li class="item">
     <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
-  </li>
-
-    
-  <li class="item">
-    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
   </li>
 
         
@@ -935,16 +929,22 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   </li>
 
   </ul>
-    
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-sakura"></i>Anime</a>
+    <ul class="submenu">
+
+        
   <li class="item">
-    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+    <a href="/anime/" rel="section"><i class="ic i-markdown"></i>Quotes</a>
   </li>
 
-    
+        
   <li class="item">
-    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+    <a href="/gallery/" rel="section"><i class="ic i-magic"></i>Gallery</a>
   </li>
 
+  </ul>
 
 </ul>
 
@@ -997,6 +997,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <script data-config type="text/javascript">
   var LOCAL = {
     path: '2019/10/12/linux-vim/',
+    sidebar: true,
     favicon: {
       show: "（●´3｀●）Goooood",
       hide: "(´Д｀)Booooom"
@@ -1018,7 +1019,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   };
 </script>
 
-<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
 
 <script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
 

@@ -102,12 +102,12 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="/anime/index/玻璃假面.jpg"></li>
-          <li class="item" data-background-image="/anime/index/魔法少女小圆-1.jpg"></li>
-          <li class="item" data-background-image="/anime/index/十二国记.jpg"></li>
-          <li class="item" data-background-image="/anime/index/月色真美.jpg"></li>
-          <li class="item" data-background-image="/anime/index/明日酱的水手服-3.jpg"></li>
-          <li class="item" data-background-image="/anime/index/星合之空.jpg"></li>
+          <li class="item" data-background-image="/anime/index/another.jpg"></li>
+          <li class="item" data-background-image="/anime/index/我们大家的河合庄-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/幽灵公主-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/悬崖上的金鱼姬-1.jpg"></li>
+          <li class="item" data-background-image="/anime/index/薄樱鬼.jpg"></li>
+          <li class="item" data-background-image="/anime/index/高分少女.jpg"></li>
         </ul>
       </div>
     </header>
@@ -152,23 +152,23 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     
 
     <h2 id="基本流程"><a class="markdownIt-Anchor" href="#基本流程">#</a> 基本流程</h2>
-<img data-src="/2018/10/18/oracle-om/1362105573_3288.jpg" class="">
+<p><img data-src="1362105573_3288.jpg" alt=""></p>
 <h2 id="创建订单"><a class="markdownIt-Anchor" href="#创建订单">#</a> 创建订单</h2>
 <p>路径：Order Management &gt; Orders, Returns &gt; Sales Orders</p>
 <p>填写订单头信息，客户，订单类型，销售人员</p>
-<img data-src="/2018/10/18/oracle-om/1340699459_4815.jpg" class="">
+<p><img data-src="1340699459_4815.jpg" alt=""></p>
 <p>填写订单体信息，输入物料，数量…</p>
-<img data-src="/2018/10/18/oracle-om/1340699486_2792.jpg" class="">
+<p><img data-src="1340699486_2792.jpg" alt=""></p>
 <p>然后 Book Order，订单 Book 之后，你会发现订单头的 Status 的状态变成了 <code>&quot;Booked&quot;</code> ，订单行的状态为  <code>&quot;Awaiting Shipping&quot;</code> ，记录下来你的订单号，后边的每一步都需要这个订单号。</p>
 <p>状态：订单 Book 之后，这个时候发运单也就产生了，如果你去 Shipping Transactions Form, 查找订单，你就会发现发运单的  <code>Line Status 为 Ready to Release，Next Step 为 Pick Release</code></p>
 <h2 id="pick-release"><a class="markdownIt-Anchor" href="#pick-release">#</a> Pick Release</h2>
 <p>路径：Order Management &gt; Shipping &gt; Release Sales Orders &gt; Release Sales Orders</p>
 <p>Pick Release 俗称挑库（即从仓库中挑选货物），在 Order Number 中输入待挑库的订单号</p>
-<img data-src="/2018/10/18/oracle-om/1340700540_3071.jpg" class="">
+<p><img data-src="1340700540_3071.jpg" alt=""></p>
 <p>Auto Pick Confirm 设置为 No</p>
-<img data-src="/2018/10/18/oracle-om/1340700742_5739.jpg" class="">
+<p><img data-src="1340700742_5739.jpg" alt=""></p>
 <p>Auto Allocate 设置为 N</p>
-<img data-src="/2018/10/18/oracle-om/1340700697_4677.jpg" class="">
+<p><img data-src="1340700697_4677.jpg" alt=""></p>
 <p>Auto Allocate 和 Auto Pick Confirm 都可以设置为 Yes，只不过为了讲的更加详细，这里都设置为 No，设置为 Yes 的话，那么后边的 Allocate 和 Pick Confirm 两步，系统就会自动帮你完成。</p>
 <p>这里有两个按钮来执行 Pick Release，”Concurrent“是把 Pick Release 的任务发给 Concurrent Request 来执行，&quot;Execute Now&quot; 是系统再前段执行 Pick Release，直到执行结束才把控制权返还给 User，这里我们点击 Concurrent 按钮。</p>
 <p>Pick Release 后台做了什么事情？Pick Release 会创建一个 Pick Wave 类型 Move Order， <code>这个Move Order就是用来把库存中的货物搬到一个临时发货区(Staging)</code> , 如果打开 INV 日志就能看到系统是调用 INV_MOVE_ORDER_PUB.CREATE_MOVE_ORDER_HEADER 来创建 Move Order 的。(对于 Pick Release 的后台流程可以参见我的总结：<span class="exturl" data-url="aHR0cDovL3ZkaXNrLndlaWJvLmNvbS9zLzdENXJx">Pick Release Process</span>)</p>
@@ -353,7 +353,7 @@ AND order_number = :p_order_number;</p>
     <div class="item left">
       
 
-  <a href="/2018/08/08/oracle-kill-session/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;四月一日灵异事件簿.jpg" title="Oracle Kill Session">
+  <a href="/2018/08/08/oracle-kill-session/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;OVERLOAD.jpg" title="Oracle Kill Session">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Oracle Kill Session</h3>
@@ -363,7 +363,7 @@ AND order_number = :p_order_number;</p>
     <div class="item right">
       
 
-  <a href="/2018/10/25/oracle-mail/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;叛逆的鲁鲁修.jpg" title="Oracle PL&#x2F;SQL Mail">
+  <a href="/2018/10/25/oracle-mail/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;散华礼弥.jpg" title="Oracle PL&#x2F;SQL Mail">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Oracle PL/SQL Mail</h3>
@@ -420,9 +420,8 @@ AND order_number = :p_order_number;</p>
 
 <div class="social">
       <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-pen"></i></span>
       <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
-      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
-      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
 </div>
 
 <ul class="menu">
@@ -430,11 +429,6 @@ AND order_number = :p_order_number;</p>
     
   <li class="item">
     <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
-  </li>
-
-    
-  <li class="item">
-    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
   </li>
 
         
@@ -458,16 +452,22 @@ AND order_number = :p_order_number;</p>
   </li>
 
   </ul>
-    
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-sakura"></i>Anime</a>
+    <ul class="submenu">
+
+        
   <li class="item">
-    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+    <a href="/anime/" rel="section"><i class="ic i-markdown"></i>Quotes</a>
   </li>
 
-    
+        
   <li class="item">
-    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+    <a href="/gallery/" rel="section"><i class="ic i-magic"></i>Gallery</a>
   </li>
 
+  </ul>
 
 </ul>
 
@@ -520,6 +520,7 @@ AND order_number = :p_order_number;</p>
 <script data-config type="text/javascript">
   var LOCAL = {
     path: '2018/10/18/oracle-om/',
+    sidebar: true,
     favicon: {
       show: "（●´3｀●）Goooood",
       hide: "(´Д｀)Booooom"
@@ -541,7 +542,7 @@ AND order_number = :p_order_number;</p>
   };
 </script>
 
-<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
 
 <script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
 

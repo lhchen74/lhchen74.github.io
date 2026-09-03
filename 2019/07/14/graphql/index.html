@@ -102,12 +102,12 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="/anime/index/借东西的小人阿莉埃蒂-2.jpg"></li>
-          <li class="item" data-background-image="/anime/index/终结的炽天使.jpg"></li>
-          <li class="item" data-background-image="/anime/index/幻灵镇魂曲.jpg"></li>
-          <li class="item" data-background-image="/anime/index/更衣人偶坠入爱河-3.jpg"></li>
-          <li class="item" data-background-image="/anime/index/平家物语-2.jpg"></li>
-          <li class="item" data-background-image="/anime/index/星际牛仔.jpg"></li>
+          <li class="item" data-background-image="/anime/index/东方project-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/滑头鬼之孙.jpg"></li>
+          <li class="item" data-background-image="/anime/index/动物新世代.jpg"></li>
+          <li class="item" data-background-image="/anime/index/风之谷-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/龙猫-4.jpg"></li>
+          <li class="item" data-background-image="/anime/index/Air.jpg"></li>
         </ul>
       </div>
     </header>
@@ -168,7 +168,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// hello.js</span></span><br><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&quot;express&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> graphqlHTTP = <span class="built_in">require</span>(<span class="string">&quot;express-graphql&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> &#123; buildSchema &#125; = <span class="built_in">require</span>(<span class="string">&quot;graphql&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 构建 schema, 定义查询语句和类型</span></span><br><span class="line"><span class="keyword">const</span> schema = <span class="title function_">buildSchema</span>(<span class="string">`</span></span><br><span class="line"><span class="string">    type Account &#123;</span></span><br><span class="line"><span class="string">        name: String</span></span><br><span class="line"><span class="string">        age: Int</span></span><br><span class="line"><span class="string">        sex: String</span></span><br><span class="line"><span class="string">        department: String</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">    type Query &#123;</span></span><br><span class="line"><span class="string">        hello: String</span></span><br><span class="line"><span class="string">        age: Int</span></span><br><span class="line"><span class="string">        account: Account</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">`</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义查询对应的 resolver, 也就是查询对应的处理器</span></span><br><span class="line"><span class="keyword">const</span> root = &#123;</span><br><span class="line">    <span class="attr">hello</span>: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Hello, World!&quot;</span>;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">age</span>: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">18</span>;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">account</span>: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            <span class="attr">name</span>: <span class="string">&quot;桔梗&quot;</span>,</span><br><span class="line">            <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">            <span class="attr">sex</span>: <span class="string">&quot;女&quot;</span>,</span><br><span class="line">            <span class="attr">department</span>: <span class="string">&quot;技术部&quot;</span>,</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = <span class="title function_">express</span>();</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">use</span>(</span><br><span class="line">    <span class="string">&quot;/graphql&quot;</span>,</span><br><span class="line">    <span class="title function_">graphqlHTTP</span>(&#123;</span><br><span class="line">        <span class="attr">schema</span>: schema,</span><br><span class="line">        <span class="attr">rootValue</span>: root,</span><br><span class="line">        <span class="attr">graphiql</span>: <span class="literal">true</span>, <span class="comment">// debug</span></span><br><span class="line">    &#125;)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">listen</span>(<span class="number">3000</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;listening on 3000...&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p>启动 hello.js  <code>node hello.js</code> , 在浏览器输入 <span class="exturl" data-url="aHR0cDovL2xvY2FsaG9zdDozMDAwL2dyYXBocWwlRUYlQkMlOEM=">http://localhost:3000/graphql，</span> 在 GraphiQL 调试面板输入 query 语句， 中间面板会返回查询语句</p>
 <figure class="highlight graphql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">query</span> <span class="punctuation">&#123;</span></span><br><span class="line">    hello</span><br><span class="line">    age</span><br><span class="line">    account <span class="punctuation">&#123;</span></span><br><span class="line">        name</span><br><span class="line">        age</span><br><span class="line">        sex</span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-<img data-src="/2019/07/14/graphql/graphql01.jpg" class="" title="GraphQL query">
+<p><img data-src="graphql01.jpg" alt="GraphQL query"></p>
 <h3 id="graphql-参数和返回值"><a class="markdownIt-Anchor" href="#graphql-参数和返回值">#</a> GraphQL 参数和返回值</h3>
 <ol>
 <li>和 js 一样，小括号内定义形参，参数需要定义类型。</li>
@@ -182,7 +182,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <p>public/index.html</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;ie=edge&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>client<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">&quot;getData()&quot;</span>&gt;</span>获取数据<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">function</span> <span class="title function_">getData</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">                <span class="keyword">const</span> query = <span class="string">`</span></span></span><br><span class="line"><span class="string"><span class="language-javascript">                query Account($username: String, $city: String)&#123;</span></span></span><br><span class="line"><span class="string"><span class="language-javascript">                    account(username: $username) &#123;</span></span></span><br><span class="line"><span class="string"><span class="language-javascript">                        name</span></span></span><br><span class="line"><span class="string"><span class="language-javascript">                        age</span></span></span><br><span class="line"><span class="string"><span class="language-javascript">                        sex</span></span></span><br><span class="line"><span class="string"><span class="language-javascript">                        department</span></span></span><br><span class="line"><span class="string"><span class="language-javascript">                        salary(city: $city)</span></span></span><br><span class="line"><span class="string"><span class="language-javascript">                    &#125;</span></span></span><br><span class="line"><span class="string"><span class="language-javascript">                &#125;</span></span></span><br><span class="line"><span class="string"><span class="language-javascript">            `</span>;</span></span><br><span class="line"><span class="language-javascript">                <span class="keyword">const</span> variables = &#123;</span></span><br><span class="line"><span class="language-javascript">                    <span class="attr">username</span>: <span class="string">&quot;犬夜叉&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                    <span class="attr">city</span>: <span class="string">&quot;北京&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                &#125;;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">                <span class="title function_">fetch</span>(<span class="string">&quot;/graphql&quot;</span>, &#123;</span></span><br><span class="line"><span class="language-javascript">                    <span class="attr">method</span>: <span class="string">&quot;POST&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                    <span class="attr">headers</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">                        <span class="string">&quot;Content-Type&quot;</span>: <span class="string">&quot;application/json&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                        <span class="title class_">Accept</span>: <span class="string">&quot;application/json&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                    &#125;,</span></span><br><span class="line"><span class="language-javascript">                    <span class="attr">body</span>: <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(&#123;</span></span><br><span class="line"><span class="language-javascript">                        <span class="attr">query</span>: query,</span></span><br><span class="line"><span class="language-javascript">                        <span class="attr">variables</span>: variables,</span></span><br><span class="line"><span class="language-javascript">                    &#125;),</span></span><br><span class="line"><span class="language-javascript">                &#125;)</span></span><br><span class="line"><span class="language-javascript">                    .<span class="title function_">then</span>(<span class="function">(<span class="params">res</span>) =&gt;</span> res.<span class="title function_">json</span>())</span></span><br><span class="line"><span class="language-javascript">                    .<span class="title function_">then</span>(<span class="function">(<span class="params">json</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">                        <span class="variable language_">console</span>.<span class="title function_">log</span>(json);</span></span><br><span class="line"><span class="language-javascript">                    &#125;);</span></span><br><span class="line"><span class="language-javascript">            &#125;</span></span><br><span class="line"><span class="language-javascript">        </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>启动 base.js,  <code>node base.js</code></p>
-<img data-src="/2019/07/14/graphql/graphql02.jpg" class="" title="Client Fetch">
+<p><img data-src="graphql02.jpg" alt="Client Fetch"></p>
 <h3 id="graphql-mysql"><a class="markdownIt-Anchor" href="#graphql-mysql">#</a> GraphQL + MySql</h3>
 <p><code>query</code>  查询数据，  <code>Mutations</code>  修改数据</p>
 <p>accouont 表结构如下:</p>
@@ -222,7 +222,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item left">
       
 
-  <a href="/2019/07/14/node-koa/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;中二病也要谈恋爱.jpg" title="Node Koa">
+  <a href="/2019/07/14/node-koa/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;温泉屋小女将.jpg" title="Node Koa">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Node Koa</h3>
@@ -232,10 +232,10 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item right">
       
 
-  <a href="/2019/07/15/python-wsgi/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;甲铁城的卡巴内瑞-2.jpg" title="Python Wsgi">
+  <a href="/2019/07/15/python-xml/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;白兔糖.jpg" title="Python XML Parsing">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
-  <h3>Python Wsgi</h3>
+  <h3>Python XML Parsing</h3>
   </a>
 
     </div>
@@ -289,9 +289,8 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 
 <div class="social">
       <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-pen"></i></span>
       <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
-      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
-      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
 </div>
 
 <ul class="menu">
@@ -299,11 +298,6 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     
   <li class="item">
     <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
-  </li>
-
-    
-  <li class="item">
-    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
   </li>
 
         
@@ -327,16 +321,22 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   </li>
 
   </ul>
-    
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-sakura"></i>Anime</a>
+    <ul class="submenu">
+
+        
   <li class="item">
-    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+    <a href="/anime/" rel="section"><i class="ic i-markdown"></i>Quotes</a>
   </li>
 
-    
+        
   <li class="item">
-    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+    <a href="/gallery/" rel="section"><i class="ic i-magic"></i>Gallery</a>
   </li>
 
+  </ul>
 
 </ul>
 
@@ -351,7 +351,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
     <li class="next pjax">
-        <a href="/2019/07/15/python-wsgi/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+        <a href="/2019/07/15/python-xml/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
     </li>
     <li class="percent"></li>
   </ul>
@@ -389,6 +389,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <script data-config type="text/javascript">
   var LOCAL = {
     path: '2019/07/14/graphql/',
+    sidebar: true,
     favicon: {
       show: "（●´3｀●）Goooood",
       hide: "(´Д｀)Booooom"
@@ -410,7 +411,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   };
 </script>
 
-<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
 
 <script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
 

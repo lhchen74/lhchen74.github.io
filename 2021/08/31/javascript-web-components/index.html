@@ -102,12 +102,12 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="/anime/index/咒术回战.jpg"></li>
-          <li class="item" data-background-image="/anime/index/恋如雨止.jpg"></li>
-          <li class="item" data-background-image="/anime/index/异国日记-1.jpg"></li>
-          <li class="item" data-background-image="/anime/index/ReLIFE.jpg"></li>
-          <li class="item" data-background-image="/anime/index/十二大战.jpg"></li>
-          <li class="item" data-background-image="/anime/index/凉宫春日.jpg"></li>
+          <li class="item" data-background-image="/anime/index/彻夜之歌-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/钢之炼金术师-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/红猪-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/侧耳倾听-4.jpg"></li>
+          <li class="item" data-background-image="/anime/index/秦时明月-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/罗小黑战记.jpg"></li>
         </ul>
       </div>
     </header>
@@ -157,10 +157,10 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <p>组件是前端的发展方向，现在流行的 React 和 Vue 都是组件框架。</p>
 <p>谷歌公司由于掌握了 Chrome 浏览器，一直在推动浏览器的原生组件，即 <span class="exturl" data-url="aHR0cHM6Ly93d3cud2ViY29tcG9uZW50cy5vcmcvaW50cm9kdWN0aW9u">Web Components API</span>。相比第三方框架，原生组件简单直接，符合直觉，不用加载任何外部模块，代码量小。目前，它还在不断发展，但已经可用于生产环境。</p>
 <p>Web Components API 内容很多，本文不是全面的教程，只是一个简单演示，让大家看一下怎么用它开发组件。</p>
-<img data-src="/2021/08/31/javascript-web-components/bg2019080604.jpg" class="" title="img">
+<p><img data-src="bg2019080604.jpg" alt="img"></p>
 <h2 id="自定义元素"><a class="markdownIt-Anchor" href="#自定义元素">#</a> 自定义元素</h2>
 <p>下图是一个用户卡片。</p>
-<img data-src="/2021/08/31/javascript-web-components/bg2019080405.jpg" class="" title="img">
+<p><img data-src="bg2019080405.jpg" alt="img"></p>
 <p>本文演示如何把这个卡片，写成 Web Components 组件，这里是最后的<span class="exturl" data-url="aHR0cHM6Ly9qc2Jpbi5jb20veW9ib3Bvci8xL2VkaXQ/aHRtbCxqcyxvdXRwdXQ=">完整代码</span>。</p>
 <p>网页只要插入下面的代码，就会显示用户卡片。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">user-card</span>&gt;</span><span class="tag">&lt;/<span class="name">user-card</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -201,7 +201,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <p>我们不希望用户能够看到 <code>&lt;user-card&gt;</code>  的内部代码，Web Component 允许内部代码隐藏起来，这叫做 Shadow DOM，即这部分 DOM 默认与外部 DOM 隔离，内部任何代码都无法影响外部。</p>
 <p>自定义元素的 <code>this.attachShadow()</code>  方法开启 Shadow DOM，详见下面的代码。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">UserCard</span> <span class="keyword">extends</span> <span class="title class_ inherited__">HTMLElement</span> &#123;</span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">super</span>();</span><br><span class="line">        <span class="keyword">var</span> shadow = <span class="variable language_">this</span>.<span class="title function_">attachShadow</span>(&#123; <span class="attr">mode</span>: <span class="string">&quot;closed&quot;</span> &#125;);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> templateElem = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;userCardTemplate&quot;</span>);</span><br><span class="line">        <span class="keyword">var</span> content = templateElem.<span class="property">content</span>.<span class="title function_">cloneNode</span>(<span class="literal">true</span>);</span><br><span class="line">        content</span><br><span class="line">            .<span class="title function_">querySelector</span>(<span class="string">&quot;img&quot;</span>)</span><br><span class="line">            .<span class="title function_">setAttribute</span>(<span class="string">&quot;src&quot;</span>, <span class="variable language_">this</span>.<span class="title function_">getAttribute</span>(<span class="string">&quot;image&quot;</span>));</span><br><span class="line">        content.<span class="title function_">querySelector</span>(<span class="string">&quot;.container&gt;.name&quot;</span>).<span class="property">innerText</span> =</span><br><span class="line">            <span class="variable language_">this</span>.<span class="title function_">getAttribute</span>(<span class="string">&quot;name&quot;</span>);</span><br><span class="line">        content.<span class="title function_">querySelector</span>(<span class="string">&quot;.container&gt;.email&quot;</span>).<span class="property">innerText</span> =</span><br><span class="line">            <span class="variable language_">this</span>.<span class="title function_">getAttribute</span>(<span class="string">&quot;email&quot;</span>);</span><br><span class="line"></span><br><span class="line">        shadow.<span class="title function_">appendChild</span>(content);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">window</span>.<span class="property">customElements</span>.<span class="title function_">define</span>(<span class="string">&quot;user-card&quot;</span>, <span class="title class_">UserCard</span>);</span><br></pre></td></tr></table></figure>
-<p>上面代码中， <code>this.attachShadow()</code>  方法的参数 <code>&#123; mode: 'closed' &#125;</code> ，表示 Shadow DOM 是封闭的，不允许外部访问。</p>
+<p>上面代码中， <code>this.attachShadow()</code>  方法的参数 <code>{ mode: 'closed' }</code> ，表示 Shadow DOM 是封闭的，不允许外部访问。</p>
 <p>至此，这个 Web Component 组件就完成了，完整代码可以访问<span class="exturl" data-url="aHR0cHM6Ly9qc2Jpbi5jb20veW9ib3Bvci8xL2VkaXQ/aHRtbCxqcyxvdXRwdXQ=">这里</span>。可以看到，整个过程还是很简单的，不像第三方框架那样有复杂的 API。</p>
 <h2 id="组件的扩展"><a class="markdownIt-Anchor" href="#组件的扩展">#</a> 组件的扩展</h2>
 <p>在前面的基础上，可以对组件进行扩展。</p>
@@ -250,7 +250,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item left">
       
 
-  <a href="/2021/08/25/javascript-async-generator/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;龙王的工作.jpg" title="Async iteration and generators">
+  <a href="/2021/08/25/javascript-async-generator/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;endro!.jpg" title="Async iteration and generators">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Async iteration and generators</h3>
@@ -260,7 +260,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item right">
       
 
-  <a href="/2021/09/15/json-path/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;孤独摇滚-3.jpg" title="JSONPath - XPath for JSON">
+  <a href="/2021/09/15/json-path/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;荒川爆笑团.jpg" title="JSONPath - XPath for JSON">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>JSONPath - XPath for JSON</h3>
@@ -317,9 +317,8 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 
 <div class="social">
       <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-pen"></i></span>
       <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
-      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
-      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
 </div>
 
 <ul class="menu">
@@ -327,11 +326,6 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     
   <li class="item">
     <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
-  </li>
-
-    
-  <li class="item">
-    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
   </li>
 
         
@@ -355,16 +349,22 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   </li>
 
   </ul>
-    
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-sakura"></i>Anime</a>
+    <ul class="submenu">
+
+        
   <li class="item">
-    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+    <a href="/anime/" rel="section"><i class="ic i-markdown"></i>Quotes</a>
   </li>
 
-    
+        
   <li class="item">
-    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+    <a href="/gallery/" rel="section"><i class="ic i-magic"></i>Gallery</a>
   </li>
 
+  </ul>
 
 </ul>
 
@@ -417,6 +417,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <script data-config type="text/javascript">
   var LOCAL = {
     path: '2021/08/31/javascript-web-components/',
+    sidebar: true,
     favicon: {
       show: "（●´3｀●）Goooood",
       hide: "(´Д｀)Booooom"
@@ -438,7 +439,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   };
 </script>
 
-<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
 
 <script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
 

@@ -102,12 +102,12 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="/anime/index/东京喰种.jpg"></li>
-          <li class="item" data-background-image="/anime/index/黑色四叶草.jpg"></li>
-          <li class="item" data-background-image="/anime/index/胆大党.jpg"></li>
-          <li class="item" data-background-image="/anime/index/关于前辈很烦人的事.jpg"></li>
-          <li class="item" data-background-image="/anime/index/十二大战.jpg"></li>
-          <li class="item" data-background-image="/anime/index/日常-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/秒速五厘米-3.jpg"></li>
+          <li class="item" data-background-image="/anime/index/家庭教师.jpg"></li>
+          <li class="item" data-background-image="/anime/index/甲铁城的卡巴内瑞-1.jpg"></li>
+          <li class="item" data-background-image="/anime/index/七大罪.jpg"></li>
+          <li class="item" data-background-image="/anime/index/三月的狮子-3.jpg"></li>
+          <li class="item" data-background-image="/anime/index/我的英雄学院.jpg"></li>
         </ul>
       </div>
     </header>
@@ -166,15 +166,15 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <p>F5 启动调试</p>
 <p>Enviroment 选择 C++ (GDB/LLDB)。</p>
 <p>编译器配置选择 g++。</p>
-<img data-src="/2021/04/01/cpp-vscode/1617853184511.png" class="">
-<img data-src="/2021/04/01/cpp-vscode/1617853260622.png" class="">
+<p><img data-src="1617853184511.png" alt=""></p>
+<p><img data-src="1617853260622.png" alt=""></p>
 <p>修改 launch.json 的 program 指向 g++ compile 生成的 main.exe。</p>
 <p>注释 preLaunchTask（在 lanuch 之前运行 tasks 中定义的任务), 默认生成的 task 只能编译单文件。</p>
 <p>重新按 F5 或者左侧 Debug 按钮启动调试。</p>
-<img data-src="/2021/04/01/cpp-vscode/1617853766643.png" class="">
+<p><img data-src="1617853766643.png" alt=""></p>
 <h3 id="tasksjson-setting-g-compile"><a class="markdownIt-Anchor" href="#tasksjson-setting-g-compile">#</a> tasks.json setting g++ compile</h3>
 <p>配置 launch.json 和 tasks.json , 按 F5 或者左侧 Debug 按钮启动调试。</p>
-<img data-src="/2021/04/01/cpp-vscode/1617858735040.png" class="">
+<p><img data-src="1617858735040.png" alt=""></p>
 <h3 id="cmake-compile"><a class="markdownIt-Anchor" href="#cmake-compile">#</a> CMake compile</h3>
 <p>安装 CMake 工具</p>
 <p>在项目的根目录下创建 CMakeLists.txt</p>
@@ -189,13 +189,13 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <p>安装 VSCode CMake 插件， Ctrl + Shift + P 选择 CMake Configure 配置 MinGW 编译。</p>
 <p>Ctrl + S 保存 CMakeLists.txt 会配置项目生成 build 目录和内容，cd 到 build 目录执行 mingw32-make.exe 。</p>
 <p>之后文件变动点击左侧 Buid 按钮，然后执行 mingw32-make.exe 即可。</p>
-<img data-src="/2021/04/01/cpp-vscode/1617950576516.png" class="">
+<p><img data-src="1617950576516.png" alt=""></p>
 <h3 id="tasksjson-setting-cmake-compile"><a class="markdownIt-Anchor" href="#tasksjson-setting-cmake-compile">#</a> tasks.json setting CMake compile</h3>
-<img data-src="/2021/04/01/cpp-vscode/1618307824234.png" class="">
+<p><img data-src="1618307824234.png" alt=""></p>
 <p>tasks.json</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;version&quot;</span><span class="punctuation">:</span> <span class="string">&quot;2.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;options&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;cwd&quot;</span><span class="punctuation">:</span> <span class="string">&quot;$&#123;workspaceFolder&#125;/build&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;tasks&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;shell&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;label&quot;</span><span class="punctuation">:</span> <span class="string">&quot;cmake&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;command&quot;</span><span class="punctuation">:</span> <span class="string">&quot;cmake&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;args&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                <span class="string">&quot;-G&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">&quot;&#x27;MinGW Makefiles&#x27;&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">&quot;-DCMAKE_BUILD_TYPE=Debug&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">&quot;..&quot;</span></span><br><span class="line">            <span class="punctuation">]</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;label&quot;</span><span class="punctuation">:</span> <span class="string">&quot;make&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;group&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;kind&quot;</span><span class="punctuation">:</span> <span class="string">&quot;build&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;isDefault&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line">            <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;command&quot;</span><span class="punctuation">:</span> <span class="string">&quot;mingw32-make.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;args&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;label&quot;</span><span class="punctuation">:</span> <span class="string">&quot;CMake Build&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;dependsOn&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;cmake&quot;</span><span class="punctuation">,</span> <span class="string">&quot;make&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;dependsOrder&quot;</span><span class="punctuation">:</span> <span class="string">&quot;sequence&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
 <p>按 F5 调试</p>
-<img data-src="/2021/04/01/cpp-vscode/1618307976834.png" class="">
+<p><img data-src="1618307976834.png" alt=""></p>
 
       <div class="tags">
           <a href="/tags/cpp/" rel="tag"><i class="ic i-tag"></i> cpp</a>
@@ -227,7 +227,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item left">
       
 
-  <a href="/2021/03/19/iso8601-date/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;亚人-1.jpg" title="ISO 8601 the better date format">
+  <a href="/2021/03/19/iso8601-date/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;火影忍者-2.jpg" title="ISO 8601 the better date format">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>ISO 8601 the better date format</h3>
@@ -237,7 +237,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item right">
       
 
-  <a href="/2021/04/06/japanese/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;中二病也要谈恋爱.jpg" title="Japanese">
+  <a href="/2021/04/06/japanese/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;怪兽8号.jpg" title="Japanese">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> manual</span>
   <h3>Japanese</h3>
@@ -294,9 +294,8 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 
 <div class="social">
       <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-pen"></i></span>
       <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
-      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
-      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
 </div>
 
 <ul class="menu">
@@ -304,11 +303,6 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     
   <li class="item">
     <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
-  </li>
-
-    
-  <li class="item">
-    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
   </li>
 
         
@@ -332,16 +326,22 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   </li>
 
   </ul>
-    
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-sakura"></i>Anime</a>
+    <ul class="submenu">
+
+        
   <li class="item">
-    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+    <a href="/anime/" rel="section"><i class="ic i-markdown"></i>Quotes</a>
   </li>
 
-    
+        
   <li class="item">
-    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+    <a href="/gallery/" rel="section"><i class="ic i-magic"></i>Gallery</a>
   </li>
 
+  </ul>
 
 </ul>
 
@@ -394,6 +394,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <script data-config type="text/javascript">
   var LOCAL = {
     path: '2021/04/01/cpp-vscode/',
+    sidebar: true,
     favicon: {
       show: "（●´3｀●）Goooood",
       hide: "(´Д｀)Booooom"
@@ -415,7 +416,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   };
 </script>
 
-<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
 
 <script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
 

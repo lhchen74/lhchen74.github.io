@@ -102,12 +102,12 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="/anime/index/游戏人生.jpg"></li>
-          <li class="item" data-background-image="/anime/index/钢之炼金术师-2.jpg"></li>
-          <li class="item" data-background-image="/anime/index/万国志.jpg"></li>
-          <li class="item" data-background-image="/anime/index/平家物语-3.jpg"></li>
-          <li class="item" data-background-image="/anime/index/萤火之森-2.jpg"></li>
-          <li class="item" data-background-image="/anime/index/幽灵公主-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/网球王子.jpg"></li>
+          <li class="item" data-background-image="/anime/index/萤火虫之墓-3.jpg"></li>
+          <li class="item" data-background-image="/anime/index/未闻花名-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/斩·赤红之瞳.jpg"></li>
+          <li class="item" data-background-image="/anime/index/辉夜大小姐想让我告白.jpg"></li>
+          <li class="item" data-background-image="/anime/index/神推偶像登上武道馆我就死而无憾.jpg"></li>
         </ul>
       </div>
     </header>
@@ -160,7 +160,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <p>After transmitting an EDI message to a trading partner, we usually want to confirm whether the message - in all its entirety - actually went through. More so if our EDI (Electronic Data Interchange) is carried out over the Internet, where message packets may have to go through a number of hops. This concern can be easily addressed if you do your EDI over AS2. That’s because AS2 provides an electronic return receipt known as an MDN (Message Disposition Notification).</p>
 <p>The Message Disposition Notification process is initiated by the EDI message sender and is usually concluded once the sender receives the requested MDN. Let me show you a typical AS2 transmission that utilizes this process:</p>
 <p><em>Figure 1</em></p>
-<img data-src="/2020/10/25/edi-mdn/as2_with_mdn.png" class="" title="as2 with mdn">
+<p><img data-src="as2_with_mdn.png" alt="as2 with mdn"></p>
 <p>Let’s go through those steps briefly:</p>
 <p>\1. The sender encrypts the EDI message, affixes its <span class="exturl" data-url="aHR0cHM6Ly93d3cuanNjYXBlLmNvbS9ibG9nL3doYXQtaXMtYS1kaWdpdGFsLXNpZ25hdHVyZQ==">digital signature</span>, and specifies an MDN option. We’ll talk more about MDN options in a short while. But in the meantime, let’s assume the option simply amounts to a request for the return receipt;</p>
 <p>\2. The EDI message is transmitted over the Internet via AS2;</p>
@@ -174,7 +174,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <p>Before two parties start sending EDI messages over AS2, they first share public keys with one another. Each public key corresponds to a specific private key, which is used for generating a digital signature and is held by the party who owns that particular signature.</p>
 <p>The private key is kept secret and hence is never shared. The function of the public key is to validate the digital signature. Only the private key that corresponds to a particular public key can generate a signature that the public key can validate.</p>
 <p><em>Figure 2</em></p>
-<img data-src="/2020/10/25/edi-mdn/public_key_authentication_as2.png" class="" title="public key authentication as2">
+<p><img data-src="public_key_authentication_as2.png" alt="public key authentication as2"></p>
 <p>wherein:</p>
 <p>\1. TP - A generates a digital signature using its private key;</p>
 <p>\2. TP - A’s digital signature is sent along with an AS2 EDI message;</p>
@@ -182,7 +182,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <p>Once the signature has been validated, TP - B can already be sure that the EDI message came from a trusted trading partner and that the data was unaltered along the way.</p>
 <p>The same thing happens when TP - B responds with an MDN:</p>
 <p><em>Figure 3</em></p>
-<img data-src="/2020/10/25/edi-mdn/mdn_with_digital_signature.png" class="" title="mdn with digital signature">
+<p><img data-src="mdn_with_digital_signature.png" alt="mdn with digital signature"></p>
 <p>wherein:</p>
 <p>\1. TP - B generates a digital signature using its private key;</p>
 <p>\2. TP - B’s digital signature is sent along with an AS2 MDN;</p>
@@ -197,19 +197,19 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <p>Synchronous or Sync MDN is an option wherein the MDN is sent to the message sender via the same HTTP/S connection that was used to deliver the original EDI message. On the other hand, Asynchronous or ASync MDN is an option wherein the MDN is sent at a later time via a different HTTP/S connection.</p>
 <p>To illustrate the difference between these two options:</p>
 <p><em>Figure 4</em></p>
-<img data-src="/2020/10/25/edi-mdn/as2_with_sync-mdn.png" class="" title="as2 with sync mdn">
+<p><img data-src="as2_with_sync-mdn.png" alt="as2 with sync mdn"></p>
 <p><em>Figure 5</em></p>
-<img data-src="/2020/10/25/edi-mdn/as2_with_async_mdn.png" class="" title="as2 with async mdn">
+<p><img data-src="as2_with_async_mdn.png" alt="as2 with async mdn"></p>
 <p>Because it uses the same HTTP connection as the original transmission, Sync MDN is the faster option. However, it is not suitable for large file transfers because it may be abruptly cancelled during timeout, especially in low-bandwidth conditions. So if you need to transfer large files but you or your trading partner are subject to poor network conditions, then ASync MDN would be a better choice.</p>
 <p>MDN is only one of a handful of security features in AS2. To learn more about AS2, I recommend you read the blog post entitled <em>AS2 Simplified</em>.</p>
 <h3 id="typical-mdn-settings"><a class="markdownIt-Anchor" href="#typical-mdn-settings">#</a> Typical MDN Settings</h3>
 <p>This section is meant to give you a glimpse of the MDN settings you would normally configure on your favorite managed file transfer server. In our case, that managed file transfer server would be <span class="exturl" data-url="aHR0cHM6Ly93d3cuanNjYXBlLmNvbS9wcm9kdWN0cy9maWxlLXRyYW5zZmVyLXNlcnZlcnMvanNjYXBlLW1mdC1zZXJ2ZXIv">JSCAPE MFT Server</span>.</p>
 <p>All MDNs will of course contain a FROM and TO ID. The FROM ID uniquely identifies where the AS2 message is coming from, while the TO ID uniquely identifies where it is being sent.</p>
 <p><em>Figure 6</em></p>
-<img data-src="/2020/10/25/edi-mdn/as2-mdn-settings.png" class="" title="as2 mdn settings">
+<p><img data-src="as2-mdn-settings.png" alt="as2 mdn settings"></p>
 <p>See that drop-down list box labeled ‘Receipt’? (See <em>Figure 6</em>) The items on that box correspond to the MDN options we talked about earlier. ‘None’ simply refers to the option where no MDN will be transmitted. If you choose ‘synchronous’, you would also need to specify a ‘Receipt timeout’ (See <em>Figure 7</em>). When that timeout value is reached, the connection will automatically disconnect.</p>
 <p><em>Figure 7</em></p>
-<img data-src="/2020/10/25/edi-mdn/as2-mdn-encryption-digital-signature.png" class="" title="as2 mdn encryption and digital signature">
+<p><img data-src="as2-mdn-encryption-digital-signature.png" alt="as2 mdn encryption and digital signature"></p>
 <p>As you can see from the screenshot, you may also take advantage of optional security features like:</p>
 <p>✔ Encryption - which you specify using the ‘Encryption key’ and ‘Encryption algorithm’ settings, and</p>
 <p>✔ Digital signing - which you specify using the ‘Signing key’ and ‘Signature algorithm’ settings.</p>
@@ -246,7 +246,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item left">
       
 
-  <a href="/2020/09/30/python-getopt/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;血意少年.jpg" title="Python Getopt">
+  <a href="/2020/09/30/python-getopt/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;未来的未来.jpg" title="Python Getopt">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Python Getopt</h3>
@@ -256,7 +256,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item right">
       
 
-  <a href="/2020/10/30/python-trap/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;another.jpg" title="Python Trap">
+  <a href="/2020/10/30/python-trap/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;超能力女儿.jpg" title="Python Trap">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Python Trap</h3>
@@ -313,9 +313,8 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 
 <div class="social">
       <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-pen"></i></span>
       <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
-      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
-      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
 </div>
 
 <ul class="menu">
@@ -323,11 +322,6 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     
   <li class="item">
     <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
-  </li>
-
-    
-  <li class="item">
-    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
   </li>
 
         
@@ -351,16 +345,22 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   </li>
 
   </ul>
-    
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-sakura"></i>Anime</a>
+    <ul class="submenu">
+
+        
   <li class="item">
-    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+    <a href="/anime/" rel="section"><i class="ic i-markdown"></i>Quotes</a>
   </li>
 
-    
+        
   <li class="item">
-    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+    <a href="/gallery/" rel="section"><i class="ic i-magic"></i>Gallery</a>
   </li>
 
+  </ul>
 
 </ul>
 
@@ -413,6 +413,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <script data-config type="text/javascript">
   var LOCAL = {
     path: '2020/10/25/edi-mdn/',
+    sidebar: true,
     favicon: {
       show: "（●´3｀●）Goooood",
       hide: "(´Д｀)Booooom"
@@ -434,7 +435,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   };
 </script>
 
-<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
 
 <script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
 

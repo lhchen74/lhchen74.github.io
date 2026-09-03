@@ -102,12 +102,12 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="/anime/index/斩神之凡尘神域.jpg"></li>
-          <li class="item" data-background-image="/anime/index/玉子市场.jpg"></li>
-          <li class="item" data-background-image="/anime/index/迷宫饭.jpg"></li>
-          <li class="item" data-background-image="/anime/index/龙与虎-2.jpg"></li>
-          <li class="item" data-background-image="/anime/index/薄樱鬼.jpg"></li>
-          <li class="item" data-background-image="/anime/index/对某飞行员的追忆.jpg"></li>
+          <li class="item" data-background-image="/anime/index/幽灵公主.jpg"></li>
+          <li class="item" data-background-image="/anime/index/昭和元禄落语心中-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/东京喰种.jpg"></li>
+          <li class="item" data-background-image="/anime/index/网球王子.jpg"></li>
+          <li class="item" data-background-image="/anime/index/夏日重现.jpg"></li>
+          <li class="item" data-background-image="/anime/index/红猪-2.jpg"></li>
         </ul>
       </div>
     </header>
@@ -155,7 +155,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <p>repost: <span class="exturl" data-url="aHR0cHM6Ly9waWNjYWxpbC5saS9ibG9nL3N0eWxpbmctdGFibGVzLXRoZS1tb2Rlcm4tY3NzLXdheS8=">Styling Tables the Modern CSS Way</span></p>
 </blockquote>
 <p>HTML tables are almost as old as the web itself, and have been used — and abused — for decades. Once upon a time, intrepid web designers hacked together complex layouts using tables, in the absence of other suitable methods. Thankfully that’s no longer common practice today, but tables are still a vital part of the web, and are crucial for displaying tabular data — two-dimensional data, organised in rows and columns.</p>
-<img data-src="/2024/08/30/css-table/table-01.jpg" class="" title="A nicely styled HTML table showing average temperature changes for the United Kingdom, Afghanistan, Australia, Kenya, Honduras and Canada along with a global average">
+<p><img data-src="table-01.jpg" alt="A nicely styled HTML table showing average temperature changes for the United Kingdom, Afghanistan, Australia, Kenya, Honduras and Canada along with a global average"></p>
 <p>Our table context for this article.</p>
 <p>Creating good-looking tables on the web can be fiddly at times. We’re going to run through some tips and gotchas for building simple and complex tables in HTML and CSS, and where modern CSS can help us.</p>
 <h2 id="elements-of-a-table"><a class="markdownIt-Anchor" href="#elements-of-a-table">#</a> Elements of a table</h2>
@@ -170,7 +170,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <p>The W3C Web Accessibility Initiative (WAI) provides different examples of ways to accessibly <span class="exturl" data-url="aHR0cHM6Ly93d3cudzMub3JnL1dBSS90dXRvcmlhbHMvdGFibGVzL2NhcHRpb24tc3VtbWFyeS8=">add more complex summaries</span> to a table.</p>
 <h2 id="user-agent-styles"><a class="markdownIt-Anchor" href="#user-agent-styles">#</a> User agent styles</h2>
 <p>If we view our table in a browser, it doesn’t look too great just yet. Our headings and caption all centre-aligned, and there’s no way to differentiate between the header, footer and body rows.</p>
-<img data-src="/2024/08/30/css-table/table-02.jpg" class="" title="An unstyled HTML table showing average temperature changes for the United Kingdom, Afghanistan, Australia, Kenya, Honduras and Canada along with a global average">
+<p><img data-src="table-02.jpg" alt="An unstyled HTML table showing average temperature changes for the United Kingdom, Afghanistan, Australia, Kenya, Honduras and Canada along with a global average"></p>
 <p>These days, browsers are fairly consistent in their <span class="exturl" data-url="aHR0cHM6Ly9waWNjYWxpbC5saS9ibG9nL2EtcHJpbWVyLW9uLXRoZS1jYXNjYWRlLWFuZC1zcGVjaWZpY2l0eSN1c2VyLWFnZW50LWJhc2Utc3R5bGVz">default table styles</span>. If we inspect our  <code>&lt;table&gt;</code>  element in the browser’s developer tools, we can see the following styles applied:</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">table</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: table;</span><br><span class="line">  <span class="attribute">border-spacing</span>: <span class="number">2px</span>;</span><br><span class="line">  <span class="attribute">border-collapse</span>: separate;</span><br><span class="line">  <span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">  <span class="attribute">text-indent</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Some of these properties are useful to us. For example, browsers apply  <code>font-weight: bold</code>  to  <code>&lt;th&gt;</code>  elements, which differentiates the headings from body cells before any other styles are applied. Without any custom CSS at all, we can see a clear relationship between the row and column headings and their corresponding data, giving users a good <span class="exturl" data-url="aHR0cHM6Ly9waWNjYWxpbC5saS9ibG9nL2l0cy1hYm91dC10aW1lLWktdHJpZWQtdG8tZXhwbGFpbi13aGF0LXByb2dyZXNzaXZlLWVuaGFuY2VtZW50LWFjdHVhbGx5LWlz">minimum viable experience</span>.</p>
@@ -181,18 +181,18 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <h2 id="modern-css-reset-for-tables"><a class="markdownIt-Anchor" href="#modern-css-reset-for-tables">#</a> Modern CSS reset for tables</h2>
 <p>Let’s assume we’re setting a font on the  <code>&lt;body&gt;</code>  in our CSS file. Our table will inherit those font styles, so that improves the look of our table somewhat.</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">font-family</span>: <span class="string">&quot;Open Sans&quot;</span>, sans-serif;</span><br><span class="line">  <span class="attribute">line-height</span>: <span class="number">1.5</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<img data-src="/2024/08/30/css-table/table-03.jpg" class="" title="An basically styled HTML table showing average temperature changes for the United Kingdom, Afghanistan, Australia, Kenya, Honduras and Canada along with a global average">
+<p><img data-src="table-03.jpg" alt="An basically styled HTML table showing average temperature changes for the United Kingdom, Afghanistan, Australia, Kenya, Honduras and Canada along with a global average"></p>
 <p>Aligning the text to the left is another way to instantly improve the readability of our table (seriously, why would you centre-align row headings?!). Setting the  <code>text-align</code>  property on the whole table takes care of that, and allows for the option of changing the alignment of individual table columns or cells later on. I’m a big fan of leaning on <span class="exturl" data-url="aHR0cHM6Ly9waWNjYWxpbC5saS9ibG9nL2Nzcy1pbmhlcml0YW5jZS8=">inheritance</span> when it’s useful to us.</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">table</span> &#123;</span><br><span class="line">  <span class="attribute">text-align</span>: left;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<img data-src="/2024/08/30/css-table/table-04.jpg" class="" title="An basically styled HTML table showing average temperature changes for the United Kingdom, Afghanistan, Australia, Kenya, Honduras and Canada along with a global average">
+<p><img data-src="table-04.jpg" alt="An basically styled HTML table showing average temperature changes for the United Kingdom, Afghanistan, Australia, Kenya, Honduras and Canada along with a global average"></p>
 <p>Now let’s imagine for a second we’d like some grid lines between our table cells. We can’t simply add a border to every table row.</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* This won’t work yet */</span></span><br><span class="line"><span class="selector-tag">tr</span> &#123;</span><br><span class="line">  <span class="attribute">border-bottom</span>: <span class="number">1px</span> solid;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>If we add a border to every table cell, we can see by default there is a small space between them.</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">th</span>,</span><br><span class="line"><span class="selector-tag">td</span> &#123;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<img data-src="/2024/08/30/css-table/table-05.jpg" class="" title="An HTML table showing average temperature changes for the United Kingdom, Afghanistan, Australia, Kenya, Honduras and Canada along with a global average. Each cell has a 1px border.">
+<p><img data-src="table-05.jpg" alt="An HTML table showing average temperature changes for the United Kingdom, Afghanistan, Australia, Kenya, Honduras and Canada along with a global average. Each cell has a 1px border."></p>
 <p>This isn’t particularly helpful for creating nice looking tables. We’ll set the  <code>border-collapse</code>  property on our table to  <code>collapse</code>  instead of the default value:  <code>separate</code> . This will result in our table cells sharing their borders with one another, looking much more like we’d expect a table to look.</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">table</span> &#123;</span><br><span class="line">  <span class="attribute">text-align</span>: left;</span><br><span class="line">  <span class="attribute">border-collapse</span>: collapse;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<img data-src="/2024/08/30/css-table/table-06.jpg" class="" title="An HTML table showing average temperature changes for the United Kingdom, Afghanistan, Australia, Kenya, Honduras and Canada along with a global average. There is a consistent border between columns and rows.">
+<p><img data-src="table-06.jpg" alt="An HTML table showing average temperature changes for the United Kingdom, Afghanistan, Australia, Kenya, Honduras and Canada along with a global average. There is a consistent border between columns and rows."></p>
 <p>One handy symptom of this change is we can now also set a border on the table rows — rather than just individual cells if we wish.</p>
 <h2 id="design-considerations"><a class="markdownIt-Anchor" href="#design-considerations">#</a> Design considerations</h2>
 <p>When it comes to bespoke table styles, there are a few design considerations we should be aware of.</p>
@@ -203,14 +203,14 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">th</span>,</span><br><span class="line"><span class="selector-tag">caption</span> &#123;</span><br><span class="line">  <span class="attribute">text-align</span>: start;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">thead</span> <span class="selector-tag">th</span><span class="selector-pseudo">:not</span>(<span class="selector-pseudo">:first-child</span>),</span><br><span class="line"><span class="selector-tag">td</span> &#123;</span><br><span class="line">  <span class="attribute">text-align</span>: end;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="headers-and-footers"><a class="markdownIt-Anchor" href="#headers-and-footers">#</a> Headers and footers</h3>
 <p>Row and column headers are already differentiated by their bold font weight, but marking out the header and footer rows more clearly would make this table easier for users to understand. We could do this by adding a heavier border to those rows, or changing the background colour (or both).</p>
-<img data-src="/2024/08/30/css-table/table-07.jpg" class="" title="An HTML table showing average temperature changes for the United Kingdom, Afghanistan, Australia, Kenya, Honduras and Canada along with a global average. Borders are now more subtle with better contrast between header sections and content.">
+<p><img data-src="table-07.jpg" alt="An HTML table showing average temperature changes for the United Kingdom, Afghanistan, Australia, Kenya, Honduras and Canada along with a global average. Borders are now more subtle with better contrast between header sections and content."></p>
 <p>We can use the logical  <code>border-block</code>  properties to style the borders on the block axis only. (We’re adding some padding to our cells here too.)</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">thead</span> &#123;</span><br><span class="line">  <span class="attribute">border-block-end</span>: <span class="number">2px</span> solid;</span><br><span class="line">  <span class="attribute">background</span>: whitesmoke;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">tfoot</span> &#123;</span><br><span class="line">  <span class="attribute">border-block</span>: <span class="number">2px</span> solid;</span><br><span class="line">  <span class="attribute">background</span>: whitesmoke;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">th</span>,</span><br><span class="line"><span class="selector-tag">td</span> &#123;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid lightgrey;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">0.25rem</span> <span class="number">0.75rem</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Borders between columns might not always be necessary, as the alignment of the cell content naturally helps our brains to discern a column relationship. It might help readability for large or complex tables though. I generally incline towards knocking back cell borders to a lighter colour compared to the header and footer, to avoid the table feeling overcrowded.</p>
 <h3 id="colouring-rows-and-columns"><a class="markdownIt-Anchor" href="#colouring-rows-and-columns">#</a> Colouring rows and columns</h3>
 <p>Alternately colouring the table row backgrounds is another way to assist with the readability of a table as an alternative to borders. In this example we’re setting a theme colour as a custom property on the table, and creating a transparentised variant of the same colour to subtly colour alternate rows, using the CSS  <code>color-mix()</code>  function.</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">table</span> &#123;</span><br><span class="line">  <span class="attr">--color</span>: <span class="number">#d0d0f5</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">thead</span>,</span><br><span class="line"><span class="selector-tag">tfoot</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">var</span>(--color);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">tbody</span> <span class="selector-tag">tr</span><span class="selector-pseudo">:nth-child</span>(even) &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">color-mix</span>(in srgb, <span class="built_in">var</span>(--color), transparent <span class="number">60%</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<img data-src="/2024/08/30/css-table/table-08.jpg" class="" title="An HTML table showing average temperature changes for the United Kingdom, Afghanistan, Australia, Kenya, Honduras and Canada along with a global average. Striped colours provide contrast.">
+<p><img data-src="table-08.jpg" alt="An HTML table showing average temperature changes for the United Kingdom, Afghanistan, Australia, Kenya, Honduras and Canada along with a global average. Striped colours provide contrast."></p>
 <h2 id="styling-with-css"><a class="markdownIt-Anchor" href="#styling-with-css">#</a> Styling with CSS</h2>
 <p>Beyond these design considerations, there are some practical things to consider for a user navigating our table. Let’s look at how CSS can help us here.</p>
 <h3 id="caption-position"><a class="markdownIt-Anchor" href="#caption-position">#</a> Caption position</h3>
@@ -258,7 +258,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <p>Column headings, on the other hand, might benefit from being positioned at the lower end of the table cell, so we don’t end up with some headings floating high above our table data.</p>
 <p>How you choose to align your table content depends on the design and user requirements, but we can control the vertical position using the  <code>vertical-align</code>  property on our table cells. Let’s align our column headings to the bottom and our table body cells to the baseline.</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">th</span>,</span><br><span class="line"><span class="selector-tag">td</span> &#123;</span><br><span class="line">  <span class="attribute">vertical-align</span>: baseline;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">thead</span> <span class="selector-tag">th</span> &#123;</span><br><span class="line">  <span class="attribute">vertical-align</span>: bottom;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<img data-src="/2024/08/30/css-table/table-09.jpg" class="" title="A very complext table with many rows and many columns. It shows maximum and minimimum temperature along with frost, sunshine, rainfall, days of rainfall and monthly mean wind speed. Each column is headed as a month name.">
+<p><img data-src="table-09.jpg" alt="A very complext table with many rows and many columns. It shows maximum and minimimum temperature along with frost, sunshine, rainfall, days of rainfall and monthly mean wind speed. Each column is headed as a month name."></p>
 <h3 id="column-sizes"><a class="markdownIt-Anchor" href="#column-sizes">#</a> Column sizes</h3>
 <p>You might notice that our table columns are unequal widths. Here the width of each column is determined by the length of its heading, which is longer than the content in the body cells. Our table would be much easier to read if the widths of the body columns were equal.</p>
 <p>To begin with, the width of our table is determined by the content. If we set a width on our table, it starts to look a it better, but our column widths are still uneven. We could address this by setting the width of each header cell apart from the first one:</p>
@@ -273,7 +273,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">table</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="built_in">max</span>(<span class="number">65rem</span>, <span class="number">100%</span>);</span><br><span class="line">  <span class="attribute">table-layout</span>: fixed;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Our table columns should now all have equal widths, but we might want our a different size for our first column (which contains the row headers). If we set a width on the first  <code>&lt;th&gt;</code>  element, we can then see that the remaining horizontal space will be distributed evenly between the rest of the columns.</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">th</span><span class="selector-pseudo">:first-of-type</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">10rem</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<img data-src="/2024/08/30/css-table/table-10.jpg" class="" title="A very complext table with many rows and many columns. It shows maximum and minimimum temperature along with frost, sunshine, rainfall, days of rainfall and monthly mean wind speed. Each column is headed as a month name.">
+<p><img data-src="table-10.jpg" alt="A very complext table with many rows and many columns. It shows maximum and minimimum temperature along with frost, sunshine, rainfall, days of rainfall and monthly mean wind speed. Each column is headed as a month name."></p>
 <h2 id="final-demo"><a class="markdownIt-Anchor" href="#final-demo">#</a> Final demo</h2>
 <p>Go ahead and toggle the HTML or CSS panel to see how our table responds, responsively.</p>
 <p>See the Pen <span class="exturl" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL3BpY2NhbGlsbGkvcGVuL1l6Ym1hcmovMjZhZDVkNTVjMmE4MDg4MTdjOWRmY2QxOWY3NmIwMWUv">Our final demo!</span> by piccalilli (<span class="exturl" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL3BpY2NhbGlsbGkv">@piccalilli</span>) on <span class="exturl" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvLw==">CodePen</span>.</p>
@@ -312,7 +312,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item left">
       
 
-  <a href="/2024/08/23/duckdb/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;月刊少女野崎君.jpg" title="Command Line Data Processing Using DuckDB as a Unix Tool">
+  <a href="/2024/08/23/duckdb/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;我们的重置人生.jpg" title="Command Line Data Processing Using DuckDB as a Unix Tool">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Command Line Data Processing Using DuckDB as a Unix Tool</h3>
@@ -322,7 +322,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item right">
       
 
-  <a href="/2024/10/15/python-opencv/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;萤火虫之墓-3.jpg" title="OpenCV Tutorial with Python">
+  <a href="/2024/10/15/python-opencv/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;妖精森林的小不点-2.jpg" title="OpenCV Tutorial with Python">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>OpenCV Tutorial with Python</h3>
@@ -379,9 +379,8 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 
 <div class="social">
       <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-pen"></i></span>
       <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
-      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
-      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
 </div>
 
 <ul class="menu">
@@ -389,11 +388,6 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     
   <li class="item">
     <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
-  </li>
-
-    
-  <li class="item">
-    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
   </li>
 
         
@@ -417,16 +411,22 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   </li>
 
   </ul>
-    
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-sakura"></i>Anime</a>
+    <ul class="submenu">
+
+        
   <li class="item">
-    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+    <a href="/anime/" rel="section"><i class="ic i-markdown"></i>Quotes</a>
   </li>
 
-    
+        
   <li class="item">
-    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+    <a href="/gallery/" rel="section"><i class="ic i-magic"></i>Gallery</a>
   </li>
 
+  </ul>
 
 </ul>
 
@@ -479,6 +479,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <script data-config type="text/javascript">
   var LOCAL = {
     path: '2024/08/30/css-table/',
+    sidebar: true,
     favicon: {
       show: "（●´3｀●）Goooood",
       hide: "(´Д｀)Booooom"
@@ -500,7 +501,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   };
 </script>
 
-<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
 
 <script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
 

@@ -102,12 +102,12 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="/anime/index/异度侵入-1.jpg"></li>
-          <li class="item" data-background-image="/anime/index/跃动青春.jpg"></li>
-          <li class="item" data-background-image="/anime/index/异国日记-1.jpg"></li>
-          <li class="item" data-background-image="/anime/index/文豪野犬-1.jpg"></li>
-          <li class="item" data-background-image="/anime/index/排球少年-2.jpg"></li>
-          <li class="item" data-background-image="/anime/index/国王排名.jpg"></li>
+          <li class="item" data-background-image="/anime/index/舞伎家的料理人.jpg"></li>
+          <li class="item" data-background-image="/anime/index/佐贺偶像是传奇.jpg"></li>
+          <li class="item" data-background-image="/anime/index/物语系列.jpg"></li>
+          <li class="item" data-background-image="/anime/index/万国志.jpg"></li>
+          <li class="item" data-background-image="/anime/index/听到涛声.jpg"></li>
+          <li class="item" data-background-image="/anime/index/孤独摇滚.jpg"></li>
         </ul>
       </div>
     </header>
@@ -218,26 +218,26 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 </li>
 </ul>
 <p>To determine if a file-based JDK is installed and is present on the system path we can issue the command “javac -version” from a command window. If it is present, we will get the version number by way of a response:</p>
-<img data-src="/2021/08/04/oralce-plsql-java/plsqlcljv10.png" class="" title="*">
-<p>​ <strong>Figure 1 - Java Version</strong></p>
+<p><img data-src="plsqlcljv10.png" alt="*"><br>
+​ <strong>Figure 1 - Java Version</strong></p>
 <p>If we don‘t get a version number, then either there is no JDK installed or it is not on the system path. By default, JDKs are installed under “C:\Program Files\Java”. We can also determine whether a JDK has been installed by looking for the “Java” menu item in the “Control Panel”.</p>
 <p>If we need to install a JDK, then we can <span class="exturl" data-url="aHR0cDovL3d3dy5vcmFjbGUuY29tL3RlY2huZXR3b3JrL2phdmEvamF2YXNlL2FyY2hpdmUtMTM5MjEwLmh0bWw=">download</span> one that is compatible with the JDK in the RDBMS.</p>
 <p>It‘s quite likely that a file-based JDK already exists, and that it has a higher version number than the maximum version supported by the JDK in the RDBMS (many Oracle products and other products require a higher version of the JDK). If so, then we can still install a lower version of the JDK in addition to the one that is already present, and then temporarily add it to the system path when compiling Java code. For example, if the Java 1.5 JDK is installed under “C:\Program Files\Java”, then the path can be overriden as follows:</p>
-<img data-src="/2021/08/04/oralce-plsql-java/plsqlcljv11.png" class="" title="*">
-<p>​ <strong>Figure 2 - Setting the JDK Path</strong></p>
+<p><img data-src="plsqlcljv11.png" alt="*"><br>
+​ <strong>Figure 2 - Setting the JDK Path</strong></p>
 <h2 id="compile-test-class"><a class="markdownIt-Anchor" href="#compile-test-class">#</a> Compile Test Class</h2>
 <p>We need to save our code for the test class in a file called “HelloWorld.java” (the Java compiler is rather fussy, and will fail to compile the code if the file name does not match the class name).</p>
 <p>Next, we can create a simple “cmd” file to compile the test class:</p>
 <figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> <span class="built_in">path</span>=C:\Progra~<span class="number">1</span>\Java\jdk1.<span class="number">5</span>.<span class="number">0</span>_14\bin;<span class="variable">%path%</span></span><br><span class="line">javac HelloWorld.java</span><br><span class="line"><span class="built_in">pause</span></span><br></pre></td></tr></table></figure>
 <p>Assuming that both the class and command file are in directory “C:\Scratch\Java” (any directory will do), then when we run the command file we get the following output:</p>
-<img data-src="/2021/08/04/oralce-plsql-java/plsqlcljv01.png" class="" title="*">
-<p>​ <strong>Figure 3 - Java Compilation</strong></p>
+<p><img data-src="plsqlcljv01.png" alt="*"><br>
+​ <strong>Figure 3 - Java Compilation</strong></p>
 <p>As we discussed in the previous section, the first line sets the path to the Java JDK. This line is unnecessary if the correct JDK is already on the system path, or if we wish to compile with an incompatible JDK for the purposes of testing, and then subsequently load the source code into the RDBMS.</p>
 <p>The line “javac HelloWorld.java” does the actual compilation.</p>
 <h2 id="run-test-class"><a class="markdownIt-Anchor" href="#run-test-class">#</a> Run Test Class</h2>
 <p>To run the compiled class we issue the command “java HelloWorld”:</p>
-<img data-src="/2021/08/04/oralce-plsql-java/plsqlcljv02.png" class="" title="*">
-<p>​ <strong>Figure 4 - Test Run</strong></p>
+<p><img data-src="plsqlcljv02.png" alt="*"><br>
+​ <strong>Figure 4 - Test Run</strong></p>
 <h2 id="create-load-class"><a class="markdownIt-Anchor" href="#create-load-class">#</a> Create Load Class</h2>
 <p>With testing complete, we can remove the “main” method from the class, so that it only contains the code needed to implement the requirement:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HelloWorld</span> &#123;</span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">String</span> <span class="title function_">sayHello</span><span class="params">( String pName )</span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="string">&quot;Hello World from &quot;</span> + pName;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -245,14 +245,14 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <p>As before, we compile the modified class, while making sure that the correct version of the Java JDK is on the path:</p>
 <figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> <span class="built_in">path</span>=C:\Progra~<span class="number">1</span>\Java\jdk1.<span class="number">5</span>.<span class="number">0</span>_14\bin;<span class="variable">%path%</span></span><br><span class="line">javac HelloWorld.java</span><br></pre></td></tr></table></figure>
 <p>Note, if we run the code via the file system JDK, but without the “main” method, then we get an error:</p>
-<img data-src="/2021/08/04/oralce-plsql-java/plsqlcljv03.png" class="" title="*">
-<p>​ <strong>Figure 5 - Error with no “main” Method</strong></p>
+<p><img data-src="plsqlcljv03.png" alt="*"><br>
+​ <strong>Figure 5 - Error with no “main” Method</strong></p>
 <h2 id="load-class-into-oracle"><a class="markdownIt-Anchor" href="#load-class-into-oracle">#</a> Load Class into Oracle</h2>
 <p>Next, we must load the compiled class into an Oracle database schema:</p>
 <figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">loadjava -v -user useranme/password@instance -resolve C:\Scratch\Java\HelloWorld.class</span><br></pre></td></tr></table></figure>
 <p>which produces the following output:</p>
-<img data-src="/2021/08/04/oralce-plsql-java/plsqlcljv04.png" class="" title="*">
-<p>​ <strong>Figure 6 - Load Class into Oracle</strong></p>
+<p><img data-src="plsqlcljv04.png" alt="*"><br>
+​ <strong>Figure 6 - Load Class into Oracle</strong></p>
 <p>The “v” option produces a more verbose and informative output, but it is not required. The “user” option identifies the Oracle database schema and password, and is required. The “resolve” option resolves any references that the compiled code may make to other classes or to in-built Java functionality stored in the schema PUBLIC, and, while optional, is recommended. The final term on the command line identifies the file containing the compiled class. In addition, the first time code is loaded into a schema the line:</p>
 <ul>
 <li>created : CREATE<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mi>A</mi><mi>V</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">JAVA</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.09618em;">J</span><span class="mord mathnormal">A</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mord mathnormal">A</span></span></span></span>LOB$TABLE</li>
@@ -262,14 +262,14 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <p>To load the source code and have it compiled automatically, we simply change the file type from “class” to “java”:</p>
 <figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">loadjava -v -user useranme/password@instance -resolve C:\Scratch\Java\HelloWorld.java</span><br></pre></td></tr></table></figure>
 <p>which produces the following output:</p>
-<img data-src="/2021/08/04/oralce-plsql-java/plsqlcljv08.png" class="" title="*">
-<p>​ <strong>Figure 7 - Load Source Code into Oracle</strong></p>
+<p><img data-src="plsqlcljv08.png" alt="*"><br>
+​ <strong>Figure 7 - Load Source Code into Oracle</strong></p>
 <p>Note, that in this case the output indicates that source code is loaded, rather than the compiled code.</p>
 <p>If we need to drop the class from Oracle we use the corresponding “dropjava” command:</p>
 <figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dropjava -v -user useranme/password@instance C:\Scratch\Java\HelloWorld.class</span><br></pre></td></tr></table></figure>
 <p>which produces the following output:</p>
-<img data-src="/2021/08/04/oralce-plsql-java/plsqlcljv05.png" class="" title="*">
-<p>​ <strong>Figure 8 - Drop Class from Oracle</strong></p>
+<p><img data-src="plsqlcljv05.png" alt="*"><br>
+​ <strong>Figure 8 - Drop Class from Oracle</strong></p>
 <p>To drop both source code and class, we change the file type from “class” to “java”. Note, if <strong>source code has been loaded and we attempt to drop just the class we will get an uniformative error</strong>, and neither will be dropped.</p>
 <h2 id="create-plsql-wrapper-function"><a class="markdownIt-Anchor" href="#create-plsql-wrapper-function">#</a> Create PL/SQL Wrapper Function</h2>
 <p>The next step is to create a PL/SQL wrapper function that allows the Java code to be called as though it were PL/SQL. We need to map the Java method name, its parameters, and its return type onto PL/SQL equivalents.</p>
@@ -298,15 +298,15 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 </li>
 </ul>
 <p>When we run the code the wrapper function is created, and is now available for use in any PL/SQL subprogram.</p>
-<img data-src="/2021/08/04/oralce-plsql-java/plsqlcljv06.png" class="" title="*">
-<p>​ <strong>Figure 9 - Create PL/SQL Wrapper</strong></p>
+<p><img data-src="plsqlcljv06.png" alt="*"><br>
+​ <strong>Figure 9 - Create PL/SQL Wrapper</strong></p>
 <p>For a list of how different Java datatypes should be mapped to PL/SQL datatypes see <span class="exturl" data-url="aHR0cDovL2RvY3Mub3JhY2xlLmNvbS9jZC9CMTkzMDZfMDEvamF2YS4xMDIvYjE0MTg4L2RhdGFtYXAuaHRt">Table 3-1 SQL and PL/SQL Data Type to Oracle and JDBC Mapping Classes</span>.</p>
 <h2 id="run-plsql-wrapper-function"><a class="markdownIt-Anchor" href="#run-plsql-wrapper-function">#</a> Run PL/SQL Wrapper Function</h2>
 <p>If we call the PL/SQL wrapper function, passing in the same parameter value as when testing the Java code directly:</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">   dbms_output.put_line( say_hello( <span class="string">&#x27;Oracle&#x27;</span> ) );</span><br><span class="line"><span class="keyword">END</span>;</span><br></pre></td></tr></table></figure>
 <p>then we get the same output as before:</p>
-<img data-src="/2021/08/04/oralce-plsql-java/plsqlcljv07.png" class="" title="*">
-<p>​ <strong>Figure 10 - Call PL/SQL Wrapper</strong></p>
+<p><img data-src="plsqlcljv07.png" alt="*"><br>
+​ <strong>Figure 10 - Call PL/SQL Wrapper</strong></p>
 <h2 id="grant-permissions"><a class="markdownIt-Anchor" href="#grant-permissions">#</a> Grant Permissions</h2>
 <p>For some use cases, we need to explicitly grant specific permissions using the “grant_permissions” procedure in the “dbms_java” package. For example, if we want to write a Java program that performs file operations on the files in directory “C:\Scratch\Java” then we can do so as follows:</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"></span><br><span class="line">   dbms_java.grant_permission (</span><br><span class="line">      <span class="string">&#x27;TEST&#x27;</span>,</span><br><span class="line">      <span class="string">&#x27;SYS:java.io.FilePermission&#x27;</span>,</span><br><span class="line">      <span class="string">&#x27;C:\Scratch\Java\*&#x27;</span>,</span><br><span class="line">      <span class="string">&#x27;read,write,delete&#x27;</span></span><br><span class="line">   );</span><br><span class="line"></span><br><span class="line"><span class="keyword">END</span>;</span><br></pre></td></tr></table></figure>
@@ -345,7 +345,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item left">
       
 
-  <a href="/2021/08/03/oracle-form-download-file/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;命运石之门.jpg" title="Download File by Form Personalization">
+  <a href="/2021/08/03/oracle-form-download-file/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;夏日重现.jpg" title="Download File by Form Personalization">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Download File by Form Personalization</h3>
@@ -355,7 +355,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item right">
       
 
-  <a href="/2021/08/07/rust-webassembly/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;精灵守护者.jpg" title="Compiling from Rust to WebAssembly">
+  <a href="/2021/08/07/rust-webassembly/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;从零开始的异世界生活.jpg" title="Compiling from Rust to WebAssembly">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Compiling from Rust to WebAssembly</h3>
@@ -412,9 +412,8 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 
 <div class="social">
       <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-pen"></i></span>
       <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
-      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
-      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
 </div>
 
 <ul class="menu">
@@ -422,11 +421,6 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     
   <li class="item">
     <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
-  </li>
-
-    
-  <li class="item">
-    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
   </li>
 
         
@@ -450,16 +444,22 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   </li>
 
   </ul>
-    
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-sakura"></i>Anime</a>
+    <ul class="submenu">
+
+        
   <li class="item">
-    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+    <a href="/anime/" rel="section"><i class="ic i-markdown"></i>Quotes</a>
   </li>
 
-    
+        
   <li class="item">
-    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+    <a href="/gallery/" rel="section"><i class="ic i-magic"></i>Gallery</a>
   </li>
 
+  </ul>
 
 </ul>
 
@@ -512,6 +512,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <script data-config type="text/javascript">
   var LOCAL = {
     path: '2021/08/04/oralce-plsql-java/',
+    sidebar: true,
     favicon: {
       show: "（●´3｀●）Goooood",
       hide: "(´Д｀)Booooom"
@@ -533,7 +534,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   };
 </script>
 
-<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
 
 <script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
 

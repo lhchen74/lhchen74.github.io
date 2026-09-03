@@ -102,12 +102,12 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="/anime/index/食梦者.jpg"></li>
-          <li class="item" data-background-image="/anime/index/起风了.jpg"></li>
-          <li class="item" data-background-image="/anime/index/电波女与青春男.jpg"></li>
-          <li class="item" data-background-image="/anime/index/金牌得主.jpg"></li>
-          <li class="item" data-background-image="/anime/index/十二国记.jpg"></li>
-          <li class="item" data-background-image="/anime/index/三月的狮子-2.jpg"></li>
+          <li class="item" data-background-image="/anime/index/怪兽8号.jpg"></li>
+          <li class="item" data-background-image="/anime/index/在下坂本有何贵干.jpg"></li>
+          <li class="item" data-background-image="/anime/index/秦时明月-1.jpg"></li>
+          <li class="item" data-background-image="/anime/index/银魂.jpg"></li>
+          <li class="item" data-background-image="/anime/index/天真与闪电-1.jpg"></li>
+          <li class="item" data-background-image="/anime/index/空想新子和千年的魔法.jpg"></li>
         </ul>
       </div>
     </header>
@@ -170,7 +170,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <li>Data Structure</li>
 </ol>
 <p>This structure is shown in the following graphic:</p>
-<img data-src="/2021/06/23/oracle-report-xml/xml_template.jpg" class="" title="XML Template">
+<p><img data-src="xml_template.jpg" alt="XML Template"></p>
 <p>Step by Step Guide to create a sample XML Data Template:</p>
 <p><strong>Decide on the SQL Query</strong></p>
 <p>In the example, we are trying to get the following data from the AP_INVOICES_ALL Table</p>
@@ -192,21 +192,21 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <p>That’s all we need to construct the XML Data Template.</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span> ?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dataTemplate</span> <span class="attr">name</span> =<span class="string">&quot;invoiceData&quot;</span> <span class="attr">description</span>=<span class="string">&quot;Invoice Data&quot;</span> <span class="attr">Version</span>=<span class="string">&quot;1.0&quot;</span> &gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">parameters</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">parameter</span> <span class="attr">name</span>=<span class="string">&quot;p_OrgId&quot;</span> <span class="attr">dataType</span>=<span class="string">&quot;number&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">parameter</span> <span class="attr">name</span>=<span class="string">&quot;p_VendorId&quot;</span> <span class="attr">dataType</span>=<span class="string">&quot;number&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">parameters</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dataQuery</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">sqlStatement</span> <span class="attr">name</span>=<span class="string">&quot;Q1&quot;</span>&gt;</span></span><br><span class="line">&lt;![CDATA[</span><br><span class="line">SELECT invoice_num,invoice_currency_code,invoice_amount</span><br><span class="line">  FROM ap_invoices_all</span><br><span class="line"> WHERE org_id = :p_OrgId</span><br><span class="line">   AND vendor_id = :p_VendorId</span><br><span class="line">]]&gt;</span><br><span class="line"><span class="tag">&lt;/<span class="name">sqlStatement</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dataQuery</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dataStructure</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">group</span> <span class="attr">name</span>=<span class="string">&quot;G_INV&quot;</span> <span class="attr">source</span>=<span class="string">&quot;Q1&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">element</span> <span class="attr">name</span>=<span class="string">&quot;INV_NUMBER&quot;</span> <span class="attr">value</span>=<span class="string">&quot;invoice_num&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">element</span> <span class="attr">name</span>=<span class="string">&quot;CURRENCY_CODE&quot;</span> <span class="attr">value</span>=<span class="string">&quot;invoice_currency_code&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">element</span> <span class="attr">name</span>=<span class="string">&quot;AMOUNT&quot;</span> <span class="attr">value</span>=<span class="string">&quot;invoice_amount&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">group</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dataStructure</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dataTemplate</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>If you see the above XML Data Template, we have specified the parameters that are being used and also the SQL Query that will be fetching the data. The SQL Query is using the parameters that are being defined under the Parameters Section. I have also included a jpeg image of the XML File Definition. Sometimes when you copy the XML Definition from the blog, you might run into “invalid characters” that can cause issues. So check the jpeg image and make use of it.</p>
-<img data-src="/2021/06/23/oracle-report-xml/xml_template_definition.jpg" class="" title="xml_template_definition">
+<p><img data-src="xml_template_definition.jpg" alt="xml_template_definition"></p>
 <p>Save the same as “.xml” file in your local system. After saving the file, you should be able to open it in the browser. Double click the xml file and the file should open. The file will look as shown below:</p>
-<img data-src="/2021/06/23/oracle-report-xml/xml_file.jpg" class="" title="xml_file">
+<p><img data-src="xml_file.jpg" alt="xml_file"></p>
 <p>Open Word. Go to Add-Ins. You will be able to see the BI Publisher Menu. Under the Menu, Select Data &gt; Load XML Schema. Select the xml file that we just created.</p>
-<img data-src="/2021/06/23/oracle-report-xml/one.jpg" class="" title="BI Publisher Word Addon">
+<p><img data-src="one.jpg" alt="BI Publisher Word Addon"></p>
 <p>If the data is loaded successfully, you will get the below message:</p>
-<img data-src="/2021/06/23/oracle-report-xml/two.jpg" class="" title="Data Loaded Successfully">
+<p><img data-src="two.jpg" alt="Data Loaded Successfully"></p>
 <p>Click OK and to Continue. Select Insert &gt; Table/Form</p>
-<img data-src="/2021/06/23/oracle-report-xml/three.jpg" class="" title="Insert&#x2F;Table Form">
+<p><img data-src="three.jpg" alt="Insert/Table Form"></p>
 <p>You will get the below screen:</p>
-<img data-src="/2021/06/23/oracle-report-xml/four.jpg" class="" title="Insert Fields1">
+<p><img data-src="four.jpg" alt="Insert Fields1"></p>
 <p>Drag and Drop <strong>G Inv</strong> element from Data Source to the Template Region as shown below</p>
 <p><img data-src="https://www.quest4apps.com/wp-content/uploads/2010/07/five.jpg" alt="Insert Items2"></p>
 <p>Select <strong>Drop All Nodes</strong> from the choices. We will be getting the below screen:</p>
-<img data-src="/2021/06/23/oracle-report-xml/six.jpg" class="" title="Insert Items3">
+<p><img data-src="six.jpg" alt="Insert Items3"></p>
 <p>Press <strong>OK</strong>. We will get the below template in the Word Document. Save the same as XXINV_DETAILS.rtf.</p>
 <table>
 <thead>
@@ -229,20 +229,20 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <p>Code - XXINV_DETAILS</p>
 <p>Application - Provisioning (or your custom application)</p>
 <p>Start Date - Automatically Populated</p>
-<img data-src="/2021/06/23/oracle-report-xml/eight.jpg" class="" title="XMLP registration1">
+<p><img data-src="eight.jpg" alt="XMLP registration1"></p>
 <p>Press “Add File” next to Data Template. Browse and upload the XML Data Template that we have created here (Here upload is xml data-template not rtf).</p>
-<img data-src="/2021/06/23/oracle-report-xml/1624420806635.png" class="" width="1624420806635">
+<p><img data-src="1624420806635.png" alt="1624420806635"></p>
 <p>Go to Data Templates and create a new Data Template. Give the following details:</p>
-<img data-src="/2021/06/23/oracle-report-xml/nine.jpg" class="" title="XMLP Registration2">
+<p><img data-src="nine.jpg" alt="XMLP Registration2"></p>
 <p>Select the Data Definition that we had created prior to this.</p>
 <p>Select Language as US English and upload the RTF File that we have created (XXINV_DETAILS.rtf).</p>
 <p>Navigate to System Administrator &gt; Concurrent &gt; Program &gt; Define.</p>
 <p>Create a new Concurrent Program and give the following details.</p>
-<img data-src="/2021/06/23/oracle-report-xml/ten.jpg" class="" title="Concurrent Program Registration">
+<p><img data-src="ten.jpg" alt="Concurrent Program Registration"></p>
 <p>The Executable should always be <strong>XDODTEXE</strong>.</p>
 <p>Click on Parameters and give the following details:</p>
-<img data-src="/2021/06/23/oracle-report-xml/eleven.jpg" class="" title="Parameter1">
-<img data-src="/2021/06/23/oracle-report-xml/twelve.jpg" class="" title="Parameter2">
+<p><img data-src="eleven.jpg" alt="Parameter1"></p>
+<p><img data-src="twelve.jpg" alt="Parameter2"></p>
 <p>Assign the program to the request group and run the program.</p>
 <p>Hope this helps. Let me know your thoughts and feel free to ask any questions that you might have. Also, check out the next blog which has Triggers being called from the XML Template file. You can check it here.</p>
 <p>Also check out more advanced topic on XML Templates - <span class="exturl" data-url="aHR0cHM6Ly93d3cucXVlc3Q0YXBwcy5jb20veG1sLXJlcG9ydC1wYXJ0My8=">XML Template Part 3</span></p>
@@ -277,20 +277,20 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item left">
       
 
-  <a href="/2021/06/23/oracle-report-rtf/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;加速世界.jpg" title="XML Publisher Templates by Example">
+  <a href="/2021/06/20/html-tips/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;怪物MONSTER.jpg" title="HTML Tips">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
-  <h3>XML Publisher Templates by Example</h3>
+  <h3>HTML Tips</h3>
   </a>
 
     </div>
     <div class="item right">
       
 
-  <a href="/2021/06/25/oracle-application-flex/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;风之谷-2.jpg" title="All about Oracle Applications FLEX and PROFILES">
+  <a href="/2021/06/23/oracle-report-rtf/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;秦时明月-1.jpg" title="XML Publisher Templates by Example">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
-  <h3>All about Oracle Applications FLEX and PROFILES</h3>
+  <h3>XML Publisher Templates by Example</h3>
   </a>
 
     </div>
@@ -343,9 +343,8 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 
 <div class="social">
       <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-pen"></i></span>
       <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
-      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
-      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
 </div>
 
 <ul class="menu">
@@ -353,11 +352,6 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     
   <li class="item">
     <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
-  </li>
-
-    
-  <li class="item">
-    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
   </li>
 
         
@@ -381,16 +375,22 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   </li>
 
   </ul>
-    
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-sakura"></i>Anime</a>
+    <ul class="submenu">
+
+        
   <li class="item">
-    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+    <a href="/anime/" rel="section"><i class="ic i-markdown"></i>Quotes</a>
   </li>
 
-    
+        
   <li class="item">
-    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+    <a href="/gallery/" rel="section"><i class="ic i-magic"></i>Gallery</a>
   </li>
 
+  </ul>
 
 </ul>
 
@@ -400,12 +400,12 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 
   <ul id="quick">
     <li class="prev pjax">
-        <a href="/2021/06/23/oracle-report-rtf/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+        <a href="/2021/06/20/html-tips/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
     </li>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
     <li class="next pjax">
-        <a href="/2021/06/25/oracle-application-flex/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+        <a href="/2021/06/23/oracle-report-rtf/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
     </li>
     <li class="percent"></li>
   </ul>
@@ -443,6 +443,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <script data-config type="text/javascript">
   var LOCAL = {
     path: '2021/06/23/oracle-report-xml/',
+    sidebar: true,
     favicon: {
       show: "（●´3｀●）Goooood",
       hide: "(´Д｀)Booooom"
@@ -464,7 +465,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   };
 </script>
 
-<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
 
 <script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
 

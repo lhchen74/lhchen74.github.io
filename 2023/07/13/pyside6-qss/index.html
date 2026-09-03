@@ -102,12 +102,12 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="/anime/index/好想告诉你.jpg"></li>
-          <li class="item" data-background-image="/anime/index/舞伎家的料理人.jpg"></li>
-          <li class="item" data-background-image="/anime/index/干物妹小埋.jpg"></li>
-          <li class="item" data-background-image="/anime/index/岁月的童话-2.jpg"></li>
-          <li class="item" data-background-image="/anime/index/五等分的花嫁.jpg"></li>
-          <li class="item" data-background-image="/anime/index/青之芦苇.jpg"></li>
+          <li class="item" data-background-image="/anime/index/幻灵镇魂曲.jpg"></li>
+          <li class="item" data-background-image="/anime/index/怪兽8号.jpg"></li>
+          <li class="item" data-background-image="/anime/index/乒乓.jpg"></li>
+          <li class="item" data-background-image="/anime/index/花牌情缘.jpg"></li>
+          <li class="item" data-background-image="/anime/index/河童之夏.jpg"></li>
+          <li class="item" data-background-image="/anime/index/剑风传奇.jpg"></li>
         </ul>
       </div>
     </header>
@@ -157,9 +157,9 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <h2 id="introduction-to-the-qt-style-sheets"><a class="markdownIt-Anchor" href="#introduction-to-the-qt-style-sheets">#</a> Introduction to the Qt Style Sheets</h2>
 <p>Qt Style Sheets or QSS is very much similar to Cascading Style Sheets (CSS) for the web. However, QSS supports only a limited number of rules in comparison with CSS. For example, QSS supports the box model but doesn’t support the flexbox and grid layouts.</p>
 <p>To set the style sheets for a widget, you call its  <code>setStyleSheet()</code>  method with a style sheet string. To demonstrate QSS, we’ll turn the following login window:</p>
-<img data-src="/2023/07/13/pyside6-qss/Qt-Style-Sheet-Before.png" class="" title="img">
+<p><img data-src="Qt-Style-Sheet-Before.png" alt="img"></p>
 <p>…into the following login window:</p>
-<img data-src="/2023/07/13/pyside6-qss/Qt-Style-Sheet-After.png" class="" title="img">
+<p><img data-src="Qt-Style-Sheet-After.png" alt="img"></p>
 <p>The following program creates a login window that appears in the first picture without any style sheets.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">from</span> PyQt6.QtWidgets <span class="keyword">import</span> QApplication,  QWidget, QLabel, QLineEdit, QPushButton,  QVBoxLayout</span><br><span class="line"><span class="keyword">from</span> PyQt6.QtCore <span class="keyword">import</span> Qt</span><br><span class="line"><span class="keyword">from</span> PyQt6.QtGui <span class="keyword">import</span> QIcon</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MainWindow</span>(<span class="title class_ inherited__">QWidget</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, *args, **kwargs</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__(*args, **kwargs)</span><br><span class="line">        <span class="variable language_">self</span>.setWindowTitle(<span class="string">&#x27;Login&#x27;</span>)</span><br><span class="line">        <span class="variable language_">self</span>.setWindowIcon(QIcon(<span class="string">&#x27;./assets/lock.png&#x27;</span>))</span><br><span class="line"></span><br><span class="line">        layout = QVBoxLayout()</span><br><span class="line">        <span class="variable language_">self</span>.setLayout(layout)</span><br><span class="line"></span><br><span class="line">        heading = QLabel(</span><br><span class="line">            <span class="string">&#x27;Welcome Back&#x27;</span>,</span><br><span class="line">            alignment=Qt.AlignmentFlag.AlignHCenter</span><br><span class="line">        )</span><br><span class="line">        heading.setObjectName(<span class="string">&#x27;heading&#x27;</span>)</span><br><span class="line"></span><br><span class="line">        subheading = QLabel(</span><br><span class="line">            <span class="string">&#x27;Please enter your email and password to log in.&#x27;</span>,</span><br><span class="line">            alignment=Qt.AlignmentFlag.AlignHCenter</span><br><span class="line">        )</span><br><span class="line">        subheading.setObjectName(<span class="string">&#x27;subheading&#x27;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="variable language_">self</span>.email = QLineEdit(<span class="variable language_">self</span>)</span><br><span class="line">        <span class="variable language_">self</span>.email.setPlaceholderText(<span class="string">&#x27;Enter your email&#x27;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="variable language_">self</span>.password = QLineEdit(<span class="variable language_">self</span>)</span><br><span class="line">        <span class="variable language_">self</span>.password.setEchoMode(QLineEdit.EchoMode.Password)</span><br><span class="line">        <span class="variable language_">self</span>.password.setPlaceholderText(<span class="string">&#x27;Enter your password&#x27;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="variable language_">self</span>.btn_login = QPushButton(<span class="string">&#x27;Login&#x27;</span>)</span><br><span class="line"></span><br><span class="line">        layout.addStretch()</span><br><span class="line">        layout.addWidget(heading)</span><br><span class="line">        layout.addWidget(subheading)</span><br><span class="line">        layout.addWidget(QLabel(<span class="string">&#x27;Email:&#x27;</span>))</span><br><span class="line">        layout.addWidget(<span class="variable language_">self</span>.email)</span><br><span class="line">        layout.addWidget(QLabel(<span class="string">&#x27;Password:&#x27;</span>))</span><br><span class="line">        layout.addWidget(<span class="variable language_">self</span>.password)</span><br><span class="line">        layout.addWidget(<span class="variable language_">self</span>.btn_login)</span><br><span class="line">        layout.addStretch()</span><br><span class="line"></span><br><span class="line">        <span class="variable language_">self</span>.show()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app = QApplication(sys.argv)</span><br><span class="line">    window = MainWindow()</span><br><span class="line">    sys.exit(app.<span class="built_in">exec</span>())</span><br></pre></td></tr></table></figure>
 <p>First, make the background of the  <code>QWidget</code>  white:</p>
@@ -188,11 +188,11 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">from</span> pathlib <span class="keyword">import</span> Path</span><br><span class="line"><span class="keyword">from</span> PyQt6.QtWidgets <span class="keyword">import</span> QApplication,  QWidget, QLabel, QLineEdit, QPushButton,  QVBoxLayout</span><br><span class="line"><span class="keyword">from</span> PyQt6.QtCore <span class="keyword">import</span> Qt</span><br><span class="line"><span class="keyword">from</span> PyQt6.QtGui <span class="keyword">import</span> QIcon</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MainWindow</span>(<span class="title class_ inherited__">QWidget</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, *args, **kwargs</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__(*args, **kwargs)</span><br><span class="line">        <span class="variable language_">self</span>.setWindowTitle(<span class="string">&#x27;Login&#x27;</span>)</span><br><span class="line">        <span class="variable language_">self</span>.setWindowIcon(QIcon(<span class="string">&#x27;./assets/lock.png&#x27;</span>))</span><br><span class="line"></span><br><span class="line">        layout = QVBoxLayout()</span><br><span class="line">        <span class="variable language_">self</span>.setLayout(layout)</span><br><span class="line"></span><br><span class="line">        heading = QLabel(</span><br><span class="line">            <span class="string">&#x27;Welcome Back&#x27;</span>,</span><br><span class="line">            alignment=Qt.AlignmentFlag.AlignHCenter</span><br><span class="line">        )</span><br><span class="line">        heading.setObjectName(<span class="string">&#x27;heading&#x27;</span>)</span><br><span class="line"></span><br><span class="line">        subheading = QLabel(</span><br><span class="line">            <span class="string">&#x27;Please enter your email and password to log in.&#x27;</span>,</span><br><span class="line">            alignment=Qt.AlignmentFlag.AlignHCenter</span><br><span class="line">        )</span><br><span class="line">        subheading.setObjectName(<span class="string">&#x27;subheading&#x27;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="variable language_">self</span>.email = QLineEdit(<span class="variable language_">self</span>)</span><br><span class="line">        <span class="variable language_">self</span>.email.setPlaceholderText(<span class="string">&#x27;Enter your email&#x27;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="variable language_">self</span>.password = QLineEdit(<span class="variable language_">self</span>)</span><br><span class="line">        <span class="variable language_">self</span>.password.setEchoMode(QLineEdit.EchoMode.Password)</span><br><span class="line">        <span class="variable language_">self</span>.password.setPlaceholderText(<span class="string">&#x27;Enter your password&#x27;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="variable language_">self</span>.btn_login = QPushButton(<span class="string">&#x27;Login&#x27;</span>)</span><br><span class="line"></span><br><span class="line">        layout.addStretch()</span><br><span class="line">        layout.addWidget(heading)</span><br><span class="line">        layout.addWidget(subheading)</span><br><span class="line">        layout.addWidget(QLabel(<span class="string">&#x27;Email:&#x27;</span>))</span><br><span class="line">        layout.addWidget(<span class="variable language_">self</span>.email)</span><br><span class="line">        layout.addWidget(QLabel(<span class="string">&#x27;Password:&#x27;</span>))</span><br><span class="line">        layout.addWidget(<span class="variable language_">self</span>.password)</span><br><span class="line">        layout.addWidget(<span class="variable language_">self</span>.btn_login)</span><br><span class="line">        layout.addStretch()</span><br><span class="line"></span><br><span class="line">        <span class="variable language_">self</span>.show()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line"></span><br><span class="line">    app = QApplication(sys.argv)</span><br><span class="line">    app.setStyleSheet(Path(<span class="string">&#x27;login.qss&#x27;</span>).read_text())</span><br><span class="line">    window = MainWindow()</span><br><span class="line">    sys.exit(app.<span class="built_in">exec</span>())</span><br></pre></td></tr></table></figure>
 <h2 id="setting-qt-style-sheets-in-qt-designer"><a class="markdownIt-Anchor" href="#setting-qt-style-sheets-in-qt-designer">#</a> Setting Qt Style sheets in Qt Designer</h2>
 <p>First, right-click the form and select Change  <code>StyleSheet</code> … menu:</p>
-<img data-src="/2023/07/13/pyside6-qss/Qt-Style-Sheet-Qt-Designer-Step-1.png" class="" title="Qt Style Sheets - Qt Designer Step 1">
+<p><img data-src="Qt-Style-Sheet-Qt-Designer-Step-1.png" alt="Qt Style Sheets - Qt Designer Step 1"></p>
 <p>Second, enter the Qt Style Sheets into the Style Sheet Editor and click the Apply button. Once the QSS is applied, you’ll see its effect in the design:</p>
-<img data-src="/2023/07/13/pyside6-qss/Qt-Style-Sheet-Qt-Designer-Step-2-1024x486.png" class="" title="img">
+<p><img data-src="Qt-Style-Sheet-Qt-Designer-Step-2-1024x486.png" alt="img"></p>
 <p>Third, close the style sheet editor and preview the form (Ctrl-R):</p>
-<img data-src="/2023/07/13/pyside6-qss/Qt-Style-Sheet-Qt-Designer-Step-3-1024x510.png" class="" title="Qt Style Sheet - Qt Designer Step 3">
+<p><img data-src="Qt-Style-Sheet-Qt-Designer-Step-3-1024x510.png" alt="Qt Style Sheet - Qt Designer Step 3"></p>
 <h2 id="summary"><a class="markdownIt-Anchor" href="#summary">#</a> Summary</h2>
 <ul>
 <li>Use Qt Style Sheets (QSS) to customize the widgets.</li>
@@ -229,17 +229,17 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     <div class="item left">
       
 
-  <a href="/2023/07/13/pyside6-quotify/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;千与千寻-2.jpg" title="PySide6 Practice Quotify">
+  <a href="/2023/07/13/pyside6-model-view/" itemprop="url" rel="prev" data-background-image="&#x2F;anime&#x2F;index&#x2F;新世纪福音战士.jpg" title="The ModelView Architecture Qt&#39;s MVC-like interface for displaying data in views">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
-  <h3>PySide6 Practice Quotify</h3>
+  <h3>The ModelView Architecture Qt's MVC-like interface for displaying data in views</h3>
   </a>
 
     </div>
     <div class="item right">
       
 
-  <a href="/2023/07/13/pyside6-qml/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;跃动青春.jpg" title="Qt for Python - Building an Application - 《Qt6 QML Book》">
+  <a href="/2023/07/13/pyside6-qml/" itemprop="url" rel="next" data-background-image="&#x2F;anime&#x2F;index&#x2F;电锯人-2.jpg" title="Qt for Python - Building an Application - 《Qt6 QML Book》">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Qt for Python - Building an Application - 《Qt6 QML Book》</h3>
@@ -296,9 +296,8 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 
 <div class="social">
       <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xoY2hlbjc0" title="https:&#x2F;&#x2F;github.com&#x2F;lhchen74"><i class="ic i-github"></i></span>
+      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-pen"></i></span>
       <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==" title="https:&#x2F;&#x2F;music.163.com&#x2F;"><i class="ic i-cloud-music"></i></span>
-      <span class="exturl item codepen" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL2xoY2hlbjc0" title="https:&#x2F;&#x2F;codepen.io&#x2F;lhchen74"><i class="ic i-address-card"></i></span>
-      <span class="exturl item anki" data-url="aHR0cHM6Ly9hbmtpd2ViLm5ldC9kZWNrcy8=" title="https:&#x2F;&#x2F;ankiweb.net&#x2F;decks&#x2F;"><i class="ic i-address-card"></i></span>
 </div>
 
 <ul class="menu">
@@ -306,11 +305,6 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
     
   <li class="item">
     <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
-  </li>
-
-    
-  <li class="item">
-    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
   </li>
 
         
@@ -334,16 +328,22 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   </li>
 
   </ul>
-    
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-sakura"></i>Anime</a>
+    <ul class="submenu">
+
+        
   <li class="item">
-    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+    <a href="/anime/" rel="section"><i class="ic i-markdown"></i>Quotes</a>
   </li>
 
-    
+        
   <li class="item">
-    <a href="/anime/" rel="section"><i class="ic i-magic"></i>Anime</a>
+    <a href="/gallery/" rel="section"><i class="ic i-magic"></i>Gallery</a>
   </li>
 
+  </ul>
 
 </ul>
 
@@ -353,7 +353,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 
   <ul id="quick">
     <li class="prev pjax">
-        <a href="/2023/07/13/pyside6-quotify/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+        <a href="/2023/07/13/pyside6-model-view/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
     </li>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
@@ -396,6 +396,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
 <script data-config type="text/javascript">
   var LOCAL = {
     path: '2023/07/13/pyside6-qss/',
+    sidebar: true,
     favicon: {
       show: "（●´3｀●）Goooood",
       hide: "(´Д｀)Booooom"
@@ -417,7 +418,7 @@ D E W = 露の世 = 我知这世界本如露水般短暂，然而，然而</titl
   };
 </script>
 
-<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
 
 <script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
 
